@@ -1,0 +1,178 @@
+---
+apiVersion: v1
+kind: List
+metadata:
+  name: aws-efs-csi-driver
+  namespace: kube-system
+  annotations:
+    version: dev-test
+items:
+  - apiVersion: v1
+    kind: Namespace
+    metadata:
+      name: {{ namespace }}
+  - apiVersion: storage.k8s.io/v1beta1
+    kind: CSIDriver
+    metadata:
+      name: efs.csi.aws.com
+    spec:
+      attachRequired: false
+  - apiVersion: v1
+    kind: ServiceAccount
+    metadata:
+      name: efs-csi-node
+      namespace: {{ namespace }}
+      labels:
+        app: aws-efs-csi-driver
+  - kind: StorageClass
+    apiVersion: storage.k8s.io/v1
+    metadata:
+      name: aws-efs-sc
+      labels:
+        app: aws-efs-csi-driver
+    provisioner: efs.csi.aws.com
+  - apiVersion: security.openshift.io/v1
+    kind: SecurityContextConstraints
+    metadata:
+      name: aws-efs-scc
+      labels:
+        app: aws-efs-csi-driver
+    priority: 0
+    defaultAddCapabilities: []
+    allowedCapabilities: []
+    allowHostDirVolumePlugin: true
+    allowHostIPC: false
+    allowHostPID: false
+    allowHostPorts: true
+    allowHostNetwork: true
+    allowPrivilegedContainer: true
+    allowPrivilegeEscalation: true
+    requiredDropCapabilities:
+     - KILL
+     - MKNOD
+     - SETUID
+     - SETGID
+    readOnlyRootFilesystem: false
+    runAsUser:
+      type: RunAsAny
+    seLinuxContext:
+      type: RunAsAny
+    fsGroup:
+      type: RunAsAny
+    supplementalGroups:
+      type: RunAsAny
+    users:
+    - system:serviceaccount:{{ namespace }}:efs-csi-node
+    groups: []
+    volumes:
+      - configMap
+      - downwardAPI
+      - emptyDir
+      - hostPath
+      - persistentVolumeClaim
+      - projected
+      - secret
+  - kind: DaemonSet
+    apiVersion: apps/v1
+    metadata:
+      name: efs-csi-node
+      namespace: {{ namespace }}
+    spec:
+      selector:
+        matchLabels:
+          app: aws-efs-csi-driver
+      template:
+        metadata:
+          labels:
+            app: aws-efs-csi-driver
+        spec:
+          nodeSelector:
+            kubernetes.io/os: linux
+          hostNetwork: true
+          # priorityClassName: system-node-critical
+          tolerations:
+            - operator: Exists
+          serviceAccountName: efs-csi-node
+          containers:
+            - name: efs-plugin
+              securityContext:
+                privileged: true
+              image: "amazon/aws-efs-csi-driver:v1.0.0"
+              args:
+                - --endpoint=$(CSI_ENDPOINT)
+                - --logtostderr
+                - --v=5
+              env:
+                - name: CSI_ENDPOINT
+                  value: unix:/csi/csi.sock
+              volumeMounts:
+                - name: kubelet-dir
+                  mountPath: /var/lib/kubelet
+                  mountPropagation: "Bidirectional"
+                - name: plugin-dir
+                  mountPath: /csi
+                - name: efs-state-dir
+                  mountPath: /var/run/efs
+                - name: efs-utils-config
+                  mountPath: /etc/amazon/efs
+              ports:
+                - name: healthz
+                  containerPort: 9809
+                  protocol: TCP
+              livenessProbe:
+                httpGet:
+                  path: /healthz
+                  port: healthz
+                initialDelaySeconds: 10
+                timeoutSeconds: 3
+                periodSeconds: 2
+                failureThreshold: 5
+            - name: cs-driver-registrar
+              image: quay.io/k8scsi/csi-node-driver-registrar:v1.3.0
+              args:
+                - --csi-address=$(ADDRESS)
+                - --kubelet-registration-path=$(DRIVER_REG_SOCK_PATH)
+                - --v=5
+              env:
+                - name: ADDRESS
+                  value: /csi/csi.sock
+                - name: DRIVER_REG_SOCK_PATH
+                  value: /var/lib/kubelet/plugins/efs.csi.aws.com/csi.sock
+                - name: KUBE_NODE_NAME
+                  valueFrom:
+                    fieldRef:
+                      fieldPath: spec.nodeName
+              volumeMounts:
+                - name: plugin-dir
+                  mountPath: /csi
+                - name: registration-dir
+                  mountPath: /registration
+            - name: liveness-probe
+              image: quay.io/k8scsi/livenessprobe:v2.0.0
+              args:
+                - --csi-address=/csi/csi.sock
+                - --health-port=9809
+              volumeMounts:
+                - name: plugin-dir
+                  mountPath: /csi
+          volumes:
+            - name: kubelet-dir
+              hostPath:
+                path: /var/lib/kubelet
+                type: Directory
+            - name: plugin-dir
+              hostPath:
+                path: /var/lib/kubelet/plugins/efs.csi.aws.com/
+                type: DirectoryOrCreate
+            - name: registration-dir
+              hostPath:
+                path: /var/lib/kubelet/plugins_registry/
+                type: Directory
+            - name: efs-state-dir
+              hostPath:
+                path: /var/run/efs
+                type: DirectoryOrCreate
+            - name: efs-utils-config
+              hostPath:
+                path: /etc/amazon/efs
+                type: DirectoryOrCreate

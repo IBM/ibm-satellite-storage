@@ -1,0 +1,9 @@
+[
+  {
+    "name":"aws-efs-csi-driver",
+    "displayname": "AWS EFS CSI Driver",
+    "Description": "AWS EFS CSI Driver for satellite cluster",
+    "default-version": "1.0.0",
+    "enabled": true
+  }
+]
