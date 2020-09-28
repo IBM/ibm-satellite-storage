@@ -1,6 +1,6 @@
 # ibm-satellite-storage
 This repository is used to register the storage for IBM satellite. The vendor can test and create the storage template in the specified format. Once the approval cycle is complete, the storage will be available for IBM satellite offering.
-# Satellite Storage Partner Certification Guidline
+# Satellite Storage Partner Certification Guidline  
 ## Directory structure
 The following directory structure must be used to register a new driver.
 ```
@@ -34,31 +34,31 @@ storage-templates
                 ---customer-paramerters.json
                 ---deployment.yaml
                 ---storage-class-template.yaml
-                ---stprage-class-parameters.json
+                ---storage-class-parameters.json
      				---1.1.0
                 ---customer-paramerters.json
                 ---deployment.yaml
                 ---storage-class-template.yaml
-                ---stprage-class-parameters.json
+                ---storage-class-parameters.json
     ---azure            
         ---azuredisk-csi-driver
      				---1.0.0
               ---customer-paramerters.json
               ---deployment.yaml
               ---storage-class-template.yaml
-              ---stprage-class-parameters.json
+              ---storage-class-parameters.json
      				---1.1.0
               ---customer-paramerters.json
               ---deployment.yaml
               ---storage-class-template.yaml
-              ---stprage-class-parameters.json
+              ---storage-class-parameters.json
     ---netapp            
         ---trident
      				---27.01
               ---customer-paramerters.json
               ---deployment.yaml
               ---storage-class-template.yaml
-              ---stprage-class-parameters.json
+              ---storage-class-parameters.json
 
 ```
 
