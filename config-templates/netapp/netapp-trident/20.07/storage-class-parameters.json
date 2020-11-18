@@ -7,6 +7,14 @@
     "type": "text"
   },
   {
+		"description": "Is the storage class default",
+		"displayname": "Default?",
+		"name": "is_default",
+		"default" :"false",
+		"required": false,
+		"type": "boolen"
+  },
+  {
     "description": "Backend Type",
     "displayname": "Backend Type",
     "name": "backendType ",
