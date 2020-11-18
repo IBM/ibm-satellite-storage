@@ -7,14 +7,6 @@
     "type": "text"
   },
   {
-    "description": "Is this storageclass default?",
-    "displayname": "Default",
-    "name": "is_default",
-    "default": "false",
-    "required": "false",
-    "type": "boolen"
-  },
-  {
     "description": "Backend Type",
     "displayname": "Backend Type",
     "name": "backendType ",
@@ -46,12 +38,4 @@
     "default" :"thin",
     "type": "option"
   },
-  {
-		"description": "Enable volume encryption",
-		"displayname": "Volume Encryption",
-		"name": "encryption",
-		"required": false,
-		"default" :"false",
-		"type": "boolean"
-	}
 ]
