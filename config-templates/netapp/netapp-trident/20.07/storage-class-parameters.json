@@ -45,5 +45,13 @@
     "required": false,
     "default" :"thin",
     "type": "option"
-  }
+  },
+  {
+		"description": "Enable volume encryption",
+		"displayname": "Volume Encryption",
+		"name": "encryption",
+		"required": false,
+		"default" :"false",
+		"type": "boolean"
+	}
 ]
