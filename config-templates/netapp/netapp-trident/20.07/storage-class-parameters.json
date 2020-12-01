@@ -7,43 +7,43 @@
     "type": "text"
   },
   {
-    "description": "Is this storageclass default?",
-    "displayname": "Default",
+    "description": "Is the storage class default",
+    "displayname": "Default?",
     "name": "is_default",
     "default": "false",
-    "required": "false",
+    "required": false,
     "type": "boolen"
   },
   {
     "description": "Backend Type",
     "displayname": "Backend Type",
-    "name": "backendType ",
-    "default" :"ontap-nas",
+    "name": "backendType",
+    "default": "ontap-nas",
     "required": false,
     "type": "option"
   },
   {
     "description": "Enable Snapshots",
     "displayname": "Snapshots",
-    "name": "snapshots ",
-    "required": "false",
-    "default" : "false",
+    "name": "snapshots",
+    "required": false,
+    "default": "false",
     "type": "boolean"
   },
   {
     "description": "Enable volume encryption",
     "displayname": "Volume Encryption",
-    "name": "encryption ",
+    "name": "encryption",
     "required": false,
-    "default" :"false",
+    "default": "false",
     "type": "boolean"
   },
   {
     "description": "Provisioning Type",
     "displayname": "Provisioning Type",
-    "name": "provisioningType ",
+    "name": "provisioningType",
     "required": false,
-    "default" :"thin",
+    "default": "thin",
     "type": "option"
   }
 ]
