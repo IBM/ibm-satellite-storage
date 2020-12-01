@@ -4,7 +4,7 @@ kind: StorageClass
 metadata:
   name: {{ name }}
   annotations:
-    storageclass.kubernetes.io/is-default-class={{ is_default }} #true/false
+    storageclass.kubernetes.io/is-default-class: {{ is_default }} #true/false
 provisioner: csi.trident.netapp.io
 parameters:
   backendType: {{ backendType }}
