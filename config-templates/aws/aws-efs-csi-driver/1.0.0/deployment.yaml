@@ -5,7 +5,7 @@ metadata:
   name: aws-efs-csi-driver
   namespace: kube-system
   annotations:
-    version: dev-test
+    version: 1.0.0
 items:
   - apiVersion: v1
     kind: Namespace

@@ -9,8 +9,8 @@
   },
   {
     "description": "Storage Driver",
-    "displayname": "Stoarge Driver",
-    "name": "stoargedriver",
+    "displayname": "Storage Driver",
+    "name": "storagedriver",
     "default" : "ontap-nas",
     "required": true,
     "type": "text"
