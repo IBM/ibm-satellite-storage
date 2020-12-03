@@ -1,14 +1,12 @@
----
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: {{ name }}
+  name: "{{ name }}" #ontap-nas-silver
   annotations:
-    storageclass.kubernetes.io/is-default-class: {{ is_default }} #true/false
+    storageclass.kubernetes.io/is-default-class: "{{ is_default }}" #true/false
 provisioner: csi.trident.netapp.io
 parameters:
-  backendType: {{ backendType }}
-  snapshots: {{ snapshots }}
-  provisioningType: {{ provisioningType }}
-  encryption: {{ encryption }}
-
+  backendType: "{{ backendType }}" #"ontap-nas"
+  snapshots: "{{ snapshots }}" #"false"
+  provisioningType: "{{ provisioningType }}" #"thin"
+  encryption: "{{ encryption }}" #"false"

@@ -1,49 +1,49 @@
 [
   {
-    "description": "Storage class Name",
-    "displayname": "Storage Class Name",
-    "name": "name",
-    "required": true,
-    "type": "text"
+	"description": "Storage class Name to be created",
+	"displayname": "Storage Class Name",
+	"name": "name",
+	"required": true,
+	"type": "text"
   },
   {
-    "description": "Is the storage class default",
-    "displayname": "Default?",
-    "name": "is_default",
-    "default": "false",
-    "required": false,
-    "type": "boolen"
+	"description": "Is the storage class default",
+	"displayname": "Default?",
+	"name": "is_default",
+	"default": "false",
+	"required": false,
+	"type": "boolean"
   },
   {
-    "description": "Backend Type",
-    "displayname": "Backend Type",
-    "name": "backendType",
-    "default": "ontap-nas",
-    "required": false,
-    "type": "option"
+	"description": "Backend Type",
+	"displayname": "Backend Type",
+	"name": "backendType",
+	"default": "ontap-nas",
+	"required": false,
+	"type": "option"
   },
   {
-    "description": "Enable Snapshots",
-    "displayname": "Snapshots",
-    "name": "snapshots",
-    "required": false,
-    "default": "false",
-    "type": "boolean"
+	"description": "Weather to take Snapshots",
+	"displayname": "Snapshots",
+	"name": "snapshots",
+	"required": false,
+	"default": "false",
+	"type": "boolean"
   },
   {
-    "description": "Enable volume encryption",
-    "displayname": "Volume Encryption",
-    "name": "encryption",
-    "required": false,
-    "default": "false",
-    "type": "boolean"
+	"description": "Enable volume encryption",
+	"displayname": "Volume Encryption",
+	"name": "encryption",
+	"required": false,
+	"default": "false",
+	"type": "boolean"
   },
   {
-    "description": "Provisioning Type",
-    "displayname": "Provisioning Type",
-    "name": "provisioningType",
-    "required": false,
-    "default": "thin",
-    "type": "option"
+	"description": "Provisioning Type",
+	"displayname": "Provisioning Type",
+	"name": "provisioningType",
+	"required": false,
+	"default": "thin",
+	"type": "option"
   }
-]
+]  
