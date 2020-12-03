@@ -14,5 +14,13 @@
     "default-version": "20.07",
     "enabled": true,
     "provider": "netapp"
+  },
+  {
+    "name":"ocs",
+    "displayname": "OpenShift Container Storage",
+    "Description": "OpenShift Container Storage for satallite cluster",
+    "default-version": "4.3",
+    "enabled": true,
+    "provider": "ibm"
   }
 ]
