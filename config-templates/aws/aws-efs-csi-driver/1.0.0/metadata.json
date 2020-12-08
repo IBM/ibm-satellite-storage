@@ -4,11 +4,11 @@
   "description": "AWS EFS CSI Driver template for version 1.0.0",
   "tags": [
     {
-      "key":"provider",
+      "name":"provider",
       "value": "aws"
     },
     {
-      "key":"log-image",
+      "name":"log-image",
       "value": "/aws-efs-logo"
     }
   ]
