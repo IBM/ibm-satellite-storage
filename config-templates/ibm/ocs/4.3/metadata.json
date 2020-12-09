@@ -1,22 +1,22 @@
 {
   "name": "4.3",
-  "enabled": "true",
+  "enabled": true,
   "description": "OCS template for openshift 4.3",
   "tags": [
     {
-      "key":"provider",
+      "name":"provider",
       "value": "ibm"
     },
     {
-      "key":"log-image",
+      "name":"log-image",
       "value": "/ocs-logo"
     },
     {
-      "key":"kube-version",
+      "name":"kube-version",
       "value": "1.18"
     },
     {
-      "key":"os-version",
+      "name":"os-version",
       "value": "RHEL7"
     }
   ]
