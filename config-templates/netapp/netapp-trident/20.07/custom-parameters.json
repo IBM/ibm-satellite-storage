@@ -3,7 +3,7 @@
     "description": "Controller Namespace",
     "displayname": "Namespace",
     "name": "namespace",
-    "default" : "trident",
+    "default": "trident",
     "required": true,
     "type": "text"
   },
@@ -11,7 +11,7 @@
     "description": "Storage Driver",
     "displayname": "Storage Driver",
     "name": "storagedriver",
-    "default" : "ontap-nas",
+    "default": "ontap-nas",
     "required": true,
     "type": "text"
   },
@@ -19,7 +19,7 @@
     "description": "Management LIF",
     "displayname": "Management LIF",
     "name": "mgmt-lif",
-    "default" : "",
+    "default": "",
     "required": true,
     "type": "text"
   },
@@ -27,7 +27,7 @@
     "description": "Data LIF",
     "displayname": "Data LIF",
     "name": "data-lif",
-    "default" : "",
+    "default": "",
     "required": true,
     "type": "text"
   },
@@ -35,7 +35,7 @@
     "description": "SVM ID",
     "displayname": "SVM ID",
     "name": "svm-id",
-    "default" : "",
+    "default": "",
     "required": true,
     "type": "text"
   },
@@ -43,7 +43,7 @@
     "description": "Aggregate ID",
     "displayname": "Aggregate ID",
     "name": "aggregate-id",
-    "default" : "",
+    "default": "",
     "required": true,
     "type": "text"
   },
@@ -51,7 +51,7 @@
     "description": "Storage Size",
     "displayname": "Storage Size",
     "name": "storage-size",
-    "default" : "10",
+    "default": "10",
     "required": true,
     "type": "text"
   },
@@ -59,7 +59,7 @@
     "description": "Export Policy",
     "displayname": "Export Policy",
     "name": "export-policy",
-    "default" : "",
+    "default": "",
     "required": true,
     "type": "text"
   },
@@ -67,7 +67,7 @@
     "description": "User Name",
     "displayname": "User Name",
     "name": "user-id",
-    "default" : "",
+    "default": "",
     "required": true,
     "type": "text"
   },
@@ -75,7 +75,7 @@
     "description": "User Password",
     "displayname": "User Password",
     "name": "user-pass",
-    "default" : "",
+    "default": "",
     "required": true,
     "type": "text"
   }

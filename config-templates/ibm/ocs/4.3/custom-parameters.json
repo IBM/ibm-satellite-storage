@@ -4,14 +4,14 @@
     "displayname": "Cluster Name",
     "name": "cluster-name",
     "required": true,
-    "regex":"",
+    "regex": "",
     "type": "text"
   },
   {
     "description": "Enter the OSD device path. Mandatory",
     "displayname": "Device Path",
     "name": "devicepath",
-    "default" :"/dev/sdc",
+    "default": "/dev/sdc",
     "required": false,
     "type": "text"
   },
@@ -19,7 +19,7 @@
     "description": "Enter the MON device path. Mandatory",
     "displayname": "File Device Path",
     "name": "file-devicepath ",
-    "default" :"/dev/dm-01",
+    "default": "/dev/dm-01",
     "required": false,
     "type": "text"
   },
@@ -27,7 +27,7 @@
     "description": "Enter the MON storage size.",
     "displayname": "File Device Path",
     "name": "mon-storage-size",
-    "default" :"10",
+    "default": "10",
     "required": false,
     "type": "text"
   },
@@ -35,7 +35,7 @@
     "description": "Enter the MON storage class.",
     "displayname": "File Device Path",
     "name": "mon-storage-class",
-    "default" :"local",
+    "default": "local",
     "required": false,
     "type": "text"
   },
@@ -43,7 +43,7 @@
     "description": "Enter the OSD storage size.",
     "displayname": "File Device Path",
     "name": "osd-storage-size",
-    "default" :"1",
+    "default": "1",
     "required": false,
     "type": "text"
   },
@@ -51,7 +51,7 @@
     "description": "Enter the OSD storage class.",
     "displayname": "File Device Path",
     "name": "osd-storage-class",
-    "default" :"localblock",
+    "default": "localblock",
     "required": false,
     "type": "text"
   },
@@ -60,7 +60,7 @@
     "displayname": "Hardware",
     "name": "hardware ",
     "required": false,
-    "default" :"dedicated",
+    "default": "dedicated",
     "type": "text"
   }
 ]
