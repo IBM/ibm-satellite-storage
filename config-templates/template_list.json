@@ -1,6 +1,6 @@
 [
   {
-    "name":"aws-efs-csi-driver",
+    "name": "aws-efs-csi-driver",
     "displayname": "AWS EFS CSI driver",
     "Description": "AWS EFS CSI driver for satallite cluster",
     "default-version": "1.0.0",
@@ -8,7 +8,7 @@
     "provider": "aws"
   },
   {
-    "name":"netapp-trident",
+    "name": "netapp-trident",
     "displayname": "Net App Trident Driver",
     "Description": "Net App Trident Driver",
     "default-version": "20.07",
@@ -16,7 +16,7 @@
     "provider": "netapp"
   },
   {
-    "name":"ocs",
+    "name": "ocs",
     "displayname": "OpenShift Container Storage",
     "Description": "OpenShift Container Storage for satallite cluster",
     "default-version": "4.3",

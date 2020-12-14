@@ -3,7 +3,7 @@
     "description": "AWS EFS CSI Driver Namespace",
     "displayname": "Namespace",
     "name": "namespace",
-    "default" : "kube-system",
+    "default": "kube-system",
     "required": false,
     "type": "text"
   }
