@@ -4,7 +4,7 @@
     "displayname": "Namespace",
     "name": "namespace",
     "default": "trident",
-    "required": true,
+    "required": false,
     "type": "text"
   },
   {
@@ -12,7 +12,7 @@
     "displayname": "Storage Driver",
     "name": "storagedriver",
     "default": "ontap-nas",
-    "required": true,
+    "required": false,
     "type": "text"
   },
   {
@@ -52,7 +52,7 @@
     "displayname": "Storage Size",
     "name": "storage-size",
     "default": "10",
-    "required": true,
+    "required": false,
     "type": "text"
   },
   {
