@@ -75,11 +75,11 @@ items:
         - storageClassName: localblock
           volumeMode: Block
           devicePaths:
-            - {{{ devicepath }}}
+            - "{{{ devicepath }}}"
   - apiVersion: ocs.openshift.io/v1
     kind: StorageCluster
     metadata:
-      name: {{ cluster-name }}
+      name: "{{ cluster-name }}"
       namespace: openshift-storage
     spec:
       manageNodes: false
@@ -89,8 +89,8 @@ items:
           - ReadWriteOnce
           resources:
             requests:
-              storage: {{ mon-storage-size }} # 20Gi
-          storageClassName: {{ mon-storage-class }} # ibmc-block-gold
+              storage: "{{ mon-storage-size }}" # 20Gi
+          storageClassName: "{{ mon-storage-class }}" # ibmc-block-gold
           volumeMode: Filesystem
       storageDeviceSets:
       - count: 1
@@ -100,8 +100,8 @@ items:
             - ReadWriteOnce
             resources:
               requests:
-                storage: {{ osd-storage-size }} #1
-            storageClassName: {{ osd-storage-class }} #locakblock
+                storage: "{{ osd-storage-size }}" #1
+            storageClassName: "{{ osd-storage-class }}" #locakblock
             volumeMode: Block
         name: ocs-deviceset
         placement: {}

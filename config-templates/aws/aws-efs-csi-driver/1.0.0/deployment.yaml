@@ -10,7 +10,7 @@ items:
   - apiVersion: v1
     kind: Namespace
     metadata:
-      name: {{ namespace }}
+      name: "{{ namespace }}"
   - apiVersion: storage.k8s.io/v1beta1
     kind: CSIDriver
     metadata:
@@ -21,7 +21,7 @@ items:
     kind: ServiceAccount
     metadata:
       name: efs-csi-node
-      namespace: {{ namespace }}
+      namespace: "{{ namespace }}"
       labels:
         app: aws-efs-csi-driver
   - kind: StorageClass
@@ -76,7 +76,7 @@ items:
     apiVersion: apps/v1
     metadata:
       name: efs-csi-node
-      namespace: {{ namespace }}
+      namespace: "{{ namespace }}"
     spec:
       selector:
         matchLabels:
