@@ -22,5 +22,13 @@
     "default-version": "4.3",
     "enabled": true,
     "provider": "ibm"
+  },
+  {
+    "name": "local-volume",
+    "displayname": "Persistent storage using local volumes",
+    "Description": "Persistent storage using local volumes for satallite cluster",
+    "default-version": "4.5",
+    "enabled": true,
+    "provider": "redhat"
   }
 ]
