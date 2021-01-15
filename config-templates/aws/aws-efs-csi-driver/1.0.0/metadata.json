@@ -1,6 +1,6 @@
 {
   "name": "1.0.0",
-  "enabled": true,
+  "enabled": "true",
   "description": "AWS EFS CSI Driver template for version 1.0.0",
   "tags": [
     {
@@ -8,7 +8,7 @@
       "value": "aws"
     },
     {
-      "name": "log-image",
+      "name": "logo-image",
       "value": "/aws-efs-logo"
     }
   ]

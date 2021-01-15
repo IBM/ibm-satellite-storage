@@ -1,6 +1,6 @@
 {
   "name": "20.07",
-  "enabled": true,
+  "enabled": "true",
   "description": "Netapp Trident Driver template for version 20.07",
   "tags": [
     {

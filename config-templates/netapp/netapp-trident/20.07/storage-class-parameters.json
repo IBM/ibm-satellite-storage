@@ -3,7 +3,7 @@
 	"description": "Storage class Name to be created",
 	"displayname": "Storage Class Name",
 	"name": "name",
-	"required": true,
+	"required": "true",
 	"type": "text"
   },
   {
@@ -11,7 +11,7 @@
 	"displayname": "Default?",
 	"name": "is_default",
 	"default": "false",
-	"required": false,
+	"required": "false",
 	"type": "boolean"
   },
   {
@@ -19,14 +19,14 @@
 	"displayname": "Backend Type",
 	"name": "backendType",
 	"default": "ontap-nas",
-	"required": false,
+	"required": "false",
 	"type": "option"
   },
   {
 	"description": "Weather to take Snapshots",
 	"displayname": "Snapshots",
 	"name": "snapshots",
-	"required": false,
+	"required": "false",
 	"default": "false",
 	"type": "boolean"
   },
@@ -34,7 +34,7 @@
 	"description": "Enable volume encryption",
 	"displayname": "Volume Encryption",
 	"name": "encryption",
-	"required": false,
+	"required": "false",
 	"default": "false",
 	"type": "boolean"
   },
@@ -42,7 +42,7 @@
 	"description": "Provisioning Type",
 	"displayname": "Provisioning Type",
 	"name": "provisioningType",
-	"required": false,
+	"required": "false",
 	"default": "thin",
 	"type": "option"
   }
