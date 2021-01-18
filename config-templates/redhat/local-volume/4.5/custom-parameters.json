@@ -3,22 +3,21 @@
     "description": "Node label key",
     "displayname": "Node Label Key",
     "name": "label-key",
-    "required": true,
+    "required": "true",
     "type": "text"
   },
   {
     "description": "Node label key value",
     "displayname": "Node Label Key Value",
     "name": "label-value",
-    "required": true,
+    "required": "true",
     "type": "text"
   },
   {
-    "description": "Local storage device path",
+    "description": "Local storage device path, e.g. /dev/sdc",
     "displayname": "Device Path",
     "name": "devicepath",
-    "default": "/dev/sdc",
-    "required": true,
+    "required": "true",
     "type": "text"
   }
 ]
