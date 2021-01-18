@@ -3,7 +3,7 @@
     "description": "Cluster Name of OCS",
     "displayname": "Cluster Name",
     "name": "cluster-name",
-    "required": true,
+    "required": "true",
     "regex": "",
     "type": "text"
   },
@@ -12,7 +12,7 @@
     "displayname": "Device Path",
     "name": "devicepath",
     "default": "/dev/sdc",
-    "required": false,
+    "required": "false",
     "type": "text"
   },
   {
@@ -20,7 +20,7 @@
     "displayname": "File Device Path",
     "name": "file-devicepath ",
     "default": "/dev/dm-01",
-    "required": false,
+    "required": "false",
     "type": "text"
   },
   {
@@ -28,7 +28,7 @@
     "displayname": "File Device Path",
     "name": "mon-storage-size",
     "default": "10",
-    "required": false,
+    "required": "false",
     "type": "text"
   },
   {
@@ -36,7 +36,7 @@
     "displayname": "File Device Path",
     "name": "mon-storage-class",
     "default": "local",
-    "required": false,
+    "required": "false",
     "type": "text"
   },
   {
@@ -44,7 +44,7 @@
     "displayname": "File Device Path",
     "name": "osd-storage-size",
     "default": "1",
-    "required": false,
+    "required": "false",
     "type": "text"
   },
   {
@@ -52,14 +52,14 @@
     "displayname": "File Device Path",
     "name": "osd-storage-class",
     "default": "localblock",
-    "required": false,
+    "required": "false",
     "type": "text"
   },
   {
     "description": "hardware",
     "displayname": "Hardware",
     "name": "hardware ",
-    "required": false,
+    "required": "false",
     "default": "dedicated",
     "type": "text"
   }

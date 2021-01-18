@@ -4,7 +4,7 @@
     "displayname": "Namespace",
     "name": "namespace",
     "default": "kube-system",
-    "required": false,
+    "required": "false",
     "type": "text"
   }
 ]
