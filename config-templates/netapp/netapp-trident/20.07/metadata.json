@@ -1,19 +1,27 @@
 {
   "name": "20.07",
   "enabled": "true",
-  "description": "Netapp Trident Driver template for version 20.07",
+  "description": "Netapp Trident version 20.07",
   "tags": [
     {
       "name": "provider",
       "value": "netapp"
     },
     {
-      "name": "log-image",
-      "value": "/netapp-trident-logo"
+      "name": "logo-image",
+      "value": "logo/trident.png"
     },
     {
       "name": "kube-version",
       "value": "1.18"
+    },
+    {
+      "key": "supported-envs",
+      "value": "AWS,Azure,IBM"
+    },
+    {
+      "key": "support-description",
+      "value": "For support contact NetApp: https://netapp-trident.readthedocs.io/en/stable-v20.10/support/support.html"
     }
   ]
 }

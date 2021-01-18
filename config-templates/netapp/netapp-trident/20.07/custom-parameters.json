@@ -70,6 +70,6 @@
     "displayname": "User Password",
     "name": "user-pass",
     "required": "true",
-    "type": "text"
+    "type": "secret"
   }
 ]
