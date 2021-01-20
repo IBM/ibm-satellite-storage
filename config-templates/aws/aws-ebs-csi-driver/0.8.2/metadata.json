@@ -1,0 +1,15 @@
+{
+  "name": "0.8.2",
+  "enabled": "true",
+  "description": "AWS EBS CSI Driver template for version 0.8.2",
+  "tags": [
+    {
+      "name": "provider",
+      "value": "aws"
+    },
+    {
+      "name": "logo-image",
+      "value": "/aws-ebs-logo"
+    }
+  ]
+}

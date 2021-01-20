@@ -8,6 +8,14 @@
     "provider": "aws"
   },
   {
+    "name": "aws-ebs-csi-driver",
+    "displayname": "AWS EBS CSI driver",
+    "Description": "AWS EBS CSI driver for satallite cluster",
+    "default-version": "0.8.2",
+    "enabled": "true",
+    "provider": "aws"
+  },
+  {
     "name": "netapp-trident",
     "displayname": "Net App Trident Driver",
     "Description": "Net App Trident Driver",
