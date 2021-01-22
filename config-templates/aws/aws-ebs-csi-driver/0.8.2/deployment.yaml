@@ -25,7 +25,7 @@ items:
       labels:
         app.kubernetes.io/name: aws-ebs-csi-driver
         app.kubernetes.io/version: 0.8.2
-  {{#enable-volume-snapshot}}
+  #{{#enable-volume-snapshot}}
   - apiVersion: v1
     kind: ServiceAccount
     metadata:
@@ -34,7 +34,7 @@ items:
       labels:
         app.kubernetes.io/name: aws-ebs-csi-driver
         app.kubernetes.io/version: 0.8.2
-  {{/enable-volume-snapshot}}
+  #{{/enable-volume-snapshot}}
   - kind: StorageClass
     apiVersion: storage.k8s.io/v1
     metadata:
@@ -98,7 +98,37 @@ items:
       - apiGroups: ["coordination.k8s.io"]
         resources: ["leases"]
         verbs: ["get", "watch", "list", "delete", "update", "create"]
-  {{#enable-volume-resizing}}
+  - kind: ClusterRoleBinding
+    apiVersion: rbac.authorization.k8s.io/v1
+    metadata:
+      name: ebs-csi-attacher-binding
+      labels:
+        app.kubernetes.io/name: aws-ebs-csi-driver
+        app.kubernetes.io/version: 0.8.2
+    subjects:
+      - kind: ServiceAccount
+        name: ebs-csi-controller-sa
+        namespace: kube-system
+    roleRef:
+      kind: ClusterRole
+      name: ebs-external-attacher-role
+      apiGroup: rbac.authorization.k8s.io
+  - kind: ClusterRoleBinding
+    apiVersion: rbac.authorization.k8s.io/v1
+    metadata:
+      name: ebs-csi-provisioner-binding
+      labels:
+        app.kubernetes.io/name: aws-ebs-csi-driver
+        app.kubernetes.io/version: 0.8.2
+    subjects:
+      - kind: ServiceAccount
+        name: ebs-csi-controller-sa
+        namespace: kube-system
+    roleRef:
+      kind: ClusterRole
+      name: ebs-external-provisioner-role
+      apiGroup: rbac.authorization.k8s.io
+  #{{#enable-volume-resizing}}
   - kind: ClusterRole
     apiVersion: rbac.authorization.k8s.io/v1
     metadata:
@@ -127,8 +157,23 @@ items:
       - apiGroups: [""]
         resources: ["events"]
         verbs: ["list", "watch", "create", "update", "patch"]
-  {{/enable-volume-resizing}}
-  {{#enable-volume-snapshot}}
+  - kind: ClusterRoleBinding
+    apiVersion: rbac.authorization.k8s.io/v1
+    metadata:
+      name: ebs-csi-resizer-binding
+      labels:
+        app.kubernetes.io/name: aws-ebs-csi-driver
+        app.kubernetes.io/version: 0.8.2
+    subjects:
+      - kind: ServiceAccount
+        name: ebs-csi-controller-sa
+        namespace: kube-system
+    roleRef:
+      kind: ClusterRole
+      name: ebs-external-resizer-role
+      apiGroup: rbac.authorization.k8s.io
+  #{{/enable-volume-resizing}}
+  #{{#enable-volume-snapshot}}
   - kind: ClusterRole
     apiVersion: rbac.authorization.k8s.io/v1
     metadata:
@@ -184,55 +229,6 @@ items:
       - apiGroups: ["snapshot.storage.k8s.io"]
         resources: ["volumesnapshotcontents/status"]
         verbs: ["update"]
-  {{/enable-volume-snapshot}}
-  - kind: ClusterRoleBinding
-    apiVersion: rbac.authorization.k8s.io/v1
-    metadata:
-      name: ebs-csi-attacher-binding
-      labels:
-        app.kubernetes.io/name: aws-ebs-csi-driver
-        app.kubernetes.io/version: 0.8.2
-    subjects:
-      - kind: ServiceAccount
-        name: ebs-csi-controller-sa
-        namespace: kube-system
-    roleRef:
-      kind: ClusterRole
-      name: ebs-external-attacher-role
-      apiGroup: rbac.authorization.k8s.io
-  - kind: ClusterRoleBinding
-    apiVersion: rbac.authorization.k8s.io/v1
-    metadata:
-      name: ebs-csi-provisioner-binding
-      labels:
-        app.kubernetes.io/name: aws-ebs-csi-driver
-        app.kubernetes.io/version: 0.8.2
-    subjects:
-      - kind: ServiceAccount
-        name: ebs-csi-controller-sa
-        namespace: kube-system
-    roleRef:
-      kind: ClusterRole
-      name: ebs-external-provisioner-role
-      apiGroup: rbac.authorization.k8s.io
-  {{#enable-volume-resizing}}
-  - kind: ClusterRoleBinding
-    apiVersion: rbac.authorization.k8s.io/v1
-    metadata:
-      name: ebs-csi-resizer-binding
-      labels:
-        app.kubernetes.io/name: aws-ebs-csi-driver
-        app.kubernetes.io/version: 0.8.2
-    subjects:
-      - kind: ServiceAccount
-        name: ebs-csi-controller-sa
-        namespace: kube-system
-    roleRef:
-      kind: ClusterRole
-      name: ebs-external-resizer-role
-      apiGroup: rbac.authorization.k8s.io
-  {{/enable-volume-resizing}}
-  {{#enable-volume-snapshot}}
   - kind: ClusterRoleBinding
     apiVersion: rbac.authorization.k8s.io/v1
     metadata:
@@ -320,7 +316,7 @@ items:
               args:
                 - --v=5
                 - --leader-election=false
-  {{/enable-volume-snapshot}}
+  #{{/enable-volume-snapshot}}
   - kind: DaemonSet
     apiVersion: apps/v1
     metadata:
@@ -492,12 +488,12 @@ items:
                 # - {all,controller,node} # specify the driver mode
                 #{{- end }}
                 - --endpoint=$(CSI_ENDPOINT)
-                {{#extra-volume-tags?}}
-                - --extra-volume-tags="{{ extra-volume-tags }}"
-                {{/extra-volume-tags?}}
-                {{#k8s-tag-cluster-id?}}
-                - --k8s-tag-cluster-id="{{ k8s-tag-cluster-id }}"
-                {{/k8s-tag-cluster-id?}}
+                #{{#extra-volume-tags?}}
+                #- --extra-volume-tags="{{ extra-volume-tags }}"
+                #{{/extra-volume-tags?}}
+                #{{#k8s-tag-cluster-id?}}
+                #- --k8s-tag-cluster-id="{{ k8s-tag-cluster-id }}"
+                #{{/k8s-tag-cluster-id?}}
                 - --logtostderr
                 - --v=5
               env:
@@ -515,10 +511,10 @@ items:
                       name: aws-secret
                       key: access_key
                       optional: true
-                {{#aws-region?}}
-                - name: AWS_REGION
-                  value: "{{ aws-region }}"
-                {{/aws-region?}}
+                #{{#aws-region?}}
+                #- name: AWS_REGION
+                #  value: "{{ aws-region }}"
+                #{{/aws-region?}}
               volumeMounts:
                 - name: socket-dir
                   mountPath: /var/lib/csi/sockets/pluginproxy/
@@ -546,12 +542,12 @@ items:
               args:
                 - --csi-address=$(ADDRESS)
                 - --v=5
-                {{#enable-volume-scheduling}}
+                #{{#enable-volume-scheduling}}
                 - --feature-gates=Topology=true
-                {{/enable-volume-scheduling}}
-                {{#extra-create-metadata}}
+                #{{/enable-volume-scheduling}}
+                #{{#extra-create-metadata}}
                 - --extra-create-metadata
-                {{/extra-create-metadata}}
+                #{{/extra-create-metadata}}
                 - --enable-leader-election
                 - --leader-election-type=leases
               env:
@@ -586,7 +582,7 @@ items:
                 requests:
                   cpu: 100m
                   memory: 128Mi
-            {{#enable-volume-snapshot}}
+            #{{#enable-volume-snapshot}}
             - name: csi-snapshotter
               image: quay.io/k8scsi/csi-snapshotter:v2.1.1
               args:
@@ -605,8 +601,8 @@ items:
                 requests:
                   cpu: 100m
                   memory: 128Mi
-            {{/enable-volume-snapshot}}
-            {{#enable-volume-resizing}}
+            #{{/enable-volume-snapshot}}
+            #{{#enable-volume-resizing}}
             - name: csi-resizer
               image: quay.io/k8scsi/csi-resizer:v0.5.0
               imagePullPolicy: Always
@@ -626,7 +622,7 @@ items:
                 requests:
                   cpu: 100m
                   memory: 128Mi
-            {{/enable-volume-resizing}}
+            #{{/enable-volume-resizing}}
             - name: liveness-probe
               image: quay.io/k8scsi/livenessprobe:v2.1.0
               args:

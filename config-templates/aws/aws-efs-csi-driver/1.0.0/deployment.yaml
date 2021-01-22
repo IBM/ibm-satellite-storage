@@ -56,7 +56,7 @@ items:
           nodeSelector:
             kubernetes.io/os: linux
           hostNetwork: true
-          # priorityClassName: system-node-critical
+          priorityClassName: system-node-critical
           tolerations:
             - operator: Exists
           serviceAccountName: efs-csi-node
