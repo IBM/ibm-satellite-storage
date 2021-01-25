@@ -297,7 +297,7 @@ items:
         app.kubernetes.io/version: 0.8.2
     spec:
       serviceName: ebs-snapshot-controller
-      replicas: {{ replica-count }}
+      replicas: 1
       selector:
         matchLabels:
           app: ebs-snapshot-controller
@@ -459,7 +459,7 @@ items:
         app.kubernetes.io/name: aws-ebs-csi-driver
         app.kubernetes.io/version: 0.8.2
     spec:
-      replicas: 2
+      replicas: {{ replica-count }}
       selector:
         matchLabels:
           app: ebs-csi-controller
