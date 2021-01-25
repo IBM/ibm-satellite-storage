@@ -30,5 +30,13 @@
     "default-version": "4.5",
     "enabled": "true",
     "provider": "redhat"
+  },
+  {
+    "name": "ibm-ess",
+    "displayname": "IBM Spectrum Scale Driver",
+    "Description": "IBM Spectrum Scale Driver to enable ESS stroage",
+    "default-version": "1.1",
+    "enabled": "true",
+    "provider": "ibm"
   }
 ]
