@@ -297,7 +297,7 @@ items:
         app.kubernetes.io/version: 0.8.2
     spec:
       serviceName: ebs-snapshot-controller
-      replicas: 1
+      replicas: {{ replica-count }}
       selector:
         matchLabels:
           app: ebs-snapshot-controller

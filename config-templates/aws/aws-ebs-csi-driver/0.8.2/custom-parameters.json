@@ -1,0 +1,10 @@
+[	
+    {	
+      "description": "Controller pod's count",	
+      "displayname": "Replica Count",	
+      "name": "replica-count",	
+      "default": "2",	
+      "required": "false",	
+      "type": "text"	
+    }	
+]
