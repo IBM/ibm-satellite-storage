@@ -173,7 +173,7 @@ Refer to:-
 1. Test the storage configuration template using CLI
    ```
    $ ibmcloud sat storage config create -h
-   $ ibmcloud sat storage attachment create -h
+   $ ibmcloud sat storage assignment create -h
    ```
    Example: Refer to https://github.com/IBM/ibm-satellite-storage/issues/17#issuecomment-760178811
    - Create configuration from a template in the forked repo https://github.com/nkkashyap/ibm-satellite-storage/tree/local-vol/config-templates/redhat/local-volume/4.5
@@ -182,7 +182,7 @@ Refer to:-
    ```
    - Apply the configuration to a cluster
    ```
-   $ ibmcloud sat storage attachment create --name local-vol --cluster-group devtest --configuration localvol-conf
+   $ ibmcloud sat storage assignment create --name local-vol --cluster-group devtest --configuration localvol-conf
    ```
 1. Develop test case for verification testing.
    1. Steps to setup the environment or deploy any prerequisites 
