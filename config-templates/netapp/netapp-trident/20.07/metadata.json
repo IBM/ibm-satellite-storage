@@ -8,6 +8,26 @@
       "value": "netapp"
     },
     {
+      "name": "storage_type",
+      "value": "file"
+    },
+    {
+      "name": "encryption_support",
+      "value": "true"
+    },
+    {
+      "name": "snapshot_support",
+      "value": "true"
+    },
+    {
+      "name": "availability",
+      "value": "regional"
+    },
+    {
+      "name": "storage_class",
+      "value": "gold,silver,bronze"
+    },
+    {
       "name": "logo-image",
       "value": "logo/trident.png"
     },

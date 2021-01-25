@@ -63,7 +63,7 @@
     "displayname": "User Name",
     "name": "user-id",
     "required": "true",
-    "type": "text"
+    "type": "secret"
   },
   {
     "description": "User Password",
