@@ -4,7 +4,7 @@
     "displayname": "AWS EFS CSI driver",
     "Description": "AWS EFS CSI driver for satallite cluster",
     "default-version": "1.0.0",
-    "enabled": true,
+    "enabled": "true",
     "provider": "aws"
   },
   {
@@ -12,7 +12,7 @@
     "displayname": "Net App Trident Driver",
     "Description": "Net App Trident Driver",
     "default-version": "20.07",
-    "enabled": true,
+    "enabled": "true",
     "provider": "netapp"
   },
   {
@@ -20,7 +20,7 @@
     "displayname": "OpenShift Container Storage",
     "Description": "OpenShift Container Storage for satallite cluster",
     "default-version": "4.3",
-    "enabled": true,
+    "enabled": "true",
     "provider": "ibm"
   },
   {
@@ -28,7 +28,7 @@
     "displayname": "Persistent storage using local volumes",
     "Description": "Persistent storage using local volumes for satallite cluster",
     "default-version": "4.5",
-    "enabled": true,
+    "enabled": "true",
     "provider": "redhat"
   }
 ]
