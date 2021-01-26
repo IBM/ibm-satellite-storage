@@ -24,6 +24,14 @@
     "provider": "ibm"
   },
   {
+    "name": "ibm-csi-block",
+    "displayname": "IBM block storage CSI driver",
+    "Description": "IBM block storage CSI driver for satallite cluster",
+    "default-version": "1.4.0",
+    "enabled": "true",
+    "provider": "ibm"
+  },
+  {
     "name": "local-volume",
     "displayname": "Persistent storage using local volumes",
     "Description": "Persistent storage using local volumes for satallite cluster",
