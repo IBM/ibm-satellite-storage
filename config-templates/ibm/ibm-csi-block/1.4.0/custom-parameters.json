@@ -1,0 +1,10 @@
+[
+  {
+    "description": "Controller Namespace",
+    "displayname": "Namespace",
+    "name": "namespace",
+    "default": "default",
+    "required": "false",
+    "type": "text"
+  }
+]
