@@ -17,6 +17,16 @@ items:
     spec:
       attachRequired: true
       podInfoOnMount: false
+  - kind: StorageClass
+    apiVersion: storage.k8s.io/v1
+    metadata:
+      name: aws-ebs-silver
+      labels:
+        app.kubernetes.io/name: aws-ebs-csi-driver
+        app.kubernetes.io/version: 0.8.2
+    provisioner: ebs.csi.aws.com
+    volumeBindingMode: WaitForFirstConsumer
+    allowVolumeExpansion: true
   - apiVersion: v1
     kind: ServiceAccount
     metadata:

@@ -1,7 +1,7 @@
 {
   "name": "0.8.2",
   "enabled": "true",
-  "description": "AWS EBS CSI Driver template for version 0.8.2",
+  "description": "AWS EBS CSI Driver version 0.8.2",
   "tags": [
     {
       "name": "provider",
@@ -10,6 +10,42 @@
     {
       "name": "logo-image",
       "value": "/aws-ebs-logo"
+    },
+    {
+      "name": "storage_type",
+      "value": "block"
+    },
+    {
+      "name": "encryption_support",
+      "value": "true"
+    },
+    {
+      "name": "snapshot_support",
+      "value": "true"
+    },
+    {
+      "name": "resizing_support",
+      "value": "true"
+    },
+    {
+      "name": "availability",
+      "value": "zonal"
+    },
+    {
+      "name": "storage_class",
+      "value": "silver"
+    },
+    {
+      "name": "kube-version",
+      "value": "1.18"
+    },
+    {
+      "key": "supported-envs",
+      "value": "AWS"
+    },
+    {
+      "key": "support-description",
+      "value": "For support contact AWS: https://github.com/kubernetes-sigs/aws-ebs-csi-driver/issues"
     }
   ]
 }
