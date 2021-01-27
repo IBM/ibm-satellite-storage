@@ -75,7 +75,9 @@ items:
         - storageClassName: localblock
           volumeMode: Block
           devicePaths:
-            - "{{{ devicepath }}}"
+            "{{#devicepath}}"
+            - "{{{ item }}}"
+            "{{/devicepath}}"
   - apiVersion: ocs.openshift.io/v1
     kind: StorageCluster
     metadata:
