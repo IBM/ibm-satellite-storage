@@ -1,0 +1,39 @@
+{
+  "name": "1.4.0",
+  "enabled": "true",
+  "description": "IBM block storage CSI driver version 1.4.0",
+  "tags": [
+    {
+      "name": "provider",
+      "value": "ibm"
+    },
+    {
+      "name": "storage_type",
+      "value": "block"
+    },
+    {
+      "name": "availability",
+      "value": "regional"
+    },
+    {
+      "name": "snapshot_support",
+      "value": "true"
+    },
+    {
+      "name": "clone_support",
+      "value": "true"
+    },
+    {
+      "name": "expansion_support",
+      "value": "true"
+    },
+    {
+      "key": "IBM Knowledge Center",
+      "value": "IBM knowledge center: https://www.ibm.com/support/knowledgecenter/SSRQ8T_1.4.0/csi_block_storage_kc_welcome.html"
+    },
+    {
+      "key": "support-description",
+      "value": "For support contact IBM: https://www.ibm.com/support/home/"
+    }
+  ]
+}
