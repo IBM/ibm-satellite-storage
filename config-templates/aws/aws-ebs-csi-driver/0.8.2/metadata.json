@@ -12,32 +12,36 @@
       "value": "/aws-ebs-logo"
     },
     {
-      "name": "storage_type",
+      "name": "volume-type",
       "value": "block"
     },
     {
-      "name": "encryption_support",
+      "name": "volume-encryption-at-rest",
       "value": "true"
     },
     {
-      "name": "snapshot_support",
+      "name": "volume-encryption-in-transit",
       "value": "true"
     },
     {
-      "name": "resizing_support",
+      "name": "volume-snapshot",
       "value": "true"
     },
     {
-      "name": "availability",
+      "name": "volume-availability",
       "value": "zonal"
     },
     {
-      "name": "storage_class",
-      "value": "silver"
+      "name": "volume-expansion",
+      "value": "true"
     },
     {
-      "name": "kube-version",
-      "value": "1.18"
+      "name": "storageclass",
+      "value": "gold"
+    },
+    {
+      "name": "kube-versions",
+      "value": "1.17,1.18"
     },
     {
       "key": "supported-envs",
@@ -45,7 +49,7 @@
     },
     {
       "key": "support-description",
-      "value": "For support contact AWS: https://github.com/kubernetes-sigs/aws-ebs-csi-driver/issues"
+      "value": "For support contact AWS: https://console.aws.amazon.com/support/home#/"
     }
   ]
 }
