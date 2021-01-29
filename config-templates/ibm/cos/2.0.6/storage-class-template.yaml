@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: List
+metadata:
+  name: armada-storage-s3fs-plugin
+  namespace: "{{ namespace }}"
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: ibmc-s3fs-rhocp
+      labels:
+        app.kubernetes.io/name: ibmcloud-object-storage-plugin
+    provisioner: ibm.io/ibmc-s3fs
+    parameters:
+      ibm.io/chunk-size-mb: "16"
+      ibm.io/parallel-count: "2"
+      ibm.io/multireq-max: "20"
+      ibm.io/tls-cipher-suite: "ECDHE-RSA-AES128-GCM-SHA256"
+      ibm.io/stat-cache-size: "100000"
+      ibm.io/debug-level: "warn"
+      ibm.io/curl-debug: "false"
+      ibm.io/kernel-cache: "false"
+      ibm.io/s3fs-fuse-retry-count: "5"
+      ibm.io/iam-endpoint: "{{ iamEndpoint }}"
+      ibm.io/object-store-endpoint: "{{ cosEndpoint }}"
+      ibm.io/object-store-storage-class: "{{ cosStorageClass }}"
+
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: ibmc-s3fs-rhocp-perf
+      labels:
+        app.kubernetes.io/name: ibmcloud-object-storage-plugin
+        app.kubernetes.io/version: "{{ version }}"
+    provisioner: ibm.io/ibmc-s3fs
+    parameters:
+      ibm.io/chunk-size-mb: "52"
+      ibm.io/parallel-count: "20"
+      ibm.io/multireq-max: "20"
+      ibm.io/tls-cipher-suite: "ECDHE-RSA-AES128-GCM-SHA256"
+      ibm.io/stat-cache-size: "100000"
+      ibm.io/debug-level: "warn"
+      ibm.io/curl-debug: "false"
+      ibm.io/kernel-cache: "true"
+      ibm.io/s3fs-fuse-retry-count: "5"
+      ibm.io/iam-endpoint: "{{ iamEndpoint }}"
+      ibm.io/object-store-endpoint: "{{ cosEndpoint }}"
+      ibm.io/object-store-storage-class: "{{ cosStorageClass }}"

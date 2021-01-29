@@ -30,5 +30,13 @@
     "default-version": "4.5",
     "enabled": "true",
     "provider": "redhat"
+  },
+  {
+    "name": "cos",
+    "displayname": "Cloud Object Storage",
+    "Description": "Cloud Object Storage for satallite cluster",
+    "default-version": "2.0.6",
+    "enabled": "true",
+    "provider": "ibm"
   }
 ]

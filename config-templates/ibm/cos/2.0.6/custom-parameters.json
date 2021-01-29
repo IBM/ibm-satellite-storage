@@ -1,0 +1,90 @@
+[
+  {
+    "description": "Helm repo name where the helm chart is present",
+    "displayname": "Helm Repo Name",
+    "name": "helm_repo",
+    "required": "false",
+    "default": "ibm-helm",
+    "type": "text"
+  },
+  {
+    "description": "Helm repo URL to pull the helm charts",
+    "displayname": "Helm Repo URL",
+    "name": "helm_repo_url",
+    "required": "false",
+    "default": "https://raw.githubusercontent.com/IBM/charts/master/repo/ibm-helm",
+    "type": "text"
+  },
+  {
+    "description": "Namespace where Plugin has to be deployed",
+    "displayname": "Plugin Namespace",
+    "name": "namespace",
+    "required": "false",
+    "default": "kube-system",
+    "type": "text"
+  },
+  {
+    "description": "Chart Version",
+    "displayname": "Chart Version",
+    "name": "chart_version",
+    "required": "false",
+    "default": "2.0.6",
+    "type": "text"
+  },
+  {
+    "description": "Change license to true to indicate have read and agreed to license agreement",
+    "displayname": "license",
+    "name": "license",
+    "required": "false",
+    "default": "false",
+    "type": "text"
+  },
+  {
+    "description": "Cluster Provider",
+    "displayname": "Cluster Provider",
+    "name": "provider",
+    "default": "rhocp",
+    "required": "false",
+    "type": "text"
+  },
+  {
+    "description": "Platform",
+    "displayname": "Platform",
+    "name": "platform",
+    "default": "OpenShift",
+    "required": "false",
+    "type": "text"
+  },
+  {
+    "description": "Worker node's OS",
+    "displayname": "Worker node's OS",
+    "name": "workerOS",
+    "default": "redhat",
+    "required": "false",
+    "type": "text"
+  },
+  {
+    "description": "kubeDriver",
+    "displayname": "kubeDriver",
+    "name": "kubeDriver",
+    "required": "false",
+    "default": "/usr/libexec/kubernetes",
+    "type": "text"
+  },
+  {
+    "description": "cpu",
+    "displayname": "cpu",
+    "name": "cpu",
+    "required": "false",
+    "default": "200m",
+    "type": "text"
+  },
+  {
+    "description": "memory",
+    "displayname": "memory",
+    "name": "memory",
+    "required": "false",
+    "default": "128Mi",
+    "type": "text"
+  }
+]
