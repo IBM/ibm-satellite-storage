@@ -8,8 +8,28 @@
       "value": "aws"
     },
     {
-      "name": "logo-image",
+      "name": "offering-name",
+      "value": "aws-ebs-csi-driver"
+    },
+    {
+      "key": "provider-url",
+      "value": "https://console.aws.amazon.com/support/home#/"
+    },
+    {
+      "key": "support-msg",
+      "value": "For support contact AWS"
+    },
+    {
+      "name": "provider-logo",
       "value": "/aws-ebs-logo"
+    },
+    {
+      "key": "supported-envs",
+      "value": "AWS"
+    },
+    {
+      "name": "supported-k8s-versions",
+      "value": "1.17,1.18"
     },
     {
       "name": "volume-type",
@@ -38,18 +58,6 @@
     {
       "name": "storageclass",
       "value": "gold"
-    },
-    {
-      "name": "kube-versions",
-      "value": "1.17,1.18"
-    },
-    {
-      "key": "supported-envs",
-      "value": "AWS"
-    },
-    {
-      "key": "support-description",
-      "value": "For support contact AWS: https://console.aws.amazon.com/support/home#/"
     }
   ]
 }
