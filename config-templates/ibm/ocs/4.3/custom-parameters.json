@@ -4,8 +4,7 @@
     "displayname": "Cluster Name",
     "name": "cluster-name",
     "required": "true",
-    "regex": "",
-    "type": "text"
+    "regex": ""
   },
   {
     "description": "Enter the OSD device path. Mandatory",
@@ -13,7 +12,8 @@
     "name": "devicepath",
     "default": "/dev/sdc",
     "required": "false",
-    "type": "text"
+    "category": "config",
+    "type": "csv"
   },
   {
     "description": "Enter the MON device path. Mandatory",
@@ -21,7 +21,8 @@
     "name": "file-devicepath ",
     "default": "/dev/dm-01",
     "required": "false",
-    "type": "text"
+    "category": "config",
+    "type": "csv"
   },
   {
     "description": "Enter the MON storage size.",
@@ -29,7 +30,7 @@
     "name": "mon-storage-size",
     "default": "10",
     "required": "false",
-    "type": "text"
+    "category": "config"
   },
   {
     "description": "Enter the MON storage class.",
@@ -37,7 +38,7 @@
     "name": "mon-storage-class",
     "default": "local",
     "required": "false",
-    "type": "text"
+    "category": "config"
   },
   {
     "description": "Enter the OSD storage size.",
@@ -45,7 +46,7 @@
     "name": "osd-storage-size",
     "default": "1",
     "required": "false",
-    "type": "text"
+    "category": "config"
   },
   {
     "description": "Enter the OSD storage class.",
@@ -53,7 +54,7 @@
     "name": "osd-storage-class",
     "default": "localblock",
     "required": "false",
-    "type": "text"
+    "category": "config"
   },
   {
     "description": "hardware",
@@ -61,6 +62,6 @@
     "name": "hardware ",
     "required": "false",
     "default": "dedicated",
-    "type": "text"
+    "category": "config"
   }
 ]

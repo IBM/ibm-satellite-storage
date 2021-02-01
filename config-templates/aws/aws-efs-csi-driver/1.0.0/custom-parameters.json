@@ -5,6 +5,6 @@
     "name": "namespace",
     "default": "kube-system",
     "required": "false",
-    "type": "text"
+    "category": "config"
   }
 ]
