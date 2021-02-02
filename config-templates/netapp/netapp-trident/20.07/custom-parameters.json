@@ -5,7 +5,7 @@
     "name": "namespace",
     "default": "trident",
     "required": "false",
-    "type": "text"
+    "category": "config"
   },
   {
     "description": "Storage Driver",
@@ -13,35 +13,35 @@
     "name": "storagedriver",
     "default": "ontap-nas",
     "required": "false",
-    "type": "text"
+    "category": "config"
   },
   {
     "description": "Management LIF",
     "displayname": "Management LIF",
     "name": "mgmt-lif",
     "required": "true",
-    "type": "text"
+    "category": "config"
   },
   {
     "description": "Data LIF",
     "displayname": "Data LIF",
     "name": "data-lif",
     "required": "true",
-    "type": "text"
+    "category": "config"
   },
   {
     "description": "SVM ID",
     "displayname": "SVM ID",
     "name": "svm-id",
     "required": "true",
-    "type": "text"
+    "category": "config"
   },
   {
     "description": "Aggregate ID",
     "displayname": "Aggregate ID",
     "name": "aggregate-id",
     "required": "true",
-    "type": "text"
+    "category": "config"
   },
   {
     "description": "Storage Size",
@@ -49,27 +49,28 @@
     "name": "storage-size",
     "default": "10",
     "required": "false",
-    "type": "text"
+    "category": "config"
   },
   {
     "description": "Export Policy",
     "displayname": "Export Policy",
     "name": "export-policy",
     "required": "true",
-    "type": "text"
+    "category": "config"
   },
   {
     "description": "User Name",
     "displayname": "User Name",
     "name": "user-id",
     "required": "true",
-    "type": "text"
+    "category": "secret"
   },
   {
     "description": "User Password",
     "displayname": "User Password",
     "name": "user-pass",
     "required": "true",
-    "type": "text"
+    "category": "secret",
+    "ofbuscate": "true"
   }
 ]

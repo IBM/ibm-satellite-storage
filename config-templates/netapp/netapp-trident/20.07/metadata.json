@@ -1,19 +1,47 @@
 {
   "name": "20.07",
   "enabled": "true",
-  "description": "Netapp Trident Driver template for version 20.07",
+  "description": "Netapp Trident version 20.07",
   "tags": [
     {
       "name": "provider",
       "value": "netapp"
     },
     {
-      "name": "log-image",
-      "value": "/netapp-trident-logo"
+      "name": "storage_type",
+      "value": "file"
+    },
+    {
+      "name": "encryption_support",
+      "value": "true"
+    },
+    {
+      "name": "snapshot_support",
+      "value": "true"
+    },
+    {
+      "name": "availability",
+      "value": "regional"
+    },
+    {
+      "name": "storage_class",
+      "value": "gold,silver,bronze"
+    },
+    {
+      "name": "logo-image",
+      "value": "logo/trident.png"
     },
     {
       "name": "kube-version",
       "value": "1.18"
+    },
+    {
+      "key": "supported-envs",
+      "value": "AWS,Azure,IBM"
+    },
+    {
+      "key": "support-description",
+      "value": "For support contact NetApp: https://netapp-trident.readthedocs.io/en/stable-v20.10/support/support.html"
     }
   ]
 }
