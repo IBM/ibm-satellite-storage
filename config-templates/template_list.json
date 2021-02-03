@@ -24,6 +24,14 @@
     "provider": "ibm"
   },
   {
+    "name": "ocs",
+    "displayname": "OpenShift Container Storage",
+    "Description": "OpenShift Container Storage for satallite cluster",
+    "default-version": "4.6",
+    "enabled": "true",
+    "provider": "ibm"
+  },
+  {
     "name": "local-volume",
     "displayname": "Persistent storage using local volumes",
     "Description": "Persistent storage using local volumes for satallite cluster",
