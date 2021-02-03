@@ -310,8 +310,8 @@ items:
          {{#osd-device-path }}
          - "{{{ item }}}"
          {{/osd-device-path }}
-       numOfOsd: "{{ num-of-osd }}"
-       ocsUpgrade: "{{ osd-storage-size }}"
+       numOfOsd: {{ num-of-osd }}
+       ocsUpgrade: {{ ocs-upgrade }}
        workerNodes:
          {{#worker-nodes}}
          - "{{{ item }}}"
