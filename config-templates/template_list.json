@@ -24,7 +24,7 @@
     "provider": "ibm"
   },
   {
-    "name": "ocs-4.6",
+    "name": "ocs",
     "displayname": "OpenShift Container Storage",
     "Description": "OpenShift Container Storage for satallite cluster",
     "default-version": "4.6",
