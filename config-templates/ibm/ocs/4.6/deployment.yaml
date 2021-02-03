@@ -295,7 +295,7 @@ items:
   - apiVersion: ocs.ibm.io/v1
     kind: OcsCluster
     metadata:
-      name: "testocscluster"
+      name: {{ ocs-cluster-name }}
       namespace: default
     spec:
        monStorageClassName: "{{ mon-storage-class }}"
