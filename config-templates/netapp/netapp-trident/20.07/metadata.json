@@ -44,7 +44,7 @@
       "value": "true"
     }, {
       "name": "storageclass",
-      "value": "gold"
+      "value": "gold,silver"
     }
   ]
 }
