@@ -302,8 +302,18 @@ items:
        monSize: "{{ mon-storage-size }}"
        osdStorageClassName: "{{ osd-storage-class }}"
        osdSize: "{{ osd-storage-size }}"
-       monDevicePaths: "{{ mon-device-path }}"
-       osdDevicePaths: "{{ osd-device-path }}"
+       monDevicePaths:
+         {{#mon-device-path }}
+         - "{{{ item }}}"
+         {{/mon-device-path }}
+       osdDevicePaths:
+         {{#osd-device-path }}
+         - "{{{ item }}}"
+         {{/osd-device-path }}
        numOfOsd: "{{ num-of-osd }}"
        ocsUpgrade: "{{ osd-storage-size }}"
+       workerNodes:
+         {{#worker-nodes}}
+         - "{{{ item }}}"
+         {{/worker-nodes}}
        billingType: "{{ billing-type }}"

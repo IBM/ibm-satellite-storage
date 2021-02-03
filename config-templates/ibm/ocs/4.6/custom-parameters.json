@@ -3,16 +3,14 @@
     "description": "Cluster Name of OCS",
     "displayname": "Cluster Name",
     "name": "ocs-cluster-name",
-    "required": true,
-    "regex": "",
-    "type": "text"
+    "required": "true"
   },
   {
     "description": "Enter the OSD device path. Mandatory if using classic cluster",
     "displayname": "Osd Device Path",
     "name": "osd-device-path",
     "default": "/dev/sdc",
-    "required": false,
+    "required": "false",
     "type": "csv"
   },
   {
@@ -20,7 +18,7 @@
     "displayname": "Mon device Path",
     "name": "mon-device-path",
     "default": "/dev/dm-01",
-    "required": false,
+    "required": "false",
     "type": "csv"
   },
   {
@@ -28,46 +26,41 @@
     "displayname": "Mon storage size",
     "name": "mon-storage-size",
     "default": "20Gi",
-    "required": true,
-    "type": "text"
+    "required": "true"
   },
   {
     "description": "Enter the MON storage class. Mandatory",
     "displayname": "Mon storage class",
     "name": "mon-storage-class",
     "default": "vpc-custom-10iops-tier",
-    "required": true,
-    "type": "text"
+    "required": "true"
   },
   {
     "description": "Enter the OSD storage size. Mandatory",
     "displayname": "osd storage size",
     "name": "osd-storage-size",
     "default": "100Gi",
-    "required": true,
-    "type": "text"
+    "required": "true"
   },
   {
     "description": "Enter the OSD storage class. Mandatory",
     "displayname": "osd Storage Class",
     "name": "osd-storage-class",
     "default": "vpc-custom-10iops-tier",
-    "required": true,
-    "type": "text"
+    "required": "true"
   },
   {
     "description": "Enter the number of OSD. Optional. Default is 1",
     "displayname": "Num of osd",
     "name": "num-of-osd",
     "default": "1",
-    "required": false,
-    "type": "string"
+    "required": "false"
   },
   {
     "description": "Worker Nodes you want to deploy OCS on. Min 3. Leave if you want OCS on all workers",
     "displayname": "worker nodes",
     "name": "worker-nodes",
-    "required": false,
+    "required": "false",
     "type": "csv"
   },
   {
@@ -75,7 +68,7 @@
     "displayname": "OCS upgrade",
     "name": "ocs-upgrade",
     "default": "false",
-    "required": false,
+    "required": "false",
     "type": "boolean"
   },
   {
@@ -83,7 +76,6 @@
     "displayname": "Billing type",
     "name": "billing-type",
     "default": "hourly",
-    "required": false,
-    "type": "text"
-  },
+    "required": "false"
+  }
 ]
