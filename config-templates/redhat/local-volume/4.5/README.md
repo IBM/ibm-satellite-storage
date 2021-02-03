@@ -1,4 +1,4 @@
-### How to use the template to delopy local-volume on a Satellite Cluster?
+### How to use the template to deploy local-volume on a Satellite Cluster?
 
 #### Pre-reqs 
 - The cluster worker nodes (hosts) should have an additional free disk.
@@ -7,13 +7,13 @@
 1. Login into the Cluster using `OC CLI`
    - Login to [IBM Cloud Web Console](https://cloud.ibm.com/)
 	 - Go to [Clusters page](https://cloud.ibm.com/satellite/clusters)
-   - Client on the row with the cluster details, You will get your cluster page
+   - Click on the row with the cluster details, You will get your cluster page
    - Click on `Manage Cluster` and in next page click on `OpenShift web console`
    - In OpenShift console click on your user ID at top right corner and then click on `Copy Login Command`
-   - In next page Click on `Display Token`
+   - In next page click on `Display Token`
    - Under `Log in with this token` the `oc login --token=XXXX ...` will be displayed, copy the command and execute on your local system
 
-2. Add lables to the worker nodes, one with additional disk
+2. Add label to the worker nodes, one with additional disk
    - Get the nodes 
      ```
      $ oc get nodes
@@ -22,7 +22,7 @@
      52.117.85.3    Ready    master,worker   20d   v1.18.3+fa69cae
      52.117.85.9    Ready    master,worker   20d   v1.18.3+fa69cae
      ```
-   - Add lables to nodes
+   - Add label to nodes
      ```   
      $ oc label nodes 52.117.85.9 52.117.85.12 "storage=localvol"
      node/52.117.85.9 labeled
@@ -42,7 +42,7 @@
      - London:  https://eu-gb.containers.cloud.ibm.com
      - US-South: https://us-south.containers.cloud.ibm.com
 
-4. Create CLuster Group
+4. Create Cluster Group
    - From IBM Cloud Web Console
      > https://cloud.ibm.com/satellite/clusters -> Cluster groups -> Create cluster group
    - Add cluster to the group
@@ -67,7 +67,7 @@
     satlocalvol   09db2fd1-8f40-4784-9e67-36b9f6594a9b   bvvec9ew0sbeueqsd2r0   
    ```
 
-6. Create storage configuration using exiting template
+6. Create storage configuration using existing template
    - Review the required parameters for the template
      ```
      $ ibmcloud sat storage template get --name local-volume --version 4.5
@@ -128,5 +128,4 @@
    NAME                CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM   STORAGECLASS    REASON   AGE
    local-pv-8a72fc8d   50Gi       RWO            Delete           Available           localblock-sc            47m
    local-pv-8c400223   50Gi       RWO            Delete           Available           localblock-sc            47m
-   ```
    ```
