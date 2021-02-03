@@ -7,89 +7,56 @@ metadata:
   annotations:
     version: 1.0.0
 items:
-  - apiVersion: v1
-    kind: Namespace
-    metadata:
-      name: "{{ namespace }}"
   - apiVersion: storage.k8s.io/v1beta1
     kind: CSIDriver
     metadata:
       name: efs.csi.aws.com
+      labels:
+        app.kubernetes.io/name: aws-efs-csi-driver
+        app.kubernetes.io/version: 1.0.0
     spec:
       attachRequired: false
   - apiVersion: v1
     kind: ServiceAccount
     metadata:
       name: efs-csi-node
-      namespace: "{{ namespace }}"
+      namespace: kube-system
       labels:
-        app: aws-efs-csi-driver
+        app.kubernetes.io/name: aws-efs-csi-driver
+        app.kubernetes.io/version: 1.0.0
   - kind: StorageClass
     apiVersion: storage.k8s.io/v1
     metadata:
-      name: aws-efs-sc
+      name: aws-efs-gold
       labels:
-        app: aws-efs-csi-driver
+        app.kubernetes.io/name: aws-efs-csi-driver
+        app.kubernetes.io/version: 1.0.0
     provisioner: efs.csi.aws.com
-  - apiVersion: security.openshift.io/v1
-    kind: SecurityContextConstraints
-    metadata:
-      name: aws-efs-scc
-      labels:
-        app: aws-efs-csi-driver
-    priority: 0
-    defaultAddCapabilities: []
-    allowedCapabilities: []
-    allowHostDirVolumePlugin: true
-    allowHostIPC: false
-    allowHostPID: false
-    allowHostPorts: true
-    allowHostNetwork: true
-    allowPrivilegedContainer: true
-    allowPrivilegeEscalation: true
-    requiredDropCapabilities:
-     - KILL
-     - MKNOD
-     - SETUID
-     - SETGID
-    readOnlyRootFilesystem: false
-    runAsUser:
-      type: RunAsAny
-    seLinuxContext:
-      type: RunAsAny
-    fsGroup:
-      type: RunAsAny
-    supplementalGroups:
-      type: RunAsAny
-    users:
-    - system:serviceaccount:{{ namespace }}:efs-csi-node
-    groups: []
-    volumes:
-      - configMap
-      - downwardAPI
-      - emptyDir
-      - hostPath
-      - persistentVolumeClaim
-      - projected
-      - secret
   - kind: DaemonSet
     apiVersion: apps/v1
     metadata:
       name: efs-csi-node
-      namespace: "{{ namespace }}"
+      namespace: kube-system
+      labels:
+        app.kubernetes.io/name: aws-efs-csi-driver
+        app.kubernetes.io/version: 1.0.0
     spec:
       selector:
         matchLabels:
-          app: aws-efs-csi-driver
+          app: efs-csi-node
+          app.kubernetes.io/name: aws-efs-csi-driver
+          app.kubernetes.io/version: 1.0.0
       template:
         metadata:
           labels:
-            app: aws-efs-csi-driver
+            app: efs-csi-node
+            app.kubernetes.io/name: aws-efs-csi-driver
+            app.kubernetes.io/version: 1.0.0
         spec:
           nodeSelector:
             kubernetes.io/os: linux
           hostNetwork: true
-          # priorityClassName: system-node-critical
+          priorityClassName: system-node-critical
           tolerations:
             - operator: Exists
           serviceAccountName: efs-csi-node
