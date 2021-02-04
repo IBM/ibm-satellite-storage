@@ -5,6 +5,6 @@
     "name": "namespace",
     "default": "default",
     "required": "false",
-    "type": "text"
+    "category": "text"
   }
 ]

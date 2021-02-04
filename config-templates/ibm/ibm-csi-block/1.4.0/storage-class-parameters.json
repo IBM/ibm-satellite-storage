@@ -2,51 +2,51 @@
   {
 	"description": "Storage class Name to be created",
 	"displayname": "Storage Class Name",
-	"name": "name",
+	"name": "sc-name",
 	"required": "true",
-	"type": "text"
+	"category": "text"
   },
   {
 	"description": "Space efficiency of volume to be created",
 	"displayname": "Space efficiency type",
 	"name": "space-efficiency",
 	"required": "false",
-	"type": "text"
+	"category": "text"
   },
   {
 	"description": "Pool ID of volume to be created in",
 	"displayname": "Pool ID",
 	"name": "pool",
 	"required": "true",
-	"type": "text"
+	"category": "text"
   },
   {
 	"description": "Existed secret name",
 	"displayname": "Secret name",
 	"name": "secret-name",
 	"required": "true",
-	"type": "text"
+	"category": "text"
   },
   {
 	"description": "Existed secret name namespace",
 	"displayname": "Secret namespace",
 	"name": "secret-namespace",
 	"required": "true",
-	"type": "text"
+	"category": "text"
   },
   {
 	"description": "File system type - ext4\\xfs. The default is ext4",
 	"displayname": "Fstype",
 	"name": "fstype",
 	"required": "false",
-	"type": "text"
+	"category": "text"
   },
   {
 	"description": "Prefix name of volume to be created",
 	"displayname": "Prefix name",
 	"name": "prefix",
 	"required": "false",
-	"type": "text"
+	"category": "text"
   },
   {
 	"description": "Is volume expansion allowed?",
@@ -54,6 +54,6 @@
 	"name": "VolumeExpansion",
 	"default": "false",
 	"required": "false",
-	"type": "boolean"
+	"category": "boolean"
   }
 ]  
