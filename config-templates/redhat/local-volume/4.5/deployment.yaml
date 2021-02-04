@@ -47,4 +47,6 @@ items:
               - storageClassName: "local-block-gold"
                 volumeMode: Block
                 devicePaths:
-                    - "{{ devicepath }}"
+                    {{#devicepath}}
+                    - "{{{ item }}}"
+                    {{/devicepath}}
