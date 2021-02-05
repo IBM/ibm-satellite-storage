@@ -1,2 +1,10 @@
 [
+  {
+    "description": "Dummmy Parameter",
+    "displayname": "Dummy Parameter",
+    "name": "dummy",
+    "default": "dummy",
+    "required": "false",
+    "category": "config"
+  }
 ]
