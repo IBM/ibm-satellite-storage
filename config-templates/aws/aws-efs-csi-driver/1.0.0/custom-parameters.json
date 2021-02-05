@@ -1,2 +1,10 @@
 [
+  {
+    "description": "Controller Namespace",
+    "displayname": "Namespace",
+    "name": "namespace",
+    "default": "trident",
+    "required": "false",
+    "category": "config"
+  }
 ]
