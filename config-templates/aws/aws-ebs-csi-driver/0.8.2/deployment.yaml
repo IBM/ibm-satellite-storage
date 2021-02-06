@@ -22,7 +22,7 @@ items:
     metadata:
       name: aws-ebs-gold
       labels:
-        app.kubernetes.io/name: aws-ebs-csi-driver-Arashad
+        app.kubernetes.io/name: aws-ebs-csi-driver-ArashadAhamad
         app.kubernetes.io/version: 0.8.2
     provisioner: ebs.csi.aws.com
     volumeBindingMode: WaitForFirstConsumer
