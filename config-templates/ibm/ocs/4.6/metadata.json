@@ -4,7 +4,7 @@
   "description": "OCS template for openshift 4.6",
   "labels": {
     "deploy.razee.io/Reconcile" : false
-  }
+  },
   "tags": [
     {
       "name": "provider",
