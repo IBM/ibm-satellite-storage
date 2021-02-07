@@ -297,6 +297,9 @@ items:
     metadata:
       name: {{ ocs-cluster-name }}
       namespace: default
+      labels: {
+        "deploy.razee.io/Reconcile" : false,
+      }
     spec:
        monStorageClassName: "{{ mon-storage-class }}"
        monSize: "{{ mon-storage-size }}"
