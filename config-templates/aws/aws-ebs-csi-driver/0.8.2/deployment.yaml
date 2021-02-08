@@ -7,6 +7,17 @@ metadata:
   annotations:
     version: 0.8.2
 items:
+  - apiVersion: v1
+    kind: Secret
+    metadata:
+      name: aws-secret
+      namespace: kube-system
+      labels:
+        app.kubernetes.io/name: aws-ebs-csi-driver
+        app.kubernetes.io/version: 0.8.2
+    data:
+      key_id:  "{{{ aws-access-key }}}"
+      access_key:  "{{{ aws-secret-access-key }}}"
   - apiVersion: storage.k8s.io/v1beta1
     kind: CSIDriver
     metadata:
@@ -20,13 +31,45 @@ items:
   - kind: StorageClass
     apiVersion: storage.k8s.io/v1
     metadata:
-      name: aws-ebs-gold
+      name: sat-aws-block-gold
       labels:
         app.kubernetes.io/name: aws-ebs-csi-driver
         app.kubernetes.io/version: 0.8.2
     provisioner: ebs.csi.aws.com
     volumeBindingMode: WaitForFirstConsumer
     allowVolumeExpansion: true
+    parameters:
+      csi.storage.k8s.io/fstype: ext4
+      type: io2
+      encrypted: "true"
+  - kind: StorageClass
+    apiVersion: storage.k8s.io/v1
+    metadata:
+      name: sat-aws-block-silver
+      labels:
+        app.kubernetes.io/name: aws-ebs-csi-driver
+        app.kubernetes.io/version: 0.8.2
+    provisioner: ebs.csi.aws.com
+    volumeBindingMode: WaitForFirstConsumer
+    allowVolumeExpansion: true
+    parameters:
+      csi.storage.k8s.io/fstype: ext4
+      type: gp3
+      encrypted: "true"
+  - kind: StorageClass
+    apiVersion: storage.k8s.io/v1
+    metadata:
+      name: sat-aws-block-bronze
+      labels:
+        app.kubernetes.io/name: aws-ebs-csi-driver
+        app.kubernetes.io/version: 0.8.2
+    provisioner: ebs.csi.aws.com
+    volumeBindingMode: WaitForFirstConsumer
+    allowVolumeExpansion: true
+    parameters:
+      csi.storage.k8s.io/fstype: ext4
+      type: st1
+      encrypted: "true"
   - apiVersion: v1
     kind: ServiceAccount
     metadata:

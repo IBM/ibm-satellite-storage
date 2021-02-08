@@ -1,10 +1,18 @@
 [
   {
-    "description": "Dummmy Parameter",
-    "displayname": "Dummy Parameter",
-    "name": "dummy",
-    "default": "dummy",
-    "required": "false",
-    "category": "config"
+    "description": "AWS Access Key",
+    "displayname": "AWS Access Key",
+    "name": "aws-access-key",
+    "required": "true",
+    "category": "secret",
+    "ofbuscate": "true"
+  },
+  {
+    "description": "AWS Secret Access Key",
+    "displayname": "AWS Secret Access Key",
+    "name": "aws-secret-access-key",
+    "required": "true",
+    "category": "secret",
+    "ofbuscate": "true"
   }
 ]
