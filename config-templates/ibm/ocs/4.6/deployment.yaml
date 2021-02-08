@@ -3,8 +3,8 @@ kind: List
 metadata:
   name: ibm-openshift-container-storage
   namespace: kube-system
-  labels:
-      deploy.razee.io/Reconcile: false
+  #labels:
+  #    deploy.razee.io/Reconcile: false
 items:
   - apiVersion: apiextensions.k8s.io/v1
     kind: CustomResourceDefinition
@@ -299,8 +299,8 @@ items:
     metadata:
       name: {{ ocs-cluster-name }}
       namespace: default
-      labels:
-          deploy.razee.io/Reconcile: false
+      #labels:
+      #    deploy.razee.io/Reconcile: false
     spec:
        monStorageClassName: "{{ mon-storage-class }}"
        monSize: "{{ mon-storage-size }}"
