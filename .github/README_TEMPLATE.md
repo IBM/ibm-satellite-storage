@@ -7,7 +7,7 @@ Enter a short description of your template and storage provider.
 List any config steps to take before creating a configuration with your template. For example, your prerequisite steps might include any or all of the following.
 
 - Resource requirements such as volumes, nodes, disks.
-- Supported versions
+- Supported versions such as compatible OCP versions
 
 ## [Template Name] parameters & how to retrieve them
 
@@ -26,15 +26,16 @@ Note that each parameter in your parameter table should include the following de
 - How to retrieve the parameter. 
 - The default value of the parameter (if applicable).
 
-| Parameter | Description | Default value if not provided |
-| --- | --- | --- |
-| `parameter` | Required. This is a required parameter. You can retrieve this parameter by... | N/A |
-| `parameter-2` | Optional. This is an optional parameter. | `param` |
+| Parameter | Required? | Description | Default value if not provided |
+| --- | --- | --- | --- |
+| `parameter` | Required | This is a required parameter. You can retrieve this parameter by... | N/A |
+| `parameter-2` | Optional | This is an optional parameter. | `param` |
+| `parameter-3` | Conditional | This parameter is conditional on another parameter. For example: `parameter-3` is required if `parameter-2` is specified. | N/A |
 
 
 ## Creating the [Template Name] storage configuration
 
-Provide an example steps, including an example `config create` command for creating a Satellite storage configuration that uses your template.
+Provide example steps, including an example `config create` command for creating a Satellite storage configuration that uses your template.
 
 **Example `sat storage config create` command**
 
@@ -61,3 +62,15 @@ oc get
 **Example output**
 
 Provide an example output screen of running driver pods and storage classes that are deployed by your configuration.
+
+
+## Troubleshooting
+
+Provide troubleshooting steps for any known issues.
+
+
+## Reference
+
+- Include a link to your provider documentation.
+- Limitations specific to Satellite.
+- Include a link to the support process documentation for your provider.
