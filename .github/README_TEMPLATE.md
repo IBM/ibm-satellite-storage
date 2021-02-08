@@ -1,12 +1,15 @@
-# Storage provider name or the template name
+# [Template Name]
 
-Enter the name of the storage provider or the name of your storage template
+Enter a short description of your template and storage provider.
 
 ## Prerequisites
 
-List any config steps to take before creating a configuration using with your template. For example: resource requirements such as volumes, nodes, supported versions, etc.
+List any config steps to take before creating a configuration with your template. For example, your prerequisite steps might include any or all of the following.
 
-## Parameters & how to retrieve them
+- Resource requirements such as volumes, nodes, disks.
+- Supported versions
+
+## Template parameters & how to retrieve them
 
 Create a table that contains the required and optional parameters that are used when creating a Satellite storage configuration with your template.
 
@@ -14,8 +17,8 @@ Create a table that contains the required and optional parameters that are used 
 
 Note that each parameter in your parameter table should include the following details:
 
-- Parameter name
-- Whether or not the parameter is required
+- Parameter name.
+- Whether or not the parameter is required.
 - How to retrieve the parameter. 
 - The default value of the parameter (if applicable).
 
