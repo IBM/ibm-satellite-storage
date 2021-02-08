@@ -1,0 +1,39 @@
+{
+    "version": 1,
+    "storageDriverName": "ontap-nas",
+    "managementLIF": "10.0.0.1",
+    "dataLIF": "10.0.0.2",
+    "svm": "svm_nfs",
+    "username": "vsadmin",
+    "password": "secret",
+    "defaults": {
+          "spaceReserve": "none",
+          "encryption": "false"
+    },
+    "storage": [
+        {
+            "labels":{"performance": "bronze"},
+            "defaults": {
+                "spaceReserve": "none",
+                "encryption": "false",
+                "snapshotPolicy": "default"
+            }
+        },
+        {
+            "labels":{"performance": "silver"},
+            "defaults": {
+                "spaceReserve": "none",
+                "encryption": "true",
+                "snapshotPolicy": "default"
+            }
+        },
+        {
+            "labels":{"performance": "gold"},
+            "defaults": {
+                "spaceReserve": "volume",
+                "encryption": "true",
+                "snapshotPolicy": "default"
+            }
+        }
+    ]
+}

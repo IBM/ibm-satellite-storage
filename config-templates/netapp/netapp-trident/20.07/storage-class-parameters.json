@@ -45,5 +45,12 @@
 	"required": "false",
 	"default": "thin",
 	"type": "option"
+  },
+  {
+	"description": "Performance type. Choose from bronze, silver or gold",
+	"displayname": "Performance type",
+	"name": "performance",
+	"required": "false",
+	"type": "option"
   }
-]  
+]

@@ -52,10 +52,26 @@
     "category": "config"
   },
   {
-    "description": "Export Policy",
-    "displayname": "Export Policy",
+    "description": "Name of export policy to use (NAS). Not applicable if using autoExportPolicy",
+    "displayname": "Export Policy name.",
     "name": "export-policy",
     "required": "true",
+    "category": "config"
+  },
+  {
+    "description": "Enable automatic export policy creation and updating for NAS[Boolean]",
+    "displayname": "Turn on automatic export policy management",
+    "name": "autoExportPolicy",
+    "required": "false",
+    "default": false,
+    "category": "config"
+  },
+  {
+    "description": "List of CIDRs to filter Kubernetes’ node IPs against when autoExportPolicy is enabled",
+    "displayname": "CIDRs for automatic export policy management",
+    "name": "autoExportCIDRs",
+    "required": "false",
+    "default": [“0.0.0.0/0”, “::/0”],
     "category": "config"
   },
   {
@@ -72,5 +88,157 @@
     "required": "true",
     "category": "secret",
     "ofbuscate": "true"
-  }
+  },
+  {
+    "description": "Prefix used when provisioning new volumes in the SVM. Once set this cannot be updated",
+    "displayname": "Storage prefix",
+    "name": "storagePrefix",
+    "required": "false",
+    "default": "trident",
+    "category": "config"
+  },
+  {
+    "description": "Fail provisioning if usage is above this percentage",
+    "displayname": "Aggregate usage limit",
+    "name": "limitAggregateUsage",
+    "required": "false",
+    "default": "",
+    "category": "config"
+  },
+  {
+    "description": "Comma-separated list of NFS mount options (NAS)",
+    "displayname": "NFS mount options",
+    "name": "nfsMountOptions",
+    "required": "false",
+    "default": "",
+    "category": "config"
+  },
+  {
+    "description": "Debug flags to use when troubleshooting. E.g.: {“api”:false, “method”:true}",
+    "displayname": "Debug trace flags",
+    "name": "debugTraceFlags",
+    "required": "false",
+    "default": null,
+    "category": "config"
+  },
+  {
+    "description": "Name of igroup to be used by Trident to store node IQNs (SAN)",
+    "displayname": "igroup Name",
+    "name": "igroupName",
+    "required": "true",
+    "default": "trident",
+    "category": "config"
+  },
+  {
+    "description": "Use CHAP to authenticate iSCSI for ONTAP SAN drivers [Boolean]",
+    "displayname": "Use CHAP",
+    "name": "useCHAP",
+    "required": "false",
+    "default": false,
+    "category": "config"
+  },
+  {
+    "description": "CHAP initiator secret. Required if useCHAP=true (SAN)",
+    "displayname": "CHAP initiator secret",
+    "name": "chapInitiatorSecret",
+    "required": "false",
+    "default": "",
+    "category": "config"
+  },
+  {
+    "description": "CHAP target initiator secret. Required if useCHAP=true (SAN)",
+    "displayname": "CHAP target initiator secret",
+    "name": "chapTargetInitiatorSecret",
+    "required": "false",
+    "default": "",
+    "category": "config"
+  },
+  {
+    "description": "Inbound username. Required if useCHAP=true (SAN)",
+    "displayname": "CHAP inbound username",
+    "name": "chapUsername",
+    "required": "false",
+    "default": "",
+    "category": "config"
+  },
+  {
+    "description": "Target username. Required if useCHAP=true (SAN)",
+    "displayname": "CHAP target username",
+    "name": "chapTargetUsername",
+    "required": "false",
+    "default": "",
+    "category": "config"
+  },
+  {
+    "description": "Space reservation mode; “none” (thin) or “volume” (thick)",
+    "displayname": "Space reservation mode",
+    "name": "spaceReserve",
+    "required": "false",
+    "default": "none",
+    "type": "option"
+  },
+  {
+    "description": "Enable NetApp volume encryption",
+    "displayname": "NetApp volume encryption",
+    "name": "encryption",
+    "required": "false",
+    "default": "false",
+    "type": "option"
+  },
+  {
+    "description": "Snapshot policy to use",
+    "displayname": "NetApp snapshot policy",
+    "name": "snapshotPolicy",
+    "required": "false",
+    "default": "none",
+    "type": "option"
+  },
+  {
+    "description": "Percentage of volume reserved for snapshots",
+    "displayname": "Snapshot reserve percentage",
+    "name": "snapshotReserve",
+    "required": "false",
+    "default": 0,
+    "type": "option"
+  },
+  {
+    "description": "Mode for new volumes",
+    "displayname": "UNIX permission mode",
+    "name": "unixPermissions",
+    "required": "false",
+    "default": "777",
+    "type": "option"
+  },
+  {
+    "description": "Split a clone from its parent upon creation",
+    "displayname": "Split on clone",
+    "name": "splitOnClone",
+    "required": "false",
+    "default": "false",
+    "type": "option"
+  },
+  {
+    "description": "Access to the .snapshot directory",
+    "displayname": "snapshot directory access",
+    "name": "snapshotDir",
+    "required": "false",
+    "default": "false",
+    "type": "option"
+  },
+  {
+    "description": "Security style for new volumes",
+    "displayname": "Security style",
+    "name": "securityStyle",
+    "required": "false",
+    "default": "unix",
+    "type": "option"
+  },
+  {
+    "description": "Tiering policy to use",
+    "displayname": "Tiering policy",
+    "name": "tieringPolicy",
+    "required": "false",
+    "default": "none",
+    "type": "option"
+  },
 ]
