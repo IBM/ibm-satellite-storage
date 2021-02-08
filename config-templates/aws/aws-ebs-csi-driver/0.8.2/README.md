@@ -1,8 +1,9 @@
-### How to use the template to deploy aws-efs-csi-driver on a Satellite Cluster?
+### How to use the template to deploy aws-ebs-csi-driver on a Satellite Cluster?
 
-#### Pre-reqs 
-- Currently only *static provisioning* is supported. This means an [AWS EFS file system](https://docs.aws.amazon.com/efs/latest/ug/gs-step-two-create-efs-resources.html) needs to be created manually on AWS first. After that it can be mounted inside a container as a volume using the driver.
-
+#### Features supported
+- Dyanamic Provisioning
+- Volume Resizing
+- Volume Snapshot 
 
 ### Detailed steps
 1. Login into the Cluster using `oc CLI`
@@ -63,50 +64,57 @@
 6. Create storage configuration using existing template
    - Review the required parameters for the template
      ```
-     $ ibmcloud sat storage template get --name aws-efs-csi-driver --version 1.0.0
+     $ ibmcloud sat storage template get --name aws-ebs-csi-driver --version 0.8.2
      Getting Satellite storage template details...
      OK
                         
-     Name:           aws-efs-csi-driver   
-     Display Name:   AWS EFS CSI driver   
-     Version:        1.0.0   
+     Name:           aws-ebs-csi-driver   
+     Display Name:   AWS EBS CSI driver   
+     Version:        0.8.2   
 
      Custom Parameters
-     Name    Display Name      Description        Required   Type   Default   
-     dummy   Dummy Parameter   Dummmy Parameter   false      -      dummy
+     Name                   Display Name           Description            Required  Type   Default   
+     aws-access-key         AWS Access Key         AWS Access Key         true      -      -
+     aws-secret-access-key  AWS Secret Access Key  AWS Secret Access Key  true      -      -
      ```
    - Create Storage Configuration
      ```
-     $ ibmcloud sat storage config create --name aws-efs-conf --template-name aws-efs-csi-driver --template-version 1.0.0
+     $ ibmcloud sat storage config create --name aws-ebs-conf --template-name aws-ebs-csi-driver --template-version 0.8.2 -p aws-access-key=<access-key-without-base64-encoding> -p aws-secret-access-key=<secret-access-key-without-base64-encoding>
      Creating Satellite storage configuration...
      OK
-     Storage configuration 'aws-efs-conf' was successfully created with ID '870b9108-859d-4e6b-b24d-f4380bad9649'.
+     Storage configuration 'aws-ebs-conf' was successfully created with ID '870b9108-859d-4e6b-b24d-f4380bad9649'.
      ```
+     **Note:** 
 7. Deploy the configuration
    - Create assignment
      ```
-     $ ibmcloud sat storage assignment create --name install-efs --cluster-group aws-cluster-group --configuration aws-efs-conf
+     $ ibmcloud sat storage assignment create --name install-ebs --cluster-group aws-cluster-group --configuration aws-ebs-conf
      Creating assignment...
      OK
-     Assignment install-efs was successfully created with ID 2c35a018-fb22-4d33-98ce-16c42179cab7.
+     Assignment install-ebs was successfully created with ID 2c35a018-fb22-4d33-98ce-16c42179cab7.
      ```
 
 8. Check the K8S resources on the cluster
    ```
-   $ oc get sc | grep aws-file 
-   sat-aws-file-gold              efs.csi.aws.com    Delete          Immediate              false                  20h
+   $ oc get sc | grep aws-block                                                              
+     sat-aws-block-bronze      ebs.csi.aws.com    Delete          WaitForFirstConsumer   true                   9h
+     sat-aws-block-gold        ebs.csi.aws.com    Delete          WaitForFirstConsumer   true                   9h
+     sat-aws-block-silver      ebs.csi.aws.com    Delete          WaitForFirstConsumer   true                   9h
 
 
-   $ oc get pods -n kube-system | grep efs    
-   efs-csi-node-4gkzx                      3/3     Running   0          2d22h
-   efs-csi-node-r8g5d                      3/3     Running   0          2d22h
-   efs-csi-node-td4wc                      3/3     Running   0          2d22h
+   $ oc get pods -n kube-system | grep ebs                                                   
+     ebs-csi-controller-5dc5468b9-b7t4f      6/6     Running   0          9h
+     ebs-csi-controller-5dc5468b9-t9tqr      6/6     Running   0          9h
+     ebs-csi-node-5gl6t                      3/3     Running   0          9h
+     ebs-csi-node-7dx64                      3/3     Running   0          9h
+     ebs-csi-node-dt26z                      3/3     Running   0          9h
+     ebs-snapshot-controller-0               1/1     Running   0          9h
    ```
 
 ### Verification   
-- Follow [link](https://github.com/kubernetes-sigs/aws-efs-csi-driver/blob/master/examples/kubernetes/static_provisioning/README.md) to create PV using EFS volume, PVC and mount PVC inside pod.
+- Follow [link](https://github.com/kubernetes-sigs/aws-ebs-csi-driver/tree/master/examples/kubernetes/dynamic-provisioning) to create PVC and mount PVC inside pod.
 
 ### References
-- AWS-EFS-CSI-Driver: https://github.com/kubernetes-sigs/aws-efs-csi-driver
-- Examples: https://github.com/kubernetes-sigs/aws-efs-csi-driver/tree/master/examples/kubernetes
-- Amazon EFS: https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html
+- AWS-EBS-CSI-Driver: https://github.com/kubernetes-sigs/aws-ebs-csi-driver
+- Examples: https://github.com/kubernetes-sigs/aws-ebs-csi-driver/tree/master/examples/kubernetes
+- Amazon EBS: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html
