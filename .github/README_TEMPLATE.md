@@ -9,11 +9,15 @@ List any config steps to take before creating a configuration with your template
 - Resource requirements such as volumes, nodes, disks.
 - Supported versions
 
-## Template parameters & how to retrieve them
+## [Template Name] parameters & how to retrieve them
 
-Create a table that contains the required and optional parameters that are used when creating a Satellite storage configuration with your template.
+Create a table that contains the required and optional parameters that are used when creating a Satellite storage configuration with your template. For example your configuration might require or accept any or all of the following parameters.
 
-**Example parameter table**
+- Secrets or passwords
+- Labels
+- Mount points or device paths
+
+**[Template Name] parameters**
 
 Note that each parameter in your parameter table should include the following details:
 
@@ -28,7 +32,7 @@ Note that each parameter in your parameter table should include the following de
 | `parameter-2` | Optional. This is an optional parameter. | `param` |
 
 
-## Creating the storage configuration
+## Creating the [Template Name] storage configuration
 
 Provide an example steps, including an example `config create` command for creating a Satellite storage configuration that uses your template.
 
@@ -46,9 +50,9 @@ ibmcloud sat storage config create --name <example-config-name> --template-name 
 ibmcloud sat storage assignment create --name <assignment-name> --cluster-group <cluster-group> --configuration <configuration-name>
 ```
 
-## Verification steps
+## Verifying your [Template Name] storage configuration is assigned to your clusters
 
-Provide steps to retrieve driver pods, storage classes, or any other resources that are deployed with your template.
+Provide steps to retrieve any driver pods, storage classes, or any other resources that are deployed with your storage configuration.
 
 ```sh
 oc get
