@@ -6,9 +6,15 @@
 - Volume Snapshot 
 
 ### Pre-reqs
-- The driver requires IAM permission to talk to Amazon EBS to manage the volume on user's behalf. Create an IAM user with proper permission and get *Access Key* and *Secret Key*.
-- You need to provide IOPS per GB, required for *io2* volume type. Refer [EBS Volume Types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html) for more details.
+#### Planning consideration for Infra Admin
+-  For better IOPS and throughput, use instance built on *Nirto System*. Refer to 
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html
 
+#### Planning consideration for Location Admin
+- The driver requires IAM permission to talk to Amazon EBS to manage the volume on user's behalf. Create an IAM user with proper permission and get *AWS Access Keys*. Refer to https://docs.aws.amazon.com/powershell/latest/userguide/pstools-appendix-sign-up.html
+
+- Volume type *io2* requires iopsPerGB, default is set to *10 IOPS/GB*.
+  To set different value for iopsPerGB, refer to https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html
 
 ### Detailed steps
 1. Login into the Cluster using `oc CLI`
