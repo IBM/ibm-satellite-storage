@@ -33,6 +33,15 @@ Note that each parameter in your parameter table should include the following de
 | `parameter-3` | Conditional | This parameter is conditional on another parameter. For example: `parameter-3` is required if `parameter-2` is specified. | N/A |
 
 
+## Default storage classes
+
+Provide a table of the Satellite storage classes that are installed when your configuration is assigned to a cluster. Refer to the following example table. Add or remove storage class details based on the storage type.
+
+| Storage class name | Type | File system | IOPs | Size range | Hard disk | Reclaim policy |
+| --- | --- | --- | --- | --- | --- |
+| `sat-storage-class-name-delete-bronze` | Endurance | NFS | 2 | 20-12000 Gi | SSD | Delete | 
+
+
 ## Creating the [Template Name] storage configuration
 
 Provide example steps, including an example `config create` command for creating a Satellite storage configuration that uses your template.
@@ -56,8 +65,13 @@ ibmcloud sat storage assignment create --name <assignment-name> --cluster-group 
 Provide steps to retrieve any driver pods, storage classes, or any other resources that are deployed with your storage configuration.
 
 ```sh
-oc get
+oc get pods 
 ```
+
+```sh
+oc get sc | grep sat
+```
+
 
 **Example output**
 
