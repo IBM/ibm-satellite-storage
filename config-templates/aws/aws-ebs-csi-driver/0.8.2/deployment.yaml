@@ -41,6 +41,7 @@ items:
     parameters:
       csi.storage.k8s.io/fstype: ext4
       type: io2
+      iopsPerGB: "{{ iops-per-gb }}"
       encrypted: "true"
   - kind: StorageClass
     apiVersion: storage.k8s.io/v1

@@ -1,9 +1,14 @@
-### How to use the template to deploy aws-ebs-csi-driver on a Satellite Cluster?
+## How to use the template to deploy aws-ebs-csi-driver on a Satellite Cluster?
 
-#### Features supported
+### Features supported
 - Dyanamic Provisioning
 - Volume Resizing
 - Volume Snapshot 
+
+### Pre-reqs
+- The driver requires IAM permission to talk to Amazon EBS to manage the volume on user's behalf. Create an IAM user with proper permission and get *Access Key* and *Secret Key*.
+- You need to provide IOPS per GB, required for *io2* volume type. Refer [EBS Volume Types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html) for more details.
+
 
 ### Detailed steps
 1. Login into the Cluster using `oc CLI`
