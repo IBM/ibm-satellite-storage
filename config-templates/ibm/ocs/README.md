@@ -37,7 +37,7 @@ We have an ibm-ocs-operator which will be deployed on the creation of the templa
 | sat-ocs-cephrgw-gold | Object | openshift-storage.ceph.rook.io/bucket |Delete |
 | sat-ocs-noobaa-gold | Object bucket | openshift-storage.noobaa.io/obc | Delete |
 
-## Creating the ibm-ocs-operator storage configuration
+## Creating the OCS storage configuration
 
 ### Detailed steps
 
@@ -81,7 +81,7 @@ satellite-ocs-template-test   b201d0ed-a4aa-414c-b0eb-0c4437797e95   c040tu4w0h6
    - Review the required parameters for the template
    - Create Storage Configuration (Sample provided below)
 ```
-$ibmcloud sat storage config create --name ocs-config --template-name ibm-ocs-operator --template-version 4.6_classic_local -p "ocs-cluster-name=testocscluster" -p "osd-device-path=/dev/sdc2" -p "mon-device-path=/dev/sdc1" -p "num-of-osd=1" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90" -p "ibm-cos-access-key=c461e3cdac2743f6a8e9288071d75b0d" -p "ibm-cos-secret-key=4ae6592d1be33e4e1dd31186f4473ff0dd58314355f0a7a7"
+$ibmcloud sat storage config create --name ocs-config --template-name ocs --template-version 4.6_classic_local -p "ocs-cluster-name=testocscluster" -p "osd-device-path=/dev/sdc2" -p "mon-device-path=/dev/sdc1" -p "num-of-osd=1" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90" -p "ibm-cos-access-key=c461e3cdac2743f6a8e9288071d75b0d" -p "ibm-cos-secret-key=4ae6592d1be33e4e1dd31186f4473ff0dd58314355f0a7a7"
 Creating Satellite storage configuration...
 OK
 Storage configuration 'ocs-config' was successfully created with ID 'b3982666-75a2-466d-9f0c-efc878dd5949'.
@@ -148,6 +148,27 @@ rook-ceph-osd-prepare-ocs-deviceset-2-data-0-szmjd-49dd4          0/1     Comple
 rook-ceph-rgw-ocs-storagecluster-cephobjectstore-a-7f7f6df9rv6h   1/1     Running     0          3m44s
 rook-ceph-rgw-ocs-storagecluster-cephobjectstore-b-554fd9dz6dm8   1/1     Running     0          3m41s
 ```
+
+##Updating the CRD :
+
+Some scenarios require that we update the OcsCluster CRD (Scaling, OCS upgrade, etc). To do so, we have to create a new configuration with the same name for the CRD (ocs-cluster-name) and with the updated values of the other parameters, for instance,
+1. num-of-osd for scaling
+2. ocs-upgrade for Upgrading the OCS version
+3. osd-device-path or mon-device-path for adding devices
+
+Example :
+
+```
+$ibmcloud sat storage config create --name ocs-config2 --template-name ocs --template-version 4.6_classic_local -p "ocs-cluster-name=testocscluster" -p "osd-device-path=/dev/sdc2,/dev/sdc3" -p "mon-device-path=/dev/sdc1" -p "num-of-osd=2" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90" -p "ibm-cos-access-key=c461e3cdac2743f6a8e9288071d75b0d" -p "ibm-cos-secret-key=4ae6592d1be33e4e1dd31186f4473ff0dd58314355f0a7a7"
+```
+
+After this, we need to create a new assignment for this configuration :
+
+```
+$ ibmcloud sat storage assignment create --name ocs-sub --group test-group2 --config ocs-config2
+```
+
+This will update the OcsCluster resource.
 
 Logging and Monitoring
 
