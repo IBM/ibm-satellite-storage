@@ -301,7 +301,7 @@ items:
             - /manager
             env:
             - name: CHANNEL
-              value: stable-4.6
+              value: stable-4.5
             - name: WATCH_NAMESPACE
               value: openshift-storage
             image: "icr.io/obs/ibm-ocs-operator:v0.0.13"
