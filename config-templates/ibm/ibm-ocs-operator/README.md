@@ -41,8 +41,8 @@ We have an ibm-ocs-operator which will be deployed on the creation of the templa
 
 ### Detailed steps
 
-1) Login into the Cluster using oc CLI or IBM Cloud CLI
-   Verify that all the worker nodes are healthy.
+1. Login into the Cluster using oc CLI or IBM Cloud CLI
+2. Verify that all the worker nodes are healthy.
 
 ```
 $oc get nodes
@@ -52,13 +52,13 @@ NAME            STATUS   ROLES           AGE   VERSION
 169.48.170.90   Ready    master,worker   28h   v1.19.0+3b01205
 ```
 
-2. Create Cluster Group
+3. Create Cluster Group
    - From IBM Cloud Web Console
      > https://cloud.ibm.com/satellite/clusters -> Cluster groups -> Create cluster group
    - Add cluster to the group
      > https://cloud.ibm.com/satellite/groups -> select the cluster group -> Clusters -> Add cluster
 
-3. View the cluster group from CLI
+4. View the cluster group from CLI
 ```
 $ibmcloud sat group get --group test-group2               
 OK
@@ -77,7 +77,7 @@ Name                          ID                                     Location
 satellite-ocs-template-test   b201d0ed-a4aa-414c-b0eb-0c4437797e95   c040tu4w0h6c6s5s9irg   
 ```
 
-4. Create storage configuration using existing template
+5. Create storage configuration using existing template
    - Review the required parameters for the template
    - Create Storage Configuration (Sample provided below)
 ```
@@ -87,7 +87,7 @@ OK
 Storage configuration 'ocs-config' was successfully created with ID 'b3982666-75a2-466d-9f0c-efc878dd5949'.
 ```
 
-5. Deploy the configuration
+6. Deploy the configuration
    - Create assignment
  ```
 $ ibmcloud sat storage assignment create --name ocs-sub --group test-group2 --config ocs-config
