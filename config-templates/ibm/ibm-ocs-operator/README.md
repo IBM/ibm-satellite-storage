@@ -42,7 +42,7 @@ We have an ibm-ocs-operator which will be deployed on the creation of the templa
 ### Detailed steps
 
 1) Login into the Cluster using oc CLI or IBM Cloud CLI
-Verify that all the worker nodes are healthy.
+   Verify that all the worker nodes are healthy.
 
 ```
 $oc get nodes
