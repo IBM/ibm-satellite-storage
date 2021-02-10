@@ -1,7 +1,8 @@
 # OCS
 
 Red Hat OpenShift Container Storage is software-defined storage that is optimised for container environments. It runs as an operator on OpenShift Container Platform to provide highly integrated and simplified persistent storage management for containers.
-We have an ibm-ocs-operator which will be deployed on the creation of the template. The user has to provide the input values to the custom resource OcsCluster while creating the satellite configuration to deploy OCS
+
+The user has to provide the input values to the custom resource OcsCluster while creating the satellite configuration to deploy OCS
 
 ## Prerequisites
 
