@@ -1,14 +1,14 @@
 {
-  "name": "4.3",
-  "enabled": "true",
-  "description": "OCS template for openshift 4.3",
+  "name": "4.6_classic_local",
+  "enabled": true,
+  "description": "OCS template for openshift 4.6",
   "tags": [
     {
       "name": "provider",
       "value": "ibm"
     },
     {
-      "name": "logo-image",
+      "name": "log-image",
       "value": "/ocs-logo"
     },
     {

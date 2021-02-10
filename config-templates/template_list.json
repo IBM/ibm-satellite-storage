@@ -16,18 +16,10 @@
     "provider": "netapp"
   },
   {
-    "name": "ocs",
+    "name": "ibm-ocs-operator",
     "displayname": "OpenShift Container Storage",
     "Description": "OpenShift Container Storage for satallite cluster",
-    "default-version": "4.3",
-    "enabled": "true",
-    "provider": "ibm"
-  },
-  {
-    "name": "ocs",
-    "displayname": "OpenShift Container Storage",
-    "Description": "OpenShift Container Storage for satallite cluster",
-    "default-version": "4.6",
+    "default-version": "4.6_classic_local",
     "enabled": "true",
     "provider": "ibm"
   },

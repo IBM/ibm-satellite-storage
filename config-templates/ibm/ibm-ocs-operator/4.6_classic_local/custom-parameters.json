@@ -6,48 +6,18 @@
     "required": "true"
   },
   {
-    "description": "Enter the OSD device path. Mandatory if using classic cluster",
+    "description": "Enter the OSD device path. Mandatory",
     "displayname": "Osd Device Path",
     "name": "osd-device-path",
-    "default": "/dev/sdc",
-    "required": "false",
+    "required": "true",
     "type": "csv"
   },
   {
-    "description": "Enter the MON device path.",
+    "description": "Enter the MON device path. Mandatory",
     "displayname": "Mon device Path",
     "name": "mon-device-path",
-    "default": "/dev/dm-01",
-    "required": "false",
+    "required": "true",
     "type": "csv"
-  },
-  {
-    "description": "Enter the MON storage size. Mandatory",
-    "displayname": "Mon storage size",
-    "name": "mon-storage-size",
-    "default": "20Gi",
-    "required": "true"
-  },
-  {
-    "description": "Enter the MON storage class. Mandatory",
-    "displayname": "Mon storage class",
-    "name": "mon-storage-class",
-    "default": "vpc-custom-10iops-tier",
-    "required": "true"
-  },
-  {
-    "description": "Enter the OSD storage size. Mandatory",
-    "displayname": "osd storage size",
-    "name": "osd-storage-size",
-    "default": "100Gi",
-    "required": "true"
-  },
-  {
-    "description": "Enter the OSD storage class. Mandatory",
-    "displayname": "osd Storage Class",
-    "name": "osd-storage-class",
-    "default": "vpc-custom-10iops-tier",
-    "required": "true"
   },
   {
     "description": "Enter the number of OSD. Optional. Default is 1",
