@@ -149,7 +149,7 @@ rook-ceph-rgw-ocs-storagecluster-cephobjectstore-a-7f7f6df9rv6h   1/1     Runnin
 rook-ceph-rgw-ocs-storagecluster-cephobjectstore-b-554fd9dz6dm8   1/1     Running     0          3m41s
 ```
 
-##Updating the CRD :
+## Updating the CRD :
 
 Some scenarios require that we update the OcsCluster CRD (Scaling, OCS upgrade, etc). To do so, we have to create a new configuration with the same name for the CRD (ocs-cluster-name) and with the updated values of the other parameters, for instance,
 1. num-of-osd for scaling
