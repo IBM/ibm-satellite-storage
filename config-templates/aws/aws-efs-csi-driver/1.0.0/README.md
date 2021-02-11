@@ -6,6 +6,11 @@ AWS EFS CSI driver implements the CSI specification for container orchestrators 
 
 - Currently only *static provisioning* is supported. This means an [AWS EFS file system](https://docs.aws.amazon.com/efs/latest/ug/gs-step-two-create-efs-resources.html) needs to be created manually on AWS first. After that it can be mounted inside a container as a volume using the driver.
 
+## AWS EBS CSI Driver parameters & how to retrieve them
+
+No parameters required for this template.
+
+
 ## Default storage classes
 
 | Storage class name | File system | IOPs | Size range | Reclaim policy |

@@ -21,7 +21,10 @@ https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html
 
 ## AWS EBS CSI Driver parameters & how to retrieve them
 
-To retrieve all parameters required by this template, execute `ibmcloud sat storage template get --name aws-ebs-csi-driver --version 0.8.2`
+Retrieve all parameters required by this template
+```
+ibmcloud sat storage template get --name aws-ebs-csi-driver --version 0.8.2
+```
 
 **AWS EBS CSI Driver parameters**
 
