@@ -4,7 +4,7 @@ Red Hat OpenShift Container Storage is software-defined storage that is optimise
 
 The user has to provide the input values to the custom resource OcsCluster while creating the satellite configuration to deploy OCS
 
-## How to use the template to deploy OCS (local) on a Satellite Cluster?
+## How to use the local template to deploy OCS on a Satellite Cluster having local storage?
 
 ### Prerequisites
 
@@ -13,7 +13,8 @@ The user has to provide the input values to the custom resource OcsCluster while
     - Raw partitions (no formatted filesystem)
     - PVs available from a storage class in block mode
 2) The cluster needs to have a minimum of 3 nodes
-3) The OCP version should be compatible with the OCS version you're trying to install  
+3) The OCP version should be compatible with the OCS version you're trying to install
+4) The devices used for the cluster should have a configuration of minimum 16CPUs and 64GB RAM
 
 ### OCS local: Parameters
 
@@ -185,8 +186,30 @@ rook-ceph-rgw-ocs-storagecluster-cephobjectstore-b-554fd9dz6dm8   1/1     Runnin
 
 ### Scaling (Capacity expansion of OCS) :
 
+#### Scaling by adding extra workers to the cluster :
+
+We need to add extra worker nodes with local disks to the satellite cluster.
+
 To scale the OCS cluster, we have to create a new configuration with the same name for the CRD (the parameter ocs-cluster-name) and the rest of the parameters should remain the same as the previous configuration, but, we should change the value of `num-of-osd` with the scaling factor required.
-If no extra devices are present, we need to add devices by updating the parameter `osd-device-path`
+We should also update the `worker-nodes` parameter with the new worker node IPs.
+
+Example :
+
+```
+$ibmcloud sat storage config create --name ocs-config2 --template-name ocs --template-version 4.6_local -p "ocs-cluster-name=testocscluster" -p "osd-device-path=/dev/sdc2" -p "mon-device-path=/dev/sdc1" -p "num-of-osd=2" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90,169.48.170.84,169.48.170.85,169.48.170.86" -p "ibm-cos-access-key=xxx" -p "ibm-cos-secret-key=yyy"
+```
+
+After this, we need to create a new assignment for this configuration :
+
+```
+$ ibmcloud sat storage assignment create --name ocs-sub2 --group test-group2 --config ocs-config2
+```
+
+#### Scaling by either adding new disks to the existing workers or use exisitng disks already available on the worker nodes:
+
+We can also scale by adding extra disks to the exisiting worker nodes and providing the disk-paths of the new disks or if the worker nodes already have extra local disks available, we can add the disk paths of those disks.  
+
+To scale the OCS cluster, we have to create a new configuration with the same name for the CRD (the parameter ocs-cluster-name) and the rest of the parameters should remain the same as the previous configuration, but, we should update the 'osd-device-path' parameter to include the new disk path along with the existing disk path provided previously. Similarly, if the worker nodes already have extra local disks available, we can add the disk paths of those disks in the 'osd-device-path' parameter along with the existing disk path.
 
 Example :
 
@@ -219,6 +242,8 @@ $ ibmcloud sat storage assignment create --name ocs-sub3 --group test-group2 --c
 ```
 
 This will upgrade OCS to the new version.
+
+**Note: Please do not delete any of the older configurations and assignments as it may result in data loss**
 
 ## Troubleshooting
 ### What to do when OCS install fails
@@ -254,9 +279,11 @@ sdc
 
 ## How to uninstall
 
-- Delete the assignment and the configuration
-- Temporarily, you'll have to manually delete the `local-storage` and `openshift-storage` namespaces after removing finalizers on the resources under them
-- run this command for all the nodes
+1) Delete all the assignments and configurations created
+2) Remove the finalizer on the OcsCluster resource and delete it
+3) You'll have to manually first delete the `openshift-storage` namespace after removing finalizers on the resources under it
+4) After that, you have to delete the `local-storage` namespace after removing finalizers on the resources under it
+5) run this command for all the nodes to clean-up the files created by OCS.
 ```
 oc debug node/<node name> -- chroot /host rm -rvf /var/lib/rook /mnt/local-storage
 ```
