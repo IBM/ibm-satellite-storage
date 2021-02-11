@@ -4,7 +4,7 @@ Red Hat OpenShift Container Storage is software-defined storage that is optimise
 
 The user has to provide the input values to the custom resource OcsCluster while creating the satellite configuration to deploy OCS
 
-##How to use the template to deploy OCS (local) on a Satellite Cluster?
+## How to use the template to deploy OCS (local) on a Satellite Cluster?
 
 ### Prerequisites
 
@@ -183,7 +183,7 @@ rook-ceph-rgw-ocs-storagecluster-cephobjectstore-a-7f7f6df9rv6h   1/1     Runnin
 rook-ceph-rgw-ocs-storagecluster-cephobjectstore-b-554fd9dz6dm8   1/1     Running     0          3m41s
 ```
 
-###Scaling (Capacity expansion of OCS) :
+### Scaling (Capacity expansion of OCS) :
 
 To scale the OCS cluster, we have to create a new configuration with the same name for the CRD (the parameter ocs-cluster-name) and the rest of the parameters should remain the same as the previous configuration, but, we should change the value of `num-of-osd` with the scaling factor required.
 If no extra devices are present, we need to add devices by updating the parameter `osd-device-path`
@@ -202,7 +202,7 @@ $ ibmcloud sat storage assignment create --name ocs-sub2 --group test-group2 --c
 
 This will update the OcsCluster resource.
 
-###Migration (Updating OCS version) :
+### Migration (Updating OCS version) :
 
 To update the version of OCS, we have to create a new configuration with the template version set to the version you want to upgrade to. We need to have the same name for the CRD (the parameter ocs-cluster-name) and the rest of the parameters should remain the same as the previous configuration, but, we should change the value of `ocs-upgrade` to true.
 
