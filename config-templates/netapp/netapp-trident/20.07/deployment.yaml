@@ -496,10 +496,20 @@ items:
   - apiVersion: storage.k8s.io/v1
     kind: StorageClass
     metadata:
-      name: ontap-nas-silver
+      name: netapp-file-gold
     provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-nas"
-      snapshots: "false"
+      snapshots: "true"
+      provisioningType: "thick"
+      encryption: "true"
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: netapp-file-silver
+    provisioner: csi.trident.netapp.io
+    parameters:
+      backendType: "ontap-nas"
+      snapshots: "true"
       provisioningType: "thin"
-      encryption: "false"
+      encryption: "true"

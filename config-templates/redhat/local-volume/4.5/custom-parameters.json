@@ -4,20 +4,21 @@
     "displayname": "Node Label Key",
     "name": "label-key",
     "required": "true",
-    "type": "text"
+    "category": "config"
   },
   {
     "description": "Node label key value",
     "displayname": "Node Label Key Value",
     "name": "label-value",
     "required": "true",
-    "type": "text"
+    "category": "config"
   },
   {
     "description": "Local storage device path, e.g. /dev/sdc",
     "displayname": "Device Path",
     "name": "devicepath",
     "required": "true",
-    "type": "text"
+    "category": "config",
+    "type": "csv"
   }
 ]

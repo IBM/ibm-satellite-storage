@@ -4,7 +4,7 @@ metadata:
   name: armada-storage-s3fs-plugin
   namespace: "{{ namespace }}"
   annotations:
-    version: "{{ chart_version }}"
+    version: "2.0.6"
   labels:
     addonmanager.kubernetes.io/mode: Reconcile
 items:
@@ -82,18 +82,60 @@ items:
       restartPolicy: Never
       containers:
         - name: cos-plugin-installer
-          image: bhagyak1/cos-installer:v01
+          image: bhagyak1/cos-installer:v04
           env:
             - name: HELM_REPO_NAME
-              value: "{{ helm_repo }}"
+              value: "ibm-helm"
             - name: HELM_REPO_URL
-              value: "{{{ helm_repo_url }}}"
-            - name: SAT_NAMESPACE
-              value: "{{ namespace }}"
+              value: "https://raw.githubusercontent.com/IBM/charts/master/repo/ibm-helm"
             - name: SAT_CHART_VERSION
-              value: "{{ chart_version }}"
+              value: "2.0.6"
             - name: SAT_CHART_NAME
               value: "ibm-object-storage-plugin"
+            - name: SAT_NAMESPACE
+              value: "{{ namespace }}"
             - name: HELM_OPTIONS
-              value: "license={{ license }},provider={{ provider }},workerOS={{ workerOS }},kubeDriver={{{ kubeDriver }}},cpu={{ cpu }},memory={{ memory }}"
+              value: "platform=OpenShift,provider=rhocp,workerOS=redhat,kubeDriver=/usr/libexec/kubernetes,license={{ license }},cpu={{ cpu }},memory={{ memory }}"
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-s3fs-silver
+      labels:
+        app.kubernetes.io/name: ibmcloud-object-storage-plugin
+        app.kubernetes.io/version: "2.0.6"
+    provisioner: ibm.io/ibmc-s3fs
+    parameters:
+      ibm.io/chunk-size-mb: "16"
+      ibm.io/parallel-count: "2"
+      ibm.io/multireq-max: "20"
+      ibm.io/tls-cipher-suite: "ECDHE-RSA-AES128-GCM-SHA256"
+      ibm.io/stat-cache-size: "100000"
+      ibm.io/debug-level: "warn"
+      ibm.io/curl-debug: "false"
+      ibm.io/kernel-cache: "false"
+      ibm.io/s3fs-fuse-retry-count: "5"
+      ibm.io/iam-endpoint: "{{{ iam-endpoint }}}"
+      ibm.io/object-store-endpoint: "{{{ cos-endpoint }}}"
+      ibm.io/object-store-storage-class: "{{ cos-storage-class }}"
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-s3fs-gold
+      labels:
+        app.kubernetes.io/name: ibmcloud-object-storage-plugin
+        app.kubernetes.io/version: "2.0.6"
+    provisioner: ibm.io/ibmc-s3fs
+    parameters:
+      ibm.io/chunk-size-mb: "52"
+      ibm.io/parallel-count: "20"
+      ibm.io/multireq-max: "20"
+      ibm.io/tls-cipher-suite: "ECDHE-RSA-AES128-GCM-SHA256"
+      ibm.io/stat-cache-size: "100000"
+      ibm.io/debug-level: "warn"
+      ibm.io/curl-debug: "false"
+      ibm.io/kernel-cache: "true"
+      ibm.io/s3fs-fuse-retry-count: "5"
+      ibm.io/iam-endpoint: "{{{ iam-endpoint }}}"
+      ibm.io/object-store-endpoint: "{{{ cos-endpoint }}}"
+      ibm.io/object-store-storage-class: "{{ cos-storage-class }}"
 

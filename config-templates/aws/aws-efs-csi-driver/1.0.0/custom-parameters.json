@@ -1,10 +1,10 @@
 [
   {
-    "description": "AWS EFS CSI Driver Namespace",
-    "displayname": "Namespace",
-    "name": "namespace",
-    "default": "kube-system",
+    "description": "Dummmy Parameter",
+    "displayname": "Dummy Parameter",
+    "name": "dummy",
+    "default": "dummy",
     "required": "false",
-    "type": "text"
+    "category": "config"
   }
 ]

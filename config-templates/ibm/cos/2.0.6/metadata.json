@@ -8,12 +8,64 @@
       "value": "ibm"
     },
     {
-      "name": "logo-image",
+      "name": "provider-logo",
       "value": "/cos-logo"
     },
     {
-      "name": "kube-version",
-      "value": "1.18"
+      "name": "supported-k8s-versions",
+      "value": "1.18,1.19,1.20"
+    },
+    {
+      "name": "offering-name",
+      "value": "ibmcloud-object-storage-plugin"
+    },
+    {
+      "name": "provider-url",
+      "value": "https://cloud.ibm.com/docs"
+    },
+    {
+      "name": "support-msg",
+      "value": "For support contact IBM"
+    },
+    {
+      "name": "supported-envs",
+      "value": "AWS,IBM"
+    },
+    {
+      "name": "volume-type",
+      "value": "object"
+    },
+    {
+      "name": "volume-encryption-at-rest",
+      "value": "true"
+    },
+    {
+      "name": "volume-encryption-in-transit",
+      "value": "true"
+    },
+    {
+      "name": "volume-encryption-at-rest",
+      "value": "true"
+    },
+    {
+      "name": "volume-encryption-in-transit",
+      "value": "true"
+    },
+    {
+      "name": "volume-snapshot",
+      "value": "false"
+    },
+    {
+      "name": "volume-availability",
+      "value": "zonal"
+    },
+    {
+      "name": "volume-expansion",
+      "value": "true"
+    },
+    {
+      "name": "storageclass",
+      "value": "gold,silver"
     }
   ]
 }

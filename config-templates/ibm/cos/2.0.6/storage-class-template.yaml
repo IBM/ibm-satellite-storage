@@ -6,9 +6,10 @@ metadata:
   - apiVersion: storage.k8s.io/v1
     kind: StorageClass
     metadata:
-      name: ibmc-s3fs-rhocp
+      name:
       labels:
         app.kubernetes.io/name: ibmcloud-object-storage-plugin
+        app.kubernetes.io/version: "2.0.6"
     provisioner: ibm.io/ibmc-s3fs
     parameters:
       ibm.io/chunk-size-mb: "16"
@@ -20,17 +21,16 @@ metadata:
       ibm.io/curl-debug: "false"
       ibm.io/kernel-cache: "false"
       ibm.io/s3fs-fuse-retry-count: "5"
-      ibm.io/iam-endpoint: "{{ iamEndpoint }}"
-      ibm.io/object-store-endpoint: "{{ cosEndpoint }}"
-      ibm.io/object-store-storage-class: "{{ cosStorageClass }}"
-
+      ibm.io/iam-endpoint: "{{{ iam-endpoint }}}"
+      ibm.io/object-store-endpoint: "{{{ cos-endpoint }}}"
+      ibm.io/object-store-storage-class: "{{ cos-storage-class }}"
   - apiVersion: storage.k8s.io/v1
     kind: StorageClass
     metadata:
-      name: ibmc-s3fs-rhocp-perf
+      name:
       labels:
         app.kubernetes.io/name: ibmcloud-object-storage-plugin
-        app.kubernetes.io/version: "{{ version }}"
+        app.kubernetes.io/version: "2.0.6"
     provisioner: ibm.io/ibmc-s3fs
     parameters:
       ibm.io/chunk-size-mb: "52"
@@ -42,6 +42,6 @@ metadata:
       ibm.io/curl-debug: "false"
       ibm.io/kernel-cache: "true"
       ibm.io/s3fs-fuse-retry-count: "5"
-      ibm.io/iam-endpoint: "{{ iamEndpoint }}"
-      ibm.io/object-store-endpoint: "{{ cosEndpoint }}"
-      ibm.io/object-store-storage-class: "{{ cosStorageClass }}"
+      ibm.io/iam-endpoint: "{{{ iam-endpoint }}}"
+      ibm.io/object-store-endpoint: "{{{ cos-endpoint }}}"
+      ibm.io/object-store-storage-class: "{{ cos-storage-class }}"

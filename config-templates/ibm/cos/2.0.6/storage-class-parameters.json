@@ -4,32 +4,32 @@
     "description": "Namespace where Storage Class has to be deployed",
     "displayname": "Namespace",
     "name": "namespace",
-    "required": false,
+    "required": "false",
     "default": "kube-system",
-    "type": "text"
+    "category": "config"
   },
   {
     "description": "IAM Endpoint",
     "displayname": "IAM Endpoint",
-    "name": "iamEndpoint",
-    "required": false,
+    "name": "iam-endpoint",
+    "required": "false",
     "default": "https://iam.bluemix.net",
-    "type": "text"
+    "category": "config"
   },
   {
     "description": "COS Endpoint",
     "displayname": "COS Endpoint",
-    "name": "cosEndpoint",
-    "required": false,
+    "name": "cos-endpoint",
+    "required": "false",
     "default": "",
-    "type": "text"
+    "category": "config"
   },
   {
     "description": "COS StorageClass",
     "displayname": "COS StorageClass",
-    "name": "cosStorageClass",
-    "required": false,
+    "name": "cos-storage-class",
+    "required": "false",
     "default": "",
-    "type": "text"
+    "category": "config"
   }
 ]

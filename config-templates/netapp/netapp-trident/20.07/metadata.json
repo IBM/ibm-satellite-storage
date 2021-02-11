@@ -6,42 +6,45 @@
     {
       "name": "provider",
       "value": "netapp"
-    },
-    {
-      "name": "storage_type",
-      "value": "file"
-    },
-    {
-      "name": "encryption_support",
-      "value": "true"
-    },
-    {
-      "name": "snapshot_support",
-      "value": "true"
-    },
-    {
-      "name": "availability",
-      "value": "regional"
-    },
-    {
-      "name": "storage_class",
-      "value": "gold,silver,bronze"
-    },
-    {
-      "name": "logo-image",
+    }, {
+      "name": "offering-name",
+      "value": "ontap-nas"
+    }, {
+      "name": "provider-url",
+      "value": "https://netapp-trident.readthedocs.io/en/stable-v20.10/support/support.html"
+    }, {
+      "name": "support-msg",
+      "value": "For support contact NetApp"
+    }, {
+      "name": "provider-logo",
       "value": "logo/trident.png"
-    },
-    {
-      "name": "kube-version",
-      "value": "1.18"
-    },
-    {
-      "key": "supported-envs",
+    }, {
+      "name": "supported-envs",
       "value": "AWS,Azure,IBM"
-    },
-    {
-      "key": "support-description",
-      "value": "For support contact NetApp: https://netapp-trident.readthedocs.io/en/stable-v20.10/support/support.html"
+    }, {
+      "name": "supported-k8s-versions",
+      "value": "1.18,1.19"
+    }, {
+      "name": "volume-type",
+      "value": "file"
+    }, {
+      "name": "volume-encryption-at-rest",
+      "value": "true"
+    }, {
+      "name": "volume-encryption-in-transit",
+      "value": "true"
+    }, {
+      "name": "volume-snapshot",
+      "value": "true"
+    }, {
+      "name": "volume-availability",
+      "value": "zonal"
+    }, {
+      "name": "volume-expansion",
+      "value": "true"
+    }, {
+      "name": "storageclass",
+      "value": "gold,silver"
     }
   ]
 }

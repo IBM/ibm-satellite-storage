@@ -8,6 +8,14 @@
     "provider": "aws"
   },
   {
+    "name": "aws-ebs-csi-driver",
+    "displayname": "AWS EBS CSI driver",
+    "Description": "AWS EBS CSI driver for satallite cluster",
+    "default-version": "0.8.2",
+    "enabled": "true",
+    "provider": "aws"
+  },
+  {
     "name": "netapp-trident",
     "displayname": "Net App Trident Driver",
     "Description": "Net App Trident Driver",
@@ -34,7 +42,7 @@
   {
     "name": "cos",
     "displayname": "Cloud Object Storage",
-    "Description": "Cloud Object Storage for satallite cluster",
+    "Description": "Cloud Object Storage for satellite cluster",
     "default-version": "2.0.6",
     "enabled": "true",
     "provider": "ibm"
