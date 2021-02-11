@@ -255,6 +255,7 @@ sdc
 ## How to uninstall
 
 - Delete the assignment and the configuration
+- Temporarily, you'll have to manually delete the `local-storage` and `openshift-storage` namespaces after removing finalizers on the resources under them
 - run this command for all the nodes
 ```
 oc debug node/<node name> -- chroot /host rm -rvf /var/lib/rook /mnt/local-storage
