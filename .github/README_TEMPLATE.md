@@ -38,7 +38,7 @@ Note that each parameter in your parameter table should include the following de
 Provide a table of the Satellite storage classes that are installed when your configuration is assigned to a cluster. Refer to the following example table. Add or remove storage class details based on the storage type.
 
 | Storage class name | Type | File system | IOPs | Size range | Hard disk | Reclaim policy |
-| --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- | --- |
 | `sat-storage-class-name-delete-bronze` | Endurance | NFS | 2 | 20-12000 Gi | SSD | Delete | 
 
 
