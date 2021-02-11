@@ -500,9 +500,7 @@ items:
     provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-nas"
-      snapshots: "true"
-      provisioningType: "thick"
-      encryption: "true"
+      selector: "performance=gold"
   - apiVersion: storage.k8s.io/v1
     kind: StorageClass
     metadata:
@@ -510,6 +508,36 @@ items:
     provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-nas"
-      snapshots: "true"
-      provisioningType: "thin"
-      encryption: "true"
+      selector: "performance=silver"
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: netapp-file-bronze
+    provisioner: csi.trident.netapp.io
+    parameters:
+      backendType: "ontap-nas"
+      selector: "performance=bronze"
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: netapp-block-gold
+    provisioner: csi.trident.netapp.io
+    parameters:
+      backendType: "ontap-san"
+      selector: "performance=gold"
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: netapp-block-silver
+    provisioner: csi.trident.netapp.io
+    parameters:
+      backendType: "ontap-san"
+      selector: "performance=silver"
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: netapp-block-bronze
+    provisioner: csi.trident.netapp.io
+    parameters:
+      backendType: "ontap-san"
+      selector: "performance=bronze"

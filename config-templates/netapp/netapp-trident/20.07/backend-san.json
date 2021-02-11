@@ -1,0 +1,56 @@
+{
+    "version": 1,
+    "storageDriverName": "ontap-san",
+    "managementLIF": "10.0.0.1",
+    "useCHAP": true,
+    "chapInitiatorSecret": "cl9qxIm36DKyawxy",
+    "chapTargetInitiatorSecret": "rqxigXgkesIpwxyz",
+    "chapTargetUsername": "iJF4heBRT0TCwxyz",
+    "chapUsername": "uh2aNCLSd6cNwxyz",
+    "igroupName": "trident",
+    "dataLIF": "10.0.0.2",
+    "svm": "svm_nfs",
+    "username": "vsadmin",
+    "password": "secret",
+    "storagePrefix": "trident",
+    "limitAggregateUsage": "80%",
+    "limitVolumeSize": "50Gi",
+    "debugTraceFlags": {"api":false, "method":true},
+    "defaults": {
+          "spaceReserve": "none",
+          "encryption": "false",
+          "snapshotPolicy": "default",
+          "snapshotReserve": "10",
+          "splitOnClone": true,
+          "unixPermissions": "0777",
+          "snapshotDir": false,
+          "securityStyle": "unix",
+          "tieringPolicy": "none"
+    },
+    "storage": [
+        {
+            "labels":{"performance": "bronze"},
+            "defaults": {
+                "spaceReserve": "none",
+                "encryption": "false",
+                "snapshotPolicy": "default"
+            }
+        },
+        {
+            "labels":{"performance": "silver"},
+            "defaults": {
+                "spaceReserve": "none",
+                "encryption": "true",
+                "snapshotPolicy": "default"
+            }
+        },
+        {
+            "labels":{"performance": "gold"},
+            "defaults": {
+                "spaceReserve": "volume",
+                "encryption": "true",
+                "snapshotPolicy": "default"
+            }
+        }
+    ]
+}

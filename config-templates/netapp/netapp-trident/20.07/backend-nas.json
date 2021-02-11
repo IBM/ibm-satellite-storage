@@ -1,0 +1,53 @@
+{
+    "version": 1,
+    "storageDriverName": "ontap-nas",
+    "managementLIF": "10.0.0.1",
+    "autoExportCIDRs": ["192.168.0.0/24"],
+    "autoExportPolicy": true,
+    "dataLIF": "10.0.0.2",
+    "svm": "svm_nfs",
+    "username": "vsadmin",
+    "password": "secret",
+    "storagePrefix": "trident",
+    "limitAggregateUsage": "80%",
+    "limitVolumeSize": "50Gi",
+    "debugTraceFlags": {"api":false, "method":true},
+    "nfsMountOptions": "nfsvers=4",
+    "defaults": {
+          "spaceReserve": "none",
+          "encryption": "false",
+          "snapshotPolicy": "default",
+          "snapshotReserve": "10",
+          "splitOnClone": true,
+          "unixPermissions": "0777",
+          "snapshotDir": false,
+          "securityStyle": "unix",
+          "tieringPolicy": "none"
+    },
+    "storage": [
+        {
+            "labels":{"performance": "bronze"},
+            "defaults": {
+                "spaceReserve": "none",
+                "encryption": "false",
+                "snapshotPolicy": "default"
+            }
+        },
+        {
+            "labels":{"performance": "silver"},
+            "defaults": {
+                "spaceReserve": "none",
+                "encryption": "true",
+                "snapshotPolicy": "default"
+            }
+        },
+        {
+            "labels":{"performance": "gold"},
+            "defaults": {
+                "spaceReserve": "volume",
+                "encryption": "true",
+                "snapshotPolicy": "default"
+            }
+        }
+    ]
+}
