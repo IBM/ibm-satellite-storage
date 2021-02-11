@@ -237,13 +237,19 @@ oc patch ocsinitialization ocsinit -n openshift-storage --type json --patch  '[{
 - Use command `oc debug node/<Worker_Node>` and then run the command `lsblk` to check if your disks used in OCS are raw devices or raw partitions and they do not have any filesystems on them.
 ```
 Sample output:
-lsblk -f
-NAME                  FSTYPE      LABEL UUID                                   MOUNTPOINT
-vda
-└─vda1                LVM2_member       eSO50t-GkUV-YKTH-WsGq-hNJY-eKNf-3i07IB
-  ├─ubuntu--vg-root   ext4              c2366f76-6e21-4f10-a8f3-6776212e2fe4   /
-  └─ubuntu--vg-swap_1 swap              9492a3dc-ad75-47cd-9596-678e8cf17ff9   [SWAP]
-vdb
+sh-4.2# lsblk -f
+NAME   FSTYPE LABEL UUID                                 MOUNTPOINT
+sda                                                      
+|-sda1 xfs          9c0c6660-e1f4-45c8-a023-345da3d666c5 /boot
+|-sda2 swap         6b5b21d1-e95e-45d9-b4fc-da805b997bec 
+`-sda3 xfs          f891eede-4ed8-42ec-8215-700d39afe119 /
+sdb                                                      
+`-sdb1 xfs          b4e4af05-56d7-4bc8-b235-32e540a51f1a /disk1
+sdc                                                      
+|-sdc1 ext4         cd7d288b-1ff3-4225-9465-ae6eef33deb5 
+|-sdc2 ext4         fd9367a3-cb73-4899-a202-0cd462c755a2 
+`-sdc3 ext4         d6874707-a2d4-489e-bfdb-521d6a8acbcb 
+
 ```
 
 ## How to uninstall
