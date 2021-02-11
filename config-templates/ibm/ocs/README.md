@@ -14,7 +14,7 @@ The user has to provide the input values to the custom resource OcsCluster while
     - PVs available from a storage class in block mode
 2) The cluster needs to have a minimum of 3 nodes
 3) The OCP version should be compatible with the OCS version you're trying to install
-4) The devices (nodes) used for the cluster should have a configuration of minimum 16CPUs and 64GB RAM
+4) The nodes used for the cluster should have a configuration of minimum 16CPUs and 64GB RAM
 
 ### OCS local: Parameters
 
