@@ -90,7 +90,7 @@ sat-aws-block-silver      ebs.csi.aws.com    Delete          WaitForFirstConsume
 ## Troubleshooting
 
 
-## Reference
+## References
 
 - AWS-EBS-CSI-Driver: https://github.com/kubernetes-sigs/aws-ebs-csi-driver
 - Examples: https://github.com/kubernetes-sigs/aws-ebs-csi-driver/tree/master/examples/kubernetes

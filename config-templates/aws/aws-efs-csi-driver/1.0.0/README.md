@@ -57,7 +57,7 @@ sat-aws-file-gold              efs.csi.aws.com    Delete          Immediate     
 
 
 
-## Reference
+## References
 
 - AWS-EFS-CSI-Driver: https://github.com/kubernetes-sigs/aws-efs-csi-driver
 - Examples: https://github.com/kubernetes-sigs/aws-efs-csi-driver/tree/master/examples/kubernetes
