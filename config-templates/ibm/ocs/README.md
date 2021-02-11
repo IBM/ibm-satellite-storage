@@ -229,7 +229,11 @@ $ oc describe storagecluster -n openshift-storage
 $ oc describe cephcluster -n openshift-storage
 ```
 
-- You can use the toolbox available in rook community to debug OCS deploy issues. Refer https://rook.io/docs/rook/v1.3/ceph-toolbox.html to use toolbox.
+- You can use the toolbox available in rook community to debug OCS deploy issues.
+  Use this to install toolbox : 
+```
+oc patch ocsinitialization ocsinit -n openshift-storage --type json --patch  '[{ "op": "replace", "path": "/spec/enableCephTools", "value": true }]'
+```
 - Use command `oc debug node/<Worker_Node>` and then run the command `lsblk` to check if your disks used in OCS are raw devices or raw partitions and they do not have any filesystems on them.
 ```
 Sample output:
