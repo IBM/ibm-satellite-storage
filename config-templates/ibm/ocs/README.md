@@ -87,7 +87,7 @@ satellite-ocs-template-test   b201d0ed-a4aa-414c-b0eb-0c4437797e95   c040tu4w0h6
 
 Note : for the `osd-device-path` and `mon-device-path` parameters, we need to find the disk by ID of the disks we want to use.
 
-To find the disk by id of the devices :
+To find the disk by id of the disks :
 1) Logon to each worker node that will be used for OCS using `oc debug node/<nodename>`, run `chroot /host` followed by `lsblk` to find available disks. 
 ```
 oc debug node/ip-10-0-135-71.us-east-2.compute.internal
@@ -108,7 +108,7 @@ sdc      8:32   0 744.7G  0 disk
 |-sdc1   8:33   0  18.6G  0 part 
 `-sdc2   8:34   0 260.8G  0 part
 ```
-2)After you know which local devices are available, in this case nsdc1, sdc2 and sdc3, you can now find the by-id, a unique name depending on the hardware serial number for each device.
+2)After you know which local disks are available, in this case sdc1, and sdc2, you can now find the by-id, a unique name depending on the hardware serial number for each disk.
 
 ```
 sh-4.2# ls -l /dev/disk/by-id/
@@ -161,13 +161,13 @@ spec:
     ibmCosAccessKey: ""
     ibmCosSecretKey: ""
     monDevicePaths:
-    - /dev/sdc1
+    - /dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part1
     monSize: "1"
     monStorageClassName: localfile
     numOfOsd: 1
     ocsUpgrade: false
     osdDevicePaths:
-    - /dev/sdc2
+    - /dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part2
     osdSize: "1"
     osdStorageClassName: localblock
     workerNodes:
@@ -277,7 +277,7 @@ To update the version of OCS, we have to create a new configuration with the tem
 Example :
 
 ```
-$ibmcloud sat storage config create --name ocs-config3 --template-name ocs --template-version 4.7_local -p "ocs-cluster-name=testocscluster" -p "osd-device-path=/dev/sdc2,/dev/sdc3" -p "mon-device-path=/dev/sdc1" -p "num-of-osd=2" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90" -p "ibm-cos-access-key=xxx" -p "ibm-cos-secret-key=yyy" -p "ocs-upgrade=true"
+$ibmcloud sat storage config create --name ocs-config3 --template-name ocs --template-version 4.7_local -p "ocs-cluster-name=testocscluster" -p "osd-device-path=/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part2,/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part3" -p "mon-device-path=/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part1" -p "num-of-osd=2" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90" -p "ibm-cos-access-key=xxx" -p "ibm-cos-secret-key=yyy" -p "ocs-upgrade=true"
 ```
 
 After this, we need to create a new assignment for this configuration :
