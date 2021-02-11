@@ -1,9 +1,11 @@
 # OCS
 
 Red Hat OpenShift Container Storage is software-defined storage that is optimised for container environments. It runs as an operator on OpenShift Container Platform to provide highly integrated and simplified persistent storage management for containers.
-We have an ibm-ocs-operator which will be deployed on the creation of the template. The user has to provide the input values to the custom resource OcsCluster while creating the satellite configuration to deploy OCS
+The user has to provide the input values to the custom resource OcsCluster while creating the satellite configuration to deploy OCS
 
-## Prerequisites
+##How to use the template to deploy OCS (local) on a Satellite Cluster?
+
+### Prerequisites
 
 1) In order to deploy OCS, at least one of these local storage options are required:
     - Raw devices (no partitions or formatted filesystems)
@@ -12,7 +14,7 @@ We have an ibm-ocs-operator which will be deployed on the creation of the templa
 2) The cluster needs to have a minimum of 3 nodes
 3) The OCP version should be compatible with the OCS version you're trying to install  
 
-## OCS: Parameters (Classic local)
+### OCS local: Parameters
 
 **Description of the template parameters :**
 
@@ -37,9 +39,9 @@ We have an ibm-ocs-operator which will be deployed on the creation of the templa
 | sat-ocs-cephrgw-gold | Object | openshift-storage.ceph.rook.io/bucket |Delete |
 | sat-ocs-noobaa-gold | Object bucket | openshift-storage.noobaa.io/obc | Delete |
 
-## Creating the OCS storage configuration
+### Creating the OCS storage configuration
 
-### Detailed steps
+#### Detailed steps
 
 1. Login into the Cluster using oc CLI or IBM Cloud CLI
 2. Verify that all the worker nodes are healthy.
@@ -81,7 +83,7 @@ satellite-ocs-template-test   b201d0ed-a4aa-414c-b0eb-0c4437797e95   c040tu4w0h6
    - Review the required parameters for the template
    - Create Storage Configuration (Sample provided below)
 ```
-$ibmcloud sat storage config create --name ocs-config --template-name ocs --template-version 4.6_classic_local -p "ocs-cluster-name=testocscluster" -p "osd-device-path=/dev/sdc2" -p "mon-device-path=/dev/sdc1" -p "num-of-osd=1" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90" -p "ibm-cos-access-key=c461e3cdac2743f6a8e9288071d75b0d" -p "ibm-cos-secret-key=4ae6592d1be33e4e1dd31186f4473ff0dd58314355f0a7a7"
+$ibmcloud sat storage config create --name ocs-config --template-name ocs --template-version 4.6_local -p "ocs-cluster-name=testocscluster" -p "osd-device-path=/dev/sdc2" -p "mon-device-path=/dev/sdc1" -p "num-of-osd=1" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90" -p "ibm-cos-access-key=xxx" -p "ibm-cos-secret-key=yyy"
 Creating Satellite storage configuration...
 OK
 Storage configuration 'ocs-config' was successfully created with ID 'b3982666-75a2-466d-9f0c-efc878dd5949'.
@@ -96,9 +98,40 @@ OK
 Assignment ocs-sub was successfully created with ID 575cb060-b1ad-49fa-ab1a-7ce861fabc41.
 ```
 
-## Verifying your OCS storage configuration is assigned to your clusters
+### Verifying your OCS storage configuration is assigned to your clusters
 
-It takes about 15 minutes for OCS to get installed. You can check the status of the storagecluster
+It takes about 15 minutes for OCS to get installed.
+You can check the CRD OcsCluster to see your parameters and storagcluster status
+
+```
+$ oc get ocscluster
+apiVersion: ocs.ibm.io/v1
+kind: OcsCluster
+metadata:
+  name: testocscluster
+spec:
+    billingType: hourly
+    ibmCosAccessKey: ""
+    ibmCosSecretKey: ""
+    monDevicePaths:
+    - /dev/sdc1
+    monSize: "1"
+    monStorageClassName: localfile
+    numOfOsd: 1
+    ocsUpgrade: false
+    osdDevicePaths:
+    - /dev/sdc2
+    osdSize: "1"
+    osdStorageClassName: localblock
+    workerNodes:
+    - 169.48.170.83
+    - 169.48.170.88
+    - 169.48.170.90
+status:
+   storageClusterStatus: Ready
+```
+
+You can check the status of the storagecluster
 
 ```
 $ oc get storagecluster -n openshift-storage
@@ -149,30 +182,42 @@ rook-ceph-rgw-ocs-storagecluster-cephobjectstore-a-7f7f6df9rv6h   1/1     Runnin
 rook-ceph-rgw-ocs-storagecluster-cephobjectstore-b-554fd9dz6dm8   1/1     Running     0          3m41s
 ```
 
-##Updating the CRD :
+###Scaling (Capacity expansion of OCS) :
 
-Some scenarios require that we update the OcsCluster CRD (Scaling, OCS upgrade, etc). To do so, we have to create a new configuration with the same name for the CRD (ocs-cluster-name) and with the updated values of the other parameters, for instance,
-1. num-of-osd for scaling
-2. ocs-upgrade for Upgrading the OCS version
-3. osd-device-path or mon-device-path for adding devices
+To scale the OCS cluster, we have to create a new configuration with the same name for the CRD (the parameter ocs-cluster-name) and the rest of the parameters should remain the same as the previous configuration, but, we should change the value of `num-of-osd` with the scaling factor required.
+If no extra devices are present, we need to add devices by updating the parameter `osd-device-path`
 
 Example :
 
 ```
-$ibmcloud sat storage config create --name ocs-config2 --template-name ocs --template-version 4.6_classic_local -p "ocs-cluster-name=testocscluster" -p "osd-device-path=/dev/sdc2,/dev/sdc3" -p "mon-device-path=/dev/sdc1" -p "num-of-osd=2" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90" -p "ibm-cos-access-key=c461e3cdac2743f6a8e9288071d75b0d" -p "ibm-cos-secret-key=4ae6592d1be33e4e1dd31186f4473ff0dd58314355f0a7a7"
+$ibmcloud sat storage config create --name ocs-config2 --template-name ocs --template-version 4.6_local -p "ocs-cluster-name=testocscluster" -p "osd-device-path=/dev/sdc2,/dev/sdc3" -p "mon-device-path=/dev/sdc1" -p "num-of-osd=2" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90" -p "ibm-cos-access-key=xxx" -p "ibm-cos-secret-key=yyy"
 ```
 
 After this, we need to create a new assignment for this configuration :
 
 ```
-$ ibmcloud sat storage assignment create --name ocs-sub --group test-group2 --config ocs-config2
+$ ibmcloud sat storage assignment create --name ocs-sub2 --group test-group2 --config ocs-config2
 ```
 
 This will update the OcsCluster resource.
 
-Logging and Monitoring
+###Migration (Updating OCS version) :
 
-RedHat OpenShift web console has a dashboard which can be used for monitoring and checking various metrics and alerts including OCS. Refer https://cloud.ibm.com/docs/openshift?topic=openshift-health#oc_logmet_options for various logging and monitoring options available with RedHat OpenShift on IBM Cloud.
+To update the version of OCS, we have to create a new configuration with the template version set to the version you want to upgrade to. We need to have the same name for the CRD (the parameter ocs-cluster-name) and the rest of the parameters should remain the same as the previous configuration, but, we should change the value of `ocs-upgrade` to true.
+
+Example :
+
+```
+$ibmcloud sat storage config create --name ocs-config3 --template-name ocs --template-version 4.7_local -p "ocs-cluster-name=testocscluster" -p "osd-device-path=/dev/sdc2,/dev/sdc3" -p "mon-device-path=/dev/sdc1" -p "num-of-osd=2" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90" -p "ibm-cos-access-key=xxx" -p "ibm-cos-secret-key=yyy" -p "ocs-upgrade=true"
+```
+
+After this, we need to create a new assignment for this configuration :
+
+```
+$ ibmcloud sat storage assignment create --name ocs-sub3 --group test-group2 --config ocs-config3
+```
+
+This will upgrade OCS to the new version.
 
 ## Troubleshooting
 ### What to do when OCS install fails
@@ -196,14 +241,10 @@ vda
 vdb
 ```
 
-### How to cleanup OCS as part of un-Install
-- Delete the ocscluster resource (CRD)
+## How to uninstall
+
+- Delete the assignment and the configuration
 - run this command for all the nodes
 ```
 oc debug node/<node name> -- chroot /host rm -rvf /var/lib/rook /mnt/local-storage
 ```
-
-
-Reference
-
-1. https://github.ibm.com/alchemy-containers/armada/blob/master/architecture/guild/concept-docs/concept-ocs.md
