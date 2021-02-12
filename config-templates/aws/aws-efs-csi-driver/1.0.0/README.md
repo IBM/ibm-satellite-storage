@@ -6,9 +6,9 @@ AWS EFS CSI driver implements the CSI specification for container orchestrators 
 
 - Currently only *static provisioning* is supported. This means an [AWS EFS file system](https://docs.aws.amazon.com/efs/latest/ug/gs-step-two-create-efs-resources.html) needs to be created manually on AWS first. After that it can be mounted inside a container as a volume using the driver.
 
-## AWS EBS CSI Driver parameters & how to retrieve them
+## AWS EFS CSI Driver parameters & how to retrieve them
 
-No parameters required for this template.
+No parameters required for this template. 
 
 
 ## Default storage classes
@@ -35,13 +35,15 @@ ibmcloud sat storage assignment create --name install-efs --cluster-group <clust
 ```
 
 ## Verifying your AWS EFS CSI Driver storage configuration is assigned to your clusters
-
+List the EFS driver pods in the `kube-system` namespace and verify that the status is `Running`.
 ```
 $ oc get pods -n kube-system | grep efs    
 efs-csi-node-4gkzx                      3/3     Running   0          2d22h
 efs-csi-node-r8g5d                      3/3     Running   0          2d22h
 efs-csi-node-td4wc                      3/3     Running   0          2d22h
 ```
+
+List the EFS storage classes.
 
 ```
 $ oc get sc | grep aws-file 

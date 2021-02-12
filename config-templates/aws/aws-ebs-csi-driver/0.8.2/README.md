@@ -9,11 +9,11 @@ AWS EBS CSI driver implements the CSI specification for container orchestrators 
 
 ## Prerequisites
 **Planning consideration for Infra Admin**
--  For better IOPS and throughput, use instance built on *Nitro System*. Refer to 
+-  For better IOPS and throughput, create a *Nitro System* instance. Refer to 
 https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html
 
 **Planning consideration for Location Admin**
-- The driver requires IAM permission to talk to Amazon EBS to manage the volume on user's behalf. Create an IAM user with proper permission and get *AWS Access Keys*. Refer to https://docs.aws.amazon.com/powershell/latest/userguide/pstools-appendix-sign-up.html
+- The driver requires IAM permission to manage Amazon EBS volumes. Create an IAM user with proper permission and get your *AWS Access Key*. For more information about how to retrieve your access key, see the [AWS IAM docs](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html)
 
 - Volume type *io2* requires iopsPerGB, default is set to *10 IOPS/GB*.
   To set different value for iopsPerGB, refer to https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html
@@ -30,8 +30,8 @@ ibmcloud sat storage template get --name aws-ebs-csi-driver --version 0.8.2
 
 | Parameter | Required? | Description | Default value if not provided |
 | --- | --- | --- | --- |
-| `aws-access-key` | Required | This is a required parameter. | N/A |
-| `aws-secret-access-key` | Required | This is a required parameter. | N/A | |
+| `aws-access-key` | Required | Enter your AWS IAM access key. For more information about how to retrieve your access key, see the [AWS IAM docs](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html). | N/A |
+| `aws-secret-access-key` | Required | Enter your AWS IAM secret access key. For more information about how to retrieve your access key, see the [AWS IAM docs](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html). | N/A | |
 | `iops-per-gb` | Optional | This is an optional parameter.  | 10 |
 
 
@@ -62,7 +62,9 @@ ibmcloud sat storage assignment create --name install-ebs --cluster-group <clust
 
 ## Verifying your AWS EBS CSI Driver storage configuration is assigned to your clusters
 
-Provide steps to retrieve any driver pods, storage classes, or any other resources that are deployed with your storage configuration.
+To verify that your configuration is assigned to your cluster. Verify that the driver pods are running, and list the Satellite storage classes that are installed.
+
+List the EBS driver pods in the `kube-system` namespace and verify that the status is `Running`.
 
 ```
 $ oc get pods -n kube-system | grep ebs    
@@ -73,6 +75,8 @@ ebs-csi-node-7wccn                      3/3     Running   0          2d8h
 ebs-csi-node-rllvw                      3/3     Running   0          2d8h
 ebs-snapshot-controller-0               1/1     Running   0          2d8h
 ```
+
+List the EBS storage classes.
 
 ```
 $ oc get sc | grep aws-block               
