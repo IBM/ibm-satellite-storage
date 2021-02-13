@@ -32,8 +32,8 @@
     "provider": "ibm"
   },
   {
-    "name": "local-volume",
-    "displayname": "Persistent storage using local volumes",
+    "name": "local-volume-block",
+    "displayname": "Persistent storage (block) using local volumes",
     "Description": "Persistent storage using local volumes for satallite cluster",
     "default-version": "4.5",
     "enabled": "true",
