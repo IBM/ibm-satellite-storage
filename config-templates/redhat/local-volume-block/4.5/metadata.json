@@ -8,7 +8,7 @@
       "value": "redhat"
     }, {
       "name": "offering-name",
-      "value": "local-volume"
+      "value": "local-volume-block"
     }, {
       "name": "provider-url",
       "value": "https://docs.openshift.com/container-platform/4.6/storage/persistent_storage/persistent-storage-local.html"
