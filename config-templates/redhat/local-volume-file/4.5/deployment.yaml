@@ -2,10 +2,10 @@
 apiVersion: v1
 kind: List
 metadata:
-    name: local-volume
+    name: local-volume-file
     namespace: kube-system
     annotations:
-        version: local-volume-45
+        version: local-volume-file-45
 items:
     - apiVersion: v1
       kind: Namespace
@@ -42,9 +42,12 @@ items:
                         - key: "{{ label-key }}"
                           operator: In
                           values:
-                              - "{{ label-value }}"
+                          - "{{ label-value }}"
           storageClassDevices:
-              - storageClassName: "localblock-sc"
-                volumeMode: Block
+              - storageClassName: "sat-local-file-gold"
+                volumeMode: Filesystem
+                fsType: "{{ fstype }}"
                 devicePaths:
-                    - "{{ devicepath }}"
+                  {{#devicepath}}
+                  - "{{{ item }}}"
+                  {{/devicepath}}

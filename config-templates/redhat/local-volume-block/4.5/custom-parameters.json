@@ -18,6 +18,7 @@
     "displayname": "Device Path",
     "name": "devicepath",
     "required": "true",
-    "category": "config"
+    "category": "config",
+    "type": "csv"
   }
 ]

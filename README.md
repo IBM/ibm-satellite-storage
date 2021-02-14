@@ -141,6 +141,7 @@ Refer to:-
              ---storage-class-template.yaml
              ---storage-class-parameters.json
              ---metadata.json
+             ---readme.me
    ```
    ```
    Example: config-templates/<provider-name>/<offering-name>/<template-version>/deployment.yaml
@@ -153,6 +154,7 @@ Refer to:-
    1. `custom-parameters.json`: This file containts the list of parameters with default value. User / admin can override the values from Sat Storage GUI. The parameter values are injected in deployment template to generate the final configuration yaml to deploy on the target clusters.
    1. `storage-class-template.yaml`: This file contains the storage class template. It eanbles creation of multiple storage classes on a satellite cluster
    1. `storage-class-parameters.json`: This file containts the list of parameters for stoarge classes. User / admin can override the values from GUI. The parameter values are injected in storage class template to generate the storage class specifications to deploy on the target clusters.
+   1. `readme.md`: This file contains prerequisites, deployment steps, and additional information about your template. Copy and fill out the [README_TEMPLATE.md](/.github/README_TEMPLATE.md).
    1. `metadata.json`: This file contains the metadata for GUI display.
 1. Edit [template_list.json](https://github.com/nkkashyap/ibm-satellite-storage/blob/local-vol/config-templates/template_list.json) to add the new template 
    ```
