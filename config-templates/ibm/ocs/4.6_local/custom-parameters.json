@@ -47,19 +47,5 @@
     "name": "billing-type",
     "default": "hourly",
     "required": "false"
-  },
-  {
-    "description": "IBM COS access key",
-    "displayname": "IBM COS access key",
-    "name": "ibm-cos-access-key",
-    "category": "secret",
-    "required": "false"
-  },
-  {
-    "description": "IBM COS secret key",
-    "displayname": "IBM COS secret key",
-    "name": "ibm-cos-secret-key",
-    "category": "secret",
-    "required": "false"
   }
 ]

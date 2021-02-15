@@ -41,10 +41,6 @@ items:
                     - hourly
                     - monthly
                     type: string
-                  ibmCosAccessKey:
-                    type: string
-                  ibmCosSecretKey:
-                    type: string
                   monStorageClassName:
                     type: string
                   monDevicePaths:
@@ -156,16 +152,6 @@ items:
       - persistentvolumes
       verbs:
       - deletecollection
-    - apiGroups:
-      - ""
-      resources:
-      - secrets
-      verbs:
-      - create
-      - delete
-      - get
-      - list
-      - watch
     - apiGroups:
       - ""
       resources:
@@ -304,7 +290,7 @@ items:
               value: stable-4.6
             - name: WATCH_NAMESPACE
               value: openshift-storage
-            image: "icr.io/obs/ibm-ocs-operator:v0.0.13"
+            image: "icr.io/obs/ibm-ocs-operator:v0.0.14"
             imagePullPolicy: Always
             name: manager
             securityContext:
@@ -313,10 +299,10 @@ items:
             resources:
               limits:
                 cpu: 100m
-                memory: 200Mi
+                memory: 100Mi
               requests:
                 cpu: 100m
-                memory: 200Mi
+                memory: 100Mi
           terminationGracePeriodSeconds: 10
   - apiVersion: storage.k8s.io/v1
     kind: StorageClass
@@ -395,10 +381,10 @@ items:
          {{/osd-device-path }}
        numOfOsd: {{ num-of-osd }}
        ocsUpgrade: {{ ocs-upgrade }}
+       {{#worker-nodes}}
        workerNodes:
          {{#worker-nodes}}
          - "{{{ item }}}"
          {{/worker-nodes}}
+       {{/worker-nodes}}   
        billingType: "{{ billing-type }}"
-       ibmCosAccessKey: "{{ibm-cos-access-key}}"
-       ibmCosSecretKey: "{{ibm-cos-secret-key}}"
