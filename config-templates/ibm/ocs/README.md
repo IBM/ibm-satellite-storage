@@ -103,7 +103,7 @@ c) From above, we can see that the disk by ids are :
 | `num-of-osd` | Optional | Enter the number of OSDs. OCS will create 3x number of OSDs for the value specified. Initial storage capacity is the same as your disk size specified at `osd-device-path`. When you want to increase your storage capacity, you have to increase `num-of-osd` by the number of disks you add (taking into consideration the replication factor, which is `3` by default) | 1 | integer |
 |worker-nodes | Optional | Workers which need to be a part of OCS (Minimum 3). If not specified, all workers will be considered for OCS | N/A | csv |
 | `billing-type` | Optional | Enter the billing option that you want to use. You can enter either `hourly` or `monthly`. | `hourly` | string |
-| `ocs-upgrade` | Optional | Set to `true` if you want to upgrade the major version of OCS. | N/A | boolean |
+| `ocs-upgrade` | Optional | Set to `true` if you want to upgrade the major version of OCS. | false | boolean |
 
 **Default storage classes**
 
