@@ -89,7 +89,7 @@ c) From above, we can see that the disk by ids are :
    `scsi-3600605b00d87b43027b3bc310a64c6c9-part1`
    `scsi-3600605b00d87b43027b3bc310a64c6c9-part2`
 
-###Red hat Openshift Container Storage :  Parameters & how to retrieve them
+### Red hat Openshift Container Storage :  Parameters & how to retrieve them
 
 #### OCS local: Parameters
 
