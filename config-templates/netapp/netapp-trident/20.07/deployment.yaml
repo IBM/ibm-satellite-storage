@@ -10,3 +10,506 @@ items:
     kind: Namespace
     metadata:
       name: "{{ namespace }}"
+  - apiVersion: apiextensions.k8s.io/v1
+    kind: CustomResourceDefinition
+    metadata:
+      name: tridentprovisioners.trident.netapp.io
+    spec:
+      group: trident.netapp.io
+      versions:
+        - name: v1
+          served: true
+          storage: true
+          schema:
+            openAPIV3Schema:
+              type: object
+              x-kubernetes-preserve-unknown-fields: true
+          subresources:
+            status: {}
+      names:
+        kind: TridentProvisioner
+        listKind: TridentProvisionerList
+        plural: tridentprovisioners
+        singular: tridentprovisioner
+        shortNames:
+          - tprov
+      scope: Namespaced
+  - apiVersion: v1
+    kind: ServiceAccount
+    metadata:
+      labels:
+        app: operator.trident.netapp.io
+      name: trident-operator
+      namespace: "{{ namespace }}"
+  - apiVersion: rbac.authorization.k8s.io/v1
+    kind: ClusterRole
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: operator.trident.netapp.io
+      name: trident-operator
+    rules:
+      # Permissions same as Trident
+      - apiGroups:
+          - ""
+        resources:
+          - namespaces
+        verbs:
+          - get
+          - list
+      - apiGroups:
+          - ""
+        resources:
+          - persistentvolumes
+          - persistentvolumeclaims
+        verbs:
+          - get
+          - list
+          - watch
+          - create
+          - delete
+          - update
+          - patch
+      - apiGroups:
+          - ""
+        resources:
+          - persistentvolumeclaims/status
+        verbs:
+          - update
+          - patch
+      - apiGroups:
+          - storage.k8s.io
+        resources:
+          - storageclasses
+        verbs:
+          - get
+          - list
+          - watch
+          - create
+          - delete
+          - update
+          - patch
+      - apiGroups:
+          - ""
+        resources:
+          - events
+        verbs:
+          - get
+          - list
+          - watch
+          - create
+          - update
+          - patch
+      - apiGroups:
+          - ""
+        resources:
+          - secrets
+        verbs:
+          - get
+          - list
+          - watch
+          - create
+          - delete
+          - update
+          - patch
+      - apiGroups:
+          - ""
+        resources:
+          - pods
+        verbs:
+          - get
+          - list
+          - watch
+          - create
+          - delete
+          - update
+          - patch
+      - apiGroups:
+          - ""
+        resources:
+          - nodes
+        verbs:
+          - get
+          - list
+          - watch
+          - update
+      - apiGroups:
+          - storage.k8s.io
+        resources:
+          - volumeattachments
+        verbs:
+          - get
+          - list
+          - watch
+          - update
+          - patch
+      - apiGroups:
+          - snapshot.storage.k8s.io
+        resources:
+          - volumesnapshots
+          - volumesnapshotclasses
+        verbs:
+          - get
+          - list
+          - watch
+          - update
+          - patch
+      - apiGroups:
+          - snapshot.storage.k8s.io
+        resources:
+          - volumesnapshots/status
+          - volumesnapshotcontents/status
+        verbs:
+          - update
+          - patch
+      - apiGroups:
+          - snapshot.storage.k8s.io
+        resources:
+          - volumesnapshotcontents
+        verbs:
+          - get
+          - list
+          - watch
+          - create
+          - delete
+          - update
+          - patch
+      - apiGroups:
+          - csi.storage.k8s.io
+        resources:
+          - csidrivers
+          - csinodeinfos
+        verbs:
+          - get
+          - list
+          - watch
+          - create
+          - delete
+          - update
+          - patch
+      - apiGroups:
+          - storage.k8s.io
+        resources:
+          - csidrivers
+          - csinodes
+        verbs:
+          - get
+          - list
+          - watch
+          - create
+          - delete
+          - update
+          - patch
+      - apiGroups:
+          - apiextensions.k8s.io
+        resources:
+          - customresourcedefinitions
+        verbs:
+          - get
+          - list
+          - watch
+          - create
+          - delete
+          - update
+          - patch
+      - apiGroups:
+          - trident.netapp.io
+        resources:
+          - tridentversions
+          - tridentbackends
+          - tridentstorageclasses
+          - tridentvolumes
+          - tridentnodes
+          - tridenttransactions
+          - tridentsnapshots
+          # Required for Tprov
+          - tridentprovisioners
+          # Required to update Tprov's status section
+          - tridentprovisioners/status
+        verbs:
+          - get
+          - list
+          - watch
+          - create
+          - delete
+          - update
+          - patch
+      - apiGroups:
+          - policy
+        resources:
+          - podsecuritypolicies
+        verbs:
+          - use
+        resourceNames:
+          - tridentpods
+      # Now Operator specific permissions
+      - apiGroups:
+          - apps
+        resources:
+          - deployments
+          - daemonsets
+          - statefulsets
+        verbs:
+          - get
+          - list
+          - watch
+          - create
+      - apiGroups:
+          - apps
+        resources:
+          - deployments
+          - daemonsets
+          - statefulsets
+        verbs:
+          - delete
+          - update
+          - patch
+        resourceNames:
+          - trident-csi
+          - trident
+      - apiGroups:
+          - ""
+        resources:
+          - pods/exec
+          - services
+          - serviceaccounts
+        verbs:
+          - list
+          - create
+      - apiGroups:
+          - ""
+        resources:
+          - pods/exec
+          - services
+          - serviceaccounts
+        verbs:
+          - delete
+          - update
+          - patch
+        resourceNames:
+          - trident-csi
+          - trident
+      - apiGroups:
+          - authorization.openshift.io
+          - rbac.authorization.k8s.io
+        resources:
+          - clusterroles
+          - clusterrolebindings
+        verbs:
+          - list
+          - create
+      - apiGroups:
+          - authorization.openshift.io
+          - rbac.authorization.k8s.io
+        resources:
+          - clusterroles
+          - clusterrolebindings
+        verbs:
+          - delete
+          - update
+          - patch
+        resourceNames:
+          - trident-csi
+          - trident
+      - apiGroups:
+          - policy
+        resources:
+          - podsecuritypolicies
+        verbs:
+          - list
+          - create
+      - apiGroups:
+          - policy
+        resources:
+          - podsecuritypolicies
+        resourceNames:
+          - tridentpods
+        verbs:
+          - delete
+          - update
+          - patch
+      - apiGroups:
+          - security.openshift.io
+        resources:
+          - securitycontextconstraints
+        verbs:
+          - get
+          - list
+          - create
+      - apiGroups:
+          - security.openshift.io
+        resources:
+          - securitycontextconstraints
+        resourceNames:
+          - trident
+        verbs:
+          - delete
+          - update
+          - patch
+      - apiGroups:
+          - policy
+        resources:
+          - podsecuritypolicies
+        verbs:
+          - use
+        resourceNames:
+          - tridentoperatorpods
+  - apiVersion: rbac.authorization.k8s.io/v1
+    kind: ClusterRoleBinding
+    metadata:
+      labels:
+        app: operator.trident.netapp.io
+      name: trident-operator
+    roleRef:
+      apiGroup: rbac.authorization.k8s.io
+      kind: ClusterRole
+      name: trident-operator
+    subjects:
+      - kind: ServiceAccount
+        name: trident-operator
+        namespace: "{{ namespace }}"
+  - apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      labels:
+        app: operator.trident.netapp.io
+      name: trident-operator
+      namespace: "{{ namespace }}"
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          app: operator.trident.netapp.io
+          name: trident-operator
+      template:
+        metadata:
+          labels:
+            app: operator.trident.netapp.io
+            name: trident-operator
+        spec:
+          containers:
+            - command:
+                - /usr/local/bin/trident-operator
+                - --debug
+              env:
+                - name: POD_NAME
+                  valueFrom:
+                    fieldRef:
+                      fieldPath: metadata.name
+                - name: OPERATOR_NAME
+                  value: trident-operator
+              image: netapp/trident-operator:20.07.0
+              imagePullPolicy: IfNotPresent
+              name: trident-operator
+          serviceAccountName: trident-operator
+  - apiVersion: policy/v1beta1
+    kind: PodSecurityPolicy
+    metadata:
+      labels:
+        app: operator.trident.netapp.io
+      name: tridentoperatorpods
+    spec:
+      fsGroup:
+        rule: RunAsAny
+      privileged: false
+      runAsUser:
+        rule: RunAsAny
+      seLinux:
+        rule: RunAsAny
+      supplementalGroups:
+        rule: RunAsAny
+      volumes:
+        - '*'
+  - apiVersion: trident.netapp.io/v1
+    kind: TridentProvisioner
+    metadata:
+      name: trident
+      namespace: "{{ namespace }}"
+    spec:
+      debug: true
+      kubeletDir: "/var/data/kubelet"
+  - apiVersion: v1
+    # create backend storage
+    kind: ServiceAccount
+    metadata:
+      name: trident-kubectl-sa
+      namespace: "{{ namespace }}"
+  - apiVersion: rbac.authorization.k8s.io/v1
+    kind: Role
+    metadata:
+      name: trident-kubectl
+      namespace: "{{ namespace }}"
+    rules:
+      - apiGroups: [""]
+        resources: ["pods"]
+        verbs:
+          - get
+          - list
+          - delete
+      - apiGroups: [""]
+        resources: ["pods/exec"]
+        verbs:
+          - create
+  - apiVersion: rbac.authorization.k8s.io/v1
+    kind: RoleBinding
+    metadata:
+      name: trident-kubectl
+      namespace: "{{ namespace }}"
+    subjects:
+      - kind: ServiceAccount
+        name: trident-kubectl-sa
+    roleRef:
+      kind: Role
+      name: trident-kubectl
+      apiGroup: rbac.authorization.k8s.io
+  - apiVersion: v1
+    kind: Pod
+    metadata:
+      name: trident-kubectl-01
+      namespace: "{{ namespace }}"
+    spec:
+      serviceAccountName: trident-kubectl-sa
+      containers:
+        - name: trident-kubectl
+          image: nkkashyap/ibm-tridentctl:v001
+          env:
+            - name: NAMESPACE
+              value: "{{ namespace }}"
+            - name: DRIVER_NAME
+              value: "{{ storagedriver }}"
+            - name: MGMT_LIF
+              value: "{{ mgmt-lif }}"
+            - name: DATA_LIF
+              value: "{{ data-lif }}"
+            - name: SVM_ID
+              value: "{{ svm-id }}"
+            - name: AGGREGATE_ID
+              value: "{{ aggregate-id }}"
+            - name: STORAGE_SIZE
+              value: "{{ storage-size }}"
+            - name: EXPORT_POLICY
+              value: "{{ export-policy }}"
+            - name: USER_ID
+              value: "{{ user-id }}"
+            - name: USER_PASSWORD
+              value: "{{ user-pass }}"
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: netapp-file-gold
+    provisioner: csi.trident.netapp.io
+    parameters:
+      backendType: "ontap-nas"
+      snapshots: "true"
+      provisioningType: "thick"
+      encryption: "true"
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: netapp-file-silver
+    provisioner: csi.trident.netapp.io
+    parameters:
+      backendType: "ontap-nas"
+      snapshots: "true"
+      provisioningType: "thin"
+      encryption: "true"
