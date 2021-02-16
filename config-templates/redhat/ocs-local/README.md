@@ -7,13 +7,14 @@ The user has to provide the input values to the custom resource OcsCluster while
 ## Prerequisites
 In order to deploy OCS, the following prerequisites are required.
 - You must have at least one of these local storage options are required:
-    - Raw devices (no partitions or formatted filesystems)
-    - Raw partitions (no formatted filesystem)
-    - PVs available from a storage class in block mode
-- Your cluster must have a minimum of 3 nodes that each have a minimum 16CPUs and 64GB RAM
-- Your cluster should be compatible with the OCS version that you're trying to install
-- You must provision an instance of IBM Cloud Object Storage and create a Kubernetes secret with your COS HMAC credentials.
+    - Raw devices (no partitions or formatted filesystems).
+    - Raw partitions (no formatted filesystem).
+    - PVs available from a storage class in block mode.
+- Your cluster must have a minimum of 3 nodes that each have a minimum 16CPUs and 64GB RAM.
+- Your cluster should be compatible with the OCS version that you're trying to install.
 - You must create an `openshift-storage` namespace in your cluster.
+- You must provision an instance of IBM Cloud Object Storage and create a Kubernetes secret with your COS HMAC credentials.
+
 
 ### Creating the `openshift-storage` namespace
 
