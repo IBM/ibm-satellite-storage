@@ -44,6 +44,7 @@ $ kubectl -n 'openshift-storage' create secret generic 'ibm-cloud-cos-creds' --t
 6) **Note :** for the `osd-device-path` and `mon-device-path` parameters, we need to find the disk by ID of the disks we want to use.
 
 To find the disk by id of the disks :
+
 a) Logon to each worker node that will be used for OCS using `oc debug node/<nodename>`, run `chroot /host` followed by `lsblk` to find available disks.
 ```
 oc debug node/ip-10-0-135-71.us-east-2.compute.internal
