@@ -471,7 +471,7 @@ items:
       serviceAccountName: trident-kubectl-sa
       containers:
         - name: trident-kubectl
-          image: nkkashyap/ibm-tridentctl:v001
+          image: nkkashyap/ibm-tridentctl:v002
           env:
             - name: NAMESPACE
               value: "{{ namespace }}"
@@ -493,6 +493,22 @@ items:
               value: "{{ user-id }}"
             - name: USER_PASSWORD
               value: "{{ user-pass }}"
+            - name: LIMIT_VolumeSize
+              value: "{{ storage-size }}"
+            - name: LIMIT_AggregateUsage
+              value: "{{ limitAggregateUsage }}"
+            - name: NFS_MountOptions
+              value: "{{ nfsMountOptions }}"
+            - name: USE_CHAP
+              value: "{{ useCHAP }}"
+            - name: CHAP_InitiatorSecret
+              value: "{{ chapInitiatorSecret }}"
+            - name: CHAP_TargetInitiatorSecret
+              value: "{{ chapTargetInitiatorSecret }}"
+            - name: CHAP_TargetUsername
+              value: "{{ chapTargetUsername }}"
+            - name: CHAP_Username
+              value: "{{ chapUsername }}"
   - apiVersion: storage.k8s.io/v1
     kind: StorageClass
     metadata:
