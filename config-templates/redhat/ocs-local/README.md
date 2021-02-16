@@ -106,7 +106,7 @@ d) Similarly, we need to repeat the steps for all the nodes
 | `billing-type` | Optional | Enter the billing option that you want to use. You can enter either `hourly` or `monthly`. | `hourly` | string |
 | `ocs-upgrade` | Optional | Set to `true` if you want to upgrade the major version of OCS while creating a configuration of the newer version. | false | boolean |
 
-**Default storage classes**
+## **Default storage classes**
 
 | Storage class name | Type | File system | IOPs | Size range | Hard disk | Reclaim policy |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -115,9 +115,9 @@ d) Similarly, we need to repeat the steps for all the nodes
 | sat-ocs-cephrgw-gold | ceph-rgw | N/A | N/A | N/A | SSD |Delete |
 | sat-ocs-noobaa-gold | noobaa |  N/A | N/A | N/A | N/A | Delete |
 
-### Creating the Red Hat Openshift Container Storage - Local Storage storage configuration
+## Creating the Red Hat Openshift Container Storage - Local Storage storage configuration
 
-#### Detailed steps
+### Detailed steps
 
 1. Login into the Cluster using oc CLI or IBM Cloud CLI
 2. Verify that all the worker nodes are healthy.
@@ -168,7 +168,7 @@ OK
 Storage configuration 'ocs-config' was successfully created with ID 'b3982666-75a2-466d-9f0c-efc878dd5949'.
 ```
 
-6. Deploy the configuration
+## Creating the storage assignment
    - Create assignment
  ```
 $ ibmcloud sat storage assignment create --name ocs-sub --group test-group2 --config ocs-config
@@ -177,7 +177,7 @@ OK
 Assignment ocs-sub was successfully created with ID 575cb060-b1ad-49fa-ab1a-7ce861fabc41.
 ```
 
-### Verifying your OCS Local storage configuration is assigned to your clusters
+## Verifying your OCS Local storage configuration is assigned to your clusters
 
 Note that the OCS installation takes about 15 minutes.
 
@@ -232,11 +232,11 @@ rook-ceph-rgw-ocs-storagecluster-cephobjectstore-a-7f7f6df9rv6h   1/1     Runnin
 rook-ceph-rgw-ocs-storagecluster-cephobjectstore-b-554fd9dz6dm8   1/1     Running     0          3m41s
 ```
 
-### Scaling (Capacity expansion of OCS) :
+## Scaling (Capacity expansion of OCS) :
 
 **Important: Do not delete your storage configurations or assignments. Deleting configurations and assignments might result in data loss.**
 
-#### Scaling by adding extra workers to the cluster :
+### Scaling by adding extra workers to the cluster :
 
 To scale your OCS configuration, add worker nodes with local disks to your Satellite cluster.
 
@@ -260,7 +260,7 @@ After this, we need to create a new assignment for this configuration :
 $ ibmcloud sat storage assignment create --name ocs-sub2 --group test-group2 --config ocs-config2
 ```
 
-#### Scaling by either adding new disks to the existing workers or use exisitng disks already available on the worker nodes:
+### Scaling by either adding new disks to the existing workers or use exisitng disks already available on the worker nodes:
 
 You scale your OCS configuration by adding disks to the worker nodes and providing the device paths of the new disks. Or, if your worker nodes already have extra local disks available, you can provide the device paths of those disks.
 
@@ -280,7 +280,7 @@ After this, we need to create a new assignment for this configuration :
 $ ibmcloud sat storage assignment create --name ocs-sub2 --group test-group2 --config ocs-config2
 ```
 
-### How to upgrade OCS version :
+## How to upgrade OCS version :
 
 **Important: Do not delete your storage configurations or assignments. Deleting configurations and assignments might result in data loss.**
 
