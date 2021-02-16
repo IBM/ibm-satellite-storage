@@ -73,7 +73,7 @@ When you create your OCS configuration, you must specify device paths for the ob
 
 2. Log in to each worker node that you want to use for your OCS configuration. 
     ```
-    oc debug <node-name>
+    oc debug node/<node-name>
     ```
     
 3. When the debug pod is deployed on the worker node, run the following commands to list the available disks on the worker node.
@@ -274,38 +274,39 @@ When you create your OCS configuration, you must specify device paths for the ob
 You can scale your OCS configuration by addings worker nodes with unformatted disks to your clusters or by adding unformatted disks to your existing worker nodes.
 
 **Example scaling by adding nodes**
-Note that worker nodes must be added to your cluster in multiples of three. In this example each node has 2 available raw disks or partitions.
+Note that worker nodes must be added to your cluster in multiples of three. In this example the worker nodes that were created when the cluster was created each had 2 available unformatted disks. Worker nodes that are added to the cluster are added in multiples of 3 and each additional worker node that is added has at least 1 available unformatted disk or partition.
 
-| Number of worker nodes | Number of raw, unformatted disks or partitions | `num-of-osd` |
-| --- | --- | --- |
-| 3 | 6 | 1 |
-| 6 | 12 | 2 |
-| 9 | 18 | 3|
+| Number of worker nodes | Total number of raw, unformatted disks or partitions | Total number of OSD devices | Total number of MON devices | `num-of-osd` |
+| --- | --- | --- | --- | --- |
+| 3 | 6 | 3 | 3 | 1 |
+| 6 | 9 | 6 | 3 | 2 |
+| 9 | 12 | 9 | 3| 3 |
 
 **Example scaling by adding disks**
-Note that worker nodes must be added to your cluster in multiples of three. In this example each node has 2 available raw disks or partitions. Raw, unformatted disks or Raw disks with unformatted partitions are added to the existing worker nodes in the cluster.
+Note that disks must be added to your worker nodes in multiples of three. In this example, each original worker node has 2 available raw disks or partitions. 3 are used for the OSDs and 3 are used for the MON devices. When disks are added to the worker nodes, they must be added in multiples of 3. Since OCS requires only 3 MON devices, you do not need to add disks for the MON when you scale your OCS configuration. Any disks that are added are used as OSD devices.
 
-| Number of worker nodes | Number of raw, unformatted disks or partitions | `num-of-osd` |
-| --- | --- | --- |
-| 3 | 6 | 1 |
-| 3 | 12 | 2 |
-| 3 | 18 | 3|
+| Number of worker nodes | Total number of raw, unformatted disks or partitions | Total number of OSD devices | Total number of MON devices | `num-of-osd` |
+| --- | --- | --- | --- | --- |
+| 3 | 6 | 3 | 3 | 1 |
+| 3 | 9 | 6 | 3 | 2 |
+| 3 | 12 | 9 | 3 | 3 |
 
 
-### Scaling by adding extra workers to the cluster
+### Scaling by adding worker nodes to your cluster
 
 To scale your OCS configuration by adding worker nodes, create a storage configuration with the same `ocs-cluster-name` and configuration details as your existing configuration, but increase the `num-of-osd` parameter value and specify the new worker node names with the `worker-nodes` parameter.
 
-When you want to increase your storage capacity, you have to increase `num-of-osd` by the number of disks you add. In the following example, 3 worker nodes are added to the configuration that was created previously in the steps above. You can scale your configuration by adding updating the command parameters as follows:
+In the following example, 3 worker nodes are added to the configuration that was created previously in the steps above. You can scale your configuration by adding updating the command parameters as follows:
     - `name` - Create a configuration with a new name.
     - `template-name` - This parameter remains the same as the existing configuration.
     - `template-version` - This parameter remains the same as the existing configuration.
     - `ocs-cluster-name` - This parameter remains the same as the existing configuration.
     - `osd-device-path` - Specify all previous `osd-device-path` values from your exisiting configuration as well as the device paths from the worker nodes that you have added to your cluster. You can retrieve the `by-id` values for your new worker nodes by reviewing the **Getting the details for your OCS configuration** on this page.
-    - `mon-device-path` - For this parameter, you must specify all previous `mon-device-path` values from your exisiting configuration as well as the device paths from the worker nodes that you have added to your cluster. You can retrieve the `by-id` values for your new worker nodes by reviewing the **Getting the details for your OCS configuration** on this page.
-    - `num-of-osd` - For this parameter, increase the OSD number by 1 for each set of 6 disks or partitions that you add to your configuration.
+    - `mon-device-path` - Specify all previous `mon-device-path` values from your exisiting configuration. OCS requires 3 MON devices. You can retrieve the `by-id` values for your new worker nodes by reviewing the **Getting the details for your OCS configuration** on this page.
+    - `num-of-osd` - Increase the OSD number by 1 for each set of 3 disks or partitions that you add to your configuration.
+    - `worker-nodes` - Specify all of the worker nodes from your existing configuration plus any additonal worker nodes that you added to your cluster. Worker nodes must be added in multiples of 3.
 
-1. Create the storage configuration and specify the updated values.
+1. Create the storage configuration and specify the updated values. In this example, the `osd-device-path` parameter is updated to include the device ids of the disks that you want to use. The worker node parameter is updated to include the worker nodes that are added to the cluster and the `num-of-osd` value is increased to 2.
     ```
     ibmcloud sat storage config create --name ocs-config2 --template-name ocs-local --template-version 4.6 -p "ocs-cluster-name=testocscluster" -p "osd-device-path=/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part2,/dev/scsi-3600605b00d87b43027b3bbf306bc28a7-part2,/dev/scsi-3600062b206ba6f00276eb58065b5da94-part2" -p "mon-device-path=/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part1,/dev/scsi-3600605b00d87b43027b3bbf306bc28a7-part1,/dev/scsi-3600062b206ba6f00276eb58065b5da94-part1" -p "num-of-osd=2" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90,169.48.170.84,169.48.170.85,169.48.170.86"
     ```
@@ -317,31 +318,47 @@ When you want to increase your storage capacity, you have to increase `num-of-os
     ```
 
 
-### Scaling by either adding new disks to the existing workers or use existing available disks on the worker nodes
+### Scaling by adding disks to the existing workers or use existing available disks on the worker nodes
 
-You can scale your OCS configuration by adding disks to the worker nodes and providing the device paths of the new disks. Or, if your worker nodes already have extra local disks available, you can provide the device paths of those disks.
+To scale your OCS configuration by adding worker nodes, create a storage configuration with the same `ocs-cluster-name` and configuration details as your existing configuration, but increase the `num-of-osd` parameter value and specify the new worker node names with the `worker-nodes` parameter.
 
-To retrieve the device details of your worker nodes, following the steps in the prerequisites.
+In the following example, 3 worker nodes are added to the configuration that was created previously in the steps above. You can scale your configuration by adding updating the command parameters as follows:
+    - `name` - Create a configuration with a new name.
+    - `template-name` - This parameter remains the same as the existing configuration.
+    - `template-version` - This parameter remains the same as the existing configuration.
+    - `ocs-cluster-name` - This parameter remains the same as the existing configuration.
+    - `osd-device-path` - Specify all previous `osd-device-path` values from your exisiting configuration as well as the device paths from the worker nodes that you have added to your cluster. You can retrieve the `by-id` values for your new worker nodes by reviewing the **Getting the details for your OCS configuration** on this page.
+    - `mon-device-path` - Specify all previous `mon-device-path` values from your exisiting configuration. OCS requires 3 MON devices. You can retrieve the `by-id` values for your new worker nodes by reviewing the **Getting the details for your OCS configuration** on this page.
+    - `num-of-osd` - Increase the OSD number by 1 for each set of 3 disks or partitions that you add to your configuration.
+    - `worker-nodes` - Specify the worker nodes from your existing configuration.
 
-To scale your OCS cluster, create a configuration with the same `ocs-cluster-name` and configuration details as the previous configuration, but increase the `num-of-osd` parameter value and add the new device paths.
+1. Create the storage configuration and specify the updated values. In this example, the `osd-device-path` parameter is updated to include the device ids of the disks that you want to use and the `num-of-osd` value is increased to 2.
+    ```
+    $ibmcloud sat storage config create --name ocs-config2 --template-name ocs-local --template-version 4.6 -p "ocs-cluster-name=testocscluster" -p "osd-device-path=/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part2,/dev/scsi-3600605b00d87b43027b3bbf306bc28a7-part2,/dev/scsi-3600062b206ba6f00276eb58065b5da94-part2,/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part3,/dev/scsi-3600605b00d87b43027b3bbf306bc28a7-part3,/dev/scsi-3600062b206ba6f00276eb58065b5da94-part3" -p "mon-device-path=/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part1,/dev/scsi-3600605b00d87b43027b3bbf306bc28a7-part1,/dev/scsi-3600062b206ba6f00276eb58065b5da94-part1" -p "num-of-osd=2" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90"
+    ```
 
-In this example, the device path `/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part3` is the path of the disk that is added on one of the nodes and the `num-of-osd` parameter is increased to 2. ( https://github.com/IBM/ibm-satellite-storage/tree/master/config-templates/redhat/ocs-local/README.md##Prerequisites)
+2. Create a new assignment for this configuration :
 
-```
-$ibmcloud sat storage config create --name ocs-config2 --template-name ocs-local --template-version 4.6 -p "ocs-cluster-name=testocscluster" -p "osd-device-path=/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part2,/dev/scsi-3600605b00d87b43027b3bbf306bc28a7-part2,/dev/scsi-3600062b206ba6f00276eb58065b5da94-part2,/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part3,/dev/scsi-3600605b00d87b43027b3bbf306bc28a7-part3,/dev/scsi-3600062b206ba6f00276eb58065b5da94-part3" -p "mon-device-path=/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part1,/dev/scsi-3600605b00d87b43027b3bbf306bc28a7-part1,/dev/scsi-3600062b206ba6f00276eb58065b5da94-part1" -p "num-of-osd=2" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90"
-```
+    ```
+    $ ibmcloud sat storage assignment create --name ocs-sub2 --group test-group2 --config ocs-config2
+    ```
 
-After this, we need to create a new assignment for this configuration :
-
-```
-$ ibmcloud sat storage assignment create --name ocs-sub2 --group test-group2 --config ocs-config2
-```
-
-## How to upgrade OCS version :
+## Upgrading your OCS version :
 
 **Important: Do not delete your storage configurations or assignments. Deleting configurations and assignments might result in data loss.**
 
 To upgrade the OCS version of your configuration, get the details of your configuration and create a new configuration with the same `ocs-cluster-name` and details, but with the `template-version` set to the version you want to upgrade to and set the `ocs-upgrade` parameter to `true`.
+
+In the following example, the OCS configuration is updated to use template version 4.7:
+    - `name` - Enter a name for your new configuration.
+    - `template-name` - This parameter remains the same as the existing configuration.
+    - `template-version` - Enter the template version that you want to use to upgrade your configuration.
+    - `ocs-cluster-name` - This parameter remains the same as the existing configuration.
+    - `osd-device-path` - This parameter remains the same as the existing configuration.
+    - `mon-device-path` - This parameter remains the same as the existing configuration.
+    - `num-of-osd` - This parameter remains the same as the existing configuration.
+    - `worker-nodes` - This parameter remains the same as the existing configuration.
+    - `ocs-upgrade` - Enter `true` to upgrade your `ocs-cluster` to the template version that you specified.
 
 1. Get the details of your OCS configuration.
     ```
@@ -350,89 +367,79 @@ To upgrade the OCS version of your configuration, get the details of your config
 
 2. Get the configuration details of your ocs-cluster custom resource.
 
-```
-kubectl get ocscluster <ocs-cluster-name>
-```
+    ```
+    kubectl get ocscluster <ocs-cluster-name>
+    ```
 
 3. Save the configuration details. When you upgrade your OCS version, you must enter the same configuration details and set the `template-version` to the version you want to upgrade to and set the `ocs-upgrade` parameter to `true`.
-
-Example :
-
-```
-$ibmcloud sat storage config create --name ocs-config3 --template-name ocs-local --template-version 4.7 -p "ocs-cluster-name=testocscluster" -p "osd-device-path=/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part2,/dev/scsi-3600605b00d87b43027b3bbf306bc28a7-part2,/dev/scsi-3600062b206ba6f00276eb58065b5da94-part2" -p "mon-device-path=/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part1,/dev/scsi-3600605b00d87b43027b3bbf306bc28a7-part1,/dev/scsi-3600062b206ba6f00276eb58065b5da94-part1" -p "num-of-osd=1" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90" -p "ocs-upgrade=true"
-```
+    ```
+    $ibmcloud sat storage config create --name ocs-config3 --template-name ocs-local --template-version 4.7 -p "ocs-cluster-name=testocscluster" -p "osd-device-path=/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part2,/dev/scsi-3600605b00d87b43027b3bbf306bc28a7-part2,/dev/scsi-3600062b206ba6f00276eb58065b5da94-part2" -p "mon-device-path=/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part1,/dev/scsi-3600605b00d87b43027b3bbf306bc28a7-part1,/dev/scsi-3600062b206ba6f00276eb58065b5da94-part1" -p "num-of-osd=1" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90" -p "ocs-upgrade=true"
+    ```
 
 4. Assign your configuration to your cluster groups.
 
-```
-$ ibmcloud sat storage assignment create --name ocs-sub3 --group test-group2 --config ocs-config3
-```
+    ```
+    $ ibmcloud sat storage assignment create --name ocs-sub3 --group test-group2 --config ocs-config3
+    ```
 
-This will upgrade OCS to the new version.
+5. Verify that your configuration is updated
+    ```
+    ic sat storage config get <config-name>
+    ```
+
 
 ## Troubleshooting
 
-You can check the CRD OcsCluster to see your parameters and storagcluster status
-
-```
-$ oc get ocscluster
-apiVersion: ocs.ibm.io/v1
-kind: OcsCluster
-metadata:
-  name: testocscluster
-spec:
-    billingType: hourly
-    monDevicePaths:
-    - /dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part1
-    monSize: "1"
-    monStorageClassName: localfile
-    numOfOsd: 1
-    ocsUpgrade: false
-    osdDevicePaths:
-    - /dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part2
-    osdSize: "1"
-    osdStorageClassName: localblock
-    workerNodes:
-    - 169.48.170.83
-    - 169.48.170.88
-    - 169.48.170.90
-status:
-   storageClusterStatus: Ready
-```
+Check the status of your storage cluster.
+    ```
+    oc get ocscluster
+    ```
+    
+   Example output
+    
+    ```
+    apiVersion: ocs.ibm.io/v1
+    kind: OcsCluster
+    metadata:
+      name: testocscluster
+    spec:
+        billingType: hourly
+        monDevicePaths:
+        - /dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part1
+        monSize: "1"
+        monStorageClassName: localfile
+        numOfOsd: 1
+        ocsUpgrade: false
+        osdDevicePaths:
+        - /dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part2
+        osdSize: "1"
+        osdStorageClassName: localblock
+        workerNodes:
+        - 169.48.170.83
+        - 169.48.170.88
+        - 169.48.170.90
+    status:
+       storageClusterStatus: Ready
+    ```
 
 If the storageClusterStatus is stuck in `Progressing` or if it's `Error`, OCS installation has failed.
 
 ### If your OCS installation fails, complete the following the steps to troubleshoot your deployment.
-- Check the describe of storagecluster and cephcluster in the openshift-storage namespace and look at the `Events` and the `Status` sections
+1. Check the describe of storagecluster and cephcluster in the openshift-storage namespace and look at the `Events` and the `Status` sections
 
-```
-$ oc describe storagecluster -n openshift-storage
-$ oc describe cephcluster -n openshift-storage
-```
+    ```
+    $ oc describe storagecluster -n openshift-storage
+    $ oc describe cephcluster -n openshift-storage
+    ```
 
-- You can use the toolbox available in rook community to debug OCS deploy issues.
-  Use this to install toolbox :
-```
-oc patch ocsinitialization ocsinit -n openshift-storage --type json --patch  '[{ "op": "replace", "path": "/spec/enableCephTools", "value": true }]'
-```
-- Use command `oc debug node/<Worker_Node>` and then run the command `lsblk` to check if your disks used in OCS are raw devices or raw partitions and they do not have any filesystems on them.
-```
-Sample output:
-sh-4.2# lsblk -f
-NAME   FSTYPE LABEL UUID                                 MOUNTPOINT
-sda                                                      
-|-sda1 xfs          9c0c6660-e1f4-45c8-a023-345da3d666c5 /boot
-|-sda2 swap         6b5b21d1-e95e-45d9-b4fc-da805b997bec
-`-sda3 xfs          f891eede-4ed8-42ec-8215-700d39afe119 /
-sdb                                                      
-`-sdb1 xfs          b4e4af05-56d7-4bc8-b235-32e540a51f1a /disk1
-sdc                                                      
-|-sdc1 ext4         cd7d288b-1ff3-4225-9465-ae6eef33deb5
-|-sdc2 ext4         fd9367a3-cb73-4899-a202-0cd462c755a2
-`-sdc3 ext4         d6874707-a2d4-489e-bfdb-521d6a8acbcb
-```
+2. You can use the toolbox available in rook community to debug OCS deploy issues. Run the following command to install the toolbox.
+    ```
+    oc patch ocsinitialization ocsinit -n openshift-storage --type json --patch  '[{ "op": "replace", "path": "/spec/enableCephTools", "value": true }]'
+    ```
 
-## How to uninstall
+3. Verify that the disks or partitions that you specified in your OCS configuration are unmounted and unformatted. Review the steps in the **Prerequisites** section to check your device details.
+
+## Removing your OCS configuration
 
 1) Delete all the assignments and configurations created
 2) Remove the finalizer on the OcsCluster resource and delete it
