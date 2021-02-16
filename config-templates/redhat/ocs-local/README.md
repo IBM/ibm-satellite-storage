@@ -346,7 +346,7 @@ status:
 If the storageClusterStatus is stuck in `Progressing` or if it's `Error`, OCS installation has failed.
 
 ### If your OCS installation fails, complete the following the steps to troubleshoot your deployment.
-- Check the describe of storagecluster and cephcluster in the openshift-storage namespace and look at the `Events` section and the `Status` sections
+- Check the describe of storagecluster and cephcluster in the openshift-storage namespace and look at the `Events` and the `Status` sections
 
 ```
 $ oc describe storagecluster -n openshift-storage
