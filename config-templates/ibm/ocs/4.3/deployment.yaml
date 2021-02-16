@@ -9,4 +9,4 @@ items:
   - apiVersion: v1
     kind: Namespace
     metadata:
-      name: openshift-storage
+      name: "{{ namespace }}"
