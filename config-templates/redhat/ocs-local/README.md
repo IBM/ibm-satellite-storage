@@ -5,94 +5,120 @@ Red Hat OpenShift Container Storage is a software-defined storage that is optimi
 The user has to provide the input values to the custom resource OcsCluster while creating the satellite configuration to deploy OCS
 
 ## Prerequisites
-
-1) In order to deploy OCS, at least one of these local storage options are required:
+In order to deploy OCS, the following prerequisites are required.
+- You must have at least one of these local storage options are required:
     - Raw devices (no partitions or formatted filesystems)
     - Raw partitions (no formatted filesystem)
     - PVs available from a storage class in block mode
-2) The cluster needs to have a minimum of 3 nodes
-3) The OCP version should be compatible with the OCS version you're trying to install
-4) The nodes used for the cluster should have a configuration of minimum 16CPUs and 64GB RAM
-5) Create the COS secret by following the steps given below :
+- Your cluster must have a minimum of 3 nodes that each have a minimum 16CPUs and 64GB RAM
+- Your cluster should be compatible with the OCS version that you're trying to install
+- You must provision an instance of IBM Cloud Object Storage and create a Kubernetes secret with your COS HMAC credentials.
+- You must create an `openshift-storage` namespace in your cluster.
 
-a) Create the `openshift-storage` namespace using the yaml given below
+### Creating the `openshift-storage` namespace
 
-```
-apiVersion: v1
-kind: Namespace
-metadata:
-  labels:
-    openshift.io/cluster-monitoring: "true"
-  name: openshift-storage
-```
+1. Copy the following YAML code and save it as `os-namespace.yaml` a file on your local machine.
+    ```
+    apiVersion: v1
+    kind: Namespace
+    metadata:
+      labels:
+        openshift.io/cluster-monitoring: "true"
+      name: openshift-storage
+    ```
+    
+2. Create the `openshift-storage` namespace by using the YAML file that you saved.
+    ```
+    oc create -f os-namespace.yaml
+    ```
+  
+3. Verify that the namespace is created.
+    ```
+    oc get namespaces | grep storage
+    ```
 
-b) Create an IBM COS Service Instance
-```
-$ ibmcloud resource service-instance-create noobaa-stor cloud-object-storage standard global
-```
 
-c) Create access keys
-```
-$ ibmcloud resource service-key-create cos-cred-rw Writer --instance-name noobaa-stor --parameters '{ "HMAC": true}'
-```
+### Creating the IBM COS service instance
 
-d) Create the Kubernetes secret under the `openshift-storage` namespace
-```
-$ kubectl -n 'openshift-storage' create secret generic 'ibm-cloud-cos-creds' --type=Opaque --from-literal=IBM_COS_ACCESS_KEY_ID=<access_key_id> --from-literal=IBM_COS_SECRET_ACCESS_KEY=<secret_access_key>
-```
+Run the following commands to create a COS instance, create a set of HMAC credentials, and create a Kubernetes secret that uses your COS HMAC credentials.
 
-6) **Note :** for the `osd-device-path` and `mon-device-path` parameters, we need to find the disk by ID of the disks we want to use.
+1. Create an IBM COS Service Instance.
+    ```
+    $ ibmcloud resource service-instance-create noobaa-stor cloud-object-storage standard global
+    ```
 
-To find the disk by id of the disks :
+2. Create HMAC credentials. Make a note of your credentials.
+    ```
+    $ ibmcloud resource service-key-create cos-cred-rw Writer --instance-name noobaa-stor --parameters '{ "HMAC": true}'
+    ```
 
-a) Logon to each worker node that will be used for OCS using `oc debug node/<nodename>`, run `chroot /host` followed by `lsblk` to find available disks.
-```
-oc debug node/ip-10-0-135-71.us-east-2.compute.internal
-Starting pod/ip-10-0-135-71us-east-2computeinternal-debug ...
-To use host binaries, run `chroot /host`
-Pod IP: 10.0.135.71
-If you don't see a command prompt, try pressing enter.
-sh-4.2# chroot /host
-sh-4.4# lsblk
-NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
-sda      8:0    0   931G  0 disk
-|-sda1   8:1    0   256M  0 part /boot
-|-sda2   8:2    0     1G  0 part
-`-sda3   8:3    0 929.8G  0 part /
-sdb      8:16   0 744.7G  0 disk
-`-sdb1   8:17   0 744.7G  0 part /disk1
-sdc      8:32   0 744.7G  0 disk
-|-sdc1   8:33   0  18.6G  0 part
-`-sdc2   8:34   0 260.8G  0 part
-```
+3. Create the Kubernetes secret named `ibm-cloud-cos-creds` in the `openshift-storage` namespace that uses your COS HMAC credentials. When you run the command, specify your COS HMAC access key ID and secret access key.
+    ```
+    $ kubectl -n 'openshift-storage' create secret generic 'ibm-cloud-cos-creds' --type=Opaque --from-literal=IBM_COS_ACCESS_KEY_ID=<access_key_id> --from-literal=IBM_COS_SECRET_ACCESS_KEY=<secret_access_key>
+    ```
+    
+4. Verify that your secret is created.
+    ```
+    oc get secrets -A | grep cos
+    ```
+ 
+### Getting the device details for your OCS configuration.
 
-**Note :** Available disks that can be used for OCS are unmounted disks and in case of partitioned disks, we need to use the path of the partition for finding disk-by-id
+When you create your OCS configuration, you must specify device paths for the object storage daemons (OSDs) and the MON. The OSD deploys a series of pods, in multiples of 3, that replicate your local storage across the worker nodes and disks that you configure for your {[ocs]} deployment. The device paths that you retrieve are specified as parameters when you create your OCS configuration.
 
-b)After you know which local disks are available, in this case sdc1, and sdc2, you can now find the disk by-id, a unique name depending on the hardware serial number for each disk on each node.
+1. Log in to your cluster and get a list of available worker nodes. Make a note of the worker nodes that you want to use in your OCS configuration.
+    ```
+    oc get nodes
+    ```
 
-```
-sh-4.2# ls -l /dev/disk/by-id/
-total 0
-lrwxrwxrwx. 1 root root  9 Feb  9 04:15 scsi-3600605b00d87b43027b3bbb603150cc6 -> ../../sda
-lrwxrwxrwx. 1 root root 10 Feb  9 04:15 scsi-3600605b00d87b43027b3bbb603150cc6-part1 -> ../../sda1
-lrwxrwxrwx. 1 root root 10 Feb  9 04:15 scsi-3600605b00d87b43027b3bbb603150cc6-part2 -> ../../sda2
-lrwxrwxrwx. 1 root root 10 Feb  9 04:15 scsi-3600605b00d87b43027b3bbb603150cc6-part3 -> ../../sda3
-lrwxrwxrwx. 1 root root  9 Feb  9 04:15 scsi-3600605b00d87b43027b3bbf306bc28a7 -> ../../sdb
-lrwxrwxrwx. 1 root root 10 Feb  9 04:15 scsi-3600605b00d87b43027b3bbf306bc28a7-part1 -> ../../sdb1
-lrwxrwxrwx. 1 root root  9 Feb  9 04:17 scsi-3600605b00d87b43027b3bc310a64c6c9 -> ../../sdc
-lrwxrwxrwx. 1 root root 10 Feb 11 03:14 scsi-3600605b00d87b43027b3bc310a64c6c9-part1 -> ../../sdc1
-lrwxrwxrwx. 1 root root 10 Feb 11 03:15 scsi-3600605b00d87b43027b3bc310a64c6c9-part2 -> ../../sdc2
+2. Log in to each worker node that you want to use for your OCS configuration. 
+    ```
+    oc debug <node-name>
+    ```
+    
+3. When the debug pod is deployed on the worker node, run the following commands to list the available disks on the worker node.
 
-```
-c) From above, we can see that the disk by ids are :
-   `scsi-3600605b00d87b43027b3bc310a64c6c9-part1`
-   `scsi-3600605b00d87b43027b3bc310a64c6c9-part2`
+    ```
+    chroot /host && lsblk
+    ```
 
-d) Similarly, we need to repeat the steps for all the nodes   
+4. Review the command output for available disks. Disks that can be used for your OCS configuration must be unmounted. In the following example output, the `sdc` disk has two available, unformatted partitions that we can use for the OSD and MON device paths for this worker node. As a best practice, and to maximize storage capacity on this disk, you can specify the smaller partition for the MON, and the larger partition for the OSD. Note that if you have raw disks with no partitions you need one disk for the OSD and one disk for the MON.  If your unmounted disks are partitioned, you can use the path of the partitions to find the disk-by-id.
+    ```
+    NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+    sda      8:0    0   931G  0 disk
+    |-sda1   8:1    0   256M  0 part /boot
+    |-sda2   8:2    0     1G  0 part
+    `-sda3   8:3    0 929.8G  0 part /
+    sdb      8:16   0 744.7G  0 disk
+    `-sdb1   8:17   0 744.7G  0 part /disk1
+    sdc      8:32   0 744.7G  0 disk
+    |-sdc1   8:33   0  18.6G  0 part
+    `-sdc2   8:34   0 260.8G  0 part
+    ```
 
-## Red hat Openshift Container Storage - Local Storage:  Parameters & how to retrieve them
+5. Find the `by-id` for each disk that you want to use in your configuration. In this case, the `sdc1` and `sdc2` partitions are available. You can now find the disk `by-id`. The `by-id` for each disk is specified as a command parameter when you create your configuration.
 
-### Red hat Openshift Container Storage - Local Storage: Parameters
+    ```
+    ls -l /dev/disk/by-id/
+    ```
+
+6. Review the command output and make a note of the `by-id` values that you want to use. In the following example output, you can see that the disk by ids for the `sdc1` and `sdc2` partitions are: `scsi-3600605b00d87b43027b3bc310a64c6c9-part1` and `scsi-3600605b00d87b43027b3bc310a64c6c9-part2`.
+    ```
+    total 0
+    lrwxrwxrwx. 1 root root  9 Feb  9 04:15 scsi-3600605b00d87b43027b3bbb603150cc6 -> ../../sda
+    lrwxrwxrwx. 1 root root 10 Feb  9 04:15 scsi-3600605b00d87b43027b3bbb603150cc6-part1 -> ../../sda1
+    lrwxrwxrwx. 1 root root 10 Feb  9 04:15 scsi-3600605b00d87b43027b3bbb603150cc6-part2 -> ../../sda2
+    lrwxrwxrwx. 1 root root 10 Feb  9 04:15 scsi-3600605b00d87b43027b3bbb603150cc6-part3 -> ../../sda3
+    lrwxrwxrwx. 1 root root  9 Feb  9 04:15 scsi-3600605b00d87b43027b3bbf306bc28a7 -> ../../sdb
+    lrwxrwxrwx. 1 root root 10 Feb  9 04:15 scsi-3600605b00d87b43027b3bbf306bc28a7-part1 -> ../../sdb1
+    lrwxrwxrwx. 1 root root  9 Feb  9 04:17 scsi-3600605b00d87b43027b3bc310a64c6c9 -> ../../sdc
+    lrwxrwxrwx. 1 root root 10 Feb 11 03:14 scsi-3600605b00d87b43027b3bc310a64c6c9-part1 -> ../../sdc1
+    lrwxrwxrwx. 1 root root 10 Feb 11 03:15 scsi-3600605b00d87b43027b3bc310a64c6c9-part2 -> ../../sdc2
+    ```
+
+7. Repeat the previous steps for each worker node that you want to use for your OCS configuration.   
+
+## Red hat Openshift Container Storage - Local Storage: Parameter reference
 
 **Description of the template parameters :**
 
@@ -106,7 +132,7 @@ d) Similarly, we need to repeat the steps for all the nodes
 | `billing-type` | Optional | Enter the billing option that you want to use. You can enter either `hourly` or `monthly`. | `hourly` | string |
 | `ocs-upgrade` | Optional | Set to `true` if you want to upgrade the major version of OCS while creating a configuration of the newer version. | false | boolean |
 
-## **Default storage classes**
+## Default storage classes
 
 | Storage class name | Type | File system | IOPs | Size range | Hard disk | Reclaim policy |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -115,154 +141,185 @@ d) Similarly, we need to repeat the steps for all the nodes
 | sat-ocs-cephrgw-gold | ceph-rgw | N/A | N/A | N/A | SSD |Delete |
 | sat-ocs-noobaa-gold | noobaa |  N/A | N/A | N/A | N/A | Delete |
 
+
+
+
 ## Creating the Red Hat Openshift Container Storage - Local storage configuration
 
-### Detailed steps
-
-1. Login into the Cluster using oc CLI or IBM Cloud CLI
+1. Log in into the Cluster using oc CLI or IBM Cloud CLI.
 2. Verify that all the worker nodes are healthy.
 
-```
-$oc get nodes
-NAME            STATUS   ROLES           AGE   VERSION
-169.48.170.83   Ready    master,worker   28h   v1.19.0+3b01205
-169.48.170.88   Ready    master,worker   28h   v1.19.0+3b01205
-169.48.170.90   Ready    master,worker   28h   v1.19.0+3b01205
-```
+    ```
+    $oc get nodes
+    NAME            STATUS   ROLES           AGE   VERSION
+    169.48.170.83   Ready    master,worker   28h   v1.19.0+3b01205
+    169.48.170.88   Ready    master,worker   28h   v1.19.0+3b01205
+    169.48.170.90   Ready    master,worker   28h   v1.19.0+3b01205
+    ```
 
-3. Create Cluster Group
+3. Create a cluster group.Cluster Group
    - From IBM Cloud Web Console
      > https://cloud.ibm.com/satellite/clusters -> Cluster groups -> Create cluster group
    - Add cluster to the group
      > https://cloud.ibm.com/satellite/groups -> select the cluster group -> Clusters -> Add cluster
 
-4. View the cluster group from CLI
-```
-$ibmcloud sat group get --group test-group2               
-OK
-Cluster Group            
-Name:                 test-group2   
-ID:                   3a8ac73d-fee1-498a-88a1-d651db5152a5   
-Created:              2021-02-09T12:36:18.971Z   
-Cluster Count:        1   
-Subscription Count:   0  
+4. Verify that your cluster group is created.
+    ```
+    ibmcloud sat group get --group test-group2  
+    ```
+    
+    Example output:
+    ```
+    OK
+    Cluster Group            
+    Name:                 test-group2   
+    ID:                   3a8ac73d-fee1-498a-88a1-d651db5152a5   
+    Created:              2021-02-09T12:36:18.971Z   
+    Cluster Count:        1   
+    Subscription Count:   0  
 
-Subscriptions      
-Name      ID                                     Version   
+    Subscriptions      
+    Name      ID                                     Version   
 
-Clusters      
-Name                          ID                                     Location   
-satellite-ocs-template-test   b201d0ed-a4aa-414c-b0eb-0c4437797e95   c040tu4w0h6c6s5s9irg   
-```
+    Clusters      
+    Name                          ID                                     Location   
+    satellite-ocs-template-test   b201d0ed-a4aa-414c-b0eb-0c4437797e95   c040tu4w0h6c6s5s9irg   
+    ```
 
-5. Create a storage configuration using the existing OCS template
-   - Review the required parameters for the template
-   - Create Storage Configuration (Sample provided below)
-
-
-  We need to provide the disk-by-IDs of the disks we want to use to the `osd-device-path` and `mon-device-path` parameters ( https://github.com/IBM/ibm-satellite-storage/tree/master/config-templates/redhat/ocs-local/README.md##Prerequisites) as demonstrated in the example below
-```
-$ibmcloud sat storage config create --name ocs-config --template-name ocs-local --template-version 4.6 -p "ocs-cluster-name=testocscluster" -p "osd-device-path=/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part2,/dev/scsi-3600605b00d87b43027b3bbf306bc28a7-part2,/dev/scsi-3600062b206ba6f00276eb58065b5da94-part2" -p "mon-device-path=/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part1,/dev/scsi-3600605b00d87b43027b3bbf306bc28a7-part1,/dev/scsi-3600062b206ba6f00276eb58065b5da94-part1" -p "num-of-osd=1" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90"
-Creating Satellite storage configuration...
-OK
-Storage configuration 'ocs-config' was successfully created with ID 'b3982666-75a2-466d-9f0c-efc878dd5949'.
-```
+5. Create a storage configuration using the existing OCS template. Enter the device details that your retrieved earlier. Be sure to provide the disk-by-IDs of the disks we want to use as the `osd-device-path` and `mon-device-path` [parameters]( https://github.com/IBM/ibm-satellite-storage/tree/master/config-templates/redhat/ocs-local/README.md##Prerequisites). Note that if your OCS configuration has 3 worker nodes, you must specify a total of 6 disks or partitions. 3 for the OSDs and 3 for the MONs. 
+    ```
+    ibmcloud sat storage config create --name ocs-config --template-name ocs-local --template-version 4.6 -p "ocs-cluster-name=testocscluster" -p "osd-device-path=/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part2,/dev/scsi-3600605b00d87b43027b3bbf306bc28a7-part2,/dev/scsi-3600062b206ba6f00276eb58065b5da94-part2" -p "mon-device-path=/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part1,/dev/scsi-3600605b00d87b43027b3bbf306bc28a7-part1,/dev/scsi-3600062b206ba6f00276eb58065b5da94-part1" -p "num-of-osd=1" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90"
+    ```
+    
+    Example output:
+    ```
+    Creating Satellite storage configuration...
+    OK
+    Storage configuration 'ocs-config' was successfully created with ID 'b3982666-75a2-466d-9f0c-efc878dd5949'.
+    ```
 
 ## Creating the storage assignment
-   - Create assignment
- ```
-$ ibmcloud sat storage assignment create --name ocs-sub --group test-group2 --config ocs-config
-Creating assignment...
-OK
-Assignment ocs-sub was successfully created with ID 575cb060-b1ad-49fa-ab1a-7ce861fabc41.
-```
 
-## Verifying your OCS Local storage configuration is assigned to your clusters
+1. Run the following command to assign your OCS storage configuration to your cluster group. Note that the OCS installation takes about 15 minutes.
+    ```
+    ibmcloud sat storage assignment create --name ocs-sub --group test-group2 --config ocs-config
+    ```
+    Example output:
+    ```
+    Creating assignment...
+    OK
+    Assignment ocs-sub was successfully created with ID 575cb060-b1ad-49fa-ab1a-7ce861fabc41.
+    ```
 
-Note that the OCS installation takes about 15 minutes.
+2. Verify that your OCS storage configuration is assigned to your clusters by getting the status of your OCS storage cluster.
+    ```
+    oc get storagecluster -n openshift-storage
+    ```
+    
+    Example output:
+    ```
+    NAME                 AGE   PHASE   EXTERNAL   CREATED AT             VERSION
+    ocs-storagecluster   72m   Ready              2021-02-10T06:00:20Z   4.6.0
+    ```
 
-1. Get the status of your OCS storage cluster.
+3. List the OCS pods that are installed and verify that the status is `Running`.
+    ```
+    oc get pods -n openshift-storage
+    ```
+    Example output
+    ```
+    NAME                                                              READY   STATUS      RESTARTS   AGE
+    csi-cephfsplugin-9g2d5                                            3/3     Running     0          8m11s
+    csi-cephfsplugin-g42wv                                            3/3     Running     0          8m11s
+    csi-cephfsplugin-provisioner-7b89766c86-l68sr                     5/5     Running     0          8m10s
+    csi-cephfsplugin-provisioner-7b89766c86-nkmkf                     5/5     Running     0          8m10s
+    csi-cephfsplugin-rlhzv                                            3/3     Running     0          8m11s
+    csi-rbdplugin-8dmxc                                               3/3     Running     0          8m12s
+    csi-rbdplugin-f8c4c                                               3/3     Running     0          8m12s
+    csi-rbdplugin-nkzcd                                               3/3     Running     0          8m12s
+    csi-rbdplugin-provisioner-75596f49bd-7mk5g                        5/5     Running     0          8m12s
+    csi-rbdplugin-provisioner-75596f49bd-r2p6g                        5/5     Running     0          8m12s
+    noobaa-core-0                                                     1/1     Running     0          4m37s
+    noobaa-db-0                                                       1/1     Running     0          4m37s
+    noobaa-endpoint-7d959fd6fb-dr5x4                                  1/1     Running     0          2m27s
+    noobaa-operator-6cbf8c484c-fpwtt                                  1/1     Running     0          9m41s
+    ocs-operator-9d6457dff-c4xhh                                      1/1     Running     0          9m42s
+    rook-ceph-crashcollector-169.48.170.83-89f6d7dfb-gsglz            1/1     Running     0          5m38s
+    rook-ceph-crashcollector-169.48.170.88-6f58d6489-b9j49            1/1     Running     0          5m29s
+    rook-ceph-crashcollector-169.48.170.90-866b9d444d-zk6ft           1/1     Running     0          5m15s
+    rook-ceph-drain-canary-169.48.170.83-6b885b94db-wvptz             1/1     Running     0          4m41s
+    rook-ceph-drain-canary-169.48.170.88-769f8b6b7-mtm47              1/1     Running     0          4m39s
+    rook-ceph-drain-canary-169.48.170.90-84845c98d4-pxpqs             1/1     Running     0          4m40s
+    rook-ceph-mds-ocs-storagecluster-cephfilesystem-a-6dfbb4fcnqv9g   1/1     Running     0          4m16s
+    rook-ceph-mds-ocs-storagecluster-cephfilesystem-b-cbc56b8btjhrt   1/1     Running     0          4m15s
+    rook-ceph-mgr-a-55cc8d96cc-vm5dr                                  1/1     Running     0          4m55s
+    rook-ceph-mon-a-5dcc4d9446-4ff5x                                  1/1     Running     0          5m38s
+    rook-ceph-mon-b-64dc44f954-w24gs                                  1/1     Running     0          5m30s
+    rook-ceph-mon-c-86d4fb86-s8gdz                                    1/1     Running     0          5m15s
+    rook-ceph-operator-69c46db9d4-tqdpt                               1/1     Running     0          9m42s
+    rook-ceph-osd-0-6c6cc87d58-79m5z                                  1/1     Running     0          4m42s
+    rook-ceph-osd-1-f4cc9c864-fmwgd                                   1/1     Running     0          4m41s
+    rook-ceph-osd-2-dd4968b75-lzc6x                                   1/1     Running     0          4m40s
+    rook-ceph-osd-prepare-ocs-deviceset-0-data-0-29jgc-kzpgr          0/1     Completed   0          4m51s
+    rook-ceph-osd-prepare-ocs-deviceset-1-data-0-ckvv2-4jdx5          0/1     Completed   0          4m50s
+    rook-ceph-osd-prepare-ocs-deviceset-2-data-0-szmjd-49dd4          0/1     Completed   0          4m50s
+    rook-ceph-rgw-ocs-storagecluster-cephobjectstore-a-7f7f6df9rv6h   1/1     Running     0          3m44s
+    rook-ceph-rgw-ocs-storagecluster-cephobjectstore-b-554fd9dz6dm8   1/1     Running     0          3m41s
+    ```
 
-```
-$ oc get storagecluster -n openshift-storage
-NAME                 AGE   PHASE   EXTERNAL   CREATED AT             VERSION
-ocs-storagecluster   72m   Ready              2021-02-10T06:00:20Z   4.6.0
-```
-
-2. List the OCS pods that are installed and verify that the status is `Running`.
-
-```
-$ oc get pods -n openshift-storage
-NAME                                                              READY   STATUS      RESTARTS   AGE
-csi-cephfsplugin-9g2d5                                            3/3     Running     0          8m11s
-csi-cephfsplugin-g42wv                                            3/3     Running     0          8m11s
-csi-cephfsplugin-provisioner-7b89766c86-l68sr                     5/5     Running     0          8m10s
-csi-cephfsplugin-provisioner-7b89766c86-nkmkf                     5/5     Running     0          8m10s
-csi-cephfsplugin-rlhzv                                            3/3     Running     0          8m11s
-csi-rbdplugin-8dmxc                                               3/3     Running     0          8m12s
-csi-rbdplugin-f8c4c                                               3/3     Running     0          8m12s
-csi-rbdplugin-nkzcd                                               3/3     Running     0          8m12s
-csi-rbdplugin-provisioner-75596f49bd-7mk5g                        5/5     Running     0          8m12s
-csi-rbdplugin-provisioner-75596f49bd-r2p6g                        5/5     Running     0          8m12s
-noobaa-core-0                                                     1/1     Running     0          4m37s
-noobaa-db-0                                                       1/1     Running     0          4m37s
-noobaa-endpoint-7d959fd6fb-dr5x4                                  1/1     Running     0          2m27s
-noobaa-operator-6cbf8c484c-fpwtt                                  1/1     Running     0          9m41s
-ocs-operator-9d6457dff-c4xhh                                      1/1     Running     0          9m42s
-rook-ceph-crashcollector-169.48.170.83-89f6d7dfb-gsglz            1/1     Running     0          5m38s
-rook-ceph-crashcollector-169.48.170.88-6f58d6489-b9j49            1/1     Running     0          5m29s
-rook-ceph-crashcollector-169.48.170.90-866b9d444d-zk6ft           1/1     Running     0          5m15s
-rook-ceph-drain-canary-169.48.170.83-6b885b94db-wvptz             1/1     Running     0          4m41s
-rook-ceph-drain-canary-169.48.170.88-769f8b6b7-mtm47              1/1     Running     0          4m39s
-rook-ceph-drain-canary-169.48.170.90-84845c98d4-pxpqs             1/1     Running     0          4m40s
-rook-ceph-mds-ocs-storagecluster-cephfilesystem-a-6dfbb4fcnqv9g   1/1     Running     0          4m16s
-rook-ceph-mds-ocs-storagecluster-cephfilesystem-b-cbc56b8btjhrt   1/1     Running     0          4m15s
-rook-ceph-mgr-a-55cc8d96cc-vm5dr                                  1/1     Running     0          4m55s
-rook-ceph-mon-a-5dcc4d9446-4ff5x                                  1/1     Running     0          5m38s
-rook-ceph-mon-b-64dc44f954-w24gs                                  1/1     Running     0          5m30s
-rook-ceph-mon-c-86d4fb86-s8gdz                                    1/1     Running     0          5m15s
-rook-ceph-operator-69c46db9d4-tqdpt                               1/1     Running     0          9m42s
-rook-ceph-osd-0-6c6cc87d58-79m5z                                  1/1     Running     0          4m42s
-rook-ceph-osd-1-f4cc9c864-fmwgd                                   1/1     Running     0          4m41s
-rook-ceph-osd-2-dd4968b75-lzc6x                                   1/1     Running     0          4m40s
-rook-ceph-osd-prepare-ocs-deviceset-0-data-0-29jgc-kzpgr          0/1     Completed   0          4m51s
-rook-ceph-osd-prepare-ocs-deviceset-1-data-0-ckvv2-4jdx5          0/1     Completed   0          4m50s
-rook-ceph-osd-prepare-ocs-deviceset-2-data-0-szmjd-49dd4          0/1     Completed   0          4m50s
-rook-ceph-rgw-ocs-storagecluster-cephobjectstore-a-7f7f6df9rv6h   1/1     Running     0          3m44s
-rook-ceph-rgw-ocs-storagecluster-cephobjectstore-b-554fd9dz6dm8   1/1     Running     0          3m41s
-```
-
-## Scaling (Capacity expansion of OCS) :
+## Scaling your OCS configuration:
 
 **Important: Do not delete your storage configurations or assignments. Deleting configurations and assignments might result in data loss.**
 
-### Scaling by adding extra workers to the cluster :
+You can scale your OCS configuration by addings worker nodes with unformatted disks to your clusters or by adding unformatted disks to your existing worker nodes.
 
-To scale your OCS configuration, add worker nodes with local disks to your Satellite cluster.
+**Example scaling by adding nodes**
+Note that worker nodes must be added to your cluster in multiples of three. In this example each node has 2 available raw disks or partitions.
 
-To scale your OCS cluster, create a configuration with the same `ocs-cluster-name` and configuration details as the previous configuration, but increase the `num-of-osd` parameter value and specify the new worker node names with the `worker-nodes` parameter.
+| Number of worker nodes | Number of raw, unformatted disks or partitions | `num-of-osd` |
+| --- | --- | --- |
+| 3 | 6 | 1 |
+| 6 | 12 | 2 |
+| 9 | 18 | 3|
 
-When you want to increase your storage capacity, you have to increase `num-of-osd` by the number of disks you add (taking into consideration the replication factor, which is `3` by default)
+**Example scaling by adding disks**
+Note that worker nodes must be added to your cluster in multiples of three. In this example each node has 2 available raw disks or partitions. Raw, unformatted disks or Raw disks with unformatted partitions are added to the existing worker nodes in the cluster.
 
-When you run the `sat storage config create` command, be sure to specify the following parameters to scale up your OCS cluster.
+| Number of worker nodes | Number of raw, unformatted disks or partitions | `num-of-osd` |
+| --- | --- | --- |
+| 3 | 6 | 1 |
+| 3 | 12 | 2 |
+| 3 | 18 | 3|
 
-Enter the worker nodes where you want to install OCS and include the worker nodes that you added to your cluster.
 
-Example :
+### Scaling by adding extra workers to the cluster
 
-```
-$ibmcloud sat storage config create --name ocs-config2 --template-name ocs-local --template-version 4.6 -p "ocs-cluster-name=testocscluster" -p "osd-device-path=/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part2,/dev/scsi-3600605b00d87b43027b3bbf306bc28a7-part2,/dev/scsi-3600062b206ba6f00276eb58065b5da94-part2" -p "mon-device-path=/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part1,/dev/scsi-3600605b00d87b43027b3bbf306bc28a7-part1,/dev/scsi-3600062b206ba6f00276eb58065b5da94-part1" -p "num-of-osd=2" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90,169.48.170.84,169.48.170.85,169.48.170.86"
-```
+To scale your OCS configuration by adding worker nodes, create a storage configuration with the same `ocs-cluster-name` and configuration details as your existing configuration, but increase the `num-of-osd` parameter value and specify the new worker node names with the `worker-nodes` parameter.
 
-After this, we need to create a new assignment for this configuration :
+When you want to increase your storage capacity, you have to increase `num-of-osd` by the number of disks you add. In the following example, 3 worker nodes are added to the configuration that was created previously in the steps above. You can scale your configuration by adding updating the command parameters as follows:
+    - `name` - Create a configuration with a new name.
+    - `template-name` - This parameter remains the same as the existing configuration.
+    - `template-version` - This parameter remains the same as the existing configuration.
+    - `ocs-cluster-name` - This parameter remains the same as the existing configuration.
+    - `osd-device-path` - Specify all previous `osd-device-path` values from your exisiting configuration as well as the device paths from the worker nodes that you have added to your cluster. You can retrieve the `by-id` values for your new worker nodes by reviewing the **Getting the details for your OCS configuration** on this page.
+    - `mon-device-path` - For this parameter, you must specify all previous `mon-device-path` values from your exisiting configuration as well as the device paths from the worker nodes that you have added to your cluster. You can retrieve the `by-id` values for your new worker nodes by reviewing the **Getting the details for your OCS configuration** on this page.
+    - `num-of-osd` - For this parameter, increase the OSD number by 1 for each set of 6 disks or partitions that you add to your configuration.
 
-```
-$ ibmcloud sat storage assignment create --name ocs-sub2 --group test-group2 --config ocs-config2
-```
+1. Create the storage configuration and specify the updated values.
+    ```
+    ibmcloud sat storage config create --name ocs-config2 --template-name ocs-local --template-version 4.6 -p "ocs-cluster-name=testocscluster" -p "osd-device-path=/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part2,/dev/scsi-3600605b00d87b43027b3bbf306bc28a7-part2,/dev/scsi-3600062b206ba6f00276eb58065b5da94-part2" -p "mon-device-path=/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part1,/dev/scsi-3600605b00d87b43027b3bbf306bc28a7-part1,/dev/scsi-3600062b206ba6f00276eb58065b5da94-part1" -p "num-of-osd=2" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90,169.48.170.84,169.48.170.85,169.48.170.86"
+    ```
 
-### Scaling by either adding new disks to the existing workers or use existing disks already available on the worker nodes:
+2. Create a new assignment for this configuration.
 
-You scale your OCS configuration by adding disks to the worker nodes and providing the device paths of the new disks. Or, if your worker nodes already have extra local disks available, you can provide the device paths of those disks.
+    ```
+    ibmcloud sat storage assignment create --name ocs-sub2 --group test-group2 --config ocs-config2
+    ```
+
+
+### Scaling by either adding new disks to the existing workers or use existing available disks on the worker nodes
+
+You can scale your OCS configuration by adding disks to the worker nodes and providing the device paths of the new disks. Or, if your worker nodes already have extra local disks available, you can provide the device paths of those disks.
 
 To retrieve the device details of your worker nodes, following the steps in the prerequisites.
 
