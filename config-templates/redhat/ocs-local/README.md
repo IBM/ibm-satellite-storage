@@ -1,12 +1,10 @@
-# Red Hat OpenShift Container Storage
+# Red Hat OpenShift Container Storage - Local Storage
 
 Red Hat OpenShift Container Storage is a software-defined storage that is optimised for container environments. It runs as an operator on OpenShift Container Platform to provide highly integrated and simplified persistent storage management for containers.
 
 The user has to provide the input values to the custom resource OcsCluster while creating the satellite configuration to deploy OCS
 
-## How to use the local template to deploy OCS on a Satellite Cluster having local storage?
-
-### Prerequisites
+## Prerequisites
 
 1) In order to deploy OCS, at least one of these local storage options are required:
     - Raw devices (no partitions or formatted filesystems)
@@ -43,7 +41,7 @@ d) Create the Kubernetes secret under the `openshift-storage` namespace
 $ kubectl -n 'openshift-storage' create secret generic 'ibm-cloud-cos-creds' --type=Opaque --from-literal=IBM_COS_ACCESS_KEY_ID=<access_key_id> --from-literal=IBM_COS_SECRET_ACCESS_KEY=<secret_access_key>
 ```
 
-6) Note : for the `osd-device-path` and `mon-device-path` parameters, we need to find the disk by ID of the disks we want to use.
+6) **Note :** for the `osd-device-path` and `mon-device-path` parameters, we need to find the disk by ID of the disks we want to use.
 
 To find the disk by id of the disks :
 a) Logon to each worker node that will be used for OCS using `oc debug node/<nodename>`, run `chroot /host` followed by `lsblk` to find available disks.
@@ -69,7 +67,7 @@ sdc      8:32   0 744.7G  0 disk
 
 Note : Available disks that can be used for OCS are unmounted disks and in case of partitioned disks, we need to use the path of the partition for finding disk-by-id
 
-b)After you know which local disks are available, in this case sdc1, and sdc2, you can now find the disk by-id, a unique name depending on the hardware serial number for each disk.
+b)After you know which local disks are available, in this case sdc1, and sdc2, you can now find the disk by-id, a unique name depending on the hardware serial number for each disk on each node.
 
 ```
 sh-4.2# ls -l /dev/disk/by-id/
@@ -89,9 +87,11 @@ c) From above, we can see that the disk by ids are :
    `scsi-3600605b00d87b43027b3bc310a64c6c9-part1`
    `scsi-3600605b00d87b43027b3bc310a64c6c9-part2`
 
-###Red hat Openshift Container Storage :  Parameters & how to retrieve them
+d) Similarly, we need to repeat the steps for all the nodes   
 
-#### OCS local: Parameters
+## Red hat Openshift Container Storage - Local Storage:  Parameters & how to retrieve them
+
+### Red hat Openshift Container Storage - Local Storage: Parameters
 
 **Description of the template parameters :**
 
@@ -101,22 +101,22 @@ c) From above, we can see that the disk by ids are :
 | `mon-device-path` | Required | Enter the `disk-by-id` paths to the devices that you want to use for the MON pods. Example: `/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part1`. | N/A | csv |
 | `osd-device-path` | Required | Enter the `disk-by-id` paths to the devices that you want to use for the OSD pods. Example: `/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part2`. | N/A | csv |
 | `num-of-osd` | Optional | Enter the number of OSDs. OCS will create 3x number of OSDs for the value specified. Initial storage capacity is the same as your disk size specified at `osd-device-path`. When you want to increase your storage capacity, you have to increase `num-of-osd` by the number of disks you add (taking into consideration the replication factor, which is `3` by default) | 1 | integer |
-|worker-nodes         |Workers which need to be a part of OCS (Minimum 3). If not specified, all workers will be considered for OCS |csv |No |        |
+|`worker-nodes` |Workers which need to be a part of OCS (Minimum 3). If not specified, all workers will be considered for OCS |csv |No |        |
 | `billing-type` | Optional | Enter the billing option that you want to use. You can enter either `hourly` or `monthly`. | `hourly` | string |
-| `ocs-upgrade` | Optional | Set to `true` if you want to upgrade the major version of OCS. | N/A | boolean |
+| `ocs-upgrade` | Optional | Set to `true` if you want to upgrade the major version of OCS while creating a configuration of the newer version. | N/A | boolean |
 
 **Default storage classes**
 
-| **Storage class name** | **Type** | **Provisioner** | **Reclaim policy**|
-|------------------------|-----------------|--------|----------|
-| sat-ocs-cephrbd-gold | Block | openshift-storage.rbd.csi.ceph.com | Delete |
-| sat-ocs-cephfs-gold | File | openshift-storage.cephfs.csi.ceph.com | Delete |
-| sat-ocs-cephrgw-gold | Object | openshift-storage.ceph.rook.io/bucket |Delete |
-| sat-ocs-noobaa-gold | Object bucket | openshift-storage.noobaa.io/obc | Delete |
+| Storage class name | Type | File system | IOPs | Size range | Hard disk | Reclaim policy |
+| --- | --- | --- | --- | --- | --- | --- |
+| sat-ocs-cephrbd-gold | ceph-rbd | ext4 | N/A | N/A | SSD | Delete |
+| sat-ocs-cephfs-gold | cephfs |  N/A | N/A | N/A | SSD | Delete |
+| sat-ocs-cephrgw-gold | ceph-rgw | N/A | N/A | N/A | SSD |Delete |
+| sat-ocs-noobaa-gold | noobaa |  N/A | N/A | N/A | N/A | Delete |
 
-#### Creating the OCS storage configuration
+### Creating the Red Hat Openshift Storage - Local Storage storage configuration
 
-##### Detailed steps
+#### Detailed steps
 
 1. Login into the Cluster using oc CLI or IBM Cloud CLI
 2. Verify that all the worker nodes are healthy.
@@ -159,9 +159,9 @@ satellite-ocs-template-test   b201d0ed-a4aa-414c-b0eb-0c4437797e95   c040tu4w0h6
    - Create Storage Configuration (Sample provided below)
 
 
-  We need to provide the disk-by-IDs of the disks we want to use to the `osd-device-path` and `mon-device-path` parameters as demonstrated in the example below
+  We need to provide the disk-by-IDs of the disks we want to use to the `osd-device-path` and `mon-device-path` parameters ( Prerequisites point 6) as demonstrated in the example below
 ```
-$ibmcloud sat storage config create --name ocs-config --template-name ocs --template-version 4.6_local -p "ocs-cluster-name=testocscluster" -p "osd-device-path=/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part2" -p "mon-device-path=/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part1" -p "num-of-osd=1" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90"
+$ibmcloud sat storage config create --name ocs-config --template-name ocs-local --template-version 4.6 -p "ocs-cluster-name=testocscluster" -p "osd-device-path=/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part2,/dev/scsi-3600605b00d87b43027b3bbf306bc28a7-part2,/dev/scsi-3600062b206ba6f00276eb58065b5da94-part2" -p "mon-device-path=/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part1,/dev/scsi-3600605b00d87b43027b3bbf306bc28a7-part1,/dev/scsi-3600062b206ba6f00276eb58065b5da94-part1" -p "num-of-osd=1" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90"
 Creating Satellite storage configuration...
 OK
 Storage configuration 'ocs-config' was successfully created with ID 'b3982666-75a2-466d-9f0c-efc878dd5949'.
@@ -176,7 +176,7 @@ OK
 Assignment ocs-sub was successfully created with ID 575cb060-b1ad-49fa-ab1a-7ce861fabc41.
 ```
 
-#### Verifying your OCS storage configuration is assigned to your clusters
+### Verifying your OCS Local storage configuration is assigned to your clusters
 
 Note that the OCS installation takes about 15 minutes.
 
@@ -231,11 +231,11 @@ rook-ceph-rgw-ocs-storagecluster-cephobjectstore-a-7f7f6df9rv6h   1/1     Runnin
 rook-ceph-rgw-ocs-storagecluster-cephobjectstore-b-554fd9dz6dm8   1/1     Running     0          3m41s
 ```
 
-#### Scaling (Capacity expansion of OCS) :
+### Scaling (Capacity expansion of OCS) :
 
 **Important: Do not delete your storage configurations or assignments. Deleting configurations and assignments might result in data loss.**
 
-##### Scaling by adding extra workers to the cluster :
+#### Scaling by adding extra workers to the cluster :
 
 To scale your OCS configuration, add worker nodes with local disks to your Satellite cluster.
 
@@ -250,7 +250,7 @@ Enter the worker nodes where you want to install OCS and include the worker node
 Example :
 
 ```
-$ibmcloud sat storage config create --name ocs-config2 --template-name ocs --template-version 4.6_local -p "ocs-cluster-name=testocscluster" -p "osd-device-path=/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part2" -p "mon-device-path=/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part1" -p "num-of-osd=2" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90,169.48.170.84,169.48.170.85,169.48.170.86"
+$ibmcloud sat storage config create --name ocs-config2 --template-name ocs-local --template-version 4.6 -p "ocs-cluster-name=testocscluster" -p "osd-device-path=/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part2,/dev/scsi-3600605b00d87b43027b3bbf306bc28a7-part2,/dev/scsi-3600062b206ba6f00276eb58065b5da94-part2" -p "mon-device-path=/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part1,/dev/scsi-3600605b00d87b43027b3bbf306bc28a7-part1,/dev/scsi-3600062b206ba6f00276eb58065b5da94-part1" -p "num-of-osd=2" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90,169.48.170.84,169.48.170.85,169.48.170.86"
 ```
 
 After this, we need to create a new assignment for this configuration :
@@ -259,7 +259,7 @@ After this, we need to create a new assignment for this configuration :
 $ ibmcloud sat storage assignment create --name ocs-sub2 --group test-group2 --config ocs-config2
 ```
 
-##### Scaling by either adding new disks to the existing workers or use exisitng disks already available on the worker nodes:
+#### Scaling by either adding new disks to the existing workers or use exisitng disks already available on the worker nodes:
 
 You scale your OCS configuration by adding disks to the worker nodes and providing the device paths of the new disks. Or, if your worker nodes already have extra local disks available, you can provide the device paths of those disks.
 
@@ -270,7 +270,7 @@ To scale your OCS cluster, create a configuration with the same `ocs-cluster-nam
 In this example, the device path `/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part3` is the path of the disk that is added and the `num-of-osd` parameter is increased to 2.
 
 ```
-$ibmcloud sat storage config create --name ocs-config2 --template-name ocs --template-version 4.6_local -p "ocs-cluster-name=testocscluster" -p "osd-device-path=/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part2,/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part3" -p "mon-device-path=/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part1" -p "num-of-osd=2" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90"
+$ibmcloud sat storage config create --name ocs-config2 --template-name ocs-local --template-version 4.6 -p "ocs-cluster-name=testocscluster" -p "osd-device-path=/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part2,/dev/scsi-3600605b00d87b43027b3bbf306bc28a7-part2,/dev/scsi-3600062b206ba6f00276eb58065b5da94-part2,/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part3,/dev/scsi-3600605b00d87b43027b3bbf306bc28a7-part3,/dev/scsi-3600062b206ba6f00276eb58065b5da94-part3" -p "mon-device-path=/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part1,/dev/scsi-3600605b00d87b43027b3bbf306bc28a7-part1,/dev/scsi-3600062b206ba6f00276eb58065b5da94-part1" -p "num-of-osd=2" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90"
 ```
 
 After this, we need to create a new assignment for this configuration :
@@ -279,11 +279,11 @@ After this, we need to create a new assignment for this configuration :
 $ ibmcloud sat storage assignment create --name ocs-sub2 --group test-group2 --config ocs-config2
 ```
 
-#### How to update OCS version :
+### How to upgrade OCS version :
 
 **Important: Do not delete your storage configurations or assignments. Deleting configurations and assignments might result in data loss.**
 
-To update the OCS version of your configuration, get the details of your configuration and create a configuration with the same name and details, but set the `ocs-upgrade` parameter to `true`.
+To upgrade the OCS version of your configuration, get the details of your configuration and create a new configuration with the same `ocs-cluster-name` and details, but with the `template-version` set to the version you want to upgrade to and set the `ocs-upgrade` parameter to `true`.
 
 1. Get the details of your OCS configuration.
     ```
@@ -296,12 +296,12 @@ To update the OCS version of your configuration, get the details of your configu
 kubectl get storagecluster <ocs-cluster-name>
 ```
 
-3. Save the configuration details. When you upgrade your OCS version, you must enter the same configuration details and set the ocs-upgrade parameter to true.
+3. Save the configuration details. When you upgrade your OCS version, you must enter the same configuration details and set the `template-version` to the version you want to upgrade to and set the `ocs-upgrade` parameter to `true`.
 
 Example :
 
 ```
-$ibmcloud sat storage config create --name ocs-config3 --template-name ocs --template-version 4.7_local -p "ocs-cluster-name=testocscluster" -p "osd-device-path=/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part2,/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part3" -p "mon-device-path=/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part1" -p "num-of-osd=2" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90" -p "ocs-upgrade=true"
+$ibmcloud sat storage config create --name ocs-config3 --template-name ocs-local --template-version 4.7 -p "ocs-cluster-name=testocscluster" -p "osd-device-path=/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part2,/dev/scsi-3600605b00d87b43027b3bbf306bc28a7-part2,/dev/scsi-3600062b206ba6f00276eb58065b5da94-part2" -p "mon-device-path=/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part1,/dev/scsi-3600605b00d87b43027b3bbf306bc28a7-part1,/dev/scsi-3600062b206ba6f00276eb58065b5da94-part1" -p "num-of-osd=1" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90" -p "ocs-upgrade=true"
 ```
 
 4. Assign your configuration to your cluster groups.
@@ -345,7 +345,7 @@ status:
 If the storageClusterStatus is stuck in `Progressing` or if it's `Error`, OCS installation has failed.
 
 ### If your OCS installation fails, complete the following the steps to troubleshoot your deployment.
-- Check the describe of storagecluster and cephcluster in the openshift-storage namespace
+- Check the describe of storagecluster and cephcluster in the openshift-storage namespace and look at the `Events` section and the `Status` sections
 
 ```
 $ oc describe storagecluster -n openshift-storage
@@ -372,7 +372,6 @@ sdc
 |-sdc1 ext4         cd7d288b-1ff3-4225-9465-ae6eef33deb5
 |-sdc2 ext4         fd9367a3-cb73-4899-a202-0cd462c755a2
 `-sdc3 ext4         d6874707-a2d4-489e-bfdb-521d6a8acbcb
-
 ```
 
 ## How to uninstall

@@ -1,11 +1,11 @@
 {
-  "name": "4.6_local",
+  "name": "4.6",
   "enabled": true,
   "description": "OCS template for openshift 4.6 (Local devices)",
   "tags": [
     {
       "name": "provider",
-      "value": "ibm"
+      "value": "redhat"
     },
     {
       "name": "log-image",

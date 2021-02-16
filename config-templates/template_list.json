@@ -16,12 +16,12 @@
     "provider": "netapp"
   },
   {
-    "name": "ocs",
-    "displayname": "OpenShift Container Storage",
-    "Description": "OpenShift Container Storage for satallite cluster",
-    "default-version": "4.6_local",
+    "name": "ocs-local",
+    "displayname": "OpenShift Container Storage for local storage",
+    "Description": "OpenShift Container Storage (local storage) for satallite cluster",
+    "default-version": "4.6",
     "enabled": "true",
-    "provider": "ibm"
+    "provider": "redhat"
   },
   {
     "name": "local-volume",
