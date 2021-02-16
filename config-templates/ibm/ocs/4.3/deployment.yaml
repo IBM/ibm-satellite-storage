@@ -3,10 +3,6 @@ kind: List
 metadata:
   name: armada-storage-microservice
   namespace: armada
-  annotations:
-    version: (( grab $TRAVIS_COMMIT || "dev" ))
-  labels:
-    addonmanager.kubernetes.io/mode: Reconcile
 items:
   - apiVersion: v1
     kind: Namespace
