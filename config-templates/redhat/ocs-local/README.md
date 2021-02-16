@@ -268,7 +268,7 @@ To retrieve the device details of your worker nodes, following the steps in the 
 
 To scale your OCS cluster, create a configuration with the same `ocs-cluster-name` and configuration details as the previous configuration, but increase the `num-of-osd` parameter value and add the new device paths.
 
-In this example, the device path `/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part3` is the path of the disk that is added and the `num-of-osd` parameter is increased to 2.
+In this example, the device path `/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part3` is the path of the disk that is added on one of the nodes and the `num-of-osd` parameter is increased to 2.
 
 ```
 $ibmcloud sat storage config create --name ocs-config2 --template-name ocs-local --template-version 4.6 -p "ocs-cluster-name=testocscluster" -p "osd-device-path=/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part2,/dev/scsi-3600605b00d87b43027b3bbf306bc28a7-part2,/dev/scsi-3600062b206ba6f00276eb58065b5da94-part2,/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part3,/dev/scsi-3600605b00d87b43027b3bbf306bc28a7-part3,/dev/scsi-3600062b206ba6f00276eb58065b5da94-part3" -p "mon-device-path=/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part1,/dev/scsi-3600605b00d87b43027b3bbf306bc28a7-part1,/dev/scsi-3600062b206ba6f00276eb58065b5da94-part1" -p "num-of-osd=2" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90"
