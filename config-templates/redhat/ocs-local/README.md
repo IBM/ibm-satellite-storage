@@ -115,7 +115,7 @@ d) Similarly, we need to repeat the steps for all the nodes
 | sat-ocs-cephrgw-gold | ceph-rgw | N/A | N/A | N/A | SSD |Delete |
 | sat-ocs-noobaa-gold | noobaa |  N/A | N/A | N/A | N/A | Delete |
 
-### Creating the Red Hat Openshift Storage - Local Storage storage configuration
+### Creating the Red Hat Openshift Container Storage - Local Storage storage configuration
 
 #### Detailed steps
 
