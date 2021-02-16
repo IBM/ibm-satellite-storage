@@ -66,7 +66,7 @@ sdc      8:32   0 744.7G  0 disk
 `-sdc2   8:34   0 260.8G  0 part
 ```
 
-Note : Available disks that can be used for OCS are unmounted disks and in case of partitioned disks, we need to use the path of the partition for finding disk-by-id
+**Note :** Available disks that can be used for OCS are unmounted disks and in case of partitioned disks, we need to use the path of the partition for finding disk-by-id
 
 b)After you know which local disks are available, in this case sdc1, and sdc2, you can now find the disk by-id, a unique name depending on the hardware serial number for each disk on each node.
 
