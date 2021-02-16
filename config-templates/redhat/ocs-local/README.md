@@ -115,7 +115,7 @@ d) Similarly, we need to repeat the steps for all the nodes
 | sat-ocs-cephrgw-gold | ceph-rgw | N/A | N/A | N/A | SSD |Delete |
 | sat-ocs-noobaa-gold | noobaa |  N/A | N/A | N/A | N/A | Delete |
 
-## Creating the Red Hat Openshift Container Storage - Local Storage storage configuration
+## Creating the Red Hat Openshift Container Storage - Local storage configuration
 
 ### Detailed steps
 
@@ -260,7 +260,7 @@ After this, we need to create a new assignment for this configuration :
 $ ibmcloud sat storage assignment create --name ocs-sub2 --group test-group2 --config ocs-config2
 ```
 
-### Scaling by either adding new disks to the existing workers or use exisitng disks already available on the worker nodes:
+### Scaling by either adding new disks to the existing workers or use existing disks already available on the worker nodes:
 
 You scale your OCS configuration by adding disks to the worker nodes and providing the device paths of the new disks. Or, if your worker nodes already have extra local disks available, you can provide the device paths of those disks.
 
@@ -294,7 +294,7 @@ To upgrade the OCS version of your configuration, get the details of your config
 2. Get the configuration details of your ocs-cluster custom resource.
 
 ```
-kubectl get storagecluster <ocs-cluster-name>
+kubectl get ocscluster <ocs-cluster-name>
 ```
 
 3. Save the configuration details. When you upgrade your OCS version, you must enter the same configuration details and set the `template-version` to the version you want to upgrade to and set the `ocs-upgrade` parameter to `true`.
