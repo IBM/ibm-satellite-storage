@@ -14,13 +14,5 @@
     "required": "true",
     "category": "secret",
     "ofbuscate": "true"
-  },
-  {
-    "description": "IOPS per GB, required for volume 'io2' type",
-    "displayname": "IOPS per GB",
-    "name": "iops-per-gb",
-    "default": "10",
-    "required": "false",
-    "category": "config"
   }
 ]
