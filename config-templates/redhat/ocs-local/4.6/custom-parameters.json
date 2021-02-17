@@ -6,21 +6,21 @@
     "required": "true"
   },
   {
-    "description": "Enter the OSD device path. Mandatory",
+    "description": "Required. Enter the OSD device path.",
     "displayname": "Osd Device Path",
     "name": "osd-device-path",
     "required": "true",
     "type": "csv"
   },
   {
-    "description": "Enter the MON device path. Mandatory",
+    "description": "Required. Enter the MON device path.",
     "displayname": "Mon device Path",
     "name": "mon-device-path",
     "required": "true",
     "type": "csv"
   },
   {
-    "description": "Enter the number of OSD. Optional. Default is 1",
+    "description": "Optional. Enter the number of OSD. The default value is 1",
     "displayname": "Num of osd",
     "name": "num-of-osd",
     "default": "1",
