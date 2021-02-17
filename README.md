@@ -1,24 +1,20 @@
-# ibm-satellite-storage
-This repository is used to register the storage for IBM satellite. The vendor can test and create the storage template in the specified format. Once the approval cycle is complete, the storage will be available for IBM satellite offering.
+# IBM Satellite storage
+This repository is used to develop storage templates to install your vendor storage solution in clusters that run in  IBM Cloud Satellite. As a vendor, you can create and test your storage templates by following this readme. After your template is approved, it can be deployed to clusters that run in IBM Cloud Satellite.
 
 # Satellite Storage Partner Certification Guideline
 ## Satellite overview
-With IBM Cloud Satellite, you can bring your own compute infrastructure that is in your on-premises data center, at other cloud providers, or in edge networks as a Satellite Location to IBM Cloud. Then, you use the capabilities of Satellite to run IBM Cloud services on this infrastructure, and consistently deploy, manage, and control your app workloads.
-
-Refer to:-
+With IBM Cloud Satellite, you can bring your own compute infrastructure that is in your on-premises data center, at other cloud providers, or in edge networks as a Satellite Location to IBM Cloud. Then, you use the capabilities of Satellite to run IBM Cloud services on this infrastructure, and consistently deploy, manage, and control your app workloads. For more information, see the IBM documentation.
 - [IBM Cloud Satellite](https://www.ibm.com/cloud/satellite)
 - [Getting started](https://cloud.ibm.com/docs/satellite?topic=satellite-getting-started)
 
 ## Process Flowchart
 ![Storage Template Registration Flow](./satellite-storage-registration-flow.png) 
 
-## How to start?
-1. Create an IBMid at https://cloud.ibm.com/registration
-1. Email us at *contsto2@in.ibm.com* with subject *`IBM Cloud Satellite Storage <offering name> Integration`*, example `IBM Cloud Satellite Storage LocalVolume Integration`.
-   - In the email provide the high level description of the storage solution with link to user documentation or public git repository.
-1. `IBM Cloud Satellite Storage` team will help you in setting up the devlopement enviorment
-1. Create a single deployment yaml, in List format, to deploy Kubernetes resources for the storage operator / driver in the development enviornment.
-   Following is *`sample deployment.yaml`* to deploy local-volume operator
+## Registering with IBM Cloud
+1. [Create an IBMid](https://cloud.ibm.com/registration).
+1. Email *contsto2@in.ibm.com* and include the subject line *`IBM Cloud Satellite Storage <storage-solution-name> Integration`*. For example: `IBM Cloud Satellite Storage LocalVolume Integration`. In the email provide a high level description of the storage solution with a link to the user documentation or public repository.
+1. The IBM Cloud Satellite storage team will help you in setting up the development enviornment.
+1. Create a single `deployment yaml`, in List format, to deploy Kubernetes resources for the storage operator or driver in the development enviornment. Review the following sample *`deployment.yaml`* to deploy local-volume operator
    ```
    ---
    apiVersion: v1
@@ -94,7 +90,7 @@ Refer to:-
 
 ## IBM Hybrid Cloud Partner Onboarding
 1. Complete the onboarding process at https://ibm-10.gitbook.io/certified-for-cloud-pak-onboarding/
-1. Review and fill the `Certification Requirements` checklist  https://ibm-10.gitbook.io/certified-for-cloud-pak-onboarding/co-sell-1/tech-cert/architectural-questions
+1. Review and fill the `Certification Requirements` checklist https://ibm-10.gitbook.io/certified-for-cloud-pak-onboarding/co-sell-1/tech-cert/architectural-questions
 
 ## Develop Storage Configuration Template
 1. Fork https://github.com/IBM/ibm-satellite-storage
