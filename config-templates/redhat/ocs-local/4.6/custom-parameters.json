@@ -1,0 +1,51 @@
+[
+  {
+    "description": "Cluster Name of OCS",
+    "displayname": "Cluster Name",
+    "name": "ocs-cluster-name",
+    "required": "true"
+  },
+  {
+    "description": "Required. Enter the OSD device path.",
+    "displayname": "Osd Device Path",
+    "name": "osd-device-path",
+    "required": "true",
+    "type": "csv"
+  },
+  {
+    "description": "Required. Enter the MON device path.",
+    "displayname": "Mon device Path",
+    "name": "mon-device-path",
+    "required": "true",
+    "type": "csv"
+  },
+  {
+    "description": "Optional. Enter the number of OSD. The default value is 1",
+    "displayname": "Num of osd",
+    "name": "num-of-osd",
+    "default": "1",
+    "required": "false"
+  },
+  {
+    "description": "Worker Nodes you want to deploy OCS on. Min 3. Leave if you want OCS on all workers",
+    "displayname": "worker nodes",
+    "name": "worker-nodes",
+    "required": "false",
+    "type": "csv"
+  },
+  {
+    "description": "OCS Upgrade",
+    "displayname": "OCS upgrade",
+    "name": "ocs-upgrade",
+    "default": "false",
+    "required": "false",
+    "type": "boolean"
+  },
+  {
+    "description": "Billing type",
+    "displayname": "Billing type",
+    "name": "billing-type",
+    "default": "hourly",
+    "required": "false"
+  }
+]

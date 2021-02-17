@@ -9,7 +9,7 @@ items:
   - apiVersion: v1
     kind: Namespace
     metadata:
-      name: {{ namespace }}
+      name: "{{ namespace }}"
   - apiVersion: apiextensions.k8s.io/v1
     kind: CustomResourceDefinition
     metadata:
@@ -40,7 +40,7 @@ items:
       labels:
         app: operator.trident.netapp.io
       name: trident-operator
-      namespace: {{ namespace }}
+      namespace: "{{ namespace }}"
   - apiVersion: rbac.authorization.k8s.io/v1
     kind: ClusterRole
     metadata:
@@ -367,14 +367,14 @@ items:
     subjects:
       - kind: ServiceAccount
         name: trident-operator
-        namespace: {{ namespace }}
+        namespace: "{{ namespace }}"
   - apiVersion: apps/v1
     kind: Deployment
     metadata:
       labels:
         app: operator.trident.netapp.io
       name: trident-operator
-      namespace: {{ namespace }}
+      namespace: "{{ namespace }}"
     spec:
       replicas: 1
       selector:
@@ -424,7 +424,7 @@ items:
     kind: TridentProvisioner
     metadata:
       name: trident
-      namespace: {{ namespace }}
+      namespace: "{{ namespace }}"
     spec:
       debug: true
       kubeletDir: "/var/data/kubelet"
@@ -433,12 +433,12 @@ items:
     kind: ServiceAccount
     metadata:
       name: trident-kubectl-sa
-      namespace: {{ namespace }}
+      namespace: "{{ namespace }}"
   - apiVersion: rbac.authorization.k8s.io/v1
     kind: Role
     metadata:
       name: trident-kubectl
-      namespace: {{ namespace }}
+      namespace: "{{ namespace }}"
     rules:
       - apiGroups: [""]
         resources: ["pods"]
@@ -454,7 +454,7 @@ items:
     kind: RoleBinding
     metadata:
       name: trident-kubectl
-      namespace: {{ namespace }}
+      namespace: "{{ namespace }}"
     subjects:
       - kind: ServiceAccount
         name: trident-kubectl-sa
@@ -466,7 +466,7 @@ items:
     kind: Pod
     metadata:
       name: trident-kubectl-01
-      namespace: {{ namespace }}
+      namespace: "{{ namespace }}"
     spec:
       serviceAccountName: trident-kubectl-sa
       containers:
@@ -496,10 +496,20 @@ items:
   - apiVersion: storage.k8s.io/v1
     kind: StorageClass
     metadata:
-      name: ontap-nas-silver
+      name: netapp-file-gold
     provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-nas"
-      snapshots: "false"
+      snapshots: "true"
+      provisioningType: "thick"
+      encryption: "true"
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: netapp-file-silver
+    provisioner: csi.trident.netapp.io
+    parameters:
+      backendType: "ontap-nas"
+      snapshots: "true"
       provisioningType: "thin"
-      encryption: "false"
+      encryption: "true"
