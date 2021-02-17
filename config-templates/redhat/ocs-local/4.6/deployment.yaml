@@ -381,10 +381,8 @@ items:
          {{/osd-device-path }}
        numOfOsd: {{ num-of-osd }}
        ocsUpgrade: {{ ocs-upgrade }}
-       {{#worker-nodes}}
        workerNodes:
          {{#worker-nodes}}
          - "{{{ item }}}"
          {{/worker-nodes}}
-       {{/worker-nodes}}  
        billingType: "{{ billing-type }}"
