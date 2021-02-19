@@ -325,9 +325,7 @@ items:
        numOfOsd: {{ num-of-osd }}
        ocsUpgrade: {{ ocs-upgrade }}
        workerNodes:
-       {{#worker-nodes}}
          {{#worker-nodes}}
          - "{{{ item }}}"
          {{/worker-nodes}}
-       {{/worker-nodes}}   
        billingType: "{{ billing-type }}"
