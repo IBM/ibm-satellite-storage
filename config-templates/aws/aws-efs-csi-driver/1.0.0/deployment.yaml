@@ -24,14 +24,6 @@ items:
       labels:
         app.kubernetes.io/name: aws-efs-csi-driver
         app.kubernetes.io/version: 1.0.0
-  - kind: StorageClass
-    apiVersion: storage.k8s.io/v1
-    metadata:
-      name: sat-aws-file-gold
-      labels:
-        app.kubernetes.io/name: aws-efs-csi-driver
-        app.kubernetes.io/version: 1.0.0
-    provisioner: efs.csi.aws.com
   - kind: DaemonSet
     apiVersion: apps/v1
     metadata:
