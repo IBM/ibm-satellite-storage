@@ -71,6 +71,6 @@
     "name": "user-pass",
     "required": "true",
     "category": "secret",
-    "ofbuscate": "true"
+    "obfuscate": "true"
   }
 ]
