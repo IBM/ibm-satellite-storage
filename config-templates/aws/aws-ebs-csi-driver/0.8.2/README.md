@@ -29,7 +29,6 @@ ibmcloud sat storage template get --name aws-ebs-csi-driver --version 0.8.2
 | --- | --- | --- | --- |
 | `aws-access-key` | Required | Enter your AWS IAM access key. For more information about how to retrieve your access key, see the [AWS IAM docs](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html). | N/A |
 | `aws-secret-access-key` | Required | Enter your AWS IAM secret access key. For more information about how to retrieve your access key, see the [AWS IAM docs](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html). | N/A | |
-| `iops-per-gb` | Optional | `sat-aws-block-gold` storageclass (Volume type *io2*) requires iopsPerGB, default is set to *10 IOPS/GB*. To set different value for iopsPerGB, refer to https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html  | 10 |
 
 
 ## Default storage classes
@@ -46,7 +45,7 @@ ibmcloud sat storage template get --name aws-ebs-csi-driver --version 0.8.2
 **Example `sat storage config create` command**
 
 ```sh
-ibmcloud sat storage config create --name aws-ebs-conf --template-name aws-ebs-csi-driver --template-version 0.8.2 -p "aws-access-key=<access-key-without-base64-encoding>" -p "aws-secret-access-key=<secret-access-key-without-base64-encoding>" -p "iops-per-gb=<iops-per-gb>"
+ibmcloud sat storage config create --name aws-ebs-conf --template-name aws-ebs-csi-driver --template-version 0.8.2 -p "aws-access-key=<access-key-without-base64-encoding>" -p "aws-secret-access-key=<secret-access-key-without-base64-encoding>"
 ```
 
 ## Creating the storage assignment
