@@ -28,49 +28,6 @@ items:
     spec:
       attachRequired: true
       podInfoOnMount: false
-  - kind: StorageClass
-    apiVersion: storage.k8s.io/v1
-    metadata:
-      name: sat-aws-block-gold
-      labels:
-        app.kubernetes.io/name: aws-ebs-csi-driver
-        app.kubernetes.io/version: 0.8.2
-    provisioner: ebs.csi.aws.com
-    volumeBindingMode: WaitForFirstConsumer
-    allowVolumeExpansion: true
-    parameters:
-      csi.storage.k8s.io/fstype: ext4
-      type: io2
-      iopsPerGB: "{{ iops-per-gb }}"
-      encrypted: "true"
-  - kind: StorageClass
-    apiVersion: storage.k8s.io/v1
-    metadata:
-      name: sat-aws-block-silver
-      labels:
-        app.kubernetes.io/name: aws-ebs-csi-driver
-        app.kubernetes.io/version: 0.8.2
-    provisioner: ebs.csi.aws.com
-    volumeBindingMode: WaitForFirstConsumer
-    allowVolumeExpansion: true
-    parameters:
-      csi.storage.k8s.io/fstype: ext4
-      type: gp3
-      encrypted: "true"
-  - kind: StorageClass
-    apiVersion: storage.k8s.io/v1
-    metadata:
-      name: sat-aws-block-bronze
-      labels:
-        app.kubernetes.io/name: aws-ebs-csi-driver
-        app.kubernetes.io/version: 0.8.2
-    provisioner: ebs.csi.aws.com
-    volumeBindingMode: WaitForFirstConsumer
-    allowVolumeExpansion: true
-    parameters:
-      csi.storage.k8s.io/fstype: ext4
-      type: st1
-      encrypted: "true"
   - apiVersion: v1
     kind: ServiceAccount
     metadata:
