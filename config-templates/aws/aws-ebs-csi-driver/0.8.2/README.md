@@ -53,7 +53,7 @@ ibmcloud sat storage config create --name aws-ebs-conf --template-name aws-ebs-c
 **Example `sat storage assignment create` command**
 
 ```sh
-ibmcloud sat storage assignment create --name install-ebs --cluster-group <cluster-group> --configuration aws-ebs-conf
+ibmcloud sat storage assignment create --name install-ebs --group <cluster-group> --configuration aws-ebs-conf
 ```
 
 ## Verifying your AWS EBS CSI Driver storage configuration is assigned to your clusters
