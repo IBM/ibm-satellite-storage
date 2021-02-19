@@ -129,7 +129,7 @@ When you create your OCS configuration, you must specify device paths for the ob
 | `mon-device-path` | Required | Enter the `disk-by-id` paths to the devices that you want to use for the MON pods. Example: `/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part1`. | N/A | csv |
 | `osd-device-path` | Required | Enter the `disk-by-id` paths to the devices that you want to use for the OSD pods. Example: `/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part2`. | N/A | csv |
 | `num-of-osd` | Optional | Enter the number of OSDs. OCS will create 3x number of OSDs for the value specified. Initial storage capacity is the same as your disk size specified at `osd-device-path`. When you want to increase your storage capacity, you have to increase `num-of-osd` by the number of disks you add (taking into consideration the replication factor, which is `3` by default) | 1 | integer |
-|`worker-nodes` | Optional |Workers which need to be a part of OCS (Minimum 3). If not specified, all workers will be considered for OCS | N/A |csv |
+|`worker-nodes` | Required |Workers which need to be a part of OCS (Minimum 3). | N/A |csv |
 | `billing-type` | Optional | Enter the billing option that you want to use. You can enter either `hourly` or `monthly`. | `hourly` | string |
 | `ocs-upgrade` | Optional | Set to `true` if you want to upgrade the major version of OCS while creating a configuration of the newer version. | false | boolean |
 

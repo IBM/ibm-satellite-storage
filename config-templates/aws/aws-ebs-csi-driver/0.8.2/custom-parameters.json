@@ -5,7 +5,7 @@
     "name": "aws-access-key",
     "required": "true",
     "category": "secret",
-    "ofbuscate": "true"
+    "obfuscate": "true"
   },
   {
     "description": "AWS Secret Access Key",
@@ -13,6 +13,14 @@
     "name": "aws-secret-access-key",
     "required": "true",
     "category": "secret",
-    "ofbuscate": "true"
+    "obfuscate": "true"
+  },
+  {
+    "description": "IOPS per GB, required for volume 'io2' type",
+    "displayname": "IOPS per GB",
+    "name": "iops-per-gb",
+    "default": "10",
+    "required": "false",
+    "category": "config"
   }
 ]
