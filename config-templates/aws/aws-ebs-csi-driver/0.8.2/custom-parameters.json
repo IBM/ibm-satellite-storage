@@ -1,14 +1,14 @@
 [
   {
-    "description": "AWS Access Key",
-    "displayname": "AWS Access Key",
+    "description": "AWS access key ID",
+    "displayname": "AWS Access Key ID",
     "name": "aws-access-key",
     "required": "true",
     "category": "secret",
     "obfuscate": "true"
   },
   {
-    "description": "AWS Secret Access Key",
+    "description": "AWS secret access key",
     "displayname": "AWS Secret Access Key",
     "name": "aws-secret-access-key",
     "required": "true",
@@ -16,7 +16,7 @@
     "obfuscate": "true"
   },
   {
-    "description": "IOPS per GB, required for volume 'io2' type",
+    "description": "Optional. IOPS per GB. You must specify this parameter if you want to use the io2 volume type.",
     "displayname": "IOPS per GB",
     "name": "iops-per-gb",
     "default": "10",

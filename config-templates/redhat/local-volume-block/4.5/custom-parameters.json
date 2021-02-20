@@ -1,20 +1,20 @@
 [
   {
-    "description": "Node label key",
+    "description": "The worker node label key.",
     "displayname": "Node Label Key",
     "name": "label-key",
     "required": "true",
     "category": "config"
   },
   {
-    "description": "Node label key value",
+    "description": "The worker node label value.",
     "displayname": "Node Label Key Value",
     "name": "label-value",
     "required": "true",
     "category": "config"
   },
   {
-    "description": "Local storage device path, e.g. /dev/sdc",
+    "description": "The local storage device path, e.g. /dev/sdc",
     "displayname": "Device Path",
     "name": "devicepath",
     "required": "true",
