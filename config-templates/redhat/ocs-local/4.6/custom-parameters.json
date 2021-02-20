@@ -27,7 +27,7 @@
     "required": "false"
   },
   {
-    "description": "Worker Nodes you want to deploy OCS on. Min 3. Leave if you want OCS on all workers",
+    "description": "Worker Nodes you want to deploy OCS on. Min 3.",
     "displayname": "worker nodes",
     "name": "worker-nodes",
     "required": "false",
