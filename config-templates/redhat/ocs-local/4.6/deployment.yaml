@@ -324,7 +324,9 @@ items:
          {{/osd-device-path }}
        numOfOsd: {{ num-of-osd }}
        ocsUpgrade: {{ ocs-upgrade }}
+       {{#worker-nodes?}}
        workerNodes:
+       {{/worker-nodes?}}
          {{#worker-nodes}}
          - "{{{ item }}}"
          {{/worker-nodes}}
