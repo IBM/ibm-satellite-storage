@@ -30,7 +30,7 @@
     "description": "Worker Nodes you want to deploy OCS on. Min 3. Leave if you want OCS on all workers",
     "displayname": "worker nodes",
     "name": "worker-nodes",
-    "required": "true",
+    "required": "false",
     "type": "csv"
   },
   {
