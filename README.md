@@ -10,11 +10,15 @@ With IBM Cloud Satellite, you can bring your own compute infrastructure that is 
 ![Storage Template Registration Flow](./satellite-storage-registration-flow.png) 
 
 ## Registering with IBM Cloud
+
 1. [Create an IBMid](https://cloud.ibm.com/registration).
+
 1. Email `contsto2@in.ibm.com`.
    1. Include the subject line: `IBM Cloud Satellite Storage <storage-solution-name> Integration`*. For example: `IBM Cloud Satellite Storage LocalVolume Integration`. 
    1. Provide a high level description of the storage solution with a link to the user documentation or public repository.
+
 1. [Complete the onboarding process](https://ibm-10.gitbook.io/certified-for-cloud-pak-onboarding)
+
 1. [Complete the Certification Requirements checklist.](https://ibm-10.gitbook.io/certified-for-cloud-pak-onboarding/co-sell-1/tech-cert/architectural-questions)
 
 
@@ -88,10 +92,10 @@ With IBM Cloud Satellite, you can bring your own compute infrastructure that is 
    1. The output of the `oc get -n <namespace> pods` command that displays the pods your deployment creates.
 
 ## Developing your Satellite storage configuration template
+
 1. Fork this repository.
-1. In your `deployment.yaml`, 
-1. Convert the `deployment.yaml` to a Satellite storage template.
-1. In your fork, make sure that you create your directory structure in the following format. For more information about the template files, review the reference table.
+
+1. Convert the `deployment.yaml` to a Satellite storage template. In your fork, make sure that you create your directory structure in the following format. For more information about the template files, review the reference table.
    ```md
    config-templates
    ---<storage-provider-name> 
@@ -118,38 +122,43 @@ With IBM Cloud Satellite, you can bring your own compute infrastructure that is 
 | `metadata.json` | This file contains the metadata for GUI display. Example [`metadata.json`](https://github.com/IBM/ibm-satellite-storage/blob/master/config-templates/netapp/netapp-trident/20.07/metadata.json). |
 
 
-### Understanding template format
-Let us take an example of local-volume. In case of local-volume the device path of the local storage may vary from one cluster to another. 
-To set the device path dynamically, parameterize the device path in the template `deployment.yaml` file in the following format.
-```
-   storageClassDevices:
-      - storageClassName: "localblock-sc"
-         volumeMode: Block
-         devicePaths:
-            - "{{ devicepath }}" [1]
-```
-and define the parameter `devicepath` in `custom-parameters.json` as follows
-```
-   {
-   "description": "Local storage device path", [2]
-   "displayname": "Device Path", [3]
-   "name": "devicepath", [4]
-   "default": "/dev/sdc", [5]
-   "required": true, [6]
-   "type": "text" [7]
-   }
-```
-- [1] Parameter name `devicepath`, should be between `"{{ ... }}"`
-- [2] Description about the parameter
-- [3] Display name for GUI
-- [4] Name of the parameter, should be string
-- [5] Optional, default value for the parameter
-- [6] Parameter value should be set `true` | `false`
-- [7] Valid types: `text` | `secret` | `boolean` | `option` | `dropdown`
+### Setting dynamic parameters in your deployment
 
+In this example, the `devicepath` parameter is set dynamically. In a local storage configuration, the device path of the local disks might vary from one cluster to another. To account for this in your configuration template, you can create a dynamic parameter.
+
+1. Parameterize the device path in the template `deployment.yaml` file in the following format. The parameter name `devicepath` is passed in the format: `"{{ <parameter-name> }}"`
+   ```yaml
+      storageClassDevices:
+         - storageClassName: "localblock-sc"
+            volumeMode: Block
+            devicePaths:
+               - "{{ devicepath }}"
+   ```
+
+2. Add the parameter to your `custom-parameters.json` file in the following format. You can also include a default value for the parameter.
+   ```json
+      {
+      "description": "A description of the parameter.",
+      "displayname": "The display name for the Satellite UI",
+      "name": "devicepath",
+      "default": "/dev/sdc",
+      "required": true,
+      "type": "text"
+      }
+   ```
+
+#### Custom parameter reference
+
+| `description` | A description of the parameter. |
+| `displayname` | The display name of the parameter that is used in the Satellite UI. |
+| `name` | The name of the parameter in string format. |
+| `default` | Optional. The default value for the parameter. If the does not specify the parameter in their configuration, this value entered as `default` is used. |
+| `required` | Specify `true` or `false`. |
+| `type` | Specify the parameter type. Valid parameter types are: `text`, `secret`, `boolean`, `option`, or `dropdown`. |
 
 
 ## Testing and support
+
 1. Create a configuration from a template in your fork. When you run the `sat storage config create` command, specify the `source-org` and `source-branch` of your fork and any other parameters for your configuration.
    ```sh
    ibmcloud sat storage config create --name <config-name> --template-name <template-name> --template-version <template-version> --source-org <your-github-org> --source-branch <your-github-branch> [-p "<parameter>=<value>" -p "<parameter>=<value>"]
@@ -162,13 +171,17 @@ and define the parameter `devicepath` in `custom-parameters.json` as follows
 1. Develop test cases for verification testing. You test case should include the following:
    * Steps to set up the environment or deploy any prerequisites.
    * Test to verify the functionality of the Storage driver.
+
 1. Provide a runbook for customer support. Include the following information in your support runbook.
    * Support contact details.
    * Link to support site or support ticket process. 
    * Steps to collect data for debugging.
    * Known issues and steps to resolve the issue.
+
 ## Requesting review
+
 After you have completed testing, you can open a PR to request a review from the Satellite storage team.
 
 1. Create a PR from your fork to the `develop` branch of this repo.
+
 1. The Satellite storage team will review your PR and request changes or approve.
