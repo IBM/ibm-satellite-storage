@@ -1,40 +1,40 @@
 [
   {
-    "description": "Cluster Name of OCS",
+    "description": "Specify a name for your OCS storage cluster.",
     "displayname": "Cluster Name",
     "name": "ocs-cluster-name",
     "required": "true"
   },
   {
-    "description": "Required. Enter the OSD device path.",
+    "description": "The local device path of the OSD.",
     "displayname": "Osd Device Path",
     "name": "osd-device-path",
     "required": "true",
     "type": "csv"
   },
   {
-    "description": "Required. Enter the MON device path.",
+    "description": "The local device path of the MON.",
     "displayname": "Mon device Path",
     "name": "mon-device-path",
     "required": "true",
     "type": "csv"
   },
   {
-    "description": "Optional. Enter the number of OSD. The default value is 1",
+    "description": "The number of OSDs. The default value is '1'.",
     "displayname": "Num of osd",
     "name": "num-of-osd",
     "default": "1",
     "required": "false"
   },
   {
-    "description": "Worker Nodes you want to deploy OCS on. Min 3.",
+    "description": "The IP addresses of the worker nodes where you want to deploy OCS. The minimum number of worker nodes is 3.",
     "displayname": "worker nodes",
     "name": "worker-nodes",
     "required": "false",
     "type": "csv"
   },
   {
-    "description": "OCS Upgrade",
+    "description": "The target OCS version.",
     "displayname": "OCS upgrade",
     "name": "ocs-upgrade",
     "default": "false",
@@ -42,7 +42,7 @@
     "type": "boolean"
   },
   {
-    "description": "Billing type",
+    "description": "The billing type for your OCS configuration.",
     "displayname": "Billing type",
     "name": "billing-type",
     "default": "hourly",
