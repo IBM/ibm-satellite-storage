@@ -1,0 +1,69 @@
+[
+  {
+    "description": "Namespace for driver deployment",
+    "displayname": "Namespace",
+    "name": "namespace",
+    "default": "trident-nas",
+    "required": "false",
+    "category": "config"
+  }, {
+    "description": "IP address of ONTAP management LIF",
+    "displayname": "Management LIF",
+    "name": "managementLIF",
+    "required": "true",
+    "category": "config"
+  }, {
+    "description": "IP address of protocol LIF",
+    "displayname": "Data LIF",
+    "name": "dataLIF",
+    "required": "true",
+    "category": "config"
+  }, {
+    "description": "Storage virtual machine to use",
+    "displayname": "SVM",
+    "name": "svm",
+    "required": "true",
+    "category": "config"
+  }, {
+    "description": "Username to connect to the storage device",
+    "displayname": "User Name",
+    "name": "username",
+    "required": "true",
+    "category": "secret"
+  }, {
+    "description": "Password to connect to the storage device",
+    "displayname": "User Password",
+    "name": "password",
+    "required": "true",
+    "category": "secret",
+    "obfuscate": "true"
+  }, {
+    "description": "NAS option for the NFS export policy to use; defaults to default",
+    "displayname": "Export Policy",
+    "name": "exportPolicy",
+    "default": "default",
+    "required": "false",
+    "category": "config"
+  }, {
+    "description": "Maximum requestable volume size and qtree parent volume size",
+    "displayname": "Limit Volume Size",
+    "name": "limitVolumeSize",
+    "default": "50Gi",
+    "required": "false",
+    "category": "config"
+  }, {
+    "description": "Fail provisioning if usage is above this percentage",
+    "displayname": "Limit AggregateUsage",
+    "name": "limitAggregateUsage",
+    "default": "80%",
+    "required": "false",
+    "category": "config"
+  }, {
+    "description": "Fine grained control of NFS mount options; defaults to -o nfsvers=4",
+    "displayname": "NFS Mount Options",
+    "name": "nfsMountOptions",
+    "default": "nfsvers=4",
+    "required": "false",
+    "category": "config"
+  }
+]

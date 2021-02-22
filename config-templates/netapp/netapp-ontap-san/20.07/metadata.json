@@ -1,14 +1,14 @@
 {
   "name": "20.07",
   "enabled": "true",
-  "description": "Netapp Trident version 20.07",
+  "description": "Netapp Ontap-SAN Driver (Trident version 20.07)",
   "tags": [
     {
       "name": "provider",
       "value": "netapp"
     }, {
       "name": "offering-name",
-      "value": "ontap-nas"
+      "value": "ontap-san"
     }, {
       "name": "provider-url",
       "value": "https://netapp-trident.readthedocs.io/en/stable-v20.10/support/support.html"
@@ -26,7 +26,7 @@
       "value": "1.18,1.19"
     }, {
       "name": "volume-type",
-      "value": "file"
+      "value": "block"
     }, {
       "name": "volume-encryption-at-rest",
       "value": "true"
@@ -44,7 +44,7 @@
       "value": "true"
     }, {
       "name": "storageclass",
-      "value": "gold,silver"
+      "value": "gold,silver,bronze"
     }
   ]
 }

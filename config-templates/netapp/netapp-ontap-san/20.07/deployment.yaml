@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: List
 metadata:
-  name: netapp-trident
+  name: netapp-trident-san
   namespace: kube-system
   annotations:
     version: 20.07
@@ -471,25 +471,24 @@ items:
       serviceAccountName: trident-kubectl-sa
       containers:
         - name: trident-kubectl
-          image: nkkashyap/ibm-tridentctl:v001
+          image: nkkashyap/ibm-tridentctl:v002
+          imagePullPolicy: Always
           env:
             - name: NAMESPACE
               value: "{{ namespace }}"
-            - name: DRIVER_NAME
-              value: "{{ storagedriver }}"
+            - name: DRIVER_Name
+              value: "ontap-san"
             - name: MGMT_LIF
-              value: "{{ mgmt-lif }}"
+              value: "{{{ managementLIF }}}"
             - name: DATA_LIF
-              value: "{{ data-lif }}"
-            - name: SVM_ID
-              value: "{{ svm-id }}"
-            - name: AGGREGATE_ID
-              value: "{{ aggregate-id }}"
-            - name: STORAGE_SIZE
-              value: "{{ storage-size }}"
-            - name: EXPORT_POLICY
-              value: "{{ export-policy }}"
-            - name: USER_ID
-              value: "{{ user-id }}"
-            - name: USER_PASSWORD
-              value: "{{ user-pass }}"
+              value: "{{{ dataLIF }}}"
+            - name: SVM_Name
+              value: "{{{ svm }}}"
+            - name: USER_Name
+              value: "{{{ username }}}"
+            - name: USER_Password
+              value: "{{{ password }}}"
+            - name: LIMIT_VolumeSize
+              value: "{{{ limitVolumeSize }}}"
+            - name: LIMIT_AggregateUsage
+              value: "{{{ limitAggregateUsage }}}"

@@ -1,0 +1,24 @@
+[
+  {
+	"description": "Storage class Name to be created",
+	"displayname": "Storage Class Name",
+	"name": "sc-name",
+	"required": "true",
+	"category": "config"
+  }, {
+	"description": "Is the storage class default?",
+	"displayname": "Default",
+	"name": "is-default",
+	"default": "false",
+	"required": "false",
+	"category": "config",
+	"type": "text"
+  }, {
+	"description": "Slector label",
+	"displayname": "Selector",
+	"name": "selector",
+	"required": "true",
+	"category": "config",
+	"type": "text"
+  }
+]
