@@ -28,58 +28,57 @@
 		"type": ""
 	},
 	{
-		"description": "Name of secret for username password to connect to GUI server",
-		"displayname": "Secret Name",
+		"description": "Name of secret for username password to connect to Primary Cluster GUI",
+		"displayname": "Primary Cluster, Secret Name",
 		"name": "secret-name",
 		"required": "true",
 		"type": ""
 	},
-
 	{
-		"description": "Username to connect to GUI server",
-		"displayname": "GUI Username",
+		"description": "Username to connect to Primary Cluster GUI",
+		"displayname": "Primary Cluster GUI Username",
 		"name": "gui-api-user",
 		"required": "true",
 		"type": "base64"
 	},
 	{
-		"description": "Password to connect to GUI server",
-		"displayname": "GUI Password",
+		"description": "Password to connect to Primary Cluster GUI",
+		"displayname": "Primary Cluster GUI Password",
 		"name": "gui-api-password",
 		"required": "true",
 		"type": "base64"
 	},
 	{
-		"description": "Cluster ID of the owning IBM Spectrum Scale Cluster",
+		"description": "Cluster ID of the Owning Scale Cluster",
 		"displayname": "Owning Cluster ID",
 		"name": "owning-cluster-id",
 		"required": "true",
 		"type": ""
 	},
 	{
-		"description": "Name of secret used to connect to Priary Cluster",
-		"displayname": "Primary Cluster Secret Name",
+		"description": "Name of secret used to connect to the Owning Cluster GUI",
+		"displayname": "Owning Cluster GUI, Secret Name",
 		"name": "owning-secret-name",
 		"required": "true",
 		"type": ""
 	},
 	{
-		"description": "FQDN or IP address of primary scale cluster node",
-		"displayname": "GUI Host",
+		"description": "FQDN or IP address of the GUI node for the Owning Cluster",
+		"displayname": "Owning Cluster GUI Host",
 		"name": "owning-gui-host",
 		"required": "true",
 		"type": ""
 	},
 	{
-		"description": "Username to connect to primary scale cluster node",
-		"displayname": "Primary scale cluster username",
+		"description": "Username to connect to Owning Cluster GUI",
+		"displayname": "Owning cluster GUI username",
 		"name": "owning-gui-api-user",
 		"required": "true",
 		"type": "base64"
 	},
 	{
-		"description": "Password to connect to primary scale cluster node",
-		"displayname": "Primary scale cluster password",
+		"description": "Password to connect to Owning Cluster GUI",
+		"displayname": "Owning Cluster GUI password",
 		"name": "owning-gui-api-password",
 		"required": "true",
 		"type": "base64"
