@@ -120,9 +120,9 @@ Retrieve all parameters required by this template.
 
 ## Default storage classes
 
-| Storage class name | Type | FileSystem Type | IOPS | Size range | Hard disk | Reclaim policy |
+| Storage class name | Type | Reclaim policy |
 | --- | --- | --- | --- | --- | --- | --- |
-| `ibm-spectrum-scale-csi-lt` |  |  |  |  |  | Delete | 
+| `ibm-spectrum-scale-csi-fileset` | fileset based volumes |  |  |  |  | Delete | 
 
 ## Creating the AWS EBS CSI Driver storage configuration
 
