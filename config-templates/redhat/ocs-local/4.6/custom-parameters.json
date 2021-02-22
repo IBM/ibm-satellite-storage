@@ -30,7 +30,7 @@
     "description": "The IP addresses of the worker nodes where you want to deploy OCS. The minimum number of worker nodes is 3.",
     "displayname": "worker nodes",
     "name": "worker-nodes",
-    "required": "false",
+    "required": "true",
     "type": "csv"
   },
   {
