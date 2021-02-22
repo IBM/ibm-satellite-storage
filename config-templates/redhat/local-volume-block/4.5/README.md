@@ -60,7 +60,7 @@ devicepath | Required |You can retrieve this parameter by using following comman
 **Example `sat storage config create` command**
 
 ```sh
-ibmcloud sat storage config create --name localvol-block-config --template-name local-volume-block --template-version 4.5 -p "label-key=stoarge" -p "label-value=localvol" -p "devicepath=/dev/xvdc"
+ibmcloud sat storage config create --name localvol-block-config --template-name local-volume-block --template-version 4.5 -p "label-key=storage" -p "label-value=localvol" -p "devicepath=/dev/xvdc"
 ```
 ## Creating the storage assignment
 
@@ -102,6 +102,8 @@ ibmcloud sat storage assignment create --name localvol-block-assign --group satC
 **Example output**
 ![Image of output](https://github.com/Hemlata3011/ibm-satellite-storage/blob/master/config-templates/redhat/local-volume-block/4.5/localVolBlk.png)
 
+**Follow** the [link](https://docs.openshift.com/container-platform/4.6/storage/persistent_storage/persistent-storage-local.html) to create the persistent volume claim and attach the claim to a pod.
+
 ## Troubleshooting
 
 1. PVs are not getting created
@@ -116,4 +118,43 @@ ibmcloud sat storage assignment create --name localvol-block-assign --group satC
 	Navigation Menu -> Satellite -> Clusters
    - Select the cluster and click on the overflow menu of that particular cluster.
    - Click on the Re-attach cluster and copy the displayed command and execute it.
-   
+   - Check the namespace in which template has been deployed is active
+           ```
+           $ oc get ns | grep local
+           local-storage                                      Active   101m
+           ```
+   - verify the logs for local-disk-local-diskmaker pod.
+   If the logs show as below - 
+   ```
+   kubectl logs -f pod/local-disk-local-diskmaker-7ww2j -n local-storage01
+   I0213 06:19:35.103830       1 diskmaker.go:24] Go Version: go1.13.15
+   I0213 06:19:35.104141       1 diskmaker.go:25] Go OS/Arch: linux/amd64
+   I0213 06:19:35.104148       1 diskmaker.go:26] local-storage-diskmaker Version: v4.5.0-202101300210.p0-0-ged6884f-dirty
+   E0213 06:19:40.697628       1 diskmaker.go:203] failed to acquire lock on device /dev/xvde
+   E0213 06:19:40.697657       1 diskmaker.go:180] error symlinking /dev/xvdc to /mnt/local-storage/sat-local-block-gold/xvdc: error acquiring exclusive lock on /dev/xvdc
+   ```
+   delete the symlink from the node
+   ```
+   oc debug node/<node-name>
+   chroot /host
+   rm -rf </path/to/symlink/as/shown/in/logs>
+   ```
+   Example `rm -rf  /mnt/local-storage/sat-local-block-gold/xvdc`
+
+2.  You can check the local-disk-local-provisioner pod logs to verify if the pv got created with specified volume
+    ```
+    $ kubectl logs -f pod/local-disk-local-provisioner-xstjh -n local-storage 
+    ...
+    I0213 06:30:44.146148       1 common.go:382] Creating client using in-cluster config
+    I0213 06:30:44.174765       1 main.go:85] Starting controller
+    I0213 06:30:44.174800       1 main.go:100] Starting metrics server at :8080
+    I0213 06:30:44.175265       1 controller.go:45] Initializing volume cache
+    I0213 06:30:44.378164       1 controller.go:108] Controller started
+    I0213 06:30:44.378851       1 discovery.go:304] Found new volume at host path "/mnt/local-storage/sat-local-bolck-gold/xvdc" with capacity 53687091200, creating Local PV "local-pv-1d14680"
+    I0213 06:30:44.396328       1 cache.go:55] Added pv "local-pv-1d14680" to cache
+    I0213 06:30:44.396471       1 discovery.go:337] Created PV "local-pv-1d14680" for volume at "/mnt/local-storage/sat-local-block-gold/xvdc"
+    I0213 06:30:44.462244       1 cache.go:64] Updated pv "local-pv-1d14680" to cache
+    ```
+    
+## References
+   - https://docs.openshift.com/container-platform/4.6/storage/persistent_storage/persistent-storage-local.html

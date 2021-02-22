@@ -71,7 +71,7 @@ fstype     | Required | File System type of your choice     |          ext4|
 **Example `sat storage config create` command**
 
 ```sh
-ibmcloud sat storage config create --name localvol-file-config --template-name local-volume-file --template-version 4.5 -p "label-key=stoarge" -p "label-value=localfile" -p "devicepath=/dev/xvde"
+ibmcloud sat storage config create --name localvol-file-config --template-name local-volume-file --template-version 4.5 -p "label-key=storage" -p "label-value=localfile" -p "devicepath=/dev/xvde"
 ```
 
 ## Creating the storage assignment
@@ -82,7 +82,7 @@ ibmcloud sat storage config create --name localvol-file-config --template-name l
 ibmcloud sat storage assignment create --name localvol-file-assign --group satClusterGrp --config localvol-file-config
 ```
 
-## Verifying your Local Volume Block storage configuration is assigned to your clusters
+## Verifying your Local Volume File storage configuration is assigned to your clusters
 
 ```
 $ oc get all -n local-storage
