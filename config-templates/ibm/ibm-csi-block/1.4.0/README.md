@@ -33,7 +33,7 @@ Retrieve all parameters required by this template.
 **Example `sat storage config create` command**
 
 ```sh
-ibmcloud sat storage config create --name <config-name> --template-name ibm-csi-block --template-version 1.4.0 -p "namespace=<namespace>" "
+ibmcloud sat storage config create --name <config-name> --template-name ibm-csi-block --template-version 1.4.0 -p "namespace=<namespace>"
 ```
 
 ## Creating the storage assignment
