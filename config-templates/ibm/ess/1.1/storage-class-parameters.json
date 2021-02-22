@@ -1,0 +1,23 @@
+[
+	{
+		"description": "Name to be given to Spectrum Scall Storage Class",
+		"displayname": "Storage Class Name",
+		"name": "storage-class-name",
+		"required": "true",
+		"type": ""
+	},
+	{
+		"description": "File system on which directory-based volume should be created",
+		"displayname": "Volume Backend Filesystem",
+		"name": "vol-backend-fs",
+		"required": "true",
+		"type": ""
+	},
+	{
+		"description": "Base path under which all volumes with this storage class will be created. (Must Exist)",
+		"displayname": "Volume Directory Base Path",
+		"name": "vol-dir-base-path",
+		"required": "true",
+		"type": ""
+	}
+]

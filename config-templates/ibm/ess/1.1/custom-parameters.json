@@ -1,0 +1,129 @@
+[
+	{
+		"description": "Mount path of the primary file system",
+		"displayname": "Scale Host Path",
+		"name": "scale-host-path",
+		"required": "true",
+		"type": ""
+	},
+	{
+		"description": "Cluster ID of the pirimary IBM Spectrum Scale Cluster",
+		"displayname": "Cluster ID",
+		"name": "cluster-id",
+		"required": "true",
+		"type": ""
+	},
+	{
+		"description": "Primary file system name",
+		"displayname": "Primary FS",
+		"name": "primary-fs",
+		"required": "true",
+		"type": ""
+	},
+	{
+		"description": "FQDN or IP address of the GUI node of scale cluster that is specified against the Cluster ID parameter",
+		"displayname": "GUI Host",
+		"name": "gui-host",
+		"required": "true",
+		"type": ""
+	},
+	{
+		"description": "Name of secret for username password to connect to GUI server",
+		"displayname": "Secret Name",
+		"name": "secret-name",
+		"required": "true",
+		"type": ""
+	},
+
+	{
+		"description": "Username to connect to GUI server",
+		"displayname": "GUI Username",
+		"name": "gui-api-user",
+		"required": "true",
+		"type": "base64"
+	},
+	{
+		"description": "Password to connect to GUI server",
+		"displayname": "GUI Password",
+		"name": "gui-api-password",
+		"required": "true",
+		"type": "base64"
+	},
+	{
+		"description": "Cluster ID of the owning IBM Spectrum Scale Cluster",
+		"displayname": "Owning Cluster ID",
+		"name": "owning-cluster-id",
+		"required": "true",
+		"type": ""
+	},
+	{
+		"description": "Name of secret used to connect to Priary Cluster",
+		"displayname": "Primary Cluster Secret Name",
+		"name": "owning-secret-name",
+		"required": "true",
+		"type": ""
+	},
+	{
+		"description": "FQDN or IP address of primary scale cluster node",
+		"displayname": "GUI Host",
+		"name": "owning-gui-host",
+		"required": "true",
+		"type": ""
+	},
+	{
+		"description": "Username to connect to primary scale cluster node",
+		"displayname": "Primary scale cluster username",
+		"name": "owning-gui-api-user",
+		"required": "true",
+		"type": "base64"
+	},
+	{
+		"description": "Password to connect to primary scale cluster node",
+		"displayname": "Primary scale cluster password",
+		"name": "owning-gui-api-password",
+		"required": "true",
+		"type": "base64"
+	},
+	{
+		"description": "node1-k8-ip",
+		"displayname": "node1-k8-ip",
+		"name": "k8-n1-ip",
+		"required": "false",
+		"type": ""
+	},
+	{
+		"description": "node1-scale-host",
+		"displayname": "node1-scale-host",
+		"name": "sc-n1-host",
+		"required": "false",
+		"type": ""
+	},
+	{
+		"description": "node2-k8-ip",
+		"displayname": "node2-k8-ip",
+		"name": "k8-n2-ip",
+		"required": "false",
+		"type": ""
+	},
+	{
+		"description": "node2-scale-host",
+		"displayname": "node2-scale-host",
+		"name": "sc-n2-host",
+		"required": "false",
+		"type": ""
+	},
+	{
+		"description": "node3-k8-ip",
+		"displayname": "node3-k8-ip",
+		"name": "k8-n3-ip",
+		"required": "false",
+		"type": ""
+	},
+	{
+		"description": "node3-scale-host",
+		"displayname": "node3-scale-host",
+		"name": "sc-n3-host",
+		"required": "false",
+		"type": ""
+	}
+]
