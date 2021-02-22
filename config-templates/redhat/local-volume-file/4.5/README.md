@@ -1,4 +1,4 @@
-# Deploy Local Volume Block on a Satellite Cluster
+# Deploy local volume file storage on a Satellite Cluster
 Local persistent volumes allow you to access local storage devices, such as a disk or partition, by using the standard persistent volume claim interface.
 
 ## Prerequisites 
