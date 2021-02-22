@@ -1,6 +1,6 @@
 [
   {
-    "description": "Controller Namespace",
+    "description": "Deployment Namespace",
     "displayname": "Namespace",
     "name": "namespace",
     "default": "default",
