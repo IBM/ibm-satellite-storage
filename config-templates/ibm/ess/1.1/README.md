@@ -96,25 +96,25 @@ Retrieve all parameters required by this template.
  **ESS CSI Driver parameters**
 | Parameter | Required? | Description | Default value if not provided |
 | --- | --- | --- | --- |
-| `scale-host-path` | Required | Mount path of the primary file system. | N/A |
+| `scale-host-path` | Required | Mount path of the primary file system. Run: `mmlsfs`| N/A |
 | `cluster-id` | Required | Cluster ID of the Primary IBM Spectrum Scale Cluster. Run `mmlscluster` from a node within the Primary Cluster.| N/A | |
-| `primary-fs` | Required | Primary file system name.  | N/A |
+| `primary-fs` | Required | Primary file system name.  Run: `mmlsfs`| N/A |
 | `gui-host` | Required | FQDN or IP address of the GUI node of scale cluster that is specified against the id parameter.  Run `mmlscluster` from a node within the Primary cluster.  | N/A |
-| `secret-name` | Required | Name of secret for username password to connect to Primary Cluster GUI server.  | N/A |
-| `gui-api-user` | Required | Username to connect to Primary Cluster GUI.  Run `/usr/lpp/mmfs/gui/cli/lsuser` from GUI node, looking for members of the CsiAdmin group.   | N/A |
-| `gui-api-password` | Required | Password to connect to Primary Cluster GUI.  | N/A |
-| `owning-cluster-id` | Required | Cluster ID of the Owning Scale Cluster. | N/A | |
-| `owning-gui-host` | Required | FQDN or IP address of the GUI node for the Owning Cluster  | N/A |
-| `owning-secret-name` | Required | Name of secret used to connect to the Owning Cluster GUI | N/A |
-| `owning-gui-api-user` | Required | Username to connect to Owning Cluster GUI  | N/A |
-| `owning-gui-api-password` | Required | Password to connect to Owning Cluster GUI  | N/A |
-| `k8-n1-ip` | Required | IP address of Kubernetes Node#1 running IBM Spectrum Scale.  | N/A |
-| `sc-n1-host` | Required | Hostname of IBM Spectrum Scale Node#1.  | N/A |
-| `k8-n2-ip` | Required | IP address of Kubernetes Node#2 running IBM Spectrum Scale.  | N/A |
-| `sc-n2-host` | Required | Hostname of IBM Spectrum Scale Node#2.  | N/A |
-| `k8-n3-ip` | Required | IP address of Kubernetes Node#3 running IBM Spectrum Scale.  | N/A |
-| `sc-n3-host` | Required | Hostname of IBM Spectrum Scale Node#3.  | N/A |
-| `storage-class-name` | Required | Name of IBM Spectrum Scale Storage Class  | N/A |
+| `secret-name` | Required | Name of secret for username password to connect to Primary Cluster GUI server.  This parameter is user-specified.| N/A |
+| `gui-api-user` | Required | Username to connect to Primary Cluster GUI.  Run `lsuser` from GUI node, looking for members of the CsiAdmin group.   | N/A |
+| `gui-api-password` | Required | Password to connect to Primary Cluster GUI.  This parameter is user-specified.| N/A |
+| `owning-cluster-id` | Required | Cluster ID of the Owning Scale Cluster. Run `mmlscluster` from the owning cluster.  | N/A | |
+| `owning-gui-host` | Required | FQDN or IP address of the GUI node for the Owning Cluster.  Run `mmlscluster` from a node within the owning cluster.  | N/A |
+| `owning-secret-name` | Required | Name of secret used to connect to the Owning Cluster GUI.  This parameter is user-specified. | N/A |
+| `owning-gui-api-user` | Required | Username to connect to Owning Cluster GUI.  Run `lsuser` from GUI node, looking for members of the CsiAdmin group.| N/A |
+| `owning-gui-api-password` | Required | Password to connect to Owning Cluster GUI.  This parameter is user-specified.  | N/A |
+| `k8-n1-ip` | Required | IP address of Kubernetes Node#1 running IBM Spectrum Scale.  Run: `kubectl get nodes`| N/A |
+| `sc-n1-host` | Required | Hostname of IBM Spectrum Scale Node#1.  Run: `mmlscluster`| N/A |
+| `k8-n2-ip` | Required | IP address of Kubernetes Node#2 running IBM Spectrum Scale.  Run: `kubectl get nodes`| N/A |
+| `sc-n2-host` | Required | Hostname of IBM Spectrum Scale Node#2.  Run: `mmlscluster`| N/A |
+| `k8-n3-ip` | Required | IP address of Kubernetes Node#3 running IBM Spectrum Scale.  Run: `kubectl get nodes`| N/A |
+| `sc-n3-host` | Required | Hostname of IBM Spectrum Scale Node#3.  Run: `mmlscluster`| N/A |
+| `storage-class-name` | Required | Name of IBM Spectrum Scale Storage Class.  | N/A |
 | `vol-backend-fs` | Required | File system on which directory-based volume should be created.  | N/A |
 | `vol-dir-base-path` | Required | Base path under which all volumes with this storage class will be created.  (Must Exist).  | N/A |
 
