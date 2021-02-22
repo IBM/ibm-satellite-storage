@@ -1,20 +1,20 @@
 [
   {
-    "description": "Node label key",
+    "description": "The key of the worker node 'key=value' label.",
     "displayname": "Node Label Key",
     "name": "label-key",
     "required": "true",
     "category": "config"
   },
   {
-    "description": "Node label key value",
+    "description": "The value of the worker node 'key=value' label.",
     "displayname": "Node Label Key Value",
     "name": "label-value",
     "required": "true",
     "category": "config"
   },
   {
-    "description": "Local storage device path, e.g. /dev/sdc",
+    "description": "The local storage device path. Example: '/dev/sdc'.",
     "displayname": "Device Path",
     "name": "devicepath",
     "required": "true",
@@ -22,7 +22,7 @@
     "type": "csv"
   },
   {
-    "description": "File System type ext4/xfs",
+    "description": "The file system type. Specify 'ext', 'ext3', 'ext4', or 'xfs'.",
     "displayname": "File System type",
     "name": "fstype",
     "default": "ext4",

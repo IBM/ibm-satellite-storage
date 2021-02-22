@@ -1,6 +1,6 @@
 [
   {
-    "description": "AWS Access Key",
+    "description": "AWS access key ID",
     "displayname": "AWS Access Key",
     "name": "aws-access-key",
     "required": "true",
@@ -8,7 +8,7 @@
     "obfuscate": "true"
   },
   {
-    "description": "AWS Secret Access Key",
+    "description": "AWS secret access key",
     "displayname": "AWS Secret Access Key",
     "name": "aws-secret-access-key",
     "required": "true",
