@@ -14,5 +14,3 @@ items:
         app.kubernetes.io/name: aws-efs-csi-driver
         app.kubernetes.io/version: 1.0.0
     provisioner: efs.csi.aws.com
-    parameters:
-      type: efs
