@@ -14,7 +14,7 @@
 	  "category": "config",
 	  "type": "text"
 	}, {
-	  "description": "Slector label",
+	  "description": "The selector label.",
 	  "displayname": "Selector",
 	  "name": "selector",
 	  "required": "true",
