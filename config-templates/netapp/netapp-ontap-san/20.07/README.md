@@ -40,7 +40,7 @@ ibmcloud sat storage template get --name netapp-ontap-san --version 20.7
 
 ## Default storage classes
 
-Provide a table of the Satellite storage classes that are installed when your configuration is assigned to a cluster. Refer to the following example table. Add or remove storage class details based on the storage type.
+The following storage classes are deployed when you assign your NetApp ONTAP-SAN configuration to your clusters.
 
 | Storage class name | Type | File system | IOPs | Size range | Hard disk | Reclaim policy |
 | --- | --- | --- | --- | --- | --- | --- |
