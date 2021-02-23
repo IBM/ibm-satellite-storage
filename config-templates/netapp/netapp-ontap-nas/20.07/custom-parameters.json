@@ -25,7 +25,7 @@
     "required": "true",
     "category": "config"
   }, {
-    "description": "Username to connect to the storage device",
+    "description": "The username to connect to the storage device.",
     "displayname": "User Name",
     "name": "username",
     "required": "true",
