@@ -78,7 +78,7 @@ ibmcloud sat storage assignment create --name nasdriver --group filestore --conf
 
 ## Verifying your NetaApp Ontap-NAS Driver storage configuration is assigned to your clusters
 
-Provide steps to retrieve any driver pods, storage classes, or any other resources that are deployed with your storage configuration.
+Verify that your `netapp-ontap-nas` configuration is successfully assigned to your clusters. Run the following commands to verify that the driver pods and other Kubernetes resources are deployed.
 
 ```
 oc get pods 
