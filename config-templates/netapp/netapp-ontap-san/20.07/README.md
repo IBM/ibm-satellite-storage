@@ -14,7 +14,7 @@ Review the template parameters and retrieve the values from your NetApp cluster.
 
 ## NetaApp Ontap-SAN Driver parameters & how to retrieve them
 
-Retrieve all parameters required by this template
+List the template parameters.
 ```
 ibmcloud sat storage template get --name netapp-ontap-san --version 20.7
 ```
