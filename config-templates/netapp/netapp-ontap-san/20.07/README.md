@@ -24,7 +24,7 @@ ibmcloud sat storage template get --name netapp-ontap-san --version 20.7
 
 | Parameter | Required? | Description | Default value if not provided |
 | --- | --- | --- | --- |
-| `namespace` | Optional | Namespace for driver deployment | `trident-nas` |
+| `namespace` | Required | The namespace where you want to install the storage drivers. | `trident` |
 | `managementLIF` | Required | IP address of ONTAP management LIF | `N/A` |
 | `dataLIF` | Required | The IP address of data LIF. Example: `10.0.0.2`. | N/A | 
 | `svm` | Required | Storage virtual machine to use | `N/A` |
