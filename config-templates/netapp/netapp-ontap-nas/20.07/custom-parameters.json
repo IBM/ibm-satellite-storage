@@ -59,7 +59,7 @@
     "required": "false",
     "category": "config"
   }, {
-    "description": "Fine grained control of NFS mount options; defaults to -o nfsvers=4",
+    "description": "The NFS mount options.",
     "displayname": "NFS Mount Options",
     "name": "nfsMountOptions",
     "default": "nfsvers=4",
