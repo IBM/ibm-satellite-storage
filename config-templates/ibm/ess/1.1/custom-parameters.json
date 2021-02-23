@@ -49,41 +49,6 @@
 		"type": "base64"
 	},
 	{
-		"description": "Cluster ID of the Owning Scale Cluster",
-		"displayname": "Owning Cluster ID",
-		"name": "owning-cluster-id",
-		"required": "true",
-		"type": ""
-	},
-	{
-		"description": "Name of secret used to connect to the Owning Cluster GUI",
-		"displayname": "Owning Cluster GUI, Secret Name",
-		"name": "owning-secret-name",
-		"required": "true",
-		"type": ""
-	},
-	{
-		"description": "FQDN or IP address of the GUI node for the Owning Cluster",
-		"displayname": "Owning Cluster GUI Host",
-		"name": "owning-gui-host",
-		"required": "true",
-		"type": ""
-	},
-	{
-		"description": "Username to connect to Owning Cluster GUI",
-		"displayname": "Owning cluster GUI username",
-		"name": "owning-gui-api-user",
-		"required": "true",
-		"type": "base64"
-	},
-	{
-		"description": "Password to connect to Owning Cluster GUI",
-		"displayname": "Owning Cluster GUI password",
-		"name": "owning-gui-api-password",
-		"required": "true",
-		"type": "base64"
-	},
-	{
 		"description": "node1-k8-ip",
 		"displayname": "node1-k8-ip",
 		"name": "k8-n1-ip",

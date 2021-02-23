@@ -22,17 +22,6 @@ items:
   data:
     username: "{{{gui-api-user}}}"
     password: "{{{gui-api-password}}}"
-- apiVersion: v1
-  kind: Secret
-  metadata:
-    name: "{{owning-secret-name}}"
-    namespace: ibm-spectrum-scale-csi-driver
-    labels:
-      product: ibm-spectrum-scale-csi
-  type: Opaque
-  data:
-    username: "{{{owning-gui-api-user}}}"
-    password: "{{{owning-gui-api-password}}}"
 - apiVersion: apps/v1
   kind: Deployment
   metadata:
@@ -520,11 +509,11 @@ items:
   #
   # In the case we have multiple clusters, specify their configuration below.
   # ==================================================================================
-      - id: "{{owning-cluster-id}}"
-        secrets: "{{owning-secret-name}}"
-        secureSslMode: false
-       restApi:
-        - guiHost: "{{owning-gui-host}}"
+  #    - id: "{{owning-cluster-id}}"
+  #      secrets: "{{owning-secret-name}}"
+  #      secureSslMode: false
+  #     restApi:
+  #      - guiHost: "{{owning-gui-host}}"
   #      cacert:  "< Name of CA cert configmap for GUI >"   # Optional
 
   # Attacher image name, in case we do not want to use default image.

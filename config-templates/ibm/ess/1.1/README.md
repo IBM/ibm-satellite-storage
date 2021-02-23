@@ -103,11 +103,6 @@ Retrieve all parameters required by this template.
 | `secret-name` | Required | Name of secret for username password to connect to Primary Cluster GUI server.  This parameter is user-specified.| N/A |
 | `gui-api-user` | Required | Username to connect to Primary Cluster GUI.  Run `lsuser` from GUI node, looking for members of the CsiAdmin group.   | N/A |
 | `gui-api-password` | Required | Password to connect to Primary Cluster GUI.  This parameter is user-specified.| N/A |
-| `owning-cluster-id` | Required | Cluster ID of the Owning Scale Cluster. Run `mmlscluster` from the owning cluster.  | N/A | |
-| `owning-gui-host` | Required | FQDN or IP address of the GUI node for the Owning Cluster.  Run `mmlscluster` from a node within the owning cluster.  | N/A |
-| `owning-secret-name` | Required | Name of secret used to connect to the Owning Cluster GUI.  This parameter is user-specified. | N/A |
-| `owning-gui-api-user` | Required | Username to connect to Owning Cluster GUI.  Run `lsuser` from GUI node, looking for members of the CsiAdmin group.| N/A |
-| `owning-gui-api-password` | Required | Password to connect to Owning Cluster GUI.  This parameter is user-specified.  | N/A |
 | `k8-n1-ip` | Required | IP address of Kubernetes Node#1 running IBM Spectrum Scale.  Run: `kubectl get nodes`| N/A |
 | `sc-n1-host` | Required | Hostname of IBM Spectrum Scale Node#1.  Run: `mmlscluster`| N/A |
 | `k8-n2-ip` | Required | IP address of Kubernetes Node#2 running IBM Spectrum Scale.  Run: `kubectl get nodes`| N/A |
@@ -122,9 +117,9 @@ Retrieve all parameters required by this template.
 
 | Storage class name | Type | Reclaim policy |
 | --- | --- | --- | --- | --- | --- | --- |
-| `ibm-spectrum-scale-csi-fileset` | fileset based volumes |  |  |  |  | Delete | 
+| `ibm-spectrum-scale-csi-lt` | light weight volumes | Delete  | 
 
-## Creating the AWS EBS CSI Driver storage configuration
+## Creating the IBM Scale CSI Driver storage configuration
 
 **Example `sat storage config create` command**
 
@@ -184,3 +179,4 @@ https://www.ibm.com/support/knowledgecenter/STXKQY_CSI_SHR/com.ibm.spectrum.scal
 ## References
 
 - IBM Spectrum Scale CSI Driver: https://www.ibm.com/support/knowledgecenter/STXKQY_CSI_SHR/ibmspectrumscalecsi_welcome.html
+
