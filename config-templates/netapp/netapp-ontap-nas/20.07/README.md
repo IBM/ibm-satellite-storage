@@ -53,7 +53,7 @@ The following storage classes are installed when you assign your `netapp-ontap-n
 Create a Satellite storage configuration that uses your customized `netapp-ontap-nas` template.
 
 **Example `sat storage config create` command**
-
+Create a Satellite storage configuration by using the `netapp-ontap-nas` template.
 ```
 ibmcloud sat storage config create --name ontapnas --template-name netapp-ontap-nas --template-version 20.07 -p "managementLIF=10.0.0.1" -p "dataLIF=10.0.0.2" -p "svm=svm-nas" -p "username=admin" -p "password=admin-passW@rd" -p "exportPolicy=nfsexport"
 ```
