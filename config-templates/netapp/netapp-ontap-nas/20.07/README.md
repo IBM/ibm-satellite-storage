@@ -69,7 +69,7 @@ ibmcloud sat storage config create --name ontapnas --template-name netapp-ontap-
 ```
 
 ## Creating the storage assignment
-
+Assign your `netapp-ontap-nas` storage configuration to your clusters.
 **Example `sat storage assignment create` command**
 
 ```
