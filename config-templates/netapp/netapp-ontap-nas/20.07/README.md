@@ -33,15 +33,15 @@ ibmcloud sat storage template get --name netapp-ontap-nas --version 20.7
 
 **NetaApp Ontap-NAS Driver parameters**
 
-| Parameter | Required? | Description | Default value if not provided |
-| --- | --- | --- | --- |
-| `namespace` | Optional | Namespace for driver deployment | `trident-nas` |
-| `managementLIF` | Required | IP address of ONTAP management LIF | `N/A` |
-| `dataLIF` | Required | IP address of protocol LIF | `N/A` |
-| `svm` | Required | Storage virtual machine to use | `N/A` |
-| `username` | Required | Username to connect to the storage device | `N/A` |
-| `password` | Required | Password to connect to the storage device | `N/A` |
-| `exportPolicy` | Optional | NAS option for the NFS export policy to use | `default` |
+| Parameter name | Required? | Description | Default if not provided |
+| --- | --- | --- | 
+| `namespace` | Required | The namespace where you want to install the storage drivers. | `trident` |
+| `managementLIF` | Required | The IP address of the management LIF. Example: `10.0.0.1`. | N/A |
+| `dataLIF` | Required | The IP address of data LIF. Example: `10.0.0.2`. | N/A | 
+| `svm` | Required | The name of the storage virtual machine. Example: `svm-nfs`. | N/A | 
+| `export-policy` | Required | The NAS option for the NFS export policy. Example: `default`. | N/A |
+| `username` | Required | The username to connect to the storage device. | N/A |
+| `password` | Required | The password to connect to the storage device. | N/A |
 | `limitVolumeSize` | Optional | Maximum requestable volume size and qtree parent volume size | `50Gi` |
 | `limitAggregateUsage` | Optional | Fail provisioning if usage is above this percentage | `80%` |
 | `nfsMountOptions` | Optional | Fine grained control of NFS mount options; defaults to -o nfsvers=4 | `nfsvers=4` |
