@@ -4,8 +4,7 @@ You can use the `netapp-ontap-san` driver to dynamically provision and mange ONT
 
 ## Prerequisites
 
-**Planning consideration for Infra Admin**
-* Setup Ontap SAN Cluster
+* Create a cluster that meets the requirements for ONTAP SAN. For more information, see the [NetApp documentation](https://netapp-trident.readthedocs.io/en/stable-v20.07/support/requirements.html). Verify that your backend ONTAP cluster is configured as a Trident backend.
 * Share following details with Location Admin
    - managementLIF
    - dataLIF
