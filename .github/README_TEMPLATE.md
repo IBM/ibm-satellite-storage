@@ -77,11 +77,49 @@ oc get sc | grep sat
 
 Provide an example output screen of running driver pods and storage classes that are deployed by your configuration.
 
+## Deploying an app that uses your storage configuration
+ - Provide an example PVC yaml.
+ - Provide an example pod or deployment yaml.
+
+### Verifying that your app can write data to your storage
+- Provide steps to log-in to the app pod and write a file to the storage instance.
+
+
+## Removing your assignment
+
+Provide steps to remove the assignment from clusters.
+
+**What happens when I remove the <template-name> assignment from my clusters?**
+ - Which resources get removed? (pods, pvcs, deployments, storage classes, etc.)
+ - What happens to my data? Is it deleted? Do my exisiting apps still work?
+
+**Example `assignment rm` command
+
+```sh
+ibmcloud sat storage assignment rm
+```
+
+## Removing your configuration
+
+Provide steps and example command to remove the storage configuration.
+
+```sh
+ibmcloud sat storage configuration rm
+```
 
 ## Troubleshooting
 
 Provide troubleshooting steps for any known issues.
 
+
+## Support and "must gather" information
+
+**What information should I gather before opening a ticket?**
+- Provide a list of the must gather information.
+
+**How do I gather the required information?**
+
+1. Steps to gather logs, check pod health, etc.
 
 ## Reference
 
