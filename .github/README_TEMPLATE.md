@@ -107,6 +107,11 @@ Provide steps and example command to remove the storage configuration.
 ibmcloud sat storage configuration rm
 ```
 
+
+## Cleaning up your deployment
+
+ Provide clean up instructions - how to delete all resources, pods, etc. Delete any resources that are left behind after deleting the assignment.
+
 ## Troubleshooting
 
 Provide troubleshooting steps for any known issues.
