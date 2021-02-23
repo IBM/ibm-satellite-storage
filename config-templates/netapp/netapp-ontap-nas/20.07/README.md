@@ -42,9 +42,9 @@ ibmcloud sat storage template get --name netapp-ontap-nas --version 20.7
 | `export-policy` | Required | The NAS option for the NFS export policy. Example: `default`. | N/A |
 | `username` | Required | The username to connect to the storage device. | N/A |
 | `password` | Required | The password to connect to the storage device. | N/A |
-| `limitVolumeSize` | Optional | Maximum requestable volume size and qtree parent volume size | `50Gi` |
-| `limitAggregateUsage` | Optional | Fail provisioning if usage is above this percentage | `80%` |
-| `nfsMountOptions` | Optional | Fine grained control of NFS mount options; defaults to -o nfsvers=4 | `nfsvers=4` |
+| `limitVolumeSize` | Optional | Maximum volume size that can be requested and qtree parent volume size. | `50Gi` |
+| `limitAggregateUsage` | Optional | Limit provisioning of volumes if parent volume usage exceeds this value. For example, if a volume is requested that causes parent volume usage to exceed this value, the volume provisioning fails.  | `80%` |
+| `nfsMountOptions` | Optional | Specify the NFS mount version. Example: `nfsvers=4` | `nfsvers=4` |
 
 
 ## Default storage classes
