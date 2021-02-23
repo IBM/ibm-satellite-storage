@@ -89,11 +89,6 @@ oc get sc | grep sat
 ```
 
 
-## Troubleshooting
-
-Provide troubleshooting steps for any known issues.
-
-
 ## Reference
 
 - https://netapp-trident.readthedocs.io/en/stable-v20.07/kubernetes/operations/tasks/backends/ontap/ontap-nas/index.html
