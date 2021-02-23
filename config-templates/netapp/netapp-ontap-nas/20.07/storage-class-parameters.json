@@ -1,6 +1,6 @@
 [
   {
-	"description": "Storage class Name to be created",
+	"description": "The name of the storage class.",
 	"displayname": "Storage Class Name",
 	"name": "sc-name",
 	"required": "true",
