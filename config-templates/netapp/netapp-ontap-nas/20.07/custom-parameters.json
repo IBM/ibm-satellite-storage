@@ -13,7 +13,7 @@
     "required": "true",
     "category": "config"
   }, {
-    "description": "IP address of protocol LIF",
+    "description": "The IP address of the Data LIF.",
     "displayname": "Data LIF",
     "name": "dataLIF",
     "required": "true",
