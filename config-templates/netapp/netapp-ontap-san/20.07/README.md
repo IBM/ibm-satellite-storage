@@ -5,12 +5,7 @@ You can use the `netapp-ontap-san` driver to dynamically provision and mange ONT
 ## Prerequisites
 
 * Create a cluster that meets the requirements for ONTAP SAN. For more information, see the [NetApp documentation](https://netapp-trident.readthedocs.io/en/stable-v20.07/support/requirements.html). Verify that your backend ONTAP cluster is configured as a Trident backend.
-* Share following details with Location Admin
-   - managementLIF
-   - dataLIF
-   - svm
-   - username
-   - password
+Review the template parameters and retrieve the values from your NetApp cluster.
 * The backend ONTAP cluster has been configured to be used as a Trident backend. Namely:
    * A SVM must be dedicated for Trident. Volumes created by Trident will be placed in this SVM.
    * One or more aggregates must be assigned to the SVM.
