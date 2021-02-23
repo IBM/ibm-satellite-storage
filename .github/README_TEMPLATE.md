@@ -62,10 +62,18 @@ ibmcloud sat storage assignment create --name <assignment-name> --cluster-group 
 
 ## Verifying your [Template Name] storage configuration is assigned to your clusters
 
-Provide steps to retrieve any driver pods, storage classes, or any other resources that are deployed with your storage configuration.
+Provide steps to retrieve any driver pods, storage classes, PVs, PVCs, or any other resources that are deployed with your storage configuration.
 
 ```sh
 oc get pods 
+```
+
+```sh
+oc get pv
+```
+
+```sh
+oc get pv
 ```
 
 ```sh
