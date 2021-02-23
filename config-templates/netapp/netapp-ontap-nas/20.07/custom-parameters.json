@@ -38,7 +38,7 @@
     "category": "secret",
     "obfuscate": "true"
   }, {
-    "description": "NAS option for the NFS export policy to use; defaults to default",
+    "description": "The NAS option for the NFS export policy.",
     "displayname": "Export Policy",
     "name": "exportPolicy",
     "default": "default",
