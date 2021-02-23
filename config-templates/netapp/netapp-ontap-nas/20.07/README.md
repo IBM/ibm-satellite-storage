@@ -21,7 +21,7 @@ You can use the `netapp-ontap-nas` Satellite storage template to deploy NetApp s
 
 ## NetaApp Ontap-NAS Driver parameters & how to retrieve them
 
-Retrieve all parameters required by this template
+List the template parameters.
 ```
 ibmcloud sat storage template get --name netapp-ontap-nas --version 20.7
 ```
