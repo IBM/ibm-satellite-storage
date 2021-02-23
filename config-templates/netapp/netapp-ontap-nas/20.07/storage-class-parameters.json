@@ -6,7 +6,7 @@
 	"required": "true",
 	"category": "config"
   }, {
-	"description": "Is the storage class default?",
+	"description": "Specify 'true' or 'false' to make the created storage class the default class.",
 	"displayname": "Default",
 	"name": "is-default",
 	"default": "false",
