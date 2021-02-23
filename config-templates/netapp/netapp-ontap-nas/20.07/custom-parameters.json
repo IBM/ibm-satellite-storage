@@ -1,6 +1,6 @@
 [
   {
-    "description": "Namespace for driver deployment",
+    "description": "The namespace to install the storage drivers.",
     "displayname": "Namespace",
     "name": "namespace",
     "default": "trident-nas",
