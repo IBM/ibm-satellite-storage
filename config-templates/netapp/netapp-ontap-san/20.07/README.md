@@ -6,11 +6,12 @@ You can use the `netapp-ontap-san` driver to dynamically provision and mange ONT
 
 * Create a cluster that meets the requirements for ONTAP SAN. For more information, see the [NetApp documentation](https://netapp-trident.readthedocs.io/en/stable-v20.07/support/requirements.html). Verify that your backend ONTAP cluster is configured as a Trident backend.
 Review the template parameters and retrieve the values from your NetApp cluster.
-* The backend ONTAP cluster has been configured to be used as a Trident backend. Namely:
-   * A SVM must be dedicated for Trident. Volumes created by Trident will be placed in this SVM.
-   * One or more aggregates must be assigned to the SVM.
-   * One or more dataLIFs must be created for the SVM. Depending on the protocol used (iSCSI/NFS), at least one dataLIF is required.
-   * Ensure the SVM has snapshot policies set up to be used by Trident. It is recommended a default snapshot policy is created on the SVM being used.
+* Create a cluster that meets the requirements for ONTAP NAS. For more information, see the [NetApp documentation](https://netapp-trident.readthedocs.io/en/stable-v20.07/support/requirements.html). Verify that your backend ONTAP cluster is configured as a Trident backend.
+   * You must have a dedicated SVM for Trident. Volumes that are created by Trident are created in this SVM.
+   * You must have one or more aggregates assigned to the SVM.
+   * You must have one or more dataLIFs for the SVM. Depending on the protocol used (NFS/iSCSI), at least one dataLIF is required.
+   * You must have NFS services enabled on the SVM.
+   * You must set up a snapshot policy on the SVM.
 
 ## NetaApp Ontap-SAN Driver parameters & how to retrieve them
 
