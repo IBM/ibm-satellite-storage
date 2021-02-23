@@ -1,6 +1,6 @@
 # NetaApp Ontap-SAN
 
-The ontap-san driver provides the capability to dynamically provision and mange the lifecycle of the block volumes on Ontap.
+You can use the `netapp-ontap-san` driver to dynamically provision and mange ONTAP-SAN block volumes.
 
 ## Prerequisites
 
