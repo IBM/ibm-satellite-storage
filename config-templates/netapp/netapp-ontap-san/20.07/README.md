@@ -69,7 +69,6 @@ ibmcloud sat storage assignment create --name sandriver --group blockstore --con
 
 ## Verifying your NetaApp Ontap-NAS Driver storage configuration is assigned to your clusters
 
-Provide steps to retrieve any driver pods, storage classes, or any other resources that are deployed with your storage configuration.
 
 ```
 oc get pods 
