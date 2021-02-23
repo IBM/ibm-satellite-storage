@@ -116,7 +116,7 @@ Retrieve all parameters required by this template.
 ## Default storage classes
 
 | Storage class name | Type | Reclaim Policy |
-| --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- |
 | `ibm-spectrum-scale-csi-lt` | light weight volumes | Delete  | 
 
 ## Creating the IBM Scale CSI Driver storage configuration
