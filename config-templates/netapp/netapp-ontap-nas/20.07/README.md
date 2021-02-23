@@ -60,7 +60,7 @@ The following storage classes are installed when you assign your `netapp-ontap-n
 
 ## Creating the NetaApp Ontap-NAS Driver storage configuration
 
-Provide example steps, including an example `config create` command for creating a Satellite storage configuration that uses your template.
+Create a Satellite storage configuration that uses your customized `netapp-ontap-nas` template.
 
 **Example `sat storage config create` command**
 
