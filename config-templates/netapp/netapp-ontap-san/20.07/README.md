@@ -35,7 +35,7 @@ ibmcloud sat storage template get --name netapp-ontap-san --version 20.7
 | `svm` | Required | Storage virtual machine to use | `N/A` |
 | `username` | Required | Username to connect to the storage device | `N/A` |
 | `password` | Required | Password to connect to the storage device | `N/A` |
-| `limitVolumeSize` | Optional | Maximum requestable volume size and qtree parent volume size | `50Gi` |
+| `limitVolumeSize` | Optional | The maximum volume size that can be requested and the qtree parent volume size. | `50Gi` |
 | `limitAggregateUsage` | Optional | Fail provisioning if usage is above this percentage | `80%` |
 
 ## Default storage classes
