@@ -1,6 +1,6 @@
 # # NetApp Trident - ONTAP NAS Driver
 
-The ontap-nas driver provides the capability to dynamically provision and mange the lifecycle of the file volumes on Ontap.
+You can use the `netapp-ontap-nas` Satellite storage template to deploy NetApp storage drives which you can use dynamically provision and mange file volumes in your ONTAP NAS.
 
 ## Prerequisites
 
