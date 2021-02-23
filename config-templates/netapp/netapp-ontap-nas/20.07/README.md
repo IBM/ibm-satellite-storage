@@ -13,12 +13,6 @@ You can use the `netapp-ontap-nas` Satellite storage template to deploy NetApp s
    * You must set up a snapshot policy on the SVM.
 * Share following details with Location Admin
 Review the template parameters and retrieve the values from your NetApp cluster.
-* The backend ONTAP cluster has been configured to be used as a Trident backend. Namely:
-   * A SVM must be dedicated for Trident. Volumes created by Trident will be placed in this SVM.
-   * One or more aggregates must be assigned to the SVM.
-   * One or more dataLIFs must be created for the SVM. Depending on the protocol used (NFS/iSCSI), at least one dataLIF is required.
-   * NFS services must be started on the SVM.
-   * Ensure the SVM has snapshot policies set up to be used by Trident. It is recommended a default snapshot policy is created on the SVM being used.
 
 ## NetaApp Ontap-NAS Driver parameters & how to retrieve them
 
