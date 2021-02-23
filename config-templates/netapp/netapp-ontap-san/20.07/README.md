@@ -1,4 +1,4 @@
-# NetaApp Ontap-SAN Driver
+# NetaApp Ontap-SAN
 
 The ontap-san driver provides the capability to dynamically provision and mange the lifecycle of the block volumes on Ontap.
 
