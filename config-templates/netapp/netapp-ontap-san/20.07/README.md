@@ -67,7 +67,7 @@ ibmcloud sat storage config create --name ontapsan --template-name netapp-ontap-
 ibmcloud sat storage assignment create --name sandriver --group blockstore --config ontapsan
 ```
 
-## Verifying your NetaApp Ontap-NAS Driver storage configuration is assigned to your clusters
+## Verifying your NetApp Ontap-SAN configuration is assigned to your clusters.
 
 
 ```
