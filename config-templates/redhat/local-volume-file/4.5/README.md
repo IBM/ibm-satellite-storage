@@ -122,42 +122,74 @@ local-pv-1d14680   50Gi       RWO            Delete           Available         
    
 ## Troubleshooting
 
-1.  If the PV is not created, 
-    - Check if all resources are created in razeedeploy
-       ```
-       oc get ns
-       ```
-       ```
-       oc get pods -n razeedeploy
-       ```
-      - Go to the IBM cloud web console.
-        Navigation Menu -> Satellite -> Clusters
-      - Select the cluster and click on the overflow menu of that particular cluster.
-      - Click on the Re-attach cluster and copy the displayed command and execute it.
-    - Check the namespace in which template has been deployed is active
-        ```
-        $ oc get ns | grep local
-        local-storage                                      Active   101m
-        ```
-    - verify the logs for local-disk-local-diskmaker pod.
-    If the logs show as below - 
-    ```
-    kubectl logs -f pod/local-disk-local-diskmaker-7ww2j -n local-storage01
-    I0213 06:19:35.103830       1 diskmaker.go:24] Go Version: go1.13.15
-    I0213 06:19:35.104141       1 diskmaker.go:25] Go OS/Arch: linux/amd64
-    I0213 06:19:35.104148       1 diskmaker.go:26] local-storage-diskmaker Version: v4.5.0-202101300210.p0-0-ged6884f-dirty
-    E0213 06:19:40.697628       1 diskmaker.go:203] failed to acquire lock on device /dev/xvde
-    E0213 06:19:40.697657       1 diskmaker.go:180] error symlinking /dev/xvde to /mnt/local-storage/sat-local-file-gold/xvde: error acquiring exclusive lock on /dev/xvde
-    ```
-    delete the symlink from the node
-    ```
-    oc debug node/<node-name>
-    chroot /host
-    rm -rf </path/to/symlink/as/shown/in/logs>
-    ```
-    Example `rm -rf  /mnt/local-storage/sat-local-file-gold/xvde`
+**Local PV creation fails**
+   - Check for razeedeploy
+     ```
+     oc get ns
+     ```
+     ```
+     oc get pods -n razeedeploy
+     ```
+   - Go to the IBM cloud web console.
+1. Navigate to your cluster in the [IBM Cloud console](https://cloud.ibm.com/satellite/clusters)
+2. Select your cluster and click on the overflow menu.
+3. Click **Re-attach** cluster.
+4. Copy the reattach command and run it in your command line.
+5. Get the namespace where you deployed the local storage template and verify that the status is `Active`.
+ ```sh
+ oc get ns | grep local
+ ```
+ **Example output**
+ ```
+ local-storage                                      Active   101m
+ ```
+ 
+6. Get the logs for the `local-disk-local-diskmaker` pod.
+ ```sh
+ kubectl logs -f pod/local-disk-local-diskmaker-7ww2j -n local-storage
+ ```
+ 
+ **Example output:**
+    
+```
+kubectl logs -f pod/local-disk-local-diskmaker-7ww2j -n local-storage01
+I0213 06:19:35.103830       1 diskmaker.go:24] Go Version: go1.13.15
+I0213 06:19:35.104141       1 diskmaker.go:25] Go OS/Arch: linux/amd64
+I0213 06:19:35.104148       1 diskmaker.go:26] local-storage-diskmaker Version: v4.5.0-202101300210.p0-0-ged6884f-dirty
+E0213 06:19:40.697628       1 diskmaker.go:203] failed to acquire lock on device /dev/xvde
+E0213 06:19:40.697657       1 diskmaker.go:180] error symlinking /dev/xvde to /mnt/local-storage/sat-local-file-gold/xvde: error acquiring exclusive lock on /dev/xvde
+```
 
-2.  You can check the local-disk-local-provisioner pod logs to verify if the pv got created with specified volume
+7. Log-in to the node where the diskmaker pod is deployed.
+ ```sh
+ oc debug node/<node-name>
+ ```
+
+8. Run the following command to use host binaries.
+  ```sh
+  chroot /host
+  ```
+9. Delete the symlink.
+  ```sh
+  rm -rf </path/to/symlink/as/shown/in/logs>
+  ```
+ 
+ **Example command:**
+ ```sh
+  rm -rf  /mnt/local-storage/sat-local-file-gold/xvde
+  ```
+
+10. Get the `local-disk-provisioner` pod logs and verify that PV creation is successful.
+
+11. Verify the PV is created.
+    ```sh
+    oc get pv
+    ```
+    ```sh
+    kubectl logs -f pod/local-disk-local-provisioner-xstjh -n local-storage 
+    ```
+    
+    **Example output:**
     ```
     $ kubectl logs -f pod/local-disk-local-provisioner-xstjh -n local-storage
     I0213 06:30:44.145331       1 common.go:320] StorageClass "sat-local-file-gold" configured with MountDir "/mnt/local-storage/sat-local-file-gold", HostDir "/mnt/local-storage/sat-local-file-gold", VolumeMode "Filesystem", FsType "ext4", BlockCleanerCommand ["/scripts/quick_reset.sh"]
