@@ -14,11 +14,6 @@ items:
         app.kubernetes.io/name: local-volume-file
         app.kubernetes.io/version: 4.5
     volumeBindingMode: WaitForFirstConsumer
-    volumeMode: Filesystem
-    parameters:
-      csi.storage.k8s.io/fstype: "{{ fstype }}"
-      devicePaths:
-        {{#devicepath}}
-        - "{{{ item }}}"
-        {{/devicepath}}
+    provisioner: kubernetes.io/no-provisioner
+
 

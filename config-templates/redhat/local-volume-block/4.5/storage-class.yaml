@@ -14,9 +14,5 @@ items:
         app.kubernetes.io/name: local-volume-block
         app.kubernetes.io/version: 4.5
     volumeBindingMode: WaitForFirstConsumer
-    volumeMode: Block
-    parameters:
-      devicePaths:
-        {{#devicepath}}
-        - "{{{ item }}}"
-        {{/devicepath}}
+    provisioner: kubernetes.io/no-provisioner
+
