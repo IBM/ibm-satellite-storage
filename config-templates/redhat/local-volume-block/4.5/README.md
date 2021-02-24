@@ -119,28 +119,47 @@ ibmcloud sat storage assignment create --name localvol-block-assign --group satC
 2. Select your cluster and click on the overflow menu.
 3. Click **Re-attach** cluster.
 4. Copy the reattach command and run it in your command line.
-   - Check the namespace in which template has been deployed is active
-           ```
-           $ oc get ns | grep local
-           local-storage                                      Active   101m
-           ```
-   - verify the logs for local-disk-local-diskmaker pod.
-   If the logs show as below - 
-   ```
-   kubectl logs -f pod/local-disk-local-diskmaker-7ww2j -n local-storage01
-   I0213 06:19:35.103830       1 diskmaker.go:24] Go Version: go1.13.15
-   I0213 06:19:35.104141       1 diskmaker.go:25] Go OS/Arch: linux/amd64
-   I0213 06:19:35.104148       1 diskmaker.go:26] local-storage-diskmaker Version: v4.5.0-202101300210.p0-0-ged6884f-dirty
-   E0213 06:19:40.697628       1 diskmaker.go:203] failed to acquire lock on device /dev/xvde
-   E0213 06:19:40.697657       1 diskmaker.go:180] error symlinking /dev/xvdc to /mnt/local-storage/sat-local-block-gold/xvdc: error acquiring exclusive lock on /dev/xvdc
-   ```
-   delete the symlink from the node
-   ```
-   oc debug node/<node-name>
-   chroot /host
-   rm -rf </path/to/symlink/as/shown/in/logs>
-   ```
-   Example `rm -rf  /mnt/local-storage/sat-local-block-gold/xvdc`
+  5. Get the namespace where you deployed the local storage template and verify that the status is `Active`.
+     ```sh
+     oc get ns | grep local
+     ```
+     **Example output**
+     ```
+     local-storage                                      Active   101m
+     ```
+     
+   6. Get the logs for the `local-disk-local-diskmaker` pod.
+     ```sh
+     kubectl logs -f pod/local-disk-local-diskmaker-7ww2j -n local-storage
+     ```
+     
+     **Example output:**
+     ```
+     I0213 06:19:35.103830       1 diskmaker.go:24] Go Version: go1.13.15
+     I0213 06:19:35.104141       1 diskmaker.go:25] Go OS/Arch: linux/amd64
+     I0213 06:19:35.104148       1 diskmaker.go:26] local-storage-diskmaker Version: v4.5.0-202101300210.p0-0-ged6884f-dirty
+     E0213 06:19:40.697628       1 diskmaker.go:203] failed to acquire lock on device /dev/xvde
+     E0213 06:19:40.697657       1 diskmaker.go:180] error symlinking /dev/xvdc to /mnt/local-storage/sat-local-block-gold/xvdc: error acquiring exclusive lock on /dev/xvdc
+     ```
+     
+  7. Log-in to the node where the diskmaker pod is deployed.
+     ```sh
+     oc debug node/<node-name>
+     ```
+   
+   8. Run the following command to use host binaries.
+      ```sh
+      chroot /host
+      ```
+   9. Delete the symlink.
+      ```sh
+      rm -rf </path/to/symlink/as/shown/in/logs>
+      ```
+     
+     **Example command:**
+     ```sh
+     rm -rf  /mnt/local-storage/sat-local-block-gold/xvdc
+     ```
 
 2.  You can check the local-disk-local-provisioner pod logs to verify if the pv got created with specified volume
     ```
