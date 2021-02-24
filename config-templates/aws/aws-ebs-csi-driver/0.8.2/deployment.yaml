@@ -36,7 +36,6 @@ items:
       labels:
         app.kubernetes.io/name: aws-ebs-csi-driver
         app.kubernetes.io/version: 0.8.2
-  #{{#enable-volume-snapshot}}
   - apiVersion: v1
     kind: ServiceAccount
     metadata:
@@ -45,7 +44,6 @@ items:
       labels:
         app.kubernetes.io/name: aws-ebs-csi-driver
         app.kubernetes.io/version: 0.8.2
-  #{{/enable-volume-snapshot}}
   - kind: ClusterRole
     apiVersion: rbac.authorization.k8s.io/v1
     metadata:
@@ -131,7 +129,6 @@ items:
       kind: ClusterRole
       name: ebs-external-provisioner-role
       apiGroup: rbac.authorization.k8s.io
-  #{{#enable-volume-resizing}}
   - kind: ClusterRole
     apiVersion: rbac.authorization.k8s.io/v1
     metadata:
@@ -140,11 +137,6 @@ items:
         app.kubernetes.io/name: aws-ebs-csi-driver
         app.kubernetes.io/version: 0.8.2
     rules:
-      # The following rule should be uncommented for plugins that require secrets
-      # for provisioning.
-      # - apiGroups: [""]
-      #   resources: ["secrets"]
-      #   verbs: ["get", "list", "watch"]
       - apiGroups: [""]
         resources: ["persistentvolumes"]
         verbs: ["get", "list", "watch", "update", "patch"]
@@ -175,8 +167,6 @@ items:
       kind: ClusterRole
       name: ebs-external-resizer-role
       apiGroup: rbac.authorization.k8s.io
-  #{{/enable-volume-resizing}}
-  #{{#enable-volume-snapshot}}
   - kind: ClusterRole
     apiVersion: rbac.authorization.k8s.io/v1
     metadata:
@@ -319,7 +309,6 @@ items:
               args:
                 - --v=5
                 - --leader-election=false
-  #{{/enable-volume-snapshot}}
   - kind: DaemonSet
     apiVersion: apps/v1
     metadata:
@@ -485,18 +474,8 @@ items:
               image: k8s.gcr.io/provider-aws/aws-ebs-csi-driver:v0.8.1
               imagePullPolicy: IfNotPresent
               args:
-                #{{- if ne .Release.Name "kustomize" }}
                 - controller
-                #{{- else }}
-                # - {all,controller,node} # specify the driver mode
-                #{{- end }}
                 - --endpoint=$(CSI_ENDPOINT)
-                #{{#extra-volume-tags?}}
-                #- --extra-volume-tags="{{ extra-volume-tags }}"
-                #{{/extra-volume-tags?}}
-                #{{#k8s-tag-cluster-id?}}
-                #- --k8s-tag-cluster-id="{{ k8s-tag-cluster-id }}"
-                #{{/k8s-tag-cluster-id?}}
                 - --logtostderr
                 - --v=5
               env:
@@ -514,10 +493,6 @@ items:
                       name: aws-secret
                       key: access_key
                       optional: true
-                #{{#aws-region?}}
-                #- name: AWS_REGION
-                #  value: "{{ aws-region }}"
-                #{{/aws-region?}}
               volumeMounts:
                 - name: socket-dir
                   mountPath: /var/lib/csi/sockets/pluginproxy/
@@ -546,9 +521,7 @@ items:
                 - --csi-address=$(ADDRESS)
                 - --v=5
                 - --feature-gates=Topology=true
-                #{{#extra-create-metadata}}
                 - --extra-create-metadata
-                #{{/extra-create-metadata}}
                 - --enable-leader-election
                 - --leader-election-type=leases
               env:
@@ -583,7 +556,6 @@ items:
                 requests:
                   cpu: 100m
                   memory: 128Mi
-            #{{#enable-volume-snapshot}}
             - name: csi-snapshotter
               image: quay.io/k8scsi/csi-snapshotter:v2.1.1
               args:
@@ -602,8 +574,6 @@ items:
                 requests:
                   cpu: 100m
                   memory: 128Mi
-            #{{/enable-volume-snapshot}}
-            #{{#enable-volume-resizing}}
             - name: csi-resizer
               image: quay.io/k8scsi/csi-resizer:v0.5.0
               imagePullPolicy: Always
@@ -623,7 +593,6 @@ items:
                 requests:
                   cpu: 100m
                   memory: 128Mi
-            #{{/enable-volume-resizing}}
             - name: liveness-probe
               image: quay.io/k8scsi/livenessprobe:v2.1.0
               args:
