@@ -141,7 +141,7 @@ To verify that your configuration is assigned to your cluster. Verify that the d
 
 
 **Example output**
-
+![Example Output](./images/ess_csi_sample.png)
 
 ## Troubleshooting
 
