@@ -167,8 +167,12 @@ ibmcloud sat storage assignment create --name localvol-block-assign --group satC
     ```sh
     oc get pv
     ```
+    ```sh
+    kubectl logs -f pod/local-disk-local-provisioner-xstjh -n local-storage 
     ```
-    $ kubectl logs -f pod/local-disk-local-provisioner-xstjh -n local-storage 
+    
+    **Example output:**
+    ```
     ...
     I0213 06:30:44.146148       1 common.go:382] Creating client using in-cluster config
     I0213 06:30:44.174765       1 main.go:85] Starting controller
