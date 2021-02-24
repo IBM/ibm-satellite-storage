@@ -17,10 +17,11 @@ The following features are available with IBM Spectrum Scale Container Storage I
 - Remote mount support: Volumes can be created on a remotely mounted file system.
 - Operator support for easier deployment, upgrade, and cleanup.
 - Supported volume access modes: RWX (ReadWriteMany) and RWO (ReadWriteOnce)
+- 
+## Limitations
+The IBM Spectrum Scale management API (GUI) should **NOT** be installed on node managed by Satellite.
 
 ## Prerequisites
-
-  
 
 Complete the following tasks before you start installing the IBM Spectrum Scale Container Storage Interface driver:
 
