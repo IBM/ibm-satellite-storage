@@ -111,6 +111,8 @@ With IBM Cloud Satellite, you can bring your own compute infrastructure that is 
 
 ### File reference
 
+| File name | Description |
+| --- | --- |
 | `storage-provider-name` | The name of storage provider. Example: `ibm`, `aws`, `azure`, `netapp`, `dell`. |
 | `storage-offering-name` | The storage offerig name. A provider can have multiple storage offerings for IBM satallite. |
 | `template-version` | The template version. There can be multiple tempalte version for a storage offering |
@@ -148,7 +150,8 @@ In this example, the `devicepath` parameter is set dynamically. In a local stora
    ```
 
 #### Custom parameter reference
-
+| Parameter name | Description |
+| --- | --- |
 | `description` | A description of the parameter. |
 | `displayname` | The display name of the parameter that is used in the Satellite UI. |
 | `name` | The name of the parameter in string format. |
