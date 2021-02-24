@@ -161,7 +161,12 @@ ibmcloud sat storage assignment create --name localvol-block-assign --group satC
      rm -rf  /mnt/local-storage/sat-local-block-gold/xvdc
      ```
 
-2.  You can check the local-disk-local-provisioner pod logs to verify if the pv got created with specified volume
+10. Get the `local-disk-provisioner` pod logs and verify that PV creation is successful.
+
+11. Verify the PV is created.
+    ```sh
+    oc get pv
+    ```
     ```
     $ kubectl logs -f pod/local-disk-local-provisioner-xstjh -n local-storage 
     ...
