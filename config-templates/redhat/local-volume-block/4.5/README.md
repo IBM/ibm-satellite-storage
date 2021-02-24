@@ -106,7 +106,7 @@ ibmcloud sat storage assignment create --name localvol-block-assign --group satC
 
 ## Troubleshooting
 
-1. PVs are not getting created
+**Local PV creation fails**
    - Check for razeedeploy
      ```
      oc get ns
