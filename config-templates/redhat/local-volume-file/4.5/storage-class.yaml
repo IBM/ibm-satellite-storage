@@ -11,7 +11,7 @@ items:
     metadata:
       name: sat-local-file-gold
       labels:
-        app.kubernetes.io/name: local-volume-block
+        app.kubernetes.io/name: local-volume-file
         app.kubernetes.io/version: 4.5
     volumeBindingMode: WaitForFirstConsumer
     volumeMode: Filesystem
