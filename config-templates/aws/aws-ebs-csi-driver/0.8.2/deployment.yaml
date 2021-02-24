@@ -545,9 +545,7 @@ items:
               args:
                 - --csi-address=$(ADDRESS)
                 - --v=5
-                #{{#enable-volume-scheduling}}
                 - --feature-gates=Topology=true
-                #{{/enable-volume-scheduling}}
                 #{{#extra-create-metadata}}
                 - --extra-create-metadata
                 #{{/extra-create-metadata}}
