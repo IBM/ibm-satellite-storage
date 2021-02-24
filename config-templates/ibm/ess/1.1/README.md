@@ -17,7 +17,7 @@ The following features are available with IBM Spectrum Scale Container Storage I
 - Remote mount support: Volumes can be created on a remotely mounted file system.
 - Operator support for easier deployment, upgrade, and cleanup.
 - Supported volume access modes: RWX (ReadWriteMany) and RWO (ReadWriteOnce)
-- 
+
 ## Limitations
 The IBM Spectrum Scale management API (GUI) should **NOT** be installed on node managed by Satellite.
 
@@ -25,7 +25,9 @@ The IBM Spectrum Scale management API (GUI) should **NOT** be installed on node 
 
 Complete the following tasks before you start installing the IBM Spectrum Scale Container Storage Interface driver:
 
-  - **Setup IBM Spectrum Scale Nodes for IBM Cloud Satellite**
+![Example Output](./images/prereq_steps.png)
+
+  - **1. Setup IBM Spectrum Scale Nodes for IBM Cloud Satellite**
 	  -  **Setup IBM Spectrum Scale ( as root )**
 		  - Follow the instructions in https://www.ibm.com/support/knowledgecenter/STXKQY_5.1.0/com.ibm.spectrum.scale.v5r10.doc/bl1ins_linsoft.htmto make sure all required packages are installed
 			  - For example:
@@ -46,11 +48,11 @@ Complete the following tasks before you start installing the IBM Spectrum Scale 
 		- make Spectrum Scale autostart
 		```sudo /usr/lpp/mmfs/bin/mmchconfig autoload=yes```
 
-- **Attach IBM Spectrum Scale Nodes to IBM Cloud Satellite**
+- **2. Attach IBM Spectrum Scale Nodes to IBM Cloud Satellite**
 	- Make sure your system is configured for the desired default route if you have more than one clustering network
 	- Make sure that default route has a path to the public network, possibly via NAT or VPN
 
-- **Start IBM Spectrum Scale Nodes**
+- **3. Start IBM Spectrum Scale Nodes**
 	-	Check Spectrum Scale to see if it is running -it is likely that the IBM Cloud Openshift clustering process removed the portability layer
 		-	Rebuild the portability layer if needed on each affected worker. (You may need to replace some files and subdirectories)
 		```sudo yum install -y kernel-devel cpp gcc gcc-c++ binutils python3
@@ -70,10 +72,10 @@ Complete the following tasks before you start installing the IBM Spectrum Scale 
 		- Follow the instructions in https://www.ibm.com/support/knowledgecenter/STXKQY_5.1.0/com.ibm.spectrum.scale.v5r10.doc/bl1adv_admrmsec.htm mount your desired filesystem remotely
 			- mount the remote filesystem on all nodes and verify the mount
 			- Record the information from mmcluster on both the local and remote IBM Spectrum Scale cluster(s)
-- **Initialize the IBM Spectrum Scale GUI**
+- **4. Initialize the IBM Spectrum Scale GUI**
 https://www.ibm.com/support/knowledgecenter/STXKQY_CSI_SHR/com.ibm.spectrum.scale.csi.v2r10.doc/bl1csi_instal_prereq.html
   
-- **Label the Kubernetes worker nodes** where IBM Spectrum Scale client is installed and where IBM Spectrum Scale Container Storage Interface driver runs:
+- **5. Label the Kubernetes worker nodes** where IBM Spectrum Scale client is installed and where IBM Spectrum Scale Container Storage Interface driver runs:
 
 ```
 
