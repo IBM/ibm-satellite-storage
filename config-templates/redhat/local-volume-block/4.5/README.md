@@ -115,9 +115,10 @@ ibmcloud sat storage assignment create --name localvol-block-assign --group satC
      oc get pods -n razeedeploy
      ```
    - Go to the IBM cloud web console.
-	Navigation Menu -> Satellite -> Clusters
-   - Select the cluster and click on the overflow menu of that particular cluster.
-   - Click on the Re-attach cluster and copy the displayed command and execute it.
+1. Navigate to your cluster in the [IBM Cloud console](https://cloud.ibm.com/satellite/clusters)
+2. Select your cluster and click on the overflow menu.
+3. Click **Re-attach** cluster.
+4. Copy the reattach command and run it in your command line.
    - Check the namespace in which template has been deployed is active
            ```
            $ oc get ns | grep local
