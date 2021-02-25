@@ -30,6 +30,7 @@ When you create a Satellite configuration using the `ocs-local` template, the fo
  - Disks mounted
  - Disks provisioned (in case of dynamic provisioned)
  - Service instances provisioned (in case of dynamic provisioning)
+ - Etc
 
 ## Prerequisites
 
