@@ -2,6 +2,35 @@
 
 Enter a short description of your template and storage provider.
 
+## What happens when I create a Satellite configuration by using the <template-name> template?
+
+Provide a list of the resources that are provisioned (if any), drivers that are installed, namespaces created, etc.
+
+<!-- Example summary:
+
+When you create a Satellite configuration using the `ocs-local` template, the following resources are deployed to your clusters.
+
+- An `openshift-storage` namespace is created.
+- The local disks that you provide are mounted as PVs
+- OSD and MON pods are mounted on the disks that you provide 
+- The following storage classes are created
+    - sat-ocs-cephrbd-gold
+    - sat-ocs-cephfs-gold
+    - sat-ocs-cephrgw-gold 	
+    - sat-ocs-noobaa-gold
+- The following cluster roles / role bindings are created.
+
+
+-->
+
+**Resources that are deployed**
+ - PVs created
+ - Namespaces created
+ - Driver pods deployed
+ - Disks mounted
+ - Disks provisioned (in case of dynamic provisioned)
+ - Service instances provisioned (in case of dynamic provisioning)
+
 ## Prerequisites
 
 List any config steps to take before creating a configuration with your template. For example, your prerequisite steps might include any or all of the following.
