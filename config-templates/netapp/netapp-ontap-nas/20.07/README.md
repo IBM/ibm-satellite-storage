@@ -14,14 +14,17 @@ You can use the `netapp-ontap-nas` Satellite storage template to deploy NetApp s
 * Share following details with Location Admin
 Review the template parameters and retrieve the values from your NetApp cluster.
 
-## NetaApp Ontap-NAS Driver parameters & how to retrieve them
+**Planning consideration for Location Admin**
+* Make sure `netapp-trident` is deployed on the taregt cluster
+
+## NetApp Ontap-NAS Driver parameters & how to retrieve them
 
 List the template parameters.
 ```
 ibmcloud sat storage template get --name netapp-ontap-nas --version 20.7
 ```
 
-**NetaApp Ontap-NAS Driver parameters**
+**NetApp Ontap-NAS Driver parameters**
 
 | Parameter name | Required? | Description | Default if not provided |
 | --- | --- | --- | 
@@ -48,14 +51,14 @@ The following storage classes are installed when you assign your `netapp-ontap-n
 | `sat-netapp-file-bronze` | Ontap-NAS | NFS | -- | -- | -- | Delete | 
 
 
-## Creating the NetaApp Ontap-NAS Driver storage configuration
+## Creating the NetApp Ontap-NAS Driver storage configuration
 
 Create a Satellite storage configuration that uses your customized `netapp-ontap-nas` template.
 
 **Example `sat storage config create` command**
 Create a Satellite storage configuration by using the `netapp-ontap-nas` template.
 ```
-ibmcloud sat storage config create --name ontapnas --template-name netapp-ontap-nas --template-version 20.07 -p "managementLIF=10.0.0.1" -p "dataLIF=10.0.0.2" -p "svm=svm-nas" -p "username=admin" -p "password=admin-passW@rd" -p "exportPolicy=nfsexport"
+ibmcloud sat storage config create --name 'ontapnas' --template-name 'netapp-ontap-nas' --template-version '20.07' -p 'managementLIF=10.0.0.1' -p 'dataLIF=10.0.0.2' -p 'svm=svm-nas' -p "username=admin" -p "password=<admin password>" -p "exportPolicy=nfsexport"
 ```
 
 ## Creating the storage assignment
@@ -63,10 +66,10 @@ Assign your `netapp-ontap-nas` storage configuration to your clusters.
 **Example `sat storage assignment create` command**
 
 ```
-ibmcloud sat storage assignment create --name nasdriver --group filestore --config ontapnas
+ibmcloud sat storage assignment create --name 'nas-driver' --group <group name> --config 'ontapnas'
 ```
 
-## Verifying your NetaApp Ontap-NAS Driver storage configuration is assigned to your clusters
+## Verifying your NetApp Ontap-NAS Driver storage configuration is assigned to your clusters
 
 Verify that your `netapp-ontap-nas` configuration is successfully assigned to your clusters. Run the following commands to verify that the driver pods and other Kubernetes resources are deployed.
 

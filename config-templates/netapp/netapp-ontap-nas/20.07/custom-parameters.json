@@ -1,12 +1,5 @@
 [
   {
-    "description": "The namespace to install the storage drivers.",
-    "displayname": "Namespace",
-    "name": "namespace",
-    "default": "trident-nas",
-    "required": "false",
-    "category": "config"
-  }, {
     "description": "The IP address of the Management LIF.",
     "displayname": "Management LIF",
     "name": "managementLIF",

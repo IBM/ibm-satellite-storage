@@ -1,4 +1,4 @@
-# NetaApp Ontap-SAN
+# NetApp Ontap-SAN
 
 You can use the `netapp-ontap-san` driver to dynamically provision and mange ONTAP-SAN block volumes.
 
@@ -13,14 +13,14 @@ Review the template parameters and retrieve the values from your NetApp cluster.
    * You must have NFS services enabled on the SVM.
    * You must set up a snapshot policy on the SVM.
 
-## NetaApp Ontap-SAN Driver parameters & how to retrieve them
+## NetApp Ontap-SAN Driver parameters & how to retrieve them
 
 List the template parameters.
 ```
 ibmcloud sat storage template get --name netapp-ontap-san --version 20.7
 ```
 
-**NetaApp Ontap-SAN Driver parameters**
+**NetApp Ontap-SAN Driver parameters**
 
 | Parameter | Required? | Description | Default value if not provided |
 | --- | --- | --- | --- |
@@ -44,14 +44,14 @@ The following storage classes are deployed when you assign your NetApp ONTAP-SAN
 | `sat-netapp-block-bronze` | Ontap-SAN | Block | -- | -- | -- | Delete | 
 
 
-## Creating the NetaApp Ontap-SAN Driver storage configuration
+## Creating the NetApp Ontap-SAN Driver storage configuration
 
 Provide example steps, including an example `config create` command for creating a Satellite storage configuration that uses your template.
 
 **Example `sat storage config create` command**
 
 ```
-ibmcloud sat storage config create --name ontapsan --template-name netapp-ontap-san --template-version 20.07 -p "managementLIF=10.0.0.1" -p "dataLIF=10.0.0.2" -p "svm=svm-nas" -p "username=admin" -p "password=admin-passW@rd"
+ibmcloud sat storage config create --name 'ontapsan' --template-name 'netapp-ontap-san' --template-version '20.07' -p 'managementLIF=10.0.0.1' -p 'dataLIF=10.0.0.2' -p 'svm=svm-nas' -p 'username=admin' -p "password=<admin password>"
 ```
 
 ## Creating the storage assignment
@@ -59,7 +59,7 @@ ibmcloud sat storage config create --name ontapsan --template-name netapp-ontap-
 **Example `sat storage assignment create` command**
 
 ```
-ibmcloud sat storage assignment create --name sandriver --group blockstore --config ontapsan
+ibmcloud sat storage assignment create --name 'san-driver' --group <group name> --config 'ontapsan'
 ```
 
 ## Verifying your NetApp Ontap-SAN configuration is assigned to your clusters.

@@ -1,12 +1,5 @@
 [
   {
-    "description": "Namespace for driver deployment",
-    "displayname": "Namespace",
-    "name": "namespace",
-    "default": "trident-san",
-    "required": "false",
-    "category": "config"
-  }, {
     "description": "IP address of ONTAP management LIF",
     "displayname": "Management LIF",
     "name": "managementLIF",

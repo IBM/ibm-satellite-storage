@@ -16,6 +16,14 @@
     "provider": "aws"
   },
   {
+    "name": "netapp-trident",
+    "displayname": "NetApp Triednt Operator",
+    "Description": "NetApp Triednt Operator",
+    "default-version": "20.07",
+    "enabled": "true",
+    "provider": "netapp"
+  },
+  {
     "name": "netapp-ontap-nas",
     "displayname": "NetApp Ontap-NAS Driver",
     "Description": "NetApp Ontap-NAS Driver",
