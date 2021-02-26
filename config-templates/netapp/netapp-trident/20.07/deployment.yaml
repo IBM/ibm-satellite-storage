@@ -367,14 +367,14 @@ items:
     subjects:
       - kind: ServiceAccount
         name: trident-operator
-        namespace: "{{ namespace }}"
+        namespace: "trident"
   - apiVersion: apps/v1
     kind: Deployment
     metadata:
       labels:
         app: operator.trident.netapp.io
       name: trident-operator
-      namespace: "{{ namespace }}"
+      namespace: "trident"
     spec:
       replicas: 1
       selector:
@@ -424,7 +424,7 @@ items:
     kind: TridentProvisioner
     metadata:
       name: trident
-      namespace: "{{ namespace }}"
+      namespace: "trident"
     spec:
       debug: true
       kubeletDir: "/var/data/kubelet"
