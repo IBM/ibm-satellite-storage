@@ -2,7 +2,7 @@
   {
     "name": "aws-efs-csi-driver",
     "displayname": "AWS EFS CSI driver",
-    "Description": "AWS EFS CSI driver for satallite cluster",
+    "Description": "AWS EFS CSI driver.",
     "default-version": "1.0.0",
     "enabled": "true",
     "provider": "aws"
@@ -10,31 +10,15 @@
   {
     "name": "aws-ebs-csi-driver",
     "displayname": "AWS EBS CSI driver",
-    "Description": "AWS EBS CSI driver for satallite cluster",
+    "Description": "AWS EBS CSI driver.",
     "default-version": "0.8.2",
     "enabled": "true",
     "provider": "aws"
   },
   {
     "name": "netapp-trident",
-    "displayname": "NetApp Triednt Operator",
-    "Description": "NetApp Triednt Operator",
-    "default-version": "20.07",
-    "enabled": "true",
-    "provider": "netapp"
-  },
-  {
-    "name": "netapp-ontap-nas",
-    "displayname": "NetApp Ontap-NAS Driver",
-    "Description": "NetApp Ontap-NAS Driver",
-    "default-version": "20.07",
-    "enabled": "true",
-    "provider": "netapp"
-  },
-  {
-    "name": "netapp-ontap-san",
-    "displayname": "NetApp Ontap-SAN Driver",
-    "Description": "NetApp Ontap-SAN Driver",
+    "displayname": "Net App Trident driver",
+    "Description": "Net App Trident driver.",
     "default-version": "20.07",
     "enabled": "true",
     "provider": "netapp"
@@ -42,23 +26,23 @@
   {
     "name": "ocs-local",
     "displayname": "OpenShift Container Storage for local storage",
-    "Description": "OpenShift Container Storage (local storage) for satellite cluster",
+    "Description": "OpenShift Container Storage using local volumes.",
     "default-version": "4.6",
     "enabled": "true",
     "provider": "redhat"
   },
   {
     "name": "local-volume-block",
-    "displayname": "Persistent storage (block) using local volumes",
-    "Description": "Persistent storage using local volumes for satallite cluster",
+    "displayname": "Red Hat Local Storage Operator - Block",
+    "Description": "Persistent storage using local volumes.",
     "default-version": "4.5",
     "enabled": "true",
     "provider": "redhat"
   },
   {
     "name": "local-volume-file",
-    "displayname": "Persistent storage (file) using local volumes",
-    "Description": "Persistent storage using local volumes for satellite cluster",
+    "displayname": "Red Hat Local Storage Operator - File",
+    "Description": "Persistent storage using local volumes.",
     "default-version": "4.5",
     "enabled": "true",
     "provider": "redhat"

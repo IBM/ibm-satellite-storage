@@ -1,7 +1,7 @@
 {
   "name": "4.5",
   "enabled": "true",
-  "description": "Persistent storage using local volumes",
+  "description": "Red Hat Local Storage Operator - File",
   "tags": [
     {
       "name": "provider",
