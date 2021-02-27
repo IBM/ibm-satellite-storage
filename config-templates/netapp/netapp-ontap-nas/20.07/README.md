@@ -1,4 +1,4 @@
-# # NetApp Trident - ONTAP NAS Driver
+# NetApp Trident - ONTAP NAS Driver
 
 You can use the `netapp-ontap-nas` Satellite storage template to deploy NetApp storage drives which you can use dynamically provision and mange file volumes in your ONTAP NAS.
 
@@ -12,10 +12,11 @@ You can use the `netapp-ontap-nas` Satellite storage template to deploy NetApp s
    * You must have NFS services enabled on the SVM.
    * You must set up a snapshot policy on the SVM.
 * Share following details with Location Admin
-Review the template parameters and retrieve the values from your NetApp cluster.
+
 
 **Planning consideration for Location Admin**
 * Make sure `netapp-trident` is deployed on the taregt cluster
+* Review the template parameters and retrieve the values from your NetApp cluster.
 
 ## NetApp Ontap-NAS Driver parameters & how to retrieve them
 
@@ -28,7 +29,6 @@ ibmcloud sat storage template get --name netapp-ontap-nas --version 20.7
 
 | Parameter name | Required? | Description | Default if not provided |
 | --- | --- | --- | 
-| `namespace` | Required | The namespace where you want to install the storage drivers. | `trident` |
 | `managementLIF` | Required | The IP address of the management LIF. Example: `10.0.0.1`. | N/A |
 | `dataLIF` | Required | The IP address of data LIF. Example: `10.0.0.2`. | N/A | 
 | `svm` | Required | The name of the storage virtual machine. Example: `svm-nfs`. | N/A | 
@@ -53,12 +53,12 @@ The following storage classes are installed when you assign your `netapp-ontap-n
 
 ## Creating the NetApp Ontap-NAS Driver storage configuration
 
-Create a Satellite storage configuration that uses your customized `netapp-ontap-nas` template.
+Create a Satellite storage configuration that uses the `netapp-ontap-nas` template.
 
 **Example `sat storage config create` command**
 Create a Satellite storage configuration by using the `netapp-ontap-nas` template.
 ```
-ibmcloud sat storage config create --name 'ontapnas' --template-name 'netapp-ontap-nas' --template-version '20.07' -p 'managementLIF=10.0.0.1' -p 'dataLIF=10.0.0.2' -p 'svm=svm-nas' -p "username=admin" -p "password=<admin password>" -p "exportPolicy=nfsexport"
+ibmcloud sat storage config create --name 'ontapnas-config' --template-name 'netapp-ontap-nas' --template-version '20.07' -p 'managementLIF=10.0.0.1' -p 'dataLIF=10.0.0.2' -p 'svm=svm-nas' -p 'username=admin' -p 'password=<admin password>' -p 'exportPolicy=nfsexport'
 ```
 
 ## Creating the storage assignment
@@ -66,7 +66,7 @@ Assign your `netapp-ontap-nas` storage configuration to your clusters.
 **Example `sat storage assignment create` command**
 
 ```
-ibmcloud sat storage assignment create --name 'nas-driver' --group <group name> --config 'ontapnas'
+ibmcloud sat storage assignment create --name 'ontapnas-driver' --group <group name> --config 'ontapnas-config'
 ```
 
 ## Verifying your NetApp Ontap-NAS Driver storage configuration is assigned to your clusters
@@ -74,12 +74,35 @@ ibmcloud sat storage assignment create --name 'nas-driver' --group <group name> 
 Verify that your `netapp-ontap-nas` configuration is successfully assigned to your clusters. Run the following commands to verify that the driver pods and other Kubernetes resources are deployed.
 
 ```
-oc get pods 
+oc -n trident get all  | grep 'trident-kubectl-nas'
+```
+```
+oc get sc | grep 'netapp-file'
 ```
 
+**Example output**
+
 ```
-oc get sc | grep sat
+$ oc -n trident get all  | grep 'trident-kubectl-nas'
+pod/trident-kubectl-nas                 1/1     Running   0          48s
 ```
+```
+$ oc get sc | grep 'netapp-file'
+sat-netapp-file-bronze    csi.trident.netapp.io          Delete          Immediate              false                  2m36s
+sat-netapp-file-gold      csi.trident.netapp.io          Delete          Immediate              false                  2m37s
+sat-netapp-file-silver    csi.trident.netapp.io          Delete          Immediate              false                  2m37s
+```
+
+## Troubleshooting
+
+In case the PVC is not getting created using the `sat-netapp-file` storage classes
+- Review the input parameters values for `managementLIF`, `dataLIF`, `svm`, `username`, `password` and other
+- Review the `trident-kubectl-nas` POD's log
+```
+oc -n trident logs trident-kubectl-nas
+```
+- Delete the assignment and the configuration
+- Recreate the configuration, with proper parameter values, and recreate the assignment
 
 
 ## Reference
