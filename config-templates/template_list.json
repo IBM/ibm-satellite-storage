@@ -17,8 +17,24 @@
   },
   {
     "name": "netapp-trident",
-    "displayname": "Net App Trident Driver",
-    "Description": "Net App Trident Driver",
+    "displayname": "NetApp Triednt Operator",
+    "Description": "NetApp Triednt Operator",
+    "default-version": "20.07",
+    "enabled": "true",
+    "provider": "netapp"
+  },
+  {
+    "name": "netapp-ontap-nas",
+    "displayname": "NetApp Ontap-NAS Driver",
+    "Description": "NetApp Ontap-NAS Driver",
+    "default-version": "20.07",
+    "enabled": "true",
+    "provider": "netapp"
+  },
+  {
+    "name": "netapp-ontap-san",
+    "displayname": "NetApp Ontap-SAN Driver",
+    "Description": "NetApp Ontap-SAN Driver",
     "default-version": "20.07",
     "enabled": "true",
     "provider": "netapp"

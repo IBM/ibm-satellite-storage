@@ -1,14 +1,14 @@
 {
   "name": "20.07",
   "enabled": "true",
-  "description": "Netapp Trident version 20.07",
+  "description": "Netapp Ontap-NAS Driver",
   "tags": [
     {
       "name": "provider",
       "value": "netapp"
     }, {
       "name": "offering-name",
-      "value": "netapp-trident"
+      "value": "ontap-nas"
     }, {
       "name": "provider-url",
       "value": "https://netapp-trident.readthedocs.io/en/stable-v20.10/support/support.html"
@@ -26,25 +26,25 @@
       "value": "1.17,1.18,1.19"
     }, {
       "name": "volume-type",
-      "value": "block,file"
+      "value": "file"
     }, {
       "name": "volume-encryption-at-rest",
-      "value": ""
+      "value": "true"
     }, {
       "name": "volume-encryption-in-transit",
-      "value": ""
+      "value": "true"
     }, {
       "name": "volume-snapshot",
-      "value": ""
+      "value": "true"
     }, {
       "name": "volume-availability",
-      "value": ""
+      "value": "zonal"
     }, {
       "name": "volume-expansion",
-      "value": ""
+      "value": "true"
     }, {
       "name": "storageclass",
-      "value": ""
+      "value": "gold,silver,bronze"
     }
   ]
 }
