@@ -85,5 +85,7 @@ Provide troubleshooting steps for any known issues.
 
 ## Reference
 
-- https://netapp-trident.readthedocs.io/en/stable-v20.07/kubernetes/operations/tasks/backends/ontap/ontap-san/index.html
+
+- [NetApp documentation](https://netapp-trident.readthedocs.io/en/stable-v20.07/kubernetes/operations/tasks/backends/ontap/ontap-san/index.html)
+
 - Support: https://netapp-trident.readthedocs.io/en/stable-v20.10/support/support.html
