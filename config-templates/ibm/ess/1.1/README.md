@@ -119,21 +119,21 @@ To verify that your configuration is assigned to your cluster. Verify that the d
 ## Troubleshooting
 
 ### Rebuilding the portability layer
-    1. Rebuild the portability layer if needed on each affected worker. (You may need to replace some files and subdirectories)
-	```sh
-	sudo yum install -y kernel-devel cpp gcc gcc-c++ binutils python3
-		
-	sudo mkdir /usr/include/asm
-	sudo cp /usr/src/kernels/3.10.0-1160.11.1.el7.x86_64/arch/x86/include/uapi/asm/*.h
-	/usr/include/asm
+Run the following commands to rebuild the portability layer on each affected worker. Note that you may need to replace some files and subdirectories.
+```sh
+sudo yum install -y kernel-devel cpp gcc gcc-c++ binutils python3
 
-	sudo mkdir /usr/include/asm-generic
-	sudo cp /usr/src/kernels/3.10.0-1160.11.1.el7.x86_64/include/uapi/asm-generic/*.h
-	/usr/include/asm-generic
+sudo mkdir /usr/include/asm
+sudo cp /usr/src/kernels/3.10.0-1160.11.1.el7.x86_64/arch/x86/include/uapi/asm/*.h
+/usr/include/asm
 
-	sudo mkdir /usr/include/linux
-	sudo cp /usr/src/kernels/3.10.0-1160.15.2.el7.x86_64/include/uapi/linux/*.h /usr/include/linux
-	```
+sudo mkdir /usr/include/asm-generic
+sudo cp /usr/src/kernels/3.10.0-1160.11.1.el7.x86_64/include/uapi/asm-generic/*.h
+/usr/include/asm-generic
+
+sudo mkdir /usr/include/linux
+sudo cp /usr/src/kernels/3.10.0-1160.15.2.el7.x86_64/include/uapi/linux/*.h /usr/include/linux
+```
 
 ### Changing the mount point if your IBM Spectrum
 1. Edit the `ibm-spectrum-scale-csi` daemonset.
@@ -141,7 +141,7 @@ To verify that your configuration is assigned to your cluster. Verify that the d
     oc edit ds ibm-spectrum-scale-csi -n ibm-spectrum-scale-csi-driver
     ```
 
-2.Search for the following string.
+2. Search for the `/var\/lib\/kubelet$` string.
     ```sh
     /var\/lib\/kubelet$
     ```
