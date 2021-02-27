@@ -39,7 +39,7 @@ Complete the following tasks before you start installing the IBM Spectrum Scale 
         ```sh
   	sudo /usr/lpp/mmfs/bin/mmstartup -a -- sudo /usr/lpp/mmfs/bin/mmgetstate -a
 	```
-    - Set up autostar for Spectrum Scale.
+    - Set up autostart for Spectrum Scale.
 	```sh
 	sudo /usr/lpp/mmfs/bin/mmchconfig autoload=yes
 	```
@@ -50,7 +50,7 @@ Complete the following tasks before you start installing the IBM Spectrum Scale 
 
 6. Start IBM Spectrum Scale Nodes and verify that it is running. If there is an issue with the portability layer, you can [rebuild the portability layer](#rebuilding-the-portability-layer).
 
-7. Mount your file system remotely verify it that is running on all nodes](https://www.ibm.com/support/knowledgecenter/STXKQY_5.1.0/com.ibm.spectrum.scale.v5r10.doc/bl1adv_admrmsec.htm). Run the `mmcluster` command on both the local and remote IBM Spectrum Scale cluster.
+7. [Mount your file system remotely verify it that is running on all nodes](https://www.ibm.com/support/knowledgecenter/STXKQY_5.1.0/com.ibm.spectrum.scale.v5r10.doc/bl1adv_admrmsec.htm). Run the `mmcluster` command on both the local and remote IBM Spectrum Scale cluster.
 8. [Initialize the IBM Spectrum Scale GUI](https://www.ibm.com/support/knowledgecenter/STXKQY_CSI_SHR/com.ibm.spectrum.scale.csi.v2r10.doc/bl1csi_instal_prereq.html).
   
 9. Label the worker nodes where the IBM Spectrum Scale client is installed and where IBM Spectrum Scale Container Storage Interface driver is running.
