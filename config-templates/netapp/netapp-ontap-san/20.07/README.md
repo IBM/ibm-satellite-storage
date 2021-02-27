@@ -28,8 +28,8 @@ ibmcloud sat storage template get --name netapp-ontap-san --version 20.7
 | `managementLIF` | Required | The IP address of the management LIF. Example: `10.0.0.1`. | N/A |
 | `dataLIF` | Required | The IP address of data LIF. Example: `10.0.0.2`. | N/A | 
 | `svm` | Required | The name of the storage virtual machine. Example: `svm`. | N/A | 
-| `username` | Required | Username to connect to the storage device | `N/A` |
-| `password` | Required | Password to connect to the storage device | `N/A` |
+| `username` | Required | The username to connect to the storage device. | N/A |
+| `password` | Required | The password to connect to the storage device. | N/A |
 | `limitVolumeSize` | Optional | The maximum volume size that can be requested and the qtree parent volume size. | `50Gi` |
 | `limitAggregateUsage` | Optional | Limit the provisioning of volumes if the parent volume usage exceeds this value. For example, if a volume is requested that causes the parent volume usage to exceed this value, the volume provisioning fails.  | `80%` |
 
