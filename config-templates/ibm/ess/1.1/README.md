@@ -29,7 +29,7 @@ Complete the following tasks before you start installing the IBM Spectrum Scale 
     ```sh
     yum install -y kernel-devel cpp gcc gcc-c++ binutils python3
     ```
-2. Follow steps 1-3 of [Installing IBM Spectrum Scale packages on Linux systems](https://www.ibm.com/support/knowledgecenter/STXKQY_5.1.0/com.ibm.spectrum.scale.v5r10.doc/bl1ins_manuallyinstallingonlinux_packages.htm), but make sure that you do not create the cluster in step 4.
+2. Follow the steps to [install IBM Spectrum Scale packages on Linux systems](https://www.ibm.com/support/knowledgecenter/STXKQY_5.1.0/com.ibm.spectrum.scale.v5r10.doc/bl1ins_manuallyinstallingonlinux_packages.htm), but make sure that you do not create the cluster in step 4.
 
 3. Follow the steps to [run IBM Spectrum Scale commands without remote root login](https://www.ibm.com/support/knowledgecenter/STXKQY_5.1.0/com.ibm.spectrum.scale.v5r10.doc/bl1adm_sudowrapper.htm), but do not create a Spectrum Scale cluster.
 		
