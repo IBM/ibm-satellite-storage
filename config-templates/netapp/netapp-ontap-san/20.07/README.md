@@ -57,7 +57,7 @@ ibmcloud sat storage config create --name 'ontapsan' --template-name 'netapp-ont
 ## Creating the storage assignment
 
 **Example `sat storage assignment create` command**
-
+Assign your storage configuration to your clusters.
 ```
 ibmcloud sat storage assignment create --name 'san-driver' --group <group name> --config 'ontapsan'
 ```
