@@ -10,8 +10,8 @@ Local persistent volumes allow you to access local storage devices, such as a di
    - In OpenShift console click on your user ID at top right corner and then click on `Copy Login Command`
    - In next page click on `Display Token`
    - Under `Log in with this token` the `oc login --token=XXXX ...` will be displayed, copy the command and execute on your local system
-    
-    **Note** The target cluster version should be 4.5.X to use the local-volume-block version 4.5 template.
+
+    **Note** The target cluster version should be 4.6.X to use the local-volume-block version 4.6 template.
 
 3. Add label to the worker nodes, one with additional disk
    - Get the nodes 
@@ -62,7 +62,7 @@ Parameter | Required? | Description | Default value if not provided |
 **Example `sat storage config create` command**
 
 ```sh
-ibmcloud sat storage config create --name localvol-block-config --template-name local-volume-block --template-version 4.5 -p "label-key=storage" -p "label-value=localvol" -p "devicepath=/dev/xvdc"
+ibmcloud sat storage config create --name localvol-block-config --template-name local-volume-block --template-version 4.6 -p "label-key=storage" -p "label-value=localvol" -p "devicepath=/dev/xvdc"
 ```
 ## Creating the storage assignment
 
@@ -101,8 +101,6 @@ ibmcloud sat storage assignment create --name localvol-block-assign --group satC
    local-pv-88842685   50Gi       RWO            Delete           Available           sat-local-block-gold            90s
 
    ```
-**Example output**
-![Image of output](https://github.com/Hemlata3011/ibm-satellite-storage/blob/master/config-templates/redhat/local-volume-block/4.5/localVolBlk.png)
 
 **Follow** the [link](https://docs.openshift.com/container-platform/4.6/storage/persistent_storage/persistent-storage-local.html) to create the persistent volume claim and attach the claim to a pod.
 
@@ -139,7 +137,7 @@ ibmcloud sat storage assignment create --name localvol-block-assign --group satC
  ```
  I0213 06:19:35.103830       1 diskmaker.go:24] Go Version: go1.13.15
  I0213 06:19:35.104141       1 diskmaker.go:25] Go OS/Arch: linux/amd64
- I0213 06:19:35.104148       1 diskmaker.go:26] local-storage-diskmaker Version: v4.5.0-202101300210.p0-0-ged6884f-dirty
+ I0213 06:19:35.104148       1 diskmaker.go:26] local-storage-diskmaker Version: v4.6.0-202101300210.p0-0-ged6884f-dirty
  E0213 06:19:40.697628       1 diskmaker.go:203] failed to acquire lock on device /dev/xvde
  E0213 06:19:40.697657       1 diskmaker.go:180] error symlinking /dev/xvdc to /mnt/local-storage/sat-local-block-gold/xvdc: error acquiring exclusive lock on /dev/xvdc
  ```
