@@ -26,7 +26,7 @@ ibmcloud sat storage config create --name 'trident-config' --template-name 'neta
 **Example `sat storage assignment create` command**
 
 ```
-ibmcloud sat storage assignment create --name 'trident-operator' --group <group name> --config 'trident-conf'
+ibmcloud sat storage assignment create --name 'trident-operator' --group <group name> --config 'trident-config'
 ```
 
 ## Verifying your Netapp Trident configuration is assigned to your clusters.
