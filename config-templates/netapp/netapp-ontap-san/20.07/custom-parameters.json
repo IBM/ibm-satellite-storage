@@ -1,6 +1,6 @@
 [
   {
-    "description": "IP address of ONTAP management LIF",
+    "description": "The IP address of the management LIF.",
     "displayname": "Management LIF",
     "name": "managementLIF",
     "required": "true",
