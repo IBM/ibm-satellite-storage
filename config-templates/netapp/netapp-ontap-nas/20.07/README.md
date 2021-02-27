@@ -98,10 +98,11 @@ sat-netapp-file-silver    csi.trident.netapp.io          Delete          Immedia
 In case the PVC is not getting created using the `sat-netapp-file` storage classes
 - Review the input parameters values for `managementLIF`, `dataLIF`, `svm`, `username`, `password` and other
 - Review the `trident-kubectl-nas` POD's log
-```
-oc -n trident logs trident-kubectl-nas
-```
-- Delete the assignment and the configuration
+  ```
+  oc -n trident logs trident-kubectl-nas
+  ```
+- Delete the assignment by running command `ibmcloud sat storage assignment rm --assignment <assignmnet name>`
+- Delete the configuration by running command `ibmcloud sat storage config rm --config <config name>`
 - Recreate the configuration, with proper parameter values, and recreate the assignment
 
 
