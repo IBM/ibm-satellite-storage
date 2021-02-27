@@ -15,7 +15,7 @@ You can use the `netapp-ontap-nas` Satellite storage template to deploy NetApp s
 
 
 **Planning consideration for Location Admin**
-* Make sure `netapp-trident` is deployed on the taregt cluster
+* Make sure `netapp-trident` is deployed on the target cluster
 * Review the template parameters and retrieve the values from your NetApp cluster.
 
 ## NetApp Ontap-NAS Driver parameters & how to retrieve them
