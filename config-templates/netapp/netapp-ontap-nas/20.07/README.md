@@ -27,7 +27,7 @@ ibmcloud sat storage template get --name netapp-ontap-nas --version 20.7
 
 **NetApp Ontap-NAS Driver parameters**
 
-| Parameter name | Required? | Description | Default if not provided |
+| Parameter name | Required? | Description | Default value if not provided |
 | --- | --- | --- | --- |
 | `managementLIF` | Required | The IP address of the management LIF. Example: `10.0.0.1`. | N/A |
 | `dataLIF` | Required | The IP address of data LIF. Example: `10.0.0.2`. | N/A | 
