@@ -31,7 +31,7 @@
     "category": "secret",
     "obfuscate": "true"
   }, {
-    "description": "Maximum requestable volume size and qtree parent volume size",
+    "description": "The maximum volume size that can be requested and the qtree parent volume size.",
     "displayname": "Limit Volume Size",
     "name": "limitVolumeSize",
     "default": "50Gi",
