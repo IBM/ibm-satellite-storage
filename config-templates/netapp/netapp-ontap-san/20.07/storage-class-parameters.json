@@ -1,0 +1,25 @@
+[
+	{
+	  "description": "The storage class name.",
+	  "displayname": "Storage Class Name",
+	  "name": "sc-name",
+	  "required": "true",
+	  "category": "config"
+	}, {
+	  "description": "Specify 'true' or 'false' to make the created storage class the default class.",
+	  "displayname": "Default",
+	  "name": "is-default",
+	  "default": "false",
+	  "required": "false",
+	  "category": "config",
+	  "type": "text"
+	}, {
+	  "description": "The selector label.",
+	  "displayname": "Selector",
+	  "name": "selector",
+	  "required": "true",
+	  "category": "config",
+	  "type": "text"
+	}
+  ]
+  

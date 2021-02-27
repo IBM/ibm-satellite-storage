@@ -9,7 +9,7 @@ items:
   - apiVersion: v1
     kind: Namespace
     metadata:
-      name: "{{ namespace }}"
+      name: "trident"
   - apiVersion: apiextensions.k8s.io/v1
     kind: CustomResourceDefinition
     metadata:
@@ -40,7 +40,7 @@ items:
       labels:
         app: operator.trident.netapp.io
       name: trident-operator
-      namespace: "{{ namespace }}"
+      namespace: "trident"
   - apiVersion: rbac.authorization.k8s.io/v1
     kind: ClusterRole
     metadata:
@@ -367,14 +367,14 @@ items:
     subjects:
       - kind: ServiceAccount
         name: trident-operator
-        namespace: "{{ namespace }}"
+        namespace: "trident"
   - apiVersion: apps/v1
     kind: Deployment
     metadata:
       labels:
         app: operator.trident.netapp.io
       name: trident-operator
-      namespace: "{{ namespace }}"
+      namespace: "trident"
     spec:
       replicas: 1
       selector:
@@ -398,7 +398,7 @@ items:
                       fieldPath: metadata.name
                 - name: OPERATOR_NAME
                   value: trident-operator
-              image: netapp/trident-operator:20.07.0
+              image: netapp/trident-operator:20.07.1
               imagePullPolicy: IfNotPresent
               name: trident-operator
           serviceAccountName: trident-operator
@@ -424,21 +424,20 @@ items:
     kind: TridentProvisioner
     metadata:
       name: trident
-      namespace: "{{ namespace }}"
+      namespace: "trident"
     spec:
       debug: true
       kubeletDir: "/var/data/kubelet"
   - apiVersion: v1
-    # create backend storage
     kind: ServiceAccount
     metadata:
       name: trident-kubectl-sa
-      namespace: "{{ namespace }}"
+      namespace: "trident"
   - apiVersion: rbac.authorization.k8s.io/v1
     kind: Role
     metadata:
       name: trident-kubectl
-      namespace: "{{ namespace }}"
+      namespace: "trident"
     rules:
       - apiGroups: [""]
         resources: ["pods"]
@@ -454,7 +453,7 @@ items:
     kind: RoleBinding
     metadata:
       name: trident-kubectl
-      namespace: "{{ namespace }}"
+      namespace: "trident"
     subjects:
       - kind: ServiceAccount
         name: trident-kubectl-sa
@@ -462,34 +461,3 @@ items:
       kind: Role
       name: trident-kubectl
       apiGroup: rbac.authorization.k8s.io
-  - apiVersion: v1
-    kind: Pod
-    metadata:
-      name: trident-kubectl-01
-      namespace: "{{ namespace }}"
-    spec:
-      serviceAccountName: trident-kubectl-sa
-      containers:
-        - name: trident-kubectl
-          image: nkkashyap/ibm-tridentctl:v001
-          env:
-            - name: NAMESPACE
-              value: "{{ namespace }}"
-            - name: DRIVER_NAME
-              value: "{{ storagedriver }}"
-            - name: MGMT_LIF
-              value: "{{ mgmt-lif }}"
-            - name: DATA_LIF
-              value: "{{ data-lif }}"
-            - name: SVM_ID
-              value: "{{ svm-id }}"
-            - name: AGGREGATE_ID
-              value: "{{ aggregate-id }}"
-            - name: STORAGE_SIZE
-              value: "{{ storage-size }}"
-            - name: EXPORT_POLICY
-              value: "{{ export-policy }}"
-            - name: USER_ID
-              value: "{{ user-id }}"
-            - name: USER_PASSWORD
-              value: "{{ user-pass }}"

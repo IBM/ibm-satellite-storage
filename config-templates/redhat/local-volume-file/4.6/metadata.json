@@ -1,50 +1,50 @@
 {
-  "name": "20.07",
+  "name": "4.6",
   "enabled": "true",
-  "description": "Netapp Trident version 20.07",
+  "description": "Persistent storage using local volumes",
   "tags": [
     {
       "name": "provider",
-      "value": "netapp"
+      "value": "redhat"
     }, {
       "name": "offering-name",
-      "value": "netapp-trident"
+      "value": "local-volume-file"
     }, {
       "name": "provider-url",
-      "value": "https://netapp-trident.readthedocs.io/en/stable-v20.10/support/support.html"
+      "value": "https://docs.openshift.com/container-platform/4.6/storage/persistent_storage/persistent-storage-local.html"
     }, {
       "name": "support-msg",
       "value": "For support contact NetApp"
     }, {
       "name": "provider-logo",
-      "value": "logo/trident.png"
+      "value": "/redhat-localvol.png"
     }, {
       "name": "supported-envs",
-      "value": "AWS,Azure,IBM"
+      "value": "AWS,IBM"
     }, {
       "name": "supported-k8s-versions",
-      "value": "1.17,1.18,1.19"
+      "value": "1.18,1.19"
     }, {
       "name": "volume-type",
-      "value": "block,file"
+      "value": "file"
     }, {
       "name": "volume-encryption-at-rest",
-      "value": ""
+      "value": "false"
     }, {
       "name": "volume-encryption-in-transit",
-      "value": ""
+      "value": "false"
     }, {
       "name": "volume-snapshot",
-      "value": ""
+      "value": "false"
     }, {
       "name": "volume-availability",
-      "value": ""
+      "value": "zonal"
     }, {
       "name": "volume-expansion",
-      "value": ""
+      "value": "false"
     }, {
       "name": "storageclass",
-      "value": ""
+      "value": "gold"
     }
   ]
 }

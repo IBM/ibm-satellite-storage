@@ -1,0 +1,48 @@
+[
+  {
+    "description": "The IP address of the Management LIF.",
+    "displayname": "Management LIF",
+    "name": "managementLIF",
+    "required": "true",
+    "category": "config"
+  }, {
+    "description": "The IP address of the Data LIF.",
+    "displayname": "Data LIF",
+    "name": "dataLIF",
+    "required": "true",
+    "category": "config"
+  }, {
+    "description": "The name of the storage virtual machine.",
+    "displayname": "SVM",
+    "name": "svm",
+    "required": "true",
+    "category": "config"
+  }, {
+    "description": "The username to connect to the storage device.",
+    "displayname": "User Name",
+    "name": "username",
+    "required": "true",
+    "category": "secret"
+  }, {
+    "description": "The password to connect to the storage device.",
+    "displayname": "User Password",
+    "name": "password",
+    "required": "true",
+    "category": "secret",
+    "obfuscate": "true"
+  }, {
+    "description": "The maximum volume size that can be requested and the qtree parent volume size.",
+    "displayname": "Limit Volume Size",
+    "name": "limitVolumeSize",
+    "default": "50Gi",
+    "required": "false",
+    "category": "config"
+  }, {
+    "description": "Provisioning fails if usage is above this percentage.",
+    "displayname": "Limit AggregateUsage",
+    "name": "limitAggregateUsage",
+    "default": "80%",
+    "required": "false",
+    "category": "config"
+  }
+]

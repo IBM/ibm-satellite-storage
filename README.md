@@ -111,8 +111,10 @@ With IBM Cloud Satellite, you can bring your own compute infrastructure that is 
 
 ### File reference
 
+| File name | Description |
+| --- | --- |
 | `storage-provider-name` | The name of storage provider. Example: `ibm`, `aws`, `azure`, `netapp`, `dell`. |
-| `storage-offering-name` | The storage offerig name. A provider can have multiple storage offerings for IBM satallite. |
+| `storage-offering-name` | The storage offering name. A provider can have multiple storage offerings for IBM satallite. |
 | `template-version` | The template version. There can be multiple tempalte version for a storage offering |
 | `deployment.yaml` | A custom Kubernetes `List` that includes the resources like Deployment, StatefulSet, DaemonSet, Configmap, secrets, and storage classes. Example [`deployment.yaml`](https://github.com/IBM/ibm-satellite-storage/blob/master/config-templates/netapp/netapp-trident/20.07/deployment.yaml). |
 | `custom-parameters.json` | This file contains the list of parameters that your deployment accepts. Include any required and optional paramters and their default values. Example [`customer-paramerters.json`](https://github.com/IBM/ibm-satellite-storage/blob/master/config-templates/netapp/netapp-trident/20.07/custom-parameters.json). |
@@ -148,7 +150,8 @@ In this example, the `devicepath` parameter is set dynamically. In a local stora
    ```
 
 #### Custom parameter reference
-
+| Parameter name | Description |
+| --- | --- |
 | `description` | A description of the parameter. |
 | `displayname` | The display name of the parameter that is used in the Satellite UI. |
 | `name` | The name of the parameter in string format. |
