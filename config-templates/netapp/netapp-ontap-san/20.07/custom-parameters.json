@@ -38,7 +38,7 @@
     "required": "false",
     "category": "config"
   }, {
-    "description": "Fail provisioning if usage is above this percentage.",
+    "description": "Provisioning fails if usage is above this percentage.",
     "displayname": "Limit AggregateUsage",
     "name": "limitAggregateUsage",
     "default": "80%",
