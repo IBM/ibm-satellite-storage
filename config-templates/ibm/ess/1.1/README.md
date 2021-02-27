@@ -69,7 +69,7 @@ Run the following command to get a list of parameters for the IBM Spectrum Scale
 **ESS CSI Driver parameters**
 
 | Parameter | Required? | Description |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | `scale-host-path` | Required | The mount path of the primary file system. You can retrieve this value by running the `mmlsfs` command. |
 | `cluster-id` | Required | The cluster ID of the primary IBM Spectrum Scale cluster. You can retrieve this value by running the `mmlscluster` command from a node within the primary cluster. |
 | `primary-fs` | Required | The primary file system name. You can retrieve this value by running the `mmlsfs` command. |
