@@ -12,7 +12,7 @@
     "required": "true",
     "category": "config"
   }, {
-    "description": "Storage virtual machine to use",
+    "description": "The name of the storage virtual machine.",
     "displayname": "SVM",
     "name": "svm",
     "required": "true",
