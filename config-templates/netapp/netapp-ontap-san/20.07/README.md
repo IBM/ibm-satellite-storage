@@ -66,7 +66,7 @@ ibmcloud sat storage assignment create --name 'san-driver' --group <group name> 
 
 
 ```
-oc get pods 
+oc get pods -A | grep netapp
 ```
 
 ```
