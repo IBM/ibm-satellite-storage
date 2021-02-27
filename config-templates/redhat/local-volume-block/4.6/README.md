@@ -11,6 +11,8 @@ Local persistent volumes allow you to access local storage devices, such as a di
    - In next page click on `Display Token`
    - Under `Log in with this token` the `oc login --token=XXXX ...` will be displayed, copy the command and execute on your local system
 
+    **Note** The target cluster version should be 4.6.X to use the local-volume-block version 4.6 template.
+
 3. Add label to the worker nodes, one with additional disk
    - Get the nodes 
      ```
@@ -44,9 +46,9 @@ Local persistent volumes allow you to access local storage devices, such as a di
 
 Parameter | Required? | Description | Default value if not provided | 
 --- | --- | --- | --- |
-label-key | Required | You can retrieve this parameter by using ```$ oc get nodes --show-labels``` command | N/A | 
-Label-value | Required | You can retrieve this parameter by using ```$ oc get nodes --show-labels``` command | N/A | 
-devicepath | Required |You can retrieve this parameter by using following commands ```$ oc get nodes``` ```$ oc debug node/<node name> ``` ```# chroot /host``` ```# lsblk``` | N/A | 
+`label-key` | Required | You can retrieve this parameter by using ```$ oc get nodes --show-labels``` command | N/A | 
+`label-value` | Required | You can retrieve this parameter by using ```$ oc get nodes --show-labels``` command | N/A | 
+`devicepath` | Required |You can retrieve this parameter by using following commands ```$ oc get nodes``` ```$ oc debug node/<node name> ``` ```# chroot /host``` ```# lsblk``` | N/A | 
 
 ## Default storage classes
 
