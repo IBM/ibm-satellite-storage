@@ -1,0 +1,10 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: "{{ sc-name }}"
+  annotations:
+  storageclass.kubernetes.io/is-default-class: "{{ is-default }}"
+provisioner: csi.trident.netapp.io
+parameters:
+  backendType: "ontap-san"
+  selector: "{{{ selector }}}"
