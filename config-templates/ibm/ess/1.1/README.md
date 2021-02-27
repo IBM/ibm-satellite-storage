@@ -13,7 +13,7 @@ The following features are available with IBM Spectrum Scale Container Storage I
 - **Multiple volume access modes** Create volumes with ReadWriteMany (RWX) and ReadWriteOnce (RWO) access modes.
 
 ## Limitations
-The IBM Spectrum Scale management API (GUI) should **NOT** be installed on node managed by Satellite.
+**Note**: Do not install the IBM Spectrum Scale management API GUI on worker nodes that are managed by Satellite.
 
 ## Prerequisites
 
