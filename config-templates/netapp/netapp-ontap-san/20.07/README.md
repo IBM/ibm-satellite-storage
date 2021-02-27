@@ -4,6 +4,7 @@ You can use the `netapp-ontap-san` driver to dynamically provision and mange ONT
 
 ## Prerequisites
 
+**Planning consideration for Infra Admin**
 * Create a cluster that meets the requirements for ONTAP SAN. For more information, see the [NetApp documentation](https://netapp-trident.readthedocs.io/en/stable-v20.07/support/requirements.html). Verify that your backend ONTAP cluster is configured as a Trident backend.
 Review the template parameters and retrieve the values from your NetApp cluster.
 * Create a cluster that meets the requirements for ONTAP NAS. For more information, see the [NetApp documentation](https://netapp-trident.readthedocs.io/en/stable-v20.07/support/requirements.html). Verify that your backend ONTAP cluster is configured as a Trident backend.
@@ -12,7 +13,11 @@ Review the template parameters and retrieve the values from your NetApp cluster.
    * You must have one or more dataLIFs for the SVM. Depending on the protocol used (NFS/iSCSI), at least one dataLIF is required.
    * You must have NFS services enabled on the SVM.
    * You must set up a snapshot policy on the SVM.
+
+**Planning consideration for Location Admin**
 * Ensure the NetApp Trident Operator is installed on the target cluster.
+* Review the template parameters and retrieve the values from your NetApp cluster.
+
 
 ## NetApp Ontap-SAN Driver parameters & how to retrieve them
 
@@ -93,6 +98,8 @@ In case the PVC is not getting created using the `sat-netapp-block` storage clas
 ```
 oc -n trident logs trident-kubectl-san
 ```
+- Delete the assignment and the configuration
+- Recreate the configuration, with proper parameter values, and recreate the assignment
 
 ## Reference
 
