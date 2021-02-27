@@ -64,7 +64,7 @@ replicaset.apps/trident-operator-794f74cd4b   1         1         1       73s
 
 ## Troubleshooting
 
-In case the required resource are getting create check the Trident Opertor log
+In case the required resource are not getting created then check the Trident Opertor log
 ```
 oc -n trident logs <trident operator pod name>
 ```
