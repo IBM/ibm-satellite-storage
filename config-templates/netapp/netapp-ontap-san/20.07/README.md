@@ -51,12 +51,12 @@ The following storage classes are deployed when you assign your NetApp ONTAP-SAN
 
 ## Creating the NetApp Ontap-SAN Driver storage configuration
 
-Create a Satellite storage configuration that uses the `netapp-ontap-nas` template.
+Create a Satellite storage configuration that uses the `netapp-ontap-san` template.
 
 **Example `sat storage config create` command**
 
 ```
-ibmcloud sat storage config create --name 'ontapsan' --template-name 'netapp-ontap-san' --template-version '20.07' -p 'managementLIF=10.0.0.1' -p 'dataLIF=10.0.0.2' -p 'svm=svm-nas' -p 'username=admin' -p "password=<admin password>"
+ibmcloud sat storage config create --name 'ontapsan-config' --template-name 'netapp-ontap-san' --template-version '20.07' -p 'managementLIF=10.0.0.1' -p 'dataLIF=10.0.0.2' -p 'svm=svm-nas' -p 'username=admin' -p 'password=<admin password>'
 ```
 
 ## Creating the storage assignment
@@ -64,11 +64,10 @@ ibmcloud sat storage config create --name 'ontapsan' --template-name 'netapp-ont
 **Example `sat storage assignment create` command**
 Assign your storage configuration to your clusters.
 ```
-ibmcloud sat storage assignment create --name 'san-driver' --group <group name> --config 'ontapsan'
+ibmcloud sat storage assignment create --name 'ontapsan-driver' --group <group name> --config 'ontapsan-config'
 ```
 
 ## Verifying your NetApp Ontap-SAN configuration is assigned to your clusters.
-
 
 ```
 oc -n trident get all | grep trident-kubectl-san
@@ -92,7 +91,7 @@ sat-netapp-block-silver   csi.trident.netapp.io          Delete          Immedia
 
 ## Troubleshooting
 
-In case the PVC is not getting created using the `sat-netapp-block` storage clasess
+In case the PVC is not getting created using the `sat-netapp-block` storage classes
 - Review the input parameters values for `managementLIF`, `dataLIF`, `svm`, `username`, `password` and other
 - Review the `trident-kubectl-san` POD's log
 ```
