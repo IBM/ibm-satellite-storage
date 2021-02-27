@@ -12,6 +12,7 @@ Review the template parameters and retrieve the values from your NetApp cluster.
    * You must have one or more dataLIFs for the SVM. Depending on the protocol used (NFS/iSCSI), at least one dataLIF is required.
    * You must have NFS services enabled on the SVM.
    * You must set up a snapshot policy on the SVM.
+* Ensure the NetApp Trident Operator is installed on the target cluster.
 
 ## NetApp Ontap-SAN Driver parameters & how to retrieve them
 
@@ -24,7 +25,6 @@ ibmcloud sat storage template get --name netapp-ontap-san --version 20.7
 
 | Parameter | Required? | Description | Default value if not provided |
 | --- | --- | --- | --- |
-| `namespace` | Required | The namespace where you want to install the storage drivers. | `trident` |
 | `managementLIF` | Required | The IP address of the management LIF. Example: `10.0.0.1`. | N/A |
 | `dataLIF` | Required | The IP address of data LIF. Example: `10.0.0.2`. | N/A | 
 | `svm` | Required | The name of the storage virtual machine. Example: `svm`. | N/A | 
@@ -66,26 +66,35 @@ ibmcloud sat storage assignment create --name 'san-driver' --group <group name> 
 
 
 ```
-oc get pods -A | grep netapp
+oc -n trident get all | grep trident-kubectl-san
 ```
-
 ```
-oc get sc | grep sat
+oc get sc | grep 'netapp-block'
 ```
-
 
 **Example output**
 
-
+```
+$ oc -n trident get all | grep trident-kubectl-san
+pod/trident-kubectl-san                 1/1     Running   0          37s
+```
+```
+$ oc get sc | grep 'netapp-block'
+sat-netapp-block-bronze   csi.trident.netapp.io          Delete          Immediate              false                  70s
+sat-netapp-block-gold     csi.trident.netapp.io          Delete          Immediate              false                  71s
+sat-netapp-block-silver   csi.trident.netapp.io          Delete          Immediate              false                  70s
+```
 
 ## Troubleshooting
 
-Provide troubleshooting steps for any known issues.
-
+In case the PVC is not getting created using the `sat-netapp-block` storage clasess
+- Review the input parameters values for `managementLIF`, `dataLIF`, `svm`, `username`, `password` and other
+- Review the `trident-kubectl-san` POD's log
+```
+oc -n trident logs trident-kubectl-san
+```
 
 ## Reference
 
-
 - [NetApp documentation](https://netapp-trident.readthedocs.io/en/stable-v20.07/kubernetes/operations/tasks/backends/ontap/ontap-san/index.html)
-
 - Support: https://netapp-trident.readthedocs.io/en/stable-v20.10/support/support.html
