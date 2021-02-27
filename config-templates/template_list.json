@@ -41,8 +41,8 @@
   },
   {
     "name": "ocs-local",
-    "displayname": "OpenShift Container Storage for local devices",
-    "Description": "OpenShift Container Storage for local devices.",
+    "displayname": "OpenShift Container Storage Operator for local devices",
+    "Description": "OpenShift Container Storage Operator for local devices.",
     "default-version": "4.6",
     "enabled": "true",
     "provider": "redhat"
