@@ -46,7 +46,7 @@ The following storage classes are deployed when you assign your NetApp ONTAP-SAN
 
 ## Creating the NetApp Ontap-SAN Driver storage configuration
 
-Provide example steps, including an example `config create` command for creating a Satellite storage configuration that uses your template.
+Create a Satellite storage configuration that uses the `netapp-ontap-nas` template.
 
 **Example `sat storage config create` command**
 
