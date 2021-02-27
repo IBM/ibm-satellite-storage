@@ -76,7 +76,6 @@ oc get sc | grep sat
 
 **Example output**
 
-Provide an example output screen of running driver pods and storage classes that are deployed by your configuration.
 
 
 ## Troubleshooting
