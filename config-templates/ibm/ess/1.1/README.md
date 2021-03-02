@@ -13,7 +13,11 @@ The following features are available with IBM Spectrum Scale Container Storage I
 - **Multiple volume access modes** Create volumes with ReadWriteMany (RWX) and ReadWriteOnce (RWO) access modes.
 
 ## Limitations
-**Note**: Do not install the IBM Spectrum Scale management API GUI on worker nodes that are managed by Satellite.
+**Note**: Do not install the IBM Spectrum Scale management API GUI on Kubernetes nodes that are managed by Satellite.
+
+If the Spectrum Scale filesystem mount path is the exact same on the owning and primary Spectrum Scale cluster, then only one Spectrum Scale GUI is required.
+
+If the Spectrum Scale filesystem mount paths are different, then two GUIs are required.  One of the GUIs needs to run on a node that has network connectivity to the Kubernetes nodes managed by IBM Cloud Satellite, but note that the GUI node itself, should not be managed by Satellite.
 
 ## Prerequisites
 
@@ -169,3 +173,4 @@ Follow the instructions below to [remove the IBM Spectrum Scale CSI Driver](http
 ## References
 
 [IBM Spectrum Scale CSI Driver support documentation](https://www.ibm.com/support/knowledgecenter/STXKQY_CSI_SHR/ibmspectrumscalecsi_welcome.html)
+
