@@ -1,6 +1,6 @@
 [
 	{
-		"description": "Mount path of the primary file system",
+		"description": "The mount path of the primary file system.",
 		"displayname": "Scale Host Path",
 		"name": "scale-host-path",
 		"required": "true",
