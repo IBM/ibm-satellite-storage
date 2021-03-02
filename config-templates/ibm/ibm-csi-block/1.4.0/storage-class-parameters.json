@@ -35,7 +35,7 @@
 	"category": "text"
   },
   {
-	"description": "File system type - ext4 or xfs. The default is ext4",
+	"description": "File system type",
 	"displayname": "Fstype",
 	"name": "fstype",
   	"default": "ext4",

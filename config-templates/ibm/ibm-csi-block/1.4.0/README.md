@@ -26,7 +26,15 @@ Retrieve all parameters required by this template.
  **IBM block storage CSI driver parameters**
 | Parameter | Required? | Description | Default value if not provided |
 | --- | --- | --- | --- |
-| `namespace` | Optional | Deployment Namespace. | default |
+| `namespace` | Optional | Deployment Namespace. | `default` |
+| `sc-name` | Required | Storage class Name to be created | N/A |
+| `space-efficiency` | Optional | Space efficiency of volume to be created | N/A |
+| `pool` | Required | Pool ID of volume to be created in | N/A |
+| `secret-name` | Required | Existed secret name | N/A |
+| `secret-namespace` | Required | Existed secret name namespace | N/A |
+| `fstype` | Optional | File system type | `ext4` |
+| `prefix` | Optional | Prefix name of volume to be created | N/A |
+| `VolumeExpansion` | Optional | Is volume expansion allowed? | `false` |
 
 
 ## Creating the IBM block storage CSI driver storage configuration
@@ -34,7 +42,8 @@ Retrieve all parameters required by this template.
 **Example `sat storage config create` command**
 
 ```sh
-ibmcloud sat storage config create --name <config-name> --template-name ibm-csi-block --template-version 1.4.0 -p "namespace=<namespace>"
+ibmcloud sat storage config create --name <config-name> --template-name ibm-csi-block --template-version 1.4.0 -p "namespace=<namespace>" -p "sc-name=<sc-name>" -p "space-efficiency=<space-efficiency>" -p "pool=<pool>" -p "secret-name=<secret-name>" -p "secret-namespace=<secret-namespace>" -p "fstype=<fstype>" -p "prefix=<prefix>" -p "VolumeExpansion=<VolumeExpansion>"
+
 ```
 
 ## Creating the storage assignment
