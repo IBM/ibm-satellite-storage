@@ -304,6 +304,24 @@ items:
                 cpu: 100m
                 memory: 100Mi
           terminationGracePeriodSeconds: 10
+  - apiVersion: v1
+    kind: Namespace
+    metadata:
+      labels:
+        openshift.io/cluster-monitoring: "true"
+      name: openshift-storage
+  - apiVersion: v1
+    kind: Secret
+    metadata:
+      name: ibm-cloud-cos-creds
+      namespace: openshift-storage
+    type: Opaque
+    stringData:
+      IBM_COS_Endpoint: {{{ ibm-cos-endpoint }}}
+      IBM_COS_Location: {{ ibm-cos-location }}
+    data:
+      IBM_COS_ACCESS_KEY_ID: {{{ ibm-cos-access-key }}}
+      IBM_COS_SECRET_ACCESS_KEY: {{{ ibm-cos-secret-key }}}        
   - apiVersion: ocs.ibm.io/v1
     kind: OcsCluster
     metadata:
