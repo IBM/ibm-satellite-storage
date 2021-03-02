@@ -63,7 +63,7 @@ daemonset.apps/ibm-block-csi-node   2         2         2       2            2  
 NAME                                        READY   AGE
 statefulset.apps/ibm-block-csi-controller   1/1     9m36s
 ```
-##Removing your assignment
+## Removing your assignment
 
 when removing the assignment from my clusters:
  - all pods, daemonset and statefulset from the deployment will be removed
@@ -73,7 +73,7 @@ when removing the assignment from my clusters:
 ibmcloud sat storage assignment rm --assignment <assignment-name>
 ```
 
-##Removing your configuration
+## Removing your configuration
 
 After assignment has been removed it is safe to remove the configuration.
 it is mandatory - you can reuse it for other clusters.
