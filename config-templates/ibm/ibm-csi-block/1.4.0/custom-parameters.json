@@ -1,6 +1,6 @@
 [
   {
-    "description": "Deployment Namespace",
+    "description": "Deployment namespace",
     "displayname": "Namespace",
     "name": "namespace",
     "default": "default",

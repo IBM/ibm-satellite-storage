@@ -1,7 +1,7 @@
 [
   {
-	"description": "Storage class Name to be created",
-	"displayname": "Storage Class Name",
+	"description": "Storage class name to be created",
+	"displayname": "Storage Class name",
 	"name": "sc-name",
 	"required": "true",
 	"category": "text"
@@ -21,14 +21,14 @@
 	"category": "text"
   },
   {
-	"description": "Existed secret name",
+	"description": "Existing secret name",
 	"displayname": "Secret name",
 	"name": "secret-name",
 	"required": "true",
 	"category": "text"
   },
   {
-	"description": "Existed secret name namespace",
+	"description": "Existing secret name namespace",
 	"displayname": "Secret namespace",
 	"name": "secret-namespace",
 	"required": "true",

@@ -6,8 +6,8 @@ For full release notes, compatiblity, installation, and user information, see th
 
 ## Prerequisites
 
-For full prerequisite instructions, see the following documentation (in the IBM block storage CSI driver documentation given above): 
-> Installation > Compatibility and requirements.
+For full prerequisite instructions, see the following documentation, referred to in the introductory paragraph. 
+**Installation** > **Compatibility and requirements**.
 
 **Important:** Be sure to complete all prerequisite and installation steps before assigning hosts to your location. Do not create a Kubernetes cluster. This is done through Satellite.
 
@@ -19,19 +19,19 @@ Retrieve all parameters required by this template.
 
 ```
 
-	ibmcloud sat storage template get --name ibm-csi-block --version 1.4.0
+ibmcloud sat storage template get --name ibm-csi-block --version 1.4.0
 
 ```
 
  **IBM block storage CSI driver parameters**
 | Parameter | Required? | Description | Default value if not provided |
 | --- | --- | --- | --- |
-| `namespace` | Optional | Deployment Namespace. | `default` |
-| `sc-name` | Required | Storage class Name to be created | N/A |
+| `namespace` | Optional | Deployment namespace. | `default` |
+| `sc-name` | Required | Storage class name to be created | N/A |
 | `space-efficiency` | Optional | Space efficiency of volume to be created | N/A |
 | `pool` | Required | Pool ID of volume to be created in | N/A |
-| `secret-name` | Required | Existed secret name | N/A |
-| `secret-namespace` | Required | Existed secret name namespace | N/A |
+| `secret-name` | Required | Existing secret name | N/A |
+| `secret-namespace` | Required | Existing secret name namespace | N/A |
 | `fstype` | Optional | File system type | `ext4` |
 | `prefix` | Optional | Prefix name of volume to be created | N/A |
 | `VolumeExpansion` | Optional | Is volume expansion allowed? | `false` |
@@ -74,9 +74,9 @@ statefulset.apps/ibm-block-csi-controller   1/1     9m36s
 ```
 ## Removing your assignment
 
-when removing the assignment from my clusters:
- - all pods, daemonset and statefulset from the deployment will be removed
- - all objects (pvc, pv, pod) that created manually will remain on the cluster until manual deletion
+When removing the assignment from my clusters:
+ - All pods, daemonset and statefulset from the deployment will be removed.
+ - All objects (pvc, pv, pod) that created manually will remain on the cluster until manual deletion.
   
 ```sh
 ibmcloud sat storage assignment rm --assignment <assignment-name>
@@ -84,17 +84,17 @@ ibmcloud sat storage assignment rm --assignment <assignment-name>
 
 ## Removing your configuration
 
-After assignment has been removed it is safe to remove the configuration.
-it is mandatory - you can reuse it for other clusters.
+After the assignment has been removed it is safe to remove the configuration.
+Removing the configuration is not mandatory and it can be reused on other clusters.
 
 ```sh
 ibmcloud sat storage config rm --config <config-name>
 ```
 
-## Troubleshooting, Support and "must gather" information
+## Troubleshooting, support, and logs
 
-For full instructions, see the following documentation (in the IBM block storage CSI driver documentation given above): 
-> Troubleshooting
+For full instructions, see the following documentation, referred to in the introductory paragraph.
+**Troubleshooting**
 
 ## References
 
