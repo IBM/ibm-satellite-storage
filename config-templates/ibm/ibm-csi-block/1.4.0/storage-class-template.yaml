@@ -1,0 +1,19 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: "{{ sc-name }}"
+provisioner: block.csi.ibm.com
+parameters:
+  SpaceEfficiency: "{{ space-efficiency }}"   # Optional.
+  pool: "{{ pool }}" 
+
+  csi.storage.k8s.io/provisioner-secret-name: "{{ secret-name }}"
+  csi.storage.k8s.io/provisioner-secret-namespace: "{{ secret-namespace }}"
+  csi.storage.k8s.io/controller-publish-secret-name: "{{ secret-name }}"
+  csi.storage.k8s.io/controller-publish-secret-namespace: "{{ secret-namespace }}"
+  csi.storage.k8s.io/controller-expand-secret-name: "{{ secret-name }}"
+  csi.storage.k8s.io/controller-expand-secret-namespace: "{{ secret-namespace }}"
+
+  csi.storage.k8s.io/fstype: "{{ fstype }}"   # Optional. Values ext4\xfs. The default is ext4.
+  volume_name_prefix: "{{ prefix }}"      # Optional.
+allowVolumeExpansion: "{{ VolumeExpansion }}" #false
