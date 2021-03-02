@@ -49,42 +49,42 @@
 		"type": "base64"
 	},
 	{
-		"description": "node1-k8-ip",
+		"description": "The IP address of Kubernetes Node#1 running IBM Spectrum Scale.",
 		"displayname": "node1-k8-ip",
 		"name": "k8-n1-ip",
 		"required": "false",
 		"type": ""
 	},
 	{
-		"description": "node1-scale-host",
+		"description": "Hostname of IBM Spectrum Scale Node#1.",
 		"displayname": "node1-scale-host",
 		"name": "sc-n1-host",
 		"required": "false",
 		"type": ""
 	},
 	{
-		"description": "node2-k8-ip",
+		"description": "The IP address of Kubernetes Node#2 running IBM Spectrum Scale.",
 		"displayname": "node2-k8-ip",
 		"name": "k8-n2-ip",
 		"required": "false",
 		"type": ""
 	},
 	{
-		"description": "node2-scale-host",
+		"description": "Hostname of IBM Spectrum Scale Node#2.",
 		"displayname": "node2-scale-host",
 		"name": "sc-n2-host",
 		"required": "false",
 		"type": ""
 	},
 	{
-		"description": "node3-k8-ip",
+		"description": "The IP address of Kubernetes Node#3 running IBM Spectrum Scale.",
 		"displayname": "node3-k8-ip",
 		"name": "k8-n3-ip",
 		"required": "false",
 		"type": ""
 	},
 	{
-		"description": "node3-scale-host",
+		"description": "Hostname of IBM Spectrum Scale Node#3.",
 		"displayname": "node3-scale-host",
 		"name": "sc-n3-host",
 		"required": "false",
