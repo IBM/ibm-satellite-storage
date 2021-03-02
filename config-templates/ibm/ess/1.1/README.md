@@ -1,6 +1,6 @@
 # IBM Spectrum Scale Container Storage Interface Driver
 
-You can use the IBM Spectrum Scale Container Storage Interface (CSI) driver to create persistent storage for stateful applications running in Kubernetes clusters.
+You can use the IBM Spectrum Scale Container Storage Interface (CSI) driver to create persistent storage for stateful applications running in OpenShift clusters.
 
 The following features are available with IBM Spectrum Scale Container Storage Interface driver:
 
@@ -169,4 +169,3 @@ Follow the instructions below to [remove the IBM Spectrum Scale CSI Driver](http
 ## References
 
 [IBM Spectrum Scale CSI Driver support documentation](https://www.ibm.com/support/knowledgecenter/STXKQY_CSI_SHR/ibmspectrumscalecsi_welcome.html)
-
