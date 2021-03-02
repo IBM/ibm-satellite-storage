@@ -7,7 +7,7 @@
 		"type": ""
 	},
 	{
-		"description": "Cluster ID of the pirimary IBM Spectrum Scale Cluster",
+		"description": "The cluster ID of the pirmary IBM Spectrum Scale cluster.",
 		"displayname": "Cluster ID",
 		"name": "cluster-id",
 		"required": "true",
