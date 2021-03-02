@@ -6,7 +6,7 @@ For full release notes, compatiblity, installation, and user information, see th
 
 ## Prerequisites
 
-For full prerequisite instructions, see the following documentation: Installation > Compatibility and requirements.
+For full prerequisite instructions, see the following documentation (in the IBM block storage CSI driver documentation given above): > Installation > Compatibility and requirements.
 
 **Important:** Be sure to complete all prerequisite and installation steps before assigning hosts to your location. Do not create a Kubernetes cluster. This is done through Satellite.
 
@@ -49,11 +49,41 @@ ibmcloud sat storage assignment create --name <assignment-name> --group <cluster
 To verify that your configuration is assigned to your cluster. Verify that the driver pods are running.
 
 
-**Example output**
+```bash
+$ kubectl get all -n <namespace>  -l csi
+NAME                             READY   STATUS    RESTARTS   AGE
+pod/ibm-block-csi-controller-0   6/6     Running   0          9m36s
+pod/ibm-block-csi-node-jvmvh     3/3     Running   0          9m36s
+pod/ibm-block-csi-node-tsppw     3/3     Running   0          9m36s
 
+NAME                                DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE
+daemonset.apps/ibm-block-csi-node   2         2         2       2            2           <none>          9m36s
 
-## Troubleshooting
+NAME                                        READY   AGE
+statefulset.apps/ibm-block-csi-controller   1/1     9m36s
+```
+##Removing your assignment
 
+when removing the assignment from my clusters:
+ - all pods, daemonset and statefulset from the deployment will be removed
+ - all objects (pvc, pv, pod) that created manually will remain on the cluster until manual deletion
+  
+```sh
+ibmcloud sat storage assignment rm --assignment <assignment-name>
+```
+
+##Removing your configuration
+
+After assignment has been removed it is safe to remove the configuration.
+it is mandatory - you can reuse it for other clusters.
+
+```sh
+ibmcloud sat storage config rm --config <config-name>
+```
+
+## Troubleshooting, Support and "must gather" information
+
+For full instructions, see the following documentation (in the IBM block storage CSI driver documentation given above): > Troubleshooting
 
 ## References
 
