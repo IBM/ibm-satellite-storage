@@ -6,7 +6,8 @@ For full release notes, compatiblity, installation, and user information, see th
 
 ## Prerequisites
 
-For full prerequisite instructions, see the following documentation (in the IBM block storage CSI driver documentation given above): > Installation > Compatibility and requirements.
+For full prerequisite instructions, see the following documentation (in the IBM block storage CSI driver documentation given above): 
+> Installation > Compatibility and requirements.
 
 **Important:** Be sure to complete all prerequisite and installation steps before assigning hosts to your location. Do not create a Kubernetes cluster. This is done through Satellite.
 
@@ -83,7 +84,8 @@ ibmcloud sat storage config rm --config <config-name>
 
 ## Troubleshooting, Support and "must gather" information
 
-For full instructions, see the following documentation (in the IBM block storage CSI driver documentation given above): > Troubleshooting
+For full instructions, see the following documentation (in the IBM block storage CSI driver documentation given above): 
+> Troubleshooting
 
 ## References
 
