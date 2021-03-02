@@ -28,7 +28,11 @@ Run the following commands to create a COS instance and to create a set of HMAC 
     $ ibmcloud resource service-key-create cos-cred-rw Writer --instance-name noobaa-stor --parameters '{ "HMAC": true}'
     ```
 
-3. Get the regional public endpoint and the IBM COS location from the UI (Select the region closest to your cluster)
+3. Get the regional public endpoint and the IBM COS location from the UI (Select the region closest to your cluster) or by running this command
+    ```
+    $ curl https://control.cloud-object-storage.cloud.ibm.com/v2/endpoints | jq '."service-endpoints"."regional"'
+    ```
+
 
 ### Getting the device details for your OCS configuration.
 
