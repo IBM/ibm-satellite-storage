@@ -47,5 +47,31 @@
     "name": "billing-type",
     "default": "hourly",
     "required": "false"
+  },
+  {
+    "description": "The IBM COS public regional endpoint.",
+    "displayname": "IBM COS endpoint",
+    "name": "ibm-cos-endpoint",
+    "required": "true"
+  },
+  {
+    "description": "The IBM COS regional location.",
+    "displayname": "IBM COS location",
+    "name": "ibm-cos-location",
+    "required": "true"
+  },
+  {
+    "description": "The IBM COS access key ID.",
+    "displayname": "IBM COS access key ID",
+    "name": "ibm-cos-access-key",
+    "category": "secret",
+    "required": "true"
+  },
+  {
+    "description": "The IBM COS secret access key.",
+    "displayname": "IBM COS secret access key",
+    "name": "ibm-cos-secret-key",
+    "category": "secret",
+    "required": "true"
   }
 ]
