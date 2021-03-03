@@ -32,7 +32,7 @@
       "value": "IBM knowledge center: https://www.ibm.com/support/knowledgecenter/SSRQ8T_1.4.0/csi_block_storage_kc_welcome.html"
     },
     {
-      "key": "support-description",
+      "key": "support_URL",
       "value": "For support contact IBM: https://www.ibm.com/support/home/"
     }
   ]
