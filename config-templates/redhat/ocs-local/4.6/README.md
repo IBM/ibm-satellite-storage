@@ -29,8 +29,8 @@ Run the following commands to create a COS instance and create a set of HMAC cre
     ```
 
 3. Get the regional public endpoint and the location of your IBM COS instance. 
-    You can get the endpoint details from [IBM COS endpoints](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-endpoints) and the
-    location from [IBM COS location](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-classes)
+    You can get the endpoint details from the list of [IBM COS endpoints](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-endpoints) and the
+    location from [IBM COS location constraint details](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-classes).
 
 
 ### Getting the device details for your OCS configuration.
