@@ -2,7 +2,7 @@
 
 IBM block storage CSI driver is based on an open-source IBM project, included as a part of IBM Storage orchestration for containers. IBM Storage orchestration for containers enables enterprises to implement a modern container-driven hybrid multicloud environment that can reduce IT costs and enhance business agility, while continuing to derive value from existing systems.
 
-For full release notes, compatiblity, installation, and user information, see the [IBM block storage CSI driver](documentation: https://www.ibm.com/support/knowledgecenter/SSRQ8T_1.4.0/).
+For full release notes, compatiblity, installation, and user information, see the [IBM block storage CSI driver documentation](https://www.ibm.com/support/knowledgecenter/SSRQ8T_1.4.0/).
 
 ## Prerequisites
 
@@ -10,7 +10,7 @@ Review the [compatibility and requirements documentation](https://www.ibm.com/su
 
 **Important:** Be sure to complete all prerequisite and installation steps before assigning hosts to your location. Do not create a Kubernetes cluster. This is done through Satellite.
 
-## IBM block storage CSI driver parameters & how to retrieve them
+## IBM block storage CSI driver parameters and how to retrieve them
 Retrieve all parameters required by this template.
 
 ```sh
@@ -18,6 +18,7 @@ ibmcloud sat storage template get --name ibm-csi-block --version 1.4.0
 ```
 
  **IBM block storage CSI driver parameters**
+ 
  For more information about the fields and examples, review the [Creating a StorageClass documentation](https://www.ibm.com/support/knowledgecenter/SSRQ8T_1.4.0/csi_ug_config_create_storageclasses.html)
 | Parameter | Required? | Description | Default value if not provided |
 | --- | --- | --- | --- |
