@@ -12,11 +12,11 @@ In order to deploy OCS, the following prerequisites are required.
     - PVs available from a storage class in block mode.
 - Your cluster must have a minimum of 3 nodes that each have a minimum 16CPUs and 64GB RAM.
 - Your cluster should be compatible with the OCS version that you're trying to install.
-- You must provision an instance of IBM Cloud Object Storage and provide your COS HMAC credentials, the regional public endpoint and the IBM COS location while creating the storage configuration.
+- You must provision an instance of IBM Cloud Object Storage and provide your COS HMAC credentials, the regional public endpoint, and the IBM COS location when you create your storage configuration.
 
 ### Creating the IBM COS service instance
 
-Run the following commands to create a COS instance and to create a set of HMAC credentials.
+Run the following commands to create a COS instance and create a set of HMAC credentials.
 
 1. Create an IBM COS Service Instance.
     ```
@@ -28,7 +28,7 @@ Run the following commands to create a COS instance and to create a set of HMAC 
     $ ibmcloud resource service-key-create cos-cred-rw Writer --instance-name noobaa-stor --parameters '{ "HMAC": true}'
     ```
 
-3. Get the regional public endpoint and the IBM COS location from the UI (Select the region closest to your cluster) or by running this command
+3. Get the regional public endpoint and the location of your IBM COS instance. You can get location & endpoint details from the [IBM COS documentation](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-endpoints) or by running the following command.
     ```
     $ curl https://control.cloud-object-storage.cloud.ibm.com/v2/endpoints | jq '."service-endpoints"."regional"'
     ```
@@ -103,10 +103,10 @@ When you create your OCS configuration, you must specify device paths for the ob
 |`worker-nodes` | Optional |Workers which need to be a part of OCS (Minimum 3). | N/A |csv |
 | `billing-type` | Optional | Enter the billing option that you want to use. You can enter either `hourly` or `monthly`. | `hourly` | string |
 | `ocs-upgrade` | Optional | Set to `true` if you want to upgrade the major version of OCS while creating a configuration of the newer version. | false | boolean |
-| `ibm-cos-endpoint` | Required | Enter the IBM COS regional public endpoint | N/A | string |
-| `ibm-cos-location` | Required | Enter the IBM COS regional location | N/A | string |
-| `ibm-cos-access-key` | Required | Enter the IBM COS access key ID for using COS as backend storage | N/A | string |
-| `ibm-cos-secret-key` | Required | Enter the IBM COS secret access key for using COS as backend storage | N/A | string |
+| `ibm-cos-endpoint` | Required | Enter the IBM COS regional public endpoint. Example: `s3.us-east.cloud-object-storage.appdomain.cloud` | N/A | string |
+| `ibm-cos-location` | Required | Enter the IBM COS regional location. Example: `us-east-standard` | N/A | string |
+| `ibm-cos-access-key` | Required | Enter your IBM COS access key ID. | N/A | string |
+| `ibm-cos-secret-key` | Required | Enter your IBM COS secret access key. | N/A | string |
 
 ## Default storage classes
 
