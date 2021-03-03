@@ -2,39 +2,34 @@
 
 IBM block storage CSI driver is based on an open-source IBM project, included as a part of IBM Storage orchestration for containers. IBM Storage orchestration for containers enables enterprises to implement a modern container-driven hybrid multicloud environment that can reduce IT costs and enhance business agility, while continuing to derive value from existing systems.
 
-For full release notes, compatiblity, installation, and user information, see the IBM block storage CSI driver documentation: https://www.ibm.com/support/knowledgecenter/SSRQ8T_1.4.0/
+For full release notes, compatiblity, installation, and user information, see the [IBM block storage CSI driver](documentation: https://www.ibm.com/support/knowledgecenter/SSRQ8T_1.4.0/).
 
 ## Prerequisites
 
-For full prerequisite instructions, see the following documentation, referred to in the introductory paragraph. 
-**Installation** > **Compatibility and requirements**.
+Review the [compatibility and requirements documentation](https://www.ibm.com/support/knowledgecenter/SSRQ8T_1.4.0/csi_ug_requirements.html). 
 
 **Important:** Be sure to complete all prerequisite and installation steps before assigning hosts to your location. Do not create a Kubernetes cluster. This is done through Satellite.
 
 ## IBM block storage CSI driver parameters & how to retrieve them
-
-
-
 Retrieve all parameters required by this template.
 
-```
-
+```sh
 ibmcloud sat storage template get --name ibm-csi-block --version 1.4.0
-
 ```
 
  **IBM block storage CSI driver parameters**
+ For more information about the fields and examples, review the [Creating a StorageClass documentation](https://www.ibm.com/support/knowledgecenter/SSRQ8T_1.4.0/csi_ug_config_create_storageclasses.html)
 | Parameter | Required? | Description | Default value if not provided |
 | --- | --- | --- | --- |
-| `namespace` | Optional | Deployment namespace. | `default` |
-| `sc-name` | Required | Storage class name to be created | N/A |
-| `space-efficiency` | Optional | Space efficiency of volume to be created | N/A |
-| `pool` | Required | Pool ID of volume to be created in | N/A |
-| `secret-name` | Required | Existing secret name | N/A |
-| `secret-namespace` | Required | Existing secret name namespace | N/A |
-| `fstype` | Optional | File system type | `ext4` |
-| `prefix` | Optional | Prefix name of volume to be created | N/A |
-| `VolumeExpansion` | Optional | Is volume expansion allowed? | `false` |
+| `namespace` | Optional | The namespace where you want to create the deployment. | `default` |
+| `sc-name` | Required | The name of the storage class name that is created. | N/A |
+| `space-efficiency` | Optional | The space efficiency of the volume that is created. | N/A |
+| `pool` | Required | Name of an existing pool on the storage system where you want to create the volume. | N/A |
+| `secret-name` | Required | The name of your existing Kubernetes secret. | N/A |
+| `secret-namespace` | Required | The namespace that your Kubernetes secret is in. (can be different then the deployment namespace) | N/A |
+| `fstype` | Optional | The file system type. | `ext4` |
+| `prefix` | Optional | The prefix name of the volume that is created. | N/A |
+| `VolumeExpansion` | Optional |  Specify `true` to allow volume expansion or `false` to disallow volume expansion. | `false` |
 
 
 ## Creating the IBM block storage CSI driver storage configuration
@@ -56,8 +51,7 @@ ibmcloud sat storage assignment create --name <assignment-name> --group <cluster
 
 ## Verifying your IBM block storage CSI driver storage configuration is assigned to your clusters
 
-To verify that your configuration is assigned to your cluster. Verify that the driver pods are running.
-
+Run the following commands to verify that the driver pods are running.
 
 ```bash
 $ kubectl get all -n <namespace>  -l csi
@@ -74,9 +68,9 @@ statefulset.apps/ibm-block-csi-controller   1/1     9m36s
 ```
 ## Removing your assignment
 
-When removing the assignment from my clusters:
- - All pods, daemonset and statefulset from the deployment will be removed.
- - All objects (pvc, pv, pod) that created manually will remain on the cluster until manual deletion.
+When you remove the storage assignment from your clusters, the following resources are removed.
+ - All pods, daemonsets and statefulsets from the deployment.
+ - All objects that are created manually will remain on the cluster. For example: app pods, PVC, PVs that you created manually, must be manually removed.
   
 ```sh
 ibmcloud sat storage assignment rm --assignment <assignment-name>
@@ -85,17 +79,15 @@ ibmcloud sat storage assignment rm --assignment <assignment-name>
 ## Removing your configuration
 
 After the assignment has been removed it is safe to remove the configuration.
-Removing the configuration is not mandatory and it can be reused on other clusters.
-
+Note that removing the configuration is not mandatory. You can reuse your storage configuration on other clusters.
 ```sh
 ibmcloud sat storage config rm --config <config-name>
 ```
 
 ## Troubleshooting, support, and logs
 
-For full instructions, see the following documentation, referred to in the introductory paragraph.
-**Troubleshooting**
+[Troubleshooting documentation](https://www.ibm.com/support/knowledgecenter/SSRQ8T_1.4.0/csi_ug_troubleshooting.html)
 
 ## References
 
-- IBM block storage CSI driver documentation: https://www.ibm.com/support/knowledgecenter/SSRQ8T
+- [IBM block storage CSI driver documentation](https://www.ibm.com/support/knowledgecenter/SSRQ8T)

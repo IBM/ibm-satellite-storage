@@ -1,13 +1,13 @@
 [
   {
-	"description": "Storage class name to be created",
+	"description": "The name of the storage class that is created.",
 	"displayname": "Storage Class name",
 	"name": "sc-name",
 	"required": "true",
 	"category": "config"
   },
   {
-	"description": "Space efficiency of volume to be created",
+	"description": "The space efficiency of the volume that is created.",
 	"displayname": "Space efficiency type",
 	"name": "space-efficiency",
 	"required": "false",
@@ -21,21 +21,21 @@
 	"category": "config"
   },
   {
-	"description": "Existing secret name",
+	"description": "The name of your existing Kubernetes secret.",
 	"displayname": "Secret name",
 	"name": "secret-name",
 	"required": "true",
 	"category": "config"
   },
   {
-	"description": "Existing secret name namespace",
+	"description": "The namespace that your Kubernetes secret is in.",
 	"displayname": "Secret namespace",
 	"name": "secret-namespace",
 	"required": "true",
 	"category": "config"
   },
   {
-	"description": "File system type",
+	"description": "The file system type.",
 	"displayname": "Fstype",
 	"name": "fstype",
   	"default": "ext4",
@@ -43,14 +43,14 @@
 	"category": "config"
   },
   {
-	"description": "Prefix name of volume to be created",
+	"description": "The prefix name of the volume that is created.",
 	"displayname": "Prefix name",
 	"name": "prefix",
 	"required": "false",
 	"category": "config"
   },
   {
-	"description": "Is volume expansion allowed?",
+	"description": "Specify 'true' to allow volume expansion or 'false' to disallow volume expansion.",
 	"displayname": "allowVolumeExpansion?",
 	"name": "VolumeExpansion",
 	"default": "false",
