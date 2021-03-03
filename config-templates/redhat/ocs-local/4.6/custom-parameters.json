@@ -49,26 +49,26 @@
     "required": "false"
   },
   {
-    "description": "IBM COS regional public endpoint",
+    "description": "The IBM COS public regional endpoint.",
     "displayname": "IBM COS endpoint",
     "name": "ibm-cos-endpoint",
     "required": "true"
   },
   {
-    "description": "IBM COS regional location",
+    "description": "The IBM COS regional location.",
     "displayname": "IBM COS location",
     "name": "ibm-cos-location",
     "required": "true"
   },
   {
-    "description": "The IBM COS access key ID for using COS as backend storage",
+    "description": "The IBM COS access key ID.",
     "displayname": "IBM COS access key ID",
     "name": "ibm-cos-access-key",
     "category": "secret",
     "required": "true"
   },
   {
-    "description": "The IBM COS secret access key for using COS as backend storage",
+    "description": "The IBM COS secret access key.",
     "displayname": "IBM COS secret access key",
     "name": "ibm-cos-secret-key",
     "category": "secret",
