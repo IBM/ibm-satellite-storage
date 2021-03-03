@@ -14,8 +14,8 @@
 	"category": "config"
   },
   {
-	"description": "Pool ID of volume to be created in",
-	"displayname": "Pool ID",
+	"description": "Name of an existing pool on the storage system where you want to create the volume.",
+	"displayname": "Pool Name",
 	"name": "pool",
 	"required": "true",
 	"category": "config"
