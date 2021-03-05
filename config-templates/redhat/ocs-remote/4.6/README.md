@@ -27,8 +27,7 @@ Run the following commands to create a COS instance and create a set of HMAC cre
     ```
 
 3. Get the regional public endpoint and the location of your IBM COS instance.
-    You can get the endpoint details from the list of [IBM COS endpoints](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-endpoints) and the
-    location from [IBM COS location constraint details](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-classes).
+    You can get the endpoint details from the list of [IBM COS endpoints](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-endpoints) and the location from [IBM COS location constraint details](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-classes).
 
 ## Red hat Openshift Container Storage - Remote Storage: Parameter reference
 
@@ -42,7 +41,7 @@ Run the following commands to create a COS instance and create a set of HMAC cre
 | `osd-storage-class` | Required | Enter the storage class name that you want to use for the osd pods | N/A | string |
 | `osd-size` | Required | Enter the size of the osd pods | 100Gi | string |
 | `num-of-osd` | Optional | Enter the number of OSDs. OCS will create 3x number of OSDs for the value specified. Initial storage capacity is the same as your osd size specified at `osd-size`. When you want to increase your storage capacity, you have to increase `num-of-osd` by the multiples of `osd-size` | 1 | integer |
-|`worker-nodes` | Optional |Workers which need to be a part of OCS (Minimum 3). | N/A |csv |
+|`worker-nodes` | Optional | Enter the IP addresses of the worker nodes where you want to deploy OCS. If you do not specify the `worker-nodes`, OCS is installed on all of the worker nodes in your cluster. The minimum number of worker nodes that you must specify is 3. | N/A |csv |
 | `billing-type` | Optional | Enter the billing option that you want to use. You can enter either `hourly` or `monthly`. | `hourly` | string |
 | `ocs-upgrade` | Optional | Set to `true` if you want to upgrade the major version of OCS while creating a configuration of the newer version. | false | boolean |
 | `ibm-cos-endpoint` | Required | Enter the IBM COS regional public endpoint. Example: `s3.us-east.cloud-object-storage.appdomain.cloud` | N/A | string |
@@ -64,8 +63,8 @@ Run the following commands to create a COS instance and create a set of HMAC cre
 
 ## Creating the Red Hat Openshift Container Storage - Remote storage configuration
 
-1. Log in into the Cluster using oc CLI or IBM Cloud CLI.
-2. Verify that all the worker nodes are healthy.
+1. Log in into your cluster using `oc` CLI or IBM Cloud CLI.
+2. Verify that all the worker nodes have the `Ready` status.
 
     ```
     $oc get nodes
@@ -75,11 +74,9 @@ Run the following commands to create a COS instance and create a set of HMAC cre
     169.48.170.90   Ready    master,worker   28h   v1.19.0+3b01205
     ```
 
-3. Create a cluster group.Cluster Group
-   - From IBM Cloud Web Console
-     > https://cloud.ibm.com/satellite/clusters -> Cluster groups -> Create cluster group
-   - Add cluster to the group
-     > https://cloud.ibm.com/satellite/groups -> select the cluster group -> Clusters -> Add cluster
+3. Create a cluster group.
+   - From the [IBM Cloud Web Console](https://cloud.ibm.com/satellite/clusters), click **Cluster groups** -> **Create cluster group**
+   - Add your cluster to the group. From the [groups page](https://cloud.ibm.com/satellite/groups), select your cluster group and click **Clusters** -> **Add cluster.
 
 4. Verify that your cluster group is created.
     ```
@@ -256,7 +253,7 @@ In the following example, the OCS configuration is updated to use template versi
     $ ibmcloud sat storage assignment create --name ocs-sub3 --group test-group2 --config ocs-config3
     ```
 
-5. Verify that your configuration is updated
+5. Verify that your configuration is updated.
     ```
     ic sat storage config get <config-name>
     ```
@@ -294,7 +291,7 @@ Check the status of your storage cluster.
        storageClusterStatus: Ready
     ```
 
-If the storageClusterStatus is stuck in `Progressing` or if it's `Error`, OCS installation has failed.
+If the `storageClusterStatus` is `Progressing` or `Error`, the OCS installation has failed.
 
 ### If your OCS installation fails, complete the following the steps to troubleshoot your deployment.
 1. Check the describe of storagecluster and cephcluster in the openshift-storage namespace and look at the `Events` and the `Status` sections
@@ -314,7 +311,7 @@ If the storageClusterStatus is stuck in `Progressing` or if it's `Error`, OCS in
 1) Delete all the assignments and configurations created
 2) Remove the finalizer on the OcsCluster resource and delete it
 3) You'll have to first delete the `openshift-storage` namespace after removing finalizers on the resources under it
-4) run this command for all the nodes to clean-up the files created by OCS.
+4) Run the following command on each worker node to clean-up the files created by OCS.
 ```
 oc debug node/<node name> -- chroot /host rm -rvf /var/lib/rook /mnt/local-storage
 ```
