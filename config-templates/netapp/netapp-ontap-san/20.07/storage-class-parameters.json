@@ -2,13 +2,13 @@
 	{
 	  "description": "The storage class name.",
 	  "displayname": "Storage Class Name",
-	  "name": "sc-name",
+	  "name": "name",
 	  "required": "true",
 	  "category": "config"
 	}, {
 	  "description": "Specify 'true' or 'false' to make the created storage class the default class.",
 	  "displayname": "Default",
-	  "name": "is-default",
+	  "name": "is-default-class",
 	  "default": "false",
 	  "required": "false",
 	  "category": "config",

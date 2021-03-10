@@ -1,9 +1,15 @@
 {
   "name": "20.07",
   "enabled": "true",
-  "description": "Netapp Ontap-SAN.",
+  "description": "Netapp Ontap-SAN Driver.",
   "tags": [
     {
+      "name": "template-dependency",
+      "value": "netapp-trident"
+    }, {
+      "name": "template-dependency-description",
+      "value": "Install netapp-trident before installing ontap-san driver."
+    }, {
       "name": "provider",
       "value": "netapp"
     }, {
