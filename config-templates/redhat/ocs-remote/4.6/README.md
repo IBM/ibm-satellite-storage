@@ -18,12 +18,12 @@ Run the following commands to create a COS instance and create a set of HMAC cre
 
 1. Create an IBM COS Service Instance.
     ```
-    $ ibmcloud resource service-instance-create noobaa-stor cloud-object-storage standard global
+    ibmcloud resource service-instance-create noobaa-stor cloud-object-storage standard global
     ```
 
 2. Create HMAC credentials. Make a note of your credentials.
     ```
-    $ ibmcloud resource service-key-create cos-cred-rw Writer --instance-name noobaa-stor --parameters '{ "HMAC": true}'
+    ibmcloud resource service-key-create cos-cred-rw Writer --instance-name noobaa-stor --parameters '{ "HMAC": true}'
     ```
 
 3. Get the regional public endpoint and the location of your IBM COS instance.
@@ -44,7 +44,7 @@ Run the following commands to create a COS instance and create a set of HMAC cre
 |`worker-nodes` | Optional | Enter the IP addresses of the worker nodes where you want to deploy OCS. If you do not specify the `worker-nodes`, OCS is installed on all of the worker nodes in your cluster. The minimum number of worker nodes that you must specify is 3. | N/A |csv |
 | `billing-type` | Optional | Enter the billing option that you want to use. You can enter either `hourly` or `monthly`. | `hourly` | string |
 | `ocs-upgrade` | Optional | Set to `true` if you want to upgrade the major version of OCS while creating a configuration of the newer version. | false | boolean |
-| `ibm-cos-endpoint` | Required | Enter the IBM COS regional public endpoint. Example: `s3.us-east.cloud-object-storage.appdomain.cloud` | N/A | string |
+| `ibm-cos-endpoint` | Required | Enter the IBM COS regional public endpoint. Example: `https://s3.us-east.cloud-object-storage.appdomain.cloud` | N/A | string |
 | `ibm-cos-location` | Required | Enter the IBM COS regional location. Example: `us-east-standard` | N/A | string |
 | `ibm-cos-access-key` | Required | Enter your IBM COS access key ID. | N/A | string |
 | `ibm-cos-secret-key` | Required | Enter your IBM COS secret access key. | N/A | string |
@@ -297,8 +297,8 @@ If the `storageClusterStatus` is `Progressing` or `Error`, the OCS installation 
 1. Check the describe of storagecluster and cephcluster in the openshift-storage namespace and look at the `Events` and the `Status` sections
 
     ```
-    $ oc describe storagecluster -n openshift-storage
-    $ oc describe cephcluster -n openshift-storage
+    oc describe storagecluster -n openshift-storage
+    oc describe cephcluster -n openshift-storage
     ```
 
 2. You can use the toolbox available in rook community to debug OCS deploy issues. Run the following command to install the toolbox.
