@@ -7,6 +7,9 @@
       "name": "template-dependency",
       "value": "netapp-trident"
     }, {
+      "name": "template-dependency-version",
+      "value": "20.07"
+    }, {
       "name": "template-dependency-description",
       "value": "Install netapp-trident before installing ontap-san driver."
     }, {
@@ -23,7 +26,7 @@
       "value": "For support contact NetApp"
     }, {
       "name": "provider-logo",
-      "value": "logo/trident.png"
+      "value": "logo/netapp-ontap-san.png"
     }, {
       "name": "supported-envs",
       "value": "AWS,Azure,IBM"
