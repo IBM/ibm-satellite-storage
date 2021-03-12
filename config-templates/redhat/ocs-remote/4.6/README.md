@@ -8,9 +8,9 @@ The user has to provide the input values to the custom resource OcsCluster while
 In order to deploy OCS, the following prerequisites are required.
 - [Create a Satellite location](cloud.ibm.com/docs/satellite?topic=satellite-locations). 
 - [Create a Satellite cluster](cloud.ibm.com/docs/satellite?topic=openshift-satellite-clusters). 
-- Remote storage available in block mode
 - Your cluster must have a minimum of 3 worker nodes with at least 16CPUs and 64GB RAM per worker node.
 - Your hosts must meet the [Satellite host requirements](https://cloud.ibm.com/docs/satellite?topic=satellite-host-reqs) in addition to having one of the following remote storage configurations.
+  * Remote storage available in block mode
 - [Add your Satellite to a cluster group](cloud.ibm.com/docs/satellite?topic=satellite-cluster-config#setup-clusters-satconfig-groups). 
 - Your cluster should be compatible with the OCS version that you're trying to install.
 - The storage class you use for the `mon-storage-class` and `osd-storage-class` parameters should have `VolumeBindingMode` set to `WaitForFirstConsumer` if you're using a multizone cluster
