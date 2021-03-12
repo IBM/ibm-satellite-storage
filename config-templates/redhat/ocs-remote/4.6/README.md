@@ -6,10 +6,14 @@ The user has to provide the input values to the custom resource OcsCluster while
 
 ## Prerequisites
 In order to deploy OCS, the following prerequisites are required.
+- [Create a Satellite location](cloud.ibm.com/docs/satellite?topic=satellite-locations). 
+- [Create a Satellite cluster](cloud.ibm.com/docs/satellite?topic=openshift-satellite-clusters). 
 - Remote storage available in block mode
-- Your cluster must have a minimum of 3 nodes that each have a minimum 16CPUs and 64GB RAM.
+- Your cluster must have a minimum of 3 worker nodes with at least 16CPUs and 64GB RAM per worker node.
+- Your hosts must meet the [Satellite host requirements](https://cloud.ibm.com/docs/satellite?topic=satellite-host-reqs) in addition to having one of the following remote storage configurations.
+- [Add your Satellite to a cluster group](cloud.ibm.com/docs/satellite?topic=satellite-cluster-config#setup-clusters-satconfig-groups). 
 - Your cluster should be compatible with the OCS version that you're trying to install.
-- The storage class you use for the `mon-storage-class` and `osd-storage-class` parameters should have `VolumeBindingMode` set to `WaitForFirstConsumer`
+- The storage class you use for the `mon-storage-class` and `osd-storage-class` parameters should have `VolumeBindingMode` set to `WaitForFirstConsumer` if you're using a multizone cluster
 - You must provision an instance of IBM Cloud Object Storage and provide your COS HMAC credentials, the regional public endpoint, and the IBM COS location when you create your storage configuration.
 
 ### Creating the IBM COS service instance
@@ -36,9 +40,9 @@ Run the following commands to create a COS instance and create a set of HMAC cre
 | Parameter | Required? | Description | Default value if not provided | Datatype |
 | --- | --- | --- | --- | --- |
 | `ocs-cluster-name` | Required | Enter the name of your OcsCluster custom resource. | N/A | string |
-| `mon-storage-class` | Required | Enter the storage class name that you want to use for the mon pods | N/A | string |
+| `mon-storage-class` | Required | Enter the storage class name that you want to use for the mon pods. The storage class must have the `waitForFirstConsumer` volume binding mode. | N/A | string |
 | `mon-size` | Required | Enter the size of the mon pods | 20Gi | string |
-| `osd-storage-class` | Required | Enter the storage class name that you want to use for the osd pods | N/A | string |
+| `osd-storage-class` | Required | Enter the storage class name that you want to use for the OSD pods. The storage class must have the `waitForFirstConsumer` volume binding mode.  | N/A | string |
 | `osd-size` | Required | Enter the size of the osd pods | 100Gi | string |
 | `num-of-osd` | Optional | Enter the number of OSDs. OCS will create 3x number of OSDs for the value specified. Initial storage capacity is the same as your osd size specified at `osd-size`. When you want to increase your storage capacity, you have to increase `num-of-osd` by the multiples of `osd-size` | 1 | integer |
 |`worker-nodes` | Optional | Enter the IP addresses of the worker nodes where you want to deploy OCS. If you do not specify the `worker-nodes`, OCS is installed on all of the worker nodes in your cluster. The minimum number of worker nodes that you must specify is 3. | N/A |csv |
@@ -199,7 +203,7 @@ You can scale your OCS configuration by increasing the `num-of-osd` parameter.
 
 1. Create the storage configuration and specify the updated values. In this example, the `num-of-osd` parameter is updated to 2, to double the storage capacity.
   ```
-  ibmcloud sat storage config create --name ocs-config --template-name ocs-local --template-version 4.6 -p "ocs-cluster-name=testocscluster" -p "mon-storage-class=vpc-custom-10iops-tier" -p "mon-size=50Gi" -p "osd-storage-class=vpc-custom-10iops-tier" -p "osd-size=150Gi" -p "num-of-osd=2" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90" -p "ibm-cos-endpoint=https://s3.us-east.cloud-object-storage.appdomain.cloud" -p "ibm-cos-location=us-east-standard" -p "ibm-cos-access-key=xxx" -p "ibm-cos-secret-key=yyy"
+  ibmcloud sat storage config create --name ocs-config --template-name ocs-remote --template-version 4.6 -p "ocs-cluster-name=testocscluster" -p "mon-storage-class=vpc-custom-10iops-tier" -p "mon-size=50Gi" -p "osd-storage-class=vpc-custom-10iops-tier" -p "osd-size=150Gi" -p "num-of-osd=2" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90" -p "ibm-cos-endpoint=https://s3.us-east.cloud-object-storage.appdomain.cloud" -p "ibm-cos-location=us-east-standard" -p "ibm-cos-access-key=xxx" -p "ibm-cos-secret-key=yyy"
   ```
 
 2. Create a new assignment for this configuration.
@@ -244,7 +248,7 @@ In the following example, the OCS configuration is updated to use template versi
 
 3. Save the configuration details. When you upgrade your OCS version, you must enter the same configuration details and set the `template-version` to the version you want to upgrade to and set the `ocs-upgrade` parameter to `true`.
   ```
-  ibmcloud sat storage config create --name ocs-config --template-name ocs-local --template-version 4.7 -p "ocs-cluster-name=testocscluster" -p "mon-storage-class=vpc-custom-10iops-tier" -p "mon-size=50Gi" -p "osd-storage-class=vpc-custom-10iops-tier" -p "osd-size=150Gi" -p "num-of-osd=1" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90" -p "ocs-upgrade=true" -p "ibm-cos-endpoint=https://s3.us-east.cloud-object-storage.appdomain.cloud" -p "ibm-cos-location=us-east-standard" -p "ibm-cos-access-key=xxx" -p "ibm-cos-secret-key=yyy"
+  ibmcloud sat storage config create --name ocs-config --template-name ocs-remote --template-version 4.7 -p "ocs-cluster-name=testocscluster" -p "mon-storage-class=vpc-custom-10iops-tier" -p "mon-size=50Gi" -p "osd-storage-class=vpc-custom-10iops-tier" -p "osd-size=150Gi" -p "num-of-osd=1" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90" -p "ocs-upgrade=true" -p "ibm-cos-endpoint=https://s3.us-east.cloud-object-storage.appdomain.cloud" -p "ibm-cos-location=us-east-standard" -p "ibm-cos-access-key=xxx" -p "ibm-cos-secret-key=yyy"
   ```
 
 4. Assign your configuration to your cluster groups.
@@ -308,10 +312,45 @@ If the `storageClusterStatus` is `Progressing` or `Error`, the OCS installation 
 
 ## Removing your OCS configuration
 
-1) Delete all the assignments and configurations created
-2) Remove the finalizer on the OcsCluster resource and delete it
-3) You'll have to first delete the `openshift-storage` namespace after removing finalizers on the resources under it
-4) Run the following command on each worker node to clean-up the files created by OCS.
-```
-oc debug node/<node name> -- chroot /host rm -rvf /var/lib/rook /mnt/local-storage
-```
+1. List your storage assignments and find the one that you used for your cluster. 
+    ```
+    ic sat storage assignment ls
+    ```
+2. Remove the assignment. After the assignment is removed, the driver pods and storage classes are removed from all clusters that were part of the storage assignment.
+    ```
+    ic sat storage assignment rm --assignment <assignment_name>
+    ```
+
+3. Remove your storage configuration.
+    ```
+    ic sat storage config rm --config <config_name>
+    ```
+4. Clean up the remaining Kubernetes resources from your cluster. Save the following script in a file called `cleanup.sh` to your local machine.
+    ```
+    #!/bin/bash
+    oc delete ns openshift-storage --wait=false
+    sleep 20
+    kubectl -n openshift-storage patch persistentvolumeclaim/db-noobaa-db-0 -p '{"metadata":{"finalizers":[]}}' --type=merge
+    kubectl -n openshift-storage patch cephblockpool.ceph.rook.io/ocs-storagecluster-cephblockpool -p '{"metadata":{"finalizers":[]}}' --type=merge
+    kubectl -n openshift-storage patch cephcluster.ceph.rook.io/ocs-storagecluster-cephcluster -p '{"metadata":{"finalizers":[]}}' --type=merge
+    kubectl -n openshift-storage patch cephfilesystem.ceph.rook.io/ocs-storagecluster-cephfilesystem -p '{"metadata":{"finalizers":[]}}' --type=merge
+    kubectl -n openshift-storage patch cephobjectstore.ceph.rook.io/ocs-storagecluster-cephobjectstore -p '{"metadata":{"finalizers":[]}}' --type=merge
+    kubectl -n openshift-storage patch cephobjectstoreuser.ceph.rook.io/noobaa-ceph-objectstore-user -p '{"metadata":{"finalizers":[]}}' --type=merge
+    kubectl -n openshift-storage patch cephobjectstoreuser.ceph.rook.io/ocs-storagecluster-cephobjectstoreuser -p '{"metadata":{"finalizers":[]}}' --type=merge
+    kubectl -n openshift-storage patch NooBaa/noobaa -p '{"metadata":{"finalizers":[]}}' --type=merge
+    kubectl -n openshift-storage patch backingstores.noobaa.io/noobaa-default-backing-store -p '{"metadata":{"finalizers":[]}}' --type=merge
+    kubectl -n openshift-storage patch bucketclasses.noobaa.io/noobaa-default-bucket-class -p '{"metadata":{"finalizers":[]}}' --type=merge
+    kubectl -n openshift-storage patch storagecluster.ocs.openshift.io/ocs-storagecluster -p '{"metadata":{"finalizers":[]}}' --type=merge
+    sleep 20
+    oc delete pods -n openshift-storage --all --force --grace-period=0
+    ```
+5. Run the cleanup.sh script.
+    ```
+    sh ./cleanup.sh
+    ```
+6. After you run the cleanup script, log in to each worker node and run the following commands.
+- Deploy a debug pod and run chroot /host.
+    `oc debug node/<node name> -- chroot /host`
+
+- Run the following command to remove any files or directories on the specified paths.
+    `rm -rvf /var/lib/rook`
