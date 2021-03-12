@@ -15,6 +15,5 @@ metadata:
   name: ibm-spectrum-scale-csi-fileset
 provisioner: spectrumscale.csi.ibm.com
 parameters:
-  volBackendFs: gpfs0
   volBackendFs: "{{ vol-backend-fs }}"
 reclaimPolicy: Delete
