@@ -1,9 +1,18 @@
 {
   "name": "20.07",
   "enabled": "true",
-  "description": "Netapp Ontap-SAN.",
+  "description": "Netapp Ontap-SAN Driver.",
   "tags": [
     {
+      "name": "template-dependency",
+      "value": "netapp-trident"
+    }, {
+      "name": "template-dependency-version",
+      "value": "20.07"
+    }, {
+      "name": "template-dependency-description",
+      "value": "Install netapp-trident before installing ontap-san driver."
+    }, {
       "name": "provider",
       "value": "netapp"
     }, {
@@ -17,7 +26,7 @@
       "value": "For support contact NetApp"
     }, {
       "name": "provider-logo",
-      "value": "logo/trident.png"
+      "value": "logo/netapp-ontap-san.png"
     }, {
       "name": "supported-envs",
       "value": "AWS,Azure,IBM"
