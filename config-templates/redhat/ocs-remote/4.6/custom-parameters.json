@@ -6,18 +6,30 @@
     "required": "true"
   },
   {
-    "description": "The local device path of the OSD.",
-    "displayname": "Osd Device Path",
-    "name": "osd-device-path",
-    "required": "true",
-    "type": "csv"
+    "description": "The MON storage size. The default value is '20Gi'.",
+    "displayname": "Mon storage size",
+    "name": "mon-size",
+    "default": "20Gi",
+    "required": "true"
   },
   {
-    "description": "The local device path of the MON.",
-    "displayname": "Mon device Path",
-    "name": "mon-device-path",
-    "required": "true",
-    "type": "csv"
+    "description": "The MON storage class name.",
+    "displayname": "Mon storage class",
+    "name": "mon-storage-class",
+    "required": "true"
+  },
+  {
+    "description": "The OSD storage size. The default value is '100Gi'.",
+    "displayname": "osd storage size",
+    "name": "osd-size",
+    "default": "100Gi",
+    "required": "true"
+  },
+  {
+    "description": "The OSD storage class name.",
+    "displayname": "osd Storage Class",
+    "name": "osd-storage-class",
+    "required": "true"
   },
   {
     "description": "The number of OSDs. The default value is '1'.",
