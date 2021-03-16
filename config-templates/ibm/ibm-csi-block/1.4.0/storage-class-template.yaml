@@ -2,6 +2,8 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: "{{ name }}"
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "{{ is-default-class }}"
 provisioner: block.csi.ibm.com
 parameters:
   SpaceEfficiency: "{{ space-efficiency }}"   # Optional.
