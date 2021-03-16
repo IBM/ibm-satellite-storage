@@ -42,6 +42,8 @@
     "displayname": "Limit Volume Size",
     "name": "limitVolumeSize",
     "default": "50Gi",
+    "placeholder":"50Gi",
+    "regex": "^[0-9]+Gi$",
     "required": "false",
     "category": "config"
   }, {
@@ -49,6 +51,8 @@
     "displayname": "Limit AggregateUsage",
     "name": "limitAggregateUsage",
     "default": "80%",
+    "placeholder":"80%",
+    "regex": "^[0-9]+%$",
     "required": "false",
     "category": "config"
   }, {
@@ -56,6 +60,8 @@
     "displayname": "NFS Mount Options",
     "name": "nfsMountOptions",
     "default": "nfsvers=4",
+    "placeholder":"nfsvers=4",
+    "regex": "^(nfsvers=){1}[0-9.]+$",
     "required": "false",
     "category": "config"
   }
