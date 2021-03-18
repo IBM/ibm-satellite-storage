@@ -7,10 +7,19 @@
 		"type": ""
 	},
 	{
-		"description": "The base path under which all volumes with this storage class is created. The path that you specify must exist before you assign your configuration to your clusters.",
-		"displayname": "Volume Directory Base Path",
-		"name": "vol-dir-base-path",
-		"required": "false",
-		"type": ""
-	}
+	  "description": "The storage class name.",
+	  "displayname": "Storage Class Name",
+	  "name": "storage-class-name",
+	  "required": "true",
+	  "category": "config"
+	}, 
+	{
+	  "description": "Specify 'true' or 'false' to make the created storage class the default class.",
+	  "displayname": "Default",
+	  "name": "is-default-class",
+	  "default": "true",
+	  "required": "false",
+	  "category": "config",
+	  "type": "text"
+	}	
 ]
