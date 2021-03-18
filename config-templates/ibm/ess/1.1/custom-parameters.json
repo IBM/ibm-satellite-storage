@@ -14,35 +14,35 @@
 		"type": ""
 	},
 	{
-		"description": "Primary file system name",
+		"description": "The primary file system name.",
 		"displayname": "Primary FS",
 		"name": "primary-fs",
 		"required": "true",
 		"type": ""
 	},
 	{
-		"description": "FQDN or IP address of the GUI node of scale cluster that is specified against the Cluster ID parameter",
+		"description": "The FQDN or IP address of the GUI node on the Spectrum Scale cluster.",
 		"displayname": "GUI Host",
 		"name": "gui-host",
 		"required": "true",
 		"type": ""
 	},
 	{
-		"description": "Name of secret for username password to connect to Primary Cluster GUI",
+		"description": "The name of secret for that contains the username and password to connect to the primary cluster GUI.",
 		"displayname": "Primary Cluster, Secret Name",
 		"name": "secret-name",
 		"required": "true",
 		"type": ""
 	},
 	{
-		"description": "Username to connect to Primary Cluster GUI",
+		"description": "The username to connect to the primary cluster GUI.",
 		"displayname": "Primary Cluster GUI Username",
 		"name": "gui-api-user",
 		"required": "true",
 		"type": "base64"
 	},
 	{
-		"description": "Password to connect to Primary Cluster GUI",
+		"description": "The password to connect to the primary cluster GUI.",
 		"displayname": "Primary Cluster GUI Password",
 		"name": "gui-api-password",
 		"required": "true",
