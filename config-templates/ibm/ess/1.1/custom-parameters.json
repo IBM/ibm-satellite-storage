@@ -39,14 +39,14 @@
 		"displayname": "Primary Cluster GUI Username",
 		"name": "gui-api-user",
 		"required": "true",
-		"type": "secret"
+		"category": "secret"
 	},
 	{
 		"description": "The password to connect to the primary cluster GUI.",
 		"displayname": "Primary Cluster GUI Password",
 		"name": "gui-api-password",
 		"required": "true",
-		"type": "secret"
+		"category": "secret"
 	},
 	{
 		"description": "The IP address of Kubernetes Node#1 running IBM Spectrum Scale.",
