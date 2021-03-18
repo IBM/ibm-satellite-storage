@@ -1,6 +1,6 @@
 [
 	{
-		"description": "File system on which directory-based volume should be created",
+		"description": "The file system on which the directory-based volume is created.",
 		"displayname": "Volume Backend Filesystem",
 		"name": "vol-backend-fs",
 		"required": "true",
