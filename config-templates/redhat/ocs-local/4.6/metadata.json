@@ -8,8 +8,8 @@
       "value": "redhat"
     },
     {
-      "name": "log-image",
-      "value": "/ocs-logo"
+      "name": "provider-logo",
+      "value": "logo/ocs-local.png"
     },
     {
       "name": "kube-version",
