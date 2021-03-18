@@ -7,7 +7,7 @@
 		"type": ""
 	},
 	{
-		"description": "Base path under which all volumes with this storage class will be created. (Must Exist)",
+		"description": "The base path under which all volumes with this storage class is created. The path that you specify must exist before you assign your configuration to your clusters.",
 		"displayname": "Volume Directory Base Path",
 		"name": "vol-dir-base-path",
 		"required": "false",
