@@ -17,7 +17,7 @@
       "value": "For support contact NetApp"
     }, {
       "name": "provider-logo",
-      "value": "/redhat-localvol.png"
+      "value": "logo/local-volume-block.png"
     }, {
       "name": "supported-envs",
       "value": "AWS,IBM"
