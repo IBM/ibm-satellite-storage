@@ -1,7 +1,7 @@
 {
   "name": "20.07",
   "enabled": "true",
-  "description": "Netapp Trident version 20.07",
+  "description": "Netapp Trident version 20.07.",
   "tags": [
     {
       "name": "provider",
@@ -17,7 +17,7 @@
       "value": "For support contact NetApp"
     }, {
       "name": "provider-logo",
-      "value": "logo/trident.png"
+      "value": "logo/netapp-trident.png"
     }, {
       "name": "supported-envs",
       "value": "AWS,Azure,IBM"

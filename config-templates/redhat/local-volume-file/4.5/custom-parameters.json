@@ -1,13 +1,13 @@
 [
   {
-    "description": "The key of the worker node 'key=value' label.",
+    "description": "The 'key' of the worker node 'key=value' label.",
     "displayname": "Node Label Key",
     "name": "label-key",
     "required": "true",
     "category": "config"
   },
   {
-    "description": "The value of the worker node 'key=value' label.",
+    "description": "The 'value' of the worker node 'key=value' label.",
     "displayname": "Node Label Key Value",
     "name": "label-value",
     "required": "true",

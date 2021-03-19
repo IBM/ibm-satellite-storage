@@ -328,18 +328,10 @@ items:
       name: {{ ocs-cluster-name }}
       namespace: default
     spec:
-       monStorageClassName: localfile
-       monSize: "1"
-       osdStorageClassName: localblock
-       osdSize: "1"
-       monDevicePaths:
-         {{#mon-device-path }}
-         - "{{{ item }}}"
-         {{/mon-device-path }}
-       osdDevicePaths:
-         {{#osd-device-path }}
-         - "{{{ item }}}"
-         {{/osd-device-path }}
+       monStorageClassName: {{ mon-storage-class }}
+       monSize: {{ mon-size }}
+       osdStorageClassName: {{ osd-storage-class }}
+       osdSize: {{ osd-size }}
        numOfOsd: {{ num-of-osd }}
        ocsUpgrade: {{ ocs-upgrade }}
        {{#worker-nodes?}}

@@ -6,62 +6,34 @@ The user has to provide the input values to the custom resource OcsCluster while
 
 ## Prerequisites
 In order to deploy OCS, the following prerequisites are required.
-- You must have at least one of these local storage options are required:
-    - Raw devices (no partitions or formatted filesystems).
-    - Raw partitions (no formatted filesystem).
-    - PVs available from a storage class in block mode.
-- Your cluster must have a minimum of 3 nodes that each have a minimum 16CPUs and 64GB RAM.
+- [Create a Satellite location](cloud.ibm.com/docs/satellite?topic=satellite-locations).
+- [Create a Satellite cluster](cloud.ibm.com/docs/satellite?topic=openshift-satellite-clusters).
+- Your hosts must meet the [Satellite host requirements](https://cloud.ibm.com/docs/satellite?topic=satellite-host-reqs) in addition to having one of the following remote storage configurations. 
+    * Two raw devices in block mode that have no partitions or formatted file systems. If your devices have no partitions, each node must have 2 free disks. One disk for the OSD and one disk for the MON.
+    * Two raw partitions that have no formatted file system. If your raw devices are partitioned, they must have at least 2 partitions per disk, per worker node.
+- Your cluster must have a minimum of 3 worker nodes with at least 16CPUs and 64GB RAM per worker node.
 - Your cluster should be compatible with the OCS version that you're trying to install.
-- You must create an `openshift-storage` namespace in your cluster.
-- You must provision an instance of IBM Cloud Object Storage and create a Kubernetes secret with your COS HMAC credentials.
-
-
-### Creating the `openshift-storage` namespace
-
-1. Copy the following YAML code and save it as `os-namespace.yaml` a file on your local machine.
-    ```
-    apiVersion: v1
-    kind: Namespace
-    metadata:
-      labels:
-        openshift.io/cluster-monitoring: "true"
-      name: openshift-storage
-    ```
-
-2. Create the `openshift-storage` namespace by using the YAML file that you saved.
-    ```
-    oc create -f os-namespace.yaml
-    ```
-
-3. Verify that the namespace is created.
-    ```
-    oc get namespaces | grep storage
-    ```
-
+- [Add your Satellite to a cluster group](cloud.ibm.com/docs/satellite?topic=satellite-cluster-config#setup-clusters-satconfig-groups). 
+- You must provision an instance of IBM Cloud Object Storage and provide your COS HMAC credentials, the regional public endpoint, and the IBM COS location when you create your storage configuration.
 
 ### Creating the IBM COS service instance
 
-Run the following commands to create a COS instance, create a set of HMAC credentials, and create a Kubernetes secret that uses your COS HMAC credentials.
+Run the following commands to create a COS instance and create a set of HMAC credentials.
 
 1. Create an IBM COS Service Instance.
     ```
-    $ ibmcloud resource service-instance-create noobaa-stor cloud-object-storage standard global
+    ibmcloud resource service-instance-create noobaa-stor cloud-object-storage standard global
     ```
 
 2. Create HMAC credentials. Make a note of your credentials.
     ```
-    $ ibmcloud resource service-key-create cos-cred-rw Writer --instance-name noobaa-stor --parameters '{ "HMAC": true}'
+    ibmcloud resource service-key-create cos-cred-rw Writer --instance-name noobaa-stor --parameters '{ "HMAC": true}'
     ```
 
-3. Create the Kubernetes secret named `ibm-cloud-cos-creds` in the `openshift-storage` namespace that uses your COS HMAC credentials. When you run the command, specify your COS HMAC access key ID and secret access key.
-    ```
-    $ kubectl -n 'openshift-storage' create secret generic 'ibm-cloud-cos-creds' --type=Opaque --from-literal=IBM_COS_ACCESS_KEY_ID=<access_key_id> --from-literal=IBM_COS_SECRET_ACCESS_KEY=<secret_access_key>
-    ```
+3. Get the regional public endpoint and the location of your IBM COS instance. 
+    You can get the endpoint details from the list of [IBM COS endpoints](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-endpoints) and the
+    location from [IBM COS location constraint details](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-classes).
 
-4. Verify that your secret is created.
-    ```
-    oc get secrets -A | grep cos
-    ```
 
 ### Getting the device details for your OCS configuration.
 
@@ -126,12 +98,16 @@ When you create your OCS configuration, you must specify device paths for the ob
 | Parameter | Required? | Description | Default value if not provided | Datatype |
 | --- | --- | --- | --- | --- |
 | `ocs-cluster-name` | Required | Enter the name of your OcsCluster custom resource. | N/A | string |
-| `mon-device-path` | Required | Enter the `disk-by-id` paths to the devices that you want to use for the MON pods. Example: `/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part1`. | N/A | csv |
-| `osd-device-path` | Required | Enter the `disk-by-id` paths to the devices that you want to use for the OSD pods. Example: `/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part2`. | N/A | csv |
+| `mon-device-path` | Required | Enter the `disk-by-id` paths to the devices that you want to use for the MON pods. Example: `/dev/disk/by-id/scsi-3600605b00d87b43027b3bc310a64c6c9-part1`. | N/A | csv |
+| `osd-device-path` | Required | Enter the `disk-by-id` paths to the devices that you want to use for the OSD pods. Example: `/dev/disk/by-id/scsi-3600605b00d87b43027b3bc310a64c6c9-part2`. | N/A | csv |
 | `num-of-osd` | Optional | Enter the number of OSDs. OCS will create 3x number of OSDs for the value specified. Initial storage capacity is the same as your disk size specified at `osd-device-path`. When you want to increase your storage capacity, you have to increase `num-of-osd` by the number of disks you add (taking into consideration the replication factor, which is `3` by default) | 1 | integer |
-|`worker-nodes` | Required |Workers which need to be a part of OCS (Minimum 3). | N/A |csv |
+|`worker-nodes` | Optional | Enter the IP addresses of the worker nodes where you want to deploy OCS. If you do not specify the `worker-nodes`, OCS is installed on all of the worker nodes in your cluster. The minimum number of worker nodes that you must specify is 3. | N/A |csv |
 | `billing-type` | Optional | Enter the billing option that you want to use. You can enter either `hourly` or `monthly`. | `hourly` | string |
 | `ocs-upgrade` | Optional | Set to `true` if you want to upgrade the major version of OCS while creating a configuration of the newer version. | false | boolean |
+| `ibm-cos-endpoint` | Required | Enter the IBM COS regional public endpoint. Example: `https://s3.us-east.cloud-object-storage.appdomain.cloud` | N/A | string |
+| `ibm-cos-location` | Required | Enter the IBM COS regional location. Example: `us-east-standard` | N/A | string |
+| `ibm-cos-access-key` | Required | Enter your IBM COS access key ID. | N/A | string |
+| `ibm-cos-secret-key` | Required | Enter your IBM COS secret access key. | N/A | string |
 
 ## Default storage classes
 
@@ -147,8 +123,8 @@ When you create your OCS configuration, you must specify device paths for the ob
 
 ## Creating the Red Hat Openshift Container Storage - Local storage configuration
 
-1. Log in into the Cluster using oc CLI or IBM Cloud CLI.
-2. Verify that all the worker nodes are healthy.
+1. Log in into your cluster using `oc` CLI or IBM Cloud CLI.
+2. Verify that all the worker nodes have the `Ready` status.
 
     ```
     $oc get nodes
@@ -158,11 +134,9 @@ When you create your OCS configuration, you must specify device paths for the ob
     169.48.170.90   Ready    master,worker   28h   v1.19.0+3b01205
     ```
 
-3. Create a cluster group.Cluster Group
-   - From IBM Cloud Web Console
-     > https://cloud.ibm.com/satellite/clusters -> Cluster groups -> Create cluster group
-   - Add cluster to the group
-     > https://cloud.ibm.com/satellite/groups -> select the cluster group -> Clusters -> Add cluster
+3. Create a cluster group.
+   - From the [IBM Cloud Web Console](https://cloud.ibm.com/satellite/clusters), click **Cluster groups** -> **Create cluster group**
+   - Add your cluster to the group. From the [groups page](https://cloud.ibm.com/satellite/groups), select your cluster group and click **Clusters** -> **Add cluster.
 
 4. Verify that your cluster group is created.
     ```
@@ -189,7 +163,7 @@ When you create your OCS configuration, you must specify device paths for the ob
 
 5. Create a storage configuration using the existing OCS template. Enter the device details that your retrieved earlier. Be sure to provide the disk-by-IDs of the disks we want to use as the `osd-device-path` and `mon-device-path` [parameters]( https://github.com/IBM/ibm-satellite-storage/tree/master/config-templates/redhat/ocs-local/README.md##Prerequisites). Note that if your OCS configuration has 3 worker nodes, you must specify a total of 6 disks or partitions. 3 for the OSDs and 3 for the MONs.
     ```
-    ibmcloud sat storage config create --name ocs-config --template-name ocs-local --template-version 4.6 -p "ocs-cluster-name=testocscluster" -p "osd-device-path=/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part2,/dev/scsi-3600605b00d87b43027b3bbf306bc28a7-part2,/dev/scsi-3600062b206ba6f00276eb58065b5da94-part2" -p "mon-device-path=/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part1,/dev/scsi-3600605b00d87b43027b3bbf306bc28a7-part1,/dev/scsi-3600062b206ba6f00276eb58065b5da94-part1" -p "num-of-osd=1" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90"
+    ibmcloud sat storage config create --name ocs-config --template-name ocs-local --template-version 4.6 -p "ocs-cluster-name=testocscluster" -p "osd-device-path=/dev/disk/by-id/scsi-3600605b00d87b43027b3bc310a64c6c9-part2,/dev/disk/by-id/scsi-3600605b00d87b43027b3bbf306bc28a7-part2,/dev/disk/by-id/scsi-3600062b206ba6f00276eb58065b5da94-part2" -p "mon-device-path=/dev/disk/by-id/scsi-3600605b00d87b43027b3bc310a64c6c9-part1,/dev/disk/by-id/scsi-3600605b00d87b43027b3bbf306bc28a7-part1,/dev/disk/by-id/scsi-3600062b206ba6f00276eb58065b5da94-part1" -p "num-of-osd=1" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90" -p "ibm-cos-endpoint=https://s3.us-east.cloud-object-storage.appdomain.cloud" -p "ibm-cos-location=us-east-standard" -p "ibm-cos-access-key=xxx" -p "ibm-cos-secret-key=yyy"
     ```
 
     Example output:
@@ -306,10 +280,14 @@ In the following example, 3 worker nodes are added to the configuration that was
     - `mon-device-path` - Specify all previous `mon-device-path` values from your exisiting configuration. OCS requires 3 MON devices. You can retrieve the `by-id` values for your new worker nodes by reviewing the **Getting the details for your OCS configuration** on this page.
     - `num-of-osd` - Increase the OSD number by 1 for each set of 3 disks or partitions that you add to your configuration.
     - `worker-nodes` - Specify all of the worker nodes from your existing configuration plus any additonal worker nodes that you added to your cluster. Worker nodes must be added in multiples of 3.
+    - `ibm-cos-endpoint` - This parameter remains the same as the existing configuration.
+    - `ibm-cos-location` - This parameter remains the same as the existing configuration.
+    - `ibm-cos-access-key` - This parameter remains the same as the existing configuration.
+    - `ibm-cos-secret-key` - This parameter remains the same as the existing configuration.
 
 1. Create the storage configuration and specify the updated values. In this example, the `osd-device-path` parameter is updated to include the device ids of the disks that you want to use. The worker node parameter is updated to include the worker nodes that are added to the cluster and the `num-of-osd` value is increased to 2.
     ```
-    ibmcloud sat storage config create --name ocs-config2 --template-name ocs-local --template-version 4.6 -p "ocs-cluster-name=testocscluster" -p "osd-device-path=/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part2,/dev/scsi-3600605b00d87b43027b3bbf306bc28a7-part2,/dev/scsi-3600062b206ba6f00276eb58065b5da94-part2" -p "mon-device-path=/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part1,/dev/scsi-3600605b00d87b43027b3bbf306bc28a7-part1,/dev/scsi-3600062b206ba6f00276eb58065b5da94-part1" -p "num-of-osd=2" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90,169.48.170.84,169.48.170.85,169.48.170.86"
+    ibmcloud sat storage config create --name ocs-config2 --template-name ocs-local --template-version 4.6 -p "ocs-cluster-name=testocscluster" -p "osd-device-path=/dev/disk/by-id/scsi-3600605b00d87b43027b3bc310a64c6c9-part2,/dev/disk/by-id/scsi-3600605b00d87b43027b3bbf306bc28a7-part2,/dev/disk/by-id/scsi-3600062b206ba6f00276eb58065b5da94-part2" -p "mon-device-path=/dev/disk/by-id/scsi-3600605b00d87b43027b3bc310a64c6c9-part1,/dev/disk/by-id/scsi-3600605b00d87b43027b3bbf306bc28a7-part1,/dev/disk/by-id/scsi-3600062b206ba6f00276eb58065b5da94-part1" -p "num-of-osd=2" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90,169.48.170.84,169.48.170.85,169.48.170.86" -p "ibm-cos-endpoint=https://s3.us-east.cloud-object-storage.appdomain.cloud" -p "ibm-cos-location=us-east-standard" -p "ibm-cos-access-key=xxx" -p "ibm-cos-secret-key=yyy"
     ```
 
 2. Create a new assignment for this configuration.
@@ -332,10 +310,14 @@ In the following example, 3 worker nodes are added to the configuration that was
     - `mon-device-path` - Specify all previous `mon-device-path` values from your exisiting configuration. OCS requires 3 MON devices. You can retrieve the `by-id` values for your new worker nodes by reviewing the **Getting the details for your OCS configuration** on this page.
     - `num-of-osd` - Increase the OSD number by 1 for each set of 3 disks or partitions that you add to your configuration.
     - `worker-nodes` - Specify the worker nodes from your existing configuration.
+    - `ibm-cos-endpoint` - This parameter remains the same as the existing configuration.
+    - `ibm-cos-location` - This parameter remains the same as the existing configuration.
+    - `ibm-cos-access-key` - This parameter remains the same as the existing configuration.
+    - `ibm-cos-secret-key` - This parameter remains the same as the existing configuration.
 
 1. Create the storage configuration and specify the updated values. In this example, the `osd-device-path` parameter is updated to include the device ids of the disks that you want to use and the `num-of-osd` value is increased to 2.
     ```
-    $ibmcloud sat storage config create --name ocs-config2 --template-name ocs-local --template-version 4.6 -p "ocs-cluster-name=testocscluster" -p "osd-device-path=/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part2,/dev/scsi-3600605b00d87b43027b3bbf306bc28a7-part2,/dev/scsi-3600062b206ba6f00276eb58065b5da94-part2,/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part3,/dev/scsi-3600605b00d87b43027b3bbf306bc28a7-part3,/dev/scsi-3600062b206ba6f00276eb58065b5da94-part3" -p "mon-device-path=/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part1,/dev/scsi-3600605b00d87b43027b3bbf306bc28a7-part1,/dev/scsi-3600062b206ba6f00276eb58065b5da94-part1" -p "num-of-osd=2" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90"
+    $ibmcloud sat storage config create --name ocs-config2 --template-name ocs-local --template-version 4.6 -p "ocs-cluster-name=testocscluster" -p "osd-device-path=/dev/disk/by-id/scsi-3600605b00d87b43027b3bc310a64c6c9-part2,/dev/disk/by-id/scsi-3600605b00d87b43027b3bbf306bc28a7-part2,/dev/disk/by-id/scsi-3600062b206ba6f00276eb58065b5da94-part2,/dev/disk/by-id/scsi-3600605b00d87b43027b3bc310a64c6c9-part3,/dev/disk/by-id/scsi-3600605b00d87b43027b3bbf306bc28a7-part3,/dev/scsi-3600062b206ba6f00276eb58065b5da94-part3" -p "mon-device-path=/dev/disk/by-id/scsi-3600605b00d87b43027b3bc310a64c6c9-part1,/dev/disk/by-id/scsi-3600605b00d87b43027b3bbf306bc28a7-part1,/dev/disk/by-id/scsi-3600062b206ba6f00276eb58065b5da94-part1" -p "num-of-osd=2" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90" -p "ibm-cos-endpoint=https://s3.us-east.cloud-object-storage.appdomain.cloud" -p "ibm-cos-location=us-east-standard" -p "ibm-cos-access-key=xxx" -p "ibm-cos-secret-key=yyy"
     ```
 
 2. Create a new assignment for this configuration :
@@ -359,6 +341,10 @@ In the following example, the OCS configuration is updated to use template versi
     - `mon-device-path` - This parameter remains the same as the existing configuration.
     - `num-of-osd` - This parameter remains the same as the existing configuration.
     - `worker-nodes` - This parameter remains the same as the existing configuration.
+    - `ibm-cos-endpoint` - This parameter remains the same as the existing configuration.
+    - `ibm-cos-location` - This parameter remains the same as the existing configuration.
+    - `ibm-cos-access-key` - This parameter remains the same as the existing configuration.
+    - `ibm-cos-secret-key` - This parameter remains the same as the existing configuration.
     - `ocs-upgrade` - Enter `true` to upgrade your `ocs-cluster` to the template version that you specified.
 
 1. Get the details of your OCS configuration.
@@ -374,7 +360,7 @@ In the following example, the OCS configuration is updated to use template versi
 
 3. Save the configuration details. When you upgrade your OCS version, you must enter the same configuration details and set the `template-version` to the version you want to upgrade to and set the `ocs-upgrade` parameter to `true`.
     ```
-    $ibmcloud sat storage config create --name ocs-config3 --template-name ocs-local --template-version 4.7 -p "ocs-cluster-name=testocscluster" -p "osd-device-path=/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part2,/dev/scsi-3600605b00d87b43027b3bbf306bc28a7-part2,/dev/scsi-3600062b206ba6f00276eb58065b5da94-part2" -p "mon-device-path=/dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part1,/dev/scsi-3600605b00d87b43027b3bbf306bc28a7-part1,/dev/scsi-3600062b206ba6f00276eb58065b5da94-part1" -p "num-of-osd=1" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90" -p "ocs-upgrade=true"
+    $ibmcloud sat storage config create --name ocs-config3 --template-name ocs-local --template-version 4.7 -p "ocs-cluster-name=testocscluster" -p "osd-device-path=/dev/disk/by-id/scsi-3600605b00d87b43027b3bc310a64c6c9-part2,/dev/disk/by-id/scsi-3600605b00d87b43027b3bbf306bc28a7-part2,/dev/disk/by-id/scsi-3600062b206ba6f00276eb58065b5da94-part2" -p "mon-device-path=/dev/disk/by-id/scsi-3600605b00d87b43027b3bc310a64c6c9-part1,/dev/disk/by-id/scsi-3600605b00d87b43027b3bbf306bc28a7-part1,/dev/disk/by-id/scsi-3600062b206ba6f00276eb58065b5da94-part1" -p "num-of-osd=1" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90" -p "ibm-cos-endpoint=https://s3.us-east.cloud-object-storage.appdomain.cloud" -p "ibm-cos-location=us-east-standard" -p "ibm-cos-access-key=xxx" -p "ibm-cos-secret-key=yyy" -p "ocs-upgrade=true"
     ```
 
 4. Assign your configuration to your cluster groups.
@@ -383,7 +369,7 @@ In the following example, the OCS configuration is updated to use template versi
     $ ibmcloud sat storage assignment create --name ocs-sub3 --group test-group2 --config ocs-config3
     ```
 
-5. Verify that your configuration is updated
+5. Verify that your configuration is updated.
     ```
     ic sat storage config get <config-name>
     ```
@@ -423,14 +409,14 @@ Check the status of your storage cluster.
        storageClusterStatus: Ready
     ```
 
-If the storageClusterStatus is stuck in `Progressing` or if it's `Error`, OCS installation has failed.
+If the `storageClusterStatus` is `Progressing` or `Error`, the OCS installation has failed.
 
 ### If your OCS installation fails, complete the following the steps to troubleshoot your deployment.
 1. Check the describe of storagecluster and cephcluster in the openshift-storage namespace and look at the `Events` and the `Status` sections
 
     ```
-    $ oc describe storagecluster -n openshift-storage
-    $ oc describe cephcluster -n openshift-storage
+    oc describe storagecluster -n openshift-storage
+    oc describe cephcluster -n openshift-storage
     ```
 
 2. You can use the toolbox available in rook community to debug OCS deploy issues. Run the following command to install the toolbox.
@@ -442,11 +428,51 @@ If the storageClusterStatus is stuck in `Progressing` or if it's `Error`, OCS in
 
 ## Removing your OCS configuration
 
-1) Delete all the assignments and configurations created
-2) Remove the finalizer on the OcsCluster resource and delete it
-3) You'll have to first delete the `openshift-storage` namespace after removing finalizers on the resources under it
-4) After that, you have to delete the `local-storage` namespace after removing finalizers on the resources under it
-5) run this command for all the nodes to clean-up the files created by OCS.
-```
-oc debug node/<node name> -- chroot /host rm -rvf /var/lib/rook /mnt/local-storage
-```
+1. List your storage assignments and find the one that you used for your cluster. 
+    ```
+    ic sat storage assignment ls
+    ```
+2. Remove the assignment. After the assignment is removed, the driver pods and storage classes are removed from all clusters that were part of the storage assignment.
+    ```
+    ic sat storage assignment rm --assignment <assignment_name>
+    ```
+
+3. Remove your storage configuration.
+    ```
+    ic sat storage config rm --config <config_name>
+    ```
+4. Clean up the remaining Kubernetes resources from your cluster. Save the following script in a file called `cleanup.sh` to your local machine.
+    ```
+    #!/bin/bash
+    oc delete ns openshift-storage --wait=false
+    sleep 20
+    kubectl -n openshift-storage patch persistentvolumeclaim/db-noobaa-db-0 -p '{"metadata":{"finalizers":[]}}' --type=merge
+    kubectl -n openshift-storage patch cephblockpool.ceph.rook.io/ocs-storagecluster-cephblockpool -p '{"metadata":{"finalizers":[]}}' --type=merge
+    kubectl -n openshift-storage patch cephcluster.ceph.rook.io/ocs-storagecluster-cephcluster -p '{"metadata":{"finalizers":[]}}' --type=merge
+    kubectl -n openshift-storage patch cephfilesystem.ceph.rook.io/ocs-storagecluster-cephfilesystem -p '{"metadata":{"finalizers":[]}}' --type=merge
+    kubectl -n openshift-storage patch cephobjectstore.ceph.rook.io/ocs-storagecluster-cephobjectstore -p '{"metadata":{"finalizers":[]}}' --type=merge
+    kubectl -n openshift-storage patch cephobjectstoreuser.ceph.rook.io/noobaa-ceph-objectstore-user -p '{"metadata":{"finalizers":[]}}' --type=merge
+    kubectl -n openshift-storage patch cephobjectstoreuser.ceph.rook.io/ocs-storagecluster-cephobjectstoreuser -p '{"metadata":{"finalizers":[]}}' --type=merge
+    kubectl -n openshift-storage patch NooBaa/noobaa -p '{"metadata":{"finalizers":[]}}' --type=merge
+    kubectl -n openshift-storage patch backingstores.noobaa.io/noobaa-default-backing-store -p '{"metadata":{"finalizers":[]}}' --type=merge
+    kubectl -n openshift-storage patch bucketclasses.noobaa.io/noobaa-default-bucket-class -p '{"metadata":{"finalizers":[]}}' --type=merge
+    kubectl -n openshift-storage patch storagecluster.ocs.openshift.io/ocs-storagecluster -p '{"metadata":{"finalizers":[]}}' --type=merge
+    sleep 20
+    oc delete pods -n openshift-storage --all --force --grace-period=0
+    oc delete ns local-storage --wait=false
+    sleep 20
+    kubectl -n local-storage patch localvolume.local.storage.openshift.io/local-block -p '{"metadata":{"finalizers":[]}}' --type=merge
+    kubectl -n local-storage patch localvolume.local.storage.openshift.io/local-file -p '{"metadata":{"finalizers":[]}}' --type=merge
+    sleep 20
+    oc delete pods -n local-storage --all --force --grace-period=0
+    ```
+5. Run the cleanup.sh script.
+    ```
+    sh ./cleanup.sh
+    ```
+6. After you run the cleanup script, log in to each worker node and run the following commands.
+- Deploy a debug pod and run chroot /host.
+    `oc debug node/<node name> -- chroot /host`
+
+- Run the following command to remove any files or directories on the specified paths.
+    `rm -rvf /var/lib/rook /mnt/local-storage`
