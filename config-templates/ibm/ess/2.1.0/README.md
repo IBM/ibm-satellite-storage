@@ -20,6 +20,11 @@ The Spectrum Scale filesystem mount path must be exactly the same on the owning 
 
 Only Independent fileset storage classes are supported at this time.
 
+## High Level Architecture
+
+The following diagram illustrates the components that comprise a deployment of the Spectrum Scale CSI driver on IBM Cloud Satellite.
+![Example Output](./images/scale_csi_arch.png)
+
 ## Prerequisites
 
 Complete the following tasks before you start installing the IBM Spectrum Scale Container Storage Interface driver:
@@ -68,7 +73,7 @@ Complete the following tasks before you start installing the IBM Spectrum Scale 
 
 Run the following command to get a list of parameters for the IBM Spectrum Scale storage template.
     ```sh
-    ibmcloud sat storage template get --name ess --version 2.1.0
+    ibmcloud sat storage template get --name ess --version 1.1
     ```
 
 **ESS CSI Driver parameters**
@@ -97,7 +102,7 @@ Run the following command to get a list of parameters for the IBM Spectrum Scale
 **Example `sat storage config create` command**
 
 ```sh
-ibmcloud sat storage config create --name <config-name> --template-name ess --template-version 2.1.0 -p "scale-host-path=<scale-host-path>" -p "cluster-id=<cluseter-id>" -p "primary-fs=<primary-fs>" -p "gui-host=<gui-host>" -p "secret-name=<secret-name>" -p "gui-api-user=<gui-api-user>" -p "gui-api-password=<gui-api-password>" -p "k8-n1-ip=<k8-n1-ip>" -p "sc-n1-host=<sc-n1-host>" -p "k8-n2-ip=<k8-n2-ip>" -p "sc-n2-host=<sc-n2-host>" -p "k8-n3-ip=<k8-n3-ip>" -p "sc-n3-host=<sc-n3-host>" -p "storage-class-name=<storage-class-name>" -p "vol-backend-fs=<vol-backend-fs>" -p "vol-dir-base-path=<vol-dir-base>"
+ibmcloud sat storage config create --name <config-name> --template-name ess --template-version 1.1 -p "scale-host-path=<scale-host-path>" -p "cluster-id=<cluseter-id>" -p "primary-fs=<primary-fs>" -p "gui-host=<gui-host>" -p "secret-name=<secret-name>" -p "gui-api-user=<gui-api-user>" -p "gui-api-password=<gui-api-password>" -p "k8-n1-ip=<k8-n1-ip>" -p "sc-n1-host=<sc-n1-host>" -p "k8-n2-ip=<k8-n2-ip>" -p "sc-n2-host=<sc-n2-host>" -p "k8-n3-ip=<k8-n3-ip>" -p "sc-n3-host=<sc-n3-host>" -p "storage-class-name=<storage-class-name>" -p "vol-backend-fs=<vol-backend-fs>" -p "vol-dir-base-path=<vol-dir-base>"
 ```
 
 ## Creating the storage assignment
