@@ -35,7 +35,7 @@
     "name": "ess",
     "displayname": "IBM Spectrum Scale Driver",
     "Description": "IBM Spectrum Scale Driver to enable ESS storage.",
-    "default-version": "1.1",
+    "default-version": "2.1.0",
     "enabled": "true",
     "provider": "ibm"
   }

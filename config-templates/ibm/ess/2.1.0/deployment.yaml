@@ -5,7 +5,7 @@ metadata:
     name: ess
     namespace: ibm-spectrum-scale-csi-driver
     annotations:
-        version: 1.1
+        version: 2.1.0
 items:
 - apiVersion: v1
   kind: Namespace
