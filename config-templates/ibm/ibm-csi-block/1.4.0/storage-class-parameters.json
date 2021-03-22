@@ -1,0 +1,69 @@
+[
+  {
+    "description": "The name of the storage class that is created.",
+    "displayname": "Storage Class name",
+    "name": "name",
+    "required": "true",
+    "category": "config"
+  },
+  {
+    "description": "The space efficiency of the volume that is created.",
+    "displayname": "Space efficiency type",
+    "name": "space-efficiency",
+    "required": "false",
+    "category": "config"
+  },
+  {
+    "description": "Name of an existing pool on the storage system where you want to create the volume.",
+    "displayname": "Pool Name",
+    "name": "pool",
+    "required": "true",
+    "category": "config"
+  },
+  {
+    "description": "The name of your existing Kubernetes secret.",
+    "displayname": "Secret name",
+    "name": "secret-name",
+    "required": "true",
+    "category": "config"
+  },
+  {
+    "description": "The namespace that your Kubernetes secret is in.",
+    "displayname": "Secret namespace",
+    "name": "secret-namespace",
+    "required": "true",
+    "category": "config"
+  },
+  {
+    "description": "The file system type.",
+    "displayname": "Fstype",
+    "name": "fstype",
+    "default": "ext4",
+    "required": "false",
+    "category": "config"
+  },
+  {
+    "description": "The prefix name of the volume that is created.",
+    "displayname": "Prefix name",
+    "name": "prefix",
+    "required": "false",
+    "category": "config"
+  },
+  {
+    "description": "Specify 'true' to allow volume expansion or 'false' to disallow volume expansion.",
+    "displayname": "allowVolumeExpansion?",
+    "name": "VolumeExpansion",
+    "default": "false",
+    "required": "false",
+    "category": "boolean"
+  },
+  {
+    "description": "Specify 'true' or 'false' to make the created storage class the default class.",
+    "displayname": "Default",
+    "name": "is-default-class",
+    "default": "false",
+    "required": "false",
+    "category": "config",
+    "type": "text"
+  }
+]  
