@@ -47,7 +47,9 @@ items:
               - storageClassName: "sat-local-file-gold"
                 volumeMode: Filesystem
                 fsType: "{{ fstype }}"
+                {{#devicepath?}}
                 devicePaths:
+                {{/devicepath?}}
                   {{#devicepath}}
                   - "{{{ item }}}"
                   {{/devicepath}}
