@@ -11,6 +11,7 @@
 		"displayname": "Cluster ID",
 		"name": "cluster-id",
 		"required": "true",
+		"regex": "^[0-9]+$",
 		"type": ""
 	},
 	{
@@ -53,6 +54,7 @@
 		"displayname": "node1-k8-ip",
 		"name": "k8-n1-ip",
 		"required": "false",
+		"regex": "^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$",
 		"type": ""
 	},
 	{
@@ -67,6 +69,7 @@
 		"displayname": "node2-k8-ip",
 		"name": "k8-n2-ip",
 		"required": "false",
+		"regex": "^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$",
 		"type": ""
 	},
 	{
@@ -81,6 +84,7 @@
 		"displayname": "node3-k8-ip",
 		"name": "k8-n3-ip",
 		"required": "false",
+		"regex": "^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$",
 		"type": ""
 	},
 	{
