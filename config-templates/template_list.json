@@ -72,9 +72,9 @@
     "provider": "redhat"
   },
   {
-    "name": "ibm-csi-block",
+    "name": "ibm-block-storage-csi-driver",
     "displayname": "IBM block storage CSI driver",
-    "Description": "IBM block storage CSI driver for satallite cluster",
+    "Description": "IBM block storage CSI driver for IBM Spectrum Virtualize, IBM FlashSystem and IBM DS8000 Family.",
     "default-version": "1.4.0",
     "enabled": "true",
     "provider": "ibm"
