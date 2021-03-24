@@ -126,7 +126,7 @@ To verify that your configuration is assigned to your cluster. Verify that the d
 
 | Storage class name | Type | Reclaim Policy |
 | --- | --- | --- |
-| `ibm-spectrum-scale-csi-fileset` | light weight volumes | Delete  | 
+| `ibm-spectrum-scale-csi-fileset-independent` | independent fileset based volumes | Delete  | 
 
 ## Troubleshooting
 
