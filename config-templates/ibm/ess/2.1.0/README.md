@@ -43,18 +43,20 @@ Complete the following tasks before you start installing the IBM Spectrum Scale 
 
 3. Follow the steps to [run IBM Spectrum Scale commands without remote root login](https://www.ibm.com/support/knowledgecenter/STXKQY_5.1.0/com.ibm.spectrum.scale.v5r10.doc/bl1adm_sudowrapper.htm), but do not create a Spectrum Scale cluster.
         
-4. [Switch to sudo user and create a Spectrum Scale cluster on the worker nodes]((https://www.ibm.com/support/knowledgecenter/STXKQY_5.1.0/com.ibm.spectrum.scale.v5r10.doc/bl1adm_sudowrapper.htm)
+4. [Switch to sudo user and create a Spectrum Scale cluster on the worker nodes](https://www.ibm.com/support/knowledgecenter/STXKQY_5.1.0/com.ibm.spectrum.scale.v5r10.doc/bl1adm_sudowrapper.htm)
     - Verify that the cluster is using sudo wrappers.
     - Verify Spectrum Scale starts up on all worker nodes by running the following commands.
-        ```sh
+    
+    ```sh
     sudo /usr/lpp/mmfs/bin/mmstartup -a -- sudo /usr/lpp/mmfs/bin/mmgetstate -a
     ```
+    
     - Set up autostart for Spectrum Scale.
     ```sh
     sudo /usr/lpp/mmfs/bin/mmchconfig autoload=yes
     ```
 
-5. [Attach your IBM Spectrum Scale Nodes to IBM Cloud Satellite](
+5. Attach your IBM Spectrum Scale Nodes to IBM Cloud Satellite
     - Make sure your system is configured for the desired default route if you have more than one clustering network
     - Make sure that default route has a path to the public network, possibly via NAT or VPN
 
