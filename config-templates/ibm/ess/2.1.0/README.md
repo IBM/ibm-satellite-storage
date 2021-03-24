@@ -96,7 +96,7 @@ Run the following command to get a list of parameters for the IBM Spectrum Scale
 | `k8-n3-ip` | Required | IP address of Kubernetes Node#3 running IBM Spectrum Scale.  Run: `oc get nodes`|
 | `sc-n3-host` | Required | Hostname of IBM Spectrum Scale Node#3.  You can retrieve this value by running the `mmlscluster` command from a node within the primary cluster. |
 | `storage-class-name` | Required | Name of IBM Spectrum Scale Storage Class.  |
-| `vol-backend-fs` | Required | The name of the file system on which the directory-based volume is created. |
+| `independent-fileset` | Required | The name of the file system on which the fileset is created. |
 
 
 ## Creating the IBM Scale CSI Driver storage configuration
@@ -104,7 +104,7 @@ Run the following command to get a list of parameters for the IBM Spectrum Scale
 **Example `sat storage config create` command**
 
 ```sh
-ibmcloud sat storage config create --name <config-name> --template-name ess --template-version 2.1.0 -p "scale-host-path=<scale-host-path>" -p "cluster-id=<cluseter-id>" -p "primary-fs=<primary-fs>" -p "gui-host=<gui-host>" -p "secret-name=<secret-name>" -p "gui-api-user=<gui-api-user>" -p "gui-api-password=<gui-api-password>" -p "k8-n1-ip=<k8-n1-ip>" -p "sc-n1-host=<sc-n1-host>" -p "k8-n2-ip=<k8-n2-ip>" -p "sc-n2-host=<sc-n2-host>" -p "k8-n3-ip=<k8-n3-ip>" -p "sc-n3-host=<sc-n3-host>" -p "storage-class-name=<storage-class-name>" -p "vol-backend-fs=<vol-backend-fs>"
+ibmcloud sat storage config create --name <config-name> --template-name ess --template-version 2.1.0 -p "scale-host-path=<scale-host-path>" -p "cluster-id=<cluseter-id>" -p "primary-fs=<primary-fs>" -p "gui-host=<gui-host>" -p "secret-name=<secret-name>" -p "gui-api-user=<gui-api-user>" -p "gui-api-password=<gui-api-password>" -p "k8-n1-ip=<k8-n1-ip>" -p "sc-n1-host=<sc-n1-host>" -p "k8-n2-ip=<k8-n2-ip>" -p "sc-n2-host=<sc-n2-host>" -p "k8-n3-ip=<k8-n3-ip>" -p "sc-n3-host=<sc-n3-host>" -p "storage-class-name=<storage-class-name>" -p "independent-fileset=<independent-fileset>"
 ```
 
 ## Creating the storage assignment

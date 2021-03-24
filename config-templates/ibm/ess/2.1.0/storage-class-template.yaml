@@ -16,5 +16,5 @@ metadata:
   storageclass.kubernetes.io/is-default-class: "{{ is-default-class }}"
 provisioner: spectrumscale.csi.ibm.com
 parameters:
-  volBackendFs: "{{ vol-backend-fs }}"
+  volBackendFs: "{{ independent-fileset }}"
 reclaimPolicy: Delete
