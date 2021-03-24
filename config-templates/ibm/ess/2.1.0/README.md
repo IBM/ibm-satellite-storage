@@ -5,10 +5,8 @@ You can use the IBM Spectrum Scale Container Storage Interface (CSI) driver to c
 
 The following features are available with IBM Spectrum Scale Container Storage Interface driver:
 
-- **Static provisioning**: Create persistent volumes by using your existing directories and filesets.
-- **Lightweight dynamic provisioning**: Create directory-based volumes dynamically.
+- **Static provisioning**: Create persistent volumes by using independent filesets.
 - **Fileset-based dynamic provisioning**: Create fileset-based volumes dynamically.
-- **Multiple file systems**: Create volumes across multiple file systems.
 - **Remote volumes**: Create volumes on a remotely mounted file system.
 - **Operator deployment**: Deploy, upgrade, and clean up easily by using the IBM Spectrum Scale operator.
 - **Multiple volume access modes** Create volumes with ReadWriteMany (RWX) and ReadWriteOnce (RWO) access modes.
