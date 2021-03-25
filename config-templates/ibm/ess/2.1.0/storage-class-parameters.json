@@ -2,7 +2,7 @@
 	{
 		"description": "The name of the file system on which the fileset is created.",
 		"displayname": "Volume Backend Filesystem",
-		"name": "independent-fileset",
+		"name": "vol-backend-fs",
 		"required": "true",
 		"type": ""
 	},
