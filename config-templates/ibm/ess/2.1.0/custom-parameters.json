@@ -53,7 +53,7 @@
 		"description": "The IP address of Kubernetes Node#1 running IBM Spectrum Scale.",
 		"displayname": "node1-k8-ip",
 		"name": "k8-n1-ip",
-		"required": "false",
+		"required": "true",
 		"regex": "^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$",
 		"type": ""
 	},
@@ -61,7 +61,7 @@
 		"description": "Hostname of IBM Spectrum Scale Node#1.",
 		"displayname": "node1-scale-host",
 		"name": "sc-n1-host",
-		"required": "false",
+		"required": "true",
 		"type": ""
 	},
 	{
@@ -91,6 +91,81 @@
 		"description": "Hostname of IBM Spectrum Scale Node#3.",
 		"displayname": "node3-scale-host",
 		"name": "sc-n3-host",
+		"required": "false",
+		"type": ""
+	},
+	{
+		"description": "The IP address of Kubernetes Node#4 running IBM Spectrum Scale.",
+		"displayname": "node4-k8-ip",
+		"name": "k8-n4-ip",
+		"required": "false",
+		"regex": "^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$",
+		"type": ""
+	},
+	{
+		"description": "Hostname of IBM Spectrum Scale Node#4.",
+		"displayname": "node4-scale-host",
+		"name": "sc-n4-host",
+		"required": "false",
+		"type": ""
+	},
+	{
+		"description": "The IP address of Kubernetes Node#5 running IBM Spectrum Scale.",
+		"displayname": "node5-k8-ip",
+		"name": "k8-n5-ip",
+		"required": "false",
+		"regex": "^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$",
+		"type": ""
+	},
+	{
+		"description": "Hostname of IBM Spectrum Scale Node#5.",
+		"displayname": "node5-scale-host",
+		"name": "sc-n5-host",
+		"required": "false",
+		"type": ""
+	},
+	{
+		"description": "The IP address of Kubernetes Node#6 running IBM Spectrum Scale.",
+		"displayname": "node6-k8-ip",
+		"name": "k8-n6-ip",
+		"required": "false",
+		"regex": "^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$",
+		"type": ""
+	},
+	{
+		"description": "Hostname of IBM Spectrum Scale Node#6.",
+		"displayname": "node6-scale-host",
+		"name": "sc-n6-host",
+		"required": "false",
+		"type": ""
+	},
+	{
+		"description": "The IP address of Kubernetes Node#7 running IBM Spectrum Scale.",
+		"displayname": "node7-k8-ip",
+		"name": "k8-n7-ip",
+		"required": "false",
+		"regex": "^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$",
+		"type": ""
+	},
+	{
+		"description": "Hostname of IBM Spectrum Scale Node#7.",
+		"displayname": "node7-scale-host",
+		"name": "sc-n7-host",
+		"required": "false",
+		"type": ""
+	},
+	{
+		"description": "The IP address of Kubernetes Node#8 running IBM Spectrum Scale.",
+		"displayname": "node8-k8-ip",
+		"name": "k8-n8-ip",
+		"required": "false",
+		"regex": "^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$",
+		"type": ""
+	},
+	{
+		"description": "Hostname of IBM Spectrum Scale Node#8.",
+		"displayname": "node8-scale-host",
+		"name": "sc-n8-host",
 		"required": "false",
 		"type": ""
 	}

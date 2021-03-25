@@ -19,6 +19,7 @@ Only fileset-based dynamic provisioning is currently supported.
 
 The Spectrum Scale filesystem mount path must be exactly the same on the owning and primary Spectrum Scale cluster.  Only one API GUI is required for this configuration.
 
+IBM Spectrum Scale clusters managed by Cloud Satellite are limited to 8 nodes.
 
 ## High Level Architecture
 
@@ -92,12 +93,22 @@ Run the following command to get a list of parameters for the IBM Spectrum Scale
 | `gui-api-password` | Required | The password to connect to primary cluster GUI. This parameter is user-specified.|
 | `k8-n1-ip` | Required | The IP address of Kubernetes Node#1 running IBM Spectrum Scale. You can retrieve this value by running the `oc get nodes` commamd. |
 | `sc-n1-host` | Required | Hostname of IBM Spectrum Scale Node#1.  You can retrieve this value by running the `mmlscluster` command from a node within the primary cluster. |
-| `k8-n2-ip` | Required | IP address of Kubernetes Node#2 running IBM Spectrum Scale.  You can retrieve this value by running the `oc get nodes` command. |
-| `sc-n2-host` | Required | Hostname of IBM Spectrum Scale Node#2. You can retrieve this value by running the `mmlscluster` command from a node within the primary cluster. |
-| `k8-n3-ip` | Required | IP address of Kubernetes Node#3 running IBM Spectrum Scale.  Run: `oc get nodes`|
-| `sc-n3-host` | Required | Hostname of IBM Spectrum Scale Node#3.  You can retrieve this value by running the `mmlscluster` command from a node within the primary cluster. |
-| `storage-class-name` | Required | Name of IBM Spectrum Scale Storage Class.  |
-| `vol-backend-fs` | Required | The name of the file system on which the fileset is created. |
+| `k8-n2-ip` | Optional | IP address of Kubernetes Node#2 running IBM Spectrum Scale.  You can retrieve this value by running the `oc get nodes` command. |
+| `sc-n2-host` | Optional | Hostname of IBM Spectrum Scale Node#2. You can retrieve this value by running the `mmlscluster` command from a node within the primary cluster. |
+| `k8-n3-ip` | Optional | IP address of Kubernetes Node#3 running IBM Spectrum Scale.  Run: `oc get nodes`|
+| `sc-n3-host` | Optional | Hostname of IBM Spectrum Scale Node#3.  You can retrieve this value by running the `mmlscluster` command from a node within the primary cluster. |
+| `k8-n4-ip` | Optional | IP address of Kubernetes Node#4 running IBM Spectrum Scale.  Run: `oc get nodes`|
+| `sc-n4-host` | Optional | Hostname of IBM Spectrum Scale Node#4.  You can retrieve this value by running the `mmlscluster` command from a node within the primary cluster. |
+| `k8-n5-ip` | Optional | IP address of Kubernetes Node#5 running IBM Spectrum Scale.  Run: `oc get nodes`|
+| `sc-n5-host` | Optional | Hostname of IBM Spectrum Scale Node#5.  You can retrieve this value by running the `mmlscluster` command from a node within the primary cluster. |
+| `k8-n6-ip` | Optional | IP address of Kubernetes Node#6 running IBM Spectrum Scale.  Run: `oc get nodes`|
+| `sc-n6-host` | Optional | Hostname of IBM Spectrum Scale Node#6.  You can retrieve this value by running the `mmlscluster` command from a node within the primary cluster. |
+| `k8-n7-ip` | Optional | IP address of Kubernetes Node#7 running IBM Spectrum Scale.  Run: `oc get nodes`|
+| `sc-n7-host` | Optional | Hostname of IBM Spectrum Scale Node#7.  You can retrieve this value by running the `mmlscluster` command from a node within the primary cluster. |
+| `k8-n8-ip` | Optional | IP address of Kubernetes Node#8 running IBM Spectrum Scale.  Run: `oc get nodes`|
+| `sc-n8-host` | Optional | Hostname of IBM Spectrum Scale Node#8.  You can retrieve this value by running the `mmlscluster` command from a node within the primary cluster. |
+| `storage-class-name` | Optional | Name of IBM Spectrum Scale Storage Class.  |
+| `vol-backend-fs` | Optional | The name of the file system on which the fileset is created. |
 
 
 ## Creating the IBM Scale CSI Driver storage configuration

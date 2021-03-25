@@ -576,6 +576,16 @@ items:
         spectrumscaleNode: "{{sc-n2-host}}"
       - k8sNode: "K8sNodePrefix_{{k8-n3-ip}}"
         spectrumscaleNode: "{{sc-n3-host}}"
+      - k8sNode: "K8sNodePrefix_{{k8-n4-ip}}"
+        spectrumscaleNode: "{{sc-n4-host}}"
+      - k8sNode: "K8sNodePrefix_{{k8-n5-ip}}"
+        spectrumscaleNode: "{{sc-n5-host}}"
+      - k8sNode: "K8sNodePrefix_{{k8-n6-ip}}"
+        spectrumscaleNode: "{{sc-n6-host}}"
+      - k8sNode: "K8sNodePrefix_{{k8-n7-ip}}"
+        spectrumscaleNode: "{{sc-n7-host}}"
+      - k8sNode: "K8sNodePrefix_{{k8-n8-ip}}"
+        spectrumscaleNode: "{{sc-n8-host}}"
 
 
   # Array of tolerations that will be distribued to CSI pods. Please refer to official
