@@ -3,20 +3,22 @@
 
 You can use the IBM Spectrum Scale Container Storage Interface (CSI) driver to create persistent storage for stateful applications running in OpenShift clusters.
 
-The following features are available with IBM Spectrum Scale Container Storage Interface driver:
+The following Spectrum Scale CSI features are supported with IBM Cloud Satellite.
 
-- **Static provisioning**: Create persistent volumes by using independent filesets.
+- **Static provisioning**: Create persistent volumes by using existing directories and filesets.
 - **Fileset-based dynamic provisioning**: Create fileset-based volumes dynamically.
 - **Remote volumes**: Create volumes on a remotely mounted file system.
 - **Operator deployment**: Deploy, upgrade, and clean up easily by using the IBM Spectrum Scale operator.
 - **Multiple volume access modes** Create volumes with ReadWriteMany (RWX) and ReadWriteOnce (RWO) access modes.
 
+[IBM Spectrum Scale CSI Driver v2.1.0](https://www.ibm.com/support/knowledgecenter/STXKQY_CSI_SHR/com.ibm.spectrum.scale.csi.v2r10.doc/bl1csi_kc_landing.html) offers additional features that will be incorporated with Cloud Satellite in the future.
+
 ## Limitations
-**Note**: Do not install the IBM Spectrum Scale management API GUI on Kubernetes nodes that are managed by Satellite.
+
+Only fileset-based dynamic provisioning is currently supported.
 
 The Spectrum Scale filesystem mount path must be exactly the same on the owning and primary Spectrum Scale cluster.  Only one API GUI is required for this configuration.
 
-Only Independent fileset storage classes are supported at this time.
 
 ## High Level Architecture
 
@@ -31,7 +33,7 @@ Complete the following tasks before you start installing the IBM Spectrum Scale 
 
 ### Setup IBM Spectrum Scale Nodes for IBM Cloud Satellite
 
-**Note: Complete the following steps, but do not create an IBM Cloud Spectrum Scale cluster**
+**Note: Complete the following steps, but do not create an IBM Cloud Spectrum Scale cluster; also, do not install the IBM Spectrum Scale management API GUI on Kubernetes nodes that are managed by Satellite**
 
 1. [Set up IBM Spectrum Scale as root](https://www.ibm.com/support/knowledgecenter/STXKQY_5.1.0/com.ibm.spectrum.scale.v5r10.doc/bl1ins_linsoft.html) and make sure that you install all the required packages by running the following command.
     ```sh
@@ -62,8 +64,9 @@ Complete the following tasks before you start installing the IBM Spectrum Scale 
 
 7. [Mount your file system remotely verify it that is running on all nodes](https://www.ibm.com/support/knowledgecenter/STXKQY_5.1.0/com.ibm.spectrum.scale.v5r10.doc/bl1adv_admrmsec.htm). Run the `mmcluster` command on both the local and remote IBM Spectrum Scale cluster.
 8. [Initialize the IBM Spectrum Scale GUI](https://www.ibm.com/support/knowledgecenter/STXKQY_CSI_SHR/com.ibm.spectrum.scale.csi.v2r10.doc/bl1csi_instal_prereq.html).
+The IBM Spectrum Scale management API GUI should not be running on Kubernetes nodes that are managed by Satellite.
   
-9. Label the worker nodes where the IBM Spectrum Scale client is installed and where IBM Spectrum Scale Container Storage Interface driver is running.
+10. Label the worker nodes where the IBM Spectrum Scale client is installed and where IBM Spectrum Scale Container Storage Interface driver is running.
     ```sh
     kubectl label node node1 scale=true --overwrite=true
     ```
@@ -145,7 +148,9 @@ sudo mkdir /usr/include/linux
 sudo cp /usr/src/kernels/3.10.0-1160.15.2.el7.x86_64/include/uapi/linux/*.h /usr/include/linux
 ```
 
-### Changing the mount point if your IBM Spectrum
+### Changing Spectrum Scale CSI Driver mount point 
+If a FailedMount error is detected when attaching a volume to an application pod, change the Spectrum Scale CSI Driver mount point.   
+
 1. Edit the `ibm-spectrum-scale-csi` daemonset.
     ```sh
     oc edit ds ibm-spectrum-scale-csi -n ibm-spectrum-scale-csi-driver
@@ -175,5 +180,7 @@ In some environments, Kubernetes node names might be different from the IBM Spec
 
 ## References
 
-[IBM Spectrum Scale CSI Driver support documentation](https://www.ibm.com/support/knowledgecenter/STXKQY_CSI_SHR/ibmspectrumscalecsi_welcome.html)
+
+[IBM Spectrum Scale CSI Driver v2.1.0 support documentation](https://www.ibm.com/support/knowledgecenter/STXKQY_CSI_SHR/com.ibm.spectrum.scale.csi.v2r10.doc/bl1csi_kc_landing.html)
+
 
