@@ -1,0 +1,56 @@
+  
+{
+  "name": "2.1.0",
+  "enabled": "true",
+  "description": "IBM Spectrum Scale Driver.",
+  "tags": [
+    {
+      "name": "provider",
+      "value": "ibm"
+    },{
+      "name":  "offering-name",
+      "value": "IBM Spectrum Scale CSI"
+    },{
+      "name":  "provider-url",
+      "value": "https://www.ibm.com/support/knowledgecenter/STXKQY_CSI_SHR/com.ibm.spectrum.scale.csi.v2r10.doc/bl1csi_kc_landing.html"
+    },{
+      "name":  "offering-name",
+      "value": "IBM Spectrum Scale CSI"
+    },{
+      "name":  "support-msg",
+      "value": "For support contact IBM"
+    },{
+      "name":  "provider-logo",
+      "value": "logo/SpectrumScale.svg"
+    },{
+      "name":  "supported-envs",
+      "value": "IBM Cloud"
+    },{
+      "name":  "supported-k8s-versions",
+      "value:" "1.18,1.19"
+    },{
+      "name": "volume-type",
+      "value:" "file"
+    },{
+      "name": "volume-encryption-at-rest",
+      "value:" "false"
+    },{
+      "name": "volume-encryption-in-transit",
+      "value:" "false"
+    },{
+      "name": "volume-snapshot",
+      "value:" "false"
+    },{
+      "name": "volume-availability",
+      "value:" "regional"
+    },{
+      "name": "volume-expansion",
+      "value:" "false"
+    },{
+      "name": "storageclass",
+      "value:" "independent-filset"
+    }
+  ]
+}
+
+
