@@ -6,10 +6,12 @@
     "required": "true"
   },
   {
-    "description": "The MON storage size. The default value is '20Gi'.",
+    "description": "The MON storage size (in Gibibytes). The default value is '20Gi'.",
     "displayname": "Mon storage size",
     "name": "mon-size",
     "default": "20Gi",
+    "place-holder":"20Gi",
+    "regex": "^[0-9]+Gi$",
     "required": "true"
   },
   {
@@ -19,10 +21,12 @@
     "required": "true"
   },
   {
-    "description": "The OSD storage size. The default value is '100Gi'.",
+    "description": "The OSD storage size (in Gibibytes). The default value is '100Gi'.",
     "displayname": "osd storage size",
     "name": "osd-size",
     "default": "100Gi",
+    "place-holder":"100Gi",
+    "regex": "^[0-9]+Gi$",
     "required": "true"
   },
   {
@@ -61,26 +65,28 @@
     "required": "false"
   },
   {
-    "description": "The IBM COS public regional endpoint.",
+    "description": "The IBM COS regional public endpoint.",
     "displayname": "IBM COS endpoint",
     "name": "ibm-cos-endpoint",
+    "place-holder":"https://s3.us-east.cloud-object-storage.appdomain.cloud",
     "required": "true"
   },
   {
-    "description": "The IBM COS regional location.",
-    "displayname": "IBM COS location",
+    "description": "The IBM COS location constraint.",
+    "displayname": "IBM COS LocationConstraint",
     "name": "ibm-cos-location",
+    "place-holder":"us-east-standard",
     "required": "true"
   },
   {
-    "description": "The IBM COS access key ID.",
+    "description": "The IBM COS access key ID (HMAC keys).",
     "displayname": "IBM COS access key ID",
     "name": "ibm-cos-access-key",
     "category": "secret",
     "required": "true"
   },
   {
-    "description": "The IBM COS secret access key.",
+    "description": "The IBM COS secret access key (HMAC keys).",
     "displayname": "IBM COS secret access key",
     "name": "ibm-cos-secret-key",
     "category": "secret",

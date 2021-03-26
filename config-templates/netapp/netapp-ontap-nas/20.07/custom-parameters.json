@@ -38,7 +38,7 @@
     "required": "false",
     "category": "config"
   }, {
-    "description": "Maximum requestable volume size and qtree parent volume size",
+    "description": "Maximum requestable volume size (in Gibibytes) and qtree parent volume size",
     "displayname": "Limit Volume Size",
     "name": "limitVolumeSize",
     "default": "50Gi",

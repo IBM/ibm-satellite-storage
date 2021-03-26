@@ -17,6 +17,7 @@
     "description": "The local storage device path. Example: '/dev/sdc'.",
     "displayname": "Device Path",
     "name": "devicepath",
+    "place-holder":"/dev/sdc,/dev/sde",
     "required": "true",
     "category": "config",
     "type": "csv"
