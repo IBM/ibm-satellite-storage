@@ -1,7 +1,7 @@
 {
-  "name": "1.2.1",
+  "name": "1.2.2",
   "enabled": "true",
-  "description": "AWS EFS CSI Driver version 1.2.1",
+  "description": "AWS EFS CSI Driver version 1.2.2",
   "tags": [
     {
       "name": "provider",
