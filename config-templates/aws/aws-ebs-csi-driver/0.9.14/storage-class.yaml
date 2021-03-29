@@ -11,6 +11,8 @@ items:
     apiVersion: storage.k8s.io/v1
     metadata:
       name: sat-aws-block-gold
+      annotations:
+        storageclass.kubernetes.io/is-default-class: "true"
       labels:
         app.kubernetes.io/name: aws-ebs-csi-driver
         app.kubernetes.io/version: 0.9.14
@@ -26,6 +28,8 @@ items:
     apiVersion: storage.k8s.io/v1
     metadata:
       name: sat-aws-block-silver
+      annotations:
+        storageclass.kubernetes.io/is-default-class: "true"
       labels:
         app.kubernetes.io/name: aws-ebs-csi-driver
         app.kubernetes.io/version: 0.9.14
@@ -40,6 +44,8 @@ items:
     apiVersion: storage.k8s.io/v1
     metadata:
       name: sat-aws-block-bronze
+      annotations:
+        storageclass.kubernetes.io/is-default-class: "true"
       labels:
         app.kubernetes.io/name: aws-ebs-csi-driver
         app.kubernetes.io/version: 0.9.14
