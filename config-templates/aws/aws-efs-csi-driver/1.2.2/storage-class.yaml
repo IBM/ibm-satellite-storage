@@ -4,7 +4,7 @@ metadata:
   name: aws-efs-csi-driver-sc
   namespace: kube-system
   annotations:
-    version: 1.2.0
+    version: 1.2.2
 items:
   - kind: StorageClass
     apiVersion: storage.k8s.io/v1
@@ -12,5 +12,5 @@ items:
       name: sat-aws-file-gold
       labels:
         app.kubernetes.io/name: aws-efs-csi-driver
-        app.kubernetes.io/version: 1.2.0
+        app.kubernetes.io/version: 1.2.2
     provisioner: efs.csi.aws.com
