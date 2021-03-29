@@ -104,10 +104,10 @@ items:
               requiredDuringSchedulingIgnoredDuringExecution:
                 nodeSelectorTerms:
                   - matchExpressions:
-                    - key: eks.amazonaws.com/compute-type
-                      operator: NotIn
-                      values:
-                        - fargate
+                      - key: eks.amazonaws.com/compute-type
+                        operator: NotIn
+                        values:
+                          - fargate
           hostNetwork: true
           priorityClassName: system-node-critical
           tolerations:
@@ -201,8 +201,8 @@ items:
                 type: DirectoryOrCreate
             - name: efs-utils-config-legacy
               hostPath:
-              path: /etc/amazon/efs
-              type: DirectoryOrCreate
+                path: /etc/amazon/efs
+                type: DirectoryOrCreate
   - kind: Deployment
     apiVersion: apps/v1
     metadata:
