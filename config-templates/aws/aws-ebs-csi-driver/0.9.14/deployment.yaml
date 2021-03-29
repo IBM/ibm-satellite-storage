@@ -189,7 +189,7 @@ items:
     metadata:
       name: ebs-snapshot-controller-role
       labels:
-        app.kubernetes.io/name:: aws-ebs-csi-driver
+        app.kubernetes.io/name: aws-ebs-csi-driver
         app.kubernetes.io/version: 0.9.14
     rules:
       - apiGroups: [""]
