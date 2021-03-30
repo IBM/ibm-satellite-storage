@@ -366,7 +366,7 @@ items:
           containers:
             - name: ebs-plugin
               securityContext:
-                  privileged: true
+                privileged: true
               image: k8s.gcr.io/provider-aws/aws-ebs-csi-driver:v0.9.0
               args:
                 - node
@@ -378,7 +378,7 @@ items:
                   value: unix:/csi/csi.sock
               volumeMounts:
                 - name: kubelet-dir
-                  mountPath: /var/lib/kubelet
+                  mountPath: /var/data/kubelet
                   mountPropagation: "Bidirectional"
                 - name: plugin-dir
                   mountPath: /csi
@@ -413,7 +413,7 @@ items:
                 - name: ADDRESS
                   value: /csi/csi.sock
                 - name: DRIVER_REG_SOCK_PATH
-                  value: /var/lib/kubelet/plugins/ebs.csi.aws.com/csi.sock
+                  value: /var/data/kubelet/plugins/ebs.csi.aws.com/csi.sock
               volumeMounts:
                 - name: plugin-dir
                   mountPath: /csi
@@ -443,15 +443,15 @@ items:
           volumes:
             - name: kubelet-dir
               hostPath:
-                path: /var/lib/kubelet
+                path: /var/data/kubelet
                 type: Directory
             - name: plugin-dir
               hostPath:
-                path: /var/lib/kubelet/plugins/ebs.csi.aws.com/
+                path: /var/data/kubelet/plugins/ebs.csi.aws.com/
                 type: DirectoryOrCreate
             - name: registration-dir
               hostPath:
-                path: /var/lib/kubelet/plugins_registry/
+                path: /var/data/kubelet/plugins_registry/
                 type: Directory
             - name: device-dir
               hostPath:
