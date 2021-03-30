@@ -7,6 +7,17 @@ metadata:
   annotations:
     version: 1.2.2
 items:
+  - apiVersion: v1
+    kind: Secret
+    metadata:
+      name: aws-secret
+      namespace: kube-system
+      labels:
+        app.kubernetes.io/name: aws-ebs-csi-driver
+        app.kubernetes.io/version: 1.2.2
+    data:
+      key_id: "{{{ aws-access-key }}}"
+      access_key: "{{{ aws-secret-access-key }}}"
   - apiVersion: storage.k8s.io/v1beta1
     kind: CSIDriver
     metadata:
@@ -243,6 +254,18 @@ items:
               env:
                 - name: CSI_ENDPOINT
                   value: unix:///var/lib/csi/sockets/pluginproxy/csi.sock
+                - name: AWS_ACCESS_KEY_ID
+                  valueFrom:
+                    secretKeyRef:
+                      name: aws-secret
+                      key: key_id
+                      optional: true
+                - name: AWS_SECRET_ACCESS_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: aws-secret
+                      key: access_key
+                      optional: true
               volumeMounts:
                 - name: socket-dir
                   mountPath: /var/lib/csi/sockets/pluginproxy/
