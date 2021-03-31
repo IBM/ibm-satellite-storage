@@ -548,6 +548,7 @@ items:
                 - --v=5
                 - --feature-gates=Topology=true
                 - --leader-election=true
+                - --extra-create-metadata
                 - --default-fstype=ext4
               env:
                 - name: ADDRESS
