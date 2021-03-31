@@ -21,7 +21,7 @@ items:
     parameters:
       provisioningMode: efs-ap
       fileSystemId: "{{ fsid }}"
-      directoryPerms: "700"
-      gidRangeStart: "1000"
-      gidRangeEnd: "2000"
-      basePath: "/dynamic_provisioning"
+      directoryPerms: "{{ directory-perms }}"
+      gidRangeStart: "{{ gid-range-start }}"
+      gidRangeEnd: "{{ gid-range-end }}"
+      basePath: "{{ base-path }}"
