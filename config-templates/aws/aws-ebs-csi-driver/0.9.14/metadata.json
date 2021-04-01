@@ -57,7 +57,7 @@
     },
     {
       "name": "storageclass",
-      "value": "gold"
+      "value": "gold,silver,bronze"
     }
   ]
 }

@@ -7,7 +7,7 @@
 	"category": "config"
   }, {
 	"description": "Specify 'true' or 'false' to make the created storage class the default class.",
-	"displayname": "Default",
+	"displayname": "Default Storage Class",
 	"name": "is-default-class",
 	"default": "false",
 	"required": "false",
@@ -24,6 +24,7 @@
         "description": "Specify direcdtory permissions",
 	"displayname": "Directory permission",
 	"name": "directory-perms",
+	"default": "700",
 	"required": "false",
 	"category": "config"
 
@@ -31,18 +32,21 @@
         "description": "Specify the GID range start",
 	"displayname": "GID range start",
 	"name": "gid-range-start",
+	"default": "1000",
 	"required": "false",
 	"category": "config"
   }, {
         "description": "Specify the GID range end",
 	"displayname": "GID range end",
 	"name": "gid-range-end",
+	"default": "2000",
 	"required": "false",
 	"category": "config"
   }, {
         "description": "Specify the BasePath",
 	"displayname": "Basepath",
 	"name": "base-path",
+	"default": "/dynamic_basePath",
 	"required": "false",
 	"category": "config"
   }
