@@ -64,6 +64,9 @@ List the EFS storage classes.
 sat-aws-file-gold         efs.csi.aws.com    Delete          Immediate              false                  3m27s
 ```
 
+**Example output**
+
+![Example Output](./images/output.png)
 
 ## Troubleshooting
 

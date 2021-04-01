@@ -84,6 +84,9 @@ sat-aws-block-gold        ebs.csi.aws.com    Delete          WaitForFirstConsume
 sat-aws-block-silver      ebs.csi.aws.com    Delete          WaitForFirstConsumer   true                   15m
 ```
 
+**Example output**
+
+![Example Output](./images/output.png)
 
 ## Troubleshooting
 
