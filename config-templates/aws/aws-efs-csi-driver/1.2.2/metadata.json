@@ -21,7 +21,7 @@
     },
     {
       "name": "provider-logo",
-      "value": "/aws-efs-logo"
+      "value": "logo/aws-efs-csi-driver.png"
     },
     {
       "name": "supported-envs",
