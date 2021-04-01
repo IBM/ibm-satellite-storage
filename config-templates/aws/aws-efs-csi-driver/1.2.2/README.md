@@ -35,7 +35,7 @@ ibmcloud sat storage template get --name aws-efs-csi-driver --version 1.2.2
 **Example `sat storage config create` command**
 
 ```
-ibmcloud sat storage config create --name aws-efs-conf --template-name aws-efs-csi-driver --template-version 1.2.2
+ibmcloud sat storage config create --name aws-efs-conf --template-name aws-efs-csi-driver --template-version 1.2.2 -p "aws-access-key=<access-key-without-base64-encoding>" -p "aws-secret-access-key=<secret-access-key-without-base64-encoding>"
 ```
 
 ## Creating the storage assignment
