@@ -21,7 +21,7 @@
 	"category": "config"
 
   },{
-        "description": "Specify direcdtory permissions",
+        "description": "Specify directory permissions",
 	"displayname": "Directory permission",
 	"name": "directory-perms",
 	"default": "700",
