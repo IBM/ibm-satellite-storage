@@ -10,7 +10,7 @@
     "displayname": "Mon storage size",
     "name": "mon-size",
     "default": "20Gi",
-    "place-holder":"20Gi",
+    "place-holder": "20Gi",
     "regex": "^[0-9]+Gi$",
     "required": "true"
   },
@@ -25,7 +25,7 @@
     "displayname": "osd storage size",
     "name": "osd-size",
     "default": "100Gi",
-    "place-holder":"100Gi",
+    "place-holder": "100Gi",
     "regex": "^[0-9]+Gi$",
     "required": "true"
   },
@@ -68,14 +68,14 @@
     "description": "The IBM COS regional public endpoint.",
     "displayname": "IBM COS endpoint",
     "name": "ibm-cos-endpoint",
-    "place-holder":"https://s3.us-east.cloud-object-storage.appdomain.cloud",
+    "place-holder": "https://s3.us-east.cloud-object-storage.appdomain.cloud",
     "required": "true"
   },
   {
     "description": "The IBM COS location constraint.",
     "displayname": "IBM COS LocationConstraint",
     "name": "ibm-cos-location",
-    "place-holder":"us-east-standard",
+    "place-holder": "us-east-standard",
     "required": "true"
   },
   {
