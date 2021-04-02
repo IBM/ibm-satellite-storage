@@ -31,10 +31,12 @@
     "category": "secret",
     "obfuscate": "true"
   }, {
-    "description": "The maximum volume size that can be requested and the qtree parent volume size.",
+    "description": "The maximum volume size (in Gibibytes) that can be requested and the qtree parent volume size.",
     "displayname": "Limit Volume Size",
     "name": "limitVolumeSize",
     "default": "50Gi",
+    "place-holder":"50Gi",
+    "regex": "^[0-9]+Gi$",
     "required": "false",
     "category": "config"
   }, {
@@ -42,6 +44,8 @@
     "displayname": "Limit AggregateUsage",
     "name": "limitAggregateUsage",
     "default": "80%",
+    "place-holder":"80%",
+    "regex": "^[0-9]+%$",
     "required": "false",
     "category": "config"
   }
