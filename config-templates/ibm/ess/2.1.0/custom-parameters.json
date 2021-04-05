@@ -42,7 +42,6 @@
 		"displayname": "Primary Cluster GUI Password",
 		"name": "gui-api-password",
 		"required": "true",
-		"obfuscate": "true",
 		"category": "secret"
 	},
 	{
