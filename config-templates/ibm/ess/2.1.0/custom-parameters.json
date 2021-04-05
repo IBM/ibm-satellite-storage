@@ -3,6 +3,7 @@
 		"description": "The mount path of the primary file system.",
 		"displayname": "Scale Host Path",
 		"name": "scale-host-path",
+		"type": "",
 		"required": "true"
 	},
 	{
@@ -10,24 +11,28 @@
 		"displayname": "Cluster ID",
 		"name": "cluster-id",
 		"required": "true",
+		"type": "",
 		"regex": "^[0-9]+$"
 	},
 	{
 		"description": "The primary file system name.",
 		"displayname": "Primary FS",
 		"name": "primary-fs",
+		"type": "",
 		"required": "true"
 	},
 	{
 		"description": "The FQDN or IP address of the GUI node on the Spectrum Scale cluster.",
 		"displayname": "GUI Host",
 		"name": "gui-host",
+		"type": "",
 		"required": "true"
 	},
 	{
 		"description": "The name of secret for that contains the username and password to connect to the primary cluster GUI.",
 		"displayname": "Primary Cluster, Secret Name",
 		"name": "secret-name",
+		"type": "",
 		"required": "true"
 	},
 	{
@@ -50,12 +55,14 @@
 		"displayname": "node1-k8-ip",
 		"name": "k8-n1-ip",
 		"required": "true",
+		"type": "",
 		"regex": "^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$"
 	},
 	{
 		"description": "Hostname of IBM Spectrum Scale Node#1.",
 		"displayname": "node1-scale-host",
 		"name": "sc-n1-host",
+		"type": "",
 		"required": "true"
 	},
 	{
@@ -63,12 +70,14 @@
 		"displayname": "node2-k8-ip",
 		"name": "k8-n2-ip",
 		"required": "false",
+		"type": "",
 		"regex": "^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$"
 	},
 	{
 		"description": "Hostname of IBM Spectrum Scale Node#2.",
 		"displayname": "node2-scale-host",
 		"name": "sc-n2-host",
+		"type": "",
 		"required": "false"
 	},
 	{
@@ -76,12 +85,14 @@
 		"displayname": "node3-k8-ip",
 		"name": "k8-n3-ip",
 		"required": "false",
+		"type": "",
 		"regex": "^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$"
 	},
 	{
 		"description": "Hostname of IBM Spectrum Scale Node#3.",
 		"displayname": "node3-scale-host",
 		"name": "sc-n3-host",
+		"type": "",
 		"required": "false"
 	},
 	{
@@ -89,12 +100,14 @@
 		"displayname": "node4-k8-ip",
 		"name": "k8-n4-ip",
 		"required": "false",
+		"type": "",
 		"regex": "^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$"
 	},
 	{
 		"description": "Hostname of IBM Spectrum Scale Node#4.",
 		"displayname": "node4-scale-host",
 		"name": "sc-n4-host",
+		"type": "",
 		"required": "false"
 	},
 	{
@@ -102,12 +115,14 @@
 		"displayname": "node5-k8-ip",
 		"name": "k8-n5-ip",
 		"required": "false",
+		"type": "",
 		"regex": "^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$"
 	},
 	{
 		"description": "Hostname of IBM Spectrum Scale Node#5.",
 		"displayname": "node5-scale-host",
 		"name": "sc-n5-host",
+		"type": "",
 		"required": "false"
 	},
 	{
@@ -115,12 +130,14 @@
 		"displayname": "node6-k8-ip",
 		"name": "k8-n6-ip",
 		"required": "false",
+		"type": "",
 		"regex": "^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$"
 	},
 	{
 		"description": "Hostname of IBM Spectrum Scale Node#6.",
 		"displayname": "node6-scale-host",
 		"name": "sc-n6-host",
+		"type": "",
 		"required": "false"
 	},
 	{
@@ -128,12 +145,14 @@
 		"displayname": "node7-k8-ip",
 		"name": "k8-n7-ip",
 		"required": "false",
+		"type": "",
 		"regex": "^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$"
 	},
 	{
 		"description": "Hostname of IBM Spectrum Scale Node#7.",
 		"displayname": "node7-scale-host",
 		"name": "sc-n7-host",
+		"type": "",
 		"required": "false"
 	},
 	{
@@ -141,12 +160,14 @@
 		"displayname": "node8-k8-ip",
 		"name": "k8-n8-ip",
 		"required": "false",
+		"type": "",
 		"regex": "^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$"
 	},
 	{
 		"description": "Hostname of IBM Spectrum Scale Node#8.",
 		"displayname": "node8-scale-host",
 		"name": "sc-n8-host",
+		"type": "",
 		"required": "false"
 	}
 ]
