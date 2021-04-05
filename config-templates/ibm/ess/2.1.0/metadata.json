@@ -21,7 +21,7 @@
       "value": "For support contact IBM"
     },{
       "name":  "provider-logo",
-      "value": "logo/SpectrumScale.svg"
+      "value": "logo/ess.svg"
     },{
       "name":  "supported-envs",
       "value": "IBM Cloud"
