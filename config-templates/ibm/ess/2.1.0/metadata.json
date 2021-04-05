@@ -27,28 +27,28 @@
       "value": "IBM Cloud"
     },{
       "name":  "supported-k8s-versions",
-      "value:" "1.18,1.19"
+      "value": "1.18,1.19"
     },{
       "name": "volume-type",
-      "value:" "file"
+      "value": "file"
     },{
       "name": "volume-encryption-at-rest",
-      "value:" "false"
+      "value": "false"
     },{
       "name": "volume-encryption-in-transit",
-      "value:" "false"
+      "value": "false"
     },{
       "name": "volume-snapshot",
-      "value:" "false"
+      "value": "false"
     },{
       "name": "volume-availability",
-      "value:" "regional"
+      "value": "regional"
     },{
       "name": "volume-expansion",
-      "value:" "false"
+      "value": "false"
     },{
       "name": "storageclass",
-      "value:" "independent-filset"
+      "value": "independent-filset"
     }
   ]
 }
