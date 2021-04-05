@@ -40,7 +40,7 @@
     "provider": "ibm"
   },
   {
-    "name": "ibm-block-storage-csi-driver",
+    "name": "ibm-system-storage-block-csi-driver",
     "displayname": "IBM block storage CSI driver",
     "Description": "IBM block storage CSI driver for IBM Spectrum Virtualize, IBM FlashSystem and IBM DS8000 Family.",
     "default-version": "1.4.0",
