@@ -141,7 +141,7 @@
 		"displayname": "node8-k8-ip",
 		"name": "k8-n8-ip",
 		"required": "false",
-		"regex": "^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$"
+		"regex": "^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$" 
 	},
 	{
 		"description": "Hostname of IBM Spectrum Scale Node#8.",
