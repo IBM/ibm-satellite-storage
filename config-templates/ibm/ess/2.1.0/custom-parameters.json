@@ -4,7 +4,6 @@
 		"displayname": "Scale Host Path",
 		"name": "scale-host-path",
 		"required": "true",
-		"type": ""
 	},
 	{
 		"description": "The cluster ID of the pirmary IBM Spectrum Scale cluster.",
@@ -12,28 +11,24 @@
 		"name": "cluster-id",
 		"required": "true",
 		"regex": "^[0-9]+$",
-		"type": ""
 	},
 	{
 		"description": "The primary file system name.",
 		"displayname": "Primary FS",
 		"name": "primary-fs",
 		"required": "true",
-		"type": ""
 	},
 	{
 		"description": "The FQDN or IP address of the GUI node on the Spectrum Scale cluster.",
 		"displayname": "GUI Host",
 		"name": "gui-host",
 		"required": "true",
-		"type": ""
 	},
 	{
 		"description": "The name of secret for that contains the username and password to connect to the primary cluster GUI.",
 		"displayname": "Primary Cluster, Secret Name",
 		"name": "secret-name",
 		"required": "true",
-		"type": ""
 	},
 	{
 		"description": "The username to connect to the primary cluster GUI.",
@@ -47,6 +42,7 @@
 		"displayname": "Primary Cluster GUI Password",
 		"name": "gui-api-password",
 		"required": "true",
+		"obfuscate": "true",
 		"category": "secret"
 	},
 	{
@@ -55,14 +51,12 @@
 		"name": "k8-n1-ip",
 		"required": "true",
 		"regex": "^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$",
-		"type": ""
 	},
 	{
 		"description": "Hostname of IBM Spectrum Scale Node#1.",
 		"displayname": "node1-scale-host",
 		"name": "sc-n1-host",
 		"required": "true",
-		"type": ""
 	},
 	{
 		"description": "The IP address of Kubernetes Node#2 running IBM Spectrum Scale.",
@@ -70,14 +64,12 @@
 		"name": "k8-n2-ip",
 		"required": "false",
 		"regex": "^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$",
-		"type": ""
 	},
 	{
 		"description": "Hostname of IBM Spectrum Scale Node#2.",
 		"displayname": "node2-scale-host",
 		"name": "sc-n2-host",
 		"required": "false",
-		"type": ""
 	},
 	{
 		"description": "The IP address of Kubernetes Node#3 running IBM Spectrum Scale.",
@@ -85,14 +77,12 @@
 		"name": "k8-n3-ip",
 		"required": "false",
 		"regex": "^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$",
-		"type": ""
 	},
 	{
 		"description": "Hostname of IBM Spectrum Scale Node#3.",
 		"displayname": "node3-scale-host",
 		"name": "sc-n3-host",
 		"required": "false",
-		"type": ""
 	},
 	{
 		"description": "The IP address of Kubernetes Node#4 running IBM Spectrum Scale.",
@@ -100,14 +90,12 @@
 		"name": "k8-n4-ip",
 		"required": "false",
 		"regex": "^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$",
-		"type": ""
 	},
 	{
 		"description": "Hostname of IBM Spectrum Scale Node#4.",
 		"displayname": "node4-scale-host",
 		"name": "sc-n4-host",
 		"required": "false",
-		"type": ""
 	},
 	{
 		"description": "The IP address of Kubernetes Node#5 running IBM Spectrum Scale.",
@@ -115,14 +103,12 @@
 		"name": "k8-n5-ip",
 		"required": "false",
 		"regex": "^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$",
-		"type": ""
 	},
 	{
 		"description": "Hostname of IBM Spectrum Scale Node#5.",
 		"displayname": "node5-scale-host",
 		"name": "sc-n5-host",
 		"required": "false",
-		"type": ""
 	},
 	{
 		"description": "The IP address of Kubernetes Node#6 running IBM Spectrum Scale.",
@@ -130,14 +116,12 @@
 		"name": "k8-n6-ip",
 		"required": "false",
 		"regex": "^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$",
-		"type": ""
 	},
 	{
 		"description": "Hostname of IBM Spectrum Scale Node#6.",
 		"displayname": "node6-scale-host",
 		"name": "sc-n6-host",
 		"required": "false",
-		"type": ""
 	},
 	{
 		"description": "The IP address of Kubernetes Node#7 running IBM Spectrum Scale.",
@@ -145,14 +129,12 @@
 		"name": "k8-n7-ip",
 		"required": "false",
 		"regex": "^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$",
-		"type": ""
 	},
 	{
 		"description": "Hostname of IBM Spectrum Scale Node#7.",
 		"displayname": "node7-scale-host",
 		"name": "sc-n7-host",
 		"required": "false",
-		"type": ""
 	},
 	{
 		"description": "The IP address of Kubernetes Node#8 running IBM Spectrum Scale.",
@@ -160,13 +142,11 @@
 		"name": "k8-n8-ip",
 		"required": "false",
 		"regex": "^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$",
-		"type": ""
 	},
 	{
 		"description": "Hostname of IBM Spectrum Scale Node#8.",
 		"displayname": "node8-scale-host",
 		"name": "sc-n8-host",
 		"required": "false",
-		"type": ""
 	}
 ]
