@@ -1,0 +1,53 @@
+[
+  {
+	"description": "The name of the storage class.",
+	"displayname": "Storage Class Name",
+	"name": "name",
+	"required": "true",
+	"category": "config"
+  },{
+	"description": "Specify 'true' or 'false' to make the created storage class the default class.",
+	"displayname": "Default Storage Class",
+	"name": "is-default-class",
+	"default": "false",
+	"required": "false",
+	"category": "config",
+	"type": "text"
+  },{
+	"description": "Specify the EFS filesystem ID",
+	"displayname": "EFS Filesystem ID",
+	"name": "fsid",
+	"required": "true",
+	"category": "config"
+
+  },{
+	"description": "Specify directory permissions",
+	"displayname": "Directory permission",
+	"name": "directory-perms",
+	"default": "700",
+	"required": "false",
+	"category": "config"
+
+  },{
+	"description": "Specify the GID range start. gidRangeStart is starting range of Posix Group ID to be applied onto the root directory of the access point",
+	"displayname": "GID range start",
+	"name": "gid-range-start",
+	"default": "50000",
+	"required": "false",
+	"category": "config"
+  },{
+	"description": "Specify the GID range end. gidRangeEnd is ending range of Posix Group ID",
+	"displayname": "GID range end",
+	"name": "gid-range-end",
+	"default": "7000000",
+	"required": "false",
+	"category": "config"
+  },{
+	"description": "Specify the BasePath. Base path is a path on the file system under which access point root directory is created",
+	"displayname": "Basepath",
+	"name": "base-path",
+	"default": "/",
+	"required": "false",
+	"category": "config"
+  }
+]

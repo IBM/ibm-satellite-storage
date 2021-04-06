@@ -1,7 +1,7 @@
 {
-  "name": "0.8.2",
+  "name": "1.2.2",
   "enabled": "true",
-  "description": "AWS EBS CSI Driver version 0.8.2",
+  "description": "AWS EFS CSI Driver version 1.2.2",
   "tags": [
     {
       "name": "provider",
@@ -9,7 +9,7 @@
     },
     {
       "name": "offering-name",
-      "value": "aws-ebs-csi-driver"
+      "value": "aws-efs-csi-driver"
     },
     {
       "name": "provider-url",
@@ -21,7 +21,7 @@
     },
     {
       "name": "provider-logo",
-      "value": "logo/aws-ebs-csi-driver.png"
+      "value": "logo/aws-efs-csi-driver.png"
     },
     {
       "name": "supported-envs",
@@ -33,7 +33,7 @@
     },
     {
       "name": "volume-type",
-      "value": "block"
+      "value": "file"
     },
     {
       "name": "volume-encryption-at-rest",
@@ -45,19 +45,19 @@
     },
     {
       "name": "volume-snapshot",
-      "value": "true"
+      "value": "false"
     },
     {
       "name": "volume-availability",
-      "value": "zonal"
+      "value": "regional"
     },
     {
       "name": "volume-expansion",
-      "value": "true"
+      "value": "false"
     },
     {
       "name": "storageclass",
-      "value": "gold,silver,bronze"
+      "value": "gold"
     }
   ]
 }
