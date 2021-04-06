@@ -69,13 +69,15 @@
     "displayname": "IBM COS access key ID",
     "name": "ibm-cos-access-key",
     "category": "secret",
-    "required": "true"
+    "required": "true",
+    "obfuscate": "true"
   },
   {
     "description": "The IBM COS secret access key (HMAC keys).",
     "displayname": "IBM COS secret access key",
     "name": "ibm-cos-secret-key",
     "category": "secret",
-    "required": "true"
+    "required": "true",
+    "obfuscate": "true"
   }
 ]

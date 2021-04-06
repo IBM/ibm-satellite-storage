@@ -328,6 +328,9 @@ If the `storageClusterStatus` is `Progressing` or `Error`, the OCS installation 
 4. Clean up the remaining Kubernetes resources from your cluster. Save the following script in a file called `cleanup.sh` to your local machine.
     ```
     #!/bin/bash
+    ocscluster_name=`oc get ocscluster | awk 'NR==2 {print $1}'`
+    oc delete ocscluster --all --wait=false
+    kubectl patch ocscluster/$ocscluster_name -p '{"metadata":{"finalizers":[]}}' --type=merge
     oc delete ns openshift-storage --wait=false
     sleep 20
     kubectl -n openshift-storage patch persistentvolumeclaim/db-noobaa-db-0 -p '{"metadata":{"finalizers":[]}}' --type=merge
