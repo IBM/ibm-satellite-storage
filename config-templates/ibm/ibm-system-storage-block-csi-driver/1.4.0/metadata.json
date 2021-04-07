@@ -29,7 +29,7 @@
     },
     {
       "name": "provider-logo",
-      "value": ""
+      "value": "logo/ibm-system-storage-block-csi-driver.png"
     },
     {
       "name": "supported-envs",
@@ -45,11 +45,11 @@
     },
     {
       "name": "volume-encryption-at-rest",
-      "value": ""
+      "value": "false"
     },
     {
       "name": "volume-encryption-in-transit",
-      "value": ""
+      "value": "false"
     },
     {
       "name": "volume-snapshot",
