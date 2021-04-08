@@ -4,12 +4,11 @@
 		"displayname": "Volume Backend Filesystem",
 		"name": "vol-backend-fs",
 		"required": "true",
-		"type": ""
 	},
 	{
 	  "description": "The storage class name.",
 	  "displayname": "Storage Class Name",
-	  "name": "storage-class-name",
+	  "name": "name",
 	  "required": "true",
 	  "category": "config"
 	}, 
@@ -17,7 +16,7 @@
 	  "description": "Specify 'true' or 'false' to make the created storage class the default class.",
 	  "displayname": "Default",
 	  "name": "is-default-class",
-	  "default": "true",
+	  "default": "false",
 	  "required": "false",
 	  "category": "config",
 	  "type": "text"

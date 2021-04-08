@@ -14,9 +14,6 @@
       "name":  "provider-url",
       "value": "https://www.ibm.com/support/knowledgecenter/STXKQY_CSI_SHR/com.ibm.spectrum.scale.csi.v2r10.doc/bl1csi_kc_landing.html"
     },{
-      "name":  "offering-name",
-      "value": "IBM Spectrum Scale CSI"
-    },{
       "name":  "support-msg",
       "value": "For support contact IBM"
     },{
