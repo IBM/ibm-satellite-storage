@@ -572,20 +572,49 @@ items:
     nodeMapping:
       - k8sNode: "K8sNodePrefix_{{k8-n1-ip}}"
         spectrumscaleNode: "{{sc-n1-host}}"
+
+       {{#k8-n2-ip}} 
       - k8sNode: "K8sNodePrefix_{{k8-n2-ip}}"
+       {{/k8-n2-ip}} 
+       {{#sc-n2-host}} 
         spectrumscaleNode: "{{sc-n2-host}}"
+       {{/sc-n2-host}} 
+       {{#k8-n3-ip}} 
       - k8sNode: "K8sNodePrefix_{{k8-n3-ip}}"
+       {{/k8-n3-ip}} 
+       {{#sc-n3-host}} 
         spectrumscaleNode: "{{sc-n3-host}}"
+       {{/sc-n3-host}} 
+       {{#k8-n4-ip}} 
       - k8sNode: "K8sNodePrefix_{{k8-n4-ip}}"
+       {{/k8-n4-ip}} 
+       {{#sc-n4-host}} 
         spectrumscaleNode: "{{sc-n4-host}}"
+       {{/sc-n4-host}} 
+       {{#k8-n5-ip}} 
       - k8sNode: "K8sNodePrefix_{{k8-n5-ip}}"
+       {{/k8-n5-ip}} 
+       {{#sc-n5-host}} 
         spectrumscaleNode: "{{sc-n5-host}}"
+       {{/sc-n5-host}} 
+       {{#k8-n6-ip}} 
       - k8sNode: "K8sNodePrefix_{{k8-n6-ip}}"
+       {{/k8-n6-ip}} 
+       {{#sc-n6-host}} 
         spectrumscaleNode: "{{sc-n6-host}}"
+       {{/sc-n6-host}} 
+       {{#k8-n7-ip}} 
       - k8sNode: "K8sNodePrefix_{{k8-n7-ip}}"
+       {{/k8-n7-ip}} 
+       {{#sc-n7-host}} 
         spectrumscaleNode: "{{sc-n7-host}}"
+       {{/sc-n7-host}} 
+       {{#k8-n8-ip}} 
       - k8sNode: "K8sNodePrefix_{{k8-n8-ip}}"
+       {{/k8-n8-ip}} 
+       {{#sc-n8-host}} 
         spectrumscaleNode: "{{sc-n8-host}}"
+       {{/sc-n8-host}} 
 
 
   # Array of tolerations that will be distribued to CSI pods. Please refer to official
