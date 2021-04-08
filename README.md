@@ -109,56 +109,80 @@ With IBM Cloud Satellite, you can bring your own compute infrastructure that is 
                ---README.md
    ```
 
-### File reference
+### File/Directory reference
 
-| File name | Description |
-| --- | --- |
-| `storage-provider-name` | The name of storage provider. Example: `ibm`, `aws`, `azure`, `netapp`, `dell`. |
-| `storage-offering-name` | The storage offering name. A provider can have multiple storage offerings for IBM satallite. |
-| `template-version` | The template version. There can be multiple tempalte version for a storage offering |
-| `deployment.yaml` | A custom Kubernetes `List` that includes the resources like Deployment, StatefulSet, DaemonSet, Configmap, secrets, and storage classes. Example [`deployment.yaml`](https://github.com/IBM/ibm-satellite-storage/blob/master/config-templates/netapp/netapp-trident/20.07/deployment.yaml). |
-| `custom-parameters.json` | This file contains the list of parameters that your deployment accepts. Include any required and optional paramters and their default values. Example [`customer-paramerters.json`](https://github.com/IBM/ibm-satellite-storage/blob/master/config-templates/netapp/netapp-trident/20.07/custom-parameters.json). |
-| `storage-class-template.yaml` | The storage class template. This template can be used to create storage classes on a Satellite cluster. Example [`storage-class-template.yaml`](https://github.com/IBM/ibm-satellite-storage/blob/master/config-templates/netapp/netapp-trident/20.07/storage-class-template.yaml). |
-| `storage-class-parameters.json` | The list of storage class parameters. User / admin can override the values from GUI. The parameter values are injected in storage class template to generate the storage class specifications to deploy on the target clusters. [`storage-class-parameters.json`](https://github.com/IBM/ibm-satellite-storage/blob/master/config-templates/netapp/netapp-trident/20.07/storage-class-parameters.json) |
-| `README.md` | Contains prerequisites, deployment steps, and additional information about your template. Copy and fill out the [README_TEMPLATE.md](/.github/README_TEMPLATE.md). |
-| `metadata.json` | This file contains the metadata for GUI display. Example [`metadata.json`](https://github.com/IBM/ibm-satellite-storage/blob/master/config-templates/netapp/netapp-trident/20.07/metadata.json). |
+| File name | Description | Type(Dir/File) | Required(Yes/No)
+| --- | --- | --- | --- |
+| `storage-provider-name` | The name of storage provider. Example: `ibm`, `aws`, `azure`, `netapp`, `dell`. | Dir | Yes |
+| `storage-offering-name` | The storage offering name. A provider can have multiple storage offerings for IBM satellite. |Dir | Yes |
+| `template-version` | The template version. There can be multiple template version for a storage offering |Dir | Yes |
+| `deployment.yaml` | A custom Kubernetes `List` that includes the resources like Deployment, StatefulSet, DaemonSet, Configmap, secrets, and storage classes. Example [`deployment.yaml`](https://github.com/IBM/ibm-satellite-storage/blob/master/config-templates/netapp/netapp-trident/20.07/deployment.yaml). |File | Yes |
+| `custom-parameters.json` | This file contains the list of parameters that your deployment accepts. Include any required and optional paramters and their default values. Example [`customer-paramerters.json`](https://github.com/IBM/ibm-satellite-storage/blob/master/config-templates/netapp/netapp-trident/20.07/custom-parameters.json). This file is optional and if not provided then no customer parameter or secret parameter are accepted while creating the configuration from this template.|File | No |
+| `storage-class.yaml` | The list of vendor provided storage classes. Example [`storage-class.yaml`](https://github.com/IBM/ibm-satellite-storage/blob/master/config-templates/netapp/netapp-ontap-san/20.07/storage-class.yaml). |File | No |
+| `storage-class-template.yaml` | The storage class template. This template allows user create additioal storage classes on a Satellite cluster. The additional storage classes are created from the  parameters mentioned in `storage-class-parameters.json` Example [`storage-class-template.yaml`](https://github.com/IBM/ibm-satellite-storage/blob/master/config-templates/netapp/netapp-trident/20.07/storage-class-template.yaml). |File | No |
+| `storage-class-parameters.json` | The list of storage class parameters. User / admin can override the values from GUI. The parameter values are injected in storage class template to generate the storage class specifications to deploy on the target clusters. [`storage-class-parameters.json`](https://github.com/IBM/ibm-satellite-storage/blob/master/config-templates/netapp/netapp-trident/20.07/storage-class-parameters.json) |File | No |
+| `README.md` | Contains prerequisites, deployment steps, and additional information about your template. Copy and fill out the [README_TEMPLATE.md](/.github/README_TEMPLATE.md). |File | No |
+| `metadata.json` | This file contains the metadata for GUI display. Example [`metadata.json`](https://github.com/IBM/ibm-satellite-storage/blob/master/config-templates/netapp/netapp-trident/20.07/metadata.json). |File | No |
 
 
-### Setting dynamic parameters in your deployment
+### Defining Custom parameter reference
+The customer parameter has following attributes 
+| Attribute name | Description | Required | Default|
+| --- | --- | ---| --- |
+| `description` | A description of the parameter. | Yes| |
+| `displayname` | The display name of the parameter that is used in the Satellite UI. |Yes |
+| `name` | The name of the parameter in string format. | Yes | 
+| `default` | Optional. The default value for the parameter. If the does not specify the parameter in their configuration, this value entered as `default` is used. | No | Empty String|
+| `type` | Specify the parameter type. Valid parameter types are: `text`, `csv`, `number`, `boolean` | No | `text`|
+| `catagory` | Specify the parameter category `config` or `secret`. On UI , the `config` parameters will display  in `User Config Parameter` section and `secret` parameters will dislay in `User secrete paramater` section  | No | `config`|
+| `required` | Specify `true` or `false`. | No | `false`|
+| `regex` | Specify the regular expression to validate the user input. For example  `"^[0-9]+Gi$"`  will validate a string like `50Gi`| No | No RegEx Validation|
+| `place-holder` | The example text that will be shown to user as a place-holder in text box . For example `50Gi` indicates the format of allowed text | No | empty string|
+| `min-length` | Minimum allowed a length of input value | No | 1 if `required` is `true`|
+| `max-length` | Maximum allowed a length of input value | No | no limit|
 
-In this example, the `devicepath` parameter is set dynamically. In a local storage configuration, the device path of the local disks might vary from one cluster to another. To account for this in your configuration template, you can create a dynamic parameter.
+The customer parameters are defined in  `custom-parameters.json` file in the following format. 
 
-1. Parameterize the device path in the template `deployment.yaml` file in the following format. The parameter name `devicepath` is passed in the format: `"{{ <parameter-name> }}"`
-   ```yaml
-      storageClassDevices:
-         - storageClassName: "localblock-sc"
-            volumeMode: Block
-            devicePaths:
-               - "{{ devicepath }}"
-   ```
+```
+[
+  {
+    "description": "Maximum requestable volume size and qtree parent volume size",
+    "displayname": "Limit Volume Size",
+    "name": "limitVolumeSize",
+    "default": "50Gi",
+    "place-holder":"50Gi",
+    "regex": "^[0-9]+Gi$",
+    "required": "false",
+    "category": "config"
+  }, {
+    "description": "Fail provisioning if usage is above this percentage.",
+    "displayname": "Limit AggregateUsage",
+    "name": "limitAggregateUsage",
+    "default": "80%",
+    "place-holder":"80%",
+    "regex": "^[0-9]+%$",
+    "required": "false",
+    "category": "config"
+  }, {
+    "description": "The NFS mount options.",
+    "displayname": "NFS Mount Options",
+    "name": "nfsMountOptions",
+    "default": "nfsvers=4",
+    "place-holder":"nfsvers=4",
+    "regex": "^(nfsvers=){1}[0-9.]+$",
+    "required": "false",
+    "category": "config"
+  }
+]
+```
 
-2. Add the parameter to your `custom-parameters.json` file in the following format. You can also include a default value for the parameter.
-   ```json
-      {
-      "description": "A description of the parameter.",
-      "displayname": "The display name for the Satellite UI",
-      "name": "devicepath",
-      "default": "/dev/sdc",
-      "required": true,
-      "type": "text"
-      }
-   ```
+The complete example can be found [here](config-templates/netapp/netapp-ontap-nas/20.07/custom-parameters.json)
 
-#### Custom parameter reference
-| Parameter name | Description |
-| --- | --- |
-| `description` | A description of the parameter. |
-| `displayname` | The display name of the parameter that is used in the Satellite UI. |
-| `name` | The name of the parameter in string format. |
-| `default` | Optional. The default value for the parameter. If the does not specify the parameter in their configuration, this value entered as `default` is used. |
-| `required` | Specify `true` or `false`. |
-| `type` | Specify the parameter type. Valid parameter types are: `text`, `secret`, `boolean`, `option`, or `dropdown`. |
+### Developing `deployment.yaml` file
+The complete guide to develop `deployment.yaml` is found [here](DEPLOYMENT_README.md)
 
+### Developing  storage class template
+The complete guide to storage class template is found [here](STORAGE_CLASS_README.md)
 
 ## Testing and support
 
