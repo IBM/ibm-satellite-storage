@@ -1,5 +1,5 @@
 # Development of storage class template 
-The storage class template is created in `storage-class-template.yaml` file as per the directory structure mentioned [here]README.md#File/Directory).
+The storage class template is created in `storage-class-template.yaml` file as per the directory structure mentioned [here]README.md#filedirectory-reference).
 This file defines the template that contain the configuration of storage classes in YAML format. It is Kubernetes `StorageClass` resource that contains the set of storage class parameters and allowed variable substitutions.  The  example of `storage-class-template.yaml` is as below 
 ```
 apiVersion: storage.k8s.io/v1
@@ -124,7 +124,7 @@ __Translated YAML__
 ``` 
 
 ## Vendor defined storage classes
-   The vendor defined storage classes are configured in the `storage-class.yaml` as per the directory structure mentioned [here]README.md#File/Directory). The existing example of vendor defined storage classes can be found [here](config-templates/netapp/netapp-ontap-nas/20.07/storage-class.yaml). These classes will be readily available for the user to create the storage volumes. 
+   The vendor defined storage classes are configured in the `storage-class.yaml` as per the directory structure mentioned [here]README.md#filedirectory-reference). The existing example of vendor defined storage classes can be found [here](config-templates/netapp/netapp-ontap-nas/20.07/storage-class.yaml). These classes will be readily available for the user to create the storage volumes. 
 
 ### Merging User defined classes with Vendor defined storage classes 
   Vendor can have both vendor defined storage classes in `storage-class.yaml` and storage class template in `storage-class-template.yaml`. This allows user to create his own storage classes and still use the vendor defined storage classes. If user given storage class name conflicts with vendor provided storage class, it will give preference to user defined storage class and override the definition of vendor defined storage class. This will enable the user to change the `default` storage class

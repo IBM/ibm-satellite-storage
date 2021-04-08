@@ -1,5 +1,5 @@
 # Development of deployment template 
-The deployment template is created in `deployment.yaml` file as per the directory structure mentioned [here](README.md#File/Directory)
+The deployment template is created in `deployment.yaml` file as per the directory structure mentioned [here](README.md#filedirectory-reference)
 This file defines the template that contain the configuration of storage solution in YAML format. It is Kubernetes `List` that includes the resources like Deployment, StatefulSet, DaemonSet, Configmap, secrets. When user creates the configuration from this template , this file will be embedded inside [`MustacheTemplate`](https://mustache.github.io/mustache.5.html). The `MustacheTemplate` is the template evaluation engine that is used to translate the template into final configuration file using the  custom parameters  and secret parameters passed by the user. So, it is advised to follow the `MustacheTemplate` syntax [`here`](https://mustache.github.io/mustache.5.html). The existing example of `deployment.yaml` is found [here](config-templates/redhat/ocs-local/4.6/deployment.yaml)
 
 
