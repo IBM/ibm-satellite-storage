@@ -1,7 +1,7 @@
 {
   "name": "1.4.0",
   "enabled": "true",
-  "description": "IBM block storage CSI driver version 1.4.0",
+  "description": "IBM System Storage Block CSI driver version 1.4.0",
   "tags": [
     {
       "name": "provider",
@@ -41,7 +41,7 @@
     },
     {
       "name": "volume-type",
-      "value": "block,file"
+      "value": "block"
     },
     {
       "name": "volume-encryption-at-rest",
