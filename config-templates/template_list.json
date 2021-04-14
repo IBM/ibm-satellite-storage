@@ -70,5 +70,13 @@
     "default-version": "4.5",
     "enabled": "true",
     "provider": "redhat"
+  },
+  {
+    "name": "ibm-system-storage-block-csi-driver",
+    "displayname": "IBM System Storage Block CSI driver",
+    "Description": "IBM System Storage Block CSI driver for IBM Spectrum Virtualize, IBM FlashSystem and IBM DS8000 Family.",
+    "default-version": "1.4.0",
+    "enabled": "true",
+    "provider": "ibm"
   }
 ]
