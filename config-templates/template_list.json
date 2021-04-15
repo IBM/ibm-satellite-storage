@@ -1,32 +1,72 @@
 [
   {
     "name": "aws-efs-csi-driver",
-    "displayname": "AWS EFS CSI driver",
-    "Description": "AWS EFS CSI driver for satallite cluster",
+    "displayname": "AWS EFS CSI Driver",
+    "Description": "AWS EFS CSI Driver.",
     "default-version": "1.0.0",
     "enabled": "true",
     "provider": "aws"
   },
   {
+    "name": "aws-ebs-csi-driver",
+    "displayname": "AWS EBS CSI Driver",
+    "Description": "AWS EBS CSI Driver.",
+    "default-version": "0.8.2",
+    "enabled": "true",
+    "provider": "aws"
+  },
+  {
     "name": "netapp-trident",
-    "displayname": "Net App Trident Driver",
-    "Description": "Net App Trident Driver",
+    "displayname": "NetApp Trident Operator",
+    "Description": "NetApp Trident Operator.",
     "default-version": "20.07",
     "enabled": "true",
     "provider": "netapp"
   },
   {
-    "name": "ocs",
-    "displayname": "OpenShift Container Storage",
-    "Description": "OpenShift Container Storage for satallite cluster",
-    "default-version": "4.3",
+    "name": "netapp-ontap-nas",
+    "displayname": "NetApp Ontap-NAS Driver",
+    "Description": "NetApp Ontap-NAS Driver",
+    "default-version": "20.07",
     "enabled": "true",
-    "provider": "ibm"
+    "provider": "netapp"
   },
   {
-    "name": "local-volume",
-    "displayname": "Persistent storage using local volumes",
-    "Description": "Persistent storage using local volumes for satallite cluster",
+    "name": "netapp-ontap-san",
+    "displayname": "NetApp Ontap-SAN Driver",
+    "Description": "NetApp Ontap-SAN Driver.",
+    "default-version": "20.07",
+    "enabled": "true",
+    "provider": "netapp"
+  },
+  {
+    "name": "ocs-local",
+    "displayname": "OpenShift Container Storage Operator for local devices",
+    "Description": "OpenShift Container Storage Operator for local devices.",
+    "default-version": "4.6",
+    "enabled": "true",
+    "provider": "redhat"
+  },
+  {
+    "name": "ocs-remote",
+    "displayname": "OpenShift Container Storage Operator for remote storage",
+    "Description": "OpenShift Container Storage Operator for remote storage.",
+    "default-version": "4.6",
+    "enabled": "true",
+    "provider": "redhat"
+  },
+  {
+    "name": "local-volume-block",
+    "displayname": "Local Storage Operator - Block",
+    "Description": "Local Storage Operator - Block.",
+    "default-version": "4.5",
+    "enabled": "true",
+    "provider": "redhat"
+  },
+  {
+    "name": "local-volume-file",
+    "displayname": "Local Storage Operator - File",
+    "Description": "Local Storage Operator - File.",
     "default-version": "4.5",
     "enabled": "true",
     "provider": "redhat"
@@ -41,8 +81,8 @@
   },
   {
     "name": "ibm-system-storage-block-csi-driver",
-    "displayname": "IBM block storage CSI driver",
-    "Description": "IBM block storage CSI driver for IBM Spectrum Virtualize, IBM FlashSystem and IBM DS8000 Family.",
+    "displayname": "IBM System Storage Block CSI driver",
+    "Description": "IBM System Storage Block CSI driver for IBM Spectrum Virtualize, IBM FlashSystem and IBM DS8000 Family.",
     "default-version": "1.4.0",
     "enabled": "true",
     "provider": "ibm"

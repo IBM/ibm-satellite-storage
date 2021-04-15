@@ -1,0 +1,55 @@
+---
+apiVersion: v1
+kind: List
+metadata:
+    name: local-volume-file
+    namespace: kube-system
+    annotations:
+        version: local-volume-file-45
+items:
+    - apiVersion: v1
+      kind: Namespace
+      metadata:
+          name: local-storage
+    - apiVersion: operators.coreos.com/v1alpha2
+      kind: OperatorGroup
+      metadata:
+          name: local-operator-group
+          namespace: local-storage
+      spec:
+          targetNamespaces:
+              - local-storage
+    - apiVersion: operators.coreos.com/v1alpha1
+      kind: Subscription
+      metadata:
+          name: local-storage-operator
+          namespace: local-storage
+      spec:
+          channel: "4.5"
+          installPlanApproval: Automatic
+          name: local-storage-operator
+          source: redhat-operators
+          sourceNamespace: openshift-marketplace
+    - apiVersion: local.storage.openshift.io/v1
+      kind: LocalVolume
+      metadata:
+          name: local-disk
+          namespace: local-storage
+      spec:
+          nodeSelector:
+              nodeSelectorTerms:
+                  - matchExpressions:
+                        - key: "{{ label-key }}"
+                          operator: In
+                          values:
+                          - "{{ label-value }}"
+          storageClassDevices:
+              - storageClassName: "sat-local-file-gold"
+                volumeMode: Filesystem
+                fsType: "{{ fstype }}"
+                {{#devicepath?}}
+                devicePaths:
+                {{/devicepath?}}
+                  {{#devicepath}}
+                  - "{{{ item }}}"
+                  {{/devicepath}}

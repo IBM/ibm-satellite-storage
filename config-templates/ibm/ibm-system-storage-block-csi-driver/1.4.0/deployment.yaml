@@ -1,0 +1,102 @@
+apiVersion: v1
+kind: List
+metadata:
+  name: ibm-csi-block
+  namespace: kube-system
+  annotations:
+    version: 1.4.0
+items:
+  - apiVersion: v1
+    kind: Namespace
+    metadata:
+      name: "{{ namespace }}"
+  - apiVersion: operators.coreos.com/v1
+    kind: OperatorGroup
+    metadata:
+      name: operatorgroup
+      namespace: "{{ namespace }}"
+    spec:
+      targetNamespaces:
+      - "{{ namespace }}"
+  - apiVersion: operators.coreos.com/v1alpha1
+    kind: Subscription
+    metadata:
+      name: ibm-block-csi-operator
+      namespace: "{{ namespace }}"
+      labels:
+        app.kubernetes.io/name: ibm-block-csi-operator
+        app.kubernetes.io/instance: ibm-block-csi-operator
+        app.kubernetes.io/managed-by: ibm-block-csi-operator
+        release: ibm-block-csi-operator
+    spec:
+      channel: stable
+      name: ibm-block-csi-operator
+      source: certified-operators
+      sourceNamespace: openshift-marketplace
+      startingCSV: ibm-block-csi-operator.v1.4.0
+      installPlanApproval: Automatic
+  - apiVersion: csi.ibm.com/v1
+    kind: IBMBlockCSI
+    metadata:
+      labels:
+        app.kubernetes.io/instance: ibm-block-csi-operator
+        app.kubernetes.io/managed-by: ibm-block-csi-operator
+        app.kubernetes.io/name: ibm-block-csi-operator
+      name: ibm-block-csi
+      namespace: "{{ namespace }}"
+    spec:
+      controller:
+        affinity:
+          nodeAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              nodeSelectorTerms:
+              - matchExpressions:
+                - key: kubernetes.io/arch
+                  operator: In
+                  values:
+                  - amd64
+                  - s390x
+                  - ppc64le
+        imagePullPolicy: IfNotPresent
+        repository: ibmcom/ibm-block-csi-driver-controller
+        tag: 1.4.0
+      node:
+        affinity:
+          nodeAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              nodeSelectorTerms:
+              - matchExpressions:
+                - key: kubernetes.io/arch
+                  operator: In
+                  values:
+                  - amd64
+                  - s390x
+                  - ppc64le
+        imagePullPolicy: IfNotPresent
+        repository: ibmcom/ibm-block-csi-driver-node
+        tag: 1.4.0
+      sidecars:
+      - imagePullPolicy: IfNotPresent
+        name: csi-node-driver-registrar
+        repository: k8s.gcr.io/sig-storage/csi-node-driver-registrar
+        tag: v2.0.1
+      - imagePullPolicy: IfNotPresent
+        name: csi-provisioner
+        repository: k8s.gcr.io/sig-storage/csi-provisioner
+        tag: v2.0.2
+      - imagePullPolicy: IfNotPresent
+        name: csi-attacher
+        repository: k8s.gcr.io/sig-storage/csi-attacher
+        tag: v3.0.0
+      - imagePullPolicy: IfNotPresent
+        name: csi-snapshotter
+        repository: k8s.gcr.io/sig-storage/csi-snapshotter
+        tag: v3.0.0
+      - imagePullPolicy: IfNotPresent
+        name: csi-resizer
+        repository: k8s.gcr.io/sig-storage/csi-resizer
+        tag: v1.0.0
+      - imagePullPolicy: IfNotPresent
+        name: livenessprobe
+        repository: k8s.gcr.io/sig-storage/livenessprobe
+        tag: v2.1.0

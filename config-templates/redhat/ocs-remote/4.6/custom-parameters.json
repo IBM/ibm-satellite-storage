@@ -1,0 +1,97 @@
+[
+  {
+    "description": "Specify a name for your OCS storage cluster.",
+    "displayname": "Cluster Name",
+    "name": "ocs-cluster-name",
+    "required": "true"
+  },
+  {
+    "description": "The MON storage size (in Gibibytes). The default value is '20Gi'.",
+    "displayname": "Mon storage size",
+    "name": "mon-size",
+    "default": "20Gi",
+    "place-holder": "20Gi",
+    "regex": "^[0-9]+Gi$",
+    "required": "true"
+  },
+  {
+    "description": "The MON storage class name.",
+    "displayname": "Mon storage class",
+    "name": "mon-storage-class",
+    "required": "true"
+  },
+  {
+    "description": "The OSD storage size (in Gibibytes). The default value is '100Gi'.",
+    "displayname": "osd storage size",
+    "name": "osd-size",
+    "default": "100Gi",
+    "place-holder": "100Gi",
+    "regex": "^[0-9]+Gi$",
+    "required": "true"
+  },
+  {
+    "description": "The OSD storage class name.",
+    "displayname": "osd Storage Class",
+    "name": "osd-storage-class",
+    "required": "true"
+  },
+  {
+    "description": "The number of OSDs. The default value is '1'.",
+    "displayname": "Num of osd",
+    "name": "num-of-osd",
+    "default": "1",
+    "required": "false"
+  },
+  {
+    "description": "The IP addresses of the worker nodes where you want to deploy OCS. The minimum number of worker nodes is 3.",
+    "displayname": "worker nodes",
+    "name": "worker-nodes",
+    "required": "false",
+    "type": "csv"
+  },
+  {
+    "description": "Set to 'true' if you want to upgrade the OCS version.",
+    "displayname": "OCS upgrade",
+    "name": "ocs-upgrade",
+    "default": "false",
+    "required": "false",
+    "type": "boolean"
+  },
+  {
+    "description": "The billing type for your OCS configuration.",
+    "displayname": "Billing type",
+    "name": "billing-type",
+    "default": "hourly",
+    "required": "false"
+  },
+  {
+    "description": "The IBM COS regional public endpoint.",
+    "displayname": "IBM COS endpoint",
+    "name": "ibm-cos-endpoint",
+    "place-holder": "https://s3.us-east.cloud-object-storage.appdomain.cloud",
+    "required": "true"
+  },
+  {
+    "description": "The IBM COS location constraint.",
+    "displayname": "IBM COS LocationConstraint",
+    "name": "ibm-cos-location",
+    "place-holder": "us-east-standard",
+    "required": "true"
+  },
+  {
+    "description": "The IBM COS access key ID (HMAC keys).",
+    "displayname": "IBM COS access key ID",
+    "name": "ibm-cos-access-key",
+    "category": "secret",
+    "required": "true",
+    "obfuscate": "true"
+  },
+  {
+    "description": "The IBM COS secret access key (HMAC keys).",
+    "displayname": "IBM COS secret access key",
+    "name": "ibm-cos-secret-key",
+    "category": "secret",
+    "required": "true",
+    "obfuscate": "true"
+  }
+]
