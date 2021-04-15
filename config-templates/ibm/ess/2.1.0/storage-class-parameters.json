@@ -1,0 +1,24 @@
+[
+	{
+		"description": "The name of the file system on which the fileset is created.",
+		"displayname": "Volume Backend Filesystem",
+		"name": "vol-backend-fs",
+		"required": "true"
+	},
+	{
+	  "description": "The storage class name.",
+	  "displayname": "Storage Class Name",
+	  "name": "name",
+	  "required": "true",
+	  "category": "config"
+	}, 
+	{
+	  "description": "Specify 'true' or 'false' to make the created storage class the default class.",
+	  "displayname": "Default",
+	  "name": "is-default-class",
+	  "default": "false",
+	  "required": "false",
+	  "category": "config",
+	  "type": "text"
+	}	
+]

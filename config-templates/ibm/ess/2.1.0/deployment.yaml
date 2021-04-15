@@ -1,0 +1,630 @@
+---
+apiVersion: v1
+kind: List
+metadata:
+    name: ess
+    namespace: ibm-spectrum-scale-csi-driver
+    annotations:
+        version: 2.1.0
+items:
+- apiVersion: v1
+  kind: Namespace
+  metadata:
+      name: ibm-spectrum-scale-csi-driver
+- apiVersion: v1
+  kind: Secret
+  metadata:
+    name: "{{secret-name}}"
+    namespace: ibm-spectrum-scale-csi-driver
+    labels:
+      product: ibm-spectrum-scale-csi
+  type: Opaque
+  data:
+    username: "{{{gui-api-user}}}"
+    password: "{{{gui-api-password}}}"
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    labels:
+      app.kubernetes.io/instance: ibm-spectrum-scale-csi-operator
+      app.kubernetes.io/managed-by: ibm-spectrum-scale-csi-operator
+      app.kubernetes.io/name: ibm-spectrum-scale-csi-operator
+      product: ibm-spectrum-scale-csi
+      release: ibm-spectrum-scale-csi-operator
+    name: ibm-spectrum-scale-csi-operator
+    namespace: ibm-spectrum-scale-csi-driver
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app.kubernetes.io/name: ibm-spectrum-scale-csi-operator
+    template:
+      metadata:
+        annotations:
+          productID: ibm-spectrum-scale-csi-operator
+          productName: IBM Spectrum Scale CSI Operator
+          productVersion: 2.1.0
+        labels:
+          app.kubernetes.io/instance: ibm-spectrum-scale-csi-operator
+          app.kubernetes.io/managed-by: ibm-spectrum-scale-csi-operator
+          app.kubernetes.io/name: ibm-spectrum-scale-csi-operator
+          name: ibm-spectrum-scale-csi-operator
+          product: ibm-spectrum-scale-csi
+          release: ibm-spectrum-scale-csi-operator
+      spec:
+        affinity:
+          nodeAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              nodeSelectorTerms:
+                - matchExpressions:
+                    - key: beta.kubernetes.io/arch
+                      operator: Exists
+        containers:
+          - env:
+              - name: ANSIBLE_DEBUG_LOGS
+                value: "False"
+              - name: WATCH_NAMESPACE
+                valueFrom:
+                  fieldRef:
+                    fieldPath: metadata.namespace
+              - name: POD_NAME
+                valueFrom:
+                  fieldRef:
+                    fieldPath: metadata.name
+              - name: OPERATOR_NAME
+                value: ibm-spectrum-scale-csi-operator
+              - name: CSI_DRIVER_IMAGE
+                value: quay.io/ibm-spectrum-scale/ibm-spectrum-scale-csi-driver:v2.1.0
+            image: quay.io/ibm-spectrum-scale/ibm-spectrum-scale-csi-operator:v2.1.0
+            imagePullPolicy: IfNotPresent
+            livenessProbe:
+              exec:
+                command:
+                  - ./health_check.sh
+              initialDelaySeconds: 10
+              periodSeconds: 30
+            name: operator
+            readinessProbe:
+              exec:
+                command:
+                  - ./health_check.sh
+              initialDelaySeconds: 3
+              periodSeconds: 1
+            resources:
+              limits:
+                cpu: 500m
+                memory: 500Mi
+              requests:
+                cpu: 50m
+                memory: 50Mi
+
+            #hostNetwork: false
+            #hostPID: false
+            #hostIPC: false
+            securityContext:
+              runAsNonRoot: true
+              runAsUser: 1001
+              readOnlyRootFilesystem: false
+              allowPrivilegeEscalation: false
+              privileged: false
+              capabilities:
+                drop:
+                  - ALL
+            volumeMounts:
+              - mountPath: /tmp/ansible-operator/runner
+                name: runner
+        serviceAccountName: ibm-spectrum-scale-csi-operator
+        volumes:
+          - emptyDir: {}
+            name: runner
+  # END deploy/operator.yaml
+  # BEGIN deploy/role.yaml
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRole
+  metadata:
+    creationTimestamp: null
+    labels:
+      app.kubernetes.io/instance: ibm-spectrum-scale-csi-operator
+      app.kubernetes.io/managed-by: ibm-spectrum-scale-csi-operator
+      app.kubernetes.io/name: ibm-spectrum-scale-csi-operator
+      product: ibm-spectrum-scale-csi
+      release: ibm-spectrum-scale-csi-operator
+    name: ibm-spectrum-scale-csi-operator
+    namespace: ibm-spectrum-scale-csi-driver
+  rules:
+    - apiGroups:
+        - ""
+      resources:
+        - pods
+        - persistentvolumeclaims
+        - services
+        - endpoints
+        - events
+        - configmaps
+        - secrets
+        - secrets/status
+        - services/finalizers
+        - serviceaccounts
+        - securitycontextconstraints
+      verbs:
+        - "*"
+    - apiGroups:
+        - rbac.authorization.k8s.io
+      resources:
+        - clusterroles
+        - clusterrolebindings
+      verbs:
+        - "*"
+    - apiGroups:
+        - apps
+      resources:
+        - deployments
+        - daemonsets
+        - replicasets
+        - statefulsets
+      verbs:
+        - "*"
+    - apiGroups:
+        - monitoring.coreos.com
+      resources:
+        - servicemonitors
+      verbs:
+        - get
+        - create
+    - apiGroups:
+        - apps
+      resourceNames:
+        - ibm-spectrum-scale-csi-operator
+      resources:
+        - deployments/finalizers
+      verbs:
+        - update
+    - apiGroups:
+        - apps
+      resources:
+        - replicasets
+      verbs:
+        - get
+    - apiGroups:
+        - csi.ibm.com
+      resources:
+        - "*"
+      verbs:
+        - "*"
+    - apiGroups:
+        - security.openshift.io
+      resources:
+        - securitycontextconstraints
+      verbs:
+        - "*"
+    - apiGroups:
+        - storage.k8s.io
+      resources:
+        - volumeattachments
+        - storageclasses
+      verbs:
+        - "*"
+  # END deploy/role.yaml
+  # BEGIN deploy/role_binding.yaml
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRoleBinding
+  metadata:
+    labels:
+      app.kubernetes.io/instance: ibm-spectrum-scale-csi-operator
+      app.kubernetes.io/managed-by: ibm-spectrum-scale-csi-operator
+      app.kubernetes.io/name: ibm-spectrum-scale-csi-operator
+      product: ibm-spectrum-scale-csi
+      release: ibm-spectrum-scale-csi-operator
+    name: ibm-spectrum-scale-csi-operator
+    namespace: ibm-spectrum-scale-csi-driver
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: ibm-spectrum-scale-csi-operator
+  subjects:
+    - kind: ServiceAccount
+      name: ibm-spectrum-scale-csi-operator
+      namespace: ibm-spectrum-scale-csi-driver
+  # END deploy/role_binding.yaml
+  # BEGIN deploy/service_account.yaml
+- apiVersion: v1
+  kind: ServiceAccount
+  metadata:
+    labels:
+      app.kubernetes.io/instance: ibm-spectrum-scale-csi-operator
+      app.kubernetes.io/managed-by: ibm-spectrum-scale-csi-operator
+      app.kubernetes.io/name: ibm-spectrum-scale-csi-operator
+      product: ibm-spectrum-scale-csi
+      release: ibm-spectrum-scale-csi-operator
+    name: ibm-spectrum-scale-csi-operator
+    namespace: ibm-spectrum-scale-csi-driver
+  # END deploy/service_account.yaml
+  # BEGIN deploy/crds/csiscaleoperators.csi.ibm.com.crd.yaml
+- apiVersion: apiextensions.k8s.io/v1beta1
+  kind: CustomResourceDefinition
+  metadata:
+    labels:
+      app.kubernetes.io/instance: ibm-spectrum-scale-csi-operator
+      app.kubernetes.io/managed-by: ibm-spectrum-scale-csi-operator
+      app.kubernetes.io/name: ibm-spectrum-scale-csi-operator
+      release: ibm-spectrum-scale-csi-operator
+    name: csiscaleoperators.csi.ibm.com
+  spec:
+    additionalPrinterColumns:
+      - JSONPath: .status.conditions[?(@.type="Ready")].status
+        description: The Nginx Status
+        name: Ready
+        type: string
+    group: csi.ibm.com
+    names:
+      kind: CSIScaleOperator
+      listKind: CSIScaleOperatorList
+      plural: csiscaleoperators
+      singular: csiscaleoperator
+    scope: Namespaced
+    subresources:
+      status: {}
+    validation:
+      openAPIV3Schema:
+        properties:
+          apiVersion:
+            description:
+              "APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+            type: string
+          kind:
+            description:
+              "Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+            type: string
+          metadata:
+            type: object
+          spec:
+            properties:
+              attacher:
+                description: Attacher image for csi (actually attaches to the storage).
+                type: string
+              attacherNodeSelector:
+                description: Node selector for attacher sidecar.
+                items:
+                  properties:
+                    key:
+                      description: Key for node selector.
+                      type: string
+                    value:
+                      description: Value for key.
+                      type: string
+                  type: object
+                type: array
+              clusters:
+                description:
+                  A collection of gpfs cluster properties for the csi driver
+                  to mount.
+                items:
+                  properties:
+                    cacert:
+                      description: A string specifying a cacert resource name.
+                      type: string
+                    id:
+                      description: The cluster id of the gpfs cluster specified (mandatory).
+                      type: string
+                    primary:
+                      description: The primary file system for the GPFS cluster.
+                      properties:
+                        inodeLimit:
+                          description: Inode limit for Primary Fileset.
+                          type: string
+                        primaryFs:
+                          description: The name of the primary filesystem.
+                          type: string
+                        primaryFset:
+                          description: The name of the primary fileset, created in primaryFs.
+                          type: string
+                        remoteCluster:
+                          description: Remote cluster ID.
+                          type: string
+                      type: object
+                    restApi:
+                      description: A collection of targets for REST calls.
+                      items:
+                        properties:
+                          guiHost:
+                            description: The hostname of the REST server.
+                            type: string
+                          guiPort:
+                            description: The port number running the REST server.
+                            type: integer
+                        type: object
+                      type: array
+                    secrets:
+                      description: A string specifying a secret resource name.
+                      type: string
+                    secureSslMode:
+                      description: Require a secure SSL connection to connect to GPFS.
+                      type: boolean
+                  type: object
+                required:
+                  - id
+                type: array
+              driverRegistrar:
+                description:
+                  Sidecar container image for the csi spectrum scale plugin
+                  pods.
+                type: string
+              nodeMapping:
+                description: Mapping of K8s node with SpectrumScale node.
+                items:
+                  properties:
+                    k8sNode:
+                      description: K8s node name.
+                      type: string
+                    spectrumscaleNode:
+                      description: SpectrumScale node name.
+                      type: string
+                  type: object
+                type: array
+              pluginNodeSelector:
+                description: Node selector for SpectrumScale CSI Plugin.
+                items:
+                  properties:
+                    key:
+                      description: Key for node selector.
+                      type: string
+                    value:
+                      description: Value for key.
+                      type: string
+                  type: object
+                type: array
+              provisioner:
+                description: Provisioner image for csi (actually issues provision requests).
+                type: string
+              provisionerNodeSelector:
+                description: Node selector for provisioner sidecar.
+                items:
+                  properties:
+                    key:
+                      description: Key for node selector.
+                      type: string
+                    value:
+                      description: Value for key.
+                      type: string
+                  type: object
+                type: array
+              scaleHostpath:
+                description: The path to the gpfs file system mounted on the host machine.
+                type: string
+              secretCounter:
+                description:
+                  An internal counter used by the operator to trigger reloads
+                  on secret change.
+                type: integer
+              trigger:
+                description: A generic trigger to be used in kickin off the ansible operator.
+                type: string
+              spectrumScale:
+                description: Image name for the csi spectrum scale plugin container.
+                type: string
+              imagePullSecrets:
+                description:
+                  A passthrough option that distributes an imagePullSecrets array to the 
+                  containers generated by the csi scale operator. Please refer to official 
+                  k8s documentation for your environment for more details.
+                type: array
+                items:
+                  type: string
+              tolerations:
+                description: 
+                  Array of tolerations that will be distribued to CSI pods. Please refer to 
+                  official k8s documentation for your environment for more details.
+                type: array
+                items:
+                  properties:
+                    key:
+                      description: Node taint key name
+                      type: string
+                    operator:
+                      description: Valid values are "Exists" and "Equal". 
+                      type: string
+                      enum: ["Exists", "Equal"]
+                    value:
+                      description: Required if operator is "Equal"
+                      type: string
+                    effect:
+                      description: 
+                        Valid values are "NoSchedule", "PreferNoSchedule" and "NoExecute". 
+                        An empty effect matches all effects with given key.
+                      type: string
+                      enum: ["NoSchedule", "PreferNoSchedule", "NoExecute", ""]
+                    tolerationSeconds:
+                      description: 
+                        Used only when effect is "NoExecute". It determines how long the 
+                        pod will stay bound to the node after the taint is added.
+                      type: integer
+                  type: object
+                  required:
+                    - key
+                    - operator
+                    - effect
+            required:
+              - scaleHostpath
+            type: object
+          status:
+            properties:
+              conditions:
+                description: The active status of the operator
+                items:
+                  properties:
+                    Ready:
+                      description: Indicates that the plugin is running.
+                      type: boolean
+                  type: object
+                type: array
+            type: object
+    version: v1
+    versions:
+      - name: v1
+        served: true
+        storage: true
+- apiVersion: csi.ibm.com/v1
+  kind: "CSIScaleOperator"
+  metadata:
+    name: "ibm-spectrum-scale-csi"
+    namespace: "ibm-spectrum-scale-csi-driver"
+    labels:
+      app.kubernetes.io/name: ibm-spectrum-scale-csi-operator
+      app.kubernetes.io/instance: ibm-spectrum-scale-csi-operator
+      app.kubernetes.io/managed-by: ibm-spectrum-scale-csi-operator
+      release: ibm-spectrum-scale-csi-operator
+  status: {}
+  spec:
+  # The path to the GPFS file system mounted (either remote/local) on the local Spectrum Scale API host machine.
+  # ==================================================================================
+    scaleHostpath: "{{{scale-host-path}}}"
+
+  # A passthrough option that distributes an imagePullSecrets array to the containers
+  # generated by the csi scale operator. Please refer to official k8s documentation for
+  # your environment for more details. https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+  # ==================================================================================
+  #  imagePullSecrets:
+  #    - APullSecret
+  #    - AnotherOptional
+
+  # Below specifies the details of a SpectrumScale cluster configuration used by the
+  # plugin. It can have multiple values.
+  # ==================================================================================
+    clusters:
+      - id: "{{cluster-id}}"
+        secrets: "{{secret-name}}"
+        secureSslMode: false
+        primary:
+          primaryFs: "{{primary-fs}}"
+  #        primaryFset: "< Fileset in Primary Filesystem >"   # Optional - default:spectrum-scale-csi-volume-store
+  #        inodeLimit: "< inode limit for Primary Fileset >" # Optional
+  #        remoteCluster: "< Remote ClusterID >"            # Optional - This is only required if primaryFs is remote cluster's filesystem and this ID should have separate entry in Clusters map too.
+  #      cacert:  "< Name of CA cert configmap for GUI >"   # Optional
+        restApi:
+          - guiHost: "{{gui-host}}"
+  #
+  # In the case we have multiple clusters, specify their configuration below.
+  # ==================================================================================
+  #    - id: "{{owning-cluster-id}}"
+  #      secrets: "{{owning-secret-name}}"
+  #      secureSslMode: false
+  #     restApi:
+  #      - guiHost: "{{owning-gui-host}}"
+  #      cacert:  "< Name of CA cert configmap for GUI >"   # Optional
+
+  # Attacher image name, in case we do not want to use default image.
+  # ==================================================================================
+  #  attacher: "us.gcr.io/k8s-artifacts-prod/sig-storage/csi-attacher:v3.0.0"
+
+  # Provisioner image name, in case we do not want to use default image.
+  # ==================================================================================
+  #  provisioner: "us.gcr.io/k8s-artifacts-prod/sig-storage/csi-provisioner:v2.0.2"
+
+  # Driver Registrar image name, in case we do not want to use default image.
+  # ==================================================================================
+  #  driverRegistrar: "us.gcr.io/k8s-artifacts-prod/sig-storage/csi-node-driver-registrar:v2.0.1"
+
+  # SpectrumScale CSI Plugin image name, in case we do not want to use default image.
+  # ==================================================================================
+  #  spectrumScale: "quay.io/ibm-spectrum-scale/ibm-spectrum-scale-csi-driver:v2.1.0"
+
+  # attacherNodeSelector specifies on which nodes we want to run attacher sidecar
+  # In below example attacher will run on nodes which have label as "scale=true"
+  # and "infranode=2". Can have multiple entries.
+  # ==================================================================================
+    attacherNodeSelector:
+      - key: "scale"
+        value: "true"
+  #    - key: "infranode"
+  #      value: "2"
+
+  # provisionerNodeSelector specifies on which nodes we want to run provisioner
+  # sidecar. In below example provisioner will run on nodes which have label as
+  # "scale=true" and "infranode=1". Can have multiple entries.
+  # ==================================================================================
+    provisionerNodeSelector:
+      - key: "scale"
+        value: "true"
+  #    - key: "infranode"
+  #      value: "1"
+
+  # pluginNodeSelector specifies nodes on which we want to run plugin daemoset
+  # In below example plugin daemonset will run on nodes which have label as
+  # "scale=true". Can have multiple entries.
+  # ==================================================================================
+    pluginNodeSelector:
+      - key: "scale"
+        value: "true"
+
+  # In case K8s nodes name differs from SpectrumScale nodes name, we can provide
+  # node mapping using nodeMapping attribute. Can have multiple entries.
+  # ==================================================================================
+  #  nodeMapping:
+  #    - k8sNode: "< K8s Node Name >"
+  #      spectrumscaleNode: "< SpectrumScale Node Name >"
+  # In case K8s node name start with number then use following node mapping format.
+  #    - k8sNode: "K8sNodePrefix_< K8s Node Name >"
+  #      spectrumscaleNode: "< SpectrumScale Node Name >"
+    nodeMapping:
+      - k8sNode: "K8sNodePrefix_{{k8-n1-ip}}"
+        spectrumscaleNode: "{{sc-n1-host}}"
+
+       {{#k8-n2-ip}} 
+      - k8sNode: "K8sNodePrefix_{{k8-n2-ip}}"
+       {{/k8-n2-ip}} 
+       {{#sc-n2-host}} 
+        spectrumscaleNode: "{{sc-n2-host}}"
+       {{/sc-n2-host}} 
+       {{#k8-n3-ip}} 
+      - k8sNode: "K8sNodePrefix_{{k8-n3-ip}}"
+       {{/k8-n3-ip}} 
+       {{#sc-n3-host}} 
+        spectrumscaleNode: "{{sc-n3-host}}"
+       {{/sc-n3-host}} 
+       {{#k8-n4-ip}} 
+      - k8sNode: "K8sNodePrefix_{{k8-n4-ip}}"
+       {{/k8-n4-ip}} 
+       {{#sc-n4-host}} 
+        spectrumscaleNode: "{{sc-n4-host}}"
+       {{/sc-n4-host}} 
+       {{#k8-n5-ip}} 
+      - k8sNode: "K8sNodePrefix_{{k8-n5-ip}}"
+       {{/k8-n5-ip}} 
+       {{#sc-n5-host}} 
+        spectrumscaleNode: "{{sc-n5-host}}"
+       {{/sc-n5-host}} 
+       {{#k8-n6-ip}} 
+      - k8sNode: "K8sNodePrefix_{{k8-n6-ip}}"
+       {{/k8-n6-ip}} 
+       {{#sc-n6-host}} 
+        spectrumscaleNode: "{{sc-n6-host}}"
+       {{/sc-n6-host}} 
+       {{#k8-n7-ip}} 
+      - k8sNode: "K8sNodePrefix_{{k8-n7-ip}}"
+       {{/k8-n7-ip}} 
+       {{#sc-n7-host}} 
+        spectrumscaleNode: "{{sc-n7-host}}"
+       {{/sc-n7-host}} 
+       {{#k8-n8-ip}} 
+      - k8sNode: "K8sNodePrefix_{{k8-n8-ip}}"
+       {{/k8-n8-ip}} 
+       {{#sc-n8-host}} 
+        spectrumscaleNode: "{{sc-n8-host}}"
+       {{/sc-n8-host}} 
+
+
+  # Array of tolerations that will be distribued to CSI pods. Please refer to official
+  # k8s documentation for your environment for more details.
+  # https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/
+  # ==================================================================================
+  #  tolerations:
+  #    - key: "key1"
+  #      operator: "Equal"
+  #      value: "value1"
+  #      effect: "NoExecute"
+  #      tolerationSeconds: 3600
+  #
