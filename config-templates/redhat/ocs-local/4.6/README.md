@@ -8,13 +8,13 @@ The user has to provide the input values to the custom resource OcsCluster while
 In order to deploy OCS, the following prerequisites are required.
 - [Create a Satellite location](cloud.ibm.com/docs/satellite?topic=satellite-locations).
 - [Create a Satellite cluster](cloud.ibm.com/docs/satellite?topic=openshift-satellite-clusters).
-- Your hosts must meet the [Satellite host requirements](https://cloud.ibm.com/docs/satellite?topic=satellite-host-reqs) in addition to having one of the following remote storage configurations. 
+- Your hosts must meet the [Satellite host requirements](https://cloud.ibm.com/docs/satellite?topic=satellite-host-reqs) in addition to having one of the following remote storage configurations.
     * Two raw devices in block mode that have no partitions or formatted file systems. If your devices have no partitions, each node must have 2 free disks. One disk for the OSD and one disk for the MON.
     * Two raw partitions that have no formatted file system. If your raw devices are partitioned, they must have at least 2 partitions per disk, per worker node.
 - Your cluster must have a minimum of 3 worker nodes with at least 16CPUs and 64GB RAM per worker node.
 - Your cluster should be compatible with the OCS version that you're trying to install.
-- [Add your Satellite to a cluster group](cloud.ibm.com/docs/satellite?topic=satellite-cluster-config#setup-clusters-satconfig-groups). 
-- You must provision an instance of IBM Cloud Object Storage and provide your COS HMAC credentials, the regional public endpoint, and the IBM COS location when you create your storage configuration.
+- [Add your Satellite to a cluster group](cloud.ibm.com/docs/satellite?topic=satellite-cluster-config#setup-clusters-satconfig-groups).
+- [Optional] You must provision an instance of IBM Cloud Object Storage and provide your COS HMAC credentials, the regional public endpoint, and the IBM COS location when you create your storage configuration if you want to use ibm cos as the default backingstore. If not provided, pv-pool will be used.
 
 ### Creating the IBM COS service instance
 
@@ -30,7 +30,7 @@ Run the following commands to create a COS instance and create a set of HMAC cre
     ibmcloud resource service-key-create cos-cred-rw Writer --instance-name noobaa-stor --parameters '{ "HMAC": true}'
     ```
 
-3. Get the regional public endpoint and the location of your IBM COS instance. 
+3. Get the regional public endpoint and the location of your IBM COS instance.
     You can get the endpoint details from the list of [IBM COS endpoints](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-endpoints) and the
     location from [IBM COS location constraint details](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-classes).
 
@@ -104,10 +104,10 @@ When you create your OCS configuration, you must specify device paths for the ob
 |`worker-nodes` | Optional | Enter the IP addresses of the worker nodes where you want to deploy OCS. If you do not specify the `worker-nodes`, OCS is installed on all of the worker nodes in your cluster. The minimum number of worker nodes that you must specify is 3. | N/A |csv |
 | `billing-type` | Optional | Enter the billing option that you want to use. You can enter either `hourly` or `monthly`. | `hourly` | string |
 | `ocs-upgrade` | Optional | Set to `true` if you want to upgrade the major version of OCS while creating a configuration of the newer version. | false | boolean |
-| `ibm-cos-endpoint` | Required | Enter the IBM COS regional public endpoint. Example: `https://s3.us-east.cloud-object-storage.appdomain.cloud` | N/A | string |
-| `ibm-cos-location` | Required | Enter the IBM COS regional location. Example: `us-east-standard` | N/A | string |
-| `ibm-cos-access-key` | Required | Enter your IBM COS access key ID. | N/A | string |
-| `ibm-cos-secret-key` | Required | Enter your IBM COS secret access key. | N/A | string |
+| `ibm-cos-endpoint` | Optional | Enter the IBM COS regional public endpoint. Example: `https://s3.us-east.cloud-object-storage.appdomain.cloud` | N/A | string |
+| `ibm-cos-location` | Optional | Enter the IBM COS regional location. Example: `us-east-standard` | N/A | string |
+| `ibm-cos-access-key` | Optional | Enter your IBM COS access key ID. | N/A | string |
+| `ibm-cos-secret-key` | Optional | Enter your IBM COS secret access key. | N/A | string |
 
 ## Default storage classes
 
@@ -428,7 +428,7 @@ If the `storageClusterStatus` is `Progressing` or `Error`, the OCS installation 
 
 ## Removing your OCS configuration
 
-1. List your storage assignments and find the one that you used for your cluster. 
+1. List your storage assignments and find the one that you used for your cluster.
     ```
     ic sat storage assignment ls
     ```

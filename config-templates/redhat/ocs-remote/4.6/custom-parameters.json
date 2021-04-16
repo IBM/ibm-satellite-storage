@@ -69,21 +69,21 @@
     "displayname": "IBM COS endpoint",
     "name": "ibm-cos-endpoint",
     "place-holder": "https://s3.us-east.cloud-object-storage.appdomain.cloud",
-    "required": "true"
+    "required": "false"
   },
   {
     "description": "The IBM COS location constraint.",
     "displayname": "IBM COS LocationConstraint",
     "name": "ibm-cos-location",
     "place-holder": "us-east-standard",
-    "required": "true"
+    "required": "false"
   },
   {
     "description": "The IBM COS access key ID (HMAC keys).",
     "displayname": "IBM COS access key ID",
     "name": "ibm-cos-access-key",
     "category": "secret",
-    "required": "true",
+    "required": "false",
     "obfuscate": "true"
   },
   {
@@ -91,7 +91,7 @@
     "displayname": "IBM COS secret access key",
     "name": "ibm-cos-secret-key",
     "category": "secret",
-    "required": "true",
+    "required": "false",
     "obfuscate": "true"
   }
 ]
