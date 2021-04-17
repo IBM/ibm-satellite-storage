@@ -70,6 +70,7 @@ __Translated YAML__
          - "{{{ item }}}"
          {{/mon-device-path }}
    ```
+   Note: triple curly bracket convention e.g `{{{ item }}}` is need to escape the special character e.g `/` in the path `/dev/sdc1`
   __Custom Parameters__
 
      mon-device-path=/dev/sdc1,/dev/sdc1

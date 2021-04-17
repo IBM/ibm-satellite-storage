@@ -25,7 +25,7 @@ parameters:
 allowVolumeExpansion: {{ VolumeExpansion }} #false
 ```
 
-We DO NOT use `MustachTemplate` engine to translate the storage class template to actual storage class configuration. Rather, we just replace  ` {{ varaibale-name }}` with its value given by the user. The multiple storage classes can be created from the same storage-class-template. The user is allowed to pass the array of storage class parameters to create multiple storage classes. 
+We DO NOT use `MustachTemplate` engine to translate the storage class template to actual storage class configuration. Rather, we just replace  ` {{ varaibale-name }}` with its value given by the user. The multiple storage classes can be created from the same storage-class-template. The user is allowed to pass the array of storage class parameters to create multiple storage classes. The triple curly bracket notation e.g ` {{{ varaibale-name }}}`  is not allowed in storage class template . Its only allowed in `deployement.yaml`.
 
 ## Customer parameter requirements for storage class
    The custom parameters for the storage class are mentioned in the `storage-class-parameters.json` file It follows the same syntax as customer parameters for the deployment template. The existing example can be found [here](config-templates/ibm/ibm-block-storage-csi-driver/1.4.0/storage-class-parameters.json). The `name` and `is-default-class` are the mandatory custom parameters that need to be defined for storage class template. This allows user to create multiple storage classes without conflicting the `storage class name` and the `default storage class`

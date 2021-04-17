@@ -132,11 +132,11 @@ The customer parameter has following attributes
 | `description` | A description of the parameter. | Yes| |
 | `displayname` | The display name of the parameter that is used in the Satellite UI. |Yes |
 | `name` | The name of the parameter in string format. | Yes | 
-| `default` | Optional. The default value for the parameter. If the does not specify the parameter in their configuration, this value entered as `default` is used. | No | Empty String|
+| `default` | Optional. The default value for the parameter. If user does not specify the parameter in the configuration, the value entered as `default` is used. Thus, `required` should be `false` if `defualt` attribute is not empty. | No | Empty String|
 | `type` | Specify the parameter type. Valid parameter types are: `text`, `csv`, `number`, `boolean` | No | `text`|
-| `catagory` | Specify the parameter category `config` or `secret`. On UI , the `config` parameters will display  in `User Config Parameter` section and `secret` parameters will dislay in `User secrete paramater` section  | No | `config`|
+| `catagory` | Specify the parameter category `config` or `secret`. On UI , the `config` parameters will display  in `User Config Parameter` section and `secret` parameters will display in `User secrete paramater` section  | No | `config`|
 | `required` | Specify `true` or `false`. | No | `false`|
-| `regex` | Specify the regular expression to validate the user input. For example  `"^[0-9]+Gi$"`  will validate a string like `50Gi`| No | No RegEx Validation|
+| `regex` | Specify the regular expression to validate the user input. For example  `"^[0-9]+Gi$"`  will validate a string like `50Gi`, `^(nfsvers=){1}[0-9.]+$` validates `nfsvers=4` and `^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$` validates the IP address like `192.168.1.1`. You can refer online regex validator [here](https://www.regextester.com/) | No | No RegEx Validation|
 | `place-holder` | The example text that will be shown to user as a place-holder in text box . For example `50Gi` indicates the format of allowed text | No | empty string|
 | `min-length` | Minimum allowed a length of input value | No | 1 if `required` is `true`|
 | `max-length` | Maximum allowed a length of input value | No | no limit|
