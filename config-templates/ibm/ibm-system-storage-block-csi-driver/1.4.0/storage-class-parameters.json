@@ -55,7 +55,8 @@
     "name": "VolumeExpansion",
     "default": "false",
     "required": "false",
-    "category": "boolean"
+    "category": "config",
+    "type": "boolean"
   },
   {
     "description": "Specify 'true' or 'false' to make the created storage class the default class.",
