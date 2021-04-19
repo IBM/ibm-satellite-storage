@@ -30,7 +30,7 @@ items:
         release: ibm-block-csi-operator
     spec:
       channel: stable
-      name: ibm-block-csi-operator-community
+      name: ibm-block-csi-operator
       source: community-operators
       sourceNamespace: openshift-marketplace
       startingCSV: ibm-block-csi-operator.v1.5.0
