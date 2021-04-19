@@ -1,7 +1,7 @@
 {
   "name": "4.6",
   "enabled": "true",
-  "description": "OCS template for openshift 4.6 (Local devices)",
+  "description": "OCS template for openshift 4.6 (Local storage)",
   "tags": [
     {
       "name": "provider",
