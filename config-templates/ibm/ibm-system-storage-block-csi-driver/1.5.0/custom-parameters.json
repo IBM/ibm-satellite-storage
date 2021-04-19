@@ -1,0 +1,10 @@
+[
+  {
+    "description": "The namespace where you want to create the deployment.",
+    "displayname": "Namespace",
+    "name": "namespace",
+    "default": "default",
+    "required": "false",
+    "category": "config"
+  }
+]
