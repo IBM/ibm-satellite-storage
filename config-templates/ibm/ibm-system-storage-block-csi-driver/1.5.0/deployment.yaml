@@ -31,7 +31,7 @@ items:
     spec:
       channel: stable
       name: ibm-block-csi-operator-community
-      source: certified-operators
+      source: community-operators
       sourceNamespace: openshift-marketplace
       startingCSV: ibm-block-csi-operator.v1.5.0
       installPlanApproval: Automatic
