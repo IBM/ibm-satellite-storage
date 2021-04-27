@@ -19,7 +19,7 @@ Review the [compatibility and requirements documentation](https://www.ibm.com/do
 Retrieve all parameters required by this template.
 
 ```sh
-ibmcloud sat storage template get --name ibm-csi-block --version 1.5.0
+ibmcloud sat storage template get --name ibm-system-storage-block-csi-driver --version 1.5.0
 ```
 
  **IBM block storage CSI driver parameters**
@@ -43,7 +43,7 @@ ibmcloud sat storage template get --name ibm-csi-block --version 1.5.0
 **Example `sat storage config create` command**
 
 ```sh
-ibmcloud sat storage config create --name <config-name> --template-name ibm-csi-block --template-version 1.5.0 -p "namespace=<namespace>" -p "sc-name=<sc-name>" -p "space-efficiency=<space-efficiency>" -p "pool=<pool>" -p "secret-name=<secret-name>" -p "secret-namespace=<secret-namespace>" -p "fstype=<fstype>" -p "prefix=<prefix>" -p "VolumeExpansion=<VolumeExpansion>"
+ibmcloud sat storage config create --name <config-name> --template-name ibm-system-storage-block-csi-driver --template-version 1.5.0 -p "namespace=<namespace>" -p "sc-name=<sc-name>" -p "space-efficiency=<space-efficiency>" -p "pool=<pool>" -p "secret-name=<secret-name>" -p "secret-namespace=<secret-namespace>" -p "fstype=<fstype>" -p "prefix=<prefix>" -p "VolumeExpansion=<VolumeExpansion>"
 
 ```
 
