@@ -1,32 +1,23 @@
 {
-  "name": "20.07",
+  "name": "21.01",
   "enabled": "true",
-  "description": "Netapp Ontap-NAS Driver.",
+  "description": "Netapp Trident version 21.01.",
   "tags": [
     {
-      "name": "template-dependency",
-      "value": "netapp-trident"
-    }, {
-      "name": "template-dependency-version",
-      "value": "20.07"
-    }, {
-      "name": "template-dependency-description",
-      "value": "Install netapp-trident before installing ontap-nas driver."
-    }, {
       "name": "provider",
       "value": "netapp"
     }, {
       "name": "offering-name",
-      "value": "ontap-nas"
+      "value": "netapp-trident"
     }, {
       "name": "provider-url",
-      "value": "https://netapp-trident.readthedocs.io/en/stable-v20.10/support/support.html"
+      "value": "https://netapp-trident.readthedocs.io/en/stable-v21.01/support/support.html"
     }, {
       "name": "support-msg",
       "value": "For support contact NetApp"
     }, {
       "name": "provider-logo",
-      "value": "logo/netapp-ontap-nas.png"
+      "value": "logo/netapp-trident.png"
     }, {
       "name": "supported-envs",
       "value": "AWS,Azure,IBM"
@@ -35,25 +26,25 @@
       "value": "1.17,1.18,1.19"
     }, {
       "name": "volume-type",
-      "value": "file"
+      "value": "block,file"
     }, {
       "name": "volume-encryption-at-rest",
-      "value": "true"
+      "value": ""
     }, {
       "name": "volume-encryption-in-transit",
-      "value": "true"
+      "value": ""
     }, {
       "name": "volume-snapshot",
-      "value": "true"
+      "value": ""
     }, {
       "name": "volume-availability",
-      "value": "zonal"
+      "value": ""
     }, {
       "name": "volume-expansion",
-      "value": "true"
+      "value": ""
     }, {
       "name": "storageclass",
-      "value": "gold,silver,bronze"
+      "value": ""
     }
   ]
 }
