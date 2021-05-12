@@ -3,7 +3,7 @@
 AWS EFS CSI driver implements the CSI specification for container orchestrators to manage the lifecycle of Amazon EFS file systems.
 
 # Features Supported:
-- Dynamic Provisioning : aws-efs-csi-driver 1.2.2 supports dynamic provisioning. To make use of dynamic provisining a user defined storage class must be created. While creating the storage class it has the provision to specify GID range which can be useful when providing access to the mounted volume for non-root users.
+- Dynamic Provisioning : aws-efs-csi-driver 1.2.2 supports dynamic provisioning. To make use of dynamic provisioning a user defined storage class must be created. While creating the storage class it has the provision to specify GID range which can be useful when providing access to the mounted volume for non-root users.
 
 ## Prerequisites
 
