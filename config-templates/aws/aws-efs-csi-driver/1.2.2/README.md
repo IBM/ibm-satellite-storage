@@ -4,13 +4,14 @@ AWS EFS CSI driver implements the CSI specification for container orchestrators 
 
 # Features Supported:
 - Dynamic Provisioning
-- Static Provisioning
+      aws-efs-csi-driver 1.2.2 supports dynamic provisioning. To make use of dynamic provisining a user defined storage class must be created. While creating the storage class it has the provision to specify GID range which can be useful when providing access to the mounted volume for non-root users.
 
 ## Prerequisites
 
 - An [AWS EFS file system](https://docs.aws.amazon.com/efs/latest/ug/gs-step-two-create-efs-resources.html) needs to be created manually on AWS first. After that it can be mounted inside a container as a volume using the driver.
 - The driver requires IAM permission to manage Amazon EFS volumes. Create an IAM user with proper permission and get your *AWS Access Key*. For more information about how to retrieve your access key, see the [AWS IAM docs](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html)
-
+- VPC for EFS and the cluster must be same.
+- Subnet used for cluster and EFS must be same.
 ## AWS EFS CSI Driver parameters & how to retrieve them
 
 ```
@@ -22,12 +23,6 @@ ibmcloud sat storage template get --name aws-efs-csi-driver --version 1.2.2
 | --- | --- | --- | --- |
 | `aws-access-key` | Required | Enter your AWS IAM access key. For more information about how to retrieve your access key, see the [AWS IAM docs](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html). | N/A |
 | `aws-secret-access-key` | Required | Enter your AWS IAM secret access key. For more information about how to retrieve your access key, see the [AWS IAM docs](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html). | N/A | |
-
-## Default storage classes
-
-| Storage class name | File system | IOPs | Size range | Reclaim policy |
-| --- | --- | --- | --- | --- |
-| `sat-aws-file-gold` | NFS | NA | NA | Delete | 
 
 
 ## Creating the AWS EFS CSI Driver storage configuration
@@ -60,14 +55,13 @@ efs-csi-node-nsmqb                      3/3     Running   0          3m36s
 List the EFS storage classes.
 
 ```
-% kubectl get sc -n kube-system | grep efs
-sat-aws-file-gold         efs.csi.aws.com    Delete          Immediate              false                  3m27s
-```
 
 **Example output**
 
 ![Example Output](./images/output.png)
 
+**Note**
+- For non root user efs-csi-driver 1.2.2 must be used.
 ## Troubleshooting
 
 
