@@ -29,7 +29,7 @@
     },
     {
       "name": "provider-logo",
-      "value": "logo/ibm-system-storage-block-csi-driver.png"
+      "value": "logo/ibm-system-storage-block-csi-driver.svg"
     },
     {
       "name": "supported-envs",
