@@ -17,7 +17,7 @@
       "value": "For support contact NetApp"
     }, {
       "name": "provider-logo",
-      "value": "logo/local-volume-file.png"
+      "value": "logo/local-volume-file.svg"
     }, {
       "name": "supported-envs",
       "value": "AWS,IBM"
