@@ -20,8 +20,8 @@ items:
     provisioner: efs.csi.aws.com
     parameters:
       provisioningMode: efs-ap
-      fileSystemId: "{{ fsid }}"
-      directoryPerms: "{{ directory-perms }}"
-      gidRangeStart: "{{ gid-range-start }}"
-      gidRangeEnd: "{{ gid-range-end }}"
-      basePath: "{{ base-path }}"
+      fileSystemId: "{{ fileSystemId }}"
+      directoryPerms: "{{ directoryPerms }}"
+      gidRangeStart: "{{ gidRangeStart }}"
+      gidRangeEnd: "{{ gidRangeEnd }}"
+      basePath: "{{ basePath }}"
