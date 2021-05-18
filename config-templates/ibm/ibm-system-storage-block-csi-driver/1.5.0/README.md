@@ -28,7 +28,7 @@ ibmcloud sat storage template get --name ibm-system-storage-block-csi-driver --v
 | Parameter | Required? | Description | Default value if not provided |
 | --- | --- | --- | --- |
 | `namespace` | Optional | The namespace where you want to create the deployment. | `default` |
-| `sc-name` | Required | The name of the storage class name that is created. | N/A |
+| `name` | Required | The name of the storage class name that is created. | N/A |
 | `space-efficiency` | Optional | The space efficiency of the volume that is created. | N/A |
 | `pool` | Required | Name of an existing pool on the storage system where you want to create the volume. | N/A |
 | `secret-name` | Required | The name of your existing Kubernetes secret. | N/A |

@@ -28,7 +28,7 @@ ibmcloud sat storage template get --name ibm-csi-block --version 1.4.0
 | Parameter | Required? | Description | Default value if not provided |
 | --- | --- | --- | --- |
 | `namespace` | Optional | The namespace where you want to create the deployment. | `default` |
-| `sc-name` | Required | The name of the storage class name that is created. | N/A |
+| `name` | Required | The name of the storage class name that is created. | N/A |
 | `space-efficiency` | Optional | The space efficiency of the volume that is created. | N/A |
 | `pool` | Required | Name of an existing pool on the storage system where you want to create the volume. | N/A |
 | `secret-name` | Required | The name of your existing Kubernetes secret. | N/A |
@@ -43,7 +43,7 @@ ibmcloud sat storage template get --name ibm-csi-block --version 1.4.0
 **Example `sat storage config create` command**
 
 ```sh
-ibmcloud sat storage config create --name <config-name> --template-name ibm-csi-block --template-version 1.4.0 -p "namespace=<namespace>" -p "sc-name=<sc-name>" -p "space-efficiency=<space-efficiency>" -p "pool=<pool>" -p "secret-name=<secret-name>" -p "secret-namespace=<secret-namespace>" -p "fstype=<fstype>" -p "prefix=<prefix>" -p "VolumeExpansion=<VolumeExpansion>"
+ibmcloud sat storage config create --name <config-name> --template-name ibm-system-storage-block-csi-driver --template-version 1.4.0 -p "namespace=<namespace>" -p "sc-name=<sc-name>" -p "space-efficiency=<space-efficiency>" -p "pool=<pool>" -p "secret-name=<secret-name>" -p "secret-namespace=<secret-namespace>" -p "fstype=<fstype>" -p "prefix=<prefix>" -p "VolumeExpansion=<VolumeExpansion>"
 
 ```
 
