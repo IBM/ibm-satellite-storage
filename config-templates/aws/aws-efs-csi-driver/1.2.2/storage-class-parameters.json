@@ -3,12 +3,18 @@
 	"description": "The name of the storage class.",
 	"displayname": "Storage Class Name",
 	"name": "name",
+	"templateKeyName": [
+		"name"
+	],
 	"required": "true",
 	"category": "config"
   },{
 	"description": "Specify 'true' or 'false' to make the created storage class the default class.",
 	"displayname": "Default Storage Class",
 	"name": "is-default-class",
+	"templateKeyName": [
+		"storageclass.kubernetes.io/is-default-class"
+	],
 	"default": "false",
 	"required": "false",
 	"category": "config",
@@ -16,14 +22,20 @@
   },{
 	"description": "Specify the EFS filesystem ID",
 	"displayname": "EFS Filesystem ID",
-	"name": "fsid",
+	"name": "fileSystemId",
 	"required": "true",
+	"templateKeyName": [
+		"fileSystemId"
+	],
 	"category": "config"
 
   },{
 	"description": "Specify directory permissions",
 	"displayname": "Directory permission",
-	"name": "directory-perms",
+	"name": "directoryPerms",
+	"templateKeyName":[
+		"directoryPerms"
+	],
 	"default": "700",
 	"required": "false",
 	"category": "config"
@@ -31,21 +43,30 @@
   },{
 	"description": "Specify the GID range start. gidRangeStart is starting range of Posix Group ID to be applied onto the root directory of the access point",
 	"displayname": "GID range start",
-	"name": "gid-range-start",
+	"name": "gidRangeStart",
+	"templateKeyName": [
+		"gidRangeStart"
+	],
 	"default": "50000",
 	"required": "false",
 	"category": "config"
   },{
 	"description": "Specify the GID range end. gidRangeEnd is ending range of Posix Group ID",
 	"displayname": "GID range end",
-	"name": "gid-range-end",
+	"name": "gidRangeEnd",
+	"templateKeyName":[
+                "gidRangeEnd"
+        ],
 	"default": "7000000",
 	"required": "false",
 	"category": "config"
   },{
 	"description": "Specify the BasePath. Base path is a path on the file system under which access point root directory is created",
 	"displayname": "Basepath",
-	"name": "base-path",
+	"name": "basePath",
+	"templateKeyName":[
+                "basePath"
+        ],
 	"default": "/",
 	"required": "false",
 	"category": "config"
