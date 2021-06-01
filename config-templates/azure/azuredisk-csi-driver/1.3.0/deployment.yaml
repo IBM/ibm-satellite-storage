@@ -9,7 +9,7 @@ metadata:
 items:
   - apiVersion: v1
     data:
-      cloud-config: ewogICAgImNsb3VkIjoiQXp1cmVQdWJsaWNDbG91ZCIsCiAgICAidGVuYW50SWQiOiAiZmNmNjcwNTctNTBjOS00YWQ0LTk4ZjMtZmZjYTY0YWRkOWU5IiwKICAgICJzdWJzY3JpcHRpb25JZCI6ICI0MmEyNzg4MS1mMjNkLTQ5YmMtYWJmYS0zNzVlMzIzZmU5NTciLAogICAgImFhZENsaWVudElkIjogImQwNjgxNjM3LWNmOGItNDc4ZC1iNTAzLTZhOWMyMjVjYjVhNSIsCiAgICAiYWFkQ2xpZW50U2VjcmV0IjogImJ5RjMyenljMC1MY21qb0tOM2RQWG9BdmNBRDQ4TS5KOVgiLAogICAgInJlc291cmNlR3JvdXAiOiAic3RvcmFnZS10ZWFtIiwKICAgICJsb2NhdGlvbiI6ICJlYXN0dXMiLAogICAgInZtVHlwZSI6ICJ2bXNzIiwKICAgICJzdWJuZXROYW1lIjogImRlZmF1bHQiLAogICAgInNlY3VyaXR5R3JvdXBOYW1lIjogInNhdC1zZWMtZ3JwIiwKICAgICJ2bmV0TmFtZSI6ICJzdG9yYWdlLXRlYW0tdm5ldCIsCiAgICAidm5ldFJlc291cmNlR3JvdXAiOiAiIiwKICAgICJyb3V0ZVRhYmxlTmFtZSI6ICIiLAogICAgInByaW1hcnlBdmFpbGFiaWxpdHlTZXROYW1lIjogIiIsCiAgICAicHJpbWFyeVNjYWxlU2V0TmFtZSI6ICJzYXRlbGxpdGUtdm1zcyIsCiAgICAiY2xvdWRQcm92aWRlckJhY2tvZmZNb2RlIjogInYyIiwKICAgICJjbG91ZFByb3ZpZGVyQmFja29mZiI6IHRydWUsCiAgICAiY2xvdWRQcm92aWRlckJhY2tvZmZSZXRyaWVzIjogNiwKICAgICJjbG91ZFByb3ZpZGVyQmFja29mZkR1cmF0aW9uIjogNSwKICAgICJjbG91ZFByb3ZpZGVyUmF0ZWxpbWl0IjogdHJ1ZSwKICAgICJjbG91ZFByb3ZpZGVyUmF0ZUxpbWl0UVBTIjogMTAsCiAgICAiY2xvdWRQcm92aWRlclJhdGVMaW1pdEJ1Y2tldCI6IDEwMCwKICAgICJjbG91ZFByb3ZpZGVyUmF0ZWxpbWl0UVBTV3JpdGUiOiAxMCwKICAgICJjbG91ZFByb3ZpZGVyUmF0ZWxpbWl0QnVja2V0V3JpdGUiOiAxMDAsCiAgICAidXNlTWFuYWdlZElkZW50aXR5RXh0ZW5zaW9uIjogZmFsc2UsCiAgICAidXNlckFzc2lnbmVkSWRlbnRpdHlJRCI6ICIiLAogICAgInVzZUluc3RhbmNlTWV0YWRhdGEiOiB0cnVlLAogICAgImxvYWRCYWxhbmNlclNrdSI6ICJCYXNpYyIsCiAgICAiZGlzYWJsZU91dGJvdW5kU05BVCI6IGZhbHNlLAogICAgImV4Y2x1ZGVNYXN0ZXJGcm9tU3RhbmRhcmRMQiI6IGZhbHNlLAogICAgInByb3ZpZGVyVmF1bHROYW1lIjogIiIsCiAgICAibWF4aW11bUxvYWRCYWxhbmNlclJ1bGVDb3VudCI6IDI1MCwKICAgICJwcm92aWRlcktleU5hbWUiOiAiazhzIiwKICAgICJwcm92aWRlcktleVZlcnNpb24iOiAiIgp9Cg==
+      cloud-config: "{{{cloud-config}}}"
     kind: Secret
     metadata:
       name: azure-cloud-provider
@@ -477,7 +477,7 @@ items:
                 - "--v=2"
                 - "--timeout=15s"
                 - "--leader-election"
-                - "--worker-threads= 40"
+                - "--worker-threads=40"
               env:
                 - name: ADDRESS
                   value: /csi/csi.sock
