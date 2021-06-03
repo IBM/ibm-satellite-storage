@@ -2,7 +2,7 @@
 
 IBM block storage CSI driver is based on an open-source IBM project, included as a part of IBM Storage orchestration for containers. IBM Storage orchestration for containers enables enterprises to implement a modern container-driven hybrid multicloud environment that can reduce IT costs and enhance business agility, while continuing to derive value from existing systems.
 
-For full release notes, compatiblity, installation, and user information, see the [IBM block storage CSI driver documentation](https://www.ibm.com/support/knowledgecenter/SSRQ8T_1.4.0/).
+For full release notes, compatiblity, installation, and user information, see the [IBM block storage CSI driver documentation](https://www.ibm.com/docs/en/blockstg-csi-driver/1.5.0).
 
 Supported IBM storage systems:
   - IBM Spectrum Virtualize Family including IBM SAN Volume Controller (SVC) and IBM FlashSystem® family members built with IBM Spectrum® Virtualize (FlashSystem 5010, 5030, 5100, 5200, 7200, 9100, 9200, 9200R)
@@ -11,7 +11,7 @@ Supported IBM storage systems:
   
 ## Prerequisites
 
-Review the [compatibility and requirements documentation](https://www.ibm.com/support/knowledgecenter/SSRQ8T_1.4.0/csi_ug_requirements.html). 
+Review the [compatibility and requirements documentation](https://www.ibm.com/docs/en/blockstg-csi-driver/1.5.0?topic=installation-compatibility-requirements). 
 
 **Important:** Be sure to complete all prerequisite and installation steps before assigning hosts to your location. Do not create a Kubernetes cluster. This is done through Satellite.
 
@@ -19,12 +19,12 @@ Review the [compatibility and requirements documentation](https://www.ibm.com/su
 Retrieve all parameters required by this template.
 
 ```sh
-ibmcloud sat storage template get --name ibm-csi-block --version 1.4.0
+ibmcloud sat storage template get --name ibm-system-storage-block-csi-driver --version 1.5.0
 ```
 
  **IBM block storage CSI driver parameters**
  
- For more information about the fields and examples, review the [Creating a StorageClass documentation](https://www.ibm.com/support/knowledgecenter/SSRQ8T_1.4.0/csi_ug_config_create_storageclasses.html)
+ For more information about the fields and examples, review the [Creating a StorageClass documentation](https://www.ibm.com/docs/en/blockstg-csi-driver/1.5.0?topic=configuration-creating-storageclass)
 | Parameter | Required? | Description | Default value if not provided |
 | --- | --- | --- | --- |
 | `namespace` | Optional | The namespace where you want to create the deployment. | `default` |
@@ -43,7 +43,7 @@ ibmcloud sat storage template get --name ibm-csi-block --version 1.4.0
 **Example `sat storage config create` command**
 
 ```sh
-ibmcloud sat storage config create --name <config-name> --template-name ibm-system-storage-block-csi-driver --template-version 1.4.0 -p "namespace=<namespace>" -p "name=<sc-name>" -p "space-efficiency=<space-efficiency>" -p "pool=<pool>" -p "secret-name=<secret-name>" -p "secret-namespace=<secret-namespace>" -p "fstype=<fstype>" -p "prefix=<prefix>" -p "VolumeExpansion=<VolumeExpansion>"
+ibmcloud sat storage config create --name <config-name> --template-name ibm-system-storage-block-csi-driver --template-version 1.5.0 -p "namespace=<namespace>" -p "name=<sc-name>" -p "space-efficiency=<space-efficiency>" -p "pool=<pool>" -p "secret-name=<secret-name>" -p "secret-namespace=<secret-namespace>" -p "fstype=<fstype>" -p "prefix=<prefix>" -p "VolumeExpansion=<VolumeExpansion>"
 
 ```
 
@@ -92,8 +92,8 @@ ibmcloud sat storage config rm --config <config-name>
 
 ## Troubleshooting, support, and logs
 
-[Troubleshooting documentation](https://www.ibm.com/support/knowledgecenter/SSRQ8T_1.4.0/csi_ug_troubleshooting.html)
+[Troubleshooting documentation](https://www.ibm.com/docs/en/blockstg-csi-driver/1.5.0?topic=welcome-troubleshooting)
 
 ## References
 
-- [IBM block storage CSI driver documentation](https://www.ibm.com/support/knowledgecenter/SSRQ8T)
+- [IBM block storage CSI driver documentation](https://www.ibm.com/docs/en/blockstg-csi-driver)
