@@ -1,3 +1,4 @@
+---
 apiVersion: v1
 kind: List
 metadata:
@@ -9,7 +10,55 @@ items:
   - kind: StorageClass
     apiVersion: storage.k8s.io/v1
     metadata:
-      name: sat-azuredisk-gold
+      name: sat-azure-block-platinum-metro
+      labels:
+        app.kubernetes.io/name: azuredisk-csi-driver
+        app.kubernetes.io/version: 1.3.0
+    provisioner: disk.csi.azure.com
+    parameters:
+      skuname: UltraSSD_LRS
+    volumeBindingMode: WaitForFirstConsumer
+    allowVolumeExpansion: true
+  - kind: StorageClass
+    apiVersion: storage.k8s.io/v1
+    metadata:
+      name: sat-azure-block-platinum
+      labels:
+        app.kubernetes.io/name: azuredisk-csi-driver
+        app.kubernetes.io/version: 1.3.0
+    provisioner: disk.csi.azure.com
+    parameters:
+      skuname: UltraSSD_LRS
+    volumeBindingMode: Immediate
+    allowVolumeExpansion: true
+  - kind: StorageClass
+    apiVersion: storage.k8s.io/v1
+    metadata:
+      name: sat-azure-block-gold-metro
+      labels:
+        app.kubernetes.io/name: azuredisk-csi-driver
+        app.kubernetes.io/version: 1.3.0
+    provisioner: disk.csi.azure.com
+    parameters:
+      skuname: StandardSSD_LRS
+    volumeBindingMode: WaitForFirstConsumer
+    allowVolumeExpansion: true
+  - kind: StorageClass
+    apiVersion: storage.k8s.io/v1
+    metadata:
+      name: sat-azure-block-gold
+      labels:
+        app.kubernetes.io/name: azuredisk-csi-driver
+        app.kubernetes.io/version: 1.3.0
+    provisioner: disk.csi.azure.com
+    parameters:
+      skuname: StandardSSD_LRS
+    volumeBindingMode: Immediate
+    allowVolumeExpansion: true
+  - kind: StorageClass
+    apiVersion: storage.k8s.io/v1
+    metadata:
+      name: sat-azure-block-silver-metro
       labels:
         app.kubernetes.io/name: azuredisk-csi-driver
         app.kubernetes.io/version: 1.3.0
@@ -17,4 +66,40 @@ items:
     parameters:
       skuname: Premium_LRS
     volumeBindingMode: WaitForFirstConsumer
+    allowVolumeExpansion: true
+  - kind: StorageClass
+    apiVersion: storage.k8s.io/v1
+    metadata:
+      name: sat-azure-block-silver
+      labels:
+        app.kubernetes.io/name: azuredisk-csi-driver
+        app.kubernetes.io/version: 1.3.0
+    provisioner: disk.csi.azure.com
+    parameters:
+      skuname: Premium_LRS
+    volumeBindingMode: Immediate
+    allowVolumeExpansion: true
+  - kind: StorageClass
+    apiVersion: storage.k8s.io/v1
+    metadata:
+      name: sat-azure-block-bronze-metro
+      labels:
+        app.kubernetes.io/name: azuredisk-csi-driver
+        app.kubernetes.io/version: 1.3.0
+    provisioner: disk.csi.azure.com
+    parameters:
+      skuname: Standard_LRS
+    volumeBindingMode: WaitForFirstConsumer
+    allowVolumeExpansion: true
+  - kind: StorageClass
+    apiVersion: storage.k8s.io/v1
+    metadata:
+      name: sat-azure-block-bronze
+      labels:
+        app.kubernetes.io/name: azuredisk-csi-driver
+        app.kubernetes.io/version: 1.3.0
+    provisioner: disk.csi.azure.com
+    parameters:
+      skuname: Standard_LRS
+    volumeBindingMode: Immediate
     allowVolumeExpansion: true
