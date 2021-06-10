@@ -1,6 +1,6 @@
 # NetApp Trident - ONTAP NAS Driver
 
-You can use the `netapp-ontap-nas` Satellite storage template to deploy NetApp storage drives which you can use dynamically provision and mange file volumes in your ONTAP NAS.
+You can use the `netapp-ontap-nas` Satellite storage template to deploy NetApp storage drivers which you can use dynamically provision and manage file volumes in your ONTAP NAS.
 
 ## Prerequisites
 
@@ -14,7 +14,7 @@ You can use the `netapp-ontap-nas` Satellite storage template to deploy NetApp s
 * Share following details with Location Admin
 
 
-**Planning consideration for Location Admin**
+**Planning considerations for the Satellite Location Admin**
 * Make sure `netapp-trident` is deployed on the target cluster
 * Review the template parameters and retrieve the values from your NetApp cluster.
 
@@ -53,6 +53,8 @@ The following storage classes are installed when you assign your `netapp-ontap-n
 
 **\*NOTE**: In order to use the **ntap-file-gold**, **ntap-file-silver** or **ntap-file-bronze** storage classes, the storage administrator must create the associated QoS policies on the storage controller using the following QoS Policy Group names: **gold**, **silver**, **bronze**.
 For information on creating and managing QoS Policy groups, please refer to the [ONTAP 9 Storage Management documentation](https://docs.netapp.com/ontap-9/index.jsp).
+
+
 ## Creating the NetApp Ontap-NAS Driver storage configuration
 
 Create a Satellite storage configuration that uses the `netapp-ontap-nas` template.

@@ -1,6 +1,6 @@
 # Netapp Trident
 
-Trident deploys in Kubernetes clusters as pods and provides dynamic storage orchestration services for your Kubernetes workloads. It has been designed from the ground up to help you meet the persistence demands of your containerized applications by using industry standard interfaces like the Container Storage Interface (CSI).
+Trident provides dynamic storage orchestration services for your Kubernetes workloads. It has been designed from the ground up to help you meet the persistence demands of your containerized applications by using industry standard interfaces like the Container Storage Interface (CSI).
 
 ## Prerequisites
 

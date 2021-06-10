@@ -1,21 +1,21 @@
 # NetApp Trident - ONTAP SAN Driver
 
-You can use the `netapp-ontap-san` Satellite storage template to deploy NetApp storage drives which you can use dynamically provision and manage LUNs in your ONTAP SAN.
+You can use the `netapp-ontap-san` Satellite storage template to deploy NetApp storage drivers which you can use dynamically provision and manage LUNs in your ONTAP SAN.
 
 ## Prerequisites
 
-**Planning consideration for Infra Admin**
+**Planning considerations for the Infrastructure Admin**
 * Create a cluster that meets the requirements for ONTAP SAN. For more information, see the [NetApp documentation](https://netapp-trident.readthedocs.io/en/stable-v21.04/support/requirements.html). Verify that your backend ONTAP cluster is configured as a Trident backend.
    * You must have a dedicated SVM for Trident. Volumes that are created by Trident are created in this SVM.
    * You must have one or more aggregates assigned to the SVM.
    * You must have one or more dataLIFs for the SVM. Depending on the protocol used (NFS/iSCSI), at least one dataLIF is required.
    * You must have iSCSI services enabled on the SVM.
    * You must set up a snapshot policy on the SVM.
-* Share following details with Location Admin
+* Share following details with Location Admin.
 
 
 **Planning consideration for Location Admin**
-* Make sure `netapp-trident` is deployed on the target cluster
+* Make sure `netapp-trident` is deployed on the target cluster.
 * Review the template parameters and retrieve the values from your NetApp cluster.
 
 ## NetApp Ontap-SAN Driver parameters & how to retrieve them
