@@ -1,14 +1,14 @@
 # NetApp Trident - ONTAP SAN Driver
 
-You can use the `netapp-ontap-san` Satellite storage template to deploy NetApp storage drivers which you can use dynamically provision and manage LUNs in your ONTAP SAN.
+You can use the `netapp-ontap-san` Satellite storage template to deploy NetApp storage drivers which you can use dynamically provision and manage iSCSI LUNs in your ONTAP storage.
 
 ## Prerequisites
 
 **Planning considerations for the Infrastructure Admin**
 * Create a cluster that meets the requirements for ONTAP SAN. For more information, see the [NetApp documentation](https://netapp-trident.readthedocs.io/en/stable-v21.04/support/requirements.html). Verify that your backend ONTAP cluster is configured as a Trident backend.
-   * You must have a dedicated SVM for Trident. Volumes that are created by Trident are created in this SVM.
+   * You must have a dedicated Storage Virtual Machine (SVM) for Trident. Volumes and LUNs that are created by Trident are created in this SVM.
    * You must have one or more aggregates assigned to the SVM.
-   * You must have one or more dataLIFs for the SVM. Depending on the protocol used (NFS/iSCSI), at least one dataLIF is required.
+   * You must have one or more dataLIFs for the SVM.
    * You must have iSCSI services enabled on the SVM.
    * You must set up a snapshot policy on the SVM.
 * Share following details with Location Admin.
@@ -34,8 +34,8 @@ ibmcloud sat storage template get --name netapp-ontap-san --version 21.04
 | `svm` | Required | The name of the storage virtual machine. Example: `svm-iscsi`. | N/A | 
 | `username` | Required | The username to connect to the storage device. | N/A |
 | `password` | Required | The password to connect to the storage device. | N/A |
-| `limitVolumeSize` | Optional | Maximum volume size that can be requested and qtree parent volume size. | `50Gi` |
-| `limitAggregateUsage` | Optional | Limit provisioning of volumes if parent volume usage exceeds this value. For example, if a volume is requested that causes parent volume usage to exceed this value, the volume provisioning fails.  | `80%` |
+| `limitVolumeSize` | Optional | Maximum volume size that can be requested and qtree parent volume size. Example: `50Gi`| `\"\" (not enforced by default)` |
+| `limitAggregateUsage` | Optional | Limit provisioning of volumes if parent volume usage exceeds this value. For example, if a volume is requested that causes parent volume usage to exceed this value, the volume provisioning fails. Example: `80%`  | `\"\" (not enforced by default)` |
 
 
 ## Default storage classes
@@ -49,8 +49,8 @@ The following storage classes are installed when you assign your `netapp-ontap-s
 | `ntap-block-bronze` | Ontap-SAN | Block | user defined**\*** | Delete | 
 | `ntap-block-default` | Ontap-SAN | Block | n/a | Delete | 
 
-**\*NOTE**: In order to use the **ntap-block-gold**, **ntap-block-silver** or **ntap-block-bronze** storage classes, the storage administrator must create the associated QoS policies on the storage controller using the following QoS Policy Group names: **gold**, **silver**, **bronze**.
-For information on creating and managing QoS Policy groups, please refer to the [ONTAP 9 Storage Management documentation](https://docs.netapp.com/ontap-9/index.jsp).
+**\*NOTE**: In order to use the **ntap-block-gold**, **ntap-block-silver** or **ntap-block-bronze** storage classes there must be QoS Policy groups named: **gold**, **silver**, and/or **bronze** on the storage controller. For information on creating and managing QoS Policy groups, please refer to the [ONTAP 9 Storage Management documentation](https://docs.netapp.com/ontap-9/index.jsp). If you choose not to use QoS policies, you must use the **ntap-block-default** storage class to create your PVCs.
+
 ## Creating the NetApp Ontap-SAN Driver storage configuration
 
 Create a Satellite storage configuration that uses the `netapp-ontap-san` template.
