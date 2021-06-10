@@ -35,8 +35,8 @@ ibmcloud sat storage template get --name netapp-ontap-nas --version 21.04
 | `export-policy` | Optional | Provide the name of an NFS export policy to use. Example: `remote-workers`. | `default` |
 | `username` | Required | The username to connect to the storage device. | N/A |
 | `password` | Required | The password to connect to the storage device. | N/A |
-| `limitVolumeSize` | Optional | Maximum volume size that can be requested and qtree parent volume size. Example: `50Gi` | `"" (not enforced by default)` |
-| `limitAggregateUsage` | Optional | Limit provisioning of volumes if parent volume usage exceeds this value. For example, if a volume is requested that causes parent volume usage to exceed this value, the volume provisioning fails.  | `80%` |
+| `limitVolumeSize` | Optional | Maximum volume size that can be requested and qtree parent volume size. Example: `50Gi` | `(not enforced by default)` |
+| `limitAggregateUsage` | Optional | Limit provisioning of volumes if parent volume usage exceeds this value. For example, if a volume is requested that causes parent volume usage to exceed this value, the volume provisioning fails. Example: `80%` | `(not enforced by default)` |
 | `nfsMountOptions` | Optional | Specify the NFS mount version. Example: `nfsvers=4` | `""` |
 
 
