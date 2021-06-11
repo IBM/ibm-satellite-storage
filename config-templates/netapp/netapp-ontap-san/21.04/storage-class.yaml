@@ -1,34 +1,42 @@
-
-apiVersion: storage.k8s.io/v1
-kind: StorageClass
+apiVersion: v1
+kind: List
 metadata:
-  name: ntap-block-gold
-provisioner: csi.trident.netapp.io
-parameters:
-  selector: "quality=block-gold"
----
-apiVersion: storage.k8s.io/v1
-kind: StorageClass
-metadata:
-  name: ntap-block-silver
-provisioner: csi.trident.netapp.io
-parameters:
-  selector: "quality=block-silver"
----
-apiVersion: storage.k8s.io/v1
-kind: StorageClass
-metadata:
-  name: ntap-block-bronze
-provisioner: csi.trident.netapp.io
-parameters:
-  selector: "quality=block-bronze"
----
-apiVersion: storage.k8s.io/v1
-kind: StorageClass
-metadata:
-  name: ntap-block-default
-  annotations: 
-    storageclass.kubernetes.io/is-default-class: "true"
-provisioner: netapp.io/trident
-parameters:
-  selector: "class=block-default"
+  name: netapp-trident-san
+  namespace: kube-system
+  annotations:
+    version: 21.04
+items:
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-netapp-block-gold
+    provisioner: csi.trident.netapp.io
+    parameters:
+      backendType: "ontap-san"
+      selector: "quality=block-gold"
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-netapp-block-silver
+    provisioner: csi.trident.netapp.io
+    parameters:
+      backendType: "ontap-san"
+      selector: "quality=block-silver"
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-netapp-block-bronze
+    provisioner: csi.trident.netapp.io
+    parameters:
+      backendType: "ontap-san"
+      selector: "quality=block-bronze"
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-netapp-block-default
+      annotations: 
+        storageclass.kubernetes.io/is-default-class: "true"
+    provisioner: csi.trident.netapp.io
+    parameters:
+      backendType: "ontap-san"
+      selector: "class=block-default"
