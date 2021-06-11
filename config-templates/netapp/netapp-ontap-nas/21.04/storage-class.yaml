@@ -1,33 +1,42 @@
-apiVersion: storage.k8s.io/v1
-kind: StorageClass
+apiVersion: v1
+kind: List
 metadata:
-  name: ntap-file-gold
-provisioner: csi.trident.netapp.io
-parameters:
-  selector: "quality=file-gold"
----
-apiVersion: storage.k8s.io/v1
-kind: StorageClass
-metadata:
-  name: ntap-file-silver
-provisioner: csi.trident.netapp.io
-parameters:
-  selector: "quality=file-silver"
----
-apiVersion: storage.k8s.io/v1
-kind: StorageClass
-metadata:
-  name: ntap-file-bronze
-provisioner: csi.trident.netapp.io
-parameters:
-  selector: "quality=file-bronze"
----
-apiVersion: storage.k8s.io/v1
-kind: StorageClass
-metadata:
-  name: ntap-file-default
-  annotations: 
-    storageclass.kubernetes.io/is-default-class: "true"
-provisioner: netapp.io/trident
-parameters:
-  selector: "class=file-default"
+  name: netapp-trident-nas
+  namespace: kube-system
+  annotations:
+    version: 21.04
+items:
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-netapp-file-gold
+    provisioner: csi.trident.netapp.io
+    parameters:
+      backendType: "ontap-nas"
+      selector: "quality=file-gold"
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-netapp-file-silver
+    provisioner: csi.trident.netapp.io
+    parameters:
+      backendType: "ontap-nas"
+      selector: "quality=file-silver"
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-netapp-file-bronze
+    provisioner: csi.trident.netapp.io
+    parameters:
+      backendType: "ontap-nas"
+      selector: "quality=file-bronze"
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+        name: sat-netapp-file-default
+        annotations: 
+            storageclass.kubernetes.io/is-default-class: "true"
+    provisioner: csi.trident.netapp.io
+    parameters:
+      backendType: "ontap-nas"
+      selector: "class=file-default"
