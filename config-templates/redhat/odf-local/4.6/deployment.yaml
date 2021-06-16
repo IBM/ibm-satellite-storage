@@ -36,10 +36,10 @@ items:
                 description: OcsClusterSpec defines the desired state of OcsCluster
                 properties:
                   billingType:
-                    default: hourly
+                    default: advanced
                     enum:
-                    - hourly
-                    - monthly
+                    - essentials
+                    - advanced
                     type: string
                   monStorageClassName:
                     type: string
@@ -330,12 +330,20 @@ items:
       name: {{ ocs-cluster-name }}
       namespace: default
     spec:
-       monStorageClassName: {{ mon-storage-class }}
-       monSize: {{ mon-size }}
-       osdStorageClassName: {{ osd-storage-class }}
-       osdSize: {{ osd-size }}
+       monStorageClassName: localfile
+       monSize: "1"
+       osdStorageClassName: localblock
+       osdSize: "1"
+       monDevicePaths:
+         {{#mon-device-path }}
+         - "{{{ item }}}"
+         {{/mon-device-path }}
+       osdDevicePaths:
+         {{#osd-device-path }}
+         - "{{{ item }}}"
+         {{/osd-device-path }}
        numOfOsd: {{ num-of-osd }}
-       ocsUpgrade: {{ ocs-upgrade }}
+       ocsUpgrade: {{ odf-upgrade }}
        {{#worker-nodes?}}
        workerNodes:
        {{/worker-nodes?}}

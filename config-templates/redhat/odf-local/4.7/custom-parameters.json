@@ -1,39 +1,25 @@
 [
   {
-    "description": "Specify a name for your OCS storage cluster.",
+    "description": "Specify a name for your ODF storage cluster.",
     "displayname": "Cluster Name",
     "name": "ocs-cluster-name",
     "required": "true"
   },
   {
-    "description": "The MON storage size (in Gibibytes). The default value is '20Gi'.",
-    "displayname": "Mon storage size",
-    "name": "mon-size",
-    "default": "20Gi",
-    "place-holder": "20Gi",
-    "regex": "^[0-9]+Gi$",
-    "required": "true"
+    "description": "The local device path of the OSD.",
+    "displayname": "Osd Device Path",
+    "name": "osd-device-path",
+    "place-holder": "/dev/sdc,/dev/sde",
+    "required": "true",
+    "type": "csv"
   },
   {
-    "description": "The MON storage class name.",
-    "displayname": "Mon storage class",
-    "name": "mon-storage-class",
-    "required": "true"
-  },
-  {
-    "description": "The OSD storage size (in Gibibytes). The default value is '100Gi'.",
-    "displayname": "osd storage size",
-    "name": "osd-size",
-    "default": "100Gi",
-    "place-holder": "100Gi",
-    "regex": "^[0-9]+Gi$",
-    "required": "true"
-  },
-  {
-    "description": "The OSD storage class name.",
-    "displayname": "osd Storage Class",
-    "name": "osd-storage-class",
-    "required": "true"
+    "description": "The local device path of the MON.",
+    "displayname": "Mon device Path",
+    "name": "mon-device-path",
+    "place-holder": "/dev/sdc,/dev/sde",
+    "required": "true",
+    "type": "csv"
   },
   {
     "description": "The number of OSDs. The default value is '1'.",
@@ -43,25 +29,25 @@
     "required": "false"
   },
   {
-    "description": "The IP addresses of the worker nodes where you want to deploy OCS. The minimum number of worker nodes is 3.",
+    "description": "The IP addresses of the worker nodes where you want to deploy ODF. The minimum number of worker nodes is 3.",
     "displayname": "worker nodes",
     "name": "worker-nodes",
     "required": "false",
     "type": "csv"
   },
   {
-    "description": "Set to 'true' if you want to upgrade the OCS version.",
-    "displayname": "OCS upgrade",
-    "name": "ocs-upgrade",
+    "description": "Set to 'true' if you want to upgrade the ODF version.",
+    "displayname": "ODF upgrade",
+    "name": "odf-upgrade",
     "default": "false",
     "required": "false",
     "type": "boolean"
   },
   {
-    "description": "The billing type for your OCS configuration.",
+    "description": "The billing type for your ODF configuration.",
     "displayname": "Billing type",
     "name": "billing-type",
-    "default": "hourly",
+    "default": "advanced",
     "required": "false"
   },
   {
