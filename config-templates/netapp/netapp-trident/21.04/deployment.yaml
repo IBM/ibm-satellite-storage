@@ -222,10 +222,10 @@ items:
           - tridentnodes
           - tridenttransactions
           - tridentsnapshots
-	  - tridentbackendconfigs
-	  - tridentbackendconfigs/status
-	  - tridentorchestrators
-	  - tridentorchestrators/status
+		  - tridentbackendconfigs
+		  - tridentbackendconfigs/status
+		  - tridentorchestrators
+		  - tridentorchestrators/status
         verbs:
           - get
           - list
