@@ -1,0 +1,63 @@
+{
+  "name": "1.1.0",
+  "enabled": "true",
+  "description": "AWS EBS CSI Driver version 1.1.0",
+  "tags": [
+    {
+      "name": "provider",
+      "value": "aws"
+    },
+    {
+      "name": "offering-name",
+      "value": "aws-ebs-csi-driver"
+    },
+    {
+      "name": "provider-url",
+      "value": "https://console.aws.amazon.com/support/home#/"
+    },
+    {
+      "name": "support-msg",
+      "value": "For support contact AWS"
+    },
+    {
+      "name": "provider-logo",
+      "value": "logo/aws-ebs-csi-driver.png"
+    },
+    {
+      "name": "supported-envs",
+      "value": "AWS"
+    },
+    {
+      "name": "supported-k8s-versions",
+      "value": "1.17,1.18,1.19,1.20"
+    },
+    {
+      "name": "volume-type",
+      "value": "block"
+    },
+    {
+      "name": "volume-encryption-at-rest",
+      "value": "true"
+    },
+    {
+      "name": "volume-encryption-in-transit",
+      "value": "true"
+    },
+    {
+      "name": "volume-snapshot",
+      "value": "true"
+    },
+    {
+      "name": "volume-availability",
+      "value": "zonal"
+    },
+    {
+      "name": "volume-expansion",
+      "value": "true"
+    },
+    {
+      "name": "storageclass",
+      "value": "gold,silver,bronze,gold-metro,silver-metro,bronze-metro"
+    }
+  ]
+}
