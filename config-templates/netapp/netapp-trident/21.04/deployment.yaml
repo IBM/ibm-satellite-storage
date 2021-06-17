@@ -222,10 +222,12 @@ items:
           - tridentnodes
           - tridenttransactions
           - tridentsnapshots
-          # Required for Tprov
-          - tridentprovisioners
-          # Required to update Tprov's status section
-          - tridentprovisioners/status
+		  - tridentbackendconfigs
+		  - tridentbackendconfigs/status
+		  - tridentprovisioners # Required for Tprov
+		  - tridentprovisioners/status # Required to update Tprov's status section
+		  - tridentorchestrators # Required for Torc
+		  - tridentorchestrators/status # Required to update Torc's status section
         verbs:
           - get
           - list
