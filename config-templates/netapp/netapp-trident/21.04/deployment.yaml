@@ -216,16 +216,18 @@ items:
           - trident.netapp.io
         resources:
           - tridentversions
-          - tridentbackends
-          - tridentstorageclasses
-          - tridentvolumes
-          - tridentnodes
-          - tridenttransactions
-          - tridentsnapshots
-	  - tridentbackendconfigs
-	  - tridentbackendconfigs/status
-	  - tridentorchestrators
-	  - tridentorchestrators/status
+		  - tridentbackends
+		  - tridentstorageclasses
+		  - tridentvolumes
+		  - tridentnodes
+		  - tridenttransactions
+		  - tridentsnapshots
+		  - tridentbackendconfigs
+		  - tridentbackendconfigs/status
+		  - tridentprovisioners
+		  - tridentprovisioners/status
+		  - tridentorchestrators
+		  - tridentorchestrators/status
         verbs:
           - get
           - list
