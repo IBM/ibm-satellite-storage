@@ -67,21 +67,24 @@ List the EBS driver pods in the `kube-system` namespace and verify that the stat
 
 ```
 % kubectl get pods -n kube-system | grep ebs
-ebs-csi-controller-5669b7cf75-8c4pq     6/6     Running   0          4m14s
-ebs-csi-controller-5669b7cf75-wxhpl     6/6     Running   0          4m14s
-ebs-csi-node-2njh5                      3/3     Running   0          4m14s
-ebs-csi-node-5q5vn                      3/3     Running   0          4m14s
-ebs-csi-node-pl2qs                      3/3     Running   0          4m14s
-ebs-snapshot-controller-0               1/1     Running   0          4m14s
+ebs-csi-controller-76d48cd86d-nvbx9     6/6     Running   0          61m
+ebs-csi-controller-76d48cd86d-tgb9l     6/6     Running   0          61m
+ebs-csi-node-6k4xd                      3/3     Running   0          61m
+ebs-csi-node-dg59c                      3/3     Running   0          61m
+ebs-csi-node-r7jcl                      3/3     Running   0          61m
+ebs-snapshot-controller-0               1/1     Running   0          61m
 ```
 
 List the EBS storage classes.
 
 ```
 % kubectl get sc| grep ebs
-sat-aws-block-bronze      ebs.csi.aws.com    Delete          WaitForFirstConsumer   true                   15m
-sat-aws-block-gold        ebs.csi.aws.com    Delete          WaitForFirstConsumer   true                   15m
-sat-aws-block-silver      ebs.csi.aws.com    Delete          WaitForFirstConsumer   true                   15m
+sat-aws-block-bronze         ebs.csi.aws.com    Delete          Immediate              true                   61m
+sat-aws-block-bronze-metro   ebs.csi.aws.com    Delete          WaitForFirstConsumer   true                   61m
+sat-aws-block-gold           ebs.csi.aws.com    Delete          Immediate              true                   61m
+sat-aws-block-gold-metro     ebs.csi.aws.com    Delete          WaitForFirstConsumer   true                   61m
+sat-aws-block-silver         ebs.csi.aws.com    Delete          Immediate              true                   61m
+sat-aws-block-silver-metro   ebs.csi.aws.com    Delete          WaitForFirstConsumer   true                   61m
 ```
 
 **Example output**
