@@ -660,3 +660,27 @@ items:
           volumes:
             - name: socket-dir
               emptyDir: {}
+  - kind: PodDisruptionBudget
+    apiVersion: policy/v1beta1
+    metadata:
+      name: ebs-csi-controller
+      labels:
+        app.kubernetes.io/name: aws-ebs-csi-driver
+        app.kubernetes.io/version: 1.1.0
+    spec:
+      selector:
+        matchLabels:
+          app: ebs-csi-controller
+      minAvailable: 2
+  - kind: PodDisruptionBudget
+    apiVersion: policy/v1beta1
+    metadata:
+      name: ebs-snapshot-controller
+      labels:
+        app.kubernetes.io/name: aws-ebs-csi-driver
+        app.kubernetes.io/version: 1.1.0
+    spec:
+      selector:
+        matchLabels:
+          app: ebs-snapshot-controller
+      maxUnavailable: 1
