@@ -13,7 +13,7 @@ items:
     provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-nas"
-      selector: "quality=file-gold"
+      selector: "class=file-gold"
   - apiVersion: storage.k8s.io/v1
     kind: StorageClass
     metadata:
@@ -21,7 +21,7 @@ items:
     provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-nas"
-      selector: "quality=file-silver"
+      selector: "class=file-silver"
   - apiVersion: storage.k8s.io/v1
     kind: StorageClass
     metadata:
@@ -29,7 +29,7 @@ items:
     provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-nas"
-      selector: "quality=file-bronze"
+      selector: "class=file-bronze"
   - apiVersion: storage.k8s.io/v1
     kind: StorageClass
     metadata:
