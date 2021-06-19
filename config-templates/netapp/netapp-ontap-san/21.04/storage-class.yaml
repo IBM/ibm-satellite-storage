@@ -13,7 +13,7 @@ items:
     provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-san"
-      selector: "class=block-gold"
+      selector: "quality=gold"
   - apiVersion: storage.k8s.io/v1
     kind: StorageClass
     metadata:
@@ -21,7 +21,7 @@ items:
     provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-san"
-      selector: "class=block-silver"
+      selector: "quality=silver"
   - apiVersion: storage.k8s.io/v1
     kind: StorageClass
     metadata:
@@ -29,7 +29,7 @@ items:
     provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-san"
-      selector: "class=block-bronze"
+      selector: "quality=bronze"
   - apiVersion: storage.k8s.io/v1
     kind: StorageClass
     metadata:
@@ -39,4 +39,4 @@ items:
     provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-san"
-      selector: "class=block-default"
+      selector: "quality=default"
