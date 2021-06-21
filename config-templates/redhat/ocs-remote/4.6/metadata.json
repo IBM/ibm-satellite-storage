@@ -21,7 +21,7 @@
     },
     {
       "name": "provider-logo",
-      "value": "logo/ocs-remote.png"
+      "value": "logo/ocs-remote.svg"
     },
     {
       "name": "os-version",
