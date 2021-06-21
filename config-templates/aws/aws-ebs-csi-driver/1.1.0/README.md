@@ -39,6 +39,9 @@ ibmcloud sat storage template get --name aws-ebs-csi-driver --version 1.1.0
 | `sat-aws-block-gold` | io2 | ext4 | 10 | 10 GiB - 6.25 TiB | SSD | Delete |
 | `sat-aws-block-silver` | gp3 | ext4 | N/A | 1 GiB - 16 TiB | SSD | Delete |
 | `sat-aws-block-bronze` | st1 | ext4 | N/A | 125 GiB - 16 TiB | HDD | Delete |
+| `sat-aws-block-gold-metro` | st1 | ext4 | N/A | 125 GiB - 16 TiB | HDD | Delete |
+| `sat-aws-block-silver-metro` | st1 | ext4 | N/A | 125 GiB - 16 TiB | HDD | Delete |
+| `sat-aws-block-bronze-metro` | st1 | ext4 | N/A | 125 GiB - 16 TiB | HDD | Delete |
 
 
 **Note:** Refer [EBS volume types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html) to create additional storageclasses for creating volume with different IOPS.
