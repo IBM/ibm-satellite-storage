@@ -7,7 +7,7 @@ metadata:
 provisioner: block.csi.ibm.com
 parameters:
   SpaceEfficiency: "{{ space-efficiency }}"   # Optional.
-  pool: "{{ pool }}" 
+  pool: "{{ pool }}"
 
   csi.storage.k8s.io/provisioner-secret-name: "{{ secret-name }}"
   csi.storage.k8s.io/provisioner-secret-namespace: "{{ secret-namespace }}"
