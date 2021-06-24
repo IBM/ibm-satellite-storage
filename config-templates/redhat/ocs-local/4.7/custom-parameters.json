@@ -47,7 +47,7 @@
     "description": "The billing type for your OCS configuration.",
     "displayname": "Billing type",
     "name": "billing-type",
-    "default": "hourly",
+    "default": "advanced",
     "required": "false"
   },
   {
@@ -79,5 +79,13 @@
     "category": "secret",
     "required": "false",
     "obfuscate": "true"
+  },
+  {
+    "description": "Cluster wide encryption for OCS.",
+    "displayname": "Cluster wide encryption",
+    "name": "cluster-encryption",
+    "default": "false",
+    "category": "boolean",
+    "required": "false"
   }
 ]
