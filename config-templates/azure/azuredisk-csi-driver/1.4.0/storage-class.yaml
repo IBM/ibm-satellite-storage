@@ -40,7 +40,7 @@ items:
         app.kubernetes.io/version: 1.4.0
     provisioner: disk.csi.azure.com
     parameters:
-      skuname: StandardSSD_LRS
+      skuname: Premium_LRS
     volumeBindingMode: WaitForFirstConsumer
     allowVolumeExpansion: true
   - kind: StorageClass
@@ -52,7 +52,7 @@ items:
         app.kubernetes.io/version: 1.4.0
     provisioner: disk.csi.azure.com
     parameters:
-      skuname: StandardSSD_LRS
+      skuname: Premium_LRS
     volumeBindingMode: Immediate
     allowVolumeExpansion: true
   - kind: StorageClass
@@ -64,7 +64,7 @@ items:
         app.kubernetes.io/version: 1.4.0
     provisioner: disk.csi.azure.com
     parameters:
-      skuname: Premium_LRS
+      skuname: StandardSSD_LRS
     volumeBindingMode: WaitForFirstConsumer
     allowVolumeExpansion: true
   - kind: StorageClass
@@ -76,7 +76,7 @@ items:
         app.kubernetes.io/version: 1.4.0
     provisioner: disk.csi.azure.com
     parameters:
-      skuname: Premium_LRS
+      skuname: StandardSSD_LRS
     volumeBindingMode: Immediate
     allowVolumeExpansion: true
   - kind: StorageClass

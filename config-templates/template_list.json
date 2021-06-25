@@ -18,8 +18,8 @@
   {
     "name": "azuredisk-csi-driver",
     "displayname": "AZUREDISK CSI Driver",
-    "Description": "AZUREDISK CSI Driver.",
-    "default-version": "1.3.0",
+    "Description": "AZUREDISK CSI Driver[BETA].",
+    "default-version": "1.4.0",
     "enabled": "true",
     "provider": "azure"
   },

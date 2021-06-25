@@ -1,7 +1,7 @@
 {
     "name": "1.4.0",
     "enabled": "true",
-    "description": "AZURE DISK CSI Driver version 1.4.0",
+    "description": "AZURE DISK CSI Driver version 1.4.0[BETA]",
     "tags": [
         {
             "name": "provider",
@@ -57,7 +57,7 @@
         },
         {
             "name": "storageclass",
-            "value": "platinum,gold,silver,bronze"
+            "value": "platinum,gold,silver,bronze,platinum-metro,gold-metro,silver-metro,bronze-metro"
         }
     ]
 }
