@@ -3,7 +3,7 @@
     "name": "aws-efs-csi-driver",
     "displayname": "AWS EFS CSI Driver",
     "Description": "AWS EFS CSI Driver.",
-    "default-version": "1.0.0",
+    "default-version": "1.2.2",
     "enabled": "true",
     "provider": "aws"
   },
@@ -11,7 +11,7 @@
     "name": "aws-ebs-csi-driver",
     "displayname": "AWS EBS CSI Driver",
     "Description": "AWS EBS CSI Driver.",
-    "default-version": "0.8.2",
+    "default-version": "0.9.14",
     "enabled": "true",
     "provider": "aws"
   },
