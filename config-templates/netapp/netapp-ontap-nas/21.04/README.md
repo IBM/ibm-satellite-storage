@@ -5,19 +5,18 @@ You can use the `netapp-ontap-nas` Satellite storage template to deploy NetApp s
 ## Prerequisites
 
 **Planning consideration for Infra Admin**
-* Create a cluster that meets the requirements for ONTAP NAS. For more information, see the [NetApp documentation](https://netapp-trident.readthedocs.io/en/stable-v21.04/support/requirements.html). Verify that your backend ONTAP cluster is configured as a Trident backend.
-   * You must have a dedicated Storage Virtual Machine (SVM) for Trident. Volumes that are created by Trident are created in this SVM.
-   * You must have one or more aggregates assigned to the SVM.
-   ### Example:
-   ```sh
-   netapp1::> vserver modify -vs <svm_name> -aggr-list <aggregate(s)_to_be_added>
-   ```
-   * You must configure permissions on the default export policy or create your own custom export policy.
-   * You must have one or more dataLIFs for the SVM.
-   * You must have NFS services enabled on the SVM.
-   * You must set up a snapshot policy on the SVM.
-* Share following details with Location Admin
-
+* Create a cluster that meets the requirements for ONTAP NAS. For more information, see the [NetApp documentation](https://netapp-trident.readthedocs.io/en/stable-v21.04/support/requirements.html). 
+* Verify that your backend ONTAP cluster is configured as a Trident backend.
+* You must have a dedicated Storage Virtual Machine (SVM) for Trident. Volumes that are created by Trident are created in this SVM.
+* You must have one or more aggregates assigned to the SVM.
+### Example:
+```sh
+netapp1::> vserver modify -vs <svm_name> -aggr-list <aggregate(s)_to_be_added>
+```
+* You must configure permissions on the default export policy or create your own custom export policy.
+* You must have one or more dataLIFs for the SVM.
+* You must have NFS services enabled on the SVM.
+* You must set up a snapshot policy on the SVM.
 
 **Planning considerations for the Satellite Location Admin**
 * Make sure `netapp-trident` is deployed on the target cluster
