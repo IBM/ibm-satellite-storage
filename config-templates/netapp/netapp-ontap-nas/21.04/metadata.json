@@ -11,7 +11,7 @@
       "value": "21.04"
     }, {
       "name": "template-dependency-description",
-      "value": "Install netapp-trident before installing ontap-nas driver."
+      "value": "Install the netapp-trident driver before installing the ontap-nas driver."
     }, {
       "name": "provider",
       "value": "netapp"
