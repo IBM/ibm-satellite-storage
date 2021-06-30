@@ -7,7 +7,11 @@ You can use the `netapp-ontap-san` Satellite storage template to deploy NetApp s
 **Planning considerations for the Infrastructure Admin**
 * Create a cluster that meets the requirements for ONTAP SAN. For more information, see the [NetApp documentation](https://netapp-trident.readthedocs.io/en/stable-v21.04/support/requirements.html). Verify that your backend ONTAP cluster is configured as a Trident backend.
    * You must have a dedicated Storage Virtual Machine (SVM) for Trident. Volumes and LUNs that are created by Trident are created in this SVM.
-   * You must have one or more aggregates assigned to the SVM.
+   * You must have one or more aggregates assigned to the SVM. 
+   ###Example:###
+   ```sh
+   netapp1::> vserver modify -vs <svm_name> -aggr-list <aggregate(s)_to_be_added>
+   ```
    * You must have one or more dataLIFs for the SVM.
    * You must have iSCSI services enabled on the SVM.
    * You must set up a snapshot policy on the SVM.
