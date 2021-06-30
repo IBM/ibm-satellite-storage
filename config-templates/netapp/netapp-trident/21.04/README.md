@@ -7,7 +7,8 @@ Trident provides dynamic storage orchestration services for your Kubernetes work
 Before installing Trident make sure that you have:
    * Access to a supported NetApp storage system.
    * Ensure any aggregates used by Trident are explicitly assigned to the svm. 
-   ###Example:###
+
+   ### Example:
    ```sh
    netapp1::> vserver modify -vs <svm_name> -aggr-list <aggregate(s)_to_be_added>
    ```
