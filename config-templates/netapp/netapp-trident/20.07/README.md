@@ -5,7 +5,7 @@ Trident deploys in Kubernetes clusters as pods and provides dynamic storage orch
 ## Prerequisites
 
 Before installing Trident make sure that you have:
-   * Access to a supported NetApp storage system.
+   * Access to a supported NetApp storage system. Detailed instructions for configuring NetApp storage can be found on the [NetApp website](https://docs.netapp.com/us-en/ontap/task_configure_ontap.html)
    * Ensure any aggregates used by Trident are explicitly assigned to the svm.
    ### Example:
    ```sh
