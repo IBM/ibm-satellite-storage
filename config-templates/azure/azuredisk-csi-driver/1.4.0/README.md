@@ -1,6 +1,6 @@
 # AZURE DISK CSI Driver[BETA]
 
-AZURE DISK CSI driver implements the CSI specification for container orchestrators to manage the lifecycle of Azure DISK volumes.
+Azure Disk CSI driver implements the CSI specification for container orchestrators to manage the lifecycle of Azure Disk volumes.
 
 **Features supported:**
 - Topology(Availability Zone)
@@ -13,35 +13,34 @@ AZURE DISK CSI driver implements the CSI specification for container orchestrato
 - fsGroupPolicy
 
 ## Prerequisites
-- Label the azure worker nodes with proper zone.
-    - Run the following commands to label the nodes
-
+1. Retrieve the zone of your Azure worker nodes.
+    ```
+    oc get nodes
+    ```
+2. Label your Azure worker nodes with the zone. Replace `<zone>` with the zone of your Azure worker nodes. For example: `eastus-1`.
     ```
     oc label node <node_name> topology.kubernetes.io/zone-
-    oc label node <node_name> topology.kubernetes.io/zone=<zone-value> --overwrite
+    oc label node <node_name> topology.kubernetes.io/zone=<zone> --overwrite
     ```
-    - zone-value is the actual zone where the nodes are created. For example: eastus-1, eastus-2, etc.
-- Convert cloud config file to base64 encoded string
-    1. create `azure.json` file and fill in all necessary fields, refer to [cloud provider config template](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/azure.json)
-    2. serialize `azure.json` by following command:
-
+3. Copy the [Azure disk configuration template](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/azure.json) and enter the details for your cluster.
+4. Serialize your config file and convert it to base64.
     ```
     cat azure.json | base64 | awk '{printf $0}'; echo
     ```
 
 
-## AZURE DISK CSI Driver parameters & how to retrieve them
+## Azure Disk CSI Driver parameters & how to retrieve them
 
-Retrieve all parameters required by this template
+Get a list of the Azure template configuration parameters. 
 ```
 ibmcloud sat storage template get --name azuredisk-csi-driver --version 1.4.0
 ```
 
-**AZURE DISK CSI Driver parameters**
+** Azure Disk CSI Driver parameters**
 
 | Parameter | Required? | Description | Default value if not provided |
 | --- | --- | --- | --- |
-| `cloud-config` | Required | Enter the serialized value created from azure.json file | N/A |
+| `cloud-config` | Required | Enter the serialized value that your created from the `azure.json` [conifg file](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/azure.json). | N/A |
 
 
 ## Default storage classes
@@ -64,7 +63,7 @@ ibmcloud sat storage template get --name azuredisk-csi-driver --version 1.4.0
 **Example `sat storage config create` command**
 
 ```sh
-ibmcloud sat storage config create --name <config-name> --template-name azuredisk-csi-driver --template-version 1.4.0 --location <location> -p "cloud-config=<erialized value created from azure.json file>"
+ibmcloud sat storage config create --name <config-name> --template-name azuredisk-csi-driver --template-version 1.4.0 --location <location> -p "cloud-config=<base64-encoded-config-file>"
 ```
 
 ## Creating the storage assignment
@@ -79,11 +78,15 @@ ibmcloud sat storage assignment create --name <assignmemt-name> --group <cluster
 ```sh
 ibmcloud sat storage assignment create --name <assignmemt-name> --cluster <cluster-id> --config <config-name>
 ```
-## Verifying your AZURE DISK CSI Driver storage configuration is assigned to your clusters
+**Apply config to a service cluster**
+```sh
+ibmcloud sat storage assignment create --name <assignmemt-name> --service-cluster-id <service-cluster-id> --config <config-name>
+```
+## Verifying your Azure Disk CSI Driver storage configuration is assigned to your clusters
 
 To verify that your configuration is assigned to your cluster. Verify that the driver pods are running, and list the Satellite storage classes that are installed.
 
-List the azuredisk driver pods in the `kube-system` namespace and verify that the status is `Running`.
+List the `azuredisk` driver pods in the `kube-system` namespace and verify that the status is `Running`.
 
 ```
 % kubectl get pods -n kube-system | grep azure
@@ -94,7 +97,7 @@ csi-azuredisk-node-8xm4c                    3/3     Running   6          167m
 csi-azuredisk-node-snsdb                    3/3     Running   6          167m
 ```
 
-List the azuredisk storage classes.
+List the `azuredisk` storage classes.
 
 ```
 % kubectl get sc | grep azure
@@ -117,4 +120,5 @@ sat-azure-block-silver-metro     disk.csi.azure.com   Delete          WaitForFir
 - In case of `authentication failure`, please make sure that **Service Principal** is created properly.
 
 ## References
-https://github.com/kubernetes-sigs/azuredisk-csi-driver
+[Azure Disk CSI Driver](https://github.com/kubernetes-sigs/azuredisk-csi-driver)
+[Limitations](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/docs/limitations.md)
