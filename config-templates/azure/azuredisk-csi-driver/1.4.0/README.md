@@ -64,7 +64,7 @@ ibmcloud sat storage template get --name azuredisk-csi-driver --version 1.4.0
 **Example `sat storage config create` command**
 
 ```sh
-ibmcloud sat storage config create --name <config-name> --template-name azuredisk-csi-driver --template-version 1.4.0 -p "cloud-config=<erialized value created from azure.json file>"
+ibmcloud sat storage config create --name <config-name> --template-name azuredisk-csi-driver --template-version 1.4.0 --location <location> -p "cloud-config=<erialized value created from azure.json file>"
 ```
 
 ## Creating the storage assignment
@@ -113,8 +113,8 @@ sat-azure-block-silver-metro     disk.csi.azure.com   Delete          WaitForFir
 ![Example Output](./images/output.png)
 
 ## Troubleshooting
-- In case of node register failure, please make sure that nodes are labelled with proper zone.
-- In case of authentication failure, please make sure that **Service Principal** is created properly.
+- In case of `node register failure`, please make sure that nodes are labelled with proper zone.
+- In case of `authentication failure`, please make sure that **Service Principal** is created properly.
 
 ## References
 https://github.com/kubernetes-sigs/azuredisk-csi-driver
