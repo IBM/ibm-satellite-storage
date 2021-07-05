@@ -36,16 +36,13 @@ items:
                 description: OcsClusterSpec defines the desired state of OcsCluster
                 properties:
                   billingType:
-                    default: advanced
+                    default: hourly
                     enum:
-                    - essentials
-                    - advanced
+                    - hourly
+                    - monthly
                     type: string
                   monStorageClassName:
                     type: string
-                  clusterEncryption:
-                    default: false
-                    type: boolean
                   monDevicePaths:
                     items:
                       type: string
@@ -290,10 +287,10 @@ items:
             - /manager
             env:
             - name: CHANNEL
-              value: stable-4.7
+              value: stable-4.6
             - name: WATCH_NAMESPACE
               value: openshift-storage
-            image: "icr.io/obs/ibm-ocs-operator:v4.7.4"
+            image: "icr.io/obs/ibm-ocs-operator:v4.6.4"
             imagePullPolicy: Always
             name: manager
             securityContext:
@@ -333,13 +330,20 @@ items:
       name: {{ ocs-cluster-name }}
       namespace: default
     spec:
-       monStorageClassName: {{ mon-storage-class }}
-       monSize: {{ mon-size }}
-       osdStorageClassName: {{ osd-storage-class }}
-       osdSize: {{ osd-size }}
+       monStorageClassName: localfile
+       monSize: "1"
+       osdStorageClassName: localblock
+       osdSize: "1"
+       monDevicePaths:
+         {{#mon-device-path }}
+         - "{{{ item }}}"
+         {{/mon-device-path }}
+       osdDevicePaths:
+         {{#osd-device-path }}
+         - "{{{ item }}}"
+         {{/osd-device-path }}
        numOfOsd: {{ num-of-osd }}
-       ocsUpgrade: {{ ocs-upgrade }}
-       clusterEncryption: {{ cluster-encryption }}
+       ocsUpgrade: {{ odf-upgrade }}
        {{#worker-nodes?}}
        workerNodes:
        {{/worker-nodes?}}

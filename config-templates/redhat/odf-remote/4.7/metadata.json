@@ -1,7 +1,7 @@
 {
   "name": "4.7",
   "enabled": "true",
-  "description": "OCS template for openshift 4.7 (Local storage)",
+  "description": "ODFtemplate for openshift 4.7 (Remote storage)",
   "tags": [
     {
       "name": "provider",
@@ -21,7 +21,7 @@
     },
     {
       "name": "provider-logo",
-      "value": "logo/odf-local.png"
+      "value": "logo/odf-remote.png"
     },
     {
       "name": "os-version",

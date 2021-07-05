@@ -1,7 +1,7 @@
 {
   "name": "4.6",
   "enabled": "true",
-  "description": "OCS template for openshift 4.6 (Remote storage)",
+  "description": "ODFtemplate for openshift 4.6 (Remote storage)",
   "tags": [
     {
       "name": "provider",

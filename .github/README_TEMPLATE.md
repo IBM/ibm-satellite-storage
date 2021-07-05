@@ -8,11 +8,11 @@ Provide a list of the resources that are provisioned (if any), drivers that are 
 
 <!-- Example summary:
 
-When you create a Satellite configuration using the `ocs-local` template, the following resources are deployed to your clusters.
+When you create a Satellite configuration using the `odf-local` template, the following resources are deployed to your clusters.
 
 - An `openshift-storage` namespace is created.
 - The local disks that you provide are mounted as PVs
-- OSD and MON pods are mounted on the disks that you provide 
+- OSD and MON pods are mounted on the disks that you provide
 - The following storage classes are created
     - sat-ocs-cephrbd-gold
     - sat-ocs-cephfs-gold
@@ -53,7 +53,7 @@ Note that each parameter in your parameter table should include the following de
 
 - Parameter name.
 - Whether or not the parameter is required.
-- How to retrieve the parameter. 
+- How to retrieve the parameter.
 - The default value of the parameter (if applicable).
 
 | Parameter | Required? | Description | Default value if not provided |
@@ -69,7 +69,7 @@ Provide a table of the Satellite storage classes that are installed when your co
 
 | Storage class name | Type | File system | IOPs | Size range | Hard disk | Reclaim policy |
 | --- | --- | --- | --- | --- | --- | --- |
-| `sat-storage-class-name-delete-bronze` | Endurance | NFS | 2 | 20-12000 Gi | SSD | Delete | 
+| `sat-storage-class-name-delete-bronze` | Endurance | NFS | 2 | 20-12000 Gi | SSD | Delete |
 
 
 ## Creating the [Template Name] storage configuration
@@ -95,7 +95,7 @@ ibmcloud sat storage assignment create --name <assignment-name> --cluster-group 
 Provide steps to retrieve any driver pods, storage classes, PVs, PVCs, or any other resources that are deployed with your storage configuration.
 
 ```sh
-oc get pods 
+oc get pods
 ```
 
 ```sh
