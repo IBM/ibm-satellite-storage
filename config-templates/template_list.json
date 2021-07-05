@@ -17,8 +17,8 @@
   },
   {
     "name": "azuredisk-csi-driver",
-    "displayname": "AZUREDISK CSI Driver",
-    "Description": "AZUREDISK CSI Driver[BETA].",
+    "displayname": "Azure Disk CSI Driver",
+    "Description": "Azure Disk CSI Driver",
     "default-version": "1.4.0",
     "enabled": "true",
     "provider": "azure"

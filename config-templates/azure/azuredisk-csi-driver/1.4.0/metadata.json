@@ -1,7 +1,7 @@
 {
     "name": "1.4.0",
     "enabled": "true",
-    "description": "AZURE DISK CSI Driver version 1.4.0[BETA]",
+    "description": "[Beta] - Azure Disk CSI Driver",
     "tags": [
         {
             "name": "provider",
@@ -25,7 +25,7 @@
         },
         {
             "name": "supported-envs",
-            "value": "AZURE"
+            "value": "Azure"
         },
         {
             "name": "supported-k8s-versions",
