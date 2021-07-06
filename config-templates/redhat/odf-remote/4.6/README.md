@@ -5,7 +5,7 @@ Red Hat Openshift Data Foundation is a software-defined storage that is optimise
 The user has to provide the input values to the custom resource OcsCluster while creating the satellite configuration to deploy ODF 
 
 ## Prerequisites
-In order to deploy ODF , the following prerequisites are required.
+In order to deploy ODF, the following prerequisites are required.
 - [Create a Satellite location](cloud.ibm.com/docs/satellite?topic=satellite-locations).
 - [Create a Satellite cluster](cloud.ibm.com/docs/satellite?topic=openshift-satellite-clusters).
 - Your cluster must have a minimum of 3 worker nodes with at least 16CPUs and 64GB RAM per worker node.
@@ -45,7 +45,7 @@ Run the following commands to create a COS instance and create a set of HMAC cre
 | `osd-storage-class` | Required | Enter the storage class name that you want to use for the OSD pods. The storage class must have the `waitForFirstConsumer` volume binding mode.  | N/A | string |
 | `osd-size` | Required | Enter the size of the osd pods | 100Gi | string |
 | `num-of-osd` | Optional | Enter the number of OSDs. ODF will create 3x number of OSDs for the value specified. Initial storage capacity is the same as your osd size specified at `osd-size`. When you want to increase your storage capacity, you have to increase `num-of-osd` by the multiples of `osd-size` | 1 | integer |
-|`worker-nodes` | Optional | Enter the IP addresses of the worker nodes where you want to deploy ODF . If you do not specify the `worker-nodes`, ODF is installed on all of the worker nodes in your cluster. The minimum number of worker nodes that you must specify is 3. | N/A |csv |
+|`worker-nodes` | Optional | Enter the IP addresses of the worker nodes where you want to deploy ODF. If you do not specify the `worker-nodes`, ODF is installed on all of the worker nodes in your cluster. The minimum number of worker nodes that you must specify is 3. | N/A |csv |
 | `billing-type` | Optional | Enter the billing option that you want to use. You can enter either `hourly` or `monthly`. | `hourly` | string |
 | `odf-upgrade` | Optional | Set to `true` if you want to upgrade the major version of ODF while creating a configuration of the newer version. | false | boolean |
 | `ibm-cos-endpoint` | Optional | Enter the IBM COS regional public endpoint. Example: `https://s3.us-east.cloud-object-storage.appdomain.cloud` | N/A | string |

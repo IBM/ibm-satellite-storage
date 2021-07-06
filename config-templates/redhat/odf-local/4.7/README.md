@@ -5,7 +5,7 @@ Red Hat Openshift Data Foundation is a software-defined storage that is optimise
 The user has to provide the input values to the custom resource OcsCluster while creating the satellite configuration to deploy ODF 
 
 ## Prerequisites
-In order to deploy ODF , the following prerequisites are required.
+In order to deploy ODF, the following prerequisites are required.
 - [Create a Satellite location](cloud.ibm.com/docs/satellite?topic=satellite-locations).
 - [Create a Satellite cluster](cloud.ibm.com/docs/satellite?topic=openshift-satellite-clusters).
 - Your hosts must meet the [Satellite host requirements](https://cloud.ibm.com/docs/satellite?topic=satellite-host-reqs) in addition to having one of the following remote storage configurations.
@@ -101,7 +101,7 @@ When you create your ODF configuration, you must specify device paths for the ob
 | `mon-device-path` | Required | Enter the `disk-by-id` paths to the devices that you want to use for the MON pods. Example: `/dev/disk/by-id/scsi-3600605b00d87b43027b3bc310a64c6c9-part1`. | N/A | csv |
 | `osd-device-path` | Required | Enter the `disk-by-id` paths to the devices that you want to use for the OSD pods. Example: `/dev/disk/by-id/scsi-3600605b00d87b43027b3bc310a64c6c9-part2`. | N/A | csv |
 | `num-of-osd` | Optional | Enter the number of OSDs. ODF will create 3x number of OSDs for the value specified. Initial storage capacity is the same as your disk size specified at `osd-device-path`. When you want to increase your storage capacity, you have to increase `num-of-osd` by the number of disks you add (taking into consideration the replication factor, which is `3` by default) | 1 | integer |
-|`worker-nodes` | Optional | Enter the IP addresses of the worker nodes where you want to deploy ODF . If you do not specify the `worker-nodes`, ODF is installed on all of the worker nodes in your cluster. The minimum number of worker nodes that you must specify is 3. | N/A |csv |
+|`worker-nodes` | Optional | Enter the IP addresses of the worker nodes where you want to deploy ODF. If you do not specify the `worker-nodes`, ODF is installed on all of the worker nodes in your cluster. The minimum number of worker nodes that you must specify is 3. | N/A |csv |
 | `billing-type` | Optional | Enter the billing option that you want to use. You can enter either `advanced` or `essentials`. | `advanced` | string |
 | `odf-upgrade` | Optional | Set to `true` if you want to upgrade the major version of ODF while creating a configuration of the newer version. | false | boolean |
 | `ibm-cos-endpoint` | Optional | Enter the IBM COS regional public endpoint. Example: `https://s3.us-east.cloud-object-storage.appdomain.cloud` | N/A | string |
