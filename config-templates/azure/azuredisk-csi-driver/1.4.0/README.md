@@ -1,6 +1,6 @@
 # Azure Disk CSI Driver [BETA]
 
-Azure Disk CSI driver implements the CSI specification for container orchestrators to manage the lifecycle of Azure Disk volumes.
+The Azure Disk CSI driver implements the CSI specification for container orchestrators to manage the lifecycle of Azure Disk volumes.
 
 **Features supported:**
 - Topology(Availability Zone)
