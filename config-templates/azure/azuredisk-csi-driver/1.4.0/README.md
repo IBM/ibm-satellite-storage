@@ -40,20 +40,20 @@ ibmcloud sat storage template get --name azuredisk-csi-driver --version 1.4.0
 
 | Parameter | Required? | Description | Default value if not provided |
 | --- | --- | --- | --- |
-| `cloud-config` | Required | Enter the serialized value that your created from the `azure.json` [conifg file](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/azure.json). | N/A |
+| `cloud-config` | Required | Enter the base64 encoded value that you created from the `azure.json` [conifg file](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/azure.json). | N/A |
 
 
 ## Default storage classes
 
 | Storage class name | IOPS range per disk | Size range | Hard disk | Reclaim policy | Volume Binding Mode |
 | --- | --- | --- | --- | --- | --- |
-| `sat-azure-block-platinum` |  1200 - 160000 | 4 GiB - 64 TiB | SSD | Delete | Immidiate |
+| `sat-azure-block-platinum` |  1200 - 160000 | 4 GiB - 64 TiB | SSD | Delete | Immediate |
 | `sat-azure-block-platinum-metro`  | 1200 - 160000 | 4 GiB - 64 TiB | SSD | Delete | WaitForFirstConsumer |
-| `sat-azure-block-gold` | 120 - 20000 | 32 GiB - 32 TiB | SSD | Delete | Immidiate |
+| `sat-azure-block-gold` | 120 - 20000 | 32 GiB - 32 TiB | SSD | Delete | Immediate |
 | `sat-azure-block-gold-metro` | 120 - 20000 | 32 GiB - 32 TiB | SSD | Delete | WaitForFirstConsumer |
-| `sat-azure-block-silver`  | 120 - 6000 | NA | SSD | Delete | Immidiate |
+| `sat-azure-block-silver`  | 120 - 6000 | NA | SSD | Delete | Immediate |
 | `sat-azure-block-silver-metro` | 120 - 6000 | NA | SSD | Delete | WaitForFirstConsumer |
-| `sat-azure-block-bronze`  | 500 - 2000 | 32 GiB - 32 TiB | HDD | Delete | Immidiate |
+| `sat-azure-block-bronze`  | 500 - 2000 | 32 GiB - 32 TiB | HDD | Delete | Immediate |
 | `sat-azure-block-bronze-metro` | 500 - 2000 | 32 GiB - 32 TiB | HDD | Delete | WaitForFirstConsumer |
 
 
