@@ -12,7 +12,7 @@ In order to deploy ODF, the following prerequisites are required.
 - Your hosts must meet the [Satellite host requirements](https://cloud.ibm.com/docs/satellite?topic=satellite-host-reqs) in addition to having one of the following remote storage configurations.
   * Remote storage available in block mode
 - [Add your Satellite to a cluster group](cloud.ibm.com/docs/satellite?topic=satellite-cluster-config#setup-clusters-satconfig-groups).
-- Your cluster should be compatible with the ODFversion that you're trying to install.
+- Your cluster should be compatible with the ODF version that you're trying to install.
 - The storage class you use for the `mon-storage-class` and `osd-storage-class` parameters should have `VolumeBindingMode` set to `WaitForFirstConsumer` if you're using a multizone cluster
 - [Optional] You must provision an instance of IBM Cloud Object Storage and provide your COS HMAC credentials, the regional public endpoint, and the IBM COS location when you create your storage configuration if you want to use ibm cos as the default backingstore. If not provided, pv-pool will be used.
 
@@ -44,10 +44,10 @@ Run the following commands to create a COS instance and create a set of HMAC cre
 | `mon-size` | Required | Enter the size of the mon pods | 20Gi | string |
 | `osd-storage-class` | Required | Enter the storage class name that you want to use for the OSD pods. The storage class must have the `waitForFirstConsumer` volume binding mode.  | N/A | string |
 | `osd-size` | Required | Enter the size of the osd pods | 100Gi | string |
-| `num-of-osd` | Optional | Enter the number of OSDs. ODFwill create 3x number of OSDs for the value specified. Initial storage capacity is the same as your osd size specified at `osd-size`. When you want to increase your storage capacity, you have to increase `num-of-osd` by the multiples of `osd-size` | 1 | integer |
-|`worker-nodes` | Optional | Enter the IP addresses of the worker nodes where you want to deploy ODF. If you do not specify the `worker-nodes`, ODFis installed on all of the worker nodes in your cluster. The minimum number of worker nodes that you must specify is 3. | N/A |csv |
+| `num-of-osd` | Optional | Enter the number of OSDs. ODF will create 3x number of OSDs for the value specified. Initial storage capacity is the same as your osd size specified at `osd-size`. When you want to increase your storage capacity, you have to increase `num-of-osd` by the multiples of `osd-size` | 1 | integer |
+|`worker-nodes` | Optional | Enter the IP addresses of the worker nodes where you want to deploy ODF . If you do not specify the `worker-nodes`, ODF is installed on all of the worker nodes in your cluster. The minimum number of worker nodes that you must specify is 3. | N/A |csv |
 | `billing-type` | Optional | Enter the billing option that you want to use. You can enter either `advanced` or `essentials`. | `advanced` | string |
-| `odf-upgrade` | Optional | Set to `true` if you want to upgrade the major version of ODFwhile creating a configuration of the newer version. | false | boolean |
+| `odf-upgrade` | Optional | Set to `true` if you want to upgrade the major version of ODF while creating a configuration of the newer version. | false | boolean |
 | `ibm-cos-endpoint` | Optional | Enter the IBM COS regional public endpoint. Example: `https://s3.us-east.cloud-object-storage.appdomain.cloud` | N/A | string |
 | `ibm-cos-location` | Optional | Enter the IBM COS regional location. Example: `us-east-standard` | N/A | string |
 | `ibm-cos-access-key` | Optional | Enter your IBM COS access key ID. | N/A | string |
@@ -106,7 +106,7 @@ Run the following commands to create a COS instance and create a set of HMAC cre
     satellite-odf-template-test   b201d0ed-a4aa-414c-b0eb-0c4437797e95   c040tu4w0h6c6s5s9irg   
     ```
 
-5. Create a storage configuration using the existing ODFtemplate.
+5. Create a storage configuration using the existing ODF template.
     ```
     ibmcloud sat storage config create --name odf-config --template-name odf-remote --template-version 4.7 -p "ocs-cluster-name=testocscluster" -p "mon-storage-class=vpc-custom-10iops-tier" -p "mon-size=50Gi" -p "osd-storage-class=vpc-custom-10iops-tier" -p "osd-size=150Gi" -p "num-of-osd=1" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90" -p "ibm-cos-endpoint=https://s3.us-east.cloud-object-storage.appdomain.cloud" -p "ibm-cos-location=us-east-standard" -p "ibm-cos-access-key=xxx" -p "ibm-cos-secret-key=yyy"
     ```
@@ -120,7 +120,7 @@ Run the following commands to create a COS instance and create a set of HMAC cre
 
 ## Creating the storage assignment
 
-1. Run the following command to assign your ODFstorage configuration to your cluster group. Note that the ODFinstallation takes about 15 minutes.
+1. Run the following command to assign your ODF storage configuration to your cluster group. Note that the ODF installation takes about 15 minutes.
     ```
     ibmcloud sat storage assignment create --name odf-sub --group test-group2 --config odf-config
     ```
@@ -131,7 +131,7 @@ Run the following commands to create a COS instance and create a set of HMAC cre
     Assignment odf-sub was successfully created with ID 575cb060-b1ad-49fa-ab1a-7ce861fabc41.
     ```
 
-2. Verify that your ODFstorage configuration is assigned to your clusters by getting the status of your ODFstorage cluster.
+2. Verify that your ODF storage configuration is assigned to your clusters by getting the status of your ODF storage cluster.
     ```
     oc get storagecluster -n openshift-storage
     ```
@@ -142,7 +142,7 @@ Run the following commands to create a COS instance and create a set of HMAC cre
     ocs-storagecluster   5m14s   Ready              2021-03-02T11:46:41Z   4.7.0
     ```
 
-3. List the ODFpods that are installed and verify that the status is `Running`.
+3. List the ODF pods that are installed and verify that the status is `Running`.
     ```
     oc get pods -n openshift-storage
     ```
@@ -185,11 +185,11 @@ Run the following commands to create a COS instance and create a set of HMAC cre
     rook-ceph-rgw-ocs-storagecluster-cephobjectstore-b-5ddd9d546mcc   1/1     Running     0          2m18s
     ```
 
-## Scaling your ODFconfiguration:
+## Scaling your ODF configuration:
 
 **Important: Do not delete your storage configurations or assignments. Deleting configurations and assignments might result in data loss.**
 
-You can scale your ODFconfiguration by increasing the `num-of-osd` parameter.
+You can scale your ODF configuration by increasing the `num-of-osd` parameter.
 
 **Note :** You can only scale in increments of `osd-size` provided by you in the initial storage configuration.
 
@@ -213,13 +213,13 @@ You can scale your ODFconfiguration by increasing the `num-of-osd` parameter.
     ibmcloud sat storage assignment create --name odf-sub2 --group test-group2 --config odf-config2
     ```
 
-## Upgrading your ODFversion :
+## Upgrading your ODF version :
 
 **Important: Do not delete your storage configurations or assignments. Deleting configurations and assignments might result in data loss.**
 
-To upgrade the ODFversion of your configuration, get the details of your configuration and create a new configuration with the same `ocs-cluster-name` and details, but with the `template-version` set to the version you want to upgrade to and set the `odf-upgrade` parameter to `true`.
+To upgrade the ODF version of your configuration, get the details of your configuration and create a new configuration with the same `ocs-cluster-name` and details, but with the `template-version` set to the version you want to upgrade to and set the `odf-upgrade` parameter to `true`.
 
-In the following example, the ODFconfiguration is updated to use template version 4.8:
+In the following example, the ODF configuration is updated to use template version 4.8:
     - `name` - Enter a name for your new configuration.
     - `template-name` - This parameter remains the same as the existing configuration.
     - `template-version` - Enter the template version that you want to use to upgrade your configuration.
@@ -236,7 +236,7 @@ In the following example, the ODFconfiguration is updated to use template versio
     - `ibm-cos-secret-key` - This parameter remains the same as the existing configuration.
     - `odf-upgrade` - Enter `true` to upgrade your `ocs-cluster` to the template version that you specified.
 
-1. Get the details of your ODFconfiguration.
+1. Get the details of your ODF configuration.
     ```
     ic sat storage config get <config-name>
     ```
@@ -247,7 +247,7 @@ In the following example, the ODFconfiguration is updated to use template versio
     kubectl get ocscluster <ocs-cluster-name>
     ```
 
-3. Save the configuration details. When you upgrade your ODFversion, you must enter the same configuration details and set the `template-version` to the version you want to upgrade to and set the `odf-upgrade` parameter to `true`.
+3. Save the configuration details. When you upgrade your ODF version, you must enter the same configuration details and set the `template-version` to the version you want to upgrade to and set the `odf-upgrade` parameter to `true`.
   ```
   ibmcloud sat storage config create --name odf-config --template-name odf-remote --template-version 4.8 -p "ocs-cluster-name=testocscluster" -p "mon-storage-class=vpc-custom-10iops-tier" -p "mon-size=50Gi" -p "osd-storage-class=vpc-custom-10iops-tier" -p "osd-size=150Gi" -p "num-of-osd=1" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90" -p "odf-upgrade=true" -p "ibm-cos-endpoint=https://s3.us-east.cloud-object-storage.appdomain.cloud" -p "ibm-cos-location=us-east-standard" -p "ibm-cos-access-key=xxx" -p "ibm-cos-secret-key=yyy"
   ```
@@ -296,9 +296,9 @@ Check the status of your storage cluster.
        storageClusterStatus: Ready
     ```
 
-If the `storageClusterStatus` is `Progressing` or `Error`, the ODFinstallation has failed.
+If the `storageClusterStatus` is `Progressing` or `Error`, the ODF installation has failed.
 
-### If your ODFinstallation fails, complete the following the steps to troubleshoot your deployment.
+### If your ODF installation fails, complete the following the steps to troubleshoot your deployment.
 1. Check the describe of storagecluster and cephcluster in the openshift-storage namespace and look at the `Events` and the `Status` sections
 
     ```
@@ -306,12 +306,12 @@ If the `storageClusterStatus` is `Progressing` or `Error`, the ODFinstallation h
     oc describe cephcluster -n openshift-storage
     ```
 
-2. You can use the toolbox available in rook community to debug ODFdeploy issues. Run the following command to install the toolbox.
+2. You can use the toolbox available in rook community to debug ODF deploy issues. Run the following command to install the toolbox.
     ```
     oc patch ocsinitialization ocsinit -n openshift-storage --type json --patch  '[{ "op": "replace", "path": "/spec/enableCephTools", "value": true }]'
     ```
 
-## Removing your ODFconfiguration
+## Removing your ODF configuration
 
 1. List your storage assignments and find the one that you used for your cluster.
     ```

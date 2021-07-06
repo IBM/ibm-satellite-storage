@@ -1,6 +1,6 @@
 [
   {
-    "description": "Specify a name for your ODFstorage cluster.",
+    "description": "Specify a name for your ODF storage cluster.",
     "displayname": "Cluster Name",
     "name": "ocs-cluster-name",
     "required": "true"
@@ -58,7 +58,7 @@
     "type": "boolean"
   },
   {
-    "description": "The billing type for your ODFconfiguration.",
+    "description": "The billing type for your ODF configuration.",
     "displayname": "Billing type",
     "name": "billing-type",
     "default": "advanced",

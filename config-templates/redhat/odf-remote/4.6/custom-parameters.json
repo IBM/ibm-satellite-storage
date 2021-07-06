@@ -1,6 +1,6 @@
 [
   {
-    "description": "Specify a name for your ODFstorage cluster.",
+    "description": "Specify a name for your ODF storage cluster.",
     "displayname": "Cluster Name",
     "name": "ocs-cluster-name",
     "required": "true"
@@ -43,22 +43,22 @@
     "required": "false"
   },
   {
-    "description": "The IP addresses of the worker nodes where you want to deploy ODF. The minimum number of worker nodes is 3.",
+    "description": "The IP addresses of the worker nodes where you want to deploy ODF . The minimum number of worker nodes is 3.",
     "displayname": "worker nodes",
     "name": "worker-nodes",
     "required": "false",
     "type": "csv"
   },
   {
-    "description": "Set to 'true' if you want to upgrade the ODFversion.",
-    "displayname": "ODFupgrade",
+    "description": "Set to 'true' if you want to upgrade the ODF version.",
+    "displayname": "ODF upgrade",
     "name": "odf-upgrade",
     "default": "false",
     "required": "false",
     "type": "boolean"
   },
   {
-    "description": "The billing type for your ODFconfiguration.",
+    "description": "The billing type for your ODF configuration.",
     "displayname": "Billing type",
     "name": "billing-type",
     "default": "hourly",
