@@ -42,7 +42,7 @@
   {
     "name": "odf-local",
     "displayname": "OpenShift Data Foundation for local devices",
-    "Description": "OpenShift Data Foundation storage for local devices.",
+    "Description": "OpenShift Data Foundation for local devices.",
     "default-version": "4.7",
     "enabled": "true",
     "provider": "redhat"
