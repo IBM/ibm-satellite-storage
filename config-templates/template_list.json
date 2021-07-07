@@ -49,7 +49,7 @@
   },
   {
     "name": "odf-remote",
-    "displayname": "OpenShift Data Foundation storage for remote storage",
+    "displayname": "OpenShift Data Foundation for remote storage",
     "Description": "OpenShift Data Foundation storage for remote storage.",
     "default-version": "4.7",
     "enabled": "true",
