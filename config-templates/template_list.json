@@ -16,6 +16,14 @@
     "provider": "aws"
   },
   {
+    "name": "azuredisk-csi-driver",
+    "displayname": "Azure Disk CSI Driver",
+    "Description": "Azure Disk CSI Driver",
+    "default-version": "1.4.0",
+    "enabled": "true",
+    "provider": "azure"
+  },
+  {
     "name": "netapp-trident",
     "displayname": "NetApp Trident Operator",
     "Description": "NetApp Trident Operator.",
