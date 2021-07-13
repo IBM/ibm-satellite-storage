@@ -1,0 +1,34 @@
+[
+	{
+	  "description": "The storage class name.",
+	  "displayname": "Storage Class Name",
+	  "name": "name",
+	  "templateKeyName": [
+		  "name"
+	  ],
+	  "required": "true",
+	  "category": "config"
+	}, {
+	  "description": "Specify 'true' or 'false' to make the created storage class the default class.",
+	  "displayname": "Default",
+	  "name": "is-default-class",
+	  "templateKeyName": [
+		  "storageclass.kubernetes.io/is-default-class"
+	  ],
+	  "default": "false",
+	  "required": "false",
+	  "category": "config",
+	  "type": "text"
+	}, {
+	  "description": "The selector label.",
+	  "displayname": "Selector",
+	  "name": "selector",
+	  "templateKeyName": [
+		  "selector"
+	  ],
+	  "required": "true",
+	  "category": "config",
+	  "type": "text"
+	}
+  ]
+  

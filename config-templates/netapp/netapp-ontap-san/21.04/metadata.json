@@ -1,0 +1,59 @@
+{
+  "name": "21.04",
+  "enabled": "true",
+  "description": "Netapp Ontap-SAN Driver.",
+  "tags": [
+    {
+      "name": "template-dependency",
+      "value": "netapp-trident"
+    }, {
+      "name": "template-dependency-version",
+      "value": "21.04"
+    }, {
+      "name": "template-dependency-description",
+      "value": "Install netapp-trident before installing ontap-san driver."
+    }, {
+      "name": "provider",
+      "value": "netapp"
+    }, {
+      "name": "offering-name",
+      "value": "ontap-san"
+    }, {
+      "name": "provider-url",
+      "value": "https://netapp-trident.readthedocs.io/en/stable-v21.04/support/support.html"
+    }, {
+      "name": "support-msg",
+      "value": "For support contact NetApp"
+    }, {
+      "name": "provider-logo",
+      "value": "logo/netapp-ontap-san.png"
+    }, {
+      "name": "supported-envs",
+      "value": "AWS,Azure,IBM"
+    }, {
+      "name": "supported-k8s-versions",
+      "value": "1.17,1.18,1.19"
+    }, {
+      "name": "volume-type",
+      "value": "block"
+    }, {
+      "name": "volume-encryption-at-rest",
+      "value": "true"
+    }, {
+      "name": "volume-encryption-in-transit",
+      "value": "true"
+    }, {
+      "name": "volume-snapshot",
+      "value": "true"
+    }, {
+      "name": "volume-availability",
+      "value": "zonal"
+    }, {
+      "name": "volume-expansion",
+      "value": "true"
+    }, {
+      "name": "storageclass",
+      "value": "gold,silver,bronze"
+    }
+  ]
+}
