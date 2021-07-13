@@ -48,17 +48,17 @@
     "provider": "netapp"
   },
   {
-    "name": "ocs-local",
-    "displayname": "OpenShift Container Storage Operator for local devices",
-    "Description": "OpenShift Container Storage Operator for local devices.",
+    "name": "odf-local",
+    "displayname": "OpenShift Data Foundation for local devices",
+    "Description": "OpenShift Data Foundation for local devices.",
     "default-version": "4.7",
     "enabled": "true",
     "provider": "redhat"
   },
   {
-    "name": "ocs-remote",
-    "displayname": "OpenShift Container Storage Operator for remote storage",
-    "Description": "OpenShift Container Storage Operator for remote storage.",
+    "name": "odf-remote",
+    "displayname": "OpenShift Data Foundation for remote storage",
+    "Description": "OpenShift Data Foundation for remote storage.",
     "default-version": "4.7",
     "enabled": "true",
     "provider": "redhat"

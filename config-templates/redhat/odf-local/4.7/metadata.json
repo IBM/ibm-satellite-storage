@@ -1,7 +1,7 @@
 {
   "name": "4.7",
   "enabled": "true",
-  "description": "OCS template for openshift 4.7 (Local storage)",
+  "description": "ODF template for openshift 4.7 (Local storage)",
   "tags": [
     {
       "name": "provider",
