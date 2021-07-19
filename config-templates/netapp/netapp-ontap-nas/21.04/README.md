@@ -39,8 +39,8 @@ ibmcloud sat storage template get --name netapp-ontap-nas --version 21.04
 | `export-policy` | Optional | Provide the name of an NFS export policy to use. Example: `remote-workers`. | `default` |
 | `username` | Required | The username to connect to the storage device. | N/A |
 | `password` | Required | The password to connect to the storage device. | N/A |
-| `limitVolumeSize` | Optional | Maximum volume size that can be requested and qtree parent volume size. Example: `50Gi` | `(not enforced by default)` |
-| `limitAggregateUsage` | Optional | Limit provisioning of volumes if parent volume usage exceeds this value. For example, if a volume is requested that causes parent volume usage to exceed this value, the volume provisioning fails. Example: `80%` | `(not enforced by default)` |
+| `limitVolumeSize` | Optional | Maximum volume size that can be requested per PVC. Example: `500Gi` | `default is 50Gi` |
+| `limitAggregateUsage` | Optional | Limit provisioning of volumes if parent volume usage exceeds this value. For example, if a volume is requested that causes parent volume usage to exceed this value, the volume provisioning fails. Example: `70%` | `default is 80%` |
 | `nfsMountOptions` | Optional | Specify the NFS mount version. Example: `nfsvers=4` | `""` |
 
 
@@ -50,13 +50,25 @@ The following storage classes are installed when you assign your `netapp-ontap-n
 
 | Storage class name | Type | File system | IOPs | Reclaim policy |
 | --- | --- | --- | --- | --- |
-| `ntap-file-gold` | Ontap-NAS | NFS | user defined**\*** | Delete |
-| `ntap-file-silver` | Ontap-NAS | NFS | user defined**\*** | Delete |
-| `ntap-file-bronze` | Ontap-NAS | NFS | user defined**\*** | Delete | 
-| `ntap-file-default` | Ontap-NAS | NFS | n/a | Delete | 
+| `sat-netapp-file-gold` | Ontap-NAS | NFS | no QoS limits, encryption off | Delete |
+| `sat-netapp-file-gold-encrypted` | Ontap-NAS | NFS | no QoS limits, encryption enabled | Delete |
+| `sat-netapp-file-silver` | Ontap-NAS | NFS | user defined QoS limit **\*, encryption off | Delete |
+| `sat-netapp-file-silver-encrypted` | Ontap-NAS | NFS | user defined QoS limit **\*, encryption enabled | Delete |
+| `sat-netapp-file-bronze` | Ontap-NAS | NFS | user defined QoS limit **\*, encryption off | Delete |
+| `sat-netapp-file-bronze-encrypted` | Ontap-NAS | NFS | user defined QoS limit **\*, encryption enabled | Delete |
 
-**\*NOTE**: In order to use the **ntap-file-gold**, **ntap-file-silver** or **ntap-file-bronze** storage classes, the must be QoS Policy groups named **gold**, **silver**,and/or **bronze** on the storage controller.
-For information on creating and managing QoS Policy groups, please refer to the [ONTAP 9 Storage Management documentation](https://docs.netapp.com/ontap-9/index.jsp).  If you choose not to use QoS policies, you must use the **ntap-file-default** storage class to create your PVCs.
+**\*NOTE**: By default, **sat-netapp-file-gold** will have no QoS limits (unlimited IOPS). In order to use the **sat-netapp-file-silver** and **sat-netapp-file-bronze** storage classes, you must create **silver** and **bronze** QoS policy groups on the storage controller defining the desired QoS limits for silver and bronze. To create a policy group on the storage system, login to the system CLI and run the following command:
+
+```
+netapp1::> qos policy-group create -policy-group <policy_group_name> -vserver <svm_name> [-min-throughput <min_IOPS>] -max-throughput <max_IOPS>
+```
+**NOTE** - ***min-throughput*** is only supported on all-flash systems. For information on creating and managing QoS Policy groups, please refer to the [ONTAP 9 Storage Management documentation](https://docs.netapp.com/ontap-9/index.jsp).
+
+In order to use any of the ***encrypted*** storage classes, NetApp Volume Encryption (NVE) must be enabled on the storage system using either the NetApp ONTAP onboard key manager or a supported (off-box) third party key manager, such as IBM's TKLM key manager.  To enable the onboard key manager, type the following command:
+```
+netapp1::> security key-manager onboard enable
+```
+For more information on configuring encryption, please refer to the [ONTAP 9 Security and Data Encryption documentation](https://docs.netapp.com/ontap-9/topic/com.netapp.nav.aac/home.html?cp=14)
 
 
 ## Creating the NetApp Ontap-NAS Driver storage configuration

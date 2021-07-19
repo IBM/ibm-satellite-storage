@@ -43,16 +43,30 @@ ibmcloud sat storage template get --name netapp-ontap-san --version 21.04
 
 ## Default storage classes
 
-The following storage classes are installed when you assign your `netapp-ontap-san` configuration to your clusters to allow you to take advantage of ONTAP's QoS features:
+The following storage classes are installed when you assign your `netapp-ontap-nas` configuration to your clusters to allow you to take advantage of ONTAP's QoS features:
 
 | Storage class name | Type | File system | IOPs | Reclaim policy |
 | --- | --- | --- | --- | --- |
-| `ntap-block-gold` | Ontap-SAN | Block | user defined**\*** | Delete |
-| `ntap-block-silver` | Ontap-SAN | Block | user defined**\*** | Delete |
-| `ntap-block-bronze` | Ontap-SAN | Block | user defined**\*** | Delete | 
-| `ntap-block-default` | Ontap-SAN | Block | n/a | Delete | 
+| `sat-netapp-block-gold` | Ontap-SAN | ext4 | no QoS limits, encryption off | Delete |
+| `sat-netapp-block-gold-encrypted` | Ontap-SAN | ext4 | no QoS limits, encryption enabled | Delete |
+| `sat-netapp-block-silver` | Ontap-SAN | ext4 | user defined QoS limit **\*, encryption off | Delete |
+| `sat-netapp-block-silver-encrypted` | Ontap-SAN | ext4 | user defined QoS limit **\*, encryption enabled | Delete |
+| `sat-netapp-block-bronze` | Ontap-SAN | ext4 | user defined QoS limit **\*, encryption off | Delete |
+| `sat-netapp-block-bronze-encrypted` | Ontap-SAN | ext4 | user defined QoS limit **\*, encryption enabled | Delete |
 
-**\*NOTE**: In order to use the **ntap-block-gold**, **ntap-block-silver** or **ntap-block-bronze** storage classes there must be QoS Policy groups named: **gold**, **silver**, and/or **bronze** on the storage controller. For information on creating and managing QoS Policy groups, please refer to the [ONTAP 9 Storage Management documentation](https://docs.netapp.com/ontap-9/index.jsp). If you choose not to use QoS policies, you must use the **ntap-block-default** storage class to create your PVCs.
+**\*NOTE**: By default, **sat-netapp-block-gold** will have no QoS limits (unlimited IOPS). In order to use the **sat-netapp-block-silver** and **sat-netapp-block-bronze** storage classes, you must create **silver** and **bronze** QoS policy groups on the storage controller defining the desired QoS limits for silver and bronze. To create a policy group on the storage system, login to the system CLI and run the following command:
+
+```
+netapp1::> qos policy-group create -policy-group <policy_group_name> -vserver <svm_name> [-min-throughput <min_IOPS>] -max-throughput <max_IOPS>
+```
+**NOTE** - ***min-throughput*** is only supported on all-flash systems. For information on creating and managing QoS Policy groups, please refer to the [ONTAP 9 Storage Management documentation](https://docs.netapp.com/ontap-9/index.jsp).
+
+In order to use any of the ***encrypted*** storage classes, NetApp Volume Encryption (NVE) must be enabled on the storage system using either the NetApp ONTAP onboard key manager or a supported (off-box) third party key manager, such as IBM's TKLM key manager.  To enable the onboard key manager, type the following command:
+```
+netapp1::> security key-manager onboard enable
+```
+For more information on configuring encryption, please refer to the [ONTAP 9 Security and Data Encryption documentation](https://docs.netapp.com/ontap-9/topic/com.netapp.nav.aac/home.html?cp=14)
+
 
 ## Creating the NetApp Ontap-SAN Driver storage configuration
 

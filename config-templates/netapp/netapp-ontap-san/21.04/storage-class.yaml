@@ -10,7 +10,7 @@ items:
     kind: StorageClass
     metadata:
       name: sat-netapp-block-gold
-    provisioner: csi.trident.netapp.io
+    provisioner: netapp.io/trident
     parameters:
       backendType: "ontap-san"
       selector: "quality=block-gold"
@@ -18,7 +18,7 @@ items:
     kind: StorageClass
     metadata:
       name: sat-netapp-block-silver
-    provisioner: csi.trident.netapp.io
+    provisioner: netapp.io/trident
     parameters:
       backendType: "ontap-san"
       selector: "quality=block-silver"
@@ -26,17 +26,31 @@ items:
     kind: StorageClass
     metadata:
       name: sat-netapp-block-bronze
-    provisioner: csi.trident.netapp.io
+    provisioner: netapp.io/trident
     parameters:
       backendType: "ontap-san"
       selector: "quality=block-bronze"
   - apiVersion: storage.k8s.io/v1
     kind: StorageClass
     metadata:
-      name: sat-netapp-block-default
-      annotations: 
-        storageclass.kubernetes.io/is-default-class: "true"
-    provisioner: csi.trident.netapp.io
+      name: sat-netapp-block-gold-encrypted
+    provisioner: netapp.io/trident
     parameters:
       backendType: "ontap-san"
-      selector: "quality=block-default"
+      selector: "quality=block-gold-encrypted"
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-netapp-block-silver-encrypted
+    provisioner: netapp.io/trident
+    parameters:
+      backendType: "ontap-san"
+      selector: "quality=block-silver-encrypted"
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-netapp-block-bronze-encrypted
+    provisioner: netapp.io/trident
+    parameters:
+      backendType: "ontap-san"
+      selector: "quality=block-bronze-encrypted"
