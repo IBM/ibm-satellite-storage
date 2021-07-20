@@ -78,7 +78,7 @@ Create a Satellite storage configuration that uses the `netapp-ontap-nas` templa
 **Example `sat storage config create` command**
 Create a Satellite storage configuration by using the `netapp-ontap-nas` template.
 ```
-ibmcloud sat storage config create --name 'ontapnas-config' --template-name 'netapp-ontap-nas' --template-version '21.04' -p 'managementLIF=10.0.0.1' -p 'dataLIF=10.0.0.2' -p 'svm=svm-nas' -p 'username=admin' -p 'password=<admin password>' -p 'exportPolicy=nfsexport'
+ibmcloud sat storage config create --name 'ontapnas-config' --location <location id> --template-name 'netapp-ontap-nas' --template-version '21.04' -p 'managementLIF=10.0.0.1' -p 'dataLIF=10.0.0.2' -p 'svm=svm-nas' -p 'username=admin' -p 'password=<admin password>' -p 'exportPolicy=nfsexport'
 ```
 
 ## Creating the storage assignment
