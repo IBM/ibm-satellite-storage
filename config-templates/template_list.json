@@ -3,7 +3,7 @@
     "name": "aws-efs-csi-driver",
     "displayname": "AWS EFS CSI Driver",
     "Description": "AWS EFS CSI Driver.",
-    "default-version": "1.0.0",
+    "default-version": "1.2.2",
     "enabled": "true",
     "provider": "aws"
   },
@@ -11,9 +11,17 @@
     "name": "aws-ebs-csi-driver",
     "displayname": "AWS EBS CSI Driver",
     "Description": "AWS EBS CSI Driver.",
-    "default-version": "0.8.2",
+    "default-version": "0.9.14",
     "enabled": "true",
     "provider": "aws"
+  },
+  {
+    "name": "azuredisk-csi-driver",
+    "displayname": "Azure Disk CSI Driver",
+    "Description": "Azure Disk CSI Driver",
+    "default-version": "1.4.0",
+    "enabled": "true",
+    "provider": "azure"
   },
   {
     "name": "netapp-trident",
@@ -40,18 +48,18 @@
     "provider": "netapp"
   },
   {
-    "name": "ocs-local",
-    "displayname": "OpenShift Container Storage Operator for local devices",
-    "Description": "OpenShift Container Storage Operator for local devices.",
-    "default-version": "4.6",
+    "name": "odf-local",
+    "displayname": "OpenShift Data Foundation for local devices",
+    "Description": "OpenShift Data Foundation for local devices.",
+    "default-version": "4.7",
     "enabled": "true",
     "provider": "redhat"
   },
   {
-    "name": "ocs-remote",
-    "displayname": "OpenShift Container Storage Operator for remote storage",
-    "Description": "OpenShift Container Storage Operator for remote storage.",
-    "default-version": "4.6",
+    "name": "odf-remote",
+    "displayname": "OpenShift Data Foundation for remote storage",
+    "Description": "OpenShift Data Foundation for remote storage.",
+    "default-version": "4.7",
     "enabled": "true",
     "provider": "redhat"
   },
