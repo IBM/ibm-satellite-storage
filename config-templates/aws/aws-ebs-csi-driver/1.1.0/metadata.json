@@ -21,7 +21,7 @@
     },
     {
       "name": "provider-logo",
-      "value": "logo/aws-ebs-csi-driver.png"
+      "value": "logo/aws-ebs-csi-driver.svg"
     },
     {
       "name": "supported-envs",
