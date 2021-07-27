@@ -8,3 +8,4 @@ provisioner: csi.trident.netapp.io
 parameters:
   backendType: "ontap-san"
   selector: "{{ selector }}"
+  fsType: "{{ fsType }}"

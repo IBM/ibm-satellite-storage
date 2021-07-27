@@ -29,6 +29,18 @@
 	  "required": "true",
 	  "category": "config",
 	  "type": "text"
+	}, {
+	  "description": "The file system type.",
+	  "displayname": "File System",
+	  "name": "fsType",
+	  "templateKeyName": [
+		  "fsType"
+	  ],
+	  "default": "ext4",
+      "required": "false",
+	  "category": "config",
+	  "type": "text"
 	}
+
   ]
   
