@@ -9,4 +9,4 @@ parameters:
   backendType: "ontap-san"
   selector: "{{ selector }}"
   fsType: "{{ ext4 }}"
-allowVolumeExtension: "{{ allowVolumeExtension }}"
+allowVolumeExpansion: "{{ allowVolumeExpansion }}"
