@@ -14,7 +14,7 @@ items:
     parameters:
       backendType: "ontap-san"
       selector: "quality=block-gold"
-	  fsType: "ext4"
+      fsType: "ext4"
     allowVolumeExpansion: True
   - apiVersion: storage.k8s.io/v1
     kind: StorageClass
@@ -24,7 +24,7 @@ items:
     parameters:
       backendType: "ontap-san"
       selector: "quality=block-silver"
-	  fsType: "ext4"
+      fsType: "ext4"
     allowVolumeExpansion: True
   - apiVersion: storage.k8s.io/v1
     kind: StorageClass
@@ -34,7 +34,7 @@ items:
     parameters:
       backendType: "ontap-san"
       selector: "quality=block-bronze"
-	  fsType: "ext4"
+      fsType: "ext4"
     allowVolumeExpansion: True
   - apiVersion: storage.k8s.io/v1
     kind: StorageClass
@@ -44,7 +44,7 @@ items:
     parameters:
       backendType: "ontap-san"
       selector: "quality=block-gold-encrypted"
-	  fsType: "ext4"
+      fsType: "ext4"
     allowVolumeExpansion: True
   - apiVersion: storage.k8s.io/v1
     kind: StorageClass
@@ -54,7 +54,7 @@ items:
     parameters:
       backendType: "ontap-san"
       selector: "quality=block-silver-encrypted"
-	  fsType: "ext4"
+      fsType: "ext4"
     allowVolumeExpansion: True
   - apiVersion: storage.k8s.io/v1
     kind: StorageClass
@@ -64,6 +64,5 @@ items:
     parameters:
       backendType: "ontap-san"
       selector: "quality=block-bronze-encrypted"
-	  fsType: "ext4"
+      fsType: "ext4"
     allowVolumeExpansion: True
-	  
