@@ -310,6 +310,7 @@ items:
     metadata:
       labels:
         openshift.io/cluster-monitoring: "true"
+        deploy.razee.io/Reconcile: "false"
       name: openshift-storage
   - apiVersion: v1
     kind: Secret

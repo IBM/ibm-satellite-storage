@@ -10,6 +10,8 @@ items:
     kind: Namespace
     metadata:
       name: "{{ namespace }}"
+      labels:
+        deploy.razee.io/Reconcile: "false"
   - apiVersion: operators.coreos.com/v1
     kind: OperatorGroup
     metadata:

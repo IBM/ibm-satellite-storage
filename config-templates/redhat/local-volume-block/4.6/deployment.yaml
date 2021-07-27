@@ -11,6 +11,8 @@ items:
     kind: Namespace
     metadata:
       name: local-storage
+      labels:
+        deploy.razee.io/Reconcile: "false"
   - apiVersion: operators.coreos.com/v1alpha2
     kind: OperatorGroup
     metadata:
