@@ -11,10 +11,10 @@ Local persistent volumes allow you to access local storage devices, such as a di
    - In next page click on `Display Token`
    - Under `Log in with this token` the `oc login --token=XXXX ...` will be displayed, copy the command and execute on your local system
 
-    **Note** The target cluster version should be 4.6.X to use the local-volume-block version 4.6 template.
+    **Note** The target cluster version should be 4.7.X to use the local-volume-block version 4.7 template.
 
 3. Add label to the worker nodes, one with additional disk
-   - Get the nodes 
+   - Get the nodes
      ```
      $ oc get nodes
      NAME           STATUS   ROLES           AGE   VERSION
@@ -23,15 +23,15 @@ Local persistent volumes allow you to access local storage devices, such as a di
      52.117.85.9    Ready    master,worker   20d   v1.18.3+fa69cae
      ```
    - Add label to nodes
-     ```   
+     ```
      $ oc label nodes 52.117.85.9 52.117.85.12 "storage=localvol"
      node/52.117.85.9 labeled
      node/52.117.85.12 labeled
      ```
 
 4. Login using IBM Cloud CLI
-   - Login 
-     ``` 
+   - Login
+     ```
      $ ibmcloud login --sso -a https://cloud.ibm.com -r us-east -g default -u <IBMid>
      ```
 
@@ -44,17 +44,17 @@ Local persistent volumes allow you to access local storage devices, such as a di
 
 ## Local Volume parameters & how to retrieve them
 
-Parameter | Required? | Description | Default value if not provided | 
+Parameter | Required? | Description | Default value if not provided |
 --- | --- | --- | --- |
-`label-key` | Required | You can retrieve this parameter by using ```$ oc get nodes --show-labels``` command | N/A | 
-`label-value` | Required | You can retrieve this parameter by using ```$ oc get nodes --show-labels``` command | N/A | 
-`devicepath` | Required |You can retrieve this parameter by using following commands ```$ oc get nodes``` ```$ oc debug node/<node name> ``` ```# chroot /host``` ```# lsblk``` | N/A | 
+`label-key` | Required | You can retrieve this parameter by using ```$ oc get nodes --show-labels``` command | N/A |
+`label-value` | Required | You can retrieve this parameter by using ```$ oc get nodes --show-labels``` command | N/A |
+`devicepath` | Required |You can retrieve this parameter by using following commands ```$ oc get nodes``` ```$ oc debug node/<node name> ``` ```# chroot /host``` ```# lsblk``` | N/A |
 
 ## Default storage classes
 
 | Storage class name | Type | File system | IOPs | Size range | Hard disk | Reclaim policy |
 | --- | --- | --- | --- | --- | --- | --- |
-| `sat-local-block-gold ` | Block | N/A | N/A | N/A | N/A | Retain | 
+| `sat-local-block-gold ` | Block | N/A | N/A | N/A | N/A | Retain |
 
 
 ## Creating the Local Volume Block storage configuration
@@ -62,7 +62,7 @@ Parameter | Required? | Description | Default value if not provided |
 **Example `sat storage config create` command**
 
 ```sh
-ibmcloud sat storage config create --name localvol-block-config --template-name local-volume-block --template-version 4.6 -p "label-key=storage" -p "label-value=localvol" -p "devicepath=/dev/xvdc"
+ibmcloud sat storage config create --name localvol-block-config --template-name local-volume-block --template-version 4.7 -p "label-key=storage" -p "label-value=localvol" -p "devicepath=/dev/xvdc"
 ```
 ## Creating the storage assignment
 
@@ -75,7 +75,7 @@ ibmcloud sat storage assignment create --name localvol-block-assign --group satC
 ## Verifying your Local Volume Block storage configuration is assigned to your clusters
    ```
    $ oc get all -n local-storage
-   
+
    NAME                                         READY   STATUS    RESTARTS   AGE
    pod/local-disk-local-diskmaker-qdrjs         1/1     Running   0          100s
    pod/local-disk-local-provisioner-b6v4n       1/1     Running   0          100s
@@ -102,7 +102,7 @@ ibmcloud sat storage assignment create --name localvol-block-assign --group satC
 
    ```
 
-**Follow** the [link](https://docs.openshift.com/container-platform/4.6/storage/persistent_storage/persistent-storage-local.html) to create the persistent volume claim and attach the claim to a pod.
+**Follow** the [link](https://docs.openshift.com/container-platform/4.7/storage/persistent_storage/persistent-storage-local.html) to create the persistent volume claim and attach the claim to a pod.
 
 ## Troubleshooting
 
@@ -127,12 +127,12 @@ ibmcloud sat storage assignment create --name localvol-block-assign --group satC
  ```
  local-storage                                      Active   101m
  ```
- 
+
 6. Get the logs for the `local-disk-local-diskmaker` pod.
  ```sh
  kubectl logs -f pod/local-disk-local-diskmaker-7ww2j -n local-storage
  ```
- 
+
  **Example output:**
  ```
  I0213 06:19:35.103830       1 diskmaker.go:24] Go Version: go1.13.15
@@ -141,7 +141,7 @@ ibmcloud sat storage assignment create --name localvol-block-assign --group satC
  E0213 06:19:40.697628       1 diskmaker.go:203] failed to acquire lock on device /dev/xvde
  E0213 06:19:40.697657       1 diskmaker.go:180] error symlinking /dev/xvdc to /mnt/local-storage/sat-local-block-gold/xvdc: error acquiring exclusive lock on /dev/xvdc
  ```
- 
+
 7. Log-in to the node where the diskmaker pod is deployed.
  ```sh
  oc debug node/<node-name>
@@ -155,7 +155,7 @@ ibmcloud sat storage assignment create --name localvol-block-assign --group satC
   ```sh
   rm -rf </path/to/symlink/as/shown/in/logs>
   ```
- 
+
  **Example command:**
  ```sh
  rm -rf  /mnt/local-storage/sat-local-block-gold/xvdc
@@ -168,9 +168,9 @@ ibmcloud sat storage assignment create --name localvol-block-assign --group satC
     oc get pv
     ```
     ```sh
-    kubectl logs -f pod/local-disk-local-provisioner-xstjh -n local-storage 
+    kubectl logs -f pod/local-disk-local-provisioner-xstjh -n local-storage
     ```
-    
+
     **Example output:**
     ```
     ...
@@ -184,6 +184,6 @@ ibmcloud sat storage assignment create --name localvol-block-assign --group satC
     I0213 06:30:44.396471       1 discovery.go:337] Created PV "local-pv-1d14680" for volume at "/mnt/local-storage/sat-local-block-gold/xvdc"
     I0213 06:30:44.462244       1 cache.go:64] Updated pv "local-pv-1d14680" to cache
     ```
-    
+
 ## References
-   - https://docs.openshift.com/container-platform/4.6/storage/persistent_storage/persistent-storage-local.html
+   - https://docs.openshift.com/container-platform/4.7/storage/persistent_storage/persistent-storage-local.html
