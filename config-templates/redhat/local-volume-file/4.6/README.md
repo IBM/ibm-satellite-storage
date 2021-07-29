@@ -13,7 +13,7 @@ Local persistent volumes allow you to access local storage devices, such as a di
    - In next page click on `Display Token`
    - Under `Log in with this token` the `oc login --token=XXXX ...` will be displayed, copy the command and execute on your local system
 
-    **Note** The target cluster version should be 4.7.X to use the local-volume-block version 4.7 template.
+    **Note** The target cluster version should be 4.6.X to use the local-volume-block version 4.6 template.
 
 3. Add label to the worker nodes, one with additional disk
    - Get the nodes
@@ -65,7 +65,7 @@ Parameter | Required? | Description | Default value if not provided |
 
 | Storage class name | Type | File system | IOPs | Size range | Hard disk | Reclaim policy |
 | ------------------ | ---- | ----------- | ---- | ---------- | ----------| -------------- |
-| sat-local-file-gold| File | ext4/xfs    | N/A  | N/A        | N/A       | Retain         | 
+| sat-local-file-gold| File | ext4/xfs    | N/A  | N/A        | N/A       | Retain         |
 
 
 ## Creating the Local Volume File storage configuration
@@ -73,7 +73,7 @@ Parameter | Required? | Description | Default value if not provided |
 **Example `sat storage config create` command**
 
 ```sh
-ibmcloud sat storage config create --name localvol-file-config --template-name local-volume-file --template-version 4.7 -p "label-key=storage" -p "label-value=localfile" -p "devicepath=/dev/xvde"
+ibmcloud sat storage config create --name localvol-file-config --template-name local-volume-file --template-version 4.6 -p "label-key=storage" -p "label-value=localfile" -p "devicepath=/dev/xvde"
 ```
 
 ## Creating the storage assignment
@@ -119,7 +119,7 @@ NAME               CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM 
 local-pv-1d14680   50Gi       RWO            Delete           Available           sat-local-file-gold            50s
 ```
 
-**Follow** the [link](https://docs.openshift.com/container-platform/4.7/storage/persistent_storage/persistent-storage-local.html) to create the persistent volume claim and attach the claim to a pod.
+**Follow** the [link](https://docs.openshift.com/container-platform/4.6/storage/persistent_storage/persistent-storage-local.html) to create the persistent volume claim and attach the claim to a pod.
 
 
 ## Troubleshooting
@@ -211,4 +211,4 @@ E0213 06:19:40.697657       1 diskmaker.go:180] error symlinking /dev/xvde to /m
     ```
 
 ## References
-   - https://docs.openshift.com/container-platform/4.7/storage/persistent_storage/persistent-storage-local.html
+   - https://docs.openshift.com/container-platform/4.6/storage/persistent_storage/persistent-storage-local.html
