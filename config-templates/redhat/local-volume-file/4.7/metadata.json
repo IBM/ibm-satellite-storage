@@ -1,5 +1,5 @@
 {
-  "name": "4.6",
+  "name": "4.7",
   "enabled": "true",
   "description": "Persistent storage using local volumes",
   "tags": [
@@ -11,7 +11,7 @@
       "value": "local-volume-file"
     }, {
       "name": "provider-url",
-      "value": "https://docs.openshift.com/container-platform/4.6/storage/persistent_storage/persistent-storage-local.html"
+      "value": "https://docs.openshift.com/container-platform/4.7/storage/persistent_storage/persistent-storage-local.html"
     }, {
       "name": "support-msg",
       "value": "For support contact NetApp"
