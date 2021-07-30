@@ -57,18 +57,18 @@ The following storage classes are installed when you assign your `netapp-ontap-n
 | `sat-netapp-file-bronze` | Ontap-NAS | NFS | user defined QoS limit **\*, encryption off | Delete |
 | `sat-netapp-file-bronze-encrypted` | Ontap-NAS | NFS | user defined QoS limit **\*, encryption enabled | Delete |
 
-**\*NOTE**: By default, **sat-netapp-file-gold** will have no QoS limits (unlimited IOPS). In order to use the **sat-netapp-file-silver** and **sat-netapp-file-bronze** storage classes, you must create **silver** and **bronze** QoS policy groups on the storage controller defining the desired QoS limits for silver and bronze. To create a policy group on the storage system, login to the system CLI and run the following command:
+**\*NOTE**: By default, **sat-netapp-file-gold** will have no QoS limits (unlimited IOPS). In order to use the **sat-netapp-file-silver** and **sat-netapp-file-bronze** storage classes, you must create **silver** and **bronze** QoS policy groups on the storage controller defining the desired QoS limits for silver and bronze. To create a policy group on the storage system, login to the system CLI and run the following command. Note that ***min-throughput*** is only supported on all-flash systems. For information on creating and managing QoS Policy groups, please refer to the [ONTAP 9 Storage Management documentation](https://docs.netapp.com/ontap-9/index.jsp).
 
 ```
 netapp1::> qos policy-group create -policy-group <policy_group_name> -vserver <svm_name> [-min-throughput <min_IOPS>] -max-throughput <max_IOPS>
 ```
-**NOTE** - ***min-throughput*** is only supported on all-flash systems. For information on creating and managing QoS Policy groups, please refer to the [ONTAP 9 Storage Management documentation](https://docs.netapp.com/ontap-9/index.jsp).
 
-In order to use any of the ***encrypted*** storage classes, NetApp Volume Encryption (NVE) must be enabled on the storage system using either the NetApp ONTAP onboard key manager or a supported (off-box) third party key manager, such as IBM's TKLM key manager.  To enable the onboard key manager, type the following command:
+
+In order to use an ***encrypted*** storage class, NetApp Volume Encryption (NVE) must be enabled on your storage system using either the NetApp ONTAP onboard key manager or a supported (off-box) third-party key manager, such as IBM's TKLM key manager. To enable the onboard key manager, run the following command. For more information on configuring encryption, please refer to the [ONTAP 9 Security and Data Encryption documentation](https://docs.netapp.com/ontap-9/topic/com.netapp.nav.aac/home.html?cp=14).
+
 ```
 netapp1::> security key-manager onboard enable
 ```
-For more information on configuring encryption, please refer to the [ONTAP 9 Security and Data Encryption documentation](https://docs.netapp.com/ontap-9/topic/com.netapp.nav.aac/home.html?cp=14)
 
 
 ## Creating the NetApp Ontap-NAS Driver storage configuration
@@ -77,6 +77,7 @@ Create a Satellite storage configuration that uses the `netapp-ontap-nas` templa
 
 **Example `sat storage config create` command**
 Create a Satellite storage configuration by using the `netapp-ontap-nas` template.
+
 ```
 ibmcloud sat storage config create --name 'ontapnas-config' --location <location id> --template-name 'netapp-ontap-nas' --template-version '21.04' -p 'managementLIF=10.0.0.1' -p 'dataLIF=10.0.0.2' -p 'svm=svm-nas' -p 'username=admin' -p 'password=<admin password>' -p 'exportPolicy=nfsexport'
 ```
@@ -116,15 +117,17 @@ ntap-file-default    csi.trident.netapp.io          Delete          Immediate   
 
 ## Troubleshooting
 
-In case the PVC is not getting created using the `sat-netapp-file` storage classes
-- Review the input parameters values for `managementLIF`, `dataLIF`, `svm`, `username`, `password` and other
-- Review the `trident-kubectl-nas` POD's log
+If PVC are not getting created using the `sat-netapp-file` storage classes, complete the following troubleshooting steps.
+- Review your input parameters and verify the `managementLIF`, `dataLIF`, `svm`, `username`, `password`.
+- Gather the logs from  `trident-kubectl-nas` pod.
   ```
   oc -n trident logs trident-kubectl-nas
   ```
-- Delete the assignment by running command `ibmcloud sat storage assignment rm --assignment <assignmnet name>`
-- Delete the configuration by running command `ibmcloud sat storage config rm --config <config name>`
-- Recreate the configuration, with proper parameter values, and recreate the assignment
+  
+To recreate your configuration, complete the following steps.
+1. Delete the assignment by running `ibmcloud sat storage assignment rm --assignment <assignmnet name>`.
+2. Delete the configuration by running command `ibmcloud sat storage config rm --config <config name>`.
+3. Recreate the configuration, with proper parameter values, and recreate the assignment.
 
 
 ## Reference
