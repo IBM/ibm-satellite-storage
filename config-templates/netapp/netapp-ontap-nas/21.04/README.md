@@ -44,27 +44,20 @@ ibmcloud sat storage template get --name netapp-ontap-nas --version 21.04
 
 You can use the `sat-netapp` storage classes to take advantage of ONTAP's QoS features. The following storage classes are installed when you assign your `netapp-ontap-nas` configuration to your clusters. Review the following notes before deploying an app that uses one of the `sat-netapp` storage classes.
 
-**\*NOTE**: By default, **sat-netapp-file-gold** will have no QoS limits (unlimited IOPS). In order to use the **sat-netapp-file-silver** and **sat-netapp-file-bronze** storage classes, you must create **silver** and **bronze** QoS policy groups on the storage controller defining the desired QoS limits for silver and bronze. To create a policy group on the storage system, login to the system CLI and run the following command. Note that ***min-throughput*** is only supported on all-flash systems. For information on creating and managing QoS Policy groups, please refer to the [ONTAP 9 Storage Management documentation](https://docs.netapp.com/ontap-9/index.jsp).
+**Notes**: 
+* By default, the `sat-netapp-file-gold` storage class has no QoS limits (unlimited IOPS). 
+* In order to use the `sat-netapp-file-silver` and `sat-netapp-file-bronze` storage classes, you must create corresponding `silver` and `bronze` QoS policy groups on the storage controller and define the QoS limits. To create a policy group on the storage system, login to the system CLI and running the `netapp1::> qos policy-group create -policy-group <policy_group_name> -vserver <svm_name> [-min-throughput <min_IOPS>] -max-throughput <max_IOPS>` command.
+* ***min-throughput*** is only supported on all-flash systems. For information on creating and managing QoS Policy groups, please refer to the [ONTAP 9 Storage Management documentation](https://docs.netapp.com/ontap-9/index.jsp).
+* In order to use an ***encrypted*** storage class, NetApp Volume Encryption (NVE) must be enabled on your storage system using either the NetApp ONTAP onboard key manager or a supported (off-box) third-party key manager, such as IBM's TKLM key manager. To enable the onboard key manager, run the `netapp1::> security key-manager onboard enable` command. For more information on configuring encryption, please refer to the [ONTAP 9 Security and Data Encryption documentation](https://docs.netapp.com/ontap-9/topic/com.netapp.nav.aac/home.html?cp=14).
 
-```
-netapp1::> qos policy-group create -policy-group <policy_group_name> -vserver <svm_name> [-min-throughput <min_IOPS>] -max-throughput <max_IOPS>
-```
-
-In order to use an ***encrypted*** storage class, NetApp Volume Encryption (NVE) must be enabled on your storage system using either the NetApp ONTAP onboard key manager or a supported (off-box) third-party key manager, such as IBM's TKLM key manager. To enable the onboard key manager, run the following command. For more information on configuring encryption, please refer to the [ONTAP 9 Security and Data Encryption documentation](https://docs.netapp.com/ontap-9/topic/com.netapp.nav.aac/home.html?cp=14).
-
-```
-netapp1::> security key-manager onboard enable
-```
-
-
-| Storage class name | Type | File system | IOPs | Reclaim policy |
-| --- | --- | --- | --- | --- |
-| `sat-netapp-file-gold` | Ontap-NAS | NFS | no QoS limits, encryption off | Delete |
-| `sat-netapp-file-gold-encrypted` | Ontap-NAS | NFS | no QoS limits, encryption enabled | Delete |
-| `sat-netapp-file-silver` | Ontap-NAS | NFS | user defined QoS limit **\*, encryption off | Delete |
-| `sat-netapp-file-silver-encrypted` | Ontap-NAS | NFS | user defined QoS limit **\*, encryption enabled | Delete |
-| `sat-netapp-file-bronze` | Ontap-NAS | NFS | user defined QoS limit **\*, encryption off | Delete |
-| `sat-netapp-file-bronze-encrypted` | Ontap-NAS | NFS | user defined QoS limit **\*, encryption enabled | Delete |
+| Storage class name | Type | File system | IOPs | Encryption | Reclaim policy |
+| --- | --- | --- | --- | --- | --- |
+| `sat-netapp-file-gold` | Ontap-NAS | NFS | no QoS limits | Encryption disabled. | Delete |
+| `sat-netapp-file-gold-encrypted` | Ontap-NAS | NFS | no QoS limits, encryption enabled. | Delete |
+| `sat-netapp-file-silver` | Ontap-NAS | NFS | User defined QoS limit. | Encryption disabled. | Delete |
+| `sat-netapp-file-silver-encrypted` | Ontap-NAS | NFS | User defined QoS limit. | Encryption enabled. | Delete |
+| `sat-netapp-file-bronze` | Ontap-NAS | NFS | User-defined QoS limit. | Encryption disabled. | Delete |
+| `sat-netapp-file-bronze-encrypted` | Ontap-NAS | NFS | User-defined QoS limit.| Encryption enabled. | Delete |
 
 
 
