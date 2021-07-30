@@ -62,7 +62,7 @@ For more information on configuring encryption, please refer to the [ONTAP 9 Sec
 | `sat-netapp-block-gold-encrypted` | Ontap-SAN | ext4 | no QoS limits. | Encryption enabled. | Delete |
 | `sat-netapp-block-silver` | Ontap-SAN | ext4 | User-defined QoS limit. | Encryption disabled. | Delete |
 | `sat-netapp-block-silver-encrypted` | Ontap-SAN | ext4 | User-defined QoS limit. | Encryption enabled. | Delete |
-| `sat-netapp-block-bronze` | Ontap-SAN | ext4 | user defined QoS limit. | Encryption disabled. | Delete |
+| `sat-netapp-block-bronze` | Ontap-SAN | ext4 | User defined QoS limit. | Encryption disabled. | Delete |
 | `sat-netapp-block-bronze-encrypted` | Ontap-SAN | ext4 | User-defined QoS limit. | Encryption enabled. | Delete |
 
 
