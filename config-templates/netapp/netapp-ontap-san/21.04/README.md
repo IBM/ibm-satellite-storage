@@ -41,20 +41,11 @@ ibmcloud sat storage template get --name netapp-ontap-san --version 21.04
 
 You can use the `sat-netapp` storage classes to take advantage of ONTAP's QoS features. The following storage classes are installed when you assign your `netapp-ontap-nas` configuration. Review the following notes before deploying an app that uses one of the `sat-netapp` storage classes.
 
-**Note:** By default, the `sat-netapp-block-gold` storage class has noQoS limits (unlimited IOPS). In order to use the `sat-netapp-block-silver` and `sat-netapp-block-bronze` storage classes, you must create `silver` and `bronze` QoS policy groups on the storage controller and define the desired QoS limits for silver and bronze. To create a policy group on the storage system, login to the system CLI and run the following command:
-
-```sh
-netapp1::> qos policy-group create -policy-group <policy_group_name> -vserver <svm_name> [-min-throughput <min_IOPS>] -max-throughput <max_IOPS>
-```
-
-**Note:** `min-throughput` is only supported on all-flash systems. For information on creating and managing QoS Policy groups, please refer to the [ONTAP 9 Storage Management documentation](https://docs.netapp.com/ontap-9/index.jsp).
-
-In order to use any of the `encrypted` storage classes, NetApp Volume Encryption (NVE) must be enabled on the storage system using either the NetApp ONTAP onboard key manager or a supported (off-box) third party key manager, such as IBM's TKLM key manager.  To enable the onboard key manager, type the following command:
-```sh
-netapp1::> security key-manager onboard enable
-```
-
-For more information on configuring encryption, please refer to the [ONTAP 9 Security and Data Encryption documentation](https://docs.netapp.com/ontap-9/topic/com.netapp.nav.aac/home.html?cp=14).
+**Notes**: 
+* By default, the `sat-netapp-file-gold` storage class has no QoS limits (unlimited IOPS). 
+* In order to use the `sat-netapp-file-silver` and `sat-netapp-file-bronze` storage classes, you must create corresponding `silver` and `bronze` QoS policy groups on the storage controller and define the QoS limits. To create a policy group on the storage system, login to the system CLI and running the `netapp1::> qos policy-group create -policy-group <policy_group_name> -vserver <svm_name> [-min-throughput <min_IOPS>] -max-throughput <max_IOPS>` command.
+* **min-throughput** is only supported on all-flash systems. For information on creating and managing QoS Policy groups, please refer to the [ONTAP 9 Storage Management documentation](https://docs.netapp.com/ontap-9/index.jsp).
+* In order to use an **encrypted** storage class, NetApp Volume Encryption (NVE) must be enabled on your storage system using either the NetApp ONTAP onboard key manager or a supported (off-box) third-party key manager, such as IBM's TKLM key manager. To enable the onboard key manager, run the `netapp1::> security key-manager onboard enable` command. For more information on configuring encryption, please refer to the [ONTAP 9 Security and Data Encryption documentation](https://docs.netapp.com/ontap-9/topic/com.netapp.nav.aac/home.html?cp=14).
 
 | Storage class name | Type | File system | IOPs | Encryption |Reclaim policy |
 | --- | --- | --- | --- | --- | --- |
