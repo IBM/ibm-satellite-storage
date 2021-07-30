@@ -57,7 +57,7 @@ netapp1::> security key-manager onboard enable
 For more information on configuring encryption, please refer to the [ONTAP 9 Security and Data Encryption documentation](https://docs.netapp.com/ontap-9/topic/com.netapp.nav.aac/home.html?cp=14).
 
 | Storage class name | Type | File system | IOPs | Encryption |Reclaim policy |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- |
 | `sat-netapp-block-gold` | Ontap-SAN | ext4 | no QoS limits. | Encryption disabled. | Delete |
 | `sat-netapp-block-gold-encrypted` | Ontap-SAN | ext4 | no QoS limits. | Encryption enabled. | Delete |
 | `sat-netapp-block-silver` | Ontap-SAN | ext4 | User-defined QoS limit. | Encryption disabled. | Delete |
