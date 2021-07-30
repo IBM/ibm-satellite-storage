@@ -53,7 +53,7 @@ You can use the `sat-netapp` storage classes to take advantage of ONTAP's QoS fe
 | Storage class name | Type | File system | IOPs | Encryption | Reclaim policy |
 | --- | --- | --- | --- | --- | --- |
 | `sat-netapp-file-gold` | Ontap-NAS | NFS | no QoS limits | Encryption disabled. | Delete |
-| `sat-netapp-file-gold-encrypted` | Ontap-NAS | NFS | no QoS limits, encryption enabled. | Delete |
+| `sat-netapp-file-gold-encrypted` | Ontap-NAS | NFS | no QoS limits | Encryption enabled. | Delete |
 | `sat-netapp-file-silver` | Ontap-NAS | NFS | User defined QoS limit. | Encryption disabled. | Delete |
 | `sat-netapp-file-silver-encrypted` | Ontap-NAS | NFS | User defined QoS limit. | Encryption enabled. | Delete |
 | `sat-netapp-file-bronze` | Ontap-NAS | NFS | User-defined QoS limit. | Encryption disabled. | Delete |
