@@ -46,7 +46,20 @@ ibmcloud sat storage template get --name netapp-ontap-nas --version 21.04
 
 ## Default storage classes
 
-The following storage classes are installed when you assign your `netapp-ontap-nas` configuration to your clusters to allow you to take advantage of ONTAP's QoS features:
+You can use the `sat-netapp` storage classes to take advantage of ONTAP's QoS features. The following storage classes are installed when you assign your `netapp-ontap-nas` configuration to your clusters. Review the following notes before deploying an app that uses one of the `sat-netapp` storage classes.
+
+**\*NOTE**: By default, **sat-netapp-file-gold** will have no QoS limits (unlimited IOPS). In order to use the **sat-netapp-file-silver** and **sat-netapp-file-bronze** storage classes, you must create **silver** and **bronze** QoS policy groups on the storage controller defining the desired QoS limits for silver and bronze. To create a policy group on the storage system, login to the system CLI and run the following command. Note that ***min-throughput*** is only supported on all-flash systems. For information on creating and managing QoS Policy groups, please refer to the [ONTAP 9 Storage Management documentation](https://docs.netapp.com/ontap-9/index.jsp).
+
+```
+netapp1::> qos policy-group create -policy-group <policy_group_name> -vserver <svm_name> [-min-throughput <min_IOPS>] -max-throughput <max_IOPS>
+```
+
+In order to use an ***encrypted*** storage class, NetApp Volume Encryption (NVE) must be enabled on your storage system using either the NetApp ONTAP onboard key manager or a supported (off-box) third-party key manager, such as IBM's TKLM key manager. To enable the onboard key manager, run the following command. For more information on configuring encryption, please refer to the [ONTAP 9 Security and Data Encryption documentation](https://docs.netapp.com/ontap-9/topic/com.netapp.nav.aac/home.html?cp=14).
+
+```
+netapp1::> security key-manager onboard enable
+```
+
 
 | Storage class name | Type | File system | IOPs | Reclaim policy |
 | --- | --- | --- | --- | --- |
@@ -57,18 +70,6 @@ The following storage classes are installed when you assign your `netapp-ontap-n
 | `sat-netapp-file-bronze` | Ontap-NAS | NFS | user defined QoS limit **\*, encryption off | Delete |
 | `sat-netapp-file-bronze-encrypted` | Ontap-NAS | NFS | user defined QoS limit **\*, encryption enabled | Delete |
 
-**\*NOTE**: By default, **sat-netapp-file-gold** will have no QoS limits (unlimited IOPS). In order to use the **sat-netapp-file-silver** and **sat-netapp-file-bronze** storage classes, you must create **silver** and **bronze** QoS policy groups on the storage controller defining the desired QoS limits for silver and bronze. To create a policy group on the storage system, login to the system CLI and run the following command. Note that ***min-throughput*** is only supported on all-flash systems. For information on creating and managing QoS Policy groups, please refer to the [ONTAP 9 Storage Management documentation](https://docs.netapp.com/ontap-9/index.jsp).
-
-```
-netapp1::> qos policy-group create -policy-group <policy_group_name> -vserver <svm_name> [-min-throughput <min_IOPS>] -max-throughput <max_IOPS>
-```
-
-
-In order to use an ***encrypted*** storage class, NetApp Volume Encryption (NVE) must be enabled on your storage system using either the NetApp ONTAP onboard key manager or a supported (off-box) third-party key manager, such as IBM's TKLM key manager. To enable the onboard key manager, run the following command. For more information on configuring encryption, please refer to the [ONTAP 9 Security and Data Encryption documentation](https://docs.netapp.com/ontap-9/topic/com.netapp.nav.aac/home.html?cp=14).
-
-```
-netapp1::> security key-manager onboard enable
-```
 
 
 ## Creating the NetApp Ontap-NAS Driver storage configuration
@@ -117,7 +118,7 @@ ntap-file-default    csi.trident.netapp.io          Delete          Immediate   
 
 ## Troubleshooting
 
-If PVC are not getting created using the `sat-netapp-file` storage classes, complete the following troubleshooting steps.
+If PVCs are not getting created using the `sat-netapp-file` storage classes, complete the following troubleshooting steps.
 - Review your input parameters and verify the `managementLIF`, `dataLIF`, `svm`, `username`, `password`.
 - Gather the logs from  `trident-kubectl-nas` pod.
   ```
@@ -132,5 +133,5 @@ To recreate your configuration, complete the following steps.
 
 ## Reference
 
-- https://netapp-trident.readthedocs.io/en/stable-v21.04/kubernetes/operations/tasks/backends/ontap/ontap-nas/index.html
+- NetApp docs: https://netapp-trident.readthedocs.io/en/stable-v21.04/kubernetes/operations/tasks/backends/ontap/ontap-nas/index.html
 - Support: https://netapp-trident.readthedocs.io/en/stable-v21.04/support/support.html
