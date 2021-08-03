@@ -381,7 +381,7 @@ items:
               volumeMounts:
                 - mountPath: /csi
                   name: socket-dir
-                - mountPath: /var/data/kubelets/
+                - mountPath: /var/data/kubelet/
                   mountPropagation: Bidirectional
                   name: mountpoint-dir
                 - mountPath: /etc/kubernetes/
