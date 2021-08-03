@@ -15,7 +15,8 @@ items:
       backendType: "ontap-san"
       selector: "performance=gold"
       fsType: "ext4"
-    allowVolumeExpansion: True
+    allowVolumeExpansion: true
+    volumeBindingMode: Immediate
   - apiVersion: storage.k8s.io/v1
     kind: StorageClass
     metadata:
@@ -25,7 +26,8 @@ items:
       backendType: "ontap-san"
       selector: "performance=silver"
       fsType: "ext4"
-    allowVolumeExpansion: True
+    allowVolumeExpansion: true
+    volumeBindingMode: Immediate
   - apiVersion: storage.k8s.io/v1
     kind: StorageClass
     metadata:
@@ -35,4 +37,38 @@ items:
       backendType: "ontap-san"
       selector: "performance=bronze"
       fsType: "ext4"
-    allowVolumeExpansion: True
+    allowVolumeExpansion: true
+    volumeBindingMode: Immediate
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-netapp-block-gold-metro
+    provisioner: csi.trident.netapp.io
+    parameters:
+      backendType: "ontap-san"
+      selector: "performance=gold"
+      fsType: "ext4"
+    allowVolumeExpansion: true
+    volumeBindingMode: WaitForFirstConsumer
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-netapp-block-silver-metro
+    provisioner: csi.trident.netapp.io
+    parameters:
+      backendType: "ontap-san"
+      selector: "performance=silver"
+      fsType: "ext4"
+    allowVolumeExpansion: true
+    volumeBindingMode: WaitForFirstConsumer
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-netapp-block-bronze-metro
+    provisioner: csi.trident.netapp.io
+    parameters:
+      backendType: "ontap-san"
+      selector: "performance=bronze"
+      fsType: "ext4"
+    allowVolumeExpansion: true
+    volumeBindingMode: WaitForFirstConsumer
