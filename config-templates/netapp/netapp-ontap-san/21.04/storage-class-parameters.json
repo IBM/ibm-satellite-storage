@@ -37,7 +37,7 @@
 		  "fsType"
 	  ],
 	  "default": "ext4",
-      "required": "false",
+	  "required": "false",
 	  "category": "config",
 	  "type": "text"
 	}
