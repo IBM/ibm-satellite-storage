@@ -10,3 +10,4 @@ parameters:
   selector: "{{ selector }}"
   fsType: "{{ fsType }}"
 allowVolumeExpansion: "{{ allowVolumeExpansion }}"
+volumeBindingMode: "{{ volumeBindingMode }}"
