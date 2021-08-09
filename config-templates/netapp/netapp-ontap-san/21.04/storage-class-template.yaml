@@ -8,5 +8,6 @@ provisioner: csi.trident.netapp.io
 parameters:
   backendType: "ontap-san"
   selector: "{{ selector }}"
-  fsType: "{{ ext4 }}"
+  fsType: "{{ fsType }}"
 allowVolumeExpansion: "{{ allowVolumeExpansion }}"
+volumeBindingMode: "{{ volumeBindingMode }}"

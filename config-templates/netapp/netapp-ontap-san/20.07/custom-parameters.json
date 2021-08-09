@@ -31,7 +31,7 @@
     "category": "secret",
     "obfuscate": "true"
   }, {
-    "description": "The maximum volume size (in Gigibytes) that can be requested and the qtree parent volume size.",
+    "description": "The maximum volume size (in Gibibytes) that can be requested and the qtree parent volume size.",
     "displayname": "Limit Volume Size",
     "name": "limitVolumeSize",
     "default": "50Gi",

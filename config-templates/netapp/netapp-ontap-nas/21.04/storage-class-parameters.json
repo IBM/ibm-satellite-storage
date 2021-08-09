@@ -29,5 +29,16 @@
 	"required": "true",
 	"category": "config",
 	"type": "text"
+  }, {
+	"description": "Specify 'true' or 'false' to enable or disable volume expansion.",
+	"displayname": "Allow volume expansion",
+	"name": "allowVolumeExpansion",
+	"templateKeyName": [
+		"allowVolumeExpansion"
+	],
+	"default": "true",
+	"required": "false",
+	"category": "config",
+	"type": "text"
   }
 ]
