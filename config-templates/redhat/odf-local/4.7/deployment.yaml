@@ -293,7 +293,7 @@ items:
               value: stable-4.7
             - name: WATCH_NAMESPACE
               value: openshift-storage
-            image: "icr.io/obs/ibm-ocs-operator:v4.7.6"
+            image: "icr.io/obs/ibm-ocs-operator:v4.7.8"
             imagePullPolicy: Always
             name: manager
             securityContext:
