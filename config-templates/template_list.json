@@ -17,8 +17,8 @@
   },
   {
     "name": "azuredisk-csi-driver",
-    "displayname": "Azure Disk CSI Driver",
-    "Description": "Azure Disk CSI Driver",
+    "displayname": "[Beta] Azure Disk CSI Driver",
+    "Description": "[Beta] Azure Disk CSI Driver.",
     "default-version": "1.4.0",
     "enabled": "true",
     "provider": "azure"
@@ -34,7 +34,7 @@
   {
     "name": "netapp-ontap-nas",
     "displayname": "NetApp Ontap-NAS Driver",
-    "Description": "NetApp Ontap-NAS Driver",
+    "Description": "NetApp Ontap-NAS Driver.",
     "default-version": "20.07",
     "enabled": "true",
     "provider": "netapp"

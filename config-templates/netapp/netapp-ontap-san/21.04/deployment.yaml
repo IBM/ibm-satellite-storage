@@ -1,27 +1,27 @@
 apiVersion: v1
 kind: List
 metadata:
-  name: netapp-trident-nas
+  name: netapp-trident-san
   namespace: kube-system
   annotations:
-    version: 20.07
+    version: 21.04
 items:
   - apiVersion: v1
     kind: Pod
     metadata:
-      name: trident-kubectl-nas
+      name: trident-kubectl-san
       namespace: "trident"
     spec:
       serviceAccountName: trident-kubectl-sa
       containers:
-        - name: trident-kubectl-nas
-          image: icr.io/ibm/ibm-tridentctl:v1.0.1
+        - name: trident-kubectl-san
+          image: icr.io/ibm/ibm-tridentctl:v2.0.1
           imagePullPolicy: Always
           env:
             - name: NAMESPACE
               value: "trident"
             - name: DRIVER_Name
-              value: "ontap-nas"
+              value: "ontap-san"
             - name: MGMT_LIF
               value: "{{{ managementLIF }}}"
             - name: DATA_LIF
@@ -32,11 +32,7 @@ items:
               value: "{{{ username }}}"
             - name: USER_Password
               value: "{{{ password }}}"
-            - name: EXPORT_Policy
-              value: "{{{ exportPolicy }}}"
             - name: LIMIT_VolumeSize
               value: "{{{ limitVolumeSize }}}"
             - name: LIMIT_AggregateUsage
               value: "{{{ limitAggregateUsage }}}"
-            - name: NFS_MountOptions
-              value: "{{{ nfsMountOptions }}}"

@@ -1,25 +1,25 @@
 # Netapp Trident
 
-Trident deploys in Kubernetes clusters as pods and provides dynamic storage orchestration services for your Kubernetes workloads. It has been designed from the ground up to help you meet the persistence demands of your containerized applications by using industry standard interfaces like the Container Storage Interface (CSI).
+Trident provides dynamic storage orchestration services for your Kubernetes workloads. It has been designed from the ground up to help you meet the persistence demands of your containerized applications by using industry standard interfaces like the Container Storage Interface (CSI).
 
 ## Prerequisites
 
 Before installing Trident make sure that you have:
-   * Access to a supported NetApp storage system. Detailed instructions for configuring NetApp storage can be found on the [NetApp website](https://docs.netapp.com/us-en/ontap/task_configure_ontap.html)
-   * Ensure any aggregates used by Trident are explicitly assigned to the svm.
-   ### Example:
-   ```sh
-   netapp1::> vserver modify -vs <svm_name> -aggr-list <aggregate(s)_to_be_added>
-   ```
-   * Volume mount capability from all of the Kubernetes worker nodes.
-   * A Linux host with `kubectl` (or `oc`, if you’re using OpenShift) installed and configured to manage the clusters that you want to use.
+* Access to a supported NetApp storage system. Detailed instructions for configuring NetApp storage can be found on the [NetApp website](https://docs.netapp.com/us-en/ontap/task_configure_ontap.html)
+* Ensure any aggregates used by Trident are explicitly assigned to the svm. 
+### Example:
+```sh
+netapp1::> vserver modify -vs <svm_name> -aggr-list <aggregate(s)_to_be_added>
+```
+* Volume mount capability from all of the Kubernetes worker nodes.
+* A Linux host with `kubectl` (or `oc`, if you’re using OpenShift) installed and configured to manage the clusters that you want to use.
 
 ## Netapp Trident Driver parameters & how to retrieve them
 
 The `netapp-trident` template is used to install Trident in OpenShift clusters. As such, this template does not expose any Trident storage driver parameters. In a nutshell, the workflow used to deploy Trident and have it communicate with ONTAP clusters will look like this:
 
 1. Install the `netapp-trident`. When you create a Satellite storage configuration that uses the `netapp-trident` template and assign it to your Satellite groups, the Trident storage drivers are deployed on your clusters. After you verify that Trident is up and running, you can deploy the `netapp-ontap-san` or `netapp-ontap-nas` templates which allow your clusters to interact with your NetApp backends.
-2. Deploy the `netapp-ontap-san` and/or `netapp-ontap-nas` storage templates. As part of this step, a [Trident backend](https://netapp-trident.readthedocs.io/en/stable-v20.07/kubernetes/operations/tasks/backends/index.html) is created for the respective protocol and configured based on the template parameters provided. This step also defines multiple storageClasses to be consumed by the OpenShift user.
+2. Deploy the `netapp-ontap-san` and/or `netapp-ontap-nas` storage templates. As part of this step, a [Trident backend](https://netapp-trident.readthedocs.io/en/stable-v21.04/kubernetes/operations/tasks/backends/index.html) is created for the respective protocol and configured based on the template parameters provided. This step also defines multiple storageClasses to be consumed by the OpenShift user.
 3. Trident is now installed, configured, and ready to use!
 
 ## Default storage classes
@@ -37,7 +37,7 @@ Deploying Trident does not create StorageClasses for you. This is handled by dep
 **Example `sat storage config create` command**
 
 ```sh
-ibmcloud sat storage config create --name "trident-conf" --template-name "netapp-trident" --template-version "20.07"
+ibmcloud sat storage config create --name "trident-conf" --location <location id> --template-name "netapp-trident" --template-version "21.04"
 ```
 
 ## Creating the storage assignment
@@ -107,7 +107,7 @@ If the trident pod fails deploy and is stuck in `ContainerCreating` status, you 
 
 ## Reference
 
-- [Trident documentation](https://netapp-trident.readthedocs.io/en/stable-v20.07/introduction.html)
-- [ONTAP NAS backend configuration](https://netapp-trident.readthedocs.io/en/stable-v20.07/kubernetes/operations/tasks/backends/ontap/ontap-nas/index.html)
-- [ONTAP SAN backend configuration](https://netapp-trident.readthedocs.io/en/stable-v20.07/kubernetes/operations/tasks/backends/ontap/ontap-san/index.html)
-- [Support documentation](https://netapp-trident.readthedocs.io/en/stable-v20.10/support/support.html)
+- [Trident documentation](https://netapp-trident.readthedocs.io/en/stable-v21.04/introduction.html)
+- [ONTAP NAS backend configuration](https://netapp-trident.readthedocs.io/en/stable-v21.04/kubernetes/operations/tasks/backends/ontap/ontap-nas/index.html)
+- [ONTAP SAN backend configuration](https://netapp-trident.readthedocs.io/en/stable-v21.04/kubernetes/operations/tasks/backends/ontap/ontap-san/index.html)
+- [Support documentation](https://netapp-trident.readthedocs.io/en/stable-v21.04/support/support.html)

@@ -31,7 +31,14 @@
     "category": "secret",
     "obfuscate": "true"
   }, {
-    "description": "The maximum volume size (in Gibibytes) that can be requested and the qtree parent volume size.",
+    "description": "The NAS option for the NFS export policy.",
+    "displayname": "Export Policy",
+    "name": "exportPolicy",
+    "default": "default",
+    "required": "false",
+    "category": "config"
+  }, {
+    "description": "Maximum requestable volume size (in Gibibytes) and qtree parent volume size",
     "displayname": "Limit Volume Size",
     "name": "limitVolumeSize",
     "default": "50Gi",
@@ -40,12 +47,21 @@
     "required": "false",
     "category": "config"
   }, {
-    "description": "Provisioning fails if usage is above this percentage.",
+    "description": "Fail provisioning if usage is above this percentage.",
     "displayname": "Limit AggregateUsage",
     "name": "limitAggregateUsage",
     "default": "80%",
     "place-holder":"80%",
     "regex": "^[0-9]+%$",
+    "required": "false",
+    "category": "config"
+  }, {
+    "description": "The NFS mount options.",
+    "displayname": "NFS Mount Options",
+    "name": "nfsMountOptions",
+    "default": "nfsvers=4",
+    "place-holder":"nfsvers=4",
+    "regex": "^(nfsvers=){1}[0-9.]+$",
     "required": "false",
     "category": "config"
   }
