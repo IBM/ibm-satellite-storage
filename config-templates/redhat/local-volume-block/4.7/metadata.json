@@ -1,0 +1,50 @@
+{
+  "name": "4.7",
+  "enabled": "true",
+  "description": "Persistent storage using local volumes",
+  "tags": [
+    {
+      "name": "provider",
+      "value": "redhat"
+    }, {
+      "name": "offering-name",
+      "value": "local-volume-block"
+    }, {
+      "name": "provider-url",
+      "value": "https://docs.openshift.com/container-platform/4.7/storage/persistent_storage/persistent-storage-local.html"
+    }, {
+      "name": "support-msg",
+      "value": "For support contact NetApp"
+    }, {
+      "name": "provider-logo",
+      "value": "logo/local-volume-block.svg"
+    }, {
+      "name": "supported-envs",
+      "value": "AWS,IBM"
+    }, {
+      "name": "supported-k8s-versions",
+      "value": "1.18,1.19"
+    }, {
+      "name": "volume-type",
+      "value": "block"
+    }, {
+      "name": "volume-encryption-at-rest",
+      "value": "false"
+    }, {
+      "name": "volume-encryption-in-transit",
+      "value": "false"
+    }, {
+      "name": "volume-snapshot",
+      "value": "false"
+    }, {
+      "name": "volume-availability",
+      "value": "zonal"
+    }, {
+      "name": "volume-expansion",
+      "value": "false"
+    }, {
+      "name": "storageclass",
+      "value": "gold"
+    }
+  ]
+}
