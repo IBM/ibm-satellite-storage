@@ -8,8 +8,19 @@ metadata:
     version: 1.5.0
 items:
   - apiVersion: v1
-    data:
-      cloud-config: "{{{cloud-config}}}"
+    stringData:
+      cloud-config: |
+          "cloud":"AzurePublicCloud",
+          "tenantId": "fcf67057-50c9-4ad4-98f3-ffca64add9e9",
+          "subscriptionId": "42a27881-f23d-49bc-abfa-375e323fe957",
+          "aadClientId": "d0681637-cf8b-478d-b503-6a9c225cb5a5",
+          "aadClientSecret": "byF32zyc0-LcmjoKN3dPXoAvcAD48M.J9X",
+          "resourceGroup": "storage-team",
+          "location": "eastus",
+          "vmType": "vmss",
+          "subnetName": "default",
+          "securityGroupName": "sat-sec-grp",
+          "vnetName": "storage-team-vnet",
     kind: Secret
     metadata:
       name: azure-cloud-provider
