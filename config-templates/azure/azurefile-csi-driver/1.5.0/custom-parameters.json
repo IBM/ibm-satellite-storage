@@ -1,0 +1,9 @@
+[
+    {
+        "description": "cloud-config : The base64 encoded string generated from the azure.json config file.",
+        "displayname": "cloud-config",
+        "name": "cloud-config",
+        "required": "false",
+        "obfuscate": "true"
+    }
+]
