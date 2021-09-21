@@ -1,0 +1,36 @@
+---
+kind: Pod
+apiVersion: v1
+metadata:
+  name: nginx-azurefile
+spec:
+  nodeSelector:
+    kubernetes.io/os: linux
+  containers:
+    - image: mcr.microsoft.com/oss/nginx/nginx:1.17.3-alpine
+      name: nginx-azurefile
+      command:
+        - "/bin/sh"
+        - "-c"
+        - while true; do echo $(date) >> /mnt/azurefile/outfile; sleep 1; done
+      volumeMounts:
+        - name: azurefile01
+          mountPath: "/mnt/azurefile"
+  volumes:
+    - name: azurefile01
+      persistentVolumeClaim:
+        claimName: pvc-azurefile
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-azurefile
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: sat-azure-block-gold-metro
+
