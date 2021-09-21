@@ -1,9 +1,65 @@
 [
     {
-        "description": "cloud-config : The base64 encoded string generated from the azure.json config file.",
-        "displayname": "cloud-config",
-        "name": "cloud-config",
-        "required": "false",
+        "description": "tenantId : The base64 encoded string generated from the azure.json config file.",
+        "displayname": "tenantId",
+        "name": "tenantId",
+        "required": "true",
+        "obfuscate": "true"
+    },
+    {
+        "description": "subscriptionId",
+        "displayname": "subscriptionId",
+        "name": "subscriptionId",
+        "required": "true",
+        "obfuscate": "true"
+    },
+    {
+        "description": "aadClientId",
+        "displayname": "aadClientId",
+        "name": "aadClientId",
+        "required": "true",
+        "obfuscate": "true"
+    },
+    {
+        "description": "location",
+        "displayname": "location",
+        "name": "location",
+        "required": "true",
+        "obfuscate": "true"
+    },
+    {
+        "description": "aadClientSecret",
+        "displayname": "aadClientSecret",
+        "name": "aadClientSecret",
+        "required": "true",
+        "obfuscate": "true"
+    },
+    {
+        "description": "resourceGroup",
+        "displayname": "resourceGroup",
+        "name": "resourceGroup",
+        "required": "true",
+        "obfuscate": "true"
+    },
+    {
+        "description": "vmType",
+        "displayname": "vmType",
+        "name": "vmType",
+        "required": "true",
+        "obfuscate": "true"
+    },
+    {
+        "description": "securityGroupName",
+        "displayname": "securityGroupName",
+        "name": "securityGroupName",
+        "required": "true",
+        "obfuscate": "true"
+    },
+    {
+        "description": "vnetName",
+        "displayname": "vnetName",
+        "name": "vnetName",
+        "required": "true",
         "obfuscate": "true"
     }
 ]
