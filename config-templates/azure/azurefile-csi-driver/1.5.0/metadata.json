@@ -33,7 +33,7 @@
         },
         {
             "name": "volume-type",
-            "value": "block"
+            "value": "file"
         },
         {
             "name": "volume-encryption-at-rest",
