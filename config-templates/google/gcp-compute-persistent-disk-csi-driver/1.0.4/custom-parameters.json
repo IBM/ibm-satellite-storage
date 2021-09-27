@@ -1,0 +1,65 @@
+[
+    {
+        "description": "Google Cloud Provider Project ID.",
+        "displayname": "Google Cloud Provider Project ID",
+        "name": "project_id",
+        "required": "true",
+        "obfuscate": "true"
+    },
+    {
+        "description": "Google Cloud Provider Private Key ID.",
+        "displayname": "Google Cloud Provider Private Key ID",
+        "name": "private_key_id",
+        "required": "true",
+        "obfuscate": "true"
+    },
+    {
+        "description": "Private Key of the Service Account.",
+        "displayname": "Private Key of the Service Account",
+        "name": "private_key",
+        "required": "true",
+        "obfuscate": "true"
+    },
+    {
+        "description": "Client Email.",
+        "displayname": "Client Email",
+        "name": "client_email",
+        "required": "true",
+        "obfuscate": "true"
+    },
+    {
+        "description": "Client ID.",
+        "displayname": "Client ID",
+        "name": "client_id",
+        "required": "true",
+        "obfuscate": "true"
+    },
+    {
+        "description": "Auth URI for the Service Account.",
+        "displayname": "Auth URI",
+        "name": "auth_uri",
+        "required": "true",
+        "obfuscate": "true"
+    },
+    {
+        "description": "Token URI for the Service Account.",
+        "displayname": "token_uri",
+        "name": "token_uri",
+        "required": "true",
+        "obfuscate": "true"
+    },
+    {
+        "description": "URL for the Auth Provider Certificate.",
+        "displayname": "URL for the Auth Provider Certificate",
+        "name": "auth_provider_x509_cert_url",
+        "required": "true",
+        "obfuscate": "true"
+    },
+    {
+        "description": "URL for the Client Certificate.",
+        "displayname": "URL for the Client Certificate",
+        "name": "client_x509_cert_url",
+        "required": "true",
+        "obfuscate": "true"
+    }
+]
