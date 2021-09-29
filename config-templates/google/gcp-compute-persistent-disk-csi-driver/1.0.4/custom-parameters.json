@@ -43,7 +43,7 @@
     },
     {
         "description": "Token URI for the Service Account.",
-        "displayname": "token_uri",
+        "displayname": "Token URI",
         "name": "token_uri",
         "required": "true",
         "obfuscate": "true"
