@@ -6,6 +6,7 @@ metadata:
   namespace: kube-system
   annotations:
     version: 1.0.0
+    revision: 1
 items:
   - apiVersion: storage.k8s.io/v1beta1
     kind: CSIDriver
