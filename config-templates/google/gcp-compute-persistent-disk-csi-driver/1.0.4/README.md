@@ -25,8 +25,8 @@ ibmcloud sat storage template get --name gcp-compute-persistent-disk-csi-driver 
 | `client_id` | Required | Client ID. | N/A |
 | `auth_uri` | Required | Auth URI for the Service Account. | N/A |
 | `token_uri` | Required |Token URI for the Service Account. | N/A |
-| `auth_provider_x509_cert_url` | URL for the Auth Provider Certificate. | N/A |
-| `client_x509_cert_url` | URL for the Client Certificate. | N/A |
+| `auth_provider_x509_cert_url` | Required | URL for the Auth Provider Certificate. | N/A |
+| `client_x509_cert_url` | Required | URL for the Client Certificate. | N/A |
 
 ## Default storage classes
 
