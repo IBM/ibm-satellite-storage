@@ -101,4 +101,5 @@ sat-gce-block-silver-metro     pd.csi.storage.gke.io   Delete          WaitForFi
 ![Example Output](./images/output.png)
 
 ## References
-[GCP Compute Persistent Disk CSI Driver](https://github.com/kubernetes-sigs/gcp-compute-persistent-disk-csi-driver/tree/v1.0.4)
+- [GCP Compute Persistent Disk CSI Driver](https://github.com/kubernetes-sigs/gcp-compute-persistent-disk-csi-driver/tree/v1.0.4)
+- [Storage options ](https://cloud.google.com/compute/docs/disks#footnote-1)
