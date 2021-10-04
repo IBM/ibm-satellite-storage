@@ -8,10 +8,14 @@ metadata:
     version: 1.0.4
 items:
   - apiVersion: v1
+    kind: Namespace
+    metadata:
+      name: gce-pd-csi-driver
+  - apiVersion: v1
     kind: Secret
     metadata:
       name: cloud-sa
-      namespace: kube-system
+      namespace: gce-pd-csi-driver
       labels:
         app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
         app.kubernetes.io/version: 1.0.4
@@ -34,7 +38,7 @@ items:
     kind: ServiceAccount
     metadata:
       name: csi-gce-pd-controller-sa
-      namespace: kube-system
+      namespace: gce-pd-csi-driver
       labels:
         app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
         app.kubernetes.io/version: 1.0.4
@@ -42,7 +46,7 @@ items:
     kind: ServiceAccount
     metadata:
       name: csi-gce-pd-node-sa
-      namespace: kube-system
+      namespace: gce-pd-csi-driver
       labels:
         app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
         app.kubernetes.io/version: 1.0.4
@@ -50,7 +54,7 @@ items:
     kind: ServiceAccount
     metadata:
       name: csi-gce-pd-node-sa-win
-      namespace: kube-system
+      namespace: gce-pd-csi-driver
       labels:
         app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
         app.kubernetes.io/version: 1.0.4
@@ -140,7 +144,7 @@ items:
         app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
         app.kubernetes.io/version: 1.0.4
       name: csi-gce-pd-leaderelection-role
-      namespace: kube-system
+      namespace: gce-pd-csi-driver
     rules:
     - apiGroups:
       - coordination.k8s.io
@@ -436,7 +440,7 @@ items:
         app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
         app.kubernetes.io/version: 1.0.4
       name: csi-gce-pd-controller-leaderelection-binding
-      namespace: kube-system
+      namespace: gce-pd-csi-driver
     roleRef:
       apiGroup: rbac.authorization.k8s.io
       kind: Role
@@ -444,7 +448,7 @@ items:
     subjects:
     - kind: ServiceAccount
       name: csi-gce-pd-controller-sa
-      namespace: kube-system
+      namespace: gce-pd-csi-driver
   - apiVersion: rbac.authorization.k8s.io/v1
     kind: ClusterRoleBinding
     metadata:
@@ -459,7 +463,7 @@ items:
     subjects:
     - kind: ServiceAccount
       name: csi-gce-pd-controller-sa
-      namespace: kube-system
+      namespace: gce-pd-csi-driver
   - apiVersion: rbac.authorization.k8s.io/v1
     kind: ClusterRoleBinding
     metadata:
@@ -474,7 +478,7 @@ items:
     subjects:
     - kind: ServiceAccount
       name: csi-gce-pd-controller-sa
-      namespace: kube-system
+      namespace: gce-pd-csi-driver
   - apiVersion: rbac.authorization.k8s.io/v1
     kind: ClusterRoleBinding
     metadata:
@@ -489,7 +493,7 @@ items:
     subjects:
     - kind: ServiceAccount
       name: csi-gce-pd-controller-sa
-      namespace: kube-system
+      namespace: gce-pd-csi-driver
   - apiVersion: rbac.authorization.k8s.io/v1
     kind: ClusterRoleBinding
     metadata:
@@ -504,7 +508,7 @@ items:
     subjects:
     - kind: ServiceAccount
       name: csi-gce-pd-controller-sa
-      namespace: kube-system
+      namespace: gce-pd-csi-driver
   - apiVersion: rbac.authorization.k8s.io/v1
     kind: ClusterRoleBinding
     metadata:
@@ -519,7 +523,7 @@ items:
     subjects:
     - kind: ServiceAccount
       name: csi-gce-pd-controller-sa
-      namespace: kube-system
+      namespace: gce-pd-csi-driver
   - apiVersion: rbac.authorization.k8s.io/v1
     kind: ClusterRoleBinding
     metadata:
@@ -534,7 +538,7 @@ items:
     subjects:
     - kind: ServiceAccount
       name: csi-gce-pd-node-sa
-      namespace: kube-system
+      namespace: gce-pd-csi-driver
   - apiVersion: rbac.authorization.k8s.io/v1
     kind: ClusterRoleBinding
     metadata:
@@ -549,7 +553,7 @@ items:
     subjects:
     - kind: ServiceAccount
       name: csi-gce-pd-node-sa-win
-      namespace: kube-system
+      namespace: gce-pd-csi-driver
   - apiVersion: rbac.authorization.k8s.io/v1
     kind: ClusterRoleBinding
     metadata:
@@ -564,7 +568,7 @@ items:
     subjects:
     - kind: ServiceAccount
       name: csi-gce-pd-controller-sa
-      namespace: kube-system
+      namespace: gce-pd-csi-driver
   - apiVersion: scheduling.k8s.io/v1
     description: This priority class should be used for the GCE PD CSI driver controller
       deployment only.
@@ -591,7 +595,7 @@ items:
     kind: Deployment
     metadata:
       name: csi-gce-pd-controller
-      namespace: kube-system
+      namespace: gce-pd-csi-driver
       labels:
         app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
         app.kubernetes.io/version: 1.0.4
@@ -742,7 +746,7 @@ items:
     kind: DaemonSet
     metadata:
       name: csi-gce-pd-node
-      namespace: kube-system
+      namespace: gce-pd-csi-driver
       labels:
         app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
         app.kubernetes.io/version: 1.0.4
@@ -840,7 +844,7 @@ items:
     kind: DaemonSet
     metadata:
       name: csi-gce-pd-node-win
-      namespace: kube-system
+      namespace: gce-pd-csi-driver
       labels:
         app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
         app.kubernetes.io/version: 1.0.4
