@@ -491,7 +491,7 @@ items:
     kind: SatStorageCleanup
     metadata:
       name: satstoragecleanup-netapp
-      namespace: "kube-system"
+      namespace: "trident"
     spec:
       template-name: "netapp-trident"
       template-version: "21.04"
