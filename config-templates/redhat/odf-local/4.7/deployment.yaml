@@ -353,7 +353,7 @@ items:
           iam_client_id = "bx"
           iam_client_secret = "bx"
           iam_api_key = {{ iam-api-key }}
-          containers_api_route_private = {{ api-route-private }}
+          containers_api_route_private = {{{ api-route-private }}}
 
         [VPC]
           provider_type = "g2"
@@ -385,4 +385,4 @@ items:
          - "{{{ item }}}"
          {{/worker-nodes}}
        billingType: "{{ billing-type }}"
-       containerPrivateEndpoint: {{ api-route-private }}
+       containerPrivateEndpoint: {{{ api-route-private }}}

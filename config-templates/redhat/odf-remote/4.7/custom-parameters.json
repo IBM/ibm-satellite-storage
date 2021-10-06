@@ -106,7 +106,6 @@
     "description": "IAM API Key for storage secret.",
     "displayname": "IAM API Key for storage secret",
     "name": "iam-api-key",
-    "category": "secret",
     "required": "true"
   },
   {
