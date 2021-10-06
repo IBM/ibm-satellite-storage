@@ -352,7 +352,7 @@ items:
           iam_url = "https://iam.bluemix.net"
           iam_client_id = "bx"
           iam_client_secret = "bx"
-          iam_api_key = {{ iam-api-key }}
+          iam_api_key = {{{ iam-api-key }}}
           containers_api_route_private = {{{ api-route-private }}}
 
         [VPC]
