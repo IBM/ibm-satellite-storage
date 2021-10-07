@@ -951,3 +951,38 @@ items:
     spec:
       attachRequired: true
       podInfoOnMount: false
+  - apiversion: rbac.authorization.k8s.io/v1
+    kind: Role
+    metadata:
+      name: privileged-role
+      namespace: gce-pd-csi-driver
+    rules:
+    - apiGroups:
+      - security.openshift.io
+      resourceNames:
+      - privileged
+      resources:
+      - securitycontextconstraints
+      verb:
+      - use
+  - apiversion: rbac.authorization.k8s.io/v1
+    kind: RoleBinding
+    metadata:
+      name: privileged-rolebinding
+      namespace: gce-pd-csi-driver
+    subjects:
+    - kind: ServiceAccount
+      name: csi-gce-pd-controller-sa
+      namespace:
+    - kind: ServiceAccount
+      name: csi-gce-pd-node-sa
+      namespace:
+    - kind: ServiceAccount
+      name: csi-gce-pd-node-sa-win
+      namespace:
+    roleRef:
+      kind: Role
+      name: privileged-role
+      namespace: gce-pd-csi-driver
+      apiGroup: rbac.authorization.k8s.io
+
