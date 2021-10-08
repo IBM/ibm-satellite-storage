@@ -340,23 +340,6 @@ items:
       IBM_COS_ACCESS_KEY_ID: {{{ ibm-cos-access-key }}}
       IBM_COS_SECRET_ACCESS_KEY: {{{ ibm-cos-secret-key }}}
   {{/ibm-cos-access-key}}
-  - apiVersion: v1
-    kind: Secret
-    metadata:
-      name: storage-secret-store
-      namespace: kube-system
-    type: Opaque
-    stringData:
-      slclient.toml: |-
-        [Bluemix]
-          iam_url = "https://iam.bluemix.net"
-          iam_client_id = "bx"
-          iam_client_secret = "bx"
-          iam_api_key = {{{ iam-api-key }}}
-          containers_api_route_private = {{{ api-route-private }}}
-
-        [VPC]
-          provider_type = "g2"
   - apiVersion: ocs.ibm.io/v1
     kind: OcsCluster
     metadata:

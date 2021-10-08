@@ -103,13 +103,6 @@
     "required": "false"
   },
   {
-    "description": "IAM API Key for storage secret.",
-    "displayname": "IAM API Key for storage secret",
-    "name": "iam-api-key",
-    "category": "secret",
-    "required": "true"
-  },
-  {
     "description": "Satellite link for private container endpoint.",
     "displayname": "Satellite link for private container endpoint",
     "name": "api-route-private",
