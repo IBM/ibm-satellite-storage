@@ -20,7 +20,7 @@ In order to deploy ODF, the following prerequisites are required.
 
 1) Create the satellite link for the container api private endpoint
 From the satellite location UI, create a link with
-a) Destination FQDN or IP : private.<us-east>.containers.cloud.ibm.com    [Replace us-east with the region of your satellite location]
+a) Destination FQDN or IP : private.<REGION>.containers.cloud.ibm.com    [Replace <REGION> with the region of your satellite location. Ex: private.us-east.containers.cloud.ibm.com]
 b) Destination port : 443
 
 Sample satellite link :  https://s846feeb2f2e56cfc88a1-6b64a6ccc9c596bf59a86625d8fa2202-c000.us-east.satellite.appdomain.cloud:32232
@@ -40,7 +40,7 @@ type: Opaque
 stringData:
       slclient.toml: |-
         [Bluemix]
-          iam_url = "https://iam.bluemix.net"
+          iam_url = "https://iam.cloud.ibm.com"
           iam_client_id = "bx"
           iam_client_secret = "bx"
           iam_api_key = "<Please replace this with your IAM API Key>"
