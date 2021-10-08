@@ -360,4 +360,4 @@ items:
          - "{{{ item }}}"
          {{/worker-nodes}}
        billingType: "{{ billing-type }}"
-       containerPrivateEndpoint: {{{ api-route-private }}}
+       containerPrivateEndpoint: {{{ container-private-endpoint }}}

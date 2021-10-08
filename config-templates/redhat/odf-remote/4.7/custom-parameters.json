@@ -105,7 +105,7 @@
   {
     "description": "Satellite link for private container endpoint.",
     "displayname": "Satellite link for private container endpoint",
-    "name": "api-route-private",
+    "name": "container-private-endpoint",
     "required": "true"
   }
 ]
