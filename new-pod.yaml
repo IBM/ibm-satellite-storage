@@ -2,7 +2,7 @@
 kind: Pod
 apiVersion: v1
 metadata:
-  name: nginx-azurefile3
+  name: nginx-azurefile4
 spec:
   nodeSelector:
     kubernetes.io/os: linux
@@ -19,13 +19,13 @@ spec:
   volumes:
     - name: azurefile01
       persistentVolumeClaim:
-        claimName: pvc-azurefile3
+        claimName: pvc-azurefile4
 
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pvc-azurefile3
+  name: pvc-azurefile4
 spec:
   accessModes:
     - ReadWriteOnce
