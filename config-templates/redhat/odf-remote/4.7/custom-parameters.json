@@ -101,5 +101,11 @@
     "default": "false",
     "category": "boolean",
     "required": "false"
+  },
+  {
+    "description": "Satellite link for private container endpoint.",
+    "displayname": "Satellite link for private container endpoint",
+    "name": "container-private-endpoint",
+    "required": "true"
   }
 ]
