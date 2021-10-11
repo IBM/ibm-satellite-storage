@@ -51,7 +51,7 @@
 		"displayname": "node1-k8-ip",
 		"name": "k8-n1-ip",
 		"required": "true",
-		"place-holder": "192.168.1.1",
+		"place-holder": "100.168.1.1",
 		"regex": "^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$"
 	},
 	{
@@ -65,7 +65,7 @@
 		"displayname": "node2-k8-ip",
 		"name": "k8-n2-ip",
 		"required": "false",
-		"place-holder": "192.168.1.2",
+		"place-holder": "100.168.1.2",
 		"regex": "^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$"
 	},
 	{
@@ -79,7 +79,7 @@
 		"displayname": "node3-k8-ip",
 		"name": "k8-n3-ip",
 		"required": "false",
-		"place-holder": "192.168.1.3",
+		"place-holder": "100.168.1.3",
 		"regex": "^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$"
 	},
 	{
@@ -93,7 +93,7 @@
 		"displayname": "node4-k8-ip",
 		"name": "k8-n4-ip",
 		"required": "false",
-		"place-holder": "192.168.1.4",
+		"place-holder": "100.168.1.4",
 		"regex": "^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$"
 	},
 	{
@@ -107,7 +107,7 @@
 		"displayname": "node5-k8-ip",
 		"name": "k8-n5-ip",
 		"required": "false",
-		"place-holder": "192.168.1.5",
+		"place-holder": "100.168.1.5",
 		"regex": "^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$"
 	},
 	{
@@ -121,7 +121,7 @@
 		"displayname": "node6-k8-ip",
 		"name": "k8-n6-ip",
 		"required": "false",
-		"place-holder": "192.168.1.6",
+		"place-holder": "100.168.1.6",
 		"regex": "^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$"
 	},
 	{
@@ -135,7 +135,7 @@
 		"displayname": "node7-k8-ip",
 		"name": "k8-n7-ip",
 		"required": "false",
-		"place-holder": "192.168.1.7",
+		"place-holder": "100.168.1.7",
 		"regex": "^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$"
 	},
 	{
@@ -149,8 +149,8 @@
 		"displayname": "node8-k8-ip",
 		"name": "k8-n8-ip",
 		"required": "false",
-		"place-holder": "192.168.1.8",
-		"regex": "^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$" 
+		"place-holder": "100.168.1.8",
+		"regex": "^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$"
 	},
 	{
 		"description": "Hostname of IBM Spectrum Scale Node#8.",
