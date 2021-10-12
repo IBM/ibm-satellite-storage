@@ -4,6 +4,8 @@
         "displayname": "Google Cloud Provider Project ID",
         "name": "project_id",
         "required": "true",
+        "category": "secret",
+        "type": "string",
         "obfuscate": "true"
     },
     {
@@ -11,6 +13,8 @@
         "displayname": "Google Cloud Provider Private Key ID",
         "name": "private_key_id",
         "required": "true",
+        "category": "secret",
+        "type": "string",
         "obfuscate": "true"
     },
     {
@@ -18,6 +22,8 @@
         "displayname": "Private Key of the Service Account",
         "name": "private_key",
         "required": "true",
+        "category": "secret",
+        "type": "string",
         "obfuscate": "true"
     },
     {
@@ -25,6 +31,8 @@
         "displayname": "Client Email",
         "name": "client_email",
         "required": "true",
+        "category": "secret",
+        "type": "string",
         "obfuscate": "true"
     },
     {
@@ -32,6 +40,8 @@
         "displayname": "Client ID",
         "name": "client_id",
         "required": "true",
+        "category": "secret",
+        "type": "string",
         "obfuscate": "true"
     },
     {
@@ -39,6 +49,8 @@
         "displayname": "Auth URI",
         "name": "auth_uri",
         "required": "true",
+        "category": "secret",
+        "type": "string",
         "obfuscate": "true"
     },
     {
@@ -46,6 +58,8 @@
         "displayname": "Token URI",
         "name": "token_uri",
         "required": "true",
+        "category": "secret",
+        "type": "string",
         "obfuscate": "true"
     },
     {
@@ -53,6 +67,8 @@
         "displayname": "URL for the Auth Provider Certificate",
         "name": "auth_provider_x509_cert_url",
         "required": "true",
+        "category": "secret",
+        "type": "string",
         "obfuscate": "true"
     },
     {
@@ -60,6 +76,8 @@
         "displayname": "URL for the Client Certificate",
         "name": "client_x509_cert_url",
         "required": "true",
+        "category": "secret",
+        "type": "string",
         "obfuscate": "true"
     }
 ]
