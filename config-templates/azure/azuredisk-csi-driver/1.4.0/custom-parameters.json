@@ -1,9 +1,81 @@
 [
     {
-        "description": "cloud-config : The base64 encoded string generated from the azure.json config file.",
-        "displayname": "cloud-config",
-        "name": "cloud-config",
+        "description": "Tenant ID.",
+        "displayname": "Tenant ID",
+        "name": "tenantId",
         "required": "true",
+        "obfuscate": "true"
+    },
+    {
+        "description": "Subscription ID.",
+        "displayname": "Subscription ID",
+        "name": "subscriptionId",
+        "required": "true",
+        "category": "secret",
+        "type": "string",
+        "obfuscate": "true"
+    },
+    {
+        "description": "Azure Active Directory Client ID.",
+        "displayname": "Azure Active Directory Client ID",
+        "name": "aadClientId",
+        "required": "true",
+        "category": "secret",
+        "type": "string",
+        "obfuscate": "true"
+    },
+    {
+        "description": "Location where the machines are created.",
+        "displayname": "location",
+        "name": "location",
+        "required": "true",
+        "category": "secret",
+        "type": "string",
+        "obfuscate": "true"
+    },
+    {
+        "description": "Azure Active Directory Client Secret.",
+        "displayname": "Azure Active Directory Client Secret",
+        "name": "aadClientSecret",
+        "required": "true",
+        "category": "secret",
+        "type": "string",
+        "obfuscate": "true"
+    },
+    {
+        "description": "Resource Group.",
+        "displayname": "Resource Group.",
+        "name": "resourceGroup",
+        "required": "true",
+        "category": "secret",
+        "type": "string",
+        "obfuscate": "true"
+    },
+    {
+        "description": "Virtual Machnine Type.",
+        "displayname": "Virtual Machnine Type",
+        "name": "vmType",
+        "required": "true",
+        "category": "secret",
+        "type": "string",
+        "obfuscate": "true"
+    },
+    {
+        "description": "Network Security Group Name.",
+        "displayname": "Network Security Group Name",
+        "name": "securityGroupName",
+        "required": "true",
+        "category": "secret",
+        "type": "string",
+        "obfuscate": "true"
+    },
+    {
+        "description": "Virtual Network Name.",
+        "displayname": "Virtual Network Name",
+        "name": "vnetName",
+        "required": "true",
+        "category": "secret",
+        "type": "string",
         "obfuscate": "true"
     }
 ]
