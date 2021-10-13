@@ -4,6 +4,8 @@
         "displayname": "Tenant ID",
         "name": "tenantId",
         "required": "true",
+        "category": "secret",
+        "type": "string",
         "obfuscate": "true"
     },
     {
