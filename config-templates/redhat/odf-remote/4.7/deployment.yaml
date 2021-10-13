@@ -353,7 +353,7 @@ items:
           iam_client_id = "bx"
           iam_client_secret = "bx"
           iam_api_key = {{{ iam-api-key }}}
-          containers_api_route_private = {{{ api-route-private }}}
+          containers_api_route_private = {{{ container-private-endpoint }}}
 
         [VPC]
           provider_type = "g2"
