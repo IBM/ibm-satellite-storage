@@ -114,7 +114,6 @@
     "name": "iam-api-key",
     "category": "secret",
     "obfuscate": "true",
-    "type": "string",
     "required": "true"
   }
 ]

@@ -343,20 +343,13 @@ items:
   - apiVersion: v1
     kind: Secret
     metadata:
-      name: storage-secret-store
+      name: sat-storage-secret
       namespace: kube-system
     type: Opaque
     stringData:
-      slclient.toml: |-
-        [Bluemix]
-          iam_url = "https://iam.bluemix.net"
-          iam_client_id = "bx"
-          iam_client_secret = "bx"
-          iam_api_key = {{{ iam-api-key }}}
-          containers_api_route_private = {{{ container-private-endpoint }}}
-
-        [VPC]
-          provider_type = "g2"
+      containers_api_route_private: {{{ container-private-endpoint }}}
+    data:
+      iam_api_key: {{{ iam-api-key }}}
   - apiVersion: ocs.ibm.io/v1
     kind: OcsCluster
     metadata:
