@@ -76,7 +76,7 @@ ibmcloud sat storage assignment create --name <assignment_name> --service-cluste
 List the `gcp-compute-persistent-disk-csi-driver` driver pods in the `kube-system` namespace and verify that the status is `Running`.
 
 ```
-% kubectl get pods -n kube-system | grep gce
+% kubectl get pods -n gce-pd-csi-driver | grep gce
 csi-gce-pd-controller-7d89bf967d-92mc8                    5/5     Running             0          14m
 csi-gce-pd-node-4d66j                                     2/2     Running             0          14m
 csi-gce-pd-node-4mcvr                                     2/2     Running             0          14m
@@ -85,7 +85,7 @@ csi-gce-pd-node-8vsmb                                     2/2     Running       
 List the `gcp-compute-persistent-disk-csi-driver` storage classes.
 
 ```
-% kubectl get sc -n kube-system
+% kubectl get sc -n gce-pd-csi-driver
 sat-gce-block-bronze           pd.csi.storage.gke.io   Delete          Immediate              false                  20s
 sat-gce-block-bronze-metro     pd.csi.storage.gke.io   Delete          WaitForFirstConsumer   false                  21s
 sat-gce-block-gold             pd.csi.storage.gke.io   Delete          Immediate              false                  20s
