@@ -73,7 +73,7 @@ ibmcloud sat storage assignment create --name <assignment_name> --service-cluste
 
 ## Verifying yourGCP Compute Persistent Disk CSI Driver storage configuration is assigned to your clusters
 
-List the `gcp-compute-persistent-disk-csi-driver` driver pods in the `kube-system` namespace and verify that the status is `Running`.
+List the `gcp-compute-persistent-disk-csi-driver` driver pods in the `gce-pd-csi-driver` namespace and verify that the status is `Running`.
 
 ```
 % kubectl get pods -n gce-pd-csi-driver | grep gce
