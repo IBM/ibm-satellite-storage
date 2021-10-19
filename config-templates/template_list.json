@@ -94,5 +94,12 @@
     "default-version": "1.4.0",
     "enabled": "true",
     "provider": "ibm"
+  }, {
+    "name": "ibm-vpc-block-csi-driver",
+    "displayname": "IBM VPC Block CSI driver",
+    "Description": "IBM VPC Block CSI driver, Provides block storage on VPC.",
+    "default-version": "4.0.1",
+    "enabled": "true",
+    "provider": "ibm"
   }
 ]

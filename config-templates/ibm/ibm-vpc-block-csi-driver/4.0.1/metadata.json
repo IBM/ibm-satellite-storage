@@ -1,0 +1,31 @@
+{
+    "name": "4.0.1",
+    "enabled": "true",
+    "description": "IBM VPC Block Storage CSI driver version 4.0.1",
+    "tags": [
+      {
+        "name": "provider",
+        "value": "ibm"
+      },
+      {
+        "name": "storage_type",
+        "value": "block"
+      },
+      {
+        "name": "offering-name",
+        "value": "ibm-vpc-block-csi-driver"
+      },
+      {
+        "name": "provider-url",
+        "value": "IBM knowledge center: https://www.ibm.com/support/knowledgecenter/SSRQ8T_1.4.0/csi_block_storage_kc_welcome.html"
+      },
+      {
+        "name": "support-url",
+        "value": "https://www.ibm.com/support/home/"
+      },
+      {
+        "name": "support-msg",
+        "value": "For support contact IBM"
+      }
+      ]
+    }
