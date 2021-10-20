@@ -1,6 +1,7 @@
   
 {
   "name": "2.1.0",
+  "revision": "1",
   "enabled": "true",
   "description": "IBM Spectrum Scale Driver.",
   "tags": [

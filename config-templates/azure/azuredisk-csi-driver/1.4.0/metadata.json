@@ -1,5 +1,6 @@
 {
     "name": "1.4.0",
+    "revision": "1",
     "enabled": "true",
     "description": "[Beta] - Azure Disk CSI Driver",
     "tags": [
