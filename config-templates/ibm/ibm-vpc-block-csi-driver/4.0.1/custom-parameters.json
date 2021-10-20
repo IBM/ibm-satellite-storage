@@ -23,6 +23,6 @@
       "displayname": "g2_api_key",
       "name": "g2_api_key",
       "required": "true",
-      "category": "secret"
+      "category": "config"
     }
 ]
