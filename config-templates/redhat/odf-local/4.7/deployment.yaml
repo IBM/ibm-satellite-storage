@@ -306,7 +306,7 @@ items:
               value: openshift-storage
             - name: ADDON_CONFIGMAP_NAMESPACE
               value: kube-system
-            image: "icr.io/obs/ibm-ocs-operator:v4.7.12"
+            image: "icr.io/obs/ibm-ocs-operator:v4.7.13"
             imagePullPolicy: Always
             name: manager
             securityContext:
@@ -343,7 +343,7 @@ items:
   - apiVersion: v1
     kind: Secret
     metadata:
-      name: sat-storage-secret
+      name: storage-secret-store
       namespace: kube-system
     type: Opaque
     stringData:
