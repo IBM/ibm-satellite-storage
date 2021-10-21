@@ -5,6 +5,7 @@ metadata:
   namespace: kube-system
   annotations:
     version: 21.04
+    revision: 1
 items:
   - apiVersion: v1
     kind: Pod

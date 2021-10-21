@@ -31,16 +31,25 @@ The Azure Disk CSI driver implements the CSI specification for container orchest
 
 ## Azure Disk CSI Driver parameters & how to retrieve them
 
-Get a list of the Azure template configuration parameters. 
+Get a list of the Azure template configuration parameters.
 ```
 ibmcloud sat storage template get --name azuredisk-csi-driver --version 1.4.0
 ```
 
-** Azure Disk CSI Driver parameters**
+**Azure Disk CSI Driver parameters**
 
 | Parameter | Required? | Description | Default value if not provided |
 | --- | --- | --- | --- |
-| `cloud-config` | Required | Enter the base64 encoded value that you created from the `azure.json` [conifg file](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/azure.json). | N/A |
+| `tenantId` | Required | Provide Tenant ID. | N/A |
+| `subscriptionId` | Required | Provide Subscription ID. | N/A |
+| `aadClientId` | Required | Provide Azure Activery Directory Client ID. | N/A |
+| `aadClientSecret` | Required | Provide Azure Active Directory Client Secret. | N/A |
+| `resourceGroup` | Required | Provide Resource Group. | N/A |
+| `location` | Required | Provide Location. | N/A |
+| `vmType` | Required | Provide Virtual Machine Type (eg. standard, VMSS). | N/A |
+| `securityGroupName` | Required | Provide Network Security Group Name. | N/A |
+| `vnetName` | Required | Provide Virtual Network Name. | N/A |
+
 
 
 ## Default storage classes
@@ -63,7 +72,7 @@ ibmcloud sat storage template get --name azuredisk-csi-driver --version 1.4.0
 **Example `sat storage config create` command**
 
 ```sh
-ibmcloud sat storage config create --name <config-name> --template-name azuredisk-csi-driver --template-version 1.4.0 --location <location> -p "cloud-config=<base64-encoded-config-file>"
+ibmcloud sat storage config create --name <config-name> --template-name azuredisk-csi-driver --template-version 1.4.0 --location <location> -p "tenantId=<tenantId>" -p "subscriptionId=<subscriptionId>" -p "aadClientId=<Azure_AD_ClientId>" -p "aadClientSecret=<Azure_AD_Client_Secret>" -p "resourceGroup=<resource_group>" -p "location=<location>" -p "vmType=<vm_type>" -p "securityGroupName=<security_group_name>" -p "vnetName=<vnet_name>"
 ```
 
 ## Creating the storage assignment
@@ -120,5 +129,6 @@ sat-azure-block-silver-metro     disk.csi.azure.com   Delete          WaitForFir
 - In case of `authentication failure`, please make sure that **Service Principal** is created properly.
 
 ## References
-[Azure Disk CSI Driver](https://github.com/kubernetes-sigs/azuredisk-csi-driver)
-[Limitations](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/docs/limitations.md)
+- [Azure Disk CSI Driver](https://github.com/kubernetes-sigs/azuredisk-csi-driver)
+- [Limitations](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/docs/limitations.md)
+- [Get Azure Credentials](https://www.inkoop.io/blog/how-to-get-azure-api-credentials/)
