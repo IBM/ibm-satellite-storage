@@ -328,6 +328,7 @@ items:
     metadata:
       labels:
         openshift.io/cluster-monitoring: "true"
+        deploy.razee.io/Reconcile: "false"
       name: openshift-storage
   - apiVersion: v1
     kind: Secret
@@ -373,3 +374,12 @@ items:
          {{/worker-nodes}}
        billingType: "{{ billing-type }}"
        containerPrivateEndpoint: {{{ container-private-endpoint }}}
+  - apiVersion: satstorage.ibm.com/v1
+    kind: SatStorageCleanup
+    metadata:
+      name: satstoragecleanup-odf-remote
+      namespace: "ibm-satellite-storage"
+    spec:
+      template-name: "odf-remote"
+      template-version: "4.7"
+      template-namespace: "kube-system"
