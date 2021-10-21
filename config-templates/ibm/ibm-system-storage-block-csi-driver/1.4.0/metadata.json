@@ -1,5 +1,6 @@
 {
   "name": "1.4.0",
+  "revision": "1",
   "enabled": "true",
   "description": "IBM System Storage Block CSI driver version 1.4.0",
   "tags": [

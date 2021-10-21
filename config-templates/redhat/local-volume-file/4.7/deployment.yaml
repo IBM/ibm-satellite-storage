@@ -6,6 +6,7 @@ metadata:
     namespace: kube-system
     annotations:
         version: local-volume-file-45
+        revision: 1
 items:
     - apiVersion: v1
       kind: Namespace

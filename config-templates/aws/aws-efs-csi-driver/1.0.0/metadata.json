@@ -1,5 +1,6 @@
 {
   "name": "1.0.0",
+  "revision": "1",
   "enabled": "true",
   "description": "AWS EFS CSI Driver version 1.0.0",
   "tags": [

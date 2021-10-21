@@ -6,10 +6,23 @@ metadata:
   namespace: kube-system
   annotations:
     version: 1.4.0
+    revision: 1
 items:
   - apiVersion: v1
-    data:
-      cloud-config: "{{{cloud-config}}}"
+    stringData:
+      cloud-config: |
+        {
+          "cloud":"AzurePublicCloud",
+          "tenantId": "{{{tenantId}}}",
+          "subscriptionId": "{{{subscriptionId}}}",
+          "aadClientId": "{{{aadClientId}}}",
+          "aadClientSecret": "{{{aadClientSecret}}}",
+          "resourceGroup": "{{{resourceGroup}}}",
+          "location": "{{{location}}}",
+          "vmType": "{{{vmType}}}",
+          "securityGroupName": "{{{securityGroupName}}}",
+          "vnetName": "{{{vnetName}}}"
+        }
     kind: Secret
     metadata:
       name: azure-cloud-provider
