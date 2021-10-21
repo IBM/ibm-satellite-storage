@@ -308,7 +308,7 @@ items:
               value: openshift-storage
             - name: ADDON_CONFIGMAP_NAMESPACE
               value: kube-system
-            image: "icr.io/obs/ibm-ocs-operator:v4.7.12"
+            image: "icr.io/obs/ibm-ocs-operator:v4.7.13"
             imagePullPolicy: Always
             name: manager
             securityContext:
@@ -342,6 +342,16 @@ items:
       IBM_COS_ACCESS_KEY_ID: {{{ ibm-cos-access-key }}}
       IBM_COS_SECRET_ACCESS_KEY: {{{ ibm-cos-secret-key }}}
   {{/ibm-cos-access-key}}
+  - apiVersion: v1
+    kind: Secret
+    metadata:
+      name: storage-secret-store
+      namespace: kube-system
+    type: Opaque
+    stringData:
+      containers_api_route_private: {{{ container-private-endpoint }}}
+    data:
+      iam_api_key: {{{ iam-api-key }}}
   - apiVersion: ocs.ibm.io/v1
     kind: OcsCluster
     metadata:
