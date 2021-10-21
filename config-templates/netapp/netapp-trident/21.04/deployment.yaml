@@ -492,7 +492,7 @@ items:
     kind: SatStorageCleanup
     metadata:
       name: satstoragecleanup-netapp
-      namespace: "trident"
+      namespace: "ibm-satellite-storage"
     spec:
       template-name: "netapp-trident"
       template-version: "21.04"
