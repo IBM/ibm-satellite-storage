@@ -1,7 +1,7 @@
 [
     {
         "description": "The name of the storage class.",
-        "displayname": "Storage Class Name",
+        "displayname": "Storage class name",
         "name": "name",
         "templateKeyName": [
             "name"
@@ -10,8 +10,8 @@
         "category": "config"
     },
     {
-        "description": "Type of the disk to create the storage class.",
-        "displayname": "Type of the disk",
+        "description": "The disk type to use for the storage class.",
+        "displayname": "Disk type",
         "name": "type",
         "templateKeyName": [
             "type"
@@ -20,8 +20,8 @@
         "category": "config"
     },
     {
-        "description": "Volume Binding Mode.",
-        "displayname": "Volume Binding Mode",
+        "description": "The volume binding mode.",
+        "displayname": "Volume binding mode",
         "name": "volumeBindingMode",
         "templateKeyName": [
             "volumeBindingMode"

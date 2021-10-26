@@ -1,7 +1,7 @@
 [
     {
-        "description": "Google Cloud Provider Project ID.",
-        "displayname": "Google Cloud Provider Project ID",
+        "description": "Google Cloud project ID.",
+        "displayname": "Google Cloud project ID."",
         "name": "project_id",
         "required": "true",
         "category": "secret",
@@ -9,8 +9,8 @@
         "obfuscate": "true"
     },
     {
-        "description": "Google Cloud Provider Private Key ID.",
-        "displayname": "Google Cloud Provider Private Key ID",
+        "description": "Google Cloud private key ID.",
+        "displayname": "Google Cloud private key ID",
         "name": "private_key_id",
         "required": "true",
         "category": "secret",
@@ -18,8 +18,8 @@
         "obfuscate": "true"
     },
     {
-        "description": "Private Key of the Service Account.",
-        "displayname": "Private Key of the Service Account",
+        "description": "Private key of the service account.",
+        "displayname": "Private key of the service account.",
         "name": "private_key",
         "required": "true",
         "category": "secret",
@@ -27,8 +27,8 @@
         "obfuscate": "true"
     },
     {
-        "description": "Client Email.",
-        "displayname": "Client Email",
+        "description": "Client email.",
+        "displayname": "Client email",
         "name": "client_email",
         "required": "true",
         "category": "secret",
@@ -45,8 +45,8 @@
         "obfuscate": "true"
     },
     {
-        "description": "Auth URI for the Service Account.",
-        "displayname": "Auth URI",
+        "description": "Authorization URI for the service account.",
+        "displayname": "Authorization URI",
         "name": "auth_uri",
         "required": "true",
         "category": "secret",
@@ -54,7 +54,7 @@
         "obfuscate": "true"
     },
     {
-        "description": "Token URI for the Service Account.",
+        "description": "Token URI for the service account.",
         "displayname": "Token URI",
         "name": "token_uri",
         "required": "true",
@@ -63,8 +63,8 @@
         "obfuscate": "true"
     },
     {
-        "description": "URL for the Auth Provider Certificate.",
-        "displayname": "URL for the Auth Provider Certificate",
+        "description": "URL for the authorization provider certificate.",
+        "displayname": "URL for the authorization provider certificate",
         "name": "auth_provider_x509_cert_url",
         "required": "true",
         "category": "secret",
@@ -72,8 +72,8 @@
         "obfuscate": "true"
     },
     {
-        "description": "URL for the Client Certificate.",
-        "displayname": "URL for the Client Certificate",
+        "description": "URL for the client certificate.",
+        "displayname": "URL for the client certificate",
         "name": "client_x509_cert_url",
         "required": "true",
         "category": "secret",

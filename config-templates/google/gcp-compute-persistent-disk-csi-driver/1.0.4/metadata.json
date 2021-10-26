@@ -1,7 +1,7 @@
 {
     "name": "1.0.4",
     "enabled": "true",
-    "description": "GCP Compute Persistent Disk CSI Driverr",
+    "description": "GCP Compute Persistent Disk CSI Driver",
     "tags": [
         {
             "name": "provider",
