@@ -10,11 +10,11 @@ items:
   - apiVersion: storage.k8s.io/v1
     kind: StorageClass
     metadata:
-      name: ibmc-vpc-block-metro-10iops-tier
+      name: sat-vpc-block-gold-metro
       labels:
         app: ibm-vpc-block-csi-driver
       annotations:
-        storageclass.beta.kubernetes.io/is-default-class: "true"
+        storageclass.kubernetes.io/is-default-class: "true"
     provisioner: vpc.block.csi.ibm.io
     parameters:
       profile: "10iops-tier"            # The VPC Storage profile used.
