@@ -94,5 +94,13 @@
     "default-version": "1.4.0",
     "enabled": "true",
     "provider": "ibm"
+  },
+  {
+    "name": "gcp-compute-persistent-disk-csi-driver",
+    "displayname": "GCP Compute Persistent Disk CSI Driver",
+    "Description": "GCP Compute Persistent Disk CSI Driver.",
+    "default-version": "1.0.4",
+    "enabled": "true",
+    "provider": "google"
   }
 ]

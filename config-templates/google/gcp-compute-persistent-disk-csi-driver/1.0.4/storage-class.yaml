@@ -1,0 +1,97 @@
+---
+apiVersion: v1
+kind: List
+metadata:
+  name: gcp-compute-persistent-disk-csi-drive-sc
+  namespace: kube-system
+  annotations:
+    version: 1.0.4
+items:
+  - kind: StorageClass
+    apiVersion: storage.k8s.io/v1
+    metadata:
+      name: sat-gce-block-bronze-metro
+      labels:
+        app.kubernetes.io/name: gcp-compute-persistent-disk-csi-drive
+        app.kubernetes.io/version: 1.0.4
+    provisioner: pd.csi.storage.gke.io
+    parameters:
+      type: pd-standard
+    volumeBindingMode: WaitForFirstConsumer
+  - kind: StorageClass
+    apiVersion: storage.k8s.io/v1
+    metadata:
+      name: sat-gce-block-silver-metro
+      labels:
+        app.kubernetes.io/name: gcp-compute-persistent-disk-csi-drive
+        app.kubernetes.io/version: 1.0.4
+    provisioner: pd.csi.storage.gke.io
+    parameters:
+      type: pd-balanced
+    volumeBindingMode: WaitForFirstConsumer
+  - kind: StorageClass
+    apiVersion: storage.k8s.io/v1
+    metadata:
+      name: sat-gce-block-gold-metro
+      labels:
+        app.kubernetes.io/name: gcp-compute-persistent-disk-csi-drive
+        app.kubernetes.io/version: 1.0.4
+    provisioner: pd.csi.storage.gke.io
+    parameters:
+      type: pd-ssd
+    volumeBindingMode: WaitForFirstConsumer
+  - kind: StorageClass
+    apiVersion: storage.k8s.io/v1
+    metadata:
+      name: sat-gce-block-platinum-metro
+      labels:
+        app.kubernetes.io/name: gcp-compute-persistent-disk-csi-drive
+        app.kubernetes.io/version: 1.0.4
+    provisioner: pd.csi.storage.gke.io
+    parameters:
+      type: pd-extreme
+    volumeBindingMode: WaitForFirstConsumer
+  - kind: StorageClass
+    apiVersion: storage.k8s.io/v1
+    metadata:
+      name: sat-gce-block-bronze
+      labels:
+        app.kubernetes.io/name: gcp-compute-persistent-disk-csi-drive
+        app.kubernetes.io/version: 1.0.4
+    provisioner: pd.csi.storage.gke.io
+    parameters:
+      type: pd-standard
+    volumeBindingMode: Immediate
+  - kind: StorageClass
+    apiVersion: storage.k8s.io/v1
+    metadata:
+      name: sat-gce-block-silver
+      labels:
+        app.kubernetes.io/name: gcp-compute-persistent-disk-csi-drive
+        app.kubernetes.io/version: 1.0.4
+    provisioner: pd.csi.storage.gke.io
+    parameters:
+      type: pd-balanced
+    volumeBindingMode: Immediate
+  - kind: StorageClass
+    apiVersion: storage.k8s.io/v1
+    metadata:
+      name: sat-gce-block-gold
+      labels:
+        app.kubernetes.io/name: gcp-compute-persistent-disk-csi-drive
+        app.kubernetes.io/version: 1.0.4
+    provisioner: pd.csi.storage.gke.io
+    parameters:
+      type: pd-ssd
+    volumeBindingMode: Immediate
+  - kind: StorageClass
+    apiVersion: storage.k8s.io/v1
+    metadata:
+      name: sat-gce-block-platinum
+      labels:
+        app.kubernetes.io/name: gcp-compute-persistent-disk-csi-drive
+        app.kubernetes.io/version: 1.0.4
+    provisioner: pd.csi.storage.gke.io
+    parameters:
+      type: pd-extreme
+    volumeBindingMode: Immediate

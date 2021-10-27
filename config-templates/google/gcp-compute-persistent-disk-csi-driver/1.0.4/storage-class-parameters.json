@@ -1,0 +1,33 @@
+[
+    {
+        "description": "The name of the storage class.",
+        "displayname": "Storage class name",
+        "name": "name",
+        "templateKeyName": [
+            "name"
+        ],
+        "required": "true",
+        "category": "config"
+    },
+    {
+        "description": "The disk type to use for the storage class.",
+        "displayname": "Disk type",
+        "name": "type",
+        "templateKeyName": [
+            "type"
+        ],
+        "required": "true",
+        "category": "config"
+    },
+    {
+        "description": "The volume binding mode.",
+        "displayname": "Volume binding mode",
+        "name": "volumeBindingMode",
+        "templateKeyName": [
+            "volumeBindingMode"
+        ],
+        "default": "WaitForFirstConsumer",
+        "required": "false",
+        "category": "config"
+    }
+]
