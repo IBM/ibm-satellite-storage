@@ -140,7 +140,6 @@ items:
     kind: Role
     metadata:
       labels:
-        k8s-app: gcp-compute-persistent-disk-csi-driver
         app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
         app.kubernetes.io/version: 1.0.4
       name: csi-gce-pd-leaderelection-role
@@ -436,7 +435,6 @@ items:
     kind: RoleBinding
     metadata:
       labels:
-        k8s-app: gcp-compute-persistent-disk-csi-driver
         app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
         app.kubernetes.io/version: 1.0.4
       name: csi-gce-pd-controller-leaderelection-binding
