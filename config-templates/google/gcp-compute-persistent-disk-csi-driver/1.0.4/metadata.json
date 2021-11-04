@@ -1,6 +1,7 @@
 {
     "name": "1.0.4",
     "enabled": "true",
+    "revision": "1",
     "description": "GCP Compute Persistent Disk CSI Driver",
     "tags": [
         {
@@ -57,7 +58,7 @@
         },
         {
             "name": "storageclass",
-            "value": "gold,silver,bronze,gold-metro,silver-metro,bronze-metro"
+            "value": "platinum,gold,silver,bronze,platinum-metro,gold-metro,silver-metro,bronze-metro"
         }
     ]
 }
