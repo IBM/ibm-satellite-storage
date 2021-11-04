@@ -24,6 +24,10 @@
         "value": "https://www.ibm.com/support/home/"
       },
       {
+        "name": "volume-type",
+        "value": "block"
+      },
+      {
         "name": "support-msg",
         "value": "For support contact IBM"
       }
