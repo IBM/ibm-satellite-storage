@@ -308,7 +308,7 @@ items:
               value: openshift-storage
             - name: ADDON_CONFIGMAP_NAMESPACE
               value: kube-system
-            image: "icr.io/obs/ibm-ocs-operator:v4.7.13"
+            image: "icr.io/obs/ibm-ocs-operator:v4.7.15"
             imagePullPolicy: Always
             name: manager
             securityContext:
@@ -349,8 +349,6 @@ items:
       name: storage-secret-store
       namespace: kube-system
     type: Opaque
-    stringData:
-      containers_api_route_private: {{{ container-private-endpoint }}}
     data:
       iam_api_key: {{{ iam-api-key }}}
   - apiVersion: ocs.ibm.io/v1
@@ -381,7 +379,6 @@ items:
          - "{{{ item }}}"
          {{/worker-nodes}}
        billingType: "{{ billing-type }}"
-       containerPrivateEndpoint: {{{ container-private-endpoint }}}
   - apiVersion: satstorage.ibm.com/v1
     kind: SatStorageCleanup
     metadata:

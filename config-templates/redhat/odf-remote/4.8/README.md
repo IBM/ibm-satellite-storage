@@ -109,7 +109,7 @@ Run the following commands to create a COS instance and create a set of HMAC cre
 
 5. Create a storage configuration using the existing ODF template.
     ```
-    ibmcloud sat storage config create --name odf-config --template-name odf-remote --template-version 4.7 -p "ocs-cluster-name=testocscluster" -p "mon-storage-class=vpc-custom-10iops-tier" -p "mon-size=50Gi" -p "osd-storage-class=vpc-custom-10iops-tier" -p "osd-size=150Gi" -p "num-of-osd=1" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90" -p "ibm-cos-endpoint=https://s3.us-east.cloud-object-storage.appdomain.cloud" -p "ibm-cos-location=us-east-standard" -p "ibm-cos-access-key=xxx" -p "ibm-cos-secret-key=yyy" -p "iam-api-key=xxx" --location c040tu4w0h6c6s5s9irg
+    ibmcloud sat storage config create --name odf-config --template-name odf-remote --template-version 4.8 -p "ocs-cluster-name=testocscluster" -p "mon-storage-class=vpc-custom-10iops-tier" -p "mon-size=50Gi" -p "osd-storage-class=vpc-custom-10iops-tier" -p "osd-size=150Gi" -p "num-of-osd=1" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90" -p "ibm-cos-endpoint=https://s3.us-east.cloud-object-storage.appdomain.cloud" -p "ibm-cos-location=us-east-standard" -p "ibm-cos-access-key=xxx" -p "ibm-cos-secret-key=yyy" -p "iam-api-key=xxx" --location c040tu4w0h6c6s5s9irg
     ```
 
     Example output:
@@ -140,7 +140,7 @@ Run the following commands to create a COS instance and create a set of HMAC cre
     Example output:
     ```
     NAME                 AGE     PHASE   EXTERNAL   CREATED AT             VERSION
-    ocs-storagecluster   5m14s   Ready              2021-03-02T11:46:41Z   4.7.0
+    ocs-storagecluster   5m14s   Ready              2021-03-02T11:46:41Z   4.8.0
     ```
 
 3. List the ODF pods that are installed and verify that the status is `Running`.
@@ -205,7 +205,7 @@ You can scale your ODF configuration by increasing the `num-of-osd` parameter.
 
 1. Create the storage configuration and specify the updated values. In this example, the `num-of-osd` parameter is updated to 2, to double the storage capacity.
   ```
-  ibmcloud sat storage config create --name odf-config --template-name odf-remote --template-version 4.7 -p "ocs-cluster-name=testocscluster" -p "mon-storage-class=vpc-custom-10iops-tier" -p "mon-size=50Gi" -p "osd-storage-class=vpc-custom-10iops-tier" -p "osd-size=150Gi" -p "num-of-osd=2" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90" -p "ibm-cos-endpoint=https://s3.us-east.cloud-object-storage.appdomain.cloud" -p "ibm-cos-location=us-east-standard" -p "ibm-cos-access-key=xxx" -p "ibm-cos-secret-key=yyy" -p "iam-api-key=xxx" --location c040tu4w0h6c6s5s9irg
+  ibmcloud sat storage config create --name odf-config --template-name odf-remote --template-version 4.8 -p "ocs-cluster-name=testocscluster" -p "mon-storage-class=vpc-custom-10iops-tier" -p "mon-size=50Gi" -p "osd-storage-class=vpc-custom-10iops-tier" -p "osd-size=150Gi" -p "num-of-osd=2" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90" -p "ibm-cos-endpoint=https://s3.us-east.cloud-object-storage.appdomain.cloud" -p "ibm-cos-location=us-east-standard" -p "ibm-cos-access-key=xxx" -p "ibm-cos-secret-key=yyy" -p "iam-api-key=xxx" --location c040tu4w0h6c6s5s9irg
   ```
 
 2. Create a new assignment for this configuration.

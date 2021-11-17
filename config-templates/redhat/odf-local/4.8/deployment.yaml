@@ -292,8 +292,8 @@ items:
           labels:
             name: ocs-controller
         spec:
+          priorityClassName: system-cluster-critical
           securityContext:
-            priorityClassName: system-cluster-critical
             runAsNonRoot: true
             runAsUser: 1000
           containers:
@@ -303,12 +303,12 @@ items:
             - /manager
             env:
             - name: CHANNEL
-              value: stable-4.7
+              value: stable-4.8
             - name: WATCH_NAMESPACE
               value: openshift-storage
             - name: ADDON_CONFIGMAP_NAMESPACE
               value: kube-system
-            image: "icr.io/obs/ibm-ocs-operator:v4.7.15"
+            image: "icr.io/obs/ibm-ocs-operator:v4.8.1"
             imagePullPolicy: Always
             name: manager
             securityContext:
@@ -357,10 +357,18 @@ items:
       name: {{ ocs-cluster-name }}
       namespace: default
     spec:
-       monStorageClassName: {{ mon-storage-class }}
-       monSize: {{ mon-size }}
-       osdStorageClassName: {{ osd-storage-class }}
-       osdSize: {{ osd-size }}
+       monStorageClassName: localfile
+       monSize: "1"
+       osdStorageClassName: localblock
+       osdSize: "1"
+       monDevicePaths:
+         {{#mon-device-path }}
+         - "{{{ item }}}"
+         {{/mon-device-path }}
+       osdDevicePaths:
+         {{#osd-device-path }}
+         - "{{{ item }}}"
+         {{/osd-device-path }}
        numOfOsd: {{ num-of-osd }}
        ocsUpgrade: {{ odf-upgrade }}
        clusterEncryption: {{ cluster-encryption }}
@@ -374,9 +382,9 @@ items:
   - apiVersion: satstorage.ibm.com/v1
     kind: SatStorageCleanup
     metadata:
-      name: satstoragecleanup-odf-remote
+      name: satstoragecleanup-odf-local
       namespace: "ibm-satellite-storage"
     spec:
-      template-name: "odf-remote"
-      template-version: "4.7"
+      template-name: "odf-local"
+      template-version: "4.8"
       template-namespace: "kube-system"
