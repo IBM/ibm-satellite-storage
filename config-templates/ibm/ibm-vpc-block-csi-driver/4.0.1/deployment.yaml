@@ -7,6 +7,65 @@ metadata:
     version: 4.0.1
 items:
   - apiVersion: v1
+    kind: ServiceAccount
+    metadata:
+      name: node-sa
+      namespace: kube-system
+    imagePullSecrets:
+    - name: icr-io-secret
+  - kind: ClusterRole
+    apiVersion: rbac.authorization.k8s.io/v1
+    metadata:
+      name: cr-nodes
+    rules:
+      - apiGroups: [""]
+        resources: [nodes]
+        verbs: [get, watch, list, update]
+  - kind: ClusterRoleBinding
+    apiVersion: rbac.authorization.k8s.io/v1
+    metadata:
+      name: crb-nodes
+    subjects:
+      - kind: ServiceAccount
+        name: node-sa
+        namespace: kube-system
+    roleRef:
+      kind: ClusterRole
+      name: cr-nodes
+      apiGroup: rbac.authorization.k8s.io
+  - apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: vpc-node-label-updater
+      namespace: kube-system
+      labels:
+        app: vpc-node-label-updater
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          app: vpc-node-label-updater
+      template:
+        metadata:
+          labels:
+            app: vpc-node-label-updater
+        spec:
+          serviceAccount: node-sa
+          containers:
+          - name: node-label-watcher
+            image: icr.io/obs/storage/vpc-node-label-updater:v1.0.0
+            imagePullPolicy: Always
+            env:
+            - name: SECRET_CONFIG_PATH
+              value: /etc/storage_ibmc
+            volumeMounts:
+              - mountPath: /etc/storage_ibmc
+                name: customer-auth
+          volumes:
+            - name: customer-auth
+              secret:
+                secretName: storage-secret-store
+  - apiVersion: v1
     kind: ConfigMap
     metadata:
       name: ibm-vpc-block-csi-configmap
