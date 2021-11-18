@@ -15,7 +15,7 @@ items:
     rules:
       - apiGroups: [""]
         resources: ["nodes"]
-        verbs: ["get", "list", "watch"]
+        verbs: ["get", "list", "watch", "update"]
   - kind: ClusterRoleBinding
     apiVersion: rbac.authorization.k8s.io/v1
     metadata:
