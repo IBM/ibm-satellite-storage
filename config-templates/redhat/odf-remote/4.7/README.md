@@ -16,39 +16,18 @@ In order to deploy ODF, the following prerequisites are required.
 - The storage class you use for the `mon-storage-class` and `osd-storage-class` parameters should have `VolumeBindingMode` set to `WaitForFirstConsumer` if you're using a multizone cluster
 - [Optional] You must provision an instance of IBM Cloud Object Storage and provide your COS HMAC credentials, the regional public endpoint, and the IBM COS location when you create your storage configuration if you want to use ibm cos as the default backingstore. If not provided, pv-pool will be used.
 
-### Creating the satellite link for the private container endpoint and the storage secret
+### Creating the satellite link for the private container endpoint
 
 1) Create the satellite link for the container api private endpoint
 From the satellite location UI, create a link with
 a) Destination FQDN or IP : private.<REGION>.containers.cloud.ibm.com    [Replace <REGION> with the region of your satellite location. Ex: private.us-east.containers.cloud.ibm.com]
 b) Destination port : 443
+c) Protocol : https
 
 Sample satellite link :  https://s846feeb2f2e56cfc88a1-6b64a6ccc9c596bf59a86625d8fa2202-c000.us-east.satellite.appdomain.cloud:32232
 
 Please provide this link for the parameter : `container-private-endpoint`
 
-2) Create the storage secret on your satellite cluster
-Create the storage secret or update the secret if already present
-
-```       
-apiVersion: v1
-kind: Secret
-metadata:
-      name: storage-secret-store
-      namespace: kube-system
-type: Opaque
-stringData:
-      slclient.toml: |-
-        [Bluemix]
-          iam_url = "https://iam.cloud.ibm.com"
-          iam_client_id = "bx"
-          iam_client_secret = "bx"
-          iam_api_key = "<Please replace this with your IAM API Key>"
-          containers_api_route_private = "<Please replace this with the satellite link created in step 1>"
-
-        [VPC]
-          provider_type = "g2"
-```
 
 ### Creating the IBM COS service instance
 
@@ -88,6 +67,7 @@ Run the following commands to create a COS instance and create a set of HMAC cre
 | `ibm-cos-secret-key` | Optional | Enter your IBM COS secret access key. | N/A | string |
 | `cluster-encryption` | Optional | Set to `true` if you want cluster wide encryption enabled. | false | boolean |
 | `container-private-endpoint` | Required | Please provide the satellite link for the container private endpoint as specified in the prerequisites | N/A | string |
+| `iam-api-key` | Required | Please provide your iam-api-key for creating the storage secret | N/A | string [secret] |
 
 ## Default storage classes
 
@@ -143,7 +123,7 @@ Run the following commands to create a COS instance and create a set of HMAC cre
 
 5. Create a storage configuration using the existing ODF template.
     ```
-    ibmcloud sat storage config create --name odf-config --template-name odf-remote --template-version 4.7 -p "ocs-cluster-name=testocscluster" -p "mon-storage-class=vpc-custom-10iops-tier" -p "mon-size=50Gi" -p "osd-storage-class=vpc-custom-10iops-tier" -p "osd-size=150Gi" -p "num-of-osd=1" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90" -p "ibm-cos-endpoint=https://s3.us-east.cloud-object-storage.appdomain.cloud" -p "ibm-cos-location=us-east-standard" -p "ibm-cos-access-key=xxx" -p "ibm-cos-secret-key=yyy" -p "container-private-endpoint=https://sad073aa1c9351d1a93ef-6b64a6ccc9c596bf59a86625d8fa2202-c000.us-east.satellite.appdomain.cloud:30740" --location c040tu4w0h6c6s5s9irg
+    ibmcloud sat storage config create --name odf-config --template-name odf-remote --template-version 4.7 -p "ocs-cluster-name=testocscluster" -p "mon-storage-class=vpc-custom-10iops-tier" -p "mon-size=50Gi" -p "osd-storage-class=vpc-custom-10iops-tier" -p "osd-size=150Gi" -p "num-of-osd=1" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90" -p "ibm-cos-endpoint=https://s3.us-east.cloud-object-storage.appdomain.cloud" -p "ibm-cos-location=us-east-standard" -p "ibm-cos-access-key=xxx" -p "ibm-cos-secret-key=yyy" -p "container-private-endpoint=https://sad073aa1c9351d1a93ef-6b64a6ccc9c596bf59a86625d8fa2202-c000.us-east.satellite.appdomain.cloud:30740" -p "iam-api-key=xxx" --location c040tu4w0h6c6s5s9irg
     ```
 
     Example output:
@@ -239,7 +219,7 @@ You can scale your ODF configuration by increasing the `num-of-osd` parameter.
 
 1. Create the storage configuration and specify the updated values. In this example, the `num-of-osd` parameter is updated to 2, to double the storage capacity.
   ```
-  ibmcloud sat storage config create --name odf-config --template-name odf-remote --template-version 4.7 -p "ocs-cluster-name=testocscluster" -p "mon-storage-class=vpc-custom-10iops-tier" -p "mon-size=50Gi" -p "osd-storage-class=vpc-custom-10iops-tier" -p "osd-size=150Gi" -p "num-of-osd=2" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90" -p "ibm-cos-endpoint=https://s3.us-east.cloud-object-storage.appdomain.cloud" -p "ibm-cos-location=us-east-standard" -p "ibm-cos-access-key=xxx" -p "ibm-cos-secret-key=yyy" -p "container-private-endpoint=https://sad073aa1c9351d1a93ef-6b64a6ccc9c596bf59a86625d8fa2202-c000.us-east.satellite.appdomain.cloud:30740" --location c040tu4w0h6c6s5s9irg
+  ibmcloud sat storage config create --name odf-config --template-name odf-remote --template-version 4.7 -p "ocs-cluster-name=testocscluster" -p "mon-storage-class=vpc-custom-10iops-tier" -p "mon-size=50Gi" -p "osd-storage-class=vpc-custom-10iops-tier" -p "osd-size=150Gi" -p "num-of-osd=2" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90" -p "ibm-cos-endpoint=https://s3.us-east.cloud-object-storage.appdomain.cloud" -p "ibm-cos-location=us-east-standard" -p "ibm-cos-access-key=xxx" -p "ibm-cos-secret-key=yyy" -p "container-private-endpoint=https://sad073aa1c9351d1a93ef-6b64a6ccc9c596bf59a86625d8fa2202-c000.us-east.satellite.appdomain.cloud:30740" -p "iam-api-key=xxx" --location c040tu4w0h6c6s5s9irg
   ```
 
 2. Create a new assignment for this configuration.
@@ -271,6 +251,7 @@ In the following example, the ODF configuration is updated to use template versi
     - `ibm-cos-secret-key` - This parameter remains the same as the existing configuration.
     - `odf-upgrade` - Enter `true` to upgrade your `ocs-cluster` to the template version that you specified.
     - `container-private-endpoint` - This parameter remains the same as the existing configuration.
+    - `iam-api-key` - This parameter remains the same as the existing configuration.
 
 1. Get the details of your ODF configuration.
     ```
@@ -285,7 +266,7 @@ In the following example, the ODF configuration is updated to use template versi
 
 3. Save the configuration details. When you upgrade your ODF version, you must enter the same configuration details and set the `template-version` to the version you want to upgrade to and set the `odf-upgrade` parameter to `true`.
   ```
-  ibmcloud sat storage config create --name odf-config --template-name odf-remote --template-version 4.8 -p "ocs-cluster-name=testocscluster" -p "mon-storage-class=vpc-custom-10iops-tier" -p "mon-size=50Gi" -p "osd-storage-class=vpc-custom-10iops-tier" -p "osd-size=150Gi" -p "num-of-osd=1" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90" -p "odf-upgrade=true" -p "ibm-cos-endpoint=https://s3.us-east.cloud-object-storage.appdomain.cloud" -p "ibm-cos-location=us-east-standard" -p "ibm-cos-access-key=xxx" -p "ibm-cos-secret-key=yyy" -p "container-private-endpoint=https://sad073aa1c9351d1a93ef-6b64a6ccc9c596bf59a86625d8fa2202-c000.us-east.satellite.appdomain.cloud:30740" --location c040tu4w0h6c6s5s9irg
+  ibmcloud sat storage config create --name odf-config --template-name odf-remote --template-version 4.8 -p "ocs-cluster-name=testocscluster" -p "mon-storage-class=vpc-custom-10iops-tier" -p "mon-size=50Gi" -p "osd-storage-class=vpc-custom-10iops-tier" -p "osd-size=150Gi" -p "num-of-osd=1" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90" -p "odf-upgrade=true" -p "ibm-cos-endpoint=https://s3.us-east.cloud-object-storage.appdomain.cloud" -p "ibm-cos-location=us-east-standard" -p "ibm-cos-access-key=xxx" -p "ibm-cos-secret-key=yyy" -p "container-private-endpoint=https://sad073aa1c9351d1a93ef-6b64a6ccc9c596bf59a86625d8fa2202-c000.us-east.satellite.appdomain.cloud:30740" -p "iam-api-key=xxx" --location c040tu4w0h6c6s5s9irg
   ```
 
 4. Assign your configuration to your cluster groups.

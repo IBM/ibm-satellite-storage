@@ -5,6 +5,7 @@ metadata:
   namespace: kube-system
   annotations:
     version: 21.04
+    revision: 1
 items:
   - apiVersion: v1
     kind: Pod
@@ -15,7 +16,7 @@ items:
       serviceAccountName: trident-kubectl-sa
       containers:
         - name: trident-kubectl-san
-          image: icr.io/ibm/ibm-tridentctl:v2.0.1
+          image: icr.io/ibm/ibm-tridentctl:v2.0.2
           imagePullPolicy: Always
           env:
             - name: NAMESPACE

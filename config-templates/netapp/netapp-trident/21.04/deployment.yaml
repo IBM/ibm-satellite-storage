@@ -5,11 +5,14 @@ metadata:
   namespace: kube-system
   annotations:
     version: "21.04"
+    revision: "1"
 items:
   - apiVersion: v1
     kind: Namespace
     metadata:
       name: "trident"
+      labels:
+        deploy.razee.io/Reconcile: "false"
   - apiVersion: apiextensions.k8s.io/v1
     kind: CustomResourceDefinition
     metadata:
@@ -485,3 +488,20 @@ items:
       kind: Role
       name: trident-kubectl
       apiGroup: rbac.authorization.k8s.io
+  - apiVersion: satstorage.ibm.com/v1
+    kind: SatStorageCleanup
+    metadata:
+      name: satstoragecleanup-netapp
+      namespace: "ibm-satellite-storage"
+    spec:
+      template-name: "netapp-trident"
+      template-version: "21.04"
+      template-namespace: "trident"
+      dependent-resources:                   # For partial cleanup
+        - kind: "pod"
+          name: "trident-kubectl-nas"
+          namespace: "trident"
+        - kind: "pod"
+          name: "trident-kubectl-san"
+          namespace: "trident"
+
