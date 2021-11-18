@@ -1,0 +1,209 @@
+---
+apiVersion: v1
+kind: List
+metadata:
+  name: ibm-vpc-block-csi-driver-sc
+  namespace: kube-system
+  annotations:
+    version: 4.0.2
+items:
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-vpc-block-gold-metro
+      labels:
+        app: ibm-vpc-block-csi-driver
+      annotations:
+        storageclass.kubernetes.io/is-default-class: "true"
+    provisioner: vpc.block.csi.ibm.io
+    parameters:
+      profile: "10iops-tier"            # The VPC Storage profile used.
+      # iopsPerGB: "10"                 # The IOPS per Gigabyte that is supported for this profile. This is just for the user info.
+      sizeRange: "[10-2000]GiB"         # The size range in GiB that is supported. The user will specify a size on the PVC
+      csi.storage.k8s.io/fstype: "ext4" # ext4 is the default filesytem used. The user can override this default
+      billingType: "hourly"             # The default billing policy used. The uer can override this default
+      encrypted: "false"                #  By default, all PVC using this class will only be provider managed encrypted. The user can override this default
+      encryptionKey: ""                 # If encrypted is true, then a user must specify the encryption key used associated KP instance
+      resourceGroup: ""                 # Use resource group if specified here. else use the one mentioned in storage-secrete-store
+      region: ""
+      zone: ""                          # By default, the storage vpc driver will select a zone. The user can override this default
+      tags: ""                          # A list of tags "a, b, c" that will be created when the volume is created. This can be overidden by user
+      classVersion: "1"
+    reclaimPolicy: "Delete"
+    volumeBindingMode: WaitForFirstConsumer
+    allowVolumeExpansion: true
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: ibmc-vpc-block-metro-5iops-tier
+      labels:
+        app: ibm-vpc-block-csi-driver
+    provisioner: vpc.block.csi.ibm.io
+    parameters:
+      profile: "5iops-tier"                 # The VPC Storage profile used.
+      # iopsPerGB: "5"                      # The IOPS per Gigabyte that is supported for this profile. This is just for the user info.
+      sizeRange: "[10-2000]GiB"             # The size range in GiB that is supported. The user will specify a size on the PVC
+      csi.storage.k8s.io/fstype: "ext4"     # ext4 is the default filesytem used. The user can override this default
+      billingType: "hourly"                 # The default billing policy used. The uer can override this default
+      encrypted: "false"                    # By default, all PVC using this class will only be provider managed encrypted. The user can override this default
+      encryptionKey: ""                     # If encrypted is true, then a user must specify the encryption key used associated KP instance
+      resourceGroup: ""                     # Use resource group if specified here. else use the one mentioned in storage-secrete-store
+      region: ""
+      zone: ""                              # (applicable only for dev/prestage/stage) By default, the storage vpc driver will select a zone. The user can override this default
+      tags: ""                              # A list of tags "a, b, c" that will be created when the volume is created. This can be overidden by user
+      classVersion: "1"
+    reclaimPolicy: "Delete"
+    volumeBindingMode: WaitForFirstConsumer
+    allowVolumeExpansion: true
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: ibmc-vpc-block-metro-custom
+      labels:
+        app: ibm-vpc-block-csi-driver
+    provisioner: vpc.block.csi.ibm.io
+    parameters:
+      profile: "custom"                 # The VPC Storage profile used.
+      sizeRange: "[10-2000]GiB"         # The size range in GiB that is supported. Just for information
+      sizeIOPSRange: |-                 # Size vs IOPS range just for information
+        [10-39]GiB:[100-1000]
+        [40-79]GiB:[100-2000]
+        [80-99]GiB:[100-4000]
+        [100-499]GiB:[100-6000]
+        [500-999]GiB:[100-10000]
+        [1000-1999]GiB:[100-20000]
+      iops: "400"                       # Default IOPS. User can override from secrets
+      billingType: "hourly"             # The default billing policy used. User can override this default
+      encrypted: "false"                # By default, all PVC using this class will only be provider managed encrypted. The user can override this default
+      encryptionKey: ""                 # If encrypted is true, then a user must specify the encryption key used associated KP instance
+      resourceGroup: ""                 # Use resource group if specified here. else use the one mentioned in storage-secrete-store
+      region: ""
+      zone: ""                          # By default, the storage vpc driver will select a zone. The user can override this default
+      tags: ""                          # A list of tags "a, b, c" that will be created when the volume is created. This can be overidden by user
+      classVersion: "1"
+      csi.storage.k8s.io/fstype: "ext4" # ext4 is the default filesytem used.
+    reclaimPolicy: "Delete"
+    volumeBindingMode: WaitForFirstConsumer
+    allowVolumeExpansion: true
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: ibmc-vpc-block-metro-general-purpose
+      labels:
+        app: ibm-vpc-block-csi-driver
+    provisioner: vpc.block.csi.ibm.io
+    parameters:
+      profile: "general-purpose"        # The VPC Storage profile used.
+      # iopsPerGB: "3"                  # The IOPS per Gigabyte that is supported for this profile. This is just for the user info.
+      sizeRange: "[10-2000]GiB"         # The size range in GiB that is suppored. The user will specify a volume on the PVC.
+      csi.storage.k8s.io/fstype: "ext4" # ext4 is the default filesytem used. The user can override this default
+      billingType: "hourly"             # The default billing policy used. The uer can override this default
+      encrypted: "false"                # By default, all PVC using this class will only be provider managed encrypted. The user can override this default
+      encryptionKey: ""                 # If encrypted is true, then a user must specify the encryption key used assocatied KP instance
+      resourceGroup: ""                 # Use resource group if specified here. else use the one mentioned in storage-secrete-store
+      region: ""
+      zone: ""                          # By default, the storage vpc driver will select a zone. The user can override this default
+      tags: ""                          # A list of tags "a, b, c" that will be created when the volume is created. This can be overidden by user
+      classVersion: "1"
+    reclaimPolicy: "Delete"
+    volumeBindingMode: WaitForFirstConsumer
+    allowVolumeExpansion: true
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: ibmc-vpc-block-metro-retain-10iops-tier
+      labels:
+        app: ibm-vpc-block-csi-driver
+    provisioner: vpc.block.csi.ibm.io
+    parameters:
+      profile: "10iops-tier"              # The VPC Storage profile used.
+      # iopsPerGB: "10"                   # The IOPS per Gigabyte that is supported for this profile. This is just for the user info.
+      sizeRange: "[10-2000]GiB"           # The size range in GiB that is supported. The user will specify a size on the PVC
+      csi.storage.k8s.io/fstype: "ext4"   # ext4 is the default filesytem used. The user can override this default
+      billingType: "hourly"               # The default billing policy used. The uer can override this default
+      encrypted: "false"                  # By default, all PVC using this class will only be provider managed encrypted. The user can override this default
+      encryptionKey: ""                   # If encrypted is true, then a user must specify the encryption key used associated KP instance
+      resourceGroup: ""                   # Use resource group if specified here. else use the one mentioned in storage-secrete-store
+      region: ""
+      zone: ""                            # By default, the storage vpc driver will select a zone. The user can override this default
+      tags: ""                            # A list of tags "a, b, c" that will be created when the volume is created. This can be overidden by user
+      classVersion: "1"
+    reclaimPolicy: "Retain"
+    volumeBindingMode: WaitForFirstConsumer
+    allowVolumeExpansion: true
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: ibmc-vpc-block-metro-retain-5iops-tier
+      labels:
+        app: ibm-vpc-block-csi-driver
+    provisioner: vpc.block.csi.ibm.io
+    parameters:
+      profile: "5iops-tier"               # The VPC Storage profile used.
+      # iopsPerGB: "5"                    # The IOPS per Gigabyte that is supported for this profile. This is just for the user info.
+      sizeRange: "[10-2000]GiB"           # The size range in GiB that is supported. The user will specify a size on the PVC
+      csi.storage.k8s.io/fstype: "ext4"   # ext4 is the default filesytem used. The user can override this default
+      billingType: "hourly"               # The default billing policy used. The uer can override this default
+      encrypted: "false"                  # By default, all PVC using this class will only be provider managed encrypted. The user can override this default
+      encryptionKey: ""                   # If encrypted is true, then a user must specify the encryption key used associated KP instance
+      resourceGroup: ""                   # Use resource group if specified here. else use the one mentioned in storage-secrete-store
+      region: ""
+      zone: ""                            # By default, the storage vpc driver will select a zone. The user can override this default
+      tags: ""                            # A list of tags "a, b, c" that will be created when the volume is created. This can be overidden by user
+      classVersion: "1"
+    reclaimPolicy: "Retain"
+    volumeBindingMode: WaitForFirstConsumer
+    allowVolumeExpansion: true
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: ibmc-vpc-block-metro-retain-custom
+      labels:
+        app: ibm-vpc-block-csi-driver
+    provisioner: vpc.block.csi.ibm.io
+    parameters:
+      profile: "custom"                 # The VPC Storage profile used.
+      sizeRange: "[10-2000]GiB"         # The size range in GiB that is supported. Just for information
+      sizeIOPSRange: |-                 # Size vs IOPS range just for information
+        [10-39]GiB:[100-1000]
+        [40-79]GiB:[100-2000]
+        [80-99]GiB:[100-4000]
+        [100-499]GiB:[100-6000]
+        [500-999]GiB:[100-10000]
+        [1000-1999]GiB:[100-20000]
+      iops: "400"                       # Default IOPS. User can override from secrets
+      billingType: "hourly"             # The default billing policy used. User can override this default
+      encrypted: "false"                # By default, all PVC using this class will only be provider managed encrypted. The user can override this default
+      encryptionKey: ""                 # If encrypted is true, then a user must specify the encryption key used associated KP instance
+      resourceGroup: ""                 # Use resource group if specified here. else use the one mentioned in storage-secrete-store
+      region: ""
+      zone: ""                          # By default, the storage vpc driver will select a zone. The user can override this default
+      tags: ""                          # A list of tags "a, b, c" that will be created when the volume is created. This can be overidden by user
+      classVersion: "1"
+      csi.storage.k8s.io/fstype: "ext4" # ext4 is the default filesytem used.
+    reclaimPolicy: "Retain"
+    volumeBindingMode: WaitForFirstConsumer
+    allowVolumeExpansion: true
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: ibmc-vpc-block-metro-retain-general-purpose
+      labels:
+        app: ibm-vpc-block-csi-driver
+    provisioner: vpc.block.csi.ibm.io
+    parameters:
+      profile: "general-purpose"            # The VPC Storage profile used.
+      # iopsPerGB: "3"                      # The IOPS per Gigabyte that is supported for this profile. This is just for the user info.
+      sizeRange: "[10-2000]GiB"             # The size range in GiB that is supported. The user will specify a size on the PVC
+      csi.storage.k8s.io/fstype: "ext4"     # ext4 is the default filesytem used. The user can override this default
+      billingType: "hourly"                 # The default billing policy used. The uer can override this default
+      encrypted: "false"                    # By default, all PVC using this class will only be provider managed encrypted.
+      encryptionKey: ""                     # If encrypted is true, then a user must specify the encryption key used associated KP instance
+      resourceGroup: ""                     # Use resource group if specified here. else use the one mentioned in storage-secrete-store
+      region: ""
+      zone: ""                              # By default, the storage vpc driver will select a zone. The user can override this default
+      tags: ""                              # A list of tags "a, b, c" that will be created when the volume is created. This can be overidden by user
+      classVersion: "1"
+    reclaimPolicy: "Retain"
+    volumeBindingMode: WaitForFirstConsumer
+    allowVolumeExpansion: true
