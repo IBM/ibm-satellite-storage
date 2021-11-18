@@ -6,6 +6,7 @@ metadata:
     namespace: ibm-spectrum-scale-csi-driver
     annotations:
         version: 2.1.0
+        revision: 1
 items:
 - apiVersion: v1
   kind: Namespace

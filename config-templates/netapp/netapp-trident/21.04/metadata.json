@@ -1,5 +1,6 @@
 {
   "name": "21.04",
+  "revision": "1",
   "enabled": "true",
   "description": "Netapp Trident version 21.04.",
   "tags": [
@@ -23,7 +24,7 @@
       "value": "AWS,Azure,IBM"
     }, {
       "name": "supported-k8s-versions",
-      "value": "1.17,1.18,1.19"
+      "value": "1.18,1.19,1.20,1.21"
     }, {
       "name": "volume-type",
       "value": "block,file"
