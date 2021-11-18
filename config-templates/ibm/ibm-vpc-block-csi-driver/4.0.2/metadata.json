@@ -1,7 +1,7 @@
 {
     "name": "4.0.2",
     "enabled": "true",
-    "description": "IBM VPC Block Storage CSI driver version 4.0.2",
+    "description": "[Beta] - IBM VPC Block Storage CSI driver version 4.0.2",
     "tags": [
       {
         "name": "provider",
