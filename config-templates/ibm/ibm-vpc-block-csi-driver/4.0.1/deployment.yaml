@@ -4,67 +4,32 @@ metadata:
   name: ibm-vpc-block-csi-driver
   namespace: kube-system
   annotations:
-    version: 4.0.1
+    version: 4.0.2
 items:
-  - apiVersion: v1
-    kind: ServiceAccount
-    metadata:
-      name: node-sa
-      namespace: kube-system
-    imagePullSecrets:
-    - name: icr-io-secret
   - kind: ClusterRole
     apiVersion: rbac.authorization.k8s.io/v1
     metadata:
-      name: cr-nodes
+      name: vpc-node-label-updater-role
+      labels:
+        app: ibm-vpc-block-csi-driver
     rules:
       - apiGroups: [""]
-        resources: [nodes]
-        verbs: [get, watch, list, update]
+        resources: ["nodes"]
+        verbs: ["get", "list", "watch"]
   - kind: ClusterRoleBinding
     apiVersion: rbac.authorization.k8s.io/v1
     metadata:
-      name: crb-nodes
+      name: vpc-node-label-updater-binding
+      labels:
+        app: ibm-vpc-block-csi-driver
     subjects:
       - kind: ServiceAccount
-        name: node-sa
+        name: ibm-vpc-block-controller-sa
         namespace: kube-system
     roleRef:
       kind: ClusterRole
-      name: cr-nodes
+      name: vpc-node-label-updater-role
       apiGroup: rbac.authorization.k8s.io
-  - apiVersion: apps/v1
-    kind: Deployment
-    metadata:
-      name: vpc-node-label-updater
-      namespace: kube-system
-      labels:
-        app: vpc-node-label-updater
-    spec:
-      replicas: 1
-      selector:
-        matchLabels:
-          app: vpc-node-label-updater
-      template:
-        metadata:
-          labels:
-            app: vpc-node-label-updater
-        spec:
-          serviceAccount: node-sa
-          containers:
-          - name: node-label-watcher
-            image: icr.io/obs/storage/vpc-node-label-updater:v1.0.0
-            imagePullPolicy: Always
-            env:
-            - name: SECRET_CONFIG_PATH
-              value: /etc/storage_ibmc
-            volumeMounts:
-              - mountPath: /etc/storage_ibmc
-                name: customer-auth
-          volumes:
-            - name: customer-auth
-              secret:
-                secretName: storage-secret-store
   - apiVersion: v1
     kind: ConfigMap
     metadata:
@@ -81,9 +46,7 @@ items:
       VPC_RETRY_ATTEMPT: "10" # Number of retry
       VPC_RETRY_INTERVAL: "60" # This is max retry Gap in seconds even considering for exponential retry
       VPC_API_VERSION: "2019-07-02"
-      VPC_API_GENERATION: "1"
-      IKS_ENABLED: "False"
-      IKS_BLOCK_PROVIDER_NAME: "iks-vpc"
+      VPC_API_GENERATION: "2"
   # Node Service Account, Roles, RoleBindings
   - apiVersion: v1
     kind: ServiceAccount
@@ -360,7 +323,7 @@ items:
                 runAsNonRoot: false
                 runAsUser: 0
                 privileged: true
-              image: icr.io/ibm/ibm-vpc-block-csi-driver:v4.0.1
+              image: icr.io/ibm/ibm-vpc-block-csi-driver:v4.0.2
               imagePullPolicy: Always
               args:
                 - "--v=5"
@@ -586,7 +549,7 @@ items:
                   mountPath: /csi
             - name: iks-vpc-block-driver
               imagePullPolicy: Always
-              image: icr.io/ibm/ibm-vpc-block-csi-driver:v4.0.1
+              image: icr.io/ibm/ibm-vpc-block-csi-driver:v4.0.2
               securityContext:
                 privileged: false
                 allowPrivilegeEscalation: false
@@ -637,6 +600,15 @@ items:
                 - mountPath: /etc/storage_ibmc/cluster_info
                   name: cluster-info
                   readOnly: true
+            - name: node-label-watcher
+              image: icr.io/obs/storage/vpc-node-label-updater:v1.0.0
+              imagePullPolicy: Always
+              env:
+              - name: SECRET_CONFIG_PATH
+                value: /etc/storage_ibmc
+              volumeMounts:
+                - mountPath: /etc/storage_ibmc
+                  name: customer-auth
           volumes:
             - name: socket-dir
               emptyDir: {}
