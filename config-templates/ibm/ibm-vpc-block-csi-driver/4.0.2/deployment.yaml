@@ -24,7 +24,7 @@ items:
         app: ibm-vpc-block-csi-driver
     subjects:
       - kind: ServiceAccount
-        name: ibm-vpc-block-controller-sa
+        name: ibm-vpc-block-node-sa
         namespace: kube-system
     roleRef:
       kind: ClusterRole
@@ -281,6 +281,30 @@ items:
           serviceAccountName: ibm-vpc-block-node-sa
           tolerations:
             - operator: Exists
+          initContainers:
+            - name: vpc-node-label-updater
+              image: icr.io/obs/storage/vpc-node-label-updater:v1.0.0
+              imagePullPolicy: Always
+              securityContext:
+                privileged: false
+                allowPrivilegeEscalation: false
+              resources:
+                limits:
+                  cpu: 12m
+                  memory: 24Mi
+                requests:
+                  cpu: 3m
+                  memory: 6Mi
+              env:
+              - name: NODE_NAME
+                valueFrom:
+                  fieldRef:
+                    fieldPath: spec.nodeName
+              - name: SECRET_CONFIG_PATH
+                value: /etc/storage_ibmc
+              volumeMounts:
+                - mountPath: /etc/storage_ibmc
+                  name: customer-auth
           containers:
             - name: csi-driver-registrar
               image: k8s.gcr.io/sig-storage/csi-node-driver-registrar:v2.2.0
@@ -600,25 +624,6 @@ items:
                 - mountPath: /etc/storage_ibmc/cluster_info
                   name: cluster-info
                   readOnly: true
-            - name: vpc-node-label-updater
-              image: icr.io/obs/storage/vpc-node-label-updater:v1.0.0
-              imagePullPolicy: Always
-              securityContext:
-                privileged: false
-                allowPrivilegeEscalation: false
-              resources:
-                limits:
-                  cpu: 20m
-                  memory: 40Mi
-                requests:
-                  cpu: 5m
-                  memory: 10Mi
-              env:
-              - name: SECRET_CONFIG_PATH
-                value: /etc/storage_ibmc
-              volumeMounts:
-                - mountPath: /etc/storage_ibmc
-                  name: customer-auth
           volumes:
             - name: socket-dir
               emptyDir: {}
