@@ -48,8 +48,6 @@ items:
                   clusterEncryption:
                     default: false
                     type: boolean
-                  containerPrivateEndpoint:
-                    type: string
                   monDevicePaths:
                     items:
                       type: string
