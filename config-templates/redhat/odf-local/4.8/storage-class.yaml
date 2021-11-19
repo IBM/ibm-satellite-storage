@@ -58,3 +58,40 @@ items:
     provisioner: openshift-storage.noobaa.io/obc
     reclaimPolicy: Delete
     volumeBindingMode: Immediate
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-ocs-cephrbd-gold-metro
+    parameters:
+      clusterID: openshift-storage
+      csi.storage.k8s.io/controller-expand-secret-name: rook-csi-rbd-provisioner
+      csi.storage.k8s.io/controller-expand-secret-namespace: openshift-storage
+      csi.storage.k8s.io/fstype: ext4
+      csi.storage.k8s.io/node-stage-secret-name: rook-csi-rbd-node
+      csi.storage.k8s.io/node-stage-secret-namespace: openshift-storage
+      csi.storage.k8s.io/provisioner-secret-name: rook-csi-rbd-provisioner
+      csi.storage.k8s.io/provisioner-secret-namespace: openshift-storage
+      imageFeatures: layering
+      imageFormat: "2"
+      pool: ocs-storagecluster-cephblockpool
+    provisioner: openshift-storage.rbd.csi.ceph.com
+    reclaimPolicy: Delete
+    volumeBindingMode: WaitForFirstConsumer
+    allowVolumeExpansion: true
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-ocs-cephfs-gold-metro
+    parameters:
+      clusterID: openshift-storage
+      csi.storage.k8s.io/controller-expand-secret-name: rook-csi-cephfs-provisioner
+      csi.storage.k8s.io/controller-expand-secret-namespace: openshift-storage
+      csi.storage.k8s.io/node-stage-secret-name: rook-csi-cephfs-node
+      csi.storage.k8s.io/node-stage-secret-namespace: openshift-storage
+      csi.storage.k8s.io/provisioner-secret-name: rook-csi-cephfs-provisioner
+      csi.storage.k8s.io/provisioner-secret-namespace: openshift-storage
+      fsName: ocs-storagecluster-cephfilesystem
+    provisioner: openshift-storage.cephfs.csi.ceph.com
+    reclaimPolicy: Delete
+    volumeBindingMode: WaitForFirstConsumer
+    allowVolumeExpansion: true
