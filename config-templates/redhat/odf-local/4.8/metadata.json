@@ -34,7 +34,7 @@
     },
     {
       "name": "supported-k8s-versions",
-      "value": "1.18,1.19"
+      "value": "1.21"
     },
     {
       "name": "volume-type",
