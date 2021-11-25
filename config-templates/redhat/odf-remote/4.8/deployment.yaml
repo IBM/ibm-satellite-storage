@@ -301,12 +301,12 @@ items:
             - /manager
             env:
             - name: CHANNEL
-              value: stable-4.7
+              value: stable-4.8
             - name: WATCH_NAMESPACE
               value: openshift-storage
             - name: ADDON_CONFIGMAP_NAMESPACE
               value: kube-system
-            image: "icr.io/obs/ibm-ocs-operator:v4.7.15"
+            image: "icr.io/obs/ibm-ocs-operator:v4.8.1"
             imagePullPolicy: Always
             name: manager
             securityContext:
@@ -376,5 +376,5 @@ items:
       namespace: "ibm-satellite-storage"
     spec:
       template-name: "odf-remote"
-      template-version: "4.7"
+      template-version: "4.8"
       template-namespace: "kube-system"
