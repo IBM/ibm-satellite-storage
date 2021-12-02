@@ -43,7 +43,7 @@
     "required": "false"
   },
   {
-    "description": "The IP addresses of the worker nodes where you want to deploy ODF. The minimum number of worker nodes is 3.",
+    "description": "The name of the worker nodes where you want to deploy ODF. To find the worker node names, run 'oc get nodes'. The minimum number of worker nodes is 3.",
     "displayname": "worker nodes",
     "name": "worker-nodes",
     "required": "false",
