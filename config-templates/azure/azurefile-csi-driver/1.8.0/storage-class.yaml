@@ -5,7 +5,7 @@ metadata:
   name: azurefile-csi-driver-sc
   namespace: kube-system
   annotations:
-    version: 1.5.0
+    version: 1.8.0
 items:
   - kind: StorageClass
     apiVersion: storage.k8s.io/v1
@@ -13,10 +13,11 @@ items:
       name: sat-azure-file-platinum-metro
       labels:
         app.kubernetes.io/name: azurefile-csi-driver
-        app.kubernetes.io/version: 1.5.0
+        app.kubernetes.io/version: 1.8.0
     provisioner: file.csi.azure.com
     parameters:
       skuname: UltraSSD_LRS
+      protocol: nfs
     volumeBindingMode: WaitForFirstConsumer
     allowVolumeExpansion: true
   - kind: StorageClass
@@ -25,10 +26,11 @@ items:
       name: sat-azure-file-platinum
       labels:
         app.kubernetes.io/name: azurefile-csi-driver
-        app.kubernetes.io/version: 1.5.0
+        app.kubernetes.io/version: 1.8.0
     provisioner: file.csi.azure.com
     parameters:
       skuname: UltraSSD_LRS
+      protocol: nfs
     volumeBindingMode: Immediate
     allowVolumeExpansion: true
   - kind: StorageClass
@@ -37,10 +39,11 @@ items:
       name: sat-azure-file-gold-metro
       labels:
         app.kubernetes.io/name: azurefile-csi-driver
-        app.kubernetes.io/version: 1.5.0
+        app.kubernetes.io/version: 1.8.0
     provisioner: file.csi.azure.com
     parameters:
       skuname: Premium_LRS
+      protocol: nfs
     volumeBindingMode: WaitForFirstConsumer
     allowVolumeExpansion: true
   - kind: StorageClass
@@ -49,10 +52,11 @@ items:
       name: sat-azure-file-gold
       labels:
         app.kubernetes.io/name: azurefile-csi-driver
-        app.kubernetes.io/version: 1.5.0
+        app.kubernetes.io/version: 1.8.0
     provisioner: file.csi.azure.com
     parameters:
       skuname: Premium_LRS
+      protocol: nfs
     volumeBindingMode: Immediate
     allowVolumeExpansion: true
   - kind: StorageClass
@@ -61,10 +65,11 @@ items:
       name: sat-azure-file-silver-metro
       labels:
         app.kubernetes.io/name: azurefile-csi-driver
-        app.kubernetes.io/version: 1.5.0
+        app.kubernetes.io/version: 1.8.0
     provisioner: file.csi.azure.com
     parameters:
       skuname: StandardSSD_LRS
+      protocol: nfs
     volumeBindingMode: WaitForFirstConsumer
     allowVolumeExpansion: true
   - kind: StorageClass
@@ -73,10 +78,11 @@ items:
       name: sat-azure-file-silver
       labels:
         app.kubernetes.io/name: azurefile-csi-driver
-        app.kubernetes.io/version: 1.5.0
+        app.kubernetes.io/version: 1.8.0
     provisioner: file.csi.azure.com
     parameters:
       skuname: StandardSSD_LRS
+      protocol: nfs
     volumeBindingMode: Immediate
     allowVolumeExpansion: true
   - kind: StorageClass
@@ -85,10 +91,11 @@ items:
       name: sat-azure-file-bronze-metro
       labels:
         app.kubernetes.io/name: azurefile-csi-driver
-        app.kubernetes.io/version: 1.5.0
+        app.kubernetes.io/version: 1.8.0
     provisioner: file.csi.azure.com
     parameters:
       skuname: Standard_LRS
+      protocol: nfs
     volumeBindingMode: WaitForFirstConsumer
     allowVolumeExpansion: true
   - kind: StorageClass
@@ -97,9 +104,10 @@ items:
       name: sat-azure-file-bronze
       labels:
         app.kubernetes.io/name: azurefile-csi-driver
-        app.kubernetes.io/version: 1.5.0
+        app.kubernetes.io/version: 1.8.0
     provisioner: file.csi.azure.com
     parameters:
       skuname: Standard_LRS
+      protocol: nfs
     volumeBindingMode: Immediate
     allowVolumeExpansion: true

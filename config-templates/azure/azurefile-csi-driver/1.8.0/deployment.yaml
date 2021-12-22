@@ -5,7 +5,7 @@ metadata:
   name: azurefile-csi-driver
   namespace: kube-system
   annotations:
-    version: 1.5.0
+    version: 1.8.0
 items:
   - apiVersion: v1
     stringData:
@@ -34,7 +34,7 @@ items:
       name: file.csi.azure.com
       labels:
         app.kubernetes.io/name: azurefile-csi-driver
-        app.kubernetes.io/version: 1.5.0
+        app.kubernetes.io/version: 1.8.0
     spec:
       attachRequired: false
       podInfoOnMount: true
@@ -48,11 +48,8 @@ items:
       name: csi-azurefile-controller-sa
       namespace: kube-system
       labels:
-        app.kubernetes.io/instance: "RELEASE-NAME"
-        app.kubernetes.io/managed-by: "Helm"
         app.kubernetes.io/name: "azurefile-csi-driver"
-        app.kubernetes.io/version: "v1.5.0"
-        helm.sh/chart: "azurefile-csi-driver-v1.5.0"
+        app.kubernetes.io/version: "v1.8.0"
 
   - apiVersion: v1
     kind: ServiceAccount
@@ -60,22 +57,16 @@ items:
       name: csi-azurefile-node-sa
       namespace: kube-system
       labels:
-        app.kubernetes.io/instance: "RELEASE-NAME"
-        app.kubernetes.io/managed-by: "Helm"
         app.kubernetes.io/name: "azurefile-csi-driver"
-        app.kubernetes.io/version: "v1.5.0"
-        helm.sh/chart: "azurefile-csi-driver-v1.5.0"
+        app.kubernetes.io/version: "v1.8.0"
 
   - kind: ClusterRole
     apiVersion: rbac.authorization.k8s.io/v1
     metadata:
       name: azurefile-external-provisioner-role
       labels:
-        app.kubernetes.io/instance: "RELEASE-NAME"
-        app.kubernetes.io/managed-by: "Helm"
         app.kubernetes.io/name: "azurefile-csi-driver"
-        app.kubernetes.io/version: "v1.5.0"
-        helm.sh/chart: "azurefile-csi-driver-v1.5.0"
+        app.kubernetes.io/version: "v1.8.0"
     rules:
       - apiGroups: [""]
         resources: ["persistentvolumes"]
@@ -110,11 +101,8 @@ items:
     metadata:
       name: azurefile-external-attacher-role
       labels:
-        app.kubernetes.io/instance: "RELEASE-NAME"
-        app.kubernetes.io/managed-by: "Helm"
         app.kubernetes.io/name: "azurefile-csi-driver"
-        app.kubernetes.io/version: "v1.5.0"
-        helm.sh/chart: "azurefile-csi-driver-v1.5.0"
+        app.kubernetes.io/version: "v1.8.0"
     rules:
       - apiGroups: [""]
         resources: ["persistentvolumes"]
@@ -140,11 +128,8 @@ items:
     metadata:
       name: azurefile-external-snapshotter-role
       labels:
-        app.kubernetes.io/instance: "RELEASE-NAME"
-        app.kubernetes.io/managed-by: "Helm"
         app.kubernetes.io/name: "azurefile-csi-driver"
-        app.kubernetes.io/version: "v1.5.0"
-        helm.sh/chart: "azurefile-csi-driver-v1.5.0"
+        app.kubernetes.io/version: "v1.8.0"
     rules:
       - apiGroups: [""]
         resources: ["events"]
@@ -173,11 +158,8 @@ items:
     metadata:
       name: azurefile-external-resizer-role
       labels:
-        app.kubernetes.io/instance: "RELEASE-NAME"
-        app.kubernetes.io/managed-by: "Helm"
         app.kubernetes.io/name: "azurefile-csi-driver"
-        app.kubernetes.io/version: "v1.5.0"
-        helm.sh/chart: "azurefile-csi-driver-v1.5.0"
+        app.kubernetes.io/version: "v1.8.0"
     rules:
       - apiGroups: [""]
         resources: ["persistentvolumes"]
@@ -221,8 +203,8 @@ items:
         app.kubernetes.io/instance: "RELEASE-NAME"
         app.kubernetes.io/managed-by: "Helm"
         app.kubernetes.io/name: "azurefile-csi-driver"
-        app.kubernetes.io/version: "v1.5.0"
-        helm.sh/chart: "azurefile-csi-driver-v1.5.0"
+        app.kubernetes.io/version: "v1.8.0"
+        helm.sh/chart: "azurefile-csi-driver-v1.8.0"
     subjects:
       - kind: ServiceAccount
         name: csi-azurefile-controller-sa
@@ -240,8 +222,8 @@ items:
         app.kubernetes.io/instance: "RELEASE-NAME"
         app.kubernetes.io/managed-by: "Helm"
         app.kubernetes.io/name: "azurefile-csi-driver"
-        app.kubernetes.io/version: "v1.5.0"
-        helm.sh/chart: "azurefile-csi-driver-v1.5.0"
+        app.kubernetes.io/version: "v1.8.0"
+        helm.sh/chart: "azurefile-csi-driver-v1.8.0"
     subjects:
       - kind: ServiceAccount
         name: csi-azurefile-controller-sa
@@ -256,11 +238,8 @@ items:
     metadata:
       name: azurefile-csi-snapshotter-binding
       labels:
-        app.kubernetes.io/instance: "RELEASE-NAME"
-        app.kubernetes.io/managed-by: "Helm"
         app.kubernetes.io/name: "azurefile-csi-driver"
-        app.kubernetes.io/version: "v1.5.0"
-        helm.sh/chart: "azurefile-csi-driver-v1.5.0"
+        app.kubernetes.io/version: "v1.8.0"
     subjects:
       - kind: ServiceAccount
         name: csi-azurefile-controller-sa
@@ -275,11 +254,8 @@ items:
     metadata:
       name: azurefile-csi-resizer-role
       labels:
-        app.kubernetes.io/instance: "RELEASE-NAME"
-        app.kubernetes.io/managed-by: "Helm"
         app.kubernetes.io/name: "azurefile-csi-driver"
-        app.kubernetes.io/version: "v1.5.0"
-        helm.sh/chart: "azurefile-csi-driver-v1.5.0"
+        app.kubernetes.io/version: "v1.8.0"
     subjects:
       - kind: ServiceAccount
         name: csi-azurefile-controller-sa
@@ -321,11 +297,8 @@ items:
       name: csi-azurefile-node
       namespace: kube-system
       labels:
-        app.kubernetes.io/instance: "RELEASE-NAME"
-        app.kubernetes.io/managed-by: "Helm"
         app.kubernetes.io/name: "azurefile-csi-driver"
-        app.kubernetes.io/version: "v1.5.0"
-        helm.sh/chart: "azurefile-csi-driver-v1.5.0"
+        app.kubernetes.io/version: "v1.8.0"
     spec:
       selector:
         matchLabels:
@@ -336,8 +309,7 @@ items:
             app.kubernetes.io/instance: "RELEASE-NAME"
             app.kubernetes.io/managed-by: "Helm"
             app.kubernetes.io/name: "azurefile-csi-driver"
-            app.kubernetes.io/version: "v1.5.0"
-            helm.sh/chart: "azurefile-csi-driver-v1.5.0"
+            app.kubernetes.io/version: "v1.8.0"
             app: csi-azurefile-node
         spec:
           hostNetwork: true
@@ -405,7 +377,7 @@ items:
                   cpu: 10m
                   memory: 20Mi
             - name: azurefile
-              image: "mcr.microsoft.com/k8s/csi/azurefile-csi:v1.5.0"
+              image: "mcr.microsoft.com/k8s/csi/azurefile-csi:v1.8.0"
               args:
                 - "--v=5"
                 - "--endpoint=$(CSI_ENDPOINT)"
@@ -495,11 +467,8 @@ items:
       name: csi-azurefile-controller
       namespace: kube-system
       labels:
-        app.kubernetes.io/instance: "RELEASE-NAME"
-        app.kubernetes.io/managed-by: "Helm"
         app.kubernetes.io/name: "azurefile-csi-driver"
-        app.kubernetes.io/version: "v1.5.0"
-        helm.sh/chart: "azurefile-csi-driver-v1.5.0"
+        app.kubernetes.io/version: "v1.8.0"
     spec:
       replicas: 2
       selector:
@@ -508,11 +477,8 @@ items:
       template:
         metadata:
           labels:
-            app.kubernetes.io/instance: "RELEASE-NAME"
-            app.kubernetes.io/managed-by: "Helm"
             app.kubernetes.io/name: "azurefile-csi-driver"
-            app.kubernetes.io/version: "v1.5.0"
-            helm.sh/chart: "azurefile-csi-driver-v1.5.0"
+            app.kubernetes.io/version: "v1.8.0"
             app: csi-azurefile-controller
         spec:
           hostNetwork: true
@@ -630,7 +596,7 @@ items:
                   cpu: 10m
                   memory: 20Mi
             - name: azurefile
-              image: "mcr.microsoft.com/k8s/csi/azurefile-csi:v1.5.0"
+              image: "mcr.microsoft.com/k8s/csi/azurefile-csi:v1.8.0"
               args:
                 - "--v=5"
                 - "--endpoint=$(CSI_ENDPOINT)"
