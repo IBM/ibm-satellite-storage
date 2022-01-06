@@ -5,7 +5,7 @@ metadata:
   name: azurefile-csi-driver
   namespace: kube-system
   annotations:
-    version: 1.8.0
+    version: 1.9.0
 items:
   - apiVersion: v1
     stringData:
@@ -28,19 +28,20 @@ items:
       namespace: kube-system
     type: Opaque
 
+
   - apiVersion: storage.k8s.io/v1
     kind: CSIDriver
     metadata:
       name: file.csi.azure.com
-      labels:
-        app.kubernetes.io/name: azurefile-csi-driver
-        app.kubernetes.io/version: 1.8.0
+      annotations:
+        csiDriver: v1.9.0
     spec:
       attachRequired: false
       podInfoOnMount: true
       volumeLifecycleModes:
         - Persistent
         - Ephemeral
+
 
   - apiVersion: v1
     kind: ServiceAccount
@@ -49,7 +50,7 @@ items:
       namespace: kube-system
       labels:
         app.kubernetes.io/name: "azurefile-csi-driver"
-        app.kubernetes.io/version: "v1.8.0"
+        app.kubernetes.io/version: "v1.9.0"
 
   - apiVersion: v1
     kind: ServiceAccount
@@ -58,7 +59,7 @@ items:
       namespace: kube-system
       labels:
         app.kubernetes.io/name: "azurefile-csi-driver"
-        app.kubernetes.io/version: "v1.8.0"
+        app.kubernetes.io/version: "v1.9.0"
 
   - kind: ClusterRole
     apiVersion: rbac.authorization.k8s.io/v1
@@ -66,7 +67,7 @@ items:
       name: azurefile-external-provisioner-role
       labels:
         app.kubernetes.io/name: "azurefile-csi-driver"
-        app.kubernetes.io/version: "v1.8.0"
+        app.kubernetes.io/version: "v1.9.0"
     rules:
       - apiGroups: [""]
         resources: ["persistentvolumes"]
@@ -102,7 +103,7 @@ items:
       name: azurefile-external-attacher-role
       labels:
         app.kubernetes.io/name: "azurefile-csi-driver"
-        app.kubernetes.io/version: "v1.8.0"
+        app.kubernetes.io/version: "v1.9.0"
     rules:
       - apiGroups: [""]
         resources: ["persistentvolumes"]
@@ -129,7 +130,7 @@ items:
       name: azurefile-external-snapshotter-role
       labels:
         app.kubernetes.io/name: "azurefile-csi-driver"
-        app.kubernetes.io/version: "v1.8.0"
+        app.kubernetes.io/version: "v1.9.0"
     rules:
       - apiGroups: [""]
         resources: ["events"]
@@ -159,7 +160,7 @@ items:
       name: azurefile-external-resizer-role
       labels:
         app.kubernetes.io/name: "azurefile-csi-driver"
-        app.kubernetes.io/version: "v1.8.0"
+        app.kubernetes.io/version: "v1.9.0"
     rules:
       - apiGroups: [""]
         resources: ["persistentvolumes"]
@@ -203,8 +204,8 @@ items:
         app.kubernetes.io/instance: "RELEASE-NAME"
         app.kubernetes.io/managed-by: "Helm"
         app.kubernetes.io/name: "azurefile-csi-driver"
-        app.kubernetes.io/version: "v1.8.0"
-        helm.sh/chart: "azurefile-csi-driver-v1.8.0"
+        app.kubernetes.io/version: "v1.9.0"
+        helm.sh/chart: "azurefile-csi-driver-v1.9.0"
     subjects:
       - kind: ServiceAccount
         name: csi-azurefile-controller-sa
@@ -222,8 +223,8 @@ items:
         app.kubernetes.io/instance: "RELEASE-NAME"
         app.kubernetes.io/managed-by: "Helm"
         app.kubernetes.io/name: "azurefile-csi-driver"
-        app.kubernetes.io/version: "v1.8.0"
-        helm.sh/chart: "azurefile-csi-driver-v1.8.0"
+        app.kubernetes.io/version: "v1.9.0"
+        helm.sh/chart: "azurefile-csi-driver-v1.9.0"
     subjects:
       - kind: ServiceAccount
         name: csi-azurefile-controller-sa
@@ -239,7 +240,7 @@ items:
       name: azurefile-csi-snapshotter-binding
       labels:
         app.kubernetes.io/name: "azurefile-csi-driver"
-        app.kubernetes.io/version: "v1.8.0"
+        app.kubernetes.io/version: "v1.9.0"
     subjects:
       - kind: ServiceAccount
         name: csi-azurefile-controller-sa
@@ -255,7 +256,7 @@ items:
       name: azurefile-csi-resizer-role
       labels:
         app.kubernetes.io/name: "azurefile-csi-driver"
-        app.kubernetes.io/version: "v1.8.0"
+        app.kubernetes.io/version: "v1.9.0"
     subjects:
       - kind: ServiceAccount
         name: csi-azurefile-controller-sa
@@ -296,24 +297,21 @@ items:
     metadata:
       name: csi-azurefile-node
       namespace: kube-system
-      labels:
-        app.kubernetes.io/name: "azurefile-csi-driver"
-        app.kubernetes.io/version: "v1.8.0"
     spec:
+      updateStrategy:
+        rollingUpdate:
+          maxUnavailable: 1
+        type: RollingUpdate
       selector:
         matchLabels:
           app: csi-azurefile-node
       template:
         metadata:
           labels:
-            app.kubernetes.io/instance: "RELEASE-NAME"
-            app.kubernetes.io/managed-by: "Helm"
-            app.kubernetes.io/name: "azurefile-csi-driver"
-            app.kubernetes.io/version: "v1.8.0"
             app: csi-azurefile-node
         spec:
           hostNetwork: true
-          dnsPolicy: ClusterFirstWithHostNet
+          dnsPolicy: Default
           serviceAccountName: csi-azurefile-node-sa
           nodeSelector:
             kubernetes.io/os: linux
@@ -328,42 +326,43 @@ items:
                           - virtual-kubelet
           priorityClassName: system-node-critical
           tolerations:
-            - operator: Exists
+            - operator: "Exists"
           containers:
             - name: liveness-probe
               volumeMounts:
                 - mountPath: /csi
                   name: socket-dir
-              image: "mcr.microsoft.com/oss/kubernetes-csi/livenessprobe:v2.3.0"
+              image: mcr.microsoft.com/oss/kubernetes-csi/livenessprobe:v2.5.0
               args:
                 - --csi-address=/csi/csi.sock
                 - --probe-timeout=3s
                 - --health-port=29613
                 - --v=2
-              imagePullPolicy: IfNotPresent
               resources:
                 limits:
-                  cpu: 100m
                   memory: 100Mi
                 requests:
                   cpu: 10m
                   memory: 20Mi
             - name: node-driver-registrar
-              image: "mcr.microsoft.com/oss/kubernetes-csi/csi-node-driver-registrar:v2.2.0"
+              image: mcr.microsoft.com/oss/kubernetes-csi/csi-node-driver-registrar:v2.4.0
               args:
                 - --csi-address=$(ADDRESS)
                 - --kubelet-registration-path=$(DRIVER_REG_SOCK_PATH)
                 - --v=2
-              lifecycle:
-                preStop:
-                  exec:
-                    command: ["/bin/sh", "-c", "rm -rf /registration/file.csi.azure.com-reg.sock /csi/csi.sock"]
+              livenessProbe:
+                exec:
+                  command:
+                    - /csi-node-driver-registrar
+                    - --kubelet-registration-path=$(DRIVER_REG_SOCK_PATH)
+                    - --mode=kubelet-registration-probe
+                initialDelaySeconds: 30
+                timeoutSeconds: 15
               env:
                 - name: ADDRESS
                   value: /csi/csi.sock
                 - name: DRIVER_REG_SOCK_PATH
                   value: /var/lib/kubelet/plugins/file.csi.azure.com/csi.sock
-              imagePullPolicy: IfNotPresent
               volumeMounts:
                 - name: socket-dir
                   mountPath: /csi
@@ -371,22 +370,18 @@ items:
                   mountPath: /registration
               resources:
                 limits:
-                  cpu: 100m
                   memory: 100Mi
                 requests:
                   cpu: 10m
                   memory: 20Mi
             - name: azurefile
-              image: "mcr.microsoft.com/k8s/csi/azurefile-csi:v1.8.0"
+              image: mcr.microsoft.com/k8s/csi/azurefile-csi:v1.9.0
+              imagePullPolicy: IfNotPresent
               args:
                 - "--v=5"
                 - "--endpoint=$(CSI_ENDPOINT)"
                 - "--nodeid=$(KUBE_NODE_NAME)"
                 - "--metrics-address=0.0.0.0:29615"
-                - "--kubeconfig="
-                - "--drivername=file.csi.azure.com"
-                - "--cloud-config-secret-name=azure-cloud-provider"
-                - "--cloud-config-secret-namespace=kube-system"
               ports:
                 - containerPort: 29613
                   name: healthz
@@ -413,7 +408,6 @@ items:
                     fieldRef:
                       apiVersion: v1
                       fieldPath: spec.nodeName
-              imagePullPolicy: IfNotPresent
               securityContext:
                 privileged: true
               volumeMounts:
@@ -424,15 +418,11 @@ items:
                   name: mountpoint-dir
                 - mountPath: /etc/kubernetes/
                   name: azure-cred
-                - mountPath: /var/lib/waagent/ManagedIdentity-Settings
-                  readOnly: true
-                  name: msi
                 - mountPath: /dev
                   name: device-dir
               resources:
                 limits:
-                  cpu: 400m
-                  memory: 200Mi
+                  memory: 300Mi
                 requests:
                   cpu: 10m
                   memory: 20Mi
@@ -451,11 +441,8 @@ items:
               name: registration-dir
             - hostPath:
                 path: /etc/kubernetes/
-                type: Directory
+                type: DirectoryOrCreate
               name: azure-cred
-            - hostPath:
-                path: /var/lib/waagent/ManagedIdentity-Settings
-              name: msi
             - hostPath:
                 path: /dev
                 type: Directory
@@ -466,9 +453,6 @@ items:
     metadata:
       name: csi-azurefile-controller
       namespace: kube-system
-      labels:
-        app.kubernetes.io/name: "azurefile-csi-driver"
-        app.kubernetes.io/version: "v1.8.0"
     spec:
       replicas: 2
       selector:
@@ -477,25 +461,23 @@ items:
       template:
         metadata:
           labels:
-            app.kubernetes.io/name: "azurefile-csi-driver"
-            app.kubernetes.io/version: "v1.8.0"
             app: csi-azurefile-controller
         spec:
-          hostNetwork: true
+          hostNetwork: true  # only required for MSI enabled cluster
           serviceAccountName: csi-azurefile-controller-sa
           nodeSelector:
-            kubernetes.io/os: linux
+            kubernetes.io/os: linux  # add "kubernetes.io/role: master" to run controller on master node
           priorityClassName: system-cluster-critical
           tolerations:
-            - effect: NoSchedule
-              key: node-role.kubernetes.io/master
-              operator: Exists
-            - effect: NoSchedule
-              key: node-role.kubernetes.io/controlplane
-              operator: Exists
+            - key: "node-role.kubernetes.io/master"
+              operator: "Exists"
+              effect: "NoSchedule"
+            - key: "node-role.kubernetes.io/controlplane"
+              operator: "Exists"
+              effect: "NoSchedule"
           containers:
             - name: csi-provisioner
-              image: "mcr.microsoft.com/oss/kubernetes-csi/csi-provisioner:v2.1.1"
+              image: mcr.microsoft.com/oss/kubernetes-csi/csi-provisioner:v2.2.2
               args:
                 - "-v=2"
                 - "--csi-address=$(ADDRESS)"
@@ -505,19 +487,17 @@ items:
               env:
                 - name: ADDRESS
                   value: /csi/csi.sock
-              imagePullPolicy: IfNotPresent
               volumeMounts:
                 - mountPath: /csi
                   name: socket-dir
               resources:
                 limits:
-                  cpu: 100m
-                  memory: 300Mi
+                  memory: 500Mi
                 requests:
                   cpu: 10m
                   memory: 20Mi
             - name: csi-attacher
-              image: "mcr.microsoft.com/oss/kubernetes-csi/csi-attacher:v3.1.0"
+              image: mcr.microsoft.com/oss/kubernetes-csi/csi-attacher:v3.3.0
               args:
                 - "-v=2"
                 - "-csi-address=$(ADDRESS)"
@@ -526,23 +506,21 @@ items:
               env:
                 - name: ADDRESS
                   value: /csi/csi.sock
-              imagePullPolicy: IfNotPresent
               volumeMounts:
-              - mountPath: /csi
-                name: socket-dir
+                - mountPath: /csi
+                  name: socket-dir
               resources:
                 limits:
-                  cpu: 100m
-                  memory: 200Mi
+                  memory: 500Mi
                 requests:
                   cpu: 10m
                   memory: 20Mi
             - name: csi-snapshotter
-              image: "mcr.microsoft.com/oss/kubernetes-csi/csi-snapshotter:v3.0.3"
+              image: mcr.microsoft.com/oss/kubernetes-csi/csi-snapshotter:v3.0.3
               args:
+                - "-v=2"
                 - "-csi-address=$(ADDRESS)"
                 - "-leader-election"
-                - "-v=2"
               env:
                 - name: ADDRESS
                   value: /csi/csi.sock
@@ -551,13 +529,12 @@ items:
                   mountPath: /csi
               resources:
                 limits:
-                  cpu: 100m
                   memory: 100Mi
                 requests:
                   cpu: 10m
                   memory: 20Mi
             - name: csi-resizer
-              image: "mcr.microsoft.com/oss/kubernetes-csi/csi-resizer:v1.1.0"
+              image: mcr.microsoft.com/oss/kubernetes-csi/csi-resizer:v1.3.0
               args:
                 - "-csi-address=$(ADDRESS)"
                 - "-v=2"
@@ -566,45 +543,39 @@ items:
               env:
                 - name: ADDRESS
                   value: /csi/csi.sock
-              imagePullPolicy: IfNotPresent
               volumeMounts:
                 - name: socket-dir
                   mountPath: /csi
               resources:
                 limits:
-                  cpu: 100m
-                  memory: 300Mi
+                  memory: 500Mi
                 requests:
                   cpu: 10m
                   memory: 20Mi
             - name: liveness-probe
-              image: "mcr.microsoft.com/oss/kubernetes-csi/livenessprobe:v2.3.0"
+              image: mcr.microsoft.com/oss/kubernetes-csi/livenessprobe:v2.5.0
               args:
                 - --csi-address=/csi/csi.sock
                 - --probe-timeout=3s
                 - --health-port=29612
                 - --v=2
-              imagePullPolicy: IfNotPresent
               volumeMounts:
                 - name: socket-dir
                   mountPath: /csi
               resources:
                 limits:
-                  cpu: 100m
                   memory: 100Mi
                 requests:
                   cpu: 10m
                   memory: 20Mi
             - name: azurefile
-              image: "mcr.microsoft.com/k8s/csi/azurefile-csi:v1.8.0"
+              image: mcr.microsoft.com/k8s/csi/azurefile-csi:v1.9.0
+              imagePullPolicy: IfNotPresent
               args:
                 - "--v=5"
                 - "--endpoint=$(CSI_ENDPOINT)"
                 - "--metrics-address=0.0.0.0:29614"
-                - "--kubeconfig="
-                - "--drivername=file.csi.azure.com"
-                - "--cloud-config-secret-name=azure-cloud-provider"
-                - "--cloud-config-secret-namespace=kube-system"
+                - "--user-agent-suffix=OSS-kubectl"
               ports:
                 - containerPort: 29612
                   name: healthz
@@ -629,18 +600,13 @@ items:
                       optional: true
                 - name: CSI_ENDPOINT
                   value: unix:///csi/csi.sock
-              imagePullPolicy: IfNotPresent
               volumeMounts:
                 - mountPath: /csi
                   name: socket-dir
                 - mountPath: /etc/kubernetes/
                   name: azure-cred
-                - mountPath: /var/lib/waagent/ManagedIdentity-Settings
-                  readOnly: true
-                  name: msi
               resources:
                 limits:
-                  cpu: 200m
                   memory: 200Mi
                 requests:
                   cpu: 10m
@@ -651,18 +617,4 @@ items:
             - name: azure-cred
               hostPath:
                 path: /etc/kubernetes/
-                type: Directory
-            - name: msi
-              hostPath:
-                path: /var/lib/waagent/ManagedIdentity-Settings
-
-  - apiVersion: storage.k8s.io/v1
-    kind: CSIDriver
-    metadata:
-      name: file.csi.azure.com
-    spec:
-      attachRequired: false
-      podInfoOnMount: true
-      volumeLifecycleModes:
-        - Persistent
-        - Ephemeral
+                type: DirectoryOrCreate
