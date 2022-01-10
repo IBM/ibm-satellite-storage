@@ -89,7 +89,7 @@
     "required": "true"
   },
   {
-    "description": "Automatically Discover avaliable local disks.",
+    "description": "Automatically Discover available local disks.",
     "displayname": "Auto Discover local disks ",
     "name": "auto-discover-devices",
     "default": "false",
