@@ -374,7 +374,9 @@ items:
     spec:
        osdStorageClassName: localblock
        osdSize: "1"
+       {{#osd-device-path?}}
        osdDevicePaths:
+       {{/osd-device-path?}} 
          {{#osd-device-path }}
          - "{{{ item }}}"
          {{/osd-device-path }}
