@@ -14,14 +14,6 @@
     "type": "csv"
   },
   {
-    "description": "The local device path of the MON.",
-    "displayname": "Mon device Path",
-    "name": "mon-device-path",
-    "place-holder": "/dev/sdc,/dev/sde",
-    "required": "true",
-    "type": "csv"
-  },
-  {
     "description": "The number of OSDs. The default value is '1'.",
     "displayname": "Num of osd",
     "name": "num-of-osd",
@@ -95,5 +87,13 @@
     "category": "secret",
     "obfuscate": "true",
     "required": "true"
+  },
+  {
+    "description": "Automatically Discover avaliable local disks.",
+    "displayname": "Auto Discover local disks ",
+    "name": "auto-discover-devices",
+    "default": "false",
+    "category": "boolean",
+    "required": "false"
   }
 ]

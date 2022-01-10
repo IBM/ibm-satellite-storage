@@ -6,21 +6,6 @@
     "required": "true"
   },
   {
-    "description": "The MON storage size (in Gibibytes). The default value is '20Gi'.",
-    "displayname": "Mon storage size",
-    "name": "mon-size",
-    "default": "20Gi",
-    "place-holder": "20Gi",
-    "regex": "^[0-9]+Gi$",
-    "required": "true"
-  },
-  {
-    "description": "The MON storage class name.",
-    "displayname": "Mon storage class",
-    "name": "mon-storage-class",
-    "required": "true"
-  },
-  {
     "description": "The OSD storage size (in Gibibytes). The default value is '100Gi'.",
     "displayname": "osd storage size",
     "name": "osd-size",

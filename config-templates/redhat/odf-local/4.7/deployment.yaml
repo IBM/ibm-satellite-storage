@@ -306,7 +306,7 @@ items:
               value: openshift-storage
             - name: ADDON_CONFIGMAP_NAMESPACE
               value: kube-system
-            image: "icr.io/obs/ibm-ocs-operator:v4.7.15"
+            image: "icr.io/obs/ibm-ocs-operator:v4.7.17"
             imagePullPolicy: Always
             name: manager
             securityContext:
@@ -315,7 +315,7 @@ items:
             resources:
               limits:
                 cpu: 100m
-                memory: 100Mi
+                memory: 200Mi
               requests:
                 cpu: 100m
                 memory: 100Mi
