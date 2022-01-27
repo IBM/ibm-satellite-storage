@@ -1,0 +1,51 @@
+{
+  "name": "21.10.1",
+  "revision": "1",
+  "enabled": "true",
+  "description": "Netapp Trident version 21.10.1",
+  "tags": [
+    {
+      "name": "provider",
+      "value": "netapp"
+    }, {
+      "name": "offering-name",
+      "value": "netapp-trident"
+    }, {
+      "name": "provider-url",
+      "value": "https://docs.netapp.com/us-en/trident/"
+    }, {
+      "name": "support-msg",
+      "value": "For support contact NetApp"
+    }, {
+      "name": "provider-logo",
+      "value": "logo/netapp-trident.svg"
+    }, {
+      "name": "supported-envs",
+      "value": "AWS,Azure,IBM"
+    }, {
+      "name": "supported-k8s-versions",
+      "value": "1.17 or later"
+    }, {
+      "name": "volume-type",
+      "value": "block,file"
+    }, {
+      "name": "volume-encryption-at-rest",
+      "value": ""
+    }, {
+      "name": "volume-encryption-in-transit",
+      "value": ""
+    }, {
+      "name": "volume-snapshot",
+      "value": ""
+    }, {
+      "name": "volume-availability",
+      "value": ""
+    }, {
+      "name": "volume-expansion",
+      "value": ""
+    }, {
+      "name": "storageclass",
+      "value": ""
+    }
+  ]
+}
