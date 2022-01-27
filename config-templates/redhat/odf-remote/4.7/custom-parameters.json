@@ -1,13 +1,13 @@
 [
   {
-    "description": "Specify a name for your ODF storage cluster.",
-    "displayname": "Cluster Name",
-    "name": "ocs-cluster-name",
+    "description": "A unique name for your deployment. Note that Kubernetes resources can't contain capital letters or special characters. Enter a name that uses only lowercase letters, numbers, hyphens or periods.",
+    "displayname": "Deployment name",
+    "name": "deployment-name",
     "required": "true"
   },
   {
-    "description": "The MON storage size (in Gibibytes). The default value is '20Gi'.",
-    "displayname": "Mon storage size",
+    "description": "The size of the disks available to the monitoring daemonset. The daemonset consists of 3 pods that maintain a map of the storage resources in your cluster and monitor the health of your deployment. The default value is '20Gi'.",
+    "displayname": "Monitoring storage size",
     "name": "mon-size",
     "default": "20Gi",
     "place-holder": "20Gi",
@@ -15,14 +15,14 @@
     "required": "true"
   },
   {
-    "description": "The MON storage class name.",
-    "displayname": "Mon storage class",
+    "description": "The storage class to use when dynamically provisioning devices for the monitor pods.",
+    "displayname": "Monitoring pod storage class",
     "name": "mon-storage-class",
     "required": "true"
   },
   {
-    "description": "The OSD storage size (in Gibibytes). The default value is '100Gi'.",
-    "displayname": "osd storage size",
+    "description": "The amodevices provide application storage in your cluster. Each OSD is a raw block storage device that can be a local disk on your worker node or dynamically provisioned when you deploy ODF. In VPC clusters, your OSD block storage devices are dynamically provisioned by using the Block Storage for VPC driver. In Satellite clusters, you can use local volumes on your worker nodes, or dynamically provision block storage devices by using a block storage driver that supports dynamic provisioning. In Classic clusters, the OSD block devices are local disks on your worker nodes. When you deploy ODF, each device is mounted by an OSD pod. The total storage that is available to your applications is equal to the osdSize multiplied by the numOfOsd. The OSD The default value is '100Gi'.",
+    "displayname": "OSD storage size",
     "name": "osd-size",
     "default": "100Gi",
     "place-holder": "100Gi",
@@ -30,8 +30,8 @@
     "required": "true"
   },
   {
-    "description": "The OSD storage class name.",
-    "displayname": "osd Storage Class",
+    "description": "The storage class to use when dynamically provisioning devices for the monitor pods.",
+    "displayname": "Storage Class",
     "name": "osd-storage-class",
     "required": "true"
   },
