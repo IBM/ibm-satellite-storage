@@ -12,7 +12,7 @@ The Azure File CSI driver implements the CSI specification for container orchest
 - Volume Limits
 - fsGroupPolicy -->
 
-<!-- ## Prerequisites
+## Prerequisites
 1. Retrieve the zone of your Azure worker nodes.
     ```
     oc get nodes
@@ -22,11 +22,6 @@ The Azure File CSI driver implements the CSI specification for container orchest
     oc label node <node_name> topology.kubernetes.io/zone-
     oc label node <node_name> topology.kubernetes.io/zone=<zone> --overwrite
     ```
-3. Copy the [Azure disk configuration template](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/azure.json) and enter the details for your cluster. For more information about the configuration parameters, see [Driver Parameters](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/docs/driver-parameters.md).
-4. Serialize your config file and convert it to base64.
-    ```
-    cat azure.json | base64 | awk '{printf $0}'; echo
-    ``` -->
 
 
 ## Azure File CSI Driver parameters & how to retrieve them
