@@ -1,0 +1,143 @@
+# Azure File CSI Driver [BETA]
+
+The Azure File CSI driver implements the CSI specification for container orchestrators to manage the lifecycle of Azure File volumes.
+<!--
+**Features supported:**
+- Topology(Availability Zone)
+- ZRS disk support(Preview)
+- Volume Cloning
+- Volume Expansion
+- Raw Block Volume
+- Shared Disk
+- Volume Limits
+- fsGroupPolicy -->
+
+<!-- ## Prerequisites
+1. Retrieve the zone of your Azure worker nodes.
+    ```
+    oc get nodes
+    ```
+2. Label your Azure worker nodes with the zone. Replace `<zone>` with the zone of your Azure worker nodes. For example: `eastus-1`.
+    ```
+    oc label node <node_name> topology.kubernetes.io/zone-
+    oc label node <node_name> topology.kubernetes.io/zone=<zone> --overwrite
+    ```
+3. Copy the [Azure disk configuration template](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/azure.json) and enter the details for your cluster. For more information about the configuration parameters, see [Driver Parameters](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/docs/driver-parameters.md).
+4. Serialize your config file and convert it to base64.
+    ```
+    cat azure.json | base64 | awk '{printf $0}'; echo
+    ``` -->
+
+
+## Azure File CSI Driver parameters & how to retrieve them
+
+Get a list of the Azure template configuration parameters.
+```
+ibmcloud sat storage template get --name azurefile-csi-driver --version 1.9.0
+```
+
+** Azure File CSI Driver parameters**
+
+| Parameter | Required? | Description | Default value if not provided |
+| --- | --- | --- | --- |
+| `cloud-config` | Required | Enter the base64 encoded value that you created from the `azure.json` [conifg file](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/azure.json). | N/A |
+| `aadClientId` | Required | the `aadClientId`. This value of this can be taken from the `azure.json` [conifg file](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/azure.json). | N/A |
+| `aadClientSecret` | Required | the `aadClientSecret`. This value of this can be taken from the `azure.json` [conifg file](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/azure.json). | N/A |
+| `location` | Required | The azure location where the azure VMs are created | N/A |
+| `resourceGroup` | Required | The ID of the resource group where the azure VMs are created | N/A |
+| `securityGroupName` | Required | the name of the security group used by the azure VMs | N/A |
+| `subscriptionId` | Required | the `subscriptionId`. This value of this can be taken from the `azure.json` [conifg file](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/azure.json). | N/A |
+| `tenantId` | Required | the `tenantId`. This value of this can be taken from the `azure.json` [conifg file](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/azure.json). | N/A |
+| `vmType` | Required | the `vmType`. This value of this can be taken from the `azure.json` [conifg file](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/azure.json). | N/A |
+| `vnetName` | Required | the `vmType`. This value of this can be taken from the `azure.json` [conifg file](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/azure.json). | N/A |
+
+
+## Default storage classes
+
+| Storage class name | Reclaim policy | Volume Binding Mode |
+| --- | --- | --- |
+| `sat-azure-file-platinum`  | Delete | Immediate |
+| `sat-azure-file-platinum-metro` | Delete | WaitForFirstConsumer |
+| `sat-azure-file-gold` | Delete | Immediate |
+| `sat-azure-file-gold-metro` | Delete | WaitForFirstConsumer |
+| `sat-azure-file-silver` | Delete | Immediate |
+| `sat-azure-file-silver-metro` | Delete | WaitForFirstConsumer |
+| `sat-azure-file-bronze` | Delete | Immediate |
+| `sat-azure-file-bronze-metro` | Delete | WaitForFirstConsumer |
+
+
+
+## Creating the AZURE FILE CSI Driver storage configuration
+
+**Example `sat storage config create` command**
+
+```sh
+ibmcloud sat storage config create --name azurefile-test-config \
+        --template-name azurefile-csi-driver \
+        --template-version 1.9.0 --location <my-location>  \
+                                -p "tenantId=$TENANT_ID" \
+                                -p "subscriptionId=$SUBSCRIPTION_ID" \
+                                -p "aadClientId=$SECRET1" \
+                                -p "aadClientSecret=$SECRET2" \
+                                -p "resourceGroup=$RESOURCE_GROUP" \
+                                -p "location=eastus" \
+                                -p "vmType=standard" \
+                                -p "securityGroupName=$SECURITY_GROUP_NAME" \
+                                -p "vnetName=$VNET_NAME"
+```
+
+## Creating the storage assignment
+
+**Example `sat storage assignment create` command**
+
+**Apply config to a group of clusters**
+```sh
+ibmcloud sat storage assignment create --name <assignmemt-name> --group <cluster-group> --config <config-name>
+```
+**Apply config to an individual cluster**
+```sh
+ibmcloud sat storage assignment create --name <assignmemt-name> --cluster <cluster-id> --config <config-name>
+```
+**Apply config to a service cluster**
+```sh
+ibmcloud sat storage assignment create --name <assignmemt-name> --service-cluster-id <service-cluster-id> --config <config-name>
+```
+## Verifying your Azure File CSI Driver storage configuration is assigned to your clusters
+
+To verify that your configuration is assigned to your cluster. Verify that the driver pods are running, and list the Satellite storage classes that are installed.
+
+List the `azurefile` driver pods in the `kube-system` namespace and verify that the status is `Running`.
+
+```
+% kubectl get pods -n kube-system | grep azurefile
+csi-azurefile-controller-5dbf58f48-kqrd2               6/6     Running   0          3m9s
+csi-azurefile-controller-5dbf58f48-lwlws               6/6     Running   0          3m9s
+csi-azurefile-node-d46pf                               3/3     Running   0          3m8s
+csi-azurefile-node-ffdl5                               3/3     Running   0          3m8s
+csi-azurefile-node-gpkcj                               3/3     Running   0          3m8s
+```
+
+List the `azurefile` storage classes.
+
+```
+% kubectl get sc | grep azure
+sat-azure-file-bronze           file.csi.azure.com                      Delete          Immediate              true                   8m58s
+sat-azure-file-bronze-metro     file.csi.azure.com                      Delete          WaitForFirstConsumer   true                   8m59s
+sat-azure-file-gold             file.csi.azure.com                      Delete          Immediate              true                   8m59s
+sat-azure-file-gold-metro       file.csi.azure.com                      Delete          WaitForFirstConsumer   true                   9m
+sat-azure-file-platinum         file.csi.azure.com                      Delete          Immediate              true                   9m
+sat-azure-file-platinum-metro   file.csi.azure.com                      Delete          WaitForFirstConsumer   true                   9m
+sat-azure-file-silver           file.csi.azure.com                      Delete          Immediate              true                   8m59s
+sat-azure-file-silver-metro     file.csi.azure.com                      Delete          WaitForFirstConsumer   true                   8m59s
+```
+
+**Example output**
+
+![Example Output](./images/output.png)
+
+<!-- ## Troubleshooting
+- In case of `node register failure`, please make sure that nodes are labelled with proper zone.
+- In case of `authentication failure`, please make sure that **Service Principal** is created properly. -->
+
+## References
+[Azure File CSI Driver](https://github.com/kubernetes-sigs/azurefile-csi-driver)
