@@ -35,14 +35,13 @@ ibmcloud sat storage template get --name azurefile-csi-driver --version 1.9.0
 
 | Parameter | Required? | Description | Default value if not provided |
 | --- | --- | --- | --- |
-| `cloud-config` | Required | Enter the base64 encoded value that you created from the `azure.json` [conifg file](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/azure.json). | N/A |
+| `subscriptionId` | Required | the `subscriptionId`. This value of this can be taken from the `azure.json` [conifg file](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/azure.json). | N/A |
+| `tenantId` | Required | the `tenantId`. This value of this can be taken from the `azure.json` [conifg file](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/azure.json). | N/A |
 | `aadClientId` | Required | the `aadClientId`. This value of this can be taken from the `azure.json` [conifg file](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/azure.json). | N/A |
 | `aadClientSecret` | Required | the `aadClientSecret`. This value of this can be taken from the `azure.json` [conifg file](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/azure.json). | N/A |
 | `location` | Required | The azure location where the azure VMs are created | N/A |
 | `resourceGroup` | Required | The ID of the resource group where the azure VMs are created | N/A |
 | `securityGroupName` | Required | the name of the security group used by the azure VMs | N/A |
-| `subscriptionId` | Required | the `subscriptionId`. This value of this can be taken from the `azure.json` [conifg file](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/azure.json). | N/A |
-| `tenantId` | Required | the `tenantId`. This value of this can be taken from the `azure.json` [conifg file](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/azure.json). | N/A |
 | `vmType` | Required | the `vmType`. This value of this can be taken from the `azure.json` [conifg file](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/azure.json). | N/A |
 | `vnetName` | Required | the `vmType`. This value of this can be taken from the `azure.json` [conifg file](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/azure.json). | N/A |
 
@@ -129,6 +128,30 @@ sat-azure-file-silver-metro     file.csi.azure.com                      Delete  
 **Example output**
 
 ![Example Output](./images/output.png)
+
+## Validate data write
+A sample PVC can be created using one of the above storage classes and that PVC can be used on a pod. Take [this as an example](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/deployment.yaml)
+
+```
+% kubectl get pods,pvc
+NAME                                         READY   STATUS        RESTARTS   AGE
+pod/deployment-azurefile4-d44499fdb-tslmg    1/1     Running       0          24h
+
+NAME                                   STATUS        VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS                  AGE
+persistentvolumeclaim/pvc-azurefile   Bound         pvc-f6ce034d-60da-4970-999f-54aceec11d91   100Gi      RWX            sat-azure-file-bronze         24h
+```
+
+the data write can be validated
+```
+% kubectl exec -it deployment-azurefile4-d44499fdb-tslmg  -- tail -f /mnt/azurefile/outfile
+Thu Feb 3 14:39:29 UTC 2022
+Thu Feb 3 14:39:30 UTC 2022
+Thu Feb 3 14:39:31 UTC 2022
+Thu Feb 3 14:39:32 UTC 2022
+Thu Feb 3 14:39:33 UTC 2022
+...
+...
+```
 
 <!-- ## Troubleshooting
 - In case of `node register failure`, please make sure that nodes are labelled with proper zone.
