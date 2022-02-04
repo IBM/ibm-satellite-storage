@@ -1,13 +1,13 @@
 [
   {
-    "description": "Specify a name for your ODF storage cluster.",
-    "displayname": "Cluster Name",
+    "description": "A unique name for your deployment. Note that Kubernetes resources can't contain capital letters or special characters. Enter a name that uses only lowercase letters, numbers, hyphens or periods.",
+    "displayname": "Deployment name",
     "name": "ocs-cluster-name",
     "required": "true"
   },
   {
-    "description": "The MON storage size (in Gibibytes). The default value is '20Gi'.",
-    "displayname": "Mon storage size",
+    "description": "The total amount of storage available to the monitoring daemonset. The default size is '20Gi'.",
+    "displayname": "Monitoring storage size",
     "name": "mon-size",
     "default": "20Gi",
     "place-holder": "20Gi",
@@ -15,14 +15,14 @@
     "required": "true"
   },
   {
-    "description": "The MON storage class name.",
-    "displayname": "Mon storage class",
+    "description": "The storage class to use when dynamically provisioning devices for the monitor pods.",
+    "displayname": "Monitoring pod storage class",
     "name": "mon-storage-class",
     "required": "true"
   },
   {
-    "description": "The OSD storage size (in Gibibytes). The default value is '100Gi'.",
-    "displayname": "osd storage size",
+    "description": "The amount of storage available to applications in your cluster. The total storage available to your applications is equal to the OSD size multiplied by the number of OSDs. The default value is '100Gi'.",
+    "displayname": "OSD storage size",
     "name": "osd-size",
     "default": "100Gi",
     "place-holder": "100Gi",
@@ -30,20 +30,20 @@
     "required": "true"
   },
   {
-    "description": "The OSD storage class name.",
-    "displayname": "osd Storage Class",
+    "description": "The storage class to use when dynamically provisioning devices for the monitor pods.",
+    "displayname": "Storage Class",
     "name": "osd-storage-class",
     "required": "true"
   },
   {
-    "description": "The number of OSDs. The default value is '1'.",
+    "description": "The number storage of daemonsets that you want to deploy. Each daemonset consists of 3 pods that each mount one disk equal to the osd-size that you specify. For example if you specify 'num-of-osd=2', 2 daemonsets are deployed that each contain 3 pods with one disk per pod for a total of 6 pods and 6 disks. App data is replicated across each daemonset. The default value is '1'.",
     "displayname": "Num of osd",
     "name": "num-of-osd",
     "default": "1",
     "required": "false"
   },
   {
-    "description": "The IP addresses of the worker nodes where you want to deploy ODF. The minimum number of worker nodes is 3.",
+    "description": "The IP addresses the worker nodes where you want to deploy ODF. The minimum number of worker nodes is 3.",
     "displayname": "worker nodes",
     "name": "worker-nodes",
     "required": "false",
@@ -72,7 +72,7 @@
     "required": "false"
   },
   {
-    "description": "The IBM COS location constraint.",
+    "description": "The location constraint that you want to use when creating your bucket. For example `us-east-standard`.",
     "displayname": "IBM COS LocationConstraint",
     "name": "ibm-cos-location",
     "place-holder": "us-east-standard",
@@ -95,7 +95,7 @@
     "obfuscate": "true"
   },
   {
-    "description": "Cluster wide encryption for ODF.",
+    "description": "Enter 'true' or 'false' to enable or disable cluster-wide encryption.",
     "displayname": "Cluster wide encryption",
     "name": "cluster-encryption",
     "default": "false",
@@ -103,8 +103,8 @@
     "required": "false"
   },
   {
-    "description": "IAM API Key for storage secret.",
-    "displayname": "IAM API Key for storage secret",
+    "description": "The IAM API key that you want to use in your storage secrets.",
+    "displayname": "IAM API key",
     "name": "iam-api-key",
     "category": "secret",
     "obfuscate": "true",
