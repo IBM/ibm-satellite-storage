@@ -2,7 +2,7 @@
   {
     "description": "A unique name for your deployment. Note that Kubernetes resources can't contain capital letters or special characters. Enter a name that uses only lowercase letters, numbers, hyphens or periods.",
     "displayname": "Deployment name",
-    "name": "deployment-name",
+    "name": "ocs-cluster-name",
     "required": "true"
   },
   {
