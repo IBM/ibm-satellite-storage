@@ -36,15 +36,15 @@ ibmcloud sat storage template get --name azurefile-csi-driver --version 1.9.0
 
 | Parameter | Required? | Description | 
 | --- | --- | --- |
-| `tenantId` | Required | The Azure tenant ID that you want to use for your configuration. Follow the Azure documentation to find your [tenant ID](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-how-to-find-tenant){: external}. |
-| `subscriptionId` | Required | Your Azure subscription ID. From the Azure portal, search for `Subscription` to find a list of your subscriptions. You can also find this value by running the `az account subscription list` command. |
-| `aadClientId` | Required | Your Azure Active Directory Client ID. You can find this value by running the `az identity list` command. |
+| `tenantId` | Required | The Azure tenant ID that you want to use for your configuration. You can find your tenant ID in the Azure portal or by running the `az account tenant list` command. |
+| `subscriptionId` | Required | Your Azure subscription ID. You can find your subscription ID in the Azure portal or by running the `az account subscription list` command. |
+| `aadClientId` | Required | Your Azure Active Directory Client ID. You can find your Client ID in the Azure portal or by running the `az identity list` command. |
 | `aadClientSecret` | Required | Your Azure Active Directory Client Secret. |
-| `resourceGroup` | Required | The name of your Azure resource group. You can find this value by running the `az group list` command. |
-| `location` | Required | The location of your Azure hosts. For example `useast` |
-| `vmType` | Required | The virtual machine type. You can find this value by running the `az vm list` command. For example: `standard` or `VMSS`. |
-| `securityGroupName` | Required | The security group name. You can find this parameters by running the `az network nsg list` command. |
-| `vnetName` | Required | The name of the virtual network. You can find this value by running the `az network vnet subnet list` command. |
+| `resourceGroup` | Required | The name of your Azure resource group. You can find your resource group in the Azure portal or by running the `az group list` command. |
+| `location` | Required | The location of your Azure hosts. You can find the location of your virtual machines in the Azure portal. For example `useast` |
+| `vmType` | Required | You can find your virtual machine type in the Azure portal or by running the `az vm list` command. Example types: 'standard' or 'VMSS'. |
+| `securityGroupName` | Required | The security group name. You can find your security group name in the Azure portal by running the `az network nsg list` command. |
+| `vnetName` | Required | The name of the virtual network. You can find the name of your virtual network in the Azure portal or by running the `az network vnet subnet list` command. |
 
 
 ## Default storage classes
