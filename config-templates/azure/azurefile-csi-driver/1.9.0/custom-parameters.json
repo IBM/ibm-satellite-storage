@@ -21,7 +21,7 @@
         "obfuscate": "true"
     },
     {
-        "description": "location",
+        "description": "The location of your Azure hosts. You can find the location of your virtual machines in the Azure portal or by running the `az vm list` command. Example location: 'useast'",
         "displayname": "location",
         "name": "location",
         "required": "true",
