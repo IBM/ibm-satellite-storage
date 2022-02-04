@@ -14,7 +14,7 @@
         "obfuscate": "true"
     },
     {
-        "description": "aadClientId",
+        "description": "Your Azure Active Directory Client ID. You can find your Client ID in the Azure portal or by running the `az identity list` command.",
         "displayname": "aadClientId",
         "name": "aadClientId",
         "required": "true",
