@@ -35,7 +35,7 @@
         "obfuscate": "true"
     },
     {
-        "description": "resourceGroup",
+        "description": "The name of your Azure resource group. You can find your resource group detail in the Azure portal or by running the `az group list` command.",
         "displayname": "resourceGroup",
         "name": "resourceGroup",
         "required": "true",
