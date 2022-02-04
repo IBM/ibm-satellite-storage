@@ -42,7 +42,7 @@
         "obfuscate": "true"
     },
     {
-        "description": "vmType",
+        "description": "You can find your virtual machine type in the Azure portal or by running the `az vm list` command. Example types: 'standard' or 'VMSS'.",
         "displayname": "vmType",
         "name": "vmType",
         "required": "true",
