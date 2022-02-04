@@ -36,7 +36,7 @@ ibmcloud sat storage template get --name azurefile-csi-driver --version 1.9.0
 
 | Parameter | Required? | Description | 
 | --- | --- | --- |
-| `tenantId` | Required | The Azure tenant ID that you want to use for your configuration. Follow the Azure documentation to find your [tenant ID](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-how-to-find-tenant){: external} or run the  |
+| `tenantId` | Required | The Azure tenant ID that you want to use for your configuration. Follow the Azure documentation to find your [tenant ID](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-how-to-find-tenant){: external}. |
 | `subscriptionId` | Required | Your Azure subscription ID. From the Azure portal, search for `Subscription` to find a list of your subscriptions. You can also find this value by running the `az account subscription list` command. |
 | `aadClientId` | Required | Your Azure Active Directory Client ID. You can find this value by running the `az identity list` command. |
 | `aadClientSecret` | Required | Your Azure Active Directory Client Secret. |
