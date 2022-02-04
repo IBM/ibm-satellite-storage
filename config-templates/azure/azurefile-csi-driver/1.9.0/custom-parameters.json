@@ -7,7 +7,7 @@
         "obfuscate": "true"
     },
     {
-        "description": "subscriptionId",
+        "description": "Your Azure subscription ID. From the Azure portal, search for 'Subscription' to find a list of your subscriptions. You can also find this value by running the `az account subscription list` command.",
         "displayname": "subscriptionId",
         "name": "subscriptionId",
         "required": "true",
