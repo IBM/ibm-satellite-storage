@@ -28,7 +28,7 @@
         "obfuscate": "true"
     },
     {
-        "description": "aadClientSecret",
+        "description": "Your Azure Active Directory Client Secret.",
         "displayname": "aadClientSecret",
         "name": "aadClientSecret",
         "required": "true",
