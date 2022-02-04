@@ -49,7 +49,7 @@
         "obfuscate": "true"
     },
     {
-        "description": "securityGroupName",
+        "description": "The name of your security group. You can find your security group details in the Azure portal or by running the `az network nsg list` command. ",
         "displayname": "securityGroupName",
         "name": "securityGroupName",
         "required": "true",
