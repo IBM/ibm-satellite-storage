@@ -6,7 +6,7 @@
     "required": "true"
   },
   {
-    "description": "The size of the disks available to the monitoring daemonset. The daemonset consists of 3 pods that maintain a map of the storage resources in your cluster and monitor the health of your deployment. The default value is '20Gi'.",
+    "description": "The total amount of storage available to the monitoring daemonset. The default size is '20Gi'.",
     "displayname": "Monitoring storage size",
     "name": "mon-size",
     "default": "20Gi",
@@ -21,7 +21,7 @@
     "required": "true"
   },
   {
-    "description": "The amodevices provide application storage in your cluster. Each OSD is a raw block storage device that can be a local disk on your worker node or dynamically provisioned when you deploy ODF. In VPC clusters, your OSD block storage devices are dynamically provisioned by using the Block Storage for VPC driver. In Satellite clusters, you can use local volumes on your worker nodes, or dynamically provision block storage devices by using a block storage driver that supports dynamic provisioning. In Classic clusters, the OSD block devices are local disks on your worker nodes. When you deploy ODF, each device is mounted by an OSD pod. The total storage that is available to your applications is equal to the osdSize multiplied by the numOfOsd. The OSD The default value is '100Gi'.",
+    "description": "The amount of storage available to applications in your cluster. The total storage available to your applications is equal to the OSD size multiplied by the number of OSDs. The default value is '100Gi'.",
     "displayname": "OSD storage size",
     "name": "osd-size",
     "default": "100Gi",
@@ -36,14 +36,14 @@
     "required": "true"
   },
   {
-    "description": "The number of OSDs. The default value is '1'.",
+    "description": "The number storage of daemonsets that you want to deploy. Each daemonset consists of 3 pods that each mount one disk equal to the osd-size that you specify. For example if you specify 'num-of-osd=2', 2 daemonsets are deployed that each contain 3 pods with one disk per pod for a total of 6 pods and 6 disks. App data is replicated across each daemonset. The default value is '1'.",
     "displayname": "Num of osd",
     "name": "num-of-osd",
     "default": "1",
     "required": "false"
   },
   {
-    "description": "The IP addresses of the worker nodes where you want to deploy ODF. The minimum number of worker nodes is 3.",
+    "description": "The IP addresses the worker nodes where you want to deploy ODF. The minimum number of worker nodes is 3.",
     "displayname": "worker nodes",
     "name": "worker-nodes",
     "required": "false",
@@ -72,7 +72,7 @@
     "required": "false"
   },
   {
-    "description": "The IBM COS location constraint.",
+    "description": "The location constraint that you want to use when creating your bucket. For example `us-east-standard`.",
     "displayname": "IBM COS LocationConstraint",
     "name": "ibm-cos-location",
     "place-holder": "us-east-standard",
@@ -95,7 +95,7 @@
     "obfuscate": "true"
   },
   {
-    "description": "Cluster wide encryption for ODF.",
+    "description": "Enter 'true' or 'false' to enable or disable cluster-wide encryption.",
     "displayname": "Cluster wide encryption",
     "name": "cluster-encryption",
     "default": "false",
@@ -103,8 +103,8 @@
     "required": "false"
   },
   {
-    "description": "IAM API Key for storage secret.",
-    "displayname": "IAM API Key for storage secret",
+    "description": "The IAM API key that you want to use in your storage secrets.",
+    "displayname": "IAM API key",
     "name": "iam-api-key",
     "category": "secret",
     "obfuscate": "true",
