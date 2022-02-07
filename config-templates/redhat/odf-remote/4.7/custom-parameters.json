@@ -6,7 +6,7 @@
     "required": "true"
   },
   {
-    "description": "The total amount of storage available to the monitoring daemonset. The default size is '20Gi'.",
+    "description": "The total amount of storage available to the monitoring daemonset. The monitoring deamonset consists of 3 monitoring pods that each mount a disk equal to the 'mon-size'. Monitoring data is replicated across these 3 disks. The default size is '20Gi'.",
     "displayname": "Monitoring daemonset disk size",
     "name": "mon-size",
     "default": "20Gi",
