@@ -30,7 +30,7 @@
     "required": "true"
   },
   {
-    "description": "The storage class to use when dynamically provisioning devices for the monitor pods.",
+    "description": "The storage class to use when dynamically provisioning devices for the storage daemonset pods.",
     "displayname": "Storage Class",
     "name": "osd-storage-class",
     "required": "true"
