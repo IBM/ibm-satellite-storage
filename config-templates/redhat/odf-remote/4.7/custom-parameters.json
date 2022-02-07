@@ -7,7 +7,7 @@
   },
   {
     "description": "The total amount of storage available to the monitoring daemonset. The default size is '20Gi'.",
-    "displayname": "Monitoring storage size",
+    "displayname": "Monitoring daemonset disk size",
     "name": "mon-size",
     "default": "20Gi",
     "place-holder": "20Gi",
