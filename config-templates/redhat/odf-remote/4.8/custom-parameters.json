@@ -21,7 +21,7 @@
     "required": "true"
   },
   {
-    "description": "The amount of storage available to the storage daemonset pods. The total storage available to your applications is equal to the osd-size multiplied by the number of storage daemonsets (OSDs). The default value is '100Gi'.",
+    "description": "The amount of storage available to applications in your cluster. The total storage available to your applications is equal to the storage daemonset disk size (osd-size) size multiplied by the number of disks (num-of-osd). The default value is '100Gi'.",
     "displayname": "Storage daemonset disk size",
     "name": "osd-size",
     "default": "100Gi",
