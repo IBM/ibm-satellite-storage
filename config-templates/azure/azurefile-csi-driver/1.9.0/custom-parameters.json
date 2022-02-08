@@ -1,0 +1,65 @@
+[
+    {
+        "description": "tenantId : The Azure tenant ID that you want to use for your configuration. You can find your tenant ID in the Azure portal or by running the `az account tenant list` command. .",
+        "displayname": "tenantId",
+        "name": "tenantId",
+        "required": "true",
+        "obfuscate": "true"
+    },
+    {
+        "description": "Your Azure subscription ID. From the Azure portal, search for 'Subscription' to find a list of your subscriptions. You can also find this value by running the `az account subscription list` command.",
+        "displayname": "subscriptionId",
+        "name": "subscriptionId",
+        "required": "true",
+        "obfuscate": "true"
+    },
+    {
+        "description": "Your Azure Active Directory Client ID. You can find your Client ID in the Azure portal or by running the `az identity list` command.",
+        "displayname": "aadClientId",
+        "name": "aadClientId",
+        "required": "true",
+        "obfuscate": "true"
+    },
+    {
+        "description": "The location of your Azure hosts. You can find the location of your virtual machines in the Azure portal or by running the `az vm list` command. Example location: 'useast'",
+        "displayname": "location",
+        "name": "location",
+        "required": "true",
+        "obfuscate": "true"
+    },
+    {
+        "description": "Your Azure Active Directory Client Secret.",
+        "displayname": "aadClientSecret",
+        "name": "aadClientSecret",
+        "required": "true",
+        "obfuscate": "true"
+    },
+    {
+        "description": "The name of your Azure resource group. You can find your resource group detail in the Azure portal or by running the `az group list` command.",
+        "displayname": "resourceGroup",
+        "name": "resourceGroup",
+        "required": "true",
+        "obfuscate": "true"
+    },
+    {
+        "description": "You can find your virtual machine type in the Azure portal or by running the `az vm list` command. Example types: 'standard' or 'VMSS'.",
+        "displayname": "vmType",
+        "name": "vmType",
+        "required": "true",
+        "obfuscate": "true"
+    },
+    {
+        "description": "The name of your security group. You can find your security group details in the Azure portal or by running the `az network nsg list` command. ",
+        "displayname": "securityGroupName",
+        "name": "securityGroupName",
+        "required": "true",
+        "obfuscate": "true"
+    },
+    {
+        "description": "The name of the virtual network. You can find this value in the Azure portal or by running the `az network vnet subnet list` command.",
+        "displayname": "vnetName",
+        "name": "vnetName",
+        "required": "true",
+        "obfuscate": "true"
+    }
+]
