@@ -43,7 +43,7 @@
     "type": "boolean"
   },
   {
-    "description": "The billing type for your ODF configuration.",
+    "description": "The billing type you want to use. Choose from 'essentials' or 'advanced'.",
     "displayname": "Billing type",
     "name": "billing-type",
     "default": "advanced",
