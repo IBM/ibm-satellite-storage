@@ -37,23 +37,18 @@ items:
               spec:
                 description: OcsClusterSpec defines the desired state of OcsCluster
                 properties:
+                  autoDiscoverDevices:
+                    default: false
+                    type: boolean
                   billingType:
                     default: advanced
                     enum:
                     - essentials
                     - advanced
                     type: string
-                  monStorageClassName:
-                    type: string
                   clusterEncryption:
                     default: false
                     type: boolean
-                  monDevicePaths:
-                    items:
-                      type: string
-                    type: array
-                  monSize:
-                    type: string
                   numOfOsd:
                     default: 1
                     type: integer
@@ -73,8 +68,6 @@ items:
                       type: string
                     type: array
                 required:
-                - monSize
-                - monStorageClassName
                 - osdSize
                 - osdStorageClassName
                 type: object
@@ -189,7 +182,31 @@ items:
     - apiGroups:
       - local.storage.openshift.io
       resources:
+      - localvolumediscoveries
+      verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+    - apiGroups:
+      - local.storage.openshift.io
+      resources:
       - localvolumes
+      verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+    - apiGroups:
+      - local.storage.openshift.io
+      resources:
+      - localvolumesets
       verbs:
       - create
       - delete
@@ -306,7 +323,7 @@ items:
               value: openshift-storage
             - name: ADDON_CONFIGMAP_NAMESPACE
               value: kube-system
-            image: "icr.io/obs/ibm-ocs-operator:v4.8.1"
+            image: "icr.io/obs/ibm-ocs-operator:v4.8.4"
             imagePullPolicy: Always
             name: manager
             securityContext:
@@ -315,7 +332,7 @@ items:
             resources:
               limits:
                 cpu: 100m
-                memory: 100Mi
+                memory: 200Mi
               requests:
                 cpu: 100m
                 memory: 100Mi
@@ -355,15 +372,11 @@ items:
       name: {{ ocs-cluster-name }}
       namespace: default
     spec:
-       monStorageClassName: localfile
-       monSize: "1"
        osdStorageClassName: localblock
        osdSize: "1"
-       monDevicePaths:
-         {{#mon-device-path }}
-         - "{{{ item }}}"
-         {{/mon-device-path }}
+       {{#osd-device-path?}}
        osdDevicePaths:
+       {{/osd-device-path?}} 
          {{#osd-device-path }}
          - "{{{ item }}}"
          {{/osd-device-path }}
@@ -377,6 +390,7 @@ items:
          - "{{{ item }}}"
          {{/worker-nodes}}
        billingType: "{{ billing-type }}"
+       autoDiscoverDevices: {{ auto-discover-devices }}
   - apiVersion: satstorage.ibm.com/v1
     kind: SatStorageCleanup
     metadata:

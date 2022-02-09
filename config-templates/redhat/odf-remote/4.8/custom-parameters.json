@@ -6,23 +6,8 @@
     "required": "true"
   },
   {
-    "description": "The storage capacity available to the monitoring pods. The monitoring deployment consists of 3 monitoring pods that each mount a disk equal to the 'mon-size'. The default size is 20Gi.",
-    "displayname": "Monitoring pod storage capacity.",
-    "name": "mon-size",
-    "default": "20Gi",
-    "place-holder": "20Gi",
-    "regex": "^[0-9]+Gi$",
-    "required": "true"
-  },
-  {
-    "description": "The storage class to use when dynamically provisioning volumes for the monitor pods.",
-    "displayname": "Monitoring pod storage class",
-    "name": "mon-storage-class",
-    "required": "true"
-  },
-  {
-    "description": "The storage capacity available to the OSD pods. The total storage available to your apps is equal to the volume size (osd-size) multiplied by the number of disks (num-of-osd). The default value is '100Gi'.",
-    "displayname": "OSD pod storage capacity",
+    "description": "The OSD storage size (in Gibibytes). The default value is '100Gi'.",
+    "displayname": "osd storage size",
     "name": "osd-size",
     "default": "100Gi",
     "place-holder": "100Gi",
