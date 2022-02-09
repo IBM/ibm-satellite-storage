@@ -58,7 +58,7 @@
     "required": "false"
   },
   {
-    "description": "The location constraint that you want to use when creating your bucket. For example 'us-east-standard'.",
+    "description": "The location constraint that you want to use when creating your COS bucket. For example: 'us-east-standard'.",
     "displayname": "IBM COS location constraint",
     "name": "ibm-cos-location",
     "place-holder": "us-east-standard",
@@ -89,7 +89,7 @@
     "required": "false"
   },
   {
-    "description": "The IAM API key that you want to use in your storage secrets.",
+    "description": "Your IAM API key.",
     "displayname": "IAM API key",
     "name": "iam-api-key",
     "category": "secret",
