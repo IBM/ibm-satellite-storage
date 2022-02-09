@@ -22,7 +22,7 @@
   },
   {
     "description": "The OSD storage size in Gi. The default value is '100Gi'.",
-    "displayname": "osd storage size",
+    "displayname": "OSD pod volume size",
     "name": "osd-size",
     "default": "100Gi",
     "place-holder": "100Gi",
