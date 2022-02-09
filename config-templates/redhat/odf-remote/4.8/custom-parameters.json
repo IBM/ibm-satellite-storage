@@ -1,13 +1,13 @@
 [
   {
-    "description": "A unique name for your deployment. Note that Kubernetes resources can't contain capital letters or special characters. Enter a name that uses only lowercase letters, numbers, hyphens or periods.",
-    "displayname": "Deployment name",
+    "description": "A unique name for your custom resource. Note that Kubernetes resources can't contain capital letters or special characters. Enter a name that uses only lowercase letters, numbers, hyphens or periods.",
+    "displayname": "OcsCluster name",
     "name": "ocs-cluster-name",
     "required": "true"
   },
   {
-    "description": "The total amount of storage available to the monitoring daemonset. The default size is '20Gi'.",
-    "displayname": "Monitoring daemonset disk size",
+    "description": "The storage capacity available to the monitoring pods. The monitoring deployment consists of 3 monitoring pods that each mount a disk equal to the 'mon-size'. The default size is 20Gi.",
+    "displayname": "Monitoring pod storage capacity.",
     "name": "mon-size",
     "default": "20Gi",
     "place-holder": "20Gi",
@@ -15,14 +15,14 @@
     "required": "true"
   },
   {
-    "description": "The storage class to use when dynamically provisioning devices for the monitor pods.",
+    "description": "The storage class to use when dynamically provisioning volumes for the monitor pods.",
     "displayname": "Monitoring pod storage class",
     "name": "mon-storage-class",
     "required": "true"
   },
   {
-    "description": "The amount of storage available to applications in your cluster. The total storage available to your applications is equal to the storage daemonset disk size (osd-size) size multiplied by the number of disks (num-of-osd). The default value is '100Gi'.",
-    "displayname": "Storage daemonset disk size",
+    "description": "The storage capacity available to the OSD pods. The total storage available to your apps is equal to the volume size (osd-size) multiplied by the number of disks (num-of-osd). The default value is '100Gi'.",
+    "displayname": "OSD pod storage capacity",
     "name": "osd-size",
     "default": "100Gi",
     "place-holder": "100Gi",
@@ -30,28 +30,28 @@
     "required": "true"
   },
   {
-    "description": "The storage class to use when dynamically provisioning devices for the storage daemonset pods.",
-    "displayname": "Storage Class",
+    "description": "The storage class to use when dynamically provisioning volumes for the OSD pods.",
+    "displayname": "OSD pod storage class",
     "name": "osd-storage-class",
     "required": "true"
   },
   {
-    "description": "The number storage of daemonsets that you want to deploy. Each daemonset consists of 3 pods that each mount one disk equal to the osd-size that you specify. For example if you specify 'num-of-osd=2', 2 daemonsets are deployed that each contain 3 pods with one disk per pod for a total of 6 pods and 6 disks. App data is replicated across each daemonset. The default value is '1'.",
-    "displayname": "Num of osd",
+    "description": "The number OSD volumes that you want to provision. The total storage available to your apps is equal to the volume size (osd-size) multiplied by the number of disks (num-of-osd). The default value is '1'.",
+    "displayname": "Number of OSD volumes",
     "name": "num-of-osd",
     "default": "1",
     "required": "false"
   },
   {
-    "description": "The IP addresses the worker nodes where you want to deploy ODF. The minimum number of worker nodes is 3.",
-    "displayname": "worker nodes",
+    "description": "The node names where you want to deploy ODF. The minimum number of worker nodes is 3. You can find your worker node names by running 'oc get nodes'.",
+    "displayname": "Worker node names",
     "name": "worker-nodes",
     "required": "false",
     "type": "csv"
   },
   {
     "description": "Set to 'true' if you want to upgrade the ODF version.",
-    "displayname": "ODF upgrade",
+    "displayname": "Upgrade",
     "name": "odf-upgrade",
     "default": "false",
     "required": "false",
@@ -72,23 +72,23 @@
     "required": "false"
   },
   {
-    "description": "The location constraint that you want to use when creating your bucket. For example `us-east-standard`.",
-    "displayname": "IBM COS LocationConstraint",
+    "description": "The location constraint that you want to use when creating your bucket. For example 'us-east-standard'.",
+    "displayname": "IBM COS location constraint",
     "name": "ibm-cos-location",
     "place-holder": "us-east-standard",
     "required": "false"
   },
   {
-    "description": "The IBM COS access key ID (HMAC keys).",
-    "displayname": "IBM COS access key ID",
+    "description": "Your IBM COS HMAC access key ID .",
+    "displayname": "Access key ID",
     "name": "ibm-cos-access-key",
     "category": "secret",
     "required": "false",
     "obfuscate": "true"
   },
   {
-    "description": "The IBM COS secret access key (HMAC keys).",
-    "displayname": "IBM COS secret access key",
+    "description": "Your IBM COS HMAC secret access key.",
+    "displayname": "Secret access key",
     "name": "ibm-cos-secret-key",
     "category": "secret",
     "required": "false",
@@ -96,7 +96,7 @@
   },
   {
     "description": "Enter 'true' or 'false' to enable or disable cluster-wide encryption.",
-    "displayname": "Cluster wide encryption",
+    "displayname": "Encryption enabled",
     "name": "cluster-encryption",
     "default": "false",
     "category": "boolean",
