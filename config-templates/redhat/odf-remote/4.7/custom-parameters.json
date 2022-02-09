@@ -1,13 +1,13 @@
 [
   {
-    "description": "A unique name for your deployment. Note that Kubernetes resources can't contain capital letters or special characters. Enter a name that uses only lowercase letters, numbers, hyphens or periods.",
-    "displayname": "Deployment name",
+    "description": "A unique name for your custom resource. Note that Kubernetes resources can't contain capital letters or special characters. Enter a name that uses only lowercase letters, numbers, hyphens or periods.",
+    "displayname": "OcsCluster name",
     "name": "ocs-cluster-name",
     "required": "true"
   },
   {
-    "description": "The total amount of storage available to the monitoring daemonset. The monitoring deamonset consists of 3 monitoring pods that each mount a disk equal to the 'mon-size'. Monitoring data is replicated across these 3 disks. The default size is '20Gi'.",
-    "displayname": "Monitoring daemonset disk size",
+    "description": "The storage capacity available to the monitoring pods. The monitoring deamonset consists of 3 monitoring pods that each mount a volume equal to the 'mon-size'. The default size is '20Gi'.",
+    "displayname": "Monitoring pod volume size",
     "name": "mon-size",
     "default": "20Gi",
     "place-holder": "20Gi",
@@ -15,7 +15,7 @@
     "required": "true"
   },
   {
-    "description": "The storage class to use when dynamically provisioning devices for the monitor pods.",
+    "description": "The storage class to use when dynamically provisioning volumes for the monitor pods.",
     "displayname": "Monitoring pod storage class",
     "name": "mon-storage-class",
     "required": "true"
@@ -36,7 +36,7 @@
     "required": "true"
   },
   {
-    "description": "The number OSD volumes that you want to provision. The total storage available to your apps is equal to the volume size (osd-size) multiplied by the number of disks (num-of-osd). The default value is '1'.",
+    "description": "The number OSD volumes that you want to provision. The total storage available to your apps is equal to the volume size (osd-size) multiplied by the number of volumes (num-of-osd). The default value is '1'.",
     "displayname": "Number of OSD volumes",
     "name": "num-of-osd",
     "default": "1",

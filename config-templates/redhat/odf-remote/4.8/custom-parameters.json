@@ -21,7 +21,7 @@
     "required": "true"
   },
   {
-    "description": "The number OSD volumes that you want to provision. The total storage available to your apps is equal to the volume size (osd-size) multiplied by the number of disks (num-of-osd). The default value is '1'.",
+    "description": "The number OSD volumes that you want to provision. The total storage available to your apps is equal to the volume size (osd-size) multiplied by the number of volumes (num-of-osd). The default value is '1'.",
     "displayname": "Number of OSD volumes",
     "name": "num-of-osd",
     "default": "1",
