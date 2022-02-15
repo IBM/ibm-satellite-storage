@@ -6,16 +6,16 @@
     "required": "true"
   },
   {
-    "description": "The local paths on your worker nodes to the volumes you want to use for the OSD pods.",
-    "displayname": "Local paths to OSD volumes.",
+    "description": "The disk-by-id of the volumes you want to use for the OSD pods. You can find the disk-by-ids by logging into your worker node and running 'ls -l /dev/disk/by-id/'.",
+    "displayname": "OSD volume IDs.",
     "name": "osd-device-path",
     "place-holder": "/dev/sdc,/dev/sde",
     "required": "true",
     "type": "csv"
   },
   {
-    "description": "The number OSD volumes that you want to provision. The total storage available to your apps is equal to the volume size (osd-size) multiplied by the number of volumes (num-of-osd). The default value is '1'.",
-    "displayname": "Number of OSD volumes.",
+    "description": "The number storage daemonsets that you want to create. The total storage available to your apps is equal to the volume size (osd-size) multiplied by the number of daemonsets (num-of-osd). The default value is '1'.",
+    "displayname": "Number of storage daemonsets.",
     "name": "num-of-osd",
     "default": "1",
     "required": "false"
