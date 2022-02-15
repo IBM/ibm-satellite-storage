@@ -6,7 +6,7 @@
     "required": "true"
   },
   {
-    "description": "The storage capacity available to the monitoring pods. The monitoring deamonset consists of 3 monitoring pods that each mount a volume equal to the 'mon-size'. The default size is '20Gi'.",
+    "description": "The storage capacity available to the monitoring pods. The monitoring deployment consists of 3 monitoring pods that each mount a volume equal to the 'mon-size'. The default size is '20Gi'.",
     "displayname": "Monitoring pod volume size",
     "name": "mon-size",
     "default": "20Gi",
