@@ -13,6 +13,10 @@
       "value": "openshift-data-foundation"
     },
     {
+      "name": "offering-type",
+      "value": "sds"
+    },
+    {
       "name": "provider-url",
       "value": "https://www.redhat.com/en/technologies/cloud-computing/openshift-data-foundation"
     },
