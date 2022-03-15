@@ -15,7 +15,7 @@
       "value": "https://docs.openshift.com/container-platform/4.6/storage/persistent_storage/persistent-storage-local.html"
     }, {
       "name": "support-msg",
-      "value": "For support contact NetApp"
+      "value": "For support contact Red Hat"
     }, {
       "name": "provider-logo",
       "value": "logo/local-volume-file.svg"

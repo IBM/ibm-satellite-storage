@@ -6,7 +6,7 @@
   "tags": [
     {
       "name": "provider",
-      "value": "netapp"
+      "value": "NetApp"
     }, {
       "name": "offering-name",
       "value": "netapp-trident"

@@ -15,7 +15,7 @@
       "value": "Install netapp-trident before installing ontap-san driver."
     }, {
       "name": "provider",
-      "value": "netapp"
+      "value": "NetApp"
     }, {
       "name": "offering-name",
       "value": "ontap-san"

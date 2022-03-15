@@ -7,7 +7,7 @@
   "tags": [
     {
       "name": "provider",
-      "value": "ibm"
+      "value": "IBM"
     },{
       "name":  "offering-name",
       "value": "IBM Spectrum Scale CSI"

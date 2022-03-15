@@ -1,6 +1,6 @@
 [
     {
-        "description": "tenantId : The Azure tenant ID that you want to use for your configuration. You can find your tenant ID in the Azure portal or by running the `az account tenant list` command. .",
+        "description": "TenantID : The Azure tenant ID that you want to use for your configuration. You can find your tenant ID in the Azure portal or by running the `az account tenant list` command.",
         "displayname": "tenantId",
         "name": "tenantId",
         "required": "true",

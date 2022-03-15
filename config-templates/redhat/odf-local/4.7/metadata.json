@@ -6,7 +6,7 @@
   "tags": [
     {
       "name": "provider",
-      "value": "redhat"
+      "value": "Red Hat"
     },
     {
       "name": "offering-name",
@@ -18,7 +18,7 @@
     },
     {
       "name": "support-msg",
-      "value": "For support contact redhat"
+      "value": "For support contact Red Hat"
     },
     {
       "name": "provider-logo",
