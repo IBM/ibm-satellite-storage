@@ -55,7 +55,7 @@
     },
     {
         "description": "You can find your virtual machine type in the Azure portal or by running the `az vm list` command. Example types: 'standard' or 'VMSS'.",
-        "displayname": "Virtual Machnine Type",
+        "displayname": "Virtual Machine Type",
         "name": "vmType",
         "required": "true",
         "category": "secret",
