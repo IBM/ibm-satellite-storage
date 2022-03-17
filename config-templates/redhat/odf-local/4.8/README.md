@@ -98,7 +98,6 @@ When you create your ODF configuration, you must specify device paths for the ob
 | Parameter | Required? | Description | Default value if not provided | Datatype |
 | --- | --- | --- | --- | --- |
 | `ocs-cluster-name` | Required | Enter the name of your OcsCluster custom resource. | N/A | string |
-| `mon-device-path` | Required | Enter the `disk-by-id` paths to the devices that you want to use for the MON pods. Example: `/dev/disk/by-id/scsi-3600605b00d87b43027b3bc310a64c6c9-part1`. | N/A | csv |
 | `osd-device-path` | Required | Enter the `disk-by-id` paths to the devices that you want to use for the OSD pods. Example: `/dev/disk/by-id/scsi-3600605b00d87b43027b3bc310a64c6c9-part2`. | N/A | csv |
 | `num-of-osd` | Optional | Enter the number of OSDs. ODF will create 3x number of OSDs for the value specified. Initial storage capacity is the same as your disk size specified at `osd-device-path`. When you want to increase your storage capacity, you have to increase `num-of-osd` by the number of disks you add (taking into consideration the replication factor, which is `3` by default) | 1 | integer |
 |`worker-nodes` | Optional | Enter the IP addresses of the worker nodes where you want to deploy ODF. If you do not specify the `worker-nodes`, ODF is installed on all of the worker nodes in your cluster. The minimum number of worker nodes that you must specify is 3. | N/A |csv |
@@ -110,6 +109,7 @@ When you create your ODF configuration, you must specify device paths for the ob
 | `ibm-cos-secret-key` | Optional | Enter your IBM COS secret access key. | N/A | string |
 | `cluster-encryption` | Optional | Set to `true` if you want cluster wide encryption enabled. | false | boolean |
 | `iam-api-key` | Required | Please provide your iam-api-key for creating the storage secret | N/A | string [secret] |
+| `auto-discover-devices` | Optional | Set to `true`if you want to automatically discover available devices | false | boolean |
 
 ## Default storage classes
 
@@ -119,6 +119,8 @@ When you create your ODF configuration, you must specify device paths for the ob
 | sat-ocs-cephfs-gold | cephfs |  N/A | N/A | N/A | SSD | Delete |
 | sat-ocs-cephrgw-gold | ceph-rgw | N/A | N/A | N/A | SSD |Delete |
 | sat-ocs-noobaa-gold | noobaa |  N/A | N/A | N/A | N/A | Delete |
+| sat-ocs-cephrbd-gold-metro | ceph-rbd | ext4 | N/A | N/A | SSD | Delete |
+| sat-ocs-cephfs-gold-metro | cephfs |  N/A | N/A | N/A | SSD | Delete |
 
 
 
@@ -163,9 +165,9 @@ When you create your ODF configuration, you must specify device paths for the ob
     satellite-odf-template-test   b201d0ed-a4aa-414c-b0eb-0c4437797e95   c040tu4w0h6c6s5s9irg   
     ```
 
-5. Create a storage configuration using the existing ODF template. Enter the device details that your retrieved earlier. Be sure to provide the disk-by-IDs of the disks we want to use as the `osd-device-path` and `mon-device-path` [parameters]( https://github.com/IBM/ibm-satellite-storage/tree/master/config-templates/redhat/odf-local/README.md##Prerequisites). Note that if your ODF configuration has 3 worker nodes, you must specify a total of 6 disks or partitions. 3 for the OSDs and 3 for the MONs.
+5. Create a storage configuration using the existing ODF template. Enter the device details that your retrieved earlier. Be sure to provide the disk-by-IDs of the disks we want to use as the `osd-device-path` [parameters]( https://github.com/IBM/ibm-satellite-storage/tree/master/config-templates/redhat/odf-local/README.md##Prerequisites). Note that if your ODF configuration has 3 worker nodes, you must specify a total of 3 disks or partitions for the OSDs.
     ```
-    ibmcloud sat storage config create --name odf-config --template-name odf-local --template-version 4.8 -p "ocs-cluster-name=testocscluster" -p "osd-device-path=/dev/disk/by-id/scsi-3600605b00d87b43027b3bc310a64c6c9-part2,/dev/disk/by-id/scsi-3600605b00d87b43027b3bbf306bc28a7-part2,/dev/disk/by-id/scsi-3600062b206ba6f00276eb58065b5da94-part2" -p "mon-device-path=/dev/disk/by-id/scsi-3600605b00d87b43027b3bc310a64c6c9-part1,/dev/disk/by-id/scsi-3600605b00d87b43027b3bbf306bc28a7-part1,/dev/disk/by-id/scsi-3600062b206ba6f00276eb58065b5da94-part1" -p "num-of-osd=1" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90" -p "ibm-cos-endpoint=https://s3.us-east.cloud-object-storage.appdomain.cloud" -p "ibm-cos-location=us-east-standard" -p "ibm-cos-access-key=xxx" -p "ibm-cos-secret-key=yyy"  -p "iam-api-key=xxx" --location c040tu4w0h6c6s5s9irg
+    ibmcloud sat storage config create --name odf-config --template-name odf-local --template-version 4.8 -p "ocs-cluster-name=testocscluster" -p "osd-device-path=/dev/disk/by-id/scsi-3600605b00d87b43027b3bc310a64c6c9-part2,/dev/disk/by-id/scsi-3600605b00d87b43027b3bbf306bc28a7-part2,/dev/disk/by-id/scsi-3600062b206ba6f00276eb58065b5da94-part2" -p "num-of-osd=1" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90" -p "ibm-cos-endpoint=https://s3.us-east.cloud-object-storage.appdomain.cloud" -p "ibm-cos-location=us-east-standard" -p "ibm-cos-access-key=xxx" -p "ibm-cos-secret-key=yyy"  -p "iam-api-key=xxx" --location c040tu4w0h6c6s5s9irg
     ```
 
     Example output:
@@ -279,7 +281,6 @@ In the following example, 3 worker nodes are added to the configuration that was
     - `template-version` - This parameter remains the same as the existing configuration.
     - `ocs-cluster-name` - This parameter remains the same as the existing configuration.
     - `osd-device-path` - Specify all previous `osd-device-path` values from your exisiting configuration as well as the device paths from the worker nodes that you have added to your cluster. You can retrieve the `by-id` values for your new worker nodes by reviewing the **Getting the details for your ODF configuration** on this page.
-    - `mon-device-path` - Specify all previous `mon-device-path` values from your exisiting configuration. ODF requires 3 MON devices. You can retrieve the `by-id` values for your new worker nodes by reviewing the **Getting the details for your ODF configuration** on this page.
     - `num-of-osd` - Increase the OSD number by 1 for each set of 3 disks or partitions that you add to your configuration.
     - `worker-nodes` - Specify all of the worker nodes from your existing configuration plus any additonal worker nodes that you added to your cluster. Worker nodes must be added in multiples of 3.
     - `ibm-cos-endpoint` - This parameter remains the same as the existing configuration.
@@ -290,7 +291,7 @@ In the following example, 3 worker nodes are added to the configuration that was
 
 1. Create the storage configuration and specify the updated values. In this example, the `osd-device-path` parameter is updated to include the device ids of the disks that you want to use. The worker node parameter is updated to include the worker nodes that are added to the cluster and the `num-of-osd` value is increased to 2.
     ```
-    ibmcloud sat storage config create --name odf-config2 --template-name odf-local --template-version 4.8 -p "ocs-cluster-name=testocscluster" -p "osd-device-path=/dev/disk/by-id/scsi-3600605b00d87b43027b3bc310a64c6c9-part2,/dev/disk/by-id/scsi-3600605b00d87b43027b3bbf306bc28a7-part2,/dev/disk/by-id/scsi-3600062b206ba6f00276eb58065b5da94-part2" -p "mon-device-path=/dev/disk/by-id/scsi-3600605b00d87b43027b3bc310a64c6c9-part1,/dev/disk/by-id/scsi-3600605b00d87b43027b3bbf306bc28a7-part1,/dev/disk/by-id/scsi-3600062b206ba6f00276eb58065b5da94-part1" -p "num-of-osd=2" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90,169.48.170.84,169.48.170.85,169.48.170.86" -p "ibm-cos-endpoint=https://s3.us-east.cloud-object-storage.appdomain.cloud" -p "ibm-cos-location=us-east-standard" -p "ibm-cos-access-key=xxx" -p "ibm-cos-secret-key=yyy" -p "iam-api-key=xxx" --location c040tu4w0h6c6s5s9irg
+    ibmcloud sat storage config create --name odf-config2 --template-name odf-local --template-version 4.8 -p "ocs-cluster-name=testocscluster" -p "osd-device-path=/dev/disk/by-id/scsi-3600605b00d87b43027b3bc310a64c6c9-part2,/dev/disk/by-id/scsi-3600605b00d87b43027b3bbf306bc28a7-part2,/dev/disk/by-id/scsi-3600062b206ba6f00276eb58065b5da94-part2" -p "num-of-osd=2" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90,169.48.170.84,169.48.170.85,169.48.170.86" -p "ibm-cos-endpoint=https://s3.us-east.cloud-object-storage.appdomain.cloud" -p "ibm-cos-location=us-east-standard" -p "ibm-cos-access-key=xxx" -p "ibm-cos-secret-key=yyy" -p "iam-api-key=xxx" --location c040tu4w0h6c6s5s9irg
     ```
 
 2. Create a new assignment for this configuration.
@@ -310,7 +311,6 @@ In the following example, 3 worker nodes are added to the configuration that was
     - `template-version` - This parameter remains the same as the existing configuration.
     - `ocs-cluster-name` - This parameter remains the same as the existing configuration.
     - `osd-device-path` - Specify all previous `osd-device-path` values from your exisiting configuration as well as the device paths from the worker nodes that you have added to your cluster. You can retrieve the `by-id` values for your new worker nodes by reviewing the **Getting the details for your ODF configuration** on this page.
-    - `mon-device-path` - Specify all previous `mon-device-path` values from your exisiting configuration. ODF requires 3 MON devices. You can retrieve the `by-id` values for your new worker nodes by reviewing the **Getting the details for your ODF configuration** on this page.
     - `num-of-osd` - Increase the OSD number by 1 for each set of 3 disks or partitions that you add to your configuration.
     - `worker-nodes` - Specify the worker nodes from your existing configuration.
     - `ibm-cos-endpoint` - This parameter remains the same as the existing configuration.
@@ -321,7 +321,7 @@ In the following example, 3 worker nodes are added to the configuration that was
 
 1. Create the storage configuration and specify the updated values. In this example, the `osd-device-path` parameter is updated to include the device ids of the disks that you want to use and the `num-of-osd` value is increased to 2.
     ```
-    $ibmcloud sat storage config create --name odf-config2 --template-name odf-local --template-version 4.8 -p "ocs-cluster-name=testocscluster" -p "osd-device-path=/dev/disk/by-id/scsi-3600605b00d87b43027b3bc310a64c6c9-part2,/dev/disk/by-id/scsi-3600605b00d87b43027b3bbf306bc28a7-part2,/dev/disk/by-id/scsi-3600062b206ba6f00276eb58065b5da94-part2,/dev/disk/by-id/scsi-3600605b00d87b43027b3bc310a64c6c9-part3,/dev/disk/by-id/scsi-3600605b00d87b43027b3bbf306bc28a7-part3,/dev/scsi-3600062b206ba6f00276eb58065b5da94-part3" -p "mon-device-path=/dev/disk/by-id/scsi-3600605b00d87b43027b3bc310a64c6c9-part1,/dev/disk/by-id/scsi-3600605b00d87b43027b3bbf306bc28a7-part1,/dev/disk/by-id/scsi-3600062b206ba6f00276eb58065b5da94-part1" -p "num-of-osd=2" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90" -p "ibm-cos-endpoint=https://s3.us-east.cloud-object-storage.appdomain.cloud" -p "ibm-cos-location=us-east-standard" -p "ibm-cos-access-key=xxx" -p "ibm-cos-secret-key=yyy" -p "iam-api-key=xxx" --location c040tu4w0h6c6s5s9irg
+    $ibmcloud sat storage config create --name odf-config2 --template-name odf-local --template-version 4.8 -p "ocs-cluster-name=testocscluster" -p "osd-device-path=/dev/disk/by-id/scsi-3600605b00d87b43027b3bc310a64c6c9-part2,/dev/disk/by-id/scsi-3600605b00d87b43027b3bbf306bc28a7-part2,/dev/disk/by-id/scsi-3600062b206ba6f00276eb58065b5da94-part2,/dev/disk/by-id/scsi-3600605b00d87b43027b3bc310a64c6c9-part3,/dev/disk/by-id/scsi-3600605b00d87b43027b3bbf306bc28a7-part3,/dev/scsi-3600062b206ba6f00276eb58065b5da94-part3" -p "num-of-osd=2" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90" -p "ibm-cos-endpoint=https://s3.us-east.cloud-object-storage.appdomain.cloud" -p "ibm-cos-location=us-east-standard" -p "ibm-cos-access-key=xxx" -p "ibm-cos-secret-key=yyy" -p "iam-api-key=xxx" --location c040tu4w0h6c6s5s9irg
     ```
 
 2. Create a new assignment for this configuration :
@@ -342,7 +342,6 @@ In the following example, the ODF configuration is updated to use template versi
     - `template-version` - Enter the template version that you want to use to upgrade your configuration.
     - `ocs-cluster-name` - This parameter remains the same as the existing configuration.
     - `osd-device-path` - This parameter remains the same as the existing configuration.
-    - `mon-device-path` - This parameter remains the same as the existing configuration.
     - `num-of-osd` - This parameter remains the same as the existing configuration.
     - `worker-nodes` - This parameter remains the same as the existing configuration.
     - `ibm-cos-endpoint` - This parameter remains the same as the existing configuration.
@@ -365,7 +364,7 @@ In the following example, the ODF configuration is updated to use template versi
 
 3. Save the configuration details. When you upgrade your ODF version, you must enter the same configuration details and set the `template-version` to the version you want to upgrade to and set the `odf-upgrade` parameter to `true`.
     ```
-    $ibmcloud sat storage config create --name odf-config3 --template-name odf-local --template-version 4.9 -p "ocs-cluster-name=testocscluster" -p "osd-device-path=/dev/disk/by-id/scsi-3600605b00d87b43027b3bc310a64c6c9-part2,/dev/disk/by-id/scsi-3600605b00d87b43027b3bbf306bc28a7-part2,/dev/disk/by-id/scsi-3600062b206ba6f00276eb58065b5da94-part2" -p "mon-device-path=/dev/disk/by-id/scsi-3600605b00d87b43027b3bc310a64c6c9-part1,/dev/disk/by-id/scsi-3600605b00d87b43027b3bbf306bc28a7-part1,/dev/disk/by-id/scsi-3600062b206ba6f00276eb58065b5da94-part1" -p "num-of-osd=1" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90" -p "ibm-cos-endpoint=https://s3.us-east.cloud-object-storage.appdomain.cloud" -p "ibm-cos-location=us-east-standard" -p "ibm-cos-access-key=xxx" -p "ibm-cos-secret-key=yyy" -p "odf-upgrade=true" -p "iam-api-key=xxx" --location c040tu4w0h6c6s5s9irg
+    $ibmcloud sat storage config create --name odf-config3 --template-name odf-local --template-version 4.9 -p "ocs-cluster-name=testocscluster" -p "osd-device-path=/dev/disk/by-id/scsi-3600605b00d87b43027b3bc310a64c6c9-part2,/dev/disk/by-id/scsi-3600605b00d87b43027b3bbf306bc28a7-part2,/dev/disk/by-id/scsi-3600062b206ba6f00276eb58065b5da94-part2" -p "num-of-osd=1" -p "worker-nodes=169.48.170.83,169.48.170.88,169.48.170.90" -p "ibm-cos-endpoint=https://s3.us-east.cloud-object-storage.appdomain.cloud" -p "ibm-cos-location=us-east-standard" -p "ibm-cos-access-key=xxx" -p "ibm-cos-secret-key=yyy" -p "odf-upgrade=true" -p "iam-api-key=xxx" --location c040tu4w0h6c6s5s9irg
     ```
 
 4. Assign your configuration to your cluster groups.
@@ -396,10 +395,6 @@ Check the status of your storage cluster.
       name: testocscluster
     spec:
         billingType: hourly
-        monDevicePaths:
-        - /dev/scsi-3600605b00d87b43027b3bc310a64c6c9-part1
-        monSize: "1"
-        monStorageClassName: localfile
         numOfOsd: 1
         ocsUpgrade: false
         osdDevicePaths:
@@ -410,6 +405,7 @@ Check the status of your storage cluster.
         - 169.48.170.83
         - 169.48.170.88
         - 169.48.170.90
+        autoDiscoverDevices: false
     status:
        storageClusterStatus: Ready
     ```

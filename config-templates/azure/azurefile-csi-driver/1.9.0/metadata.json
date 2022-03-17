@@ -1,0 +1,63 @@
+{
+    "name": "1.9.0",
+    "enabled": "true",
+    "description": "[Beta] - Azure File CSI Driver",
+    "tags": [
+        {
+            "name": "provider",
+            "value": "azure"
+        },
+        {
+            "name": "offering-name",
+            "value": "azurefile-csi-driver"
+        },
+        {
+            "name": "provider-url",
+            "value": "https://portal.azure.com"
+        },
+        {
+            "name": "support-msg",
+            "value": "For support contact Microsoft Azure"
+        },
+        {
+            "name": "provider-logo",
+            "value": "logo/azuredisk-csi-driver.svg"
+        },
+        {
+            "name": "supported-envs",
+            "value": "Azure"
+        },
+        {
+            "name": "supported-k8s-versions",
+            "value": "1.18, 1.19, 1.20"
+        },
+        {
+            "name": "volume-type",
+            "value": "file"
+        },
+        {
+            "name": "volume-encryption-at-rest",
+            "value": "true"
+        },
+        {
+            "name": "volume-encryption-in-transit",
+            "value": "true"
+        },
+        {
+            "name": "volume-snapshot",
+            "value": "false"
+        },
+        {
+            "name": "volume-availability",
+            "value": "regional"
+        },
+        {
+            "name": "volume-expansion",
+            "value": "false"
+        },
+        {
+            "name": "storageclass",
+            "value": "platinum,gold,silver,bronze,platinum-metro,gold-metro,silver-metro,bronze-metro"
+        }
+    ]
+}
