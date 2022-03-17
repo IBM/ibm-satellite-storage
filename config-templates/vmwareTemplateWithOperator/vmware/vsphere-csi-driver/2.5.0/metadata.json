@@ -1,0 +1,64 @@
+{
+    "name": "2.5.0",
+    "revision": "1",
+    "enabled": "true",
+    "description": "VMware block volume persistant storage",
+    "tags": [
+        {
+            "name": "provider",
+            "value": "vmware"
+        },
+        {
+            "name": "offering-name",
+            "value": "vsphere-csi-driver"
+        },
+        {
+            "name": "provider-url",
+            "value": "https://www.vmware.com/in.html"
+        },
+        {
+            "name": "support-msg",
+            "value": "For support contact VMware"
+        },
+        {
+            "name": "provider-logo",
+            "value": ""
+        },
+        {
+            "name": "supported-envs",
+            "value": "VMware,IBM"
+        },
+        {
+            "name": "supported-k8s-versions",
+            "value": "1.21"
+        },
+        {
+            "name": "volume-type",
+            "value": "block"
+        },
+        {
+            "name": "volume-encryption-at-rest",
+            "value": "false"
+        },
+        {
+            "name": "volume-encryption-in-transit",
+            "value": "false"
+        },
+        {
+            "name": "volume-snapshot",
+            "value": "true"
+        },
+        {
+            "name": "volume-availability",
+            "value": "zonal"
+        },
+        {
+            "name": "volume-expansion",
+            "value": "false"
+        },
+        {
+            "name": "storageclass",
+            "value": "block, block-metro"
+        }
+    ]
+}

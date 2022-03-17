@@ -1,0 +1,46 @@
+[
+    {
+        "description": "vCenter Username",
+        "displayname": "vCenter Username",
+        "name": "vcenter-username",
+        "required": "true",
+        "category": "secret",
+        "obfuscate": "true",
+        "type": "string"
+    },
+    {
+        "description": "vCenter Password",
+        "displayname": "vCenter Password",
+        "name": "vcenter-password",
+        "required": "true",
+        "category": "secret",
+        "obfuscate": "true",
+        "type": "string"
+    },
+    {
+        "description": "insecure flag",
+        "displayname": "insecure flag",
+        "name": "insecure-flag",
+        "required": "true",
+        "default": "false",
+        "category": "secret",
+        "type": "string"
+    },
+    {
+        "description": "vCenter host - The vCenter server ip",
+        "displayname": "vCenter host",
+        "name": "host",
+        "required": "true",
+        "category": "secret",
+        "type": "string"
+    },
+    {
+        "description": "vCenter datacenters",
+        "displayname": "vCenter datacenters",
+        "name": "datacenters",
+        "required": "true",
+        "default": "IBMCloud",
+        "category": "secret",
+        "type": "csv"
+    }
+]
