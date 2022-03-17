@@ -44,7 +44,7 @@ Deploying Trident does not create StorageClasses for you. This is handled by dep
 **Example `sat storage config create` command**
 
 ```sh
-ibmcloud sat storage config create --name "trident-conf" --location <location id> --template-name "netapp-trident" --template-version "21.10.1"
+ibmcloud sat storage config create --name "trident-conf" --location <location id> --template-name "netapp-trident" --template-version "22.01"
 ```
 
 ## Creating the storage assignment
