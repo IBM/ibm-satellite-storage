@@ -17,11 +17,27 @@
   },
   {
     "name": "azuredisk-csi-driver",
-    "displayname": "[Beta] Azure Disk CSI Driver",
-    "Description": "[Beta] Azure Disk CSI Driver.",
+    "displayname": "Azure Disk CSI Driver",
+    "Description": "Azure Disk CSI Driver.",
     "default-version": "1.4.0",
     "enabled": "true",
     "provider": "azure"
+  },
+  {
+    "name": "azurefile-csi-driver",
+    "displayname": "[Beta] Azure File CSI Driver",
+    "Description": "[Beta] Azure File CSI Driver.",
+    "default-version": "1.9.0",
+    "enabled": "true",
+    "provider": "azure"
+  },
+  {
+    "name": "gcp-compute-persistent-disk-csi-driver",
+    "displayname": "[Beta] GCP Compute Persistent Disk CSI Driver",
+    "Description": "[Beta] GCP Compute Persistent Disk CSI Driver.",
+    "default-version": "1.0.4",
+    "enabled": "true",
+    "provider": "google"
   },
   {
     "name": "netapp-trident",
@@ -51,7 +67,7 @@
     "name": "odf-local",
     "displayname": "OpenShift Data Foundation for local devices",
     "Description": "OpenShift Data Foundation for local devices.",
-    "default-version": "4.7",
+    "default-version": "4.8",
     "enabled": "true",
     "provider": "redhat"
   },
@@ -59,7 +75,7 @@
     "name": "odf-remote",
     "displayname": "OpenShift Data Foundation for remote storage",
     "Description": "OpenShift Data Foundation for remote storage.",
-    "default-version": "4.7",
+    "default-version": "4.8",
     "enabled": "true",
     "provider": "redhat"
   },
@@ -67,7 +83,7 @@
     "name": "local-volume-block",
     "displayname": "Local Storage Operator - Block",
     "Description": "Local Storage Operator - Block.",
-    "default-version": "4.5",
+    "default-version": "4.7",
     "enabled": "true",
     "provider": "redhat"
   },
@@ -75,7 +91,7 @@
     "name": "local-volume-file",
     "displayname": "Local Storage Operator - File",
     "Description": "Local Storage Operator - File.",
-    "default-version": "4.5",
+    "default-version": "4.7",
     "enabled": "true",
     "provider": "redhat"
   },
@@ -96,11 +112,11 @@
     "provider": "ibm"
   },
   {
-    "name": "gcp-compute-persistent-disk-csi-driver",
-    "displayname": "GCP Compute Persistent Disk CSI Driver",
-    "Description": "GCP Compute Persistent Disk CSI Driver.",
-    "default-version": "1.0.4",
+    "name": "ibm-vpc-block-csi-driver",
+    "displayname": "[Beta] IBM VPC Block CSI driver",
+    "Description": "[Beta] IBM VPC Block CSI driver, Provides block storage on VPC.",
+    "default-version": "4.0.3",
     "enabled": "true",
-    "provider": "google"
+    "provider": "ibm"
   }
 ]
