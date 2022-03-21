@@ -1,0 +1,11 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: example-alert
+  namespace: ns1
+spec:
+  groups:
+  - name: example
+    rules:
+    - alert: VersionAlert
+      expr: (kubelet_volume_stats_available_bytes{job="kubelet",metrics_path="/metrics",namespace=~"(openshift-.*|kube-.*|default|logging)"} / kubelet_volume_stats_capacity_bytes{job="kubelet",metrics_path="/metrics",namespace=~"(openshift-.*|kube-.*|default|logging)"}) < 0.999 and kubelet_volume_stats_used_bytes{job="kubelet",metrics_path="/metrics",namespace=~"(openshift-.*|kube-.*|default|logging)"} > 0 
