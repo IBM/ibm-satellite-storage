@@ -13,6 +13,10 @@
       "value": "aws-efs-csi-driver"
     },
     {
+      "name": "offering-type",
+      "value": "non-sds"
+    },
+    {
       "name": "provider-url",
       "value": "https://console.aws.amazon.com/support/home#/"
     },

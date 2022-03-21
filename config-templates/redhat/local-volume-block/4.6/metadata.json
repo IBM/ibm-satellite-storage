@@ -11,6 +11,9 @@
       "name": "offering-name",
       "value": "local-volume-block"
     }, {
+      "name": "offering-type",
+      "value": "non-sds"
+    }, {
       "name": "provider-url",
       "value": "https://docs.openshift.com/container-platform/4.6/storage/persistent_storage/persistent-storage-local.html"
     }, {

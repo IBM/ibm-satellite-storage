@@ -1,0 +1,68 @@
+{
+  "name": "4.9",
+  "revision": "1",
+  "enabled": "true",
+  "description": "ODF template for openshift 4.9 (Remote storage)",
+  "tags": [
+    {
+      "name": "provider",
+      "value": "redhat"
+    },
+    {
+      "name": "offering-name",
+      "value": "openshift-data-foundation"
+    },
+    {
+      "name": "provider-url",
+      "value": "https://www.redhat.com/en/technologies/cloud-computing/openshift-data-foundation"
+    },
+    {
+      "name": "support-msg",
+      "value": "For support contact redhat"
+    },
+    {
+      "name": "provider-logo",
+      "value": "logo/odf-remote.svg"
+    },
+    {
+      "name": "os-version",
+      "value": "RHEL7"
+    },
+    {
+      "name": "supported-envs",
+      "value": "Openshift Container Platform"
+    },
+    {
+      "name": "supported-k8s-versions",
+      "value": "1.22,1.23"
+    },
+    {
+      "name": "volume-type",
+      "value": "file,block,object"
+    },
+    {
+      "name": "volume-encryption-at-rest",
+      "value": "true"
+    },
+    {
+      "name": "volume-encryption-in-transit",
+      "value": "true"
+    },
+    {
+      "name": "volume-snapshot",
+      "value": "false"
+    },
+    {
+      "name": "volume-availability",
+      "value": "regional"
+    },
+    {
+      "name": "volume-expansion",
+      "value": "true"
+    },
+    {
+      "name": "storageclass",
+      "value": "gold"
+    }
+  ]
+}

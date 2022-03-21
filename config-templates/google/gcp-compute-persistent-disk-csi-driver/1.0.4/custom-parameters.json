@@ -1,7 +1,7 @@
 [
     {
         "description": "Google Cloud project ID.",
-        "displayname": "Google Cloud project ID."",
+        "displayname": "Google Cloud project ID.",
         "name": "project_id",
         "required": "true",
         "category": "secret",
