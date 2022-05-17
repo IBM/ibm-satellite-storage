@@ -41,16 +41,6 @@
 	  "category": "config",
 	  "type": "text"
 	}, {
-		"description": "Specify the volume type. e.g : block, file",
-		"displayname": "Volume type",
-		"name": "volume-type",
-		"templateKeyName": [
-			"volume-type"
-		],
-		"required": "true",
-		"category": "config",
-		"type": "text"
-	}, {
 		"description": "Specify the datstoreURL.",
 		"displayname": "datastoreurl",
 		"name": "datastoreurl",

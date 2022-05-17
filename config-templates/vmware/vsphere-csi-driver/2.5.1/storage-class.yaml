@@ -5,7 +5,7 @@ metadata:
   name: vsphere-csi-driver-sc
   namespace: kube-system
   annotations:
-    version: 2.5.0
+    version: 2.5.1
 items:
   - apiVersion: storage.k8s.io/v1
     kind: StorageClass
@@ -13,8 +13,7 @@ items:
       name: sat-vsphere-vsan-block
       labels:
         app.kubernetes.io/name: vsphere-csi-driver
-        app.kubernetes.io/version: 2.5.0
-        volume-type: "block"
+        app.kubernetes.io/version: 2.5.1
     provisioner: csi.vsphere.vmware.com
     parameters:
       storagepolicyname: "vSAN Default Storage Policy"
@@ -25,8 +24,7 @@ items:
       name: sat-vsphere-vsan-block-metro
       labels:
         app.kubernetes.io/name: vsphere-csi-driver
-        app.kubernetes.io/version: 2.5.0
-        volume-type: "block"
+        app.kubernetes.io/version: 2.5.1
       annotations:
         storageclass.kubernetes.io/is-default-class: "true"
     provisioner: csi.vsphere.vmware.com

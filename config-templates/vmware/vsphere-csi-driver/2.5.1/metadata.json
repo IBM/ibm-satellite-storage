@@ -1,5 +1,5 @@
 {
-    "name": "2.5.0",
+    "name": "2.5.1",
     "revision": "1",
     "enabled": "true",
     "description": "VMware block volume persistant storage",

@@ -4,8 +4,7 @@ metadata:
   name: "{{ name }}"
   labels:
     app.kubernetes.io/name: vsphere-csi-driver
-    app.kubernetes.io/version: 2.5.0
-    volume-type: "{{ volume-type }}"
+    app.kubernetes.io/version: 2.5.1
   annotations:
     storageclass.kubernetes.io/is-default-class: "{{ is-default-class }}"
 provisioner: csi.vsphere.vmware.com

@@ -5,7 +5,8 @@ metadata:
   name: vsphere-csi-driver
   namespace: kube-system
   annotations:
-    version: 2.4.0
+    version: 2.5.1
+    revision: 1
 items:
   - apiVersion: v1
     kind: Namespace
@@ -14,6 +15,71 @@ items:
         control-plane: controller-manager
         vdo.vmware.com/managed-by: vdo
       name: vmware-system-vdo
+  - apiVersion: apiextensions.k8s.io/v1
+    kind: CustomResourceDefinition
+    metadata:
+      annotations:
+        controller-gen.kubebuilder.io/version: v0.4.1
+      creationTimestamp: null
+      labels:
+        vdo.vmware.com/managed-by: vdo
+      name: compatibilityconfig.vdo.vmware.com
+    spec:
+      group: vdo.vmware.com
+      names:
+        kind: CompatibilityConfig
+        listKind: CompatibilityConfigList
+        plural: compatibilityconfig
+        singular: compatibilityconfig
+      scope: Namespaced
+      versions:
+      - name: v1alpha1
+        schema:
+          openAPIV3Schema:
+            description: CompatibilityConfig is the Schema for the configuring the compatibility matrix
+            properties:
+              apiVersion:
+                description: CompatibilityConfig is the Schema for configuring the compatibility matrix which defines the version matrix for drivers with vSphere and K8s Version
+                type: string
+              kind:
+                description: 'Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+                type: string
+              metadata:
+                type: object
+              spec:
+                description: CompatibilityConfig configures the desired state of Compatibility Matrix
+                properties:
+                  matrixURL:
+                    description: MatrixURL defines the url to fetch the Compatibility Matrix
+                    type: string
+                required:
+                - matrixURL
+                type: object
+              status:
+                description: CompatibilityConfig defines the observed state of Compatibility Matrix
+                properties:
+                  configured:
+                    description: Configured refers to the status of the Compatibility Matrix
+                    properties:
+                      cpi:
+                        description: CPI indicates the version of CPI driver configured
+                        type: string
+                      csi:
+                        description: CSI indicates the version of CSI driver configured
+                        type: string
+                    type: object
+                type: object
+            type: object
+        served: true
+        storage: true
+        subresources:
+          status: {}
+    status:
+      acceptedNames:
+        kind: ""
+        plural: ""
+      conditions: []
+      storedVersions: []
   - apiVersion: apiextensions.k8s.io/v1
     kind: CustomResourceDefinition
     metadata:
@@ -452,6 +518,32 @@ items:
     - apiGroups:
       - vdo.vmware.com
       resources:
+      - compatibilityconfig
+      verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+    - apiGroups:
+      - vdo.vmware.com
+      resources:
+      - compatibilityconfig/finalizers
+      verbs:
+      - update
+    - apiGroups:
+      - vdo.vmware.com
+      resources:
+      - compatibilityconfig/status
+      verbs:
+      - get
+      - patch
+      - update
+    - apiGroups:
+      - vdo.vmware.com
+      resources:
       - vdoconfigs
       verbs:
       - create
@@ -577,7 +669,7 @@ items:
   - apiVersion: v1
     data:
       auto-upgrade: disabled
-      versionConfigURL: https://github.com/vmware-tanzu/vsphere-kubernetes-drivers-operator/releases/download/0.2.0/compatibility.yaml
+      versionConfigURL: https://github.com/vmware-tanzu/vsphere-kubernetes-drivers-operator/releases/download/0.3.0/compatibility.yaml
     kind: ConfigMap
     metadata:
       name: compat-matrix-config
@@ -682,7 +774,7 @@ items:
                 configMapKeyRef:
                   key: auto-upgrade
                   name: compat-matrix-config
-            image: projects.registry.vmware.com/vsphere_kubernetes_driver_operator/vdo@sha256:d89d95ff753569a866af9c7f4d8f1029dd3d5bdb88af0fb1ee2a8e324020a383
+            image: projects.registry.vmware.com/vsphere_kubernetes_driver_operator/vdo@sha256:a46a09376084d2cda3a6f240cd80e4b40fe8a97a6a8348fd46375dc9f4e53804
             imagePullPolicy: IfNotPresent
             livenessProbe:
               httpGet:
@@ -731,6 +823,32 @@ items:
               path: /etc/kubernetes
               type: DirectoryOrCreate
             name: vsphere-config-volume
+  - apiVersion: rbac.authorization.k8s.io/v1
+    kind: Role
+    metadata:
+      name: privileged-role-vdo
+      namespace: vmware-system-vdo
+    rules:
+    - apiGroups:
+      - security.openshift.io
+      resourceNames:
+      - privileged
+      resources:
+      - securitycontextconstraints
+      verbs:
+      - use
+  - apiVersion: rbac.authorization.k8s.io/v1
+    kind: RoleBinding
+    metadata:
+      name: privileged-rolebinding-vdo
+      namespace: vmware-system-vdo
+    subjects:
+    - kind: ServiceAccount
+      name: vdo-controller-manager
+      namespace:
+    roleRef:
+      kind: Role
+      name: privileged-role-vdo
   - apiVersion: v1
     data:
       password: "{{{vcenter-password}}}"
@@ -758,7 +876,8 @@ items:
         {{#datacenters }}
         - "{{{ item }}}"
         {{/datacenters }}
-      insecure: "{{{insecure-flag}}}"
+      insecure: {{ insecure-flag }}
+      thumbprint: "{{{thumbprint}}}"
       vcIp: "{{{host}}}"
   - apiVersion: vdo.vmware.com/v1alpha1
     kind: VDOConfig
@@ -834,29 +953,3 @@ items:
     roleRef:
       kind: Role
       name: privileged-role
-  - apiVersion: rbac.authorization.k8s.io/v1
-    kind: Role
-    metadata:
-      name: privileged-role-vdo
-      namespace: vmware-system-vdo
-    rules:
-    - apiGroups:
-      - security.openshift.io
-      resourceNames:
-      - privileged
-      resources:
-      - securitycontextconstraints
-      verbs:
-      - use
-  - apiVersion: rbac.authorization.k8s.io/v1
-    kind: RoleBinding
-    metadata:
-      name: privileged-rolebinding-vdo
-      namespace: vmware-system-vdo
-    subjects:
-    - kind: ServiceAccount
-      name: vdo-controller-manager
-      namespace:
-    roleRef:
-      kind: Role
-      name: privileged-role-vdo

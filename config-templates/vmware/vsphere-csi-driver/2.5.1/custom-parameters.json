@@ -1,46 +1,50 @@
 [
     {
-        "description": "vCenter Username",
+        "description": "Provide the vCenter Username",
         "displayname": "vCenter Username",
         "name": "vcenter-username",
         "required": "true",
         "category": "secret",
         "obfuscate": "true",
-        "type": "string"
+        "mutable": "true"
     },
     {
-        "description": "vCenter Password",
+        "description": "Provide the vCenter Password",
         "displayname": "vCenter Password",
         "name": "vcenter-password",
         "required": "true",
         "category": "secret",
         "obfuscate": "true",
-        "type": "string"
+        "mutable": "true"
     },
     {
-        "description": "insecure flag",
+        "description": "Insecure flag determines if connection to VC can be insecured",
         "displayname": "insecure flag",
         "name": "insecure-flag",
         "required": "true",
         "default": "false",
-        "category": "secret",
-        "type": "string"
+        "type": "boolean"
     },
     {
         "description": "vCenter host - The vCenter server ip",
         "displayname": "vCenter host",
         "name": "host",
-        "required": "true",
-        "category": "secret",
-        "type": "string"
+        "required": "true"
     },
     {
-        "description": "vCenter datacenters",
+        "description": "datacenters refers to list of datacenters on the VC which the configured user account can access",
         "displayname": "vCenter datacenters",
         "name": "datacenters",
         "required": "true",
         "default": "IBMCloud",
-        "category": "secret",
         "type": "csv"
+    },
+    {
+        "description": "thumbprint refers to the SSL Thumbprint to be used to establish a secure connection to VC",
+        "displayname": "SSL Certificate Thumbprint",
+        "name": "thumbprint",
+        "required": "false",
+        "category": "secret",
+        "mutable": "true"
     }
 ]
