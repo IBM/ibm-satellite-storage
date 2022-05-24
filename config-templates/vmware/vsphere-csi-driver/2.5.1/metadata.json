@@ -2,7 +2,7 @@
     "name": "2.5.1",
     "revision": "1",
     "enabled": "true",
-    "description": "VMware block volume persistant storage",
+    "description": "VMware block volume persistent storage",
     "tags": [
         {
             "name": "provider",

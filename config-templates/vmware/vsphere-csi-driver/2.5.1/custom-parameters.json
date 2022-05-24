@@ -1,7 +1,7 @@
 [
     {
-        "description": "Provide the vCenter Username",
-        "displayname": "vCenter Username",
+        "description": "The vCenter username. You must specify the username along with the domain name. For example, user = `Administrator@vsphere.local`.",
+        "displayname": "vCenter username",
         "name": "vcenter-username",
         "required": "true",
         "category": "secret",
@@ -9,8 +9,8 @@
         "mutable": "true"
     },
     {
-        "description": "Provide the vCenter Password",
-        "displayname": "vCenter Password",
+        "description": "The vCenter server user password.",
+        "displayname": "vCenter password",
         "name": "vcenter-password",
         "required": "true",
         "category": "secret",
@@ -18,30 +18,30 @@
         "mutable": "true"
     },
     {
-        "description": "Insecure flag determines if connection to VC can be insecured",
-        "displayname": "insecure flag",
+        "description": "Insecure flag determines if connection to VC uses a self-signed certificate or a secure connection for login. ",
+        "displayname": "Secure connection",
         "name": "insecure-flag",
         "required": "true",
         "default": "false",
         "type": "boolean"
     },
     {
-        "description": "vCenter host - The vCenter server ip",
+        "description": "The vCenter server IP address.",
         "displayname": "vCenter host",
         "name": "host",
         "required": "true"
     },
     {
-        "description": "datacenters refers to list of datacenters on the VC which the configured user account can access",
-        "displayname": "vCenter datacenters",
+        "description": "List all data center paths where host VMs are present, separated by commas. Provide the name of the data center when it is located at the root. When it is placed in the folder, you need to specify the path as folder/data-center-name",
+        "displayname": "vCenter data centers",
         "name": "datacenters",
         "required": "true",
         "default": "IBMCloud",
         "type": "csv"
     },
     {
-        "description": "thumbprint refers to the SSL Thumbprint to be used to establish a secure connection to VC",
-        "displayname": "SSL Certificate Thumbprint",
+        "description": "The SSL Thumbprint to be used to establish a secure connection to VC. ",
+        "displayname": "SSL certificate thumbprint",
         "name": "thumbprint",
         "required": "false",
         "category": "secret",
