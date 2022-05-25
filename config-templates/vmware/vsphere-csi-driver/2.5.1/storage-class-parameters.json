@@ -1,7 +1,7 @@
 [
 	{
 	  "description": "The storage class name.",
-	  "displayname": "Storage Class Name",
+	  "displayname": "Storage class name",
 	  "name": "name",
 	  "templateKeyName": [
 		  "name"
@@ -21,7 +21,7 @@
 	  "type": "text"
 	}, {
 	  "description": "The storage policy name.",
-	  "displayname": "storagepolicyname",
+	  "displayname": "Storage policy name",
 	  "name": "storagepolicyname",
 	  "templateKeyName": [
 		  "storagepolicyname"
@@ -30,7 +30,7 @@
 	  "category": "config",
 	  "type": "text"
 	}, {
-	  "description": "Specify 'Immediate' or 'WaitForFirstConsumer' for volume binding.",
+	  "description": "The volume binding mode. 'Immediate' or 'WaitForFirstConsumer'.",
 	  "displayname": "Volume binding mode",
 	  "name": "volumeBindingMode",
 	  "templateKeyName": [
@@ -41,7 +41,7 @@
 	  "category": "config",
 	  "type": "text"
 	}, {
-		"description": "Specify the datstoreURL.",
+		"description": "The datastore URL. For example: <example>",
 		"displayname": "datastoreurl",
 		"name": "datastoreurl",
 		"templateKeyName": [

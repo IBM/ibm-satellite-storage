@@ -40,7 +40,7 @@
         "type": "csv"
     },
     {
-        "description": "The SSL Thumbprint to be used to establish a secure connection to VC. ",
+        "description": "The SSL thumbprint to be used to establish a secure connection to VC. ",
         "displayname": "SSL certificate thumbprint",
         "name": "thumbprint",
         "required": "false",
