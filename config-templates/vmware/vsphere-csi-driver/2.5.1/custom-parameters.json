@@ -18,8 +18,8 @@
         "mutable": "true"
     },
     {
-        "description": "Insecure flag determines if connection to VC uses a self-signed certificate or a secure connection for login. ",
-        "displayname": "Secure connection",
+        "description": "Include the 'insecure-flag'. 'true' indicates that you want to include the flag, which uses self-signed certificate for login. 'false' indicates that you use a secure connection. If you select 'false', you must provide an SSL thumbprint.",
+        "displayname": "Insecure connection",
         "name": "insecure-flag",
         "required": "true",
         "default": "false",
