@@ -20,7 +20,7 @@
 	  "category": "config",
 	  "type": "text"
 	}, {
-	  "description": "The storage policy name.",
+	  "description": "Give your storage policy a name.",
 	  "displayname": "Storage policy name",
 	  "name": "storagepolicyname",
 	  "templateKeyName": [
