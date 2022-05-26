@@ -1,6 +1,6 @@
 [
     {
-        "description": "The vCenter username. You must specify the username along with the domain name. For example, user = `Administrator@vsphere.local`.",
+        "description": "The vCenter username. You must specify the username along with the domain name. For example: 'Administrator@vsphere.local'.",
         "displayname": "vCenter username",
         "name": "vcenter-username",
         "required": "true",
