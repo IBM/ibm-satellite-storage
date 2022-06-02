@@ -12,25 +12,25 @@ items:
 - apiVersion: v1
   kind: Secret
   metadata:
-    name: "guivmseversecret"
+    name: "{{ primary-secret-name }}"
     namespace: ibm-spectrum-scale-csi-driver
     labels:
       product: ibm-spectrum-scale-csi
   type: Opaque
   data:
-    username: "Y3NpYWRtaW4K"
-    password: "Y2lrcm5zcWJxago="
+    username: "{ primary-gui-api-user }}"
+    password: "{{ primary-gui-api-password }}"
 - apiVersion: v1
   kind: Secret
   metadata:
-    name: "guicnsaseversecret"
+    name: "{{ owning-secret-name }}"
     namespace: ibm-spectrum-scale-csi-driver
     labels:
       product: ibm-spectrum-scale-csi
   type: Opaque
   data:
-    username: "Q3NpQWRtaW4K"
-    password: "MUpJMHBkajBZY0ZiZGo0ekVSdzIK"
+    username: "{{ owning-gui-api-user }}"
+    password: "{{ owning-gui-api-password }}"
 - apiVersion: apps/v1
   kind: Deployment
   metadata:
@@ -536,22 +536,22 @@ items:
   # plugin. It can have multiple values.
   # ==================================================================================
     clusters:
-      - id: "8108838904348226696"
-        secrets: "guivmseversecret"
+      - id: "{{ primary-cluster-id }}"
+        secrets: "{{ primary-secret-name }}"
         secureSslMode: false
         primary:
-          primaryFs: "remote-test-master1"
-          remoteCluster: "14350919887298881974"
+          primaryFs: "{{ primary-fs-name }"
+          remoteCluster: "{{ owning-cluster-id }}"
         restApi:
-          - guiHost: "rackemc-icsvm23.rtp.raleigh.ibm.com"
+          - guiHost: "{{ primary-gui-host }}"
   #
   # In the case we have multiple clusters, specify their configuration below.
   # ==================================================================================
-      - id: "14350919887298881974"
-        secrets: "guicnsaseversecret"
+      - id: "{{ owning-cluster-id }}"
+        secrets: "{{ owning-secret-name }}"
         secureSslMode: false
         restApi:
-        - guiHost: "ibm-spectrum-scale-gui-ibm-spectrum-scale.apps.isf-rackc.rtp.raleigh.ibm.com"
+        - guiHost: "{{ owning-gui-host }}"
 
   # attacherNodeSelector specifies on which nodes we want to run attacher sidecar
   # In below example attacher will run on nodes which have label as "scale=true"
@@ -612,12 +612,12 @@ items:
   #      spectrumscaleNode: "< SpectrumScale Node Name >"
 
     nodeMapping:
-      - k8sNode: "rackemc-icsvm20.rtp.raleigh.ibm.com"
-        spectrumscaleNode: "rackemc-icsvm20"
-      - k8sNode: "rackemc-icsvm21.rtp.raleigh.ibm.com"
-        spectrumscaleNode: "rackemc-icsvm21"
-      - k8sNode: "rackemc-icsvm22.rtp.raleigh.ibm.com"
-        spectrumscaleNode: "rackemc-icsvm22"
+      - k8sNode: "{{ node1-k8-host }}"
+        spectrumscaleNode: "{{ node1-scale-host }}"
+      - k8sNode: "{{ node2-k8-host }}"
+        spectrumscaleNode: "{{ node2-scale-host }}"
+      - k8sNode: "{{ node3-k8-host }}"
+        spectrumscaleNode: "{{ node3-scale-host }}"
 
   # Array of tolerations that will be distribued to CSI pods. Please refer to official
   # k8s documentation for your environment for more details.
