@@ -2,10 +2,10 @@
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: "ibm-spectrum-fusion-sc-test"
+  name: "{{ storage-class-name }}"
 provisioner: spectrumscale.csi.ibm.com
 parameters:
-  volBackendFs: "remote-test-master1"
-  clusterId: "14350919887298881974"
+  volBackendFs: "{{ primary-vol-backend-fs }}"
+  clusterId: "{{ primary-cluster-id }}"
 reclaimPolicy: Delete
 
