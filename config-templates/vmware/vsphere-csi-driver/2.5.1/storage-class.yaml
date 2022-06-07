@@ -14,6 +14,9 @@ items:
       labels:
         app.kubernetes.io/name: vsphere-csi-driver
         app.kubernetes.io/version: 2.5.1
+        volume-type: "block"
+        storage-class-preference: "2"
+        is-user-defined-class: "false"
     provisioner: csi.vsphere.vmware.com
     parameters:
       storagepolicyname: "vSAN Default Storage Policy"
@@ -25,6 +28,9 @@ items:
       labels:
         app.kubernetes.io/name: vsphere-csi-driver
         app.kubernetes.io/version: 2.5.1
+        volume-type: "block"
+        storage-class-preference: "1"
+        is-user-defined-class: "false"
       annotations:
         storageclass.kubernetes.io/is-default-class: "true"
     provisioner: csi.vsphere.vmware.com

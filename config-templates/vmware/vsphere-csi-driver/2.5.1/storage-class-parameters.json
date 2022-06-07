@@ -50,5 +50,29 @@
 		"required": "false",
 		"category": "config",
 		"type": "text"
+	},
+	{
+		"description": "Specify the volume type; e.g.: block, file or object",
+		"displayname": "Volume type",
+		"name": "volume-type",
+		"templateKeyName": [
+			"volume-type"
+		],
+		"required": "true",
+		"category": "config",
+		"regex": "^(block|file|object)$",
+		"type": "text"
+	},
+	{
+		"description": "Specify a unique volume tier preference; in the range of 1-99 with 1 being the highest.",
+		"displayname": "Storage Class Preference Preference",
+		"name": "storage-class-preference",
+		"templateKeyName": [
+			"storage-class-preference"
+		],
+		"required": "true",
+		"category": "config",
+		"regex": "^[1-9]([0-9]?)$",
+		"type": "text"
 	}
 ]
