@@ -1,0 +1,18 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: "{{ name }}"
+  labels:
+    app.kubernetes.io/name: vsphere-csi-driver
+    app.kubernetes.io/version: 2.5.1
+    volume-type: "{{ volume-type }}" # As per user specification; e.g.: block, file or object.
+    storage-class-preference: "{{ storage-class-preference }}" # As per user specification; e.g.: 1, 2, ... 99.
+    is-user-defined-class: "true" # As this is a user-defined storage class
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "{{ is-default-class }}"
+provisioner: csi.vsphere.vmware.com
+parameters:
+  datastoreurl: "{{ datastoreurl }}"
+  storagepolicyname: "{{ storagepolicyname }}"
+volumeBindingMode: "{{ volumeBindingMode }}"
+

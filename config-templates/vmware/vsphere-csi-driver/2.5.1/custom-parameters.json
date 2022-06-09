@@ -1,0 +1,50 @@
+[
+    {
+        "description": "The vCenter username. You must specify the username along with the domain name. For example: 'Administrator@vsphere.local'.",
+        "displayname": "vCenter username",
+        "name": "vCenter username",
+        "required": "true",
+        "category": "secret",
+        "obfuscate": "true",
+        "mutable": "true"
+    },
+    {
+        "description": "The vCenter server user password.",
+        "displayname": "vCenter password",
+        "name": "vcenter-password",
+        "required": "true",
+        "category": "secret",
+        "obfuscate": "true",
+        "mutable": "true"
+    },
+    {
+        "description": "Include the 'insecure-flag'. 'true' indicates that you want to include the flag, which uses self-signed certificate for login. 'false' indicates that you use a secure connection. If you select 'false', you must provide an SSL thumbprint.",
+        "displayname": "Insecure connection",
+        "name": "insecure-flag",
+        "required": "false",
+        "default": "false",
+        "type": "boolean"
+    },
+    {
+        "description": "The vCenter server IP address.",
+        "displayname": "vCenter host",
+        "name": "host",
+        "required": "true"
+    },
+    {
+        "description": "List all data center paths where host VMs are present, separated by commas. Provide the name of the data center when it is located at the root. When it is placed in the folder, you need to specify the path as folder/data-center-name",
+        "displayname": "vCenter data centers",
+        "name": "datacenters",
+        "required": "true",
+        "type": "csv"
+    },
+    {
+        "description": "The SSL thumbprint to be used to establish a secure connection to VC. ",
+        "displayname": "SSL certificate thumbprint",
+        "name": "thumbprint",
+        "required": "false",
+        "category": "secret",
+        "obfuscate": "true",
+        "mutable": "true"
+    }
+]
