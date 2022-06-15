@@ -76,6 +76,8 @@ items:
     kind: StorageClass
     metadata:
       name: sat-netapp-block-gold-metro
+      annotations:
+        storageclass.kubernetes.io/is-default-class: "true"
     provisioner: netapp.io/trident
     parameters:
       backendType: "ontap-san"

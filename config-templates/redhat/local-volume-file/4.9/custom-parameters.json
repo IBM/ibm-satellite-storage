@@ -1,0 +1,42 @@
+[
+  {
+    "description": "Set to 'true' if you want to automatically discover and use the storage volumes on your worker nodes.",
+    "displayname": "Automatic storage volume discovery",
+    "name": "auto-discover-devices",
+    "default": "false",
+    "type": "boolean",
+    "required": "false",
+    "category": "config"
+  },
+  {
+    "description": "The 'key' of the worker node 'key=value' label.",
+    "displayname": "Node Label Key",
+    "name": "label-key",
+    "required": "true",
+    "category": "config"
+  },
+  {
+    "description": "The 'value' of the worker node 'key=value' label.",
+    "displayname": "Node Label Key Value",
+    "name": "label-value",
+    "required": "true",
+    "category": "config"
+  },
+  {
+    "description": "The local storage device path. Example: '/dev/sdc'. Required when auto-discover-devices is set to false.",
+    "displayname": "Device Path",
+    "name": "devicepath",
+    "place-holder": "/dev/sdc,/dev/sde",
+    "required": "false",
+    "category": "config",
+    "type": "csv"
+  },
+  {
+    "description": "The file system type. Specify 'ext3', 'ext4', or 'xfs'.",
+    "displayname": "File System type",
+    "name": "fstype",
+    "default": "ext4",
+    "required": "false",
+    "category": "config"
+  }
+]

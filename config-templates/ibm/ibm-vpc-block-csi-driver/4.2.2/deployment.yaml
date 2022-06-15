@@ -1,0 +1,625 @@
+apiVersion: v1
+kind: List
+metadata:
+  name: ibm-vpc-block-csi-driver
+  namespace: kube-system
+  annotations:
+    version: 4.2.2
+    revision: 1
+items:
+  - kind: ClusterRole
+    apiVersion: rbac.authorization.k8s.io/v1
+    metadata:
+      name: vpc-node-label-updater-role
+      labels:
+        app: ibm-vpc-block-csi-driver
+    rules:
+      - apiGroups: [""]
+        resources: ["nodes"]
+        verbs: ["get", "list", "watch", "update"]
+  - kind: ClusterRoleBinding
+    apiVersion: rbac.authorization.k8s.io/v1
+    metadata:
+      name: vpc-node-label-updater-binding
+      labels:
+        app: ibm-vpc-block-csi-driver
+    subjects:
+      - kind: ServiceAccount
+        name: ibm-vpc-block-node-sa
+        namespace: kube-system
+    roleRef:
+      kind: ClusterRole
+      name: vpc-node-label-updater-role
+      apiGroup: rbac.authorization.k8s.io
+  - apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: ibm-vpc-block-csi-configmap
+      namespace: kube-system
+      labels:
+        app: ibm-vpc-block-csi-driver
+    data:
+      SECRET_CONFIG_PATH: "/etc/storage_ibmc"
+      CSI_ENDPOINT: "unix:/csi/csi.sock"
+      VPC_ENABLED: "True"
+      VPC_BLOCK_PROVIDER_NAME: "vpc"
+      VPC_API_TIMEOUT: "90s" # 1.5 minutes for API time out its not related with retry
+      VPC_RETRY_ATTEMPT: "10" # Number of retry
+      VPC_RETRY_INTERVAL: "60" # This is max retry Gap in seconds even considering for exponential retry
+      VPC_API_VERSION: "2019-07-02"
+      VPC_API_GENERATION: "2"
+  # Node Service Account, Roles, RoleBindings
+  - apiVersion: v1
+    kind: ServiceAccount
+    metadata:
+      name: ibm-vpc-block-node-sa
+      namespace: kube-system
+      labels:
+        app: ibm-vpc-block-csi-driver
+    imagePullSecrets:
+      - name: bluemix-default-secret
+      - name: bluemix-default-secret-regional
+      - name: bluemix-default-secret-international
+      - name: icr-io-secret
+  - kind: ClusterRole
+    apiVersion: rbac.authorization.k8s.io/v1
+    metadata:
+      name: vpc-block-driver-registrar-role
+      labels:
+        app: ibm-vpc-block-csi-driver
+    rules:
+      - apiGroups: [""]
+        resources: ["events"]
+        verbs: ["get", "list", "watch", "create", "update", "patch"]
+      - apiGroups: [""]
+        resources: ["nodes"]
+        verbs: ["get", "list", "watch"]
+      - apiGroups: [""]
+        resources: ["persistentvolumes"]
+        verbs: ["get", "list", "watch", "create", "delete"]
+      - apiGroups: [""]
+        resources: ["persistentvolumeclaims"]
+        verbs: ["get", "list", "watch", "update"]
+  - kind: ClusterRoleBinding
+    apiVersion: rbac.authorization.k8s.io/v1
+    metadata:
+      name: vpc-block-driver-registrar-binding
+      labels:
+        app: ibm-vpc-block-csi-driver
+    subjects:
+      - kind: ServiceAccount
+        name: ibm-vpc-block-node-sa
+        namespace: kube-system
+    roleRef:
+      kind: ClusterRole
+      name: vpc-block-driver-registrar-role
+      apiGroup: rbac.authorization.k8s.io
+  - kind: ClusterRole
+    apiVersion: rbac.authorization.k8s.io/v1
+    metadata:
+      name: vpc-block-external-resizer-role
+      labels:
+        app: ibm-vpc-block-csi-driver
+    rules:
+      - apiGroups: [""]
+        resources: ["persistentvolumes"]
+        verbs: ["get", "list", "watch", "update", "patch"]
+      - apiGroups: [""]
+        resources: ["persistentvolumeclaims"]
+        verbs: ["get", "list", "watch"]
+      - apiGroups: [""]
+        resources: ["pods"]
+        verbs: ["get", "list", "watch"]
+      - apiGroups: [""]
+        resources: ["persistentvolumeclaims/status"]
+        verbs: ["patch", "update"]
+      - apiGroups: [""]
+        resources: ["events"]
+        verbs: ["list", "watch", "create", "update", "patch"]
+  - kind: ClusterRoleBinding
+    apiVersion: rbac.authorization.k8s.io/v1
+    metadata:
+      name: vpc-block-external-resizer-binding
+      labels:
+        app: ibm-vpc-block-csi-driver
+    subjects:
+      - kind: ServiceAccount
+        name: ibm-vpc-block-controller-sa
+        namespace: kube-system
+    roleRef:
+      kind: ClusterRole
+      name: vpc-block-external-resizer-role
+      apiGroup: rbac.authorization.k8s.io
+  # Controller Service Account, Roles, Rolebindings
+  - apiVersion: v1
+    kind: ServiceAccount
+    metadata:
+      name: ibm-vpc-block-controller-sa
+      namespace: kube-system
+      labels:
+        app: ibm-vpc-block-csi-driver
+    imagePullSecrets:
+      - name: bluemix-default-secret
+      - name: bluemix-default-secret-regional
+      - name: bluemix-default-secret-international
+      - name: icr-io-secret
+  # xref: https://github.com/kubernetes-csi/external-provisioner/blob/master/deploy/kubernetes/rbac.yaml
+  - kind: ClusterRole
+    apiVersion: rbac.authorization.k8s.io/v1
+    metadata:
+      name: vpc-block-provisioner-role
+      labels:
+        app: ibm-vpc-block-csi-driver
+    rules:
+      - apiGroups: [""]
+        resources: ["secrets"]
+        verbs: ["get", "list"]
+      - apiGroups: [""]
+        resources: ["persistentvolumes"]
+        verbs: ["get", "list", "watch", "create", "delete"]
+      - apiGroups: [""]
+        resources: ["persistentvolumeclaims"]
+        verbs: ["get", "list", "watch", "update"]
+      - apiGroups: ["storage.k8s.io"]
+        resources: ["storageclasses"]
+        verbs: ["get", "list", "watch"]
+      - apiGroups: [""]
+        resources: ["events"]
+        verbs: ["list", "watch", "create", "update", "patch"]
+      - apiGroups: ["snapshot.storage.k8s.io"]
+        resources: ["volumesnapshots"]
+        verbs: ["get", "list"]
+      - apiGroups: ["snapshot.storage.k8s.io"]
+        resources: ["volumesnapshotcontents"]
+        verbs: ["get", "list"]
+      - apiGroups: ["storage.k8s.io"]
+        resources: ["csinodes"]
+        verbs: ["get", "list", "watch"]
+      - apiGroups: [""]
+        resources: ["nodes"]
+        verbs: ["get", "list", "watch"]
+# Access to volumeattachments is only needed when the CSI driver
+# has the PUBLISH_UNPUBLISH_VOLUME controller capability.
+# In that case, external-provisioner will watch volumeattachments
+# to determine when it is safe to delete a volume.
+      - apiGroups: ["storage.k8s.io"]
+        resources: ["volumeattachments"]
+        verbs: ["get", "list", "watch"]
+  - kind: ClusterRoleBinding
+    apiVersion: rbac.authorization.k8s.io/v1
+    metadata:
+      name: vpc-block-provisioner-binding
+      labels:
+        app: ibm-vpc-block-csi-driver
+    subjects:
+      - kind: ServiceAccount
+        name: ibm-vpc-block-controller-sa
+        namespace: kube-system
+    roleRef:
+      kind: ClusterRole
+      name: vpc-block-provisioner-role
+      apiGroup: rbac.authorization.k8s.io
+  # xref: https://github.com/kubernetes-csi/external-attacher/blob/master/deploy/kubernetes/rbac.yaml
+  - kind: ClusterRole
+    apiVersion: rbac.authorization.k8s.io/v1
+    metadata:
+      name: vpc-block-external-attacher-role
+      labels:
+        app: ibm-vpc-block-csi-driver
+    rules:
+      - apiGroups: [""]
+        resources: ["persistentvolumes"]
+        verbs: ["get", "list", "watch", "update", "patch"]
+      - apiGroups: [""]
+        resources: ["nodes"]
+        verbs: ["get", "list", "watch"]
+      - apiGroups: ["csi.storage.k8s.io"]
+        resources: ["csinodeinfos"]
+        verbs: ["get", "list", "watch"]
+      - apiGroups: ["storage.k8s.io"]
+        resources: ["volumeattachments"]
+        verbs: ["get", "list", "watch", "update", "patch"]
+      - apiGroups: ["storage.k8s.io"]
+        resources: ["volumeattachments/status"]
+        verbs: ["patch"]
+  - kind: ClusterRoleBinding
+    apiVersion: rbac.authorization.k8s.io/v1
+    metadata:
+      name: vpc-block-external-attacher-binding
+      labels:
+        app: ibm-vpc-block-csi-driver
+    subjects:
+      - kind: ServiceAccount
+        name: ibm-vpc-block-controller-sa
+        namespace: kube-system
+    roleRef:
+      kind: ClusterRole
+      name: vpc-block-external-attacher-role
+      apiGroup: rbac.authorization.k8s.io
+  - kind: CSIDriver
+    apiVersion: storage.k8s.io/v1
+    metadata:
+      name: vpc.block.csi.ibm.io
+    spec:
+      attachRequired: true
+      podInfoOnMount: true
+      volumeLifecycleModes:
+        - Persistent
+  - apiVersion: v1
+    stringData:
+      slclient.toml: |
+          [server]
+          debug_trace = false
+          [vpc]
+          iam_client_id = "bx"
+          iam_client_secret = "bx"
+          g2_token_exchange_endpoint_url = "{{{g2_token_exchange_endpoint_url}}}"
+          g2_riaas_endpoint_url = "{{{g2_riaas_endpoint_url}}}"
+          g2_resource_group_id = "{{{g2_resource_group_id}}}"
+          g2_api_key = "{{{g2_api_key}}}"
+          provider_type = "g2"
+    kind: Secret
+    metadata:
+      name: storage-secret-store
+      namespace: kube-system
+    type: Opaque
+  - kind: DaemonSet
+    apiVersion: apps/v1
+    metadata:
+      name: ibm-vpc-block-csi-node
+      namespace: kube-system
+      labels:
+        app: ibm-vpc-block-csi-driver
+    spec:
+      selector:
+        matchLabels:
+          app: ibm-vpc-block-csi-driver
+      template:
+        metadata:
+          labels:
+            app: ibm-vpc-block-csi-driver
+        spec:
+          serviceAccountName: ibm-vpc-block-node-sa
+          tolerations:
+            - operator: Exists
+          initContainers:
+            - name: vpc-node-label-updater
+              image: icr.io/obs/storage/vpc-node-label-updater:v4.1.3
+              imagePullPolicy: Always
+              securityContext:
+                privileged: false
+                allowPrivilegeEscalation: false
+              resources:
+                limits:
+                  cpu: 12m
+                  memory: 24Mi
+                requests:
+                  cpu: 3m
+                  memory: 6Mi
+              env:
+              - name: NODE_NAME
+                valueFrom:
+                  fieldRef:
+                    fieldPath: spec.nodeName
+              - name: SECRET_CONFIG_PATH
+                value: /etc/storage_ibmc
+              volumeMounts:
+                - mountPath: /etc/storage_ibmc
+                  name: customer-auth
+          containers:
+            - name: csi-driver-registrar
+              image: k8s.gcr.io/sig-storage/csi-node-driver-registrar:v2.2.0
+              imagePullPolicy: Always
+              securityContext:
+                runAsNonRoot: false
+                runAsUser: 0
+                privileged: false
+              args:
+                - "--v=5"
+                - "--csi-address=$(ADDRESS)"
+                - "--kubelet-registration-path=$(DRIVER_REGISTRATION_SOCK)"
+              lifecycle:
+                preStop:
+                  exec:
+                    command: ["/bin/sh", "-c", "rm -rf /registration/vpc.block.csi.ibm.io /registration/vpc.block.csi.ibm.io-reg.sock"]
+              env:
+                - name: ADDRESS
+                  value: /csi/csi.sock
+                - name: DRIVER_REGISTRATION_SOCK
+                  value: /var/data/kubelet/csi-plugins/vpc.block.csi.ibm.io/csi.sock
+                - name: KUBE_NODE_NAME
+                  valueFrom:
+                    fieldRef:
+                      fieldPath: spec.nodeName
+              resources:
+                limits:
+                  cpu: 40m
+                  memory: 80Mi
+                requests:
+                  cpu: 10m
+                  memory: 20Mi
+              volumeMounts:
+                - name: plugin-dir
+                  mountPath: /csi
+                - name: registration-dir
+                  mountPath: /registration
+            - name: iks-vpc-block-node-driver
+              securityContext:
+                runAsNonRoot: false
+                runAsUser: 0
+                privileged: true
+              image: icr.io/ibm/ibm-vpc-block-csi-driver:v4.2.2
+              imagePullPolicy: Always
+              args:
+                - "--v=5"
+                - "--endpoint=unix:/csi/csi.sock"
+                - "--sidecarEndpoint=$(SIDECAREP)"
+              env:
+                - name: KUBE_NODE_NAME
+                  valueFrom:
+                    fieldRef:
+                      fieldPath: spec.nodeName
+              envFrom:
+                - configMapRef:
+                    name: ibm-vpc-block-csi-configmap
+              resources:
+                limits:
+                  cpu: 120m
+                  memory: 300Mi
+                requests:
+                  cpu: 30m
+                  memory: 75Mi
+              ports:
+                - name: healthz
+                  containerPort: 9808
+                  protocol: TCP
+              livenessProbe:
+                httpGet:
+                  path: /healthz
+                  port: healthz
+                initialDelaySeconds: 10
+                timeoutSeconds: 3
+                periodSeconds: 10
+                failureThreshold: 5
+              volumeMounts:
+                - name: kubelet-data-dir
+                  mountPath: /var/data/kubelet
+                  mountPropagation: "Bidirectional"
+                - name: kubelet-lib-dir
+                  mountPath: /var/lib/kubelet
+                  mountPropagation: "Bidirectional"
+                - name: plugin-dir
+                  mountPath: /csi
+                - name: device-dir
+                  mountPath: /dev
+                - name: etcudevpath
+                  mountPath: /etc/udev
+                - name: runudevpath
+                  mountPath: /run/udev
+                - name: libudevpath
+                  mountPath: /lib/udev
+                - name: syspath
+                  mountPath: /sys
+                - name: customer-auth
+                  readOnly: true
+                  mountPath: /etc/storage_ibmc
+            - name: liveness-probe
+              image: k8s.gcr.io/sig-storage/livenessprobe:v2.3.0
+              securityContext:
+                runAsNonRoot: false
+                runAsUser: 0
+                privileged: false
+              args:
+                - --csi-address=/csi/csi.sock
+              resources:
+                limits:
+                  cpu: 20m
+                  memory: 40Mi
+                requests:
+                  cpu: 5m
+                  memory: 10Mi
+              volumeMounts:
+                - name: plugin-dir
+                  mountPath: /csi
+          volumes:
+            - name: registration-dir
+              hostPath:
+                path: /var/data/kubelet/plugins_registry/
+                type: Directory
+            - name: kubelet-data-dir
+              hostPath:
+                path: /var/data/kubelet # IKS worker  POD dir
+                type: Directory
+            - name: kubelet-lib-dir
+              hostPath:
+                path: /var/lib/kubelet
+                type: Directory
+            - name: plugin-dir
+              hostPath:
+                path: /var/data/kubelet/csi-plugins/vpc.block.csi.ibm.io/
+                type: DirectoryOrCreate
+            - name: device-dir
+              hostPath:
+                path: /dev
+                type: Directory
+            - name: etcudevpath
+              hostPath:
+                path: /etc/udev
+                type: Directory
+            - name: runudevpath
+              hostPath:
+                path: /run/udev
+                type: Directory
+            - name: libudevpath
+              hostPath:
+                path: /lib/udev
+                type: Directory
+            - name: syspath
+              hostPath:
+                path: /sys
+                type: Directory
+            - name: customer-auth # altough its not required, This is just to finish lib configuration which is a common code in the driver
+              secret:
+                secretName: storage-secret-store
+  - kind: StatefulSet
+    apiVersion: apps/v1
+    metadata:
+      name: ibm-vpc-block-csi-controller
+      namespace: kube-system
+      labels:
+        app: ibm-vpc-block-csi-driver
+    spec:
+      serviceName: "ibm-vpc-block-service"
+      replicas: 1
+      selector:
+        matchLabels:
+          app: ibm-vpc-block-csi-driver
+      template:
+        metadata:
+          labels:
+            app: ibm-vpc-block-csi-driver
+        spec:
+          serviceAccountName: ibm-vpc-block-controller-sa
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 2121
+          containers:
+            - name: csi-provisioner
+              image: k8s.gcr.io/sig-storage/csi-provisioner:v2.2.2
+              imagePullPolicy: Always
+              securityContext:
+                privileged: false
+                allowPrivilegeEscalation: false
+              args:
+                - "--v=5"
+                - "--csi-address=$(ADDRESS)"
+                - "--timeout=600s"
+                - "--feature-gates=Topology=true"
+              env:
+                - name: ADDRESS
+                  value: /csi/csi.sock
+              resources:
+                limits:
+                  cpu: 80m
+                  memory: 160Mi
+                requests:
+                  cpu: 20m
+                  memory: 40Mi
+              volumeMounts:
+                - name: socket-dir
+                  mountPath: /csi
+            - name: csi-attacher
+              image: k8s.gcr.io/sig-storage/csi-attacher:v3.2.1
+              imagePullPolicy: Always
+              securityContext:
+                privileged: false
+                allowPrivilegeEscalation: false
+              args:
+                - "--v=5"
+                - "--csi-address=/csi/csi.sock"
+                - "--timeout=900s"
+                - "--worker-threads=15"
+              resources:
+                limits:
+                  cpu: 60m
+                  memory: 120Mi
+                requests:
+                  cpu: 15m
+                  memory: 30Mi
+              volumeMounts:
+                - name: socket-dir
+                  mountPath: /csi
+            - name: csi-resizer
+              image: k8s.gcr.io/sig-storage/csi-resizer:v1.2.0
+              imagePullPolicy: Always
+              securityContext:
+                privileged: false
+                allowPrivilegeEscalation: false
+              args:
+                - "--v=5"
+                - "--csi-address=/csi/csi.sock"
+                - "--timeout=900s"
+              resources:
+                limits:
+                  cpu: 80m
+                  memory: 160Mi
+                requests:
+                  cpu: 20m
+                  memory: 40Mi
+              volumeMounts:
+                - name: socket-dir
+                  mountPath: /csi
+            - name: liveness-probe
+              image: k8s.gcr.io/sig-storage/livenessprobe:v2.3.0
+              securityContext:
+                privileged: false
+                allowPrivilegeEscalation: false
+              args:
+                - --csi-address=/csi/csi.sock
+              resources:
+                limits:
+                  cpu: 20m
+                  memory: 40Mi
+                requests:
+                  cpu: 5m
+                  memory: 10Mi
+              volumeMounts:
+                - name: socket-dir
+                  mountPath: /csi
+            - name: iks-vpc-block-driver
+              imagePullPolicy: Always
+              image: icr.io/ibm/ibm-vpc-block-csi-driver:v4.2.2
+              securityContext:
+                privileged: false
+                allowPrivilegeEscalation: false
+              args:
+                - "--v=5"
+                - "--endpoint=$(CSI_ENDPOINT)"
+                - "--lock_enabled=false"
+                - "--sidecarEndpoint=$(SIDECAREP)"
+              envFrom:
+                - configMapRef:
+                    name: ibm-vpc-block-csi-configmap
+              env:
+                - name: SIDECAREP
+                  value: "/csi/provider.sock"
+                - name: POD_NAME
+                  valueFrom:
+                    fieldRef:
+                      fieldPath: metadata.name
+                - name: POD_NAMESPACE
+                  valueFrom:
+                    fieldRef:
+                      fieldPath: metadata.namespace
+              resources:
+                limits:
+                  cpu: 300m
+                  memory: 600Mi
+                requests:
+                  cpu: 75m
+                  memory: 150Mi
+              ports:
+                - name: healthz
+                  containerPort: 9808
+                  protocol: TCP
+              livenessProbe:
+                httpGet:
+                  path: /healthz
+                  port: healthz
+                initialDelaySeconds: 10
+                timeoutSeconds: 3
+                periodSeconds: 10
+                failureThreshold: 5
+              volumeMounts:
+                - name: socket-dir
+                  mountPath: /csi
+                - name: customer-auth
+                  readOnly: true
+                  mountPath: /etc/storage_ibmc
+          volumes:
+            - name: socket-dir
+              emptyDir: {}
+            - name: customer-auth
+              secret:
+                secretName: storage-secret-store
+      volumeClaimTemplates: []

@@ -1,0 +1,25 @@
+[
+  {
+    "description": "The 'key' of the worker node 'key=value' label.",
+    "displayname": "Node Label Key",
+    "name": "label-key",
+    "required": "true",
+    "category": "config"
+  },
+  {
+    "description": "The 'value' of the worker node 'key=value' label.",
+    "displayname": "Node Label Key Value",
+    "name": "label-value",
+    "required": "true",
+    "category": "config"
+  },
+  {
+    "description": "The local storage device path. Example: '/dev/sdc'.",
+    "displayname": "Device Path",
+    "name": "devicepath",
+    "place-holder": "/dev/sdc,/dev/sde",
+    "required": "true",
+    "category": "config",
+    "type": "csv"
+  }
+]

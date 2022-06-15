@@ -1,6 +1,6 @@
 {
   "name": "4.8",
-  "revision": "1",
+  "revision": "4",
   "enabled": "true",
   "description": "ODF template for openshift 4.8 (Local storage)",
   "tags": [
@@ -11,6 +11,10 @@
     {
       "name": "offering-name",
       "value": "openshift-data-foundation"
+    },
+    {
+      "name": "offering-type",
+      "value": "sds"
     },
     {
       "name": "provider-url",
@@ -34,7 +38,7 @@
     },
     {
       "name": "supported-k8s-versions",
-      "value": "1.21"
+      "value": "1.21,1.22"
     },
     {
       "name": "volume-type",
