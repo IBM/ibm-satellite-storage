@@ -1,0 +1,64 @@
+{
+  "name": "1.3.7",
+  "revision": "1",
+  "enabled": "true",
+  "description": "AWS EFS CSI Driver version 1.3.7",
+  "tags": [
+    {
+      "name": "provider",
+      "value": "aws"
+    },
+    {
+      "name": "offering-name",
+      "value": "aws-efs-csi-driver"
+    },
+    {
+      "name": "offering-type",
+      "value": "non-sds"
+    },
+    {
+      "name": "provider-url",
+      "value": "https://console.aws.amazon.com/support/home#/"
+    },
+    {
+      "name": "support-msg",
+      "value": "For support contact AWS"
+    },
+    {
+      "name": "provider-logo",
+      "value": "logo/aws-efs-csi-driver.svg"
+    },
+    {
+      "name": "supported-envs",
+      "value": "AWS"
+    },
+    {
+      "name": "supported-k8s-versions",
+      "value": "1.20,1.21,1.22"
+    },
+    {
+      "name": "volume-type",
+      "value": "file"
+    },
+    {
+      "name": "volume-encryption-at-rest",
+      "value": "true"
+    },
+    {
+      "name": "volume-encryption-in-transit",
+      "value": "true"
+    },
+    {
+      "name": "volume-snapshot",
+      "value": "false"
+    },
+    {
+      "name": "volume-availability",
+      "value": "regional"
+    },
+    {
+      "name": "volume-expansion",
+      "value": "false"
+    }
+  ]
+}

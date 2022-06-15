@@ -24,6 +24,7 @@
       "name": "g2_api_key",
       "required": "true",
       "category": "secret",
-      "obfuscate": "true"
+      "obfuscate": "true",
+      "mutable": "true"
     }
 ]
