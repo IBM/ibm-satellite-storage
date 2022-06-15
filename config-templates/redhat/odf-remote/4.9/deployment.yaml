@@ -4,7 +4,7 @@ metadata:
   name: ibm-openshift-container-storage
   namespace: kube-system
   annotations:
-    revision: 4
+    revision: 5
 items:
   - apiVersion: apiextensions.k8s.io/v1
     kind: CustomResourceDefinition
@@ -12,6 +12,8 @@ items:
       annotations:
         controller-gen.kubebuilder.io/version: v0.3.0
       name: ocsclusters.ocs.ibm.io
+      labels:
+        deploy.razee.io/Reconcile: "false"
     spec:
       group: ocs.ibm.io
       names:
@@ -391,6 +393,8 @@ items:
     metadata:
       name: {{ ocs-cluster-name }}
       namespace: default
+      labels:
+        deploy.razee.io/Reconcile: "false"
     spec:
        osdStorageClassName: {{ osd-storage-class }}
        osdSize: {{ osd-size }}
@@ -413,3 +417,4 @@ items:
       template-name: "odf-remote"
       template-version: "4.9"
       template-namespace: "kube-system"
+      perform-cleanup: {{ perform-cleanup }}
