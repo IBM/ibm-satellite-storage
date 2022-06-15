@@ -3,6 +3,7 @@
     "description": "A unique name for your custom resource. Note that Kubernetes resources can't contain capital letters or special characters. Enter a name that uses only lowercase letters, numbers, hyphens or periods.",
     "displayname": "OcsCluster name",
     "name": "ocs-cluster-name",
+    "regex": "(^[a-z0-9])([\\.\\-a-z0-9]*)([a-z0-9]$)",
     "required": "true"
   },
   {
@@ -95,11 +96,11 @@
     "obfuscate": "true"
   },
   {
-    "description": "Enter 'true' or 'false' to enable or disable cluster-wide encryption.",
+    "description": "Set to 'true' if you want to enable cluster-wide encryption.",
     "displayname": "Encryption enabled",
     "name": "cluster-encryption",
     "default": "false",
-    "category": "boolean",
+    "type": "boolean",
     "required": "false"
   },
   {

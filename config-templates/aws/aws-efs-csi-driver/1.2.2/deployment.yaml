@@ -19,7 +19,7 @@ items:
     data:
       key_id: "{{{ aws-access-key }}}"
       access_key: "{{{ aws-secret-access-key }}}"
-  - apiVersion: storage.k8s.io/v1beta1
+  - apiVersion: storage.k8s.io/v1
     kind: CSIDriver
     metadata:
       name: efs.csi.aws.com

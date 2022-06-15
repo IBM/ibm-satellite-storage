@@ -1,0 +1,99 @@
+[
+  {
+    "description": "A unique name for your custom resource. Note that Kubernetes resources can't contain capital letters or special characters. Enter a name that uses only lowercase letters, numbers, hyphens or periods.",
+    "displayname": "OcsCluster name",
+    "name": "ocs-cluster-name",
+    "required": "true"
+  },
+  {
+    "description": "The local paths on your worker nodes to the volumes you want to use for the OSD pods.",
+    "displayname": "OSD volume IDs",
+    "name": "osd-device-path",
+    "place-holder": "/dev/sdc,/dev/sde",
+    "required": "false",
+    "type": "csv"
+  },
+  {
+    "description": "The number of OSD volumes that you want to provision. The total storage available to your apps is equal to the volume size (osd-size) multiplied by the number of volumes (num-of-osd). The default value is '1'.",
+    "displayname": "Number of OSD volumes",
+    "name": "num-of-osd",
+    "default": "1",
+    "required": "false"
+  },
+  {
+    "description": "The node names where you want to deploy ODF. Leave this field blank to deploy ODF across all worker nodes in your cluster. The minimum number of worker nodes is 3. You can find your worker node names by running 'oc get nodes'.",
+    "displayname": "Worker node names",
+    "name": "worker-nodes",
+    "required": "false",
+    "type": "csv"
+  },
+  {
+    "description": "Set to 'true' if you want to upgrade the ODF version.",
+    "displayname": "Upgrade",
+    "name": "odf-upgrade",
+    "default": "false",
+    "required": "false",
+    "type": "boolean"
+  },
+  {
+    "description": "The billing type you want to use. Choose from 'essentials' or 'advanced'.",
+    "displayname": "Billing type",
+    "name": "billing-type",
+    "default": "advanced",
+    "required": "false"
+  },
+  {
+    "description": "The IBM COS regional public endpoint.",
+    "displayname": "IBM COS endpoint",
+    "name": "ibm-cos-endpoint",
+    "place-holder": "https://s3.us-east.cloud-object-storage.appdomain.cloud",
+    "required": "false"
+  },
+  {
+    "description": "The location constraint that you want to use when creating your COS bucket. For example: 'us-east-standard'.",
+    "displayname": "IBM COS location constraint",
+    "name": "ibm-cos-location",
+    "place-holder": "us-east-standard",
+    "required": "false"
+  },
+  {
+    "description": "Your IBM COS HMAC access key ID .",
+    "displayname": "Access key ID",
+    "name": "ibm-cos-access-key",
+    "category": "secret",
+    "required": "false",
+    "obfuscate": "true"
+  },
+  {
+    "description": "Your IBM COS HMAC secret access key.",
+    "displayname": "Secret access key",
+    "name": "ibm-cos-secret-key",
+    "category": "secret",
+    "required": "false",
+    "obfuscate": "true"
+  },
+  {
+    "description": "Set to 'true' if you want to enable cluster-wide encryption.",
+    "displayname": "Encryption enabled",
+    "name": "cluster-encryption",
+    "default": "false",
+    "type": "boolean",
+    "required": "false"
+  },
+  {
+    "description": "Your IAM API key.",
+    "displayname": "IAM API key",
+    "name": "iam-api-key",
+    "category": "secret",
+    "obfuscate": "true",
+    "required": "true"
+  },
+  {
+    "description": "Set to 'true' if you want to automatically discover and use the storage volumes on your worker nodes.",
+    "displayname": "Automatic storage volume discovery",
+    "name": "auto-discover-devices",
+    "default": "false",
+    "type": "boolean",
+    "required": "false"
+  }
+]

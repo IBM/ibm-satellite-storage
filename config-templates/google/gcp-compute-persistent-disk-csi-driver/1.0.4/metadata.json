@@ -1,7 +1,7 @@
 {
     "name": "1.0.4",
-    "enabled": "true",
     "revision": "1",
+    "enabled": "true",
     "description": "GCP Compute Persistent Disk CSI Driver",
     "tags": [
         {
@@ -11,6 +11,10 @@
         {
             "name": "offering-name",
             "value": "gcp-compute-persistent-disk-csi-driver"
+        },
+        {
+            "name": "offering-type",
+            "value": "non-sds"
         },
         {
             "name": "provider-url",

@@ -1,83 +1,66 @@
 [
     {
-        "description": "Tenant ID.",
+        "description": "The Azure tenant ID that you want to use for your configuration. You can find your tenant ID in the Azure portal or by running the 'az account tenant list' command.",
         "displayname": "Tenant ID",
         "name": "tenantId",
         "required": "true",
         "category": "secret",
-        "type": "string",
         "obfuscate": "true"
     },
     {
-        "description": "Subscription ID.",
+        "description": "Your Azure subscription ID. You can find your subscription ID in the Azure portal or by running the 'az account subscription list' command.",
         "displayname": "Subscription ID",
         "name": "subscriptionId",
         "required": "true",
         "category": "secret",
-        "type": "string",
         "obfuscate": "true"
     },
     {
-        "description": "Azure Active Directory Client ID.",
+        "description": "Your Azure Active Directory Client ID. You can find your Client ID in the Azure portal or by running the 'az ad sp list --all' command.",
         "displayname": "Azure Active Directory Client ID",
         "name": "aadClientId",
         "required": "true",
         "category": "secret",
-        "type": "string",
         "obfuscate": "true"
     },
     {
-        "description": "Location where the machines are created.",
-        "displayname": "location",
+        "description": "The location of your Azure hosts. You can find the location of your virtual machines in the Azure portal or by running the 'az vm show' command. For example 'useast'",
+        "displayname": "Location",
         "name": "location",
-        "required": "true",
-        "category": "secret",
-        "type": "string",
-        "obfuscate": "true"
+        "required": "true"
     },
     {
-        "description": "Azure Active Directory Client Secret.",
+        "description": "Your Azure Active Directory Client Secret.",
         "displayname": "Azure Active Directory Client Secret",
         "name": "aadClientSecret",
         "required": "true",
         "category": "secret",
-        "type": "string",
         "obfuscate": "true"
     },
     {
-        "description": "Resource Group.",
-        "displayname": "Resource Group.",
+        "description": "The name of your Azure resource group. You can find your resource group in the Azure portal or by running the 'az group list' command.",
+        "displayname": "Resource Group",
         "name": "resourceGroup",
         "required": "true",
         "category": "secret",
-        "type": "string",
         "obfuscate": "true"
     },
     {
-        "description": "Virtual Machnine Type.",
+        "description": "There are two types of virtual machine i.e. 'standard' and 'VMSS'. The standard VM are listed under virtual machines and the VMSSs' VMs are listed under virtual machine scale set as instances.",
         "displayname": "Virtual Machnine Type",
         "name": "vmType",
-        "required": "true",
-        "category": "secret",
-        "type": "string",
-        "obfuscate": "true"
+        "required": "true"
     },
     {
-        "description": "Network Security Group Name.",
+        "description": "The security group name. You can find your security group name in the Azure portal by running the 'az network nsg list' command.",
         "displayname": "Network Security Group Name",
         "name": "securityGroupName",
-        "required": "true",
-        "category": "secret",
-        "type": "string",
-        "obfuscate": "true"
+        "required": "true"
     },
     {
-        "description": "Virtual Network Name.",
+        "description": "The name of the virtual network. You can find the name of your virtual network in the Azure portal or by running the 'az network vnet list' command.",
         "displayname": "Virtual Network Name",
         "name": "vnetName",
-        "required": "true",
-        "category": "secret",
-        "type": "string",
-        "obfuscate": "true"
+        "required": "true"
     }
 ]
