@@ -1,9 +1,9 @@
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: "{{name}}"
+  name: "{{ name }}"
 provisioner: pd.csi.storage.gke.io
 parameters:
-  type: "{{type}}"
+  type: "{{ type }}"
   replication-type: regional-pd
-volumeBindingMode: "{{volumeBindingMode}}"
+volumeBindingMode: "{{ volumeBindingMode }}"

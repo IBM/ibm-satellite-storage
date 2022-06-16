@@ -2,6 +2,7 @@
   "name": "1.2.2",
   "revision": "1",
   "enabled": "true",
+  "status": "deprecated",
   "description": "AWS EFS CSI Driver version 1.2.2",
   "tags": [
     {

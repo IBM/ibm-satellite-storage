@@ -2,7 +2,8 @@
     "name": "1.9.0",
     "revision": "1",
     "enabled": "true",
-    "description": "[Beta] - Azure File CSI Driver",
+    "status": "supported",
+    "description": "Azure File CSI Driver",
     "tags": [
         {
             "name": "provider",
@@ -26,7 +27,7 @@
         },
         {
             "name": "provider-logo",
-            "value": "logo/azuredisk-csi-driver.svg"
+            "value": "logo/azurefile-csi-driver.svg"
         },
         {
             "name": "supported-envs",

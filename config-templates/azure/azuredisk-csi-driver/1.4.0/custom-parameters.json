@@ -5,6 +5,7 @@
         "name": "tenantId",
         "required": "true",
         "category": "secret",
+        "type": "string",
         "obfuscate": "true",
         "mutable": "true"
     },
@@ -14,6 +15,7 @@
         "name": "subscriptionId",
         "required": "true",
         "category": "secret",
+        "type": "string",
         "obfuscate": "true",
         "mutable": "true"
     },
@@ -23,6 +25,7 @@
         "name": "aadClientId",
         "required": "true",
         "category": "secret",
+        "type": "string",
         "obfuscate": "true",
         "mutable": "true"
     },
@@ -38,6 +41,7 @@
         "name": "aadClientSecret",
         "required": "true",
         "category": "secret",
+        "type": "string",
         "obfuscate": "true",
         "mutable": "true"
     },
@@ -46,8 +50,6 @@
         "displayname": "Resource Group",
         "name": "resourceGroup",
         "required": "true",
-        "category": "secret",
-        "obfuscate": "true",
         "mutable": "true"
     },
     {

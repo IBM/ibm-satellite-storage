@@ -1,0 +1,93 @@
+---
+apiVersion: v1
+kind: List
+metadata:
+    name: local-volume-file
+    namespace: kube-system
+    annotations:
+        version: 4.10
+        revision: 1
+items:
+    - apiVersion: v1
+      kind: Namespace
+      metadata:
+          name: local-storage
+    - apiVersion: operators.coreos.com/v1
+      kind: OperatorGroup
+      metadata:
+          name: local-operator-group
+          namespace: local-storage
+      spec:
+          targetNamespaces:
+              - local-storage
+    - apiVersion: operators.coreos.com/v1alpha1
+      kind: Subscription
+      metadata:
+          name: local-storage-operator
+          namespace: local-storage
+      spec:
+          channel: "4.10"
+          installPlanApproval: Automatic
+          name: local-storage-operator
+          source: redhat-operators
+          sourceNamespace: openshift-marketplace
+    {{#auto-discover-devices}}
+    - apiVersion: local.storage.openshift.io/v1alpha1
+      kind: LocalVolumeDiscovery
+      metadata:
+        name: auto-discover-devices
+        namespace: local-storage
+      spec:
+        nodeSelector:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: "{{ label-key }}"
+                  operator: In
+                  values:
+                    - "{{ label-value }}"
+    - apiVersion: local.storage.openshift.io/v1alpha1
+      kind: LocalVolumeSet
+      metadata:
+        name: localfile-volumeset
+        namespace: local-storage
+      spec:
+        deviceInclusionSpec:
+          deviceTypes:
+            - disk
+            - part
+        nodeSelector:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: "{{ label-key }}"
+                  operator: In
+                  values:
+                    - "{{ label-value }}"
+        storageClassName: "sat-local-file-gold"
+        volumeMode: Filesystem
+        fsType: "{{ fstype }}"
+    {{/auto-discover-devices}}
+    {{^auto-discover-devices}}
+    - apiVersion: local.storage.openshift.io/v1
+      kind: LocalVolume
+      metadata:
+          name: local-disk
+          namespace: local-storage
+      spec:
+          nodeSelector:
+              nodeSelectorTerms:
+                  - matchExpressions:
+                        - key: "{{ label-key }}"
+                          operator: In
+                          values:
+                          - "{{ label-value }}"
+          storageClassDevices:
+              - storageClassName: "sat-local-file-gold"
+                volumeMode: Filesystem
+                fsType: "{{ fstype }}"
+                {{#devicepath?}}
+                devicePaths:
+                {{/devicepath?}}
+                  {{#devicepath}}
+                  - "{{{ item }}}"
+                  {{/devicepath}}
+    {{/auto-discover-devices}}

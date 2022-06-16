@@ -25,16 +25,16 @@
   },
   {
     "name": "azurefile-csi-driver",
-    "displayname": "[Beta] Azure File CSI Driver",
-    "Description": "[Beta] Azure File CSI Driver.",
+    "displayname": "Azure File CSI Driver",
+    "Description": "Azure File CSI Driver.",
     "default-version": "1.9.0",
     "enabled": "true",
     "provider": "azure"
   },
   {
     "name": "gcp-compute-persistent-disk-csi-driver",
-    "displayname": "[Beta] GCP Compute Persistent Disk CSI Driver",
-    "Description": "[Beta] GCP Compute Persistent Disk CSI Driver.",
+    "displayname": "GCP Compute Persistent Disk CSI Driver",
+    "Description": "GCP Compute Persistent Disk CSI Driver.",
     "default-version": "1.0.4",
     "enabled": "true",
     "provider": "google"
@@ -83,7 +83,7 @@
     "name": "local-volume-block",
     "displayname": "Local Storage Operator - Block",
     "Description": "Local Storage Operator - Block.",
-    "default-version": "4.8",
+    "default-version": "4.9",
     "enabled": "true",
     "provider": "redhat"
   },
@@ -91,17 +91,9 @@
     "name": "local-volume-file",
     "displayname": "Local Storage Operator - File",
     "Description": "Local Storage Operator - File.",
-    "default-version": "4.8",
+    "default-version": "4.9",
     "enabled": "true",
     "provider": "redhat"
-  },
-  {
-    "name": "ess",
-    "displayname": "[Deprecated] IBM Spectrum Scale Driver",
-    "Description": "IBM Spectrum Scale Driver to enable ESS storage.",
-    "default-version": "2.1.0",
-    "enabled": "true",
-    "provider": "ibm"
   },
   {
     "name": "ibm-system-storage-block-csi-driver",
@@ -115,8 +107,16 @@
     "name": "ibm-vpc-block-csi-driver",
     "displayname": "[Beta] IBM VPC Block CSI driver",
     "Description": "[Beta] IBM VPC Block CSI driver, Provides block storage on VPC.",
-    "default-version": "4.2.2",
+    "default-version": "4.3.0",
     "enabled": "true",
     "provider": "ibm"
+  },
+  {
+    "name": "vsphere-csi-driver",
+    "displayname": "[Beta] VMware Block CSI Driver",
+    "Description": "[Beta] VMware Block CSI Driver.",
+    "default-version": "2.5.1",
+    "enabled": "true",
+    "provider": "vmware"
   }
 ]
