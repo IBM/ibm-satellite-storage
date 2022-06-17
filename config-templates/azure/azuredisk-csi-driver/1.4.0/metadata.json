@@ -2,6 +2,7 @@
     "name": "1.4.0",
     "revision": "1",
     "enabled": "true",
+    "status": "supported",
     "description": "Azure Disk CSI Driver",
     "tags": [
         {

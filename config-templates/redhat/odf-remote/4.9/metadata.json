@@ -1,7 +1,8 @@
 {
   "name": "4.9",
-  "revision": "5",
+  "revision": "6",
   "enabled": "true",
+  "status": "supported",
   "description": "ODF template for openshift 4.9 (Remote storage)",
   "tags": [
     {
@@ -11,6 +12,10 @@
     {
       "name": "offering-name",
       "value": "openshift-data-foundation"
+    },
+    {
+      "name": "offering-type",
+      "value": "sds"
     },
     {
       "name": "provider-url",

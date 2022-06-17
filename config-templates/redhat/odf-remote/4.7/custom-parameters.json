@@ -1,12 +1,5 @@
 [
   {
-    "description": "A unique name for your custom resource. Note that Kubernetes resources can't contain capital letters or special characters. Enter a name that uses only lowercase letters, numbers, hyphens or periods.",
-    "displayname": "OcsCluster name",
-    "name": "ocs-cluster-name",
-    "regex": "(^[a-z0-9])([\\.\\-a-z0-9]*)([a-z0-9]$)",
-    "required": "true"
-  },
-  {
     "description": "The storage capacity available to the monitoring pods. The monitoring deployment consists of 3 monitoring pods that each mount a volume equal to the 'mon-size'. The default size is '20Gi'.",
     "displayname": "Monitoring pod volume size",
     "name": "mon-size",
@@ -49,7 +42,6 @@
     "displayname": "Worker node names",
     "name": "worker-nodes",
     "required": "false",
-    "type": "csv",
     "mutable": "true"
   },
   {

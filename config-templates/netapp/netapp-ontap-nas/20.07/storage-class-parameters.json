@@ -39,6 +39,6 @@
 	"default": "true",
 	"required": "false",
 	"category": "config",
-	"type": "text"
+	"type": "boolean"
   }
 ]

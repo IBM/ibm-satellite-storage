@@ -15,6 +15,13 @@ items:
         control-plane: controller-manager
         vdo.vmware.com/managed-by: vdo
       name: vmware-system-vdo
+  - apiVersion: v1
+    kind: ServiceAccount
+    metadata:
+      labels:
+        vdo.vmware.com/managed-by: vdo
+      name: vdo-controller-manager
+      namespace: vmware-system-vdo
   - apiVersion: apiextensions.k8s.io/v1
     kind: CustomResourceDefinition
     metadata:
@@ -314,13 +321,6 @@ items:
         plural: ""
       conditions: []
       storedVersions: []
-  - apiVersion: v1
-    kind: ServiceAccount
-    metadata:
-      labels:
-        vdo.vmware.com/managed-by: vdo
-      name: vdo-controller-manager
-      namespace: vmware-system-vdo
   - apiVersion: rbac.authorization.k8s.io/v1
     kind: Role
     metadata:

@@ -1,7 +1,8 @@
 {
   "name": "21.04",
-  "revision": "1",
+  "revision": "3",
   "enabled": "true",
+  "status": "supported",
   "description": "Netapp Ontap-SAN Driver.",
   "tags": [
     {
@@ -30,13 +31,13 @@
       "value": "For support contact NetApp"
     }, {
       "name": "provider-logo",
-      "value": "logo/netapp-ontap-san.png"
+      "value": "logo/netapp-ontap-san.svg"
     }, {
       "name": "supported-envs",
       "value": "AWS,Azure,IBM"
     }, {
       "name": "supported-k8s-versions",
-      "value": "1.18,1.19,1.20,1.21"
+      "value": "1.20,1.21,1.22"
     }, {
       "name": "volume-type",
       "value": "block"
@@ -57,7 +58,7 @@
       "value": "true"
     }, {
       "name": "storageclass",
-      "value": "gold,silver,bronze"
+      "value": "gold,silver,bronze,gold-encrypted,silver-encrypted,bronze-encrypted,gold-metro,silver-metro,bronze-metro,gold-encrypted-metro,silver-encrypted-metro,bronze-encrypted-metro"
     }
   ]
 }

@@ -10,6 +10,10 @@ items:
     kind: StorageClass
     metadata:
       name: sat-netapp-file-gold
+      labels:
+        app.kubernetes.io/name: "netapp-ontap-nas"
+        app.kubernetes.io/version: "v21.04"
+        app.kubernetes.io/revision: "3"
       annotations:
         storageclass.kubernetes.io/is-default-class: "true"
     provisioner: netapp.io/trident
@@ -21,6 +25,10 @@ items:
     kind: StorageClass
     metadata:
       name: sat-netapp-file-silver
+      labels:
+        app.kubernetes.io/name: "netapp-ontap-nas"
+        app.kubernetes.io/version: "v21.04"
+        app.kubernetes.io/revision: "3"
     provisioner: netapp.io/trident
     parameters:
       backendType: "ontap-nas"
@@ -30,6 +38,10 @@ items:
     kind: StorageClass
     metadata:
       name: sat-netapp-file-bronze
+      labels:
+        app.kubernetes.io/name: "netapp-ontap-nas"
+        app.kubernetes.io/version: "v21.04"
+        app.kubernetes.io/revision: "3"
     provisioner: netapp.io/trident
     parameters:
       backendType: "ontap-nas"
@@ -39,6 +51,10 @@ items:
     kind: StorageClass
     metadata:
       name: sat-netapp-file-gold-encrypted
+      labels:
+        app.kubernetes.io/name: "netapp-ontap-nas"
+        app.kubernetes.io/version: "v21.04"
+        app.kubernetes.io/revision: "3"
     provisioner: netapp.io/trident
     parameters:
       backendType: "ontap-nas"
@@ -48,6 +64,10 @@ items:
     kind: StorageClass
     metadata:
       name: sat-netapp-file-silver-encrypted
+      labels:
+        app.kubernetes.io/name: "netapp-ontap-nas"
+        app.kubernetes.io/version: "v21.04"
+        app.kubernetes.io/revision: "3"
     provisioner: netapp.io/trident
     parameters:
       backendType: "ontap-nas"
@@ -57,6 +77,10 @@ items:
     kind: StorageClass
     metadata:
       name: sat-netapp-file-bronze-encrypted
+      labels:
+        app.kubernetes.io/name: "netapp-ontap-nas"
+        app.kubernetes.io/version: "v21.04"
+        app.kubernetes.io/revision: "3"
     provisioner: netapp.io/trident
     parameters:
       backendType: "ontap-nas"

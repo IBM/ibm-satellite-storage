@@ -2,6 +2,10 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: "{{ name }}"
+  labels:
+    app.kubernetes.io/name: "netapp-ontap-san"
+    app.kubernetes.io/version: "v21.04"
+    app.kubernetes.io/revision: "3"
   annotations:
     storageclass.kubernetes.io/is-default-class: "{{ is-default-class }}"
 provisioner: csi.trident.netapp.io

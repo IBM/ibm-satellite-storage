@@ -2,6 +2,7 @@
   "name": "20.07",
   "revision": "1",
   "enabled": "true",
+  "status": "supported",
   "description": "Netapp Trident version 20.07.",
   "tags": [
     {
@@ -30,7 +31,7 @@
       "value": "1.17,1.18,1.19"
     }, {
       "name": "volume-type",
-      "value": "block,file"
+      "value": ""
     }, {
       "name": "volume-encryption-at-rest",
       "value": ""

@@ -1,0 +1,78 @@
+[
+	{
+	  "description": "The storage class name.",
+	  "displayname": "Storage Class Name",
+	  "name": "name",
+	  "templateKeyName": [
+		  "name"
+	  ],
+	  "required": "true",
+	  "category": "config"
+	}, {
+		"description": "Specify a unique volume tier preference; in the range of 1-99 with 1 being the highest.",
+		"displayname": "StorageClass Preference",
+		"name": "stoargeClassPreferencee",
+		"templateKeyName": [
+			"storage-class-preference"
+		],
+		"default": "99",
+		"required": "false",
+		"category": "config",
+		"regex": "^[1-9]([0-9]?)$",
+		"type": "text"
+	  }, {
+	  "description": "Specify 'true' or 'false' to make the created storage class the default class.",
+	  "displayname": "Default",
+	  "name": "is-default-class",
+	  "templateKeyName": [
+		  "storageclass.kubernetes.io/is-default-class"
+	  ],
+	  "default": "false",
+	  "required": "false",
+	  "category": "config",
+	  "type": "text"
+	}, {
+	  "description": "The selector label.",
+	  "displayname": "Selector",
+	  "name": "selector",
+	  "templateKeyName": [
+		  "selector"
+	  ],
+	  "required": "true",
+	  "category": "config",
+	  "type": "text"
+	}, {
+	  "description": "The file system type.",
+	  "displayname": "File System",
+	  "name": "fsType",
+	  "templateKeyName": [
+		  "fsType"
+	  ],
+	  "default": "ext4",
+	  "required": "false",
+	  "category": "config",
+	  "type": "text"
+	}, {
+	  "description": "Specify 'true' or 'false' to enable or disable volume expansion.",
+	  "displayname": "Allow volume expansion",
+	  "name": "allowVolumeExpansion",
+	  "templateKeyName": [
+		  "allowVolumeExpansion"
+	  ],
+	  "default": "true",
+	  "required": "false",
+	  "category": "config",
+	  "type": "boolean"
+	}, {
+	  "description": "Specify 'Immediate' or 'WaitForFirstConsumer' for volume binding.",
+	  "displayname": "Volume binding mode",
+	  "name": "volumeBindingMode",
+	  "templateKeyName": [
+		  "volumeBindingMode"
+	  ],
+	  "default": "Immediate",
+	  "required": "false",
+	  "category": "config",
+	  "type": "text"
+	}
+]

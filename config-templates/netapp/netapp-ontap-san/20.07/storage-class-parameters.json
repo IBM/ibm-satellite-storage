@@ -50,7 +50,7 @@
 	  "default": "true",
 	  "required": "false",
 	  "category": "config",
-	  "type": "text"
+	  "type": "boolean"
 	}, {
 	  "description": "Specify 'Immediate' or 'WaitForFirstConsumer' for volume binding.",
 	  "displayname": "Volume binding mode",

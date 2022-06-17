@@ -19,7 +19,7 @@ items:
       namespace: local-storage
     spec:
       targetNamespaces:
-        - local-storages
+        - local-storage
   - apiVersion: operators.coreos.com/v1alpha1
     kind: Subscription
     metadata:
