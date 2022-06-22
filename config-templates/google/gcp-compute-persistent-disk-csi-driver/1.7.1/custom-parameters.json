@@ -1,0 +1,92 @@
+[
+    {
+        "description": "Google Cloud project ID.",
+        "displayname": "Google Cloud project ID.",
+        "name": "project_id",
+        "required": "true",
+        "category": "secret",
+        "type": "string",
+        "obfuscate": "true",
+        "mutable": "true"
+    },
+    {
+        "description": "Google Cloud private key ID.",
+        "displayname": "Google Cloud private key ID",
+        "name": "private_key_id",
+        "required": "true",
+        "category": "secret",
+        "type": "string",
+        "obfuscate": "true",
+        "mutable": "true"
+    },
+    {
+        "description": "Private key of the service account.",
+        "displayname": "Private key of the service account.",
+        "name": "private_key",
+        "required": "true",
+        "category": "secret",
+        "type": "string",
+        "obfuscate": "true",
+        "mutable": "true"
+    },
+    {
+        "description": "Client email.",
+        "displayname": "Client email",
+        "name": "client_email",
+        "required": "true",
+        "category": "secret",
+        "type": "string",
+        "obfuscate": "true",
+        "mutable": "true"
+    },
+    {
+        "description": "Client ID.",
+        "displayname": "Client ID",
+        "name": "client_id",
+        "required": "true",
+        "category": "secret",
+        "type": "string",
+        "obfuscate": "true",
+        "mutable": "true"
+    },
+    {
+        "description": "Authorization URI for the service account.",
+        "displayname": "Authorization URI",
+        "name": "auth_uri",
+        "required": "true",
+        "category": "secret",
+        "type": "string",
+        "obfuscate": "true",
+        "mutable": "true"
+    },
+    {
+        "description": "Token URI for the service account.",
+        "displayname": "Token URI",
+        "name": "token_uri",
+        "required": "true",
+        "category": "secret",
+        "type": "string",
+        "obfuscate": "true",
+        "mutable": "true"
+    },
+    {
+        "description": "URL for the authorization provider certificate.",
+        "displayname": "URL for the authorization provider certificate",
+        "name": "auth_provider_x509_cert_url",
+        "required": "true",
+        "category": "secret",
+        "type": "string",
+        "obfuscate": "true",
+        "mutable": "true"
+    },
+    {
+        "description": "URL for the client certificate.",
+        "displayname": "URL for the client certificate",
+        "name": "client_x509_cert_url",
+        "required": "true",
+        "category": "secret",
+        "type": "string",
+        "obfuscate": "true",
+        "mutable": "true"
+    }
+]
