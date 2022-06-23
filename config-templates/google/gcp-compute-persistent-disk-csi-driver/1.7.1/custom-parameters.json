@@ -1,6 +1,6 @@
 [
     {
-        "description": "Google Cloud project ID",
+        "description": "Google Cloud project ID.",
         "displayname": "Google Cloud project ID",
         "name": "project_id",
         "required": "true",
@@ -10,7 +10,7 @@
         "mutable": "true"
     },
     {
-        "description": "Google Cloud private key ID",
+        "description": "Google Cloud private key ID.",
         "displayname": "Google Cloud private key ID",
         "name": "private_key_id",
         "required": "true",
@@ -20,7 +20,7 @@
         "mutable": "true"
     },
     {
-        "description": "Private key of the service account",
+        "description": "Private key of the service account.",
         "displayname": "Private key of the service account",
         "name": "private_key",
         "required": "true",
@@ -30,7 +30,7 @@
         "mutable": "true"
     },
     {
-        "description": "Client email",
+        "description": "Client email.",
         "displayname": "Client email",
         "name": "client_email",
         "required": "true",
@@ -40,7 +40,7 @@
         "mutable": "true"
     },
     {
-        "description": "Client ID",
+        "description": "Client ID.",
         "displayname": "Client ID",
         "name": "client_id",
         "required": "true",
@@ -50,7 +50,7 @@
         "mutable": "true"
     },
     {
-        "description": "Authorization URI for the service account",
+        "description": "Authorization URI for the service account.",
         "displayname": "Authorization URI",
         "name": "auth_uri",
         "required": "true",
@@ -60,7 +60,7 @@
         "mutable": "true"
     },
     {
-        "description": "Token URI for the service account",
+        "description": "Token URI for the service account.",
         "displayname": "Token URI",
         "name": "token_uri",
         "required": "true",
@@ -70,7 +70,7 @@
         "mutable": "true"
     },
     {
-        "description": "URL for the authorization provider certificate",
+        "description": "URL for the authorization provider certificate.",
         "displayname": "URL for the authorization provider certificate",
         "name": "auth_provider_x509_cert_url",
         "required": "true",
@@ -80,7 +80,7 @@
         "mutable": "true"
     },
     {
-        "description": "URL for the client certificate",
+        "description": "URL for the client certificate.",
         "displayname": "URL for the client certificate",
         "name": "client_x509_cert_url",
         "required": "true",
