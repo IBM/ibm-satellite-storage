@@ -12,6 +12,9 @@ items:
     kind: Namespace
     metadata:
       name: gce-pd-csi-driver
+      labels:
+        app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
+        app.kubernetes.io/version: 1.7.1
   - apiVersion: v1
     kind: Secret
     metadata:
@@ -537,10 +540,14 @@ items:
       selector:
         matchLabels:
           app: gcp-compute-persistent-disk-csi-driver
+          app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
+          app.kubernetes.io/version: 1.7.1
       template:
         metadata:
           labels:
             app: gcp-compute-persistent-disk-csi-driver
+            app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
+            app.kubernetes.io/version: 1.7.1
         spec:
           containers:
           - args:
@@ -688,10 +695,14 @@ items:
       selector:
         matchLabels:
           app: gcp-compute-persistent-disk-csi-driver
+          app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
+          app.kubernetes.io/version: 1.7.1
       template:
         metadata:
           labels:
             app: gcp-compute-persistent-disk-csi-driver
+            app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
+            app.kubernetes.io/version: 1.7.1
         spec:
           containers:
           - args:
