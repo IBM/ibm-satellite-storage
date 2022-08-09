@@ -5,7 +5,7 @@ metadata:
   namespace: kube-system
   annotations:
     version: 1.5.0
-    revision: 1
+    revision: 2
 items:
   - apiVersion: v1
     kind: Namespace

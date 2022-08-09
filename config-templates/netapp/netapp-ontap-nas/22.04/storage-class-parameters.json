@@ -9,18 +9,6 @@
 	"required": "true",
 	"category": "config"
   }, {
-	"description": "Specify a unique volume tier preference; in the range of 1-99 with 1 being the highest.",
-	"displayname": "StorageClass Preference",
-	"name": "stoargeClassPreferencee",
-	"templateKeyName": [
-		"storage-class-preference"
-	],
-	"default": "99",
-	"required": "false",
-	"category": "config",
-	"regex": "^[1-9]([0-9]?)$",
-	"type": "text"
-  }, {
 	"description": "Specify 'true' or 'false' to make the created storage class the default class.",
 	"displayname": "Default",
 	"name": "is-default-class",
@@ -52,5 +40,17 @@
 	"required": "false",
 	"category": "config",
 	"type": "boolean"
+  }, {
+	"description": "Specify a unique volume tier preference; in the range of 1-99 with 1 being the highest",
+	"displayname": "Storage Class Preference",
+	"name": "storage-class-preference",
+	"templateKeyName": [
+		"storage-class-preference"
+	],
+	"default": "99",
+	"required": "false",
+	"category": "config",
+	"regex": "^[1-9]([0-9]?)$",
+	"type": "text"
   }
 ]

@@ -1,0 +1,44 @@
+[
+	{
+        "description": "Specify the storage class preference",
+        "displayname": "Storage Class Preference",
+        "name": "storage-class-preference",
+        "templateKeyName": [
+            "storage-class-preference"
+        ],
+        "required": "false",
+        "default": "99",
+        "category": "config",
+        "regex": "^[1-9]([0-9]?)$",
+        "type": "text"
+    },
+	{
+		"description": "The name of the file system on which the primary fileset is created.",
+		"displayname": "Primary Volume Backend Filesystem",
+		"name": "primary-vol-backend-fs",
+		"templateKeyName": [
+			"volBackendFs"
+		],
+		"required": "true"
+	},
+	{
+	  "description": "The storage class name.",
+	  "displayname": "Storage Class Name",
+	  "name": "storage-class-name",
+	  "templateKeyName": [
+		  "name"
+	  ],
+	  "required": "true",
+	  "category": "config"
+	}, 
+	{
+	  "description": "Primary cluster Id to connect the cluster created on IBM Cloud Satellite",
+	  "displayname": "Primary cluster Id",
+	  "name": "primary-cluster-id",
+	  "templateKeyName": [
+		  "clusterId"
+	  ],
+	  "required": "true"
+	}	
+]
+

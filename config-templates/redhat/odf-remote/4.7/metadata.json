@@ -1,6 +1,6 @@
 {
   "name": "4.7",
-  "revision": "6",
+  "revision": "10",
   "enabled": "true",
   "status": "supported",
   "description": "ODF template for openshift 4.7 (Remote storage)",
@@ -40,6 +40,10 @@
     {
       "name": "supported-k8s-versions",
       "value": "1.20,1.21"
+    },
+    {
+      "name": "supported-ocp-versions",
+      "value": "4.7,4.8"
     },
     {
       "name": "volume-type",

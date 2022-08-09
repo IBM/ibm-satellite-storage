@@ -31,7 +31,7 @@
         "category": "config"
     },
     {
-        "description": "Specify the storage class preference",
+        "description": "Specify a unique volume tier preference; in the range of 1-99 with 1 being the highest",
         "displayname": "Storage Class Preference",
         "name": "storage-class-preference",
         "templateKeyName": [

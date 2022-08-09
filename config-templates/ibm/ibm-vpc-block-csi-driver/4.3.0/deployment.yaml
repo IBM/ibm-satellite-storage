@@ -5,7 +5,7 @@ metadata:
   namespace: kube-system
   annotations:
     version: 4.3.0
-    revision: 1
+    revision: 6
 items:
   - kind: ClusterRole
     apiVersion: rbac.authorization.k8s.io/v1
@@ -279,13 +279,15 @@ items:
         metadata:
           labels:
             app: ibm-vpc-block-csi-driver
+          annotations:
+            autoUpdate: "AUTO-UPDATE-ENABLED"
         spec:
           serviceAccountName: ibm-vpc-block-node-sa
           tolerations:
             - operator: Exists
           initContainers:
             - name: vpc-node-label-updater
-              image: icr.io/obs/storage/vpc-node-label-updater:v4.1.5
+              image: icr.io/obs/storage/vpc-node-label-updater:v4.1.8
               imagePullPolicy: Always
               securityContext:
                 privileged: false
@@ -352,7 +354,7 @@ items:
                 runAsNonRoot: false
                 runAsUser: 0
                 privileged: true
-              image: icr.io/ibm/ibm-vpc-block-csi-driver:v4.3.0
+              image: icr.io/ibm/ibm-vpc-block-csi-driver:v4.3.4
               imagePullPolicy: Always
               args:
                 - "--v=5"
@@ -482,6 +484,8 @@ items:
         metadata:
           labels:
             app: ibm-vpc-block-csi-driver
+          annotations:
+            autoUpdate: "AUTO-UPDATE-ENABLED"
         spec:
           serviceAccountName: ibm-vpc-block-controller-sa
           securityContext:
@@ -572,7 +576,7 @@ items:
                   mountPath: /csi
             - name: iks-vpc-block-driver
               imagePullPolicy: Always
-              image: icr.io/ibm/ibm-vpc-block-csi-driver:v4.3.0
+              image: icr.io/ibm/ibm-vpc-block-csi-driver:v4.3.4
               securityContext:
                 privileged: false
                 allowPrivilegeEscalation: false

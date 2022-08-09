@@ -14,6 +14,9 @@ items:
       labels:
         app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
         app.kubernetes.io/version: 1.0.4
+        volume-type: "block"
+        storage-class-preference: "4"
+        is-user-defined-class: "false"
     provisioner: pd.csi.storage.gke.io
     parameters:
       type: pd-standard
@@ -25,6 +28,9 @@ items:
       labels:
         app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
         app.kubernetes.io/version: 1.0.4
+        volume-type: "block"
+        storage-class-preference: "3"
+        is-user-defined-class: "false"
     provisioner: pd.csi.storage.gke.io
     parameters:
       type: pd-balanced
@@ -38,6 +44,9 @@ items:
       labels:
         app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
         app.kubernetes.io/version: 1.0.4
+        volume-type: "block"
+        storage-class-preference: "2"
+        is-user-defined-class: "false"
     provisioner: pd.csi.storage.gke.io
     parameters:
       type: pd-ssd
@@ -49,6 +58,9 @@ items:
       labels:
         app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
         app.kubernetes.io/version: 1.0.4
+        volume-type: "block"
+        storage-class-preference: "1"
+        is-user-defined-class: "false"
     provisioner: pd.csi.storage.gke.io
     parameters:
       type: pd-extreme
@@ -60,6 +72,9 @@ items:
       labels:
         app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
         app.kubernetes.io/version: 1.0.4
+        volume-type: "block"
+        storage-class-preference: "8"
+        is-user-defined-class: "false"
     provisioner: pd.csi.storage.gke.io
     parameters:
       type: pd-standard
@@ -71,6 +86,9 @@ items:
       labels:
         app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
         app.kubernetes.io/version: 1.0.4
+        volume-type: "block"
+        storage-class-preference: "7"
+        is-user-defined-class: "false"
     provisioner: pd.csi.storage.gke.io
     parameters:
       type: pd-balanced
@@ -82,6 +100,9 @@ items:
       labels:
         app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
         app.kubernetes.io/version: 1.0.4
+        volume-type: "block"
+        storage-class-preference: "6"
+        is-user-defined-class: "false"
     provisioner: pd.csi.storage.gke.io
     parameters:
       type: pd-ssd
@@ -93,6 +114,9 @@ items:
       labels:
         app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
         app.kubernetes.io/version: 1.0.4
+        volume-type: "block"
+        storage-class-preference: "5"
+        is-user-defined-class: "false"
     provisioner: pd.csi.storage.gke.io
     parameters:
       type: pd-extreme

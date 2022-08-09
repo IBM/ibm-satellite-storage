@@ -1,6 +1,6 @@
 {
   "name": "4.7",
-  "revision": "1",
+  "revision": "3",
   "enabled": "true",
   "status": "supported",
   "description": "Persistent storage using local volumes",
@@ -29,6 +29,9 @@
     }, {
       "name": "supported-k8s-versions",
       "value": "1.18,1.19"
+    }, {
+      "name": "supported-ocp-versions",
+      "value": "4.7"
     }, {
       "name": "volume-type",
       "value": "file"

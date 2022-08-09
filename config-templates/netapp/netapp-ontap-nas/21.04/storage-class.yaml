@@ -11,12 +11,15 @@ items:
     metadata:
       name: sat-netapp-file-gold
       labels:
+        volume-type: "file"
+        storage-class-preference: "2" # As per vendor specification; e.g.: 1, 2, ... 99.
+        is-user-defined-class: "false"
         app.kubernetes.io/name: "netapp-ontap-nas"
         app.kubernetes.io/version: "v21.04"
-        app.kubernetes.io/revision: "3"
+        app.kubernetes.io/revision: "5"
       annotations:
         storageclass.kubernetes.io/is-default-class: "true"
-    provisioner: netapp.io/trident
+    provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-nas"
       selector: "quality=file-gold"
@@ -26,10 +29,13 @@ items:
     metadata:
       name: sat-netapp-file-silver
       labels:
+        volume-type: "file"
+        storage-class-preference: "4" # As per vendor specification; e.g.: 1, 2, ... 99.
+        is-user-defined-class: "false"
         app.kubernetes.io/name: "netapp-ontap-nas"
         app.kubernetes.io/version: "v21.04"
-        app.kubernetes.io/revision: "3"
-    provisioner: netapp.io/trident
+        app.kubernetes.io/revision: "5"
+    provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-nas"
       selector: "quality=file-silver"
@@ -39,10 +45,13 @@ items:
     metadata:
       name: sat-netapp-file-bronze
       labels:
+        volume-type: "file"
+        storage-class-preference: "6" # As per vendor specification; e.g.: 1, 2, ... 99.
+        is-user-defined-class: "false"
         app.kubernetes.io/name: "netapp-ontap-nas"
         app.kubernetes.io/version: "v21.04"
-        app.kubernetes.io/revision: "3"
-    provisioner: netapp.io/trident
+        app.kubernetes.io/revision: "5"
+    provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-nas"
       selector: "quality=file-bronze"
@@ -52,10 +61,13 @@ items:
     metadata:
       name: sat-netapp-file-gold-encrypted
       labels:
+        volume-type: "file"
+        storage-class-preference: "1" # As per vendor specification; e.g.: 1, 2, ... 99.
+        is-user-defined-class: "false"
         app.kubernetes.io/name: "netapp-ontap-nas"
         app.kubernetes.io/version: "v21.04"
-        app.kubernetes.io/revision: "3"
-    provisioner: netapp.io/trident
+        app.kubernetes.io/revision: "5"
+    provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-nas"
       selector: "quality=file-gold-encrypted"
@@ -65,10 +77,13 @@ items:
     metadata:
       name: sat-netapp-file-silver-encrypted
       labels:
+        volume-type: "file"
+        storage-class-preference: "3" # As per vendor specification; e.g.: 1, 2, ... 99.
+        is-user-defined-class: "false"
         app.kubernetes.io/name: "netapp-ontap-nas"
         app.kubernetes.io/version: "v21.04"
-        app.kubernetes.io/revision: "3"
-    provisioner: netapp.io/trident
+        app.kubernetes.io/revision: "5"
+    provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-nas"
       selector: "quality=file-silver-encrypted"
@@ -78,10 +93,13 @@ items:
     metadata:
       name: sat-netapp-file-bronze-encrypted
       labels:
+        volume-type: "file"
+        storage-class-preference: "5" # As per vendor specification; e.g.: 1, 2, ... 99.
+        is-user-defined-class: "false"
         app.kubernetes.io/name: "netapp-ontap-nas"
         app.kubernetes.io/version: "v21.04"
-        app.kubernetes.io/revision: "3"
-    provisioner: netapp.io/trident
+        app.kubernetes.io/revision: "5"
+    provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-nas"
       selector: "quality=file-bronze"
