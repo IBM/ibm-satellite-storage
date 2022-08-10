@@ -14,6 +14,9 @@ items:
       labels:
         app.kubernetes.io/name: azurefile-csi-driver
         app.kubernetes.io/version: 1.9.0
+        volume-type: "file"
+        storage-class-preference: "1"
+        is-user-defined-class: "false"
     provisioner: file.csi.azure.com
     parameters:
       skuname: UltraSSD_LRS
@@ -29,6 +32,9 @@ items:
       labels:
         app.kubernetes.io/name: azurefile-csi-driver
         app.kubernetes.io/version: 1.9.0
+        volume-type: "file"
+        volume-tie-preferencer: "5"
+        is-user-defined-class: "false"
     provisioner: file.csi.azure.com
     parameters:
       skuname: UltraSSD_LRS
@@ -46,6 +52,9 @@ items:
       labels:
         app.kubernetes.io/name: azurefile-csi-driver
         app.kubernetes.io/version: 1.9.0
+        volume-type: "file"
+        storage-class-preference: "2"
+        is-user-defined-class: "false"
     provisioner: file.csi.azure.com
     parameters:
       skuname: Premium_LRS
@@ -61,6 +70,9 @@ items:
       labels:
         app.kubernetes.io/name: azurefile-csi-driver
         app.kubernetes.io/version: 1.9.0
+        volume-type: "file"
+        storage-class-preference: "6"
+        is-user-defined-class: "false"
     provisioner: file.csi.azure.com
     parameters:
       skuname: Premium_LRS
@@ -76,6 +88,9 @@ items:
       labels:
         app.kubernetes.io/name: azurefile-csi-driver
         app.kubernetes.io/version: 1.9.0
+        volume-type: "file"
+        storage-class-preference: "3"
+        is-user-defined-class: "false"
     provisioner: file.csi.azure.com
     parameters:
       skuname: StandardSSD_LRS
@@ -91,6 +106,9 @@ items:
       labels:
         app.kubernetes.io/name: azurefile-csi-driver
         app.kubernetes.io/version: 1.9.0
+        volume-type: "file"
+        storage-class-preference: "7"
+        is-user-defined-class: "false"
     provisioner: file.csi.azure.com
     parameters:
       skuname: StandardSSD_LRS
@@ -105,6 +123,10 @@ items:
       labels:
         app.kubernetes.io/name: azurefile-csi-driver
         app.kubernetes.io/version: 1.9.0
+        volume-type: "block"
+        volume-tie-preferencer: "4"
+        is-user-defined-class: "false"
+    provisioner: disk.csi.azure.com
     provisioner: file.csi.azure.com
     parameters:
       skuname: Standard_LRS
@@ -119,7 +141,10 @@ items:
       name: sat-azure-file-bronze
       labels:
         app.kubernetes.io/name: azurefile-csi-driver
-        app.kubernetes.io/version: 1.8.0
+        app.kubernetes.io/version: 1.9.0
+        volume-type: "block"
+        storage-class-preference: "8"
+        is-user-defined-class: "false"
     provisioner: file.csi.azure.com
     parameters:
       skuname: Standard_LRS

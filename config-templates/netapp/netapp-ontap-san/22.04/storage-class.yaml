@@ -13,11 +13,11 @@ items:
       labels:
         app.kubernetes.io/name: "netapp-ontap-san"
         app.kubernetes.io/version: "v22.04"
-        app.kubernetes.io/revision: "1"
+        app.kubernetes.io/revision: "3"
         volume-type: "block"
         storage-class-preference: "4"
         is-user-defined-class: "false"
-    provisioner: netapp.io/trident
+    provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-san"
       selector: "quality=block-gold"
@@ -31,11 +31,11 @@ items:
       labels:
         app.kubernetes.io/name: "netapp-ontap-san"
         app.kubernetes.io/version: "v22.04"
-        app.kubernetes.io/revision: "1"
+        app.kubernetes.io/revision: "3"
         volume-type: "block"
         storage-class-preference: "8"
         is-user-defined-class: "false"
-    provisioner: netapp.io/trident
+    provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-san"
       selector: "quality=block-silver"
@@ -49,11 +49,11 @@ items:
       labels:
         app.kubernetes.io/name: "netapp-ontap-san"
         app.kubernetes.io/version: "v22.04"
-        app.kubernetes.io/revision: "1"
+        app.kubernetes.io/revision: "3"
         volume-type: "block"
         storage-class-preference: "12"
         is-user-defined-class: "false"
-    provisioner: netapp.io/trident
+    provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-san"
       selector: "quality=block-bronze"
@@ -67,11 +67,11 @@ items:
       labels:
         app.kubernetes.io/name: "netapp-ontap-san"
         app.kubernetes.io/version: "v22.04"
-        app.kubernetes.io/revision: "1"
+        app.kubernetes.io/revision: "3"
         volume-type: "block"
         storage-class-preference: "2"
         is-user-defined-class: "false"
-    provisioner: netapp.io/trident
+    provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-san"
       selector: "quality=block-gold-encrypted"
@@ -85,11 +85,11 @@ items:
       labels:
         app.kubernetes.io/name: "netapp-ontap-san"
         app.kubernetes.io/version: "v22.04"
-        app.kubernetes.io/revision: "1"
+        app.kubernetes.io/revision: "3"
         volume-type: "block"
         storage-class-preference: "6"
         is-user-defined-class: "false"
-    provisioner: netapp.io/trident
+    provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-san"
       selector: "quality=block-silver-encrypted"
@@ -103,11 +103,11 @@ items:
       labels:
         app.kubernetes.io/name: "netapp-ontap-san"
         app.kubernetes.io/version: "v22.04"
-        app.kubernetes.io/revision: "1"
+        app.kubernetes.io/revision: "3"
         volume-type: "block"
         storage-class-preference: "10"
         is-user-defined-class: "false"
-    provisioner: netapp.io/trident
+    provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-san"
       selector: "quality=block-bronze-encrypted"
@@ -121,13 +121,13 @@ items:
       labels:
         app.kubernetes.io/name: "netapp-ontap-san"
         app.kubernetes.io/version: "v22.04"
-        app.kubernetes.io/revision: "1"
+        app.kubernetes.io/revision: "3"
         volume-type: "block"
         storage-class-preference: "3"
         is-user-defined-class: "false"
       annotations:
         storageclass.kubernetes.io/is-default-class: "true"
-    provisioner: netapp.io/trident
+    provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-san"
       selector: "quality=block-gold"
@@ -141,11 +141,11 @@ items:
       labels:
         app.kubernetes.io/name: "netapp-ontap-san"
         app.kubernetes.io/version: "v22.04"
-        app.kubernetes.io/revision: "7"
+        app.kubernetes.io/revision: "3"
         volume-type: "block"
-        storage-class-preference: "6"
+        storage-class-preference: "7"
         is-user-defined-class: "false"
-    provisioner: netapp.io/trident
+    provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-san"
       selector: "quality=block-silver"
@@ -159,11 +159,11 @@ items:
       labels:
         app.kubernetes.io/name: "netapp-ontap-san"
         app.kubernetes.io/version: "v22.04"
-        app.kubernetes.io/revision: "1"
+        app.kubernetes.io/revision: "3"
         volume-type: "block"
         storage-class-preference: "11"
         is-user-defined-class: "false"
-    provisioner: netapp.io/trident
+    provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-san"
       selector: "quality=block-bronze"
@@ -177,11 +177,11 @@ items:
       labels:
         app.kubernetes.io/name: "netapp-ontap-san"
         app.kubernetes.io/version: "v22.04"
-        app.kubernetes.io/revision: "1"
+        app.kubernetes.io/revision: "3"
         volume-type: "block"
         storage-class-preference: "1"
         is-user-defined-class: "false"
-    provisioner: netapp.io/trident
+    provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-san"
       selector: "quality=block-gold-encrypted"
@@ -195,11 +195,11 @@ items:
       labels:
         app.kubernetes.io/name: "netapp-ontap-san"
         app.kubernetes.io/version: "v22.04"
-        app.kubernetes.io/revision: "1"
+        app.kubernetes.io/revision: "3"
         volume-type: "block"
         storage-class-preference: "5"
         is-user-defined-class: "false"
-    provisioner: netapp.io/trident
+    provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-san"
       selector: "quality=block-silver-encrypted"
@@ -213,11 +213,11 @@ items:
       labels:
         app.kubernetes.io/name: "netapp-ontap-san"
         app.kubernetes.io/version: "v22.04"
-        app.kubernetes.io/revision: "1"
+        app.kubernetes.io/revision: "3"
         volume-type: "block"
         storage-class-preference: "9"
         is-user-defined-class: "false"
-    provisioner: netapp.io/trident
+    provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-san"
       selector: "quality=block-bronze-encrypted"

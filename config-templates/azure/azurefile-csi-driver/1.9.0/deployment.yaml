@@ -6,7 +6,7 @@ metadata:
   namespace: kube-system
   annotations:
     version: 1.9.0
-    revision: 1
+    revision: 4
 items:
   - apiVersion: v1
     stringData:
@@ -22,18 +22,23 @@ items:
           "vmType": "{{{vmType}}}",
           "securityGroupName": "{{{securityGroupName}}}",
           "vnetName": "{{{vnetName}}}",
+          "subnetName": "{{{subnetName}}}"
         }
     kind: Secret
     metadata:
       name: azure-cloud-provider
       namespace: kube-system
+      labels:
+        app.kubernetes.io/name: "azurefile-csi-driver"
+        app.kubernetes.io/version: "v1.9.0"
     type: Opaque
-
-
   - apiVersion: storage.k8s.io/v1
     kind: CSIDriver
     metadata:
       name: file.csi.azure.com
+      labels:
+        app.kubernetes.io/name: "azurefile-csi-driver"
+        app.kubernetes.io/version: "v1.9.0"
       annotations:
         csiDriver: v1.9.0
     spec:
@@ -42,8 +47,6 @@ items:
       volumeLifecycleModes:
         - Persistent
         - Ephemeral
-
-
   - apiVersion: v1
     kind: ServiceAccount
     metadata:
@@ -52,7 +55,6 @@ items:
       labels:
         app.kubernetes.io/name: "azurefile-csi-driver"
         app.kubernetes.io/version: "v1.9.0"
-
   - apiVersion: v1
     kind: ServiceAccount
     metadata:
@@ -61,7 +63,6 @@ items:
       labels:
         app.kubernetes.io/name: "azurefile-csi-driver"
         app.kubernetes.io/version: "v1.9.0"
-
   - kind: ClusterRole
     apiVersion: rbac.authorization.k8s.io/v1
     metadata:
@@ -97,7 +98,6 @@ items:
       - apiGroups: ["snapshot.storage.k8s.io"]
         resources: ["volumesnapshotcontents"]
         verbs: ["get", "list"]
-
   - kind: ClusterRole
     apiVersion: rbac.authorization.k8s.io/v1
     metadata:
@@ -124,7 +124,6 @@ items:
       - apiGroups: ["coordination.k8s.io"]
         resources: ["leases"]
         verbs: ["get", "list", "watch", "create", "update", "patch"]
-
   - kind: ClusterRole
     apiVersion: rbac.authorization.k8s.io/v1
     metadata:
@@ -154,7 +153,6 @@ items:
       - apiGroups: ["snapshot.storage.k8s.io"]
         resources: ["volumesnapshotcontents/status"]
         verbs: ["update"]
-
   - kind: ClusterRole
     apiVersion: rbac.authorization.k8s.io/v1
     metadata:
@@ -178,7 +176,6 @@ items:
       - apiGroups: ["coordination.k8s.io"]
         resources: ["leases"]
         verbs: ["get", "list", "watch", "create", "update", "patch"]
-
   - kind: ClusterRole
     apiVersion: rbac.authorization.k8s.io/v1
     metadata:
@@ -196,17 +193,13 @@ items:
       - apiGroups: [""]
         resources: ["secrets"]
         verbs: ["get", "list"]
-
   - kind: ClusterRoleBinding
     apiVersion: rbac.authorization.k8s.io/v1
     metadata:
       name: azurefile-csi-provisioner-binding
       labels:
-        app.kubernetes.io/instance: "RELEASE-NAME"
-        app.kubernetes.io/managed-by: "Helm"
         app.kubernetes.io/name: "azurefile-csi-driver"
         app.kubernetes.io/version: "v1.9.0"
-        helm.sh/chart: "azurefile-csi-driver-v1.9.0"
     subjects:
       - kind: ServiceAccount
         name: csi-azurefile-controller-sa
@@ -215,17 +208,13 @@ items:
       kind: ClusterRole
       name: azurefile-external-provisioner-role
       apiGroup: rbac.authorization.k8s.io
-
   - kind: ClusterRoleBinding
     apiVersion: rbac.authorization.k8s.io/v1
     metadata:
       name: azurefile-csi-attacher-binding
       labels:
-        app.kubernetes.io/instance: "RELEASE-NAME"
-        app.kubernetes.io/managed-by: "Helm"
         app.kubernetes.io/name: "azurefile-csi-driver"
         app.kubernetes.io/version: "v1.9.0"
-        helm.sh/chart: "azurefile-csi-driver-v1.9.0"
     subjects:
       - kind: ServiceAccount
         name: csi-azurefile-controller-sa
@@ -234,7 +223,6 @@ items:
       kind: ClusterRole
       name: azurefile-external-attacher-role
       apiGroup: rbac.authorization.k8s.io
-
   - kind: ClusterRoleBinding
     apiVersion: rbac.authorization.k8s.io/v1
     metadata:
@@ -250,7 +238,6 @@ items:
       kind: ClusterRole
       name: azurefile-external-snapshotter-role
       apiGroup: rbac.authorization.k8s.io
-
   - kind: ClusterRoleBinding
     apiVersion: rbac.authorization.k8s.io/v1
     metadata:
@@ -266,7 +253,6 @@ items:
       kind: ClusterRole
       name: azurefile-external-resizer-role
       apiGroup: rbac.authorization.k8s.io
-
   - kind: ClusterRoleBinding
     apiVersion: rbac.authorization.k8s.io/v1
     metadata:
@@ -279,7 +265,6 @@ items:
       kind: ClusterRole
       name: csi-azurefile-controller-secret-role
       apiGroup: rbac.authorization.k8s.io
-
   - kind: ClusterRoleBinding
     apiVersion: rbac.authorization.k8s.io/v1
     metadata:
@@ -292,12 +277,14 @@ items:
       kind: ClusterRole
       name: csi-azurefile-node-secret-role
       apiGroup: rbac.authorization.k8s.io
-
   - kind: DaemonSet
     apiVersion: apps/v1
     metadata:
       name: csi-azurefile-node
       namespace: kube-system
+      labels:
+        app.kubernetes.io/name: "azurefile-csi-driver"
+        app.kubernetes.io/version: "v1.9.0"
     spec:
       updateStrategy:
         rollingUpdate:
@@ -310,6 +297,10 @@ items:
         metadata:
           labels:
             app: csi-azurefile-node
+            app.kubernetes.io/name: "azurefile-csi-driver"
+            app.kubernetes.io/version: "v1.9.0"
+          annotations:
+            autoUpdate: "AUTO-UPDATE-ENABLED"
         spec:
           hostNetwork: true
           dnsPolicy: Default
@@ -448,12 +439,14 @@ items:
                 path: /dev
                 type: Directory
               name: device-dir
-
   - kind: Deployment
     apiVersion: apps/v1
     metadata:
       name: csi-azurefile-controller
       namespace: kube-system
+      labels:
+        app.kubernetes.io/name: "azurefile-csi-driver"
+        app.kubernetes.io/version: "v1.9.0"
     spec:
       replicas: 2
       selector:
@@ -463,6 +456,10 @@ items:
         metadata:
           labels:
             app: csi-azurefile-controller
+            app.kubernetes.io/name: "azurefile-csi-driver"
+            app.kubernetes.io/version: "v1.9.0"
+          annotations:
+            autoUpdate: "AUTO-UPDATE-ENABLED"
         spec:
           hostNetwork: true  # only required for MSI enabled cluster
           serviceAccountName: csi-azurefile-controller-sa

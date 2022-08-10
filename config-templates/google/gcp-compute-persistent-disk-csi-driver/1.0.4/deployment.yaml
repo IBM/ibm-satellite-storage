@@ -6,7 +6,7 @@ metadata:
   namespace: kube-system
   annotations:
     version: 1.0.4
-    revision: 1
+    revision: 3
 items:
   - apiVersion: v1
     kind: Namespace
@@ -607,6 +607,10 @@ items:
         metadata:
           labels:
             app: gcp-compute-persistent-disk-csi-driver
+            app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
+            app.kubernetes.io/version: 1.0.4
+          annotations:
+            autoUpdate: "AUTO-UPDATE-ENABLED"
         spec:
           containers:
           - args:
@@ -757,6 +761,10 @@ items:
         metadata:
           labels:
             app: gcp-compute-persistent-disk-csi-driver
+            app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
+            app.kubernetes.io/version: 1.0.4
+          annotations:
+            autoUpdate: "AUTO-UPDATE-ENABLED"
         spec:
           containers:
           - args:

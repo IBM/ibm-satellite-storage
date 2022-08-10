@@ -14,6 +14,9 @@ items:
       labels:
         app.kubernetes.io/name: aws-ebs-csi-driver
         app.kubernetes.io/version: 0.9.14
+        volume-type: "block"
+        storage-class-preference: "4"
+        is-user-defined-class: "false"
     provisioner: ebs.csi.aws.com
     volumeBindingMode: Immediate
     allowVolumeExpansion: true
@@ -29,6 +32,9 @@ items:
       labels:
         app.kubernetes.io/name: aws-ebs-csi-driver
         app.kubernetes.io/version: 0.9.14
+        volume-type: "block"
+        storage-class-preference: "5"
+        is-user-defined-class: "false"
     provisioner: ebs.csi.aws.com
     volumeBindingMode: Immediate
     allowVolumeExpansion: true
@@ -43,6 +49,9 @@ items:
       labels:
         app.kubernetes.io/name: aws-ebs-csi-driver
         app.kubernetes.io/version: 0.9.14
+        volume-type: "block"
+        storage-class-preference: "6"
+        is-user-defined-class: "false"
     provisioner: ebs.csi.aws.com
     volumeBindingMode: Immediate
     allowVolumeExpansion: true
@@ -59,6 +68,9 @@ items:
       labels:
         app.kubernetes.io/name: aws-ebs-csi-driver
         app.kubernetes.io/version: 0.9.14
+        volume-type: "block"
+        storage-class-preference: "1"
+        is-user-defined-class: "false"
     provisioner: ebs.csi.aws.com
     volumeBindingMode: WaitForFirstConsumer
     allowVolumeExpansion: true
@@ -74,6 +86,9 @@ items:
       labels:
         app.kubernetes.io/name: aws-ebs-csi-driver
         app.kubernetes.io/version: 0.9.14
+        volume-type: "block"
+        storage-class-preference: "2"
+        is-user-defined-class: "false"
     provisioner: ebs.csi.aws.com
     volumeBindingMode: WaitForFirstConsumer
     allowVolumeExpansion: true
@@ -88,6 +103,9 @@ items:
       labels:
         app.kubernetes.io/name: aws-ebs-csi-driver
         app.kubernetes.io/version: 0.9.14
+        volume-type: "block"
+        storage-class-preference: "3"
+        is-user-defined-class: "false"
     provisioner: ebs.csi.aws.com
     volumeBindingMode: WaitForFirstConsumer
     allowVolumeExpansion: true

@@ -1,8 +1,8 @@
 {
   "name": "20.07",
-  "revision": "1",
+  "revision": "2",
   "enabled": "true",
-  "status": "supported",
+  "status": "deprecated",
   "description": "Netapp Ontap-SAN Driver.",
   "tags": [
     {

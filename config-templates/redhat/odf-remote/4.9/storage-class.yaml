@@ -5,6 +5,10 @@ items:
     kind: StorageClass
     metadata:
       name: sat-ocs-cephrbd-gold
+      labels:
+        volume-type: "block"
+        storage-class-preference: "1"
+        is-user-defined-class: "false"
     parameters:
       clusterID: openshift-storage
       csi.storage.k8s.io/controller-expand-secret-name: rook-csi-rbd-provisioner
@@ -25,6 +29,10 @@ items:
     kind: StorageClass
     metadata:
       name: sat-ocs-cephfs-gold
+      labels:
+        volume-type: "file"
+        storage-class-preference: "1"
+        is-user-defined-class: "false"
     parameters:
       clusterID: openshift-storage
       csi.storage.k8s.io/controller-expand-secret-name: rook-csi-cephfs-provisioner
@@ -42,6 +50,10 @@ items:
     kind: StorageClass
     metadata:
       name: sat-ocs-cephrgw-gold
+      labels:
+        volume-type: "object"
+        storage-class-preference: "2"
+        is-user-defined-class: "false"
     parameters:
       objectStoreName: ocs-storagecluster-cephobjectstore
       objectStoreNamespace: openshift-storage
@@ -53,6 +65,10 @@ items:
     kind: StorageClass
     metadata:
       name: sat-ocs-noobaa-gold
+      labels:
+        volume-type: "object"
+        storage-class-preference: "1"
+        is-user-defined-class: "false"
     parameters:
       bucketclass: noobaa-default-bucket-class
     provisioner: openshift-storage.noobaa.io/obc
@@ -62,6 +78,10 @@ items:
     kind: StorageClass
     metadata:
       name: sat-ocs-cephrbd-gold-metro
+      labels:
+        volume-type: "block"
+        storage-class-preference: "2"
+        is-user-defined-class: "false"
     parameters:
       clusterID: openshift-storage
       csi.storage.k8s.io/controller-expand-secret-name: rook-csi-rbd-provisioner
@@ -82,6 +102,10 @@ items:
     kind: StorageClass
     metadata:
       name: sat-ocs-cephfs-gold-metro
+      labels:
+        volume-type: "file"
+        storage-class-preference: "2"
+        is-user-defined-class: "false"
     parameters:
       clusterID: openshift-storage
       csi.storage.k8s.io/controller-expand-secret-name: rook-csi-cephfs-provisioner
@@ -94,4 +118,4 @@ items:
     provisioner: openshift-storage.cephfs.csi.ceph.com
     reclaimPolicy: Delete
     volumeBindingMode: WaitForFirstConsumer
-    allowVolumeExpansion: true  
+    allowVolumeExpansion: true

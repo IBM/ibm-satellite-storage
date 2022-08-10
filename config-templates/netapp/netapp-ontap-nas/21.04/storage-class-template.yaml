@@ -3,9 +3,12 @@ kind: StorageClass
 metadata:
   name: "{{ name }}"
   labels:
+    volume-type: "file" # As per user specification; e.g.: block, file or object.
+    storage-class-preference: "{{ storage-class-preference }}" # As per user specification; e.g.: 1, 2, ... 99.
+    is-user-defined-class: "true" # As this is a user-defined storage class
     app.kubernetes.io/name: "netapp-ontap-nas"
     app.kubernetes.io/version: "v21.04"
-    app.kubernetes.io/revision: "3"
+    app.kubernetes.io/revision: "5"
   annotations:
     storageclass.kubernetes.io/is-default-class: "{{ is-default-class }}"
 provisioner: csi.trident.netapp.io

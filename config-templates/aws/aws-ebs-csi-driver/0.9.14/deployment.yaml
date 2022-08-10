@@ -6,7 +6,7 @@ metadata:
   namespace: kube-system
   annotations:
     version: 0.9.14
-    revision: 1
+    revision: 3
 items:
   - apiVersion: v1
     kind: Secret
@@ -481,6 +481,8 @@ items:
             app: ebs-csi-controller
             app.kubernetes.io/name: aws-ebs-csi-driver
             app.kubernetes.io/version: 0.9.14
+          annotations:
+            autoUpdate: "AUTO-UPDATE-ENABLED"
         spec:
           nodeSelector:
             kubernetes.io/os: linux

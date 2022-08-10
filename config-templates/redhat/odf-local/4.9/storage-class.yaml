@@ -4,7 +4,11 @@ items:
   - apiVersion: storage.k8s.io/v1
     kind: StorageClass
     metadata:
-      name: sat-ocs-cephrbd-gold
+      name: sat-ocs-cephrbd-gold #rbd block
+      labels:
+        volume-type: "block"
+        storage-class-preference: "1"
+        is-user-defined-class: "false"
     parameters:
       clusterID: openshift-storage
       csi.storage.k8s.io/controller-expand-secret-name: rook-csi-rbd-provisioner
@@ -24,7 +28,11 @@ items:
   - apiVersion: storage.k8s.io/v1
     kind: StorageClass
     metadata:
-      name: sat-ocs-cephfs-gold
+      name: sat-ocs-cephfs-gold #fs is file
+      labels:
+        volume-type: "file"
+        storage-class-preference: "1"
+        is-user-defined-class: "false"
     parameters:
       clusterID: openshift-storage
       csi.storage.k8s.io/controller-expand-secret-name: rook-csi-cephfs-provisioner
@@ -42,6 +50,10 @@ items:
     kind: StorageClass
     metadata:
       name: sat-ocs-cephrgw-gold
+      labels:
+        volume-type: "object"
+        storage-class-preference: "2"
+        is-user-defined-class: "false"
     parameters:
       objectStoreName: ocs-storagecluster-cephobjectstore
       objectStoreNamespace: openshift-storage
@@ -52,7 +64,11 @@ items:
   - apiVersion: storage.k8s.io/v1
     kind: StorageClass
     metadata:
-      name: sat-ocs-noobaa-gold
+      name: sat-ocs-noobaa-gold #object
+      labels:
+        volume-type: "object"
+        storage-class-preference: "1"
+        is-user-defined-class: "false"
     parameters:
       bucketclass: noobaa-default-bucket-class
     provisioner: openshift-storage.noobaa.io/obc
@@ -62,6 +78,10 @@ items:
     kind: StorageClass
     metadata:
       name: sat-ocs-cephrbd-gold-metro
+      labels:
+        volume-type: "block"
+        storage-class-preference: "2"
+        is-user-defined-class: "false"
     parameters:
       clusterID: openshift-storage
       csi.storage.k8s.io/controller-expand-secret-name: rook-csi-rbd-provisioner
@@ -82,6 +102,10 @@ items:
     kind: StorageClass
     metadata:
       name: sat-ocs-cephfs-gold-metro
+      labels:
+        volume-type: "file"
+        storage-class-preference: "2"
+        is-user-defined-class: "false"
     parameters:
       clusterID: openshift-storage
       csi.storage.k8s.io/controller-expand-secret-name: rook-csi-cephfs-provisioner

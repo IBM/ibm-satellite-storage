@@ -10,6 +10,10 @@ items:
     kind: StorageClass
     metadata:
       name: sat-netapp-file-gold
+      labels:
+        volume-type: "file"
+        storage-class-preference: "1" # As per vendor specification; e.g.: 1, 2, ... 99.
+        is-user-defined-class: "false"
     provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-nas"
@@ -19,6 +23,10 @@ items:
     kind: StorageClass
     metadata:
       name: sat-netapp-file-silver
+      labels:
+        volume-type: "file"
+        storage-class-preference: "2" # As per vendor specification; e.g.: 1, 2, ... 99.
+        is-user-defined-class: "false"
     provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-nas"
@@ -28,6 +36,10 @@ items:
     kind: StorageClass
     metadata:
       name: sat-netapp-file-bronze
+      labels:
+        volume-type: "file"
+        storage-class-preference: "3" # As per vendor specification; e.g.: 1, 2, ... 99.
+        is-user-defined-class: "false"
     provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-nas"
