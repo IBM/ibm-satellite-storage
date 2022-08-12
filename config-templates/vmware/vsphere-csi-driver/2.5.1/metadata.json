@@ -59,7 +59,7 @@
         },
         {
             "name": "storageclass",
-            "value": "block, block-metro"
+            "value": "block, block-metro, file, file-metro"
         }
     ]
 }
