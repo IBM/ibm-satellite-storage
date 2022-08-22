@@ -14,6 +14,10 @@
       "value": "block"
     },
     {
+      "name": "provider-logo",
+      "value": "logo/ibm-vpc-block-csi-driver.svg"
+    },
+    {
       "name": "offering-name",
       "value": "ibm-vpc-block-csi-driver"
     },
