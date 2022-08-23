@@ -1,50 +1,50 @@
 {
-    "name": "4.3.0",
-    "revision": "6",
-    "enabled": "true",
-    "status": "supported",
-    "description": "[Beta] - IBM VPC Block Storage CSI driver version 4.3.0",
-    "tags": [
-      {
-        "name": "provider",
-        "value": "ibm"
-      },
-      {
-        "name": "volume-type",
-        "value": "block"
-      },
-      {
-        "name": "provider-logo",
-        "value": "logo/ibm-vpc-block-csi-driver.svg"
-      },
-      {
-        "name": "offering-name",
-        "value": "ibm-vpc-block-csi-driver"
-      },
-      {
-        "name": "offering-type",
-        "value": "non-sds"
-      },
-      {
-        "name": "provider-url",
-        "value": "IBM knowledge center: https://www.ibm.com/support/knowledgecenter/SSRQ8T_1.4.0/csi_block_storage_kc_welcome.html"
-      },
-      {
-        "name": "support-url",
-        "value": "https://www.ibm.com/support/home/"
-      },
-      {
-        "name": "support-msg",
-        "value": "For support contact IBM"
-      },
-      {
-        "name": "supported-envs",
-        "value": "IBM"
-      },
-      {
-        "name": "supported-k8s-versions",
-        "value": "1.20,1.21,1.22,1.23"
-      }
-      ]
+  "name": "4.3.0",
+  "revision": "7",
+  "enabled": "true",
+  "status": "supported",
+  "description": "[Beta] - IBM VPC Block Storage CSI driver version 4.3.0",
+  "tags": [
+    {
+      "name": "provider",
+      "value": "ibm"
+    },
+    {
+      "name": "volume-type",
+      "value": "block"
+    },
+    {
+      "name": "provider-logo",
+      "value": "logo/ibm-vpc-block-csi-driver.svg"
+    },
+    {
+      "name": "offering-name",
+      "value": "ibm-vpc-block-csi-driver"
+    },
+    {
+      "name": "offering-type",
+      "value": "non-sds"
+    },
+    {
+      "name": "provider-url",
+      "value": "IBM knowledge center: https://www.ibm.com/support/knowledgecenter/SSRQ8T_1.4.0/csi_block_storage_kc_welcome.html"
+    },
+    {
+      "name": "support-url",
+      "value": "https://www.ibm.com/support/home/"
+    },
+    {
+      "name": "support-msg",
+      "value": "For support contact IBM"
+    },
+    {
+      "name": "supported-envs",
+      "value": "IBM"
+    },
+    {
+      "name": "supported-k8s-versions",
+      "value": "1.20,1.21,1.22,1.23"
     }
-    
+    ]
+  }
+  
