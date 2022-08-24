@@ -466,7 +466,7 @@ items:
       hpcsBaseUrl: "{{{ kms-base-url }}}"
       hpcsTokenUrl: "{{{ kms-token-url }}}"
       {{/kms-encryption}}
-      ignoreNoobaa: "{{ ignore-noobaa }}"
+      ignoreNoobaa: {{ ignore-noobaa }}
   - apiVersion: satstorage.ibm.com/v1
     kind: SatStorageCleanup
     metadata:
