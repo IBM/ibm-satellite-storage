@@ -73,5 +73,17 @@
 		"category": "config",
 		"regex": "^[1-9]([0-9]?)$",
 		"type": "text"
+	}, {
+		"description": "Specify the Filesystem type",
+		"displayname": "Filesystem Type",
+		"name": "fstype",
+		"templateKeyName": [
+			"csi.storage.k8s.io/fstype"
+		],
+		"required": "false",
+		"default": "ext4",
+		"category": "config",
+		"regex": "^(ext4|nfs4)$",
+		"type": "text"
 	}
 ]

@@ -1,6 +1,6 @@
 {
     "name": "2.5.1",
-    "revision": "4",
+    "revision": "5",
     "enabled": "true",
     "status": "supported",
     "description": "VMware volume persistant storage",
@@ -59,7 +59,7 @@
         },
         {
             "name": "storageclass",
-            "value": "block, block-metro"
+            "value": "block, block-metro, file, file-metro"
         }
     ]
 }

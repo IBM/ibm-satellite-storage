@@ -37,3 +37,33 @@ items:
     parameters:
       storagepolicyname: "vSAN Default Storage Policy"
     volumeBindingMode: WaitForFirstConsumer
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-vsphere-vsan-file
+      labels:
+        app.kubernetes.io/name: vsphere-csi-driver
+        app.kubernetes.io/version: 2.5.1
+        volume-type: "file"
+        storage-class-preference: "2"
+        is-user-defined-class: "false"
+    provisioner: csi.vsphere.vmware.com
+    parameters:
+      storagepolicyname: "vSAN Default Storage Policy"
+      csi.storage.k8s.io/fstype: "nfs4"
+    volumeBindingMode: Immediate
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-vsphere-vsan-file-metro
+      labels:
+        app.kubernetes.io/name: vsphere-csi-driver
+        app.kubernetes.io/version: 2.5.1
+        volume-type: "file"
+        storage-class-preference: "1"
+        is-user-defined-class: "false"
+    provisioner: csi.vsphere.vmware.com
+    parameters:
+      storagepolicyname: "vSAN Default Storage Policy"
+      csi.storage.k8s.io/fstype: "nfs4"
+    volumeBindingMode: WaitForFirstConsumer

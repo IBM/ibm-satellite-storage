@@ -14,5 +14,6 @@ provisioner: csi.vsphere.vmware.com
 parameters:
   datastoreurl: "{{ datastoreurl }}"
   storagepolicyname: "{{ storagepolicyname }}"
+  csi.storage.k8s.io/fstype: "{{ fstype }}"
 volumeBindingMode: "{{ volumeBindingMode }}"
 
