@@ -2,6 +2,12 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: "{{ name }}"
+  labels:
+    app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
+    app.kubernetes.io/version: 1.0.4
+    volume-type: "block" # As per user specification; e.g.: block, file or object.
+    storage-class-preference: "{{ storage-class-preference }}" # As per user specification; e.g.: 1, 2, ...., 99
+    is-user-defined-class: "true" # As this is a user-defined storage class
 provisioner: pd.csi.storage.gke.io
 parameters:
   type: "{{ type }}"

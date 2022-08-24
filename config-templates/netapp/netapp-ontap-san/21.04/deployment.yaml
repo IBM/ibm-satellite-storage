@@ -5,39 +5,51 @@ metadata:
   namespace: kube-system
   annotations:
     version: 21.04
-    revision: 3
+    revision: 8
 items:
-  - apiVersion: v1
-    kind: Pod
+  - apiVersion: apps/v1
+    kind: Deployment
     metadata:
       name: trident-kubectl-san
       namespace: "trident"
       labels:
         app.kubernetes.io/name: "netapp-ontap-san"
         app.kubernetes.io/version: "v21.04"
-        app.kubernetes.io/revision: "3"
+        app.kubernetes.io/revision: "7"
     spec:
-      serviceAccountName: trident-kubectl-sa
-      containers:
-        - name: trident-kubectl-san
-          image: icr.io/ibm/ibm-tridentctl:v2.0.9
-          imagePullPolicy: Always
-          env:
-            - name: NAMESPACE
-              value: "trident"
-            - name: DRIVER_Name
-              value: "ontap-san"
-            - name: MGMT_LIF
-              value: "{{{ managementLIF }}}"
-            - name: DATA_LIF
-              value: "{{{ dataLIF }}}"
-            - name: SVM_Name
-              value: "{{{ svm }}}"
-            - name: USER_Name
-              value: "{{{ username }}}"
-            - name: USER_Password
-              value: "{{{ password }}}"
-            - name: LIMIT_VolumeSize
-              value: "{{{ limitVolumeSize }}}"
-            - name: LIMIT_AggregateUsage
-              value: "{{{ limitAggregateUsage }}}"
+      replicas: 1
+      selector:
+          matchLabels:
+              app: netapp-ontap-san
+              app.kubernetes.io/name: "netapp-ontap-san"
+      template:
+          metadata:
+              labels:
+                  app: netapp-ontap-san
+                  app.kubernetes.io/name: "netapp-ontap-san"
+                  app.kubernetes.io/revision: "7"
+          spec:
+              serviceAccountName: trident-kubectl-sa
+              containers:
+                - name: trident-kubectl-san
+                  image: icr.io/ibm/ibm-tridentctl:v2.0.13
+                  imagePullPolicy: Always
+                  env:
+                  - name: NAMESPACE
+                    value: "trident"
+                  - name: DRIVER_Name
+                    value: "ontap-san"
+                  - name: MGMT_LIF
+                    value: "{{{ managementLIF }}}"
+                  - name: DATA_LIF
+                    value: "{{{ dataLIF }}}"
+                  - name: SVM_Name
+                    value: "{{{ svm }}}"
+                  - name: USER_Name
+                    value: "{{{ username }}}"
+                  - name: USER_Password
+                    value: "{{{ password }}}"
+                  - name: LIMIT_VolumeSize
+                    value: "{{{ limitVolumeSize }}}"
+                  - name: LIMIT_AggregateUsage
+                    value: "{{{ limitAggregateUsage }}}"

@@ -6,7 +6,7 @@ metadata:
   namespace: kube-system
   annotations:
     version: 1.4.0
-    revision: 1
+    revision: 5
 items:
   - apiVersion: v1
     stringData:
@@ -234,6 +234,9 @@ items:
     apiVersion: rbac.authorization.k8s.io/v1
     metadata:
       name: csi-azuredisk-controller-secret-role
+      labels:
+        app.kubernetes.io/name: azuredisk-csi-driver
+        app.kubernetes.io/version: 1.4.0
     rules:
       - apiGroups: [""]
         resources: ["secrets"]
@@ -242,6 +245,9 @@ items:
     apiVersion: rbac.authorization.k8s.io/v1
     metadata:
       name: csi-azuredisk-controller-secret-binding
+      labels:
+        app.kubernetes.io/name: azuredisk-csi-driver
+        app.kubernetes.io/version: 1.4.0
     subjects:
       - kind: ServiceAccount
         name: csi-azuredisk-controller-sa
@@ -254,6 +260,9 @@ items:
     apiVersion: rbac.authorization.k8s.io/v1
     metadata:
       name: csi-azuredisk-node-secret-role
+      labels:
+        app.kubernetes.io/name: azuredisk-csi-driver
+        app.kubernetes.io/version: 1.4.0
     rules:
       - apiGroups: [""]
         resources: ["secrets"]
@@ -262,6 +271,9 @@ items:
     apiVersion: rbac.authorization.k8s.io/v1
     metadata:
       name: csi-azuredisk-node-secret-binding
+      labels:
+        app.kubernetes.io/name: azuredisk-csi-driver
+        app.kubernetes.io/version: 1.4.0
     subjects:
       - kind: ServiceAccount
         name: csi-azuredisk-node-sa
@@ -288,6 +300,8 @@ items:
             app.kubernetes.io/name: azuredisk-csi-driver
             app.kubernetes.io/version: 1.4.0
             app: csi-azuredisk-node
+          annotations:
+            autoUpdate: "AUTO-UPDATE-ENABLED"
         spec:
           hostNetwork: true
           dnsPolicy: ClusterFirstWithHostNet
@@ -467,6 +481,8 @@ items:
             app.kubernetes.io/name: azuredisk-csi-driver
             app.kubernetes.io/version: 1.4.0
             app: csi-azuredisk-controller
+          annotations:
+            autoUpdate: "AUTO-UPDATE-ENABLED"
         spec:
           hostNetwork: true
           serviceAccountName: csi-azuredisk-controller-sa

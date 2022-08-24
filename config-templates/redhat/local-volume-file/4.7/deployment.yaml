@@ -6,12 +6,14 @@ metadata:
     namespace: kube-system
     annotations:
         version: local-volume-file-45
-        revision: 1
+        revision: 3
 items:
     - apiVersion: v1
       kind: Namespace
       metadata:
           name: local-storage
+          labels:
+              deploy.razee.io/Reconcile: "false"
     - apiVersion: operators.coreos.com/v1alpha2
       kind: OperatorGroup
       metadata:
@@ -54,3 +56,12 @@ items:
                   {{#devicepath}}
                   - "{{{ item }}}"
                   {{/devicepath}}
+    - apiVersion: satstorage.ibm.com/v1
+      kind: SatStorageCleanup
+      metadata:
+          name: satstoragecleanup-local-volume-file
+          namespace: "ibm-satellite-storage"
+      spec:
+          template-name: "local-volume-file"
+          template-version: "4.7"
+          template-namespace: "local-storage"

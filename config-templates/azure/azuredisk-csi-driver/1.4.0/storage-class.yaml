@@ -14,6 +14,9 @@ items:
       labels:
         app.kubernetes.io/name: azuredisk-csi-driver
         app.kubernetes.io/version: 1.4.0
+        volume-type: "block"
+        storage-class-preference: "1"
+        is-user-defined-class: "false"
     provisioner: disk.csi.azure.com
     parameters:
       skuname: UltraSSD_LRS
@@ -26,6 +29,9 @@ items:
       labels:
         app.kubernetes.io/name: azuredisk-csi-driver
         app.kubernetes.io/version: 1.4.0
+        volume-type: "block"
+        storage-class-preference: "5"
+        is-user-defined-class: "false"
     provisioner: disk.csi.azure.com
     parameters:
       skuname: UltraSSD_LRS
@@ -40,6 +46,9 @@ items:
       labels:
         app.kubernetes.io/name: azuredisk-csi-driver
         app.kubernetes.io/version: 1.4.0
+        volume-type: "block"
+        storage-class-preference: "2"
+        is-user-defined-class: "false"
     provisioner: disk.csi.azure.com
     parameters:
       skuname: Premium_LRS
@@ -52,6 +61,9 @@ items:
       labels:
         app.kubernetes.io/name: azuredisk-csi-driver
         app.kubernetes.io/version: 1.4.0
+        volume-type: "block"
+        storage-class-preference: "6"
+        is-user-defined-class: "false"
     provisioner: disk.csi.azure.com
     parameters:
       skuname: Premium_LRS
@@ -64,6 +76,9 @@ items:
       labels:
         app.kubernetes.io/name: azuredisk-csi-driver
         app.kubernetes.io/version: 1.4.0
+        volume-type: "block"
+        storage-class-preference: "3"
+        is-user-defined-class: "false"
     provisioner: disk.csi.azure.com
     parameters:
       skuname: StandardSSD_LRS
@@ -76,6 +91,9 @@ items:
       labels:
         app.kubernetes.io/name: azuredisk-csi-driver
         app.kubernetes.io/version: 1.4.0
+        volume-type: "block"
+        storage-class-preference: "7"
+        is-user-defined-class: "false"
     provisioner: disk.csi.azure.com
     parameters:
       skuname: StandardSSD_LRS
@@ -88,6 +106,9 @@ items:
       labels:
         app.kubernetes.io/name: azuredisk-csi-driver
         app.kubernetes.io/version: 1.4.0
+        volume-type: "block"
+        storage-class-preference: "4"
+        is-user-defined-class: "false"
     provisioner: disk.csi.azure.com
     parameters:
       skuname: Standard_LRS
@@ -100,6 +121,9 @@ items:
       labels:
         app.kubernetes.io/name: azuredisk-csi-driver
         app.kubernetes.io/version: 1.4.0
+        volume-type: "block"
+        storage-class-preference: "8"
+        is-user-defined-class: "false"
     provisioner: disk.csi.azure.com
     parameters:
       skuname: Standard_LRS

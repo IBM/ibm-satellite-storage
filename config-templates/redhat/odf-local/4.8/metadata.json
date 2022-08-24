@@ -1,6 +1,6 @@
 {
   "name": "4.8",
-  "revision": "6",
+  "revision": "10",
   "enabled": "true",
   "status": "supported",
   "description": "ODF template for openshift 4.8 (Local storage)",
@@ -40,6 +40,10 @@
     {
       "name": "supported-k8s-versions",
       "value": "1.21,1.22"
+    },
+    {
+      "name": "supported-ocp-versions",
+      "value": "4.8,4.9"
     },
     {
       "name": "volume-type",

@@ -5,43 +5,55 @@ metadata:
   namespace: kube-system
   annotations:
     version: 21.04
-    revision: 3
+    revision: 7
 items:
-  - apiVersion: v1
-    kind: Pod
+  - apiVersion: apps/v1
+    kind: Deployment
     metadata:
       name: trident-kubectl-nas
       namespace: "trident"
       labels:
         app.kubernetes.io/name: "netapp-ontap-nas"
         app.kubernetes.io/version: "v21.04"
-        app.kubernetes.io/revision: "3"
+        app.kubernetes.io/revision: "5"
     spec:
-      serviceAccountName: trident-kubectl-sa
-      containers:
-        - name: trident-kubectl-nas
-          image: icr.io/ibm/ibm-tridentctl:v2.0.9
-          imagePullPolicy: Always
-          env:
-            - name: NAMESPACE
-              value: "trident"
-            - name: DRIVER_Name
-              value: "ontap-nas"
-            - name: MGMT_LIF
-              value: "{{{ managementLIF }}}"
-            - name: DATA_LIF
-              value: "{{{ dataLIF }}}"
-            - name: SVM_Name
-              value: "{{{ svm }}}"
-            - name: USER_Name
-              value: "{{{ username }}}"
-            - name: USER_Password
-              value: "{{{ password }}}"
-            - name: EXPORT_Policy
-              value: "{{{ exportPolicy }}}"
-            - name: LIMIT_VolumeSize
-              value: "{{{ limitVolumeSize }}}"
-            - name: LIMIT_AggregateUsage
-              value: "{{{ limitAggregateUsage }}}"
-            - name: NFS_MountOptions
-              value: "{{{ nfsMountOptions }}}"
+      replicas: 1
+      selector:
+          matchLabels:
+              app: netapp-ontap-nas
+              app.kubernetes.io/name: "netapp-ontap-nas"
+      template:
+          metadata:
+              labels:
+                  app: netapp-ontap-nas
+                  app.kubernetes.io/name: "netapp-ontap-nas"
+                  app.kubernetes.io/revision: "5"
+          spec:
+              serviceAccountName: trident-kubectl-sa
+              containers:
+                - name: trident-kubectl-nas
+                  image: icr.io/ibm/ibm-tridentctl:v2.0.13
+                  imagePullPolicy: Always
+                  env:
+                  - name: NAMESPACE
+                    value: "trident"
+                  - name: DRIVER_Name
+                    value: "ontap-nas"
+                  - name: MGMT_LIF
+                    value: "{{{ managementLIF }}}"
+                  - name: DATA_LIF
+                    value: "{{{ dataLIF }}}"
+                  - name: SVM_Name
+                    value: "{{{ svm }}}"
+                  - name: USER_Name
+                    value: "{{{ username }}}"
+                  - name: USER_Password
+                    value: "{{{ password }}}"
+                  - name: EXPORT_Policy
+                    value: "{{{ exportPolicy }}}"
+                  - name: LIMIT_VolumeSize
+                    value: "{{{ limitVolumeSize }}}"
+                  - name: LIMIT_AggregateUsage
+                    value: "{{{ limitAggregateUsage }}}"
+                  - name: NFS_MountOptions
+                    value: "{{{ nfsMountOptions }}}"

@@ -1,9 +1,9 @@
 {
     "name": "2.5.1",
-    "revision": "1",
+    "revision": "5",
     "enabled": "true",
     "status": "supported",
-    "description": "VMware block volume persistant storage",
+    "description": "VMware volume persistant storage",
     "tags": [
         {
             "name": "provider",
@@ -23,7 +23,7 @@
         },
         {
             "name": "provider-logo",
-            "value": ""
+            "value": "logo/vsphere-csi-driver.svg"
         },
         {
             "name": "supported-envs",
@@ -59,7 +59,7 @@
         },
         {
             "name": "storageclass",
-            "value": "block, block-metro"
+            "value": "block, block-metro, file, file-metro"
         }
     ]
 }

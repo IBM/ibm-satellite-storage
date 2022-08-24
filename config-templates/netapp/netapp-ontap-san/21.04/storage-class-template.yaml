@@ -5,7 +5,10 @@ metadata:
   labels:
     app.kubernetes.io/name: "netapp-ontap-san"
     app.kubernetes.io/version: "v21.04"
-    app.kubernetes.io/revision: "3"
+    app.kubernetes.io/revision: "7"
+    volume-type: "block"
+    storage-class-preference: "{{ storage-class-preference }}"
+    is-user-defined-class: "true"
   annotations:
     storageclass.kubernetes.io/is-default-class: "{{ is-default-class }}"
 provisioner: csi.trident.netapp.io

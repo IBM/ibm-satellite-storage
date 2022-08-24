@@ -10,6 +10,10 @@ items:
     kind: StorageClass
     metadata:
       name: sat-netapp-block-gold
+      labels:
+        volume-type: "block"
+        storage-class-preference: "4" # As per vendor specification; e.g.: 1, 2, ... 99.
+        is-user-defined-class: "false"
     provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-san"
@@ -21,6 +25,10 @@ items:
     kind: StorageClass
     metadata:
       name: sat-netapp-block-silver
+      labels:
+        volume-type: "block"
+        storage-class-preference: "5" # As per vendor specification; e.g.: 1, 2, ... 99.
+        is-user-defined-class: "false"
     provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-san"
@@ -32,6 +40,10 @@ items:
     kind: StorageClass
     metadata:
       name: sat-netapp-block-bronze
+      labels:
+        volume-type: "block"
+        storage-class-preference: "6" # As per vendor specification; e.g.: 1, 2, ... 99.
+        is-user-defined-class: "false"
     provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-san"
@@ -43,6 +55,10 @@ items:
     kind: StorageClass
     metadata:
       name: sat-netapp-block-gold-metro
+      labels:
+        volume-type: "block"
+        storage-class-preference: "1" # As per vendor specification; e.g.: 1, 2, ... 99.
+        is-user-defined-class: "false"
     provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-san"
@@ -54,6 +70,10 @@ items:
     kind: StorageClass
     metadata:
       name: sat-netapp-block-silver-metro
+      labels:
+        volume-type: "block"
+        storage-class-preference: "2" # As per vendor specification; e.g.: 1, 2, ... 99.
+        is-user-defined-class: "false"
     provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-san"
@@ -65,6 +85,10 @@ items:
     kind: StorageClass
     metadata:
       name: sat-netapp-block-bronze-metro
+      labels:
+        volume-type: "block"
+        storage-class-preference: "3" # As per vendor specification; e.g.: 1, 2, ... 99.
+        is-user-defined-class: "false"
     provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-san"
