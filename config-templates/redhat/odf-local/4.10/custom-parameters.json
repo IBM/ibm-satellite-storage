@@ -152,5 +152,13 @@
     "required": "false",
     "category": "secret",
     "obfuscate": "true"
+  },
+  {
+    "description": "Set to 'true' if you don't want to deploy MultiCloud Object Gateway (Noobaa)",
+    "displayname": "Ignore Noobaa",
+    "name": "ignore-noobaa",
+    "default": "false",
+    "type": "boolean",
+    "required": "false"
   }
 ]
