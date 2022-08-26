@@ -1,0 +1,32 @@
+
+[
+  {
+    "description": "The IAM endpoint. For example 'https://iam.cloud.ibm.com'.",
+    "displayname": "IAM endpoint",
+    "name": "g2_token_exchange_endpoint_url",
+    "required": "true",
+    "category": "config",
+    "mutable": "false"
+  }, {
+    "description": "The VPC regional endpoint of your VPC cluster in the format https://<region>.iaas.cloud.ibm.com. Example: https://eu-de.iaas.cloud.ibm.com. For more information, see https://cloud.ibm.com/docs/vpc?topic=vpc-service-endpoints-for-vpc",
+    "displayname": "VPC IaaS endpoint",
+    "name": "g2_riaas_endpoint_url",
+    "required": "true",
+    "category": "config",
+    "mutable": "false"
+  }, {
+      "description": "The ID of the resource group where your VPC is located. To retrieve this value, run the 'ibmcloud is vpc VPC-ID' command and note the Resource group field.",
+      "displayname": "Resource group ID",
+      "name": "g2_resource_group_id",
+      "required": "true",
+      "category": "config"
+    }, {
+      "description": "The IAM API key of account where your VPC is located. You can use your existing API key or you can create an API key by running the 'ibmcloud iam api-key-create NAME' command.",
+      "displayname": "IAM API key",
+      "name": "g2_api_key",
+      "required": "true",
+      "category": "secret",
+      "obfuscate": "true",
+      "mutable": "true"
+    }
+]
