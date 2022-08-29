@@ -5,6 +5,9 @@
     "name": "auto-discover-devices",
     "default": "false",
     "type": "boolean",
+    "regex": "^(?:true|false)$",
+    "min-length": "4",
+    "max-length": "5",
     "required": "false",
     "category": "config"
   },
@@ -36,6 +39,10 @@
     "displayname": "File System type",
     "name": "fstype",
     "default": "ext4",
+    "regex": "^(?:ext(?:3|4)|xfs)$",
+    "min-length": "3",
+    "max-length": "4",
+    "supported-values": ["ext3", "ext4", "xfs"],
     "required": "false",
     "category": "config"
   }
