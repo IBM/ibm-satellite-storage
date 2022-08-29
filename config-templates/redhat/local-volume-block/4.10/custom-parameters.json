@@ -5,6 +5,10 @@
     "name": "auto-discover-devices",
     "default": "false",
     "type": "boolean",
+    "regex": "^(?:true|false)$",
+    "min-length": "4",
+    "max-length": "5",
+    "supported-values": ["true", "false"],
     "required": "false",
     "category": "config"
   },
