@@ -4,14 +4,17 @@
     "displayname": "OSD pod volume size",
     "name": "osd-size",
     "default": "100Gi",
+    "regex": "^[1-9]{1}[0-9]{0,3}(?:Gi|Ti)$",
+    "min-length": "3",
+    "max-length": "6",
     "place-holder": "100Gi",
-    "regex": "^[0-9]+Gi$",
     "required": "true"
   },
   {
     "description": "The storage class to use when dynamically provisioning volumes for the OSD pods.",
     "displayname": "OSD pod storage class",
     "name": "osd-storage-class",
+    "max-length": "43",
     "required": "true"
   },
   {
@@ -19,6 +22,9 @@
     "displayname": "Number of OSD volumes",
     "name": "num-of-osd",
     "default": "1",
+    "regex": "^[1-9]([0-9]?)$",
+    "min-length": "1",
+    "max-length": "2",
     "required": "false",
     "mutable": "true"
   },
@@ -34,6 +40,10 @@
     "displayname": "Upgrade",
     "name": "odf-upgrade",
     "default": "false",
+    "regex": "^(?:tru|fals)e$",
+    "min-length": "4",
+    "max-length": "5",
+    "supported-values": ["true", "false"],
     "required": "false",
     "type": "boolean",
     "mutable": "true"
@@ -43,6 +53,10 @@
     "displayname": "Billing type",
     "name": "billing-type",
     "default": "advanced",
+    "regex": "^(?:essentials|advanced)$",
+    "min-length": "8",
+    "max-length": "10",
+    "supported-values": ["essentials", "advanced"],
     "required": "false"
   },
   {
@@ -82,6 +96,10 @@
     "displayname": "Encryption enabled",
     "name": "cluster-encryption",
     "default": "false",
+    "regex": "^(?:tru|fals)e$",
+    "min-length": "4",
+    "max-length": "5",
+    "supported-values": ["true", "false"],
     "type": "boolean",
     "required": "false"
   },
@@ -99,6 +117,10 @@
     "displayname": "Perform Cleanup",
     "name": "perform-cleanup",
     "default": "false",
+    "regex": "^(?:tru|fals)e$",
+    "min-length": "4",
+    "max-length": "5",
+    "supported-values": ["true", "false"],
     "required": "false",
     "type": "boolean",
     "mutable": "true"
@@ -108,23 +130,30 @@
     "displayname": "KMS encryption",
     "name": "kms-encryption",
     "default": "false",
+    "regex": "^(?:tru|fals)e$",
+    "min-length": "4",
+    "max-length": "5",
+    "supported-values": ["true", "false"],
     "required": "false",
     "type": "boolean"
   },
   {
-    "description": " Your KMS instance name.",
+    "description": "Your KMS instance name. The instance name must contain only lowercase alphanumeric characters or '-' and start and end with an alphanumeric character.",
     "displayname": "KMS instance name",
     "name": "kms-instance-name",
+    "regex": "(^[a-z0-9])([\\-a-z0-9]*)([a-z0-9]$)",
+    "min-length": "1",
+    "max-length": "63",
     "required": "false"
   },
   {
-    "description": " Your KMS instance id.",
+    "description": "Your KMS instance id.",
     "displayname": "KMS instance id",
     "name": "kms-instance-id",
     "required": "false"
   },
   {
-    "description": " Your KMS instance public URL to connect to the instance.",
+    "description": "Your KMS instance public URL to connect to the instance.",
     "displayname": "KMS instance Base URL",
     "name": "kms-base-url",
     "required": "false"
