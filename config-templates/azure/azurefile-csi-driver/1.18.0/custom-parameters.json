@@ -58,6 +58,10 @@
         "description": "There are two types of virtual machine i.e. 'standard' and 'VMSS'. The standard VM are listed under virtual machines and the VMSSs' VMs are listed under virtual machine scale set as instances.",
         "displayname": "Virtual Machnine Type",
         "name": "vmType",
+        "regex": "^(?i)\b(standard|vmss)\b$",
+        "min-length": "4",
+        "max-length": "8",
+        "supported-values": ["standard", "VMSS"],
         "required": "true",
         "category": "config",
         "mutable": "true"
