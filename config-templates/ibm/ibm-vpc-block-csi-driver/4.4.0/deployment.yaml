@@ -313,11 +313,9 @@ items:
                 valueFrom:
                   fieldRef:
                     fieldPath: spec.nodeName
-              - name: SECRET_CONFIG_PATH
-                value: /etc/storage_ibmc
               volumeMounts:
-                - mountPath: /etc/storage_ibmc
-                  name: customer-auth
+                - mountPath: /var/run/secrets/tokens
+                  name: vault-token
               envFrom:
                 - configMapRef:
                     name: ibm-vpc-block-csi-configmap
@@ -437,6 +435,12 @@ items:
                 - name: plugin-dir
                   mountPath: /csi
           volumes:
+            - name: vault-token
+              projected:
+                sources:
+                - serviceAccountToken:
+                    path: vault-token
+                    expirationSeconds: 600
             - name: registration-dir
               hostPath:
                 path: /var/data/kubelet/plugins_registry/
