@@ -54,7 +54,7 @@
     },
     {
         "description": "There are two types of virtual machine i.e. 'standard' and 'VMSS'. The standard VM are listed under virtual machines and the VMSSs' VMs are listed under virtual machine scale set as instances.",
-        "displayname": "Virtual Machnine Type",
+        "displayname": "Virtual Machine Type",
         "name": "vmType",
         "required": "true"
     },
