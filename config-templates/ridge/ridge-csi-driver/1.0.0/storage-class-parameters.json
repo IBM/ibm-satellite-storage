@@ -1,0 +1,25 @@
+[
+	{
+		"description": "The name of the storage class.",
+		"displayname": "Storage class name",
+		"name": "name",
+		"templateKeyName": [
+			"name"
+		],
+		"required": "true",
+		"category": "config"
+	},
+	{
+		"description": "Specify 'true' or 'false' to enable or disable volume expansion.",
+		"displayname": "Allow volume expansion",
+		"name": "allowVolumeExpansion",
+		"templateKeyName": [
+			"allowVolumeExpansion"
+		],
+		"default": "false",
+		"required": "false",
+		"category": "config",
+		"type": "boolean"
+	}
+]
+

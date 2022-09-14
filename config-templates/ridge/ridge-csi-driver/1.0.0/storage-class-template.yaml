@@ -1,0 +1,14 @@
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: {{ name }}
+  namespace: kube-system
+  labels:
+    cloud.ridge.co/managed: 'true'
+  annotations:
+    storageclass.kubernetes.io/is-default-class: 'true'
+provisioner: driver.csi.ridge.com
+allowVolumeExpansion: {{ allowVolumeExpansion }}
+volumeBindingMode: WaitForFirstConsumer
+

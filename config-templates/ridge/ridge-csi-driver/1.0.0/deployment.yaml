@@ -1,0 +1,429 @@
+---
+apiVersion: v1
+kind: List
+metadata:
+  name: ridge-csi-driver
+  namespace: kube-system
+  annotations:
+    version: 1.0.0
+items:
+  - apiVersion: apps/v1
+    kind: StatefulSet
+    metadata:
+      name: csi-ridge-controller
+      namespace: kube-system
+      labels:
+        cloud.ridge.co/managed: 'true'
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          app: csi-ridge-controller
+      template:
+        metadata:
+          labels:
+            app: csi-ridge-controller
+            role: csi-ridge
+            cloud.ridge.co/managed: 'true'
+        spec:
+          volumes:
+            - name: socket-dir
+              emptyDir: { }
+            - name: vm-token
+              hostPath:
+                path: /opt/tectonic/etc/vm-token
+                type: File
+            - name: init-unit
+              hostPath:
+                path: /etc/systemd/system/app-init.service
+          containers:
+            - name: csi-provisioner
+              image: 'quay.io/k8scsi/csi-provisioner:v1.4.0'
+              args:
+                - '--csi-address=$(ADDRESS)'
+                - '--v=5'
+              env:
+                - name: ADDRESS
+                  value: /var/lib/csi/sockets/pluginproxy/csi.sock
+              volumeMounts:
+                - name: socket-dir
+                  mountPath: /var/lib/csi/sockets/pluginproxy/
+              imagePullPolicy: IfNotPresent
+            - name: csi-attacher
+              image: 'quay.io/k8scsi/csi-attacher:v3.1.0'
+              args:
+                - '--v=5'
+                - '--csi-address=$(ADDRESS)'
+              env:
+                - name: ADDRESS
+                  value: /var/lib/csi/sockets/pluginproxy/csi.sock
+              volumeMounts:
+                - name: socket-dir
+                  mountPath: /var/lib/csi/sockets/pluginproxy/
+              imagePullPolicy: IfNotPresent
+            - name: csi-ridge-plugin
+              image: eu.gcr.io/tectonic-devel/moonstone-csi-driver:<<CSI_VERSION>>
+              args:
+                - /app/csi-driver
+                - '--log-format=json'
+                - '--endpoint=$(CSI_ENDPOINT)'
+                - '--backend=https://<<CSI_ENDPOINT>>/csi-backend/v1/clusters/<<CLUSTER_ID>>'
+                - '--driver-version=<<CSI_VERSION>>'
+                - '-v'
+{{#offline-expansion}}
+                - '--offline-expansion'
+{{/offline-expansion}}
+{{#online-expansion}}
+                - '--online-expansion'
+{{/online-expansion}}
+              env:
+                - name: CSI_ENDPOINT
+                  value: 'unix:///var/lib/csi/sockets/pluginproxy/csi.sock'
+              volumeMounts:
+                - name: socket-dir
+                  mountPath: /var/lib/csi/sockets/pluginproxy/
+                - name: vm-token
+                  readOnly: true
+                  mountPath: /opt/tectonic/etc/vm-token
+                - name: init-unit
+                  readOnly: true
+                  mountPath: /etc/systemd/system/app-init.service
+              imagePullPolicy: Always
+{{#online-expansion}}
+            - name: csi-resizer
+              image: 'quay.io/k8scsi/csi-resizer:v1.0.1'
+              args:
+                - '--v=5'
+                - '--csi-address=$(ADDRESS)'
+              env:
+                - name: ADDRESS
+                  value: /var/lib/csi/sockets/pluginproxy/csi.sock
+              resources: { }
+              volumeMounts:
+                - name: socket-dir
+                  mountPath: /var/lib/csi/sockets/pluginproxy/
+              imagePullPolicy: IfNotPresent
+              nodeSelector:
+                node-role.kubernetes.io/control-plane: ''
+              serviceAccount: csi-ridge-controller-sa
+              tolerations:
+                - operator: Exists
+              priorityClassName: system-cluster-critical
+              dnsConfig:
+                options:
+                  - name: single-request-reopen
+              serviceName: csi-ridge
+{{/online-expansion}}
+{{^online-expansion}}{{#offline-expansion}}
+            - name: csi-resizer
+              image: 'quay.io/k8scsi/csi-resizer:v1.0.1'
+              args:
+                - '--v=5'
+                - '--csi-address=$(ADDRESS)'
+              env:
+                - name: ADDRESS
+                  value: /var/lib/csi/sockets/pluginproxy/csi.sock
+              resources: { }
+              volumeMounts:
+                - name: socket-dir
+                  mountPath: /var/lib/csi/sockets/pluginproxy/
+              imagePullPolicy: IfNotPresent
+              nodeSelector:
+                node-role.kubernetes.io/control-plane: ''
+              serviceAccount: csi-ridge-controller-sa
+              tolerations:
+                - operator: Exists
+              priorityClassName: system-cluster-critical
+              dnsConfig:
+                options:
+                  - name: single-request-reopen
+              serviceName: csi-ridge
+{{/offline-expansion}}{{/online-expansion}}
+  - apiVersion: v1
+    kind: ServiceAccount
+    metadata:
+      name: csi-ridge-controller-sa
+      namespace: kube-system
+      labels:
+        cloud.ridge.co/managed: 'true'
+  - apiVersion: rbac.authorization.k8s.io/v1
+    kind: ClusterRole
+    metadata:
+      name: csi-ridge-provisioner-role
+      labels:
+        cloud.ridge.co/managed: 'true'
+    rules:
+      - verbs:
+          - get
+          - list
+        apiGroups:
+          - ''
+        resources:
+          - secrets
+      - verbs:
+          - get
+          - list
+          - watch
+          - create
+          - delete
+        apiGroups:
+          - ''
+        resources:
+          - persistentvolumes
+      - verbs:
+          - get
+          - list
+          - watch
+          - update
+        apiGroups:
+          - ''
+        resources:
+          - persistentvolumeclaims
+      - verbs:
+          - get
+          - list
+          - watch
+        apiGroups:
+          - storage.k8s.io
+        resources:
+          - storageclasses
+      - verbs:
+          - get
+          - list
+          - watch
+        apiGroups:
+          - storage.k8s.io
+        resources:
+          - csinodes
+      - verbs:
+          - get
+          - list
+          - watch
+          - create
+          - update
+          - patch
+        apiGroups:
+          - ''
+        resources:
+          - events
+      - verbs:
+          - get
+          - list
+        apiGroups:
+          - snapshot.storage.k8s.io
+        resources:
+          - volumesnapshots
+      - verbs:
+          - get
+          - list
+        apiGroups:
+          - snapshot.storage.k8s.io
+        resources:
+          - volumesnapshotcontents
+      - verbs:
+          - get
+          - list
+          - watch
+        apiGroups:
+          - ''
+        resources:
+          - nodes
+      - verbs:
+          - list
+        apiGroups:
+          - ''
+        resources:
+          - pods
+      - verbs:
+          - patch
+        apiGroups:
+          - ''
+        resources:
+          - persistentvolumeclaims/status
+      - verbs:
+          - patch
+        apiGroups:
+          - storage.k8s.io
+        resources:
+          - volumeattachments/status
+  - apiVersion: rbac.authorization.k8s.io/v1
+    kind: ClusterRoleBinding
+    metadata:
+      name: csi-ridge-provisioner-binding
+      labels:
+        cloud.ridge.co/managed: 'true'
+    subjects:
+      - kind: ServiceAccount
+        name: csi-ridge-controller-sa
+        namespace: kube-system
+    roleRef:
+      apiGroup: rbac.authorization.k8s.io
+      kind: ClusterRole
+      name: csi-ridge-provisioner-role
+  - apiVersion: rbac.authorization.k8s.io/v1
+    kind: ClusterRole
+    metadata:
+      name: csi-ridge-attacher-role
+      labels:
+        cloud.ridge.co/managed: 'true'
+    rules:
+      - verbs:
+          - get
+          - list
+          - watch
+          - update
+          - patch
+        apiGroups:
+          - ''
+        resources:
+          - persistentvolumes
+      - verbs:
+          - get
+          - list
+          - watch
+        apiGroups:
+          - ''
+        resources:
+          - nodes
+      - verbs:
+          - get
+          - list
+          - watch
+        apiGroups:
+          - storage.k8s.io
+        resources:
+          - csinodes
+      - verbs:
+          - get
+          - list
+          - watch
+          - update
+          - patch
+        apiGroups:
+          - storage.k8s.io
+        resources:
+          - volumeattachments
+  - apiVersion: rbac.authorization.k8s.io/v1
+    kind: ClusterRoleBinding
+    metadata:
+      name: csi-ridge-attacher-binding
+      labels:
+        cloud.ridge.co/managed: 'true'
+    subjects:
+      - kind: ServiceAccount
+        name: csi-ridge-controller-sa
+        namespace: kube-system
+    roleRef:
+      apiGroup: rbac.authorization.k8s.io
+      kind: ClusterRole
+      name: csi-ridge-attacher-role
+  - apiVersion: apps/v1
+    kind: DaemonSet
+    metadata:
+      name: csi-ridge-node
+      namespace: kube-system
+      labels:
+        cloud.ridge.co/managed: 'true'
+    spec:
+      selector:
+        matchLabels:
+          app: csi-ridge-node
+      template:
+        metadata:
+          labels:
+            app: csi-ridge-node
+            role: csi-ridge
+            cloud.ridge.co/managed: 'true'
+        spec:
+          volumes:
+            - name: registration-dir
+              hostPath:
+                path: /var/data/kubelet/plugins_registry/
+                type: DirectoryOrCreate
+            - name: plugin-dir
+              hostPath:
+                path: /var/data/kubelet/plugins/driver.csi.ridge.com
+                type: DirectoryOrCreate
+            - name: pods-mount-dir
+              hostPath:
+                path: /var/data/kubelet
+                type: Directory
+            - name: device-dir
+              hostPath:
+                path: /dev
+            - name: usr-sbin
+              hostPath:
+                path: /usr/sbin
+            - name: lib64
+              hostPath:
+                path: /lib64
+            - name: vm-token
+              hostPath:
+                path: /opt/tectonic/etc/vm-token
+                type: File
+            - name: init-unit
+              hostPath:
+                path: /etc/systemd/system/app-init.service
+          containers:
+            - name: csi-ridge-plugin
+              image: eu.gcr.io/tectonic-devel/moonstone-csi-driver:<<CSI_VERSION>>
+              args:
+                - /app/csi-driver
+                - '--log-format=json'
+                - '--endpoint=$(CSI_ENDPOINT)'
+                - '--backend=https://<<CSI_BACKEND>>/csi-backend/v1/clusters/<<CLUSTER_ID>>'
+                - '--nodeid=$(KUBE_NODE_NAME)'
+                - '--driver-version=<<CSI_VERSION>>'
+                - '--node-registration'
+{{#offline-expansion}}
+                - '--offline-expansion'
+{{/offline-expansion}}
+{{#online-expansion}}
+                - '--online-expansion'
+{{/online-expansion}}
+              env:
+                - name: CSI_ENDPOINT
+                  value: 'unix:///csi/csi.sock'
+                - name: KUBE_NODE_NAME
+                  valueFrom:
+                    fieldRef:
+                      fieldPath: spec.nodeName
+              volumeMounts:
+                - name: plugin-dir
+                  mountPath: /csi/
+                - name: pods-mount-dir
+                  mountPath: /var/data/kubelet
+                  mountPropagation: Bidirectional
+                - name: device-dir
+                  mountPath: /dev
+                - name: usr-sbin
+                  mountPath: /usr/sbin
+                - name: lib64
+                  mountPath: /lib64
+                - name: vm-token
+                  readOnly: true
+                  mountPath: /opt/tectonic/etc/vm-token
+                - name: init-unit
+                  readOnly: true
+                  mountPath: /etc/systemd/system/app-init.service
+                - name: registration-dir
+                  mountPath: /registration/
+              imagePullPolicy: Always
+              securityContext:
+                capabilities:
+                  add:
+                    - SYS_ADMIN
+                privileged: true
+                allowPrivilegeEscalation: true
+        serviceAccount: csi-ridge-node-sa
+        hostNetwork: true
+        tolerations:
+          - operator: Exists
+        priorityClassName: system-node-critical
+  - apiVersion: v1
+    kind: ServiceAccount
+    metadata:
+      name: csi-ridge-node-sa
+      namespace: kube-system
+      labels:
+        cloud.ridge.co/managed: 'true'
