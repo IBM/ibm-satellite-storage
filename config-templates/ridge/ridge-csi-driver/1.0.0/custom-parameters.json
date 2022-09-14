@@ -16,5 +16,14 @@
     "type": "boolean",
     "required": "false",
     "category": "config"
+  },
+  {
+    "description": "Ridge CSI version",
+    "displayname": "CSI version",
+    "name": "csi-version",
+    "type": "string",
+    "required": "true",
+    "category": "config",
+    "mutable": "true"
   }
 ]
