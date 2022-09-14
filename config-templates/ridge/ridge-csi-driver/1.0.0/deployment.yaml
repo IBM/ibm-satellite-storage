@@ -369,7 +369,7 @@ items:
               image: eu.gcr.io/tectonic-devel/moonstone-csi-driver:{{ csi-version }}
               args:
                 - /app/csi-driver
-                - --log-format=json'
+                - --log-format=json
                 - --endpoint=$(CSI_ENDPOINT)
                 - --backend=https://tech.ridge.co/csi-backend/v1
                 - --nodeid=$(KUBE_NODE_NAME)
