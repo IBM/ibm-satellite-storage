@@ -1,10 +1,10 @@
 # IBM Cloud Satellite storage
 IBM Cloud Satellite Storage provides capabilities to manage the lifecycle of a storage solution on a ROKS cluster deployed in a Satellite Location. It simplifies the storage solution deployment and maintenance including security patches & version upgrades. The core objective is to simplify the storage life cycle management for Cluster Admins by hiding the complexity.
 
-This repository is to collborate with IBM Partners and Storage Solution Vendors to develop storage configuration templates for IBM Cloud Satellite.
+This repository is to collaborate with IBM Partners and Storage Solution Vendors to develop storage configuration templates for IBM Cloud Satellite.
 
 ## Overview
-With IBM Cloud Satellite, you can bring your own compute infrastructure that is in your on-premises data center, at other cloud providers, or in edge networks as a Satellite Location to IBM Cloud. Then, you use the capabilities of Satellite to run IBM Cloud services on this infrastructure, and consistently deploy, manage, and control your app workloads. For more information, see the IBM documentation.
+With IBM Cloud Satellite, you can bring your own compute infrastructure that is in your on-premises data-centre, at other cloud providers, or in edge networks as a Satellite Location to IBM Cloud. Then, you use the capabilities of Satellite to run IBM Cloud services on this infrastructure, and consistently deploy, manage, and control your app workloads. For more information, see the IBM documentation.
 - [IBM Cloud Satellite](https://www.ibm.com/cloud/satellite)
 - [ROSK in IBM Cloud Satellite](https://cloud.ibm.com/docs/satellite?topic=satellite-managed-services)
 - [Getting started](https://cloud.ibm.com/docs/satellite?topic=satellite-getting-started)
@@ -14,7 +14,7 @@ With IBM Cloud Satellite, you can bring your own compute infrastructure that is 
 ## Satellite storage partner certification process
 ![Storage Template Registration Flow](./satellite-storage-registration-flow.png) 
 
-## Registering with IBM Cloud
+## Register with IBM Cloud
 
 1. [Create an IBMid](https://cloud.ibm.com/registration).
 
@@ -22,11 +22,11 @@ With IBM Cloud Satellite, you can bring your own compute infrastructure that is 
    1. Include the subject line: `<storage-solution-name> integration`*. For example: `LocalVolume integration`. 
    1. Provide a high level description of the storage solution with a link to the user documentation or public repository.
 
-## Registering with IBM Cloud
-1. Collaborate with **`IBM Cloud Satellite Storage Team`** to setup your Satellite Location for devlopment and testing. 
+## Develop environment
+1. Collaborate with **`IBM Cloud Satellite Storage Team`** to setup your Satellite Location for development and testing. 
 
 ## Test your storage solution with ROKS in IBM Cloud Satellite 
-1. Create a `deployment.yaml` file to deploy Kubernetes resources for the storage operator or driver in the development enviornment. Review the following example `deployment.yaml` to deploy the `local-volume` operator.
+1. Create a `deployment.yaml` file to deploy Kubernetes resources for the storage operator or driver in the development environment. Review the following example `deployment.yaml` to deploy the `local-volume` operator.
    ```yaml
    apiVersion: v1
    kind: List
@@ -204,7 +204,7 @@ In this example, the `devicepath` parameter is set dynamically. In a local stora
    ibmcloud sat storage assignment create --name <assignment-name> --group <cluster-group> --configuration <config-name>
    ```
 
-1. Develop test cases for verification testing. The testcase should include the following:
+1. Develop test-cases for verification testing. The test-case should include the following:
    * Steps to set up the environment or deploy any prerequisites.
    * Test to verify the functionality of the Storage driver.
 
