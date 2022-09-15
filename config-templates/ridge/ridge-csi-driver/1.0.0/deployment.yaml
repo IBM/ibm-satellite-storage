@@ -6,6 +6,7 @@ metadata:
   namespace: kube-system
   annotations:
     version: 1.0.0
+    revision: 1
 items:
   - apiVersion: apps/v1
     kind: StatefulSet
@@ -13,7 +14,9 @@ items:
       name: csi-ridge-controller
       namespace: kube-system
       labels:
-        cloud.ridge.co/managed: 'true'
+        app.kubernetes.io/name: ridge-csi-driver
+        app.kubernetes.io/version: 1.0.0
+        cloud.ridge.co/managed: true
     spec:
       replicas: 1
       selector:
@@ -24,11 +27,11 @@ items:
           labels:
             app: csi-ridge-controller
             role: csi-ridge
-            cloud.ridge.co/managed: 'true'
+            cloud.ridge.co/managed: true
         spec:
           volumes:
             - name: socket-dir
-              emptyDir: { }
+              emptyDir: {}
             - name: vm-token
               hostPath:
                 path: /opt/tectonic/etc/vm-token
@@ -38,10 +41,10 @@ items:
                 path: /etc/systemd/system/app-init.service
           containers:
             - name: csi-provisioner
-              image: 'quay.io/k8scsi/csi-provisioner:v1.4.0'
+              image: quay.io/k8scsi/csi-provisioner:v1.4.0
               args:
-                - '--csi-address=$(ADDRESS)'
-                - '--v=5'
+                - --csi-address=$(ADDRESS)
+                - --v=5
               env:
                 - name: ADDRESS
                   value: /var/lib/csi/sockets/pluginproxy/csi.sock
@@ -50,10 +53,10 @@ items:
                   mountPath: /var/lib/csi/sockets/pluginproxy/
               imagePullPolicy: IfNotPresent
             - name: csi-attacher
-              image: 'quay.io/k8scsi/csi-attacher:v3.1.0'
+              image: quay.io/k8scsi/csi-attacher:v3.1.0
               args:
-                - '--v=5'
-                - '--csi-address=$(ADDRESS)'
+                - --v=5
+                - --csi-address=$(ADDRESS)
               env:
                 - name: ADDRESS
                   value: /var/lib/csi/sockets/pluginproxy/csi.sock
@@ -71,14 +74,14 @@ items:
                 - --driver-version={{ csi-version }}
                 - -v
 {{#offline-expansion}}
-                - '--offline-expansion'
+                - --offline-expansion
 {{/offline-expansion}}
 {{#online-expansion}}
-                - '--online-expansion'
+                - --online-expansion
 {{/online-expansion}}
               env:
                 - name: CSI_ENDPOINT
-                  value: 'unix:///var/lib/csi/sockets/pluginproxy/csi.sock'
+                  value: unix:///var/lib/csi/sockets/pluginproxy/csi.sock
               volumeMounts:
                 - name: socket-dir
                   mountPath: /var/lib/csi/sockets/pluginproxy/
@@ -88,17 +91,16 @@ items:
                 - name: init-unit
                   readOnly: true
                   mountPath: /etc/systemd/system/app-init.service
-              imagePullPolicy: Always
+              imagePullPolicy: IfNotPresent
 {{#online-expansion}}
             - name: csi-resizer
-              image: 'quay.io/k8scsi/csi-resizer:v1.0.1'
+              image: quay.io/k8scsi/csi-resizer:v1.0.1
               args:
-                - '--v=5'
-                - '--csi-address=$(ADDRESS)'
+                - --v=5
+                - --csi-address=$(ADDRESS)
               env:
                 - name: ADDRESS
                   value: /var/lib/csi/sockets/pluginproxy/csi.sock
-              resources: { }
               volumeMounts:
                 - name: socket-dir
                   mountPath: /var/lib/csi/sockets/pluginproxy/
@@ -116,14 +118,13 @@ items:
 {{/online-expansion}}
 {{^online-expansion}}{{#offline-expansion}}
             - name: csi-resizer
-              image: 'quay.io/k8scsi/csi-resizer:v1.0.1'
+              image: quay.io/k8scsi/csi-resizer:v1.0.1
               args:
-                - '--v=5'
-                - '--csi-address=$(ADDRESS)'
+                - --v=5
+                - --csi-address=$(ADDRESS)
               env:
                 - name: ADDRESS
                   value: /var/lib/csi/sockets/pluginproxy/csi.sock
-              resources: { }
               volumeMounts:
                 - name: socket-dir
                   mountPath: /var/lib/csi/sockets/pluginproxy/
@@ -145,13 +146,17 @@ items:
       name: csi-ridge-controller-sa
       namespace: kube-system
       labels:
-        cloud.ridge.co/managed: 'true'
+        app.kubernetes.io/name: ridge-csi-driver
+        app.kubernetes.io/version: 1.0.0
+        cloud.ridge.co/managed: true
   - apiVersion: rbac.authorization.k8s.io/v1
     kind: ClusterRole
     metadata:
       name: csi-ridge-provisioner-role
       labels:
-        cloud.ridge.co/managed: 'true'
+        app.kubernetes.io/name: ridge-csi-driver
+        app.kubernetes.io/version: 1.0.0
+        cloud.ridge.co/managed: true
     rules:
       - verbs:
           - get
@@ -251,7 +256,9 @@ items:
     metadata:
       name: csi-ridge-provisioner-binding
       labels:
-        cloud.ridge.co/managed: 'true'
+        app.kubernetes.io/name: ridge-csi-driver
+        app.kubernetes.io/version: 1.0.0
+        cloud.ridge.co/managed: true
     subjects:
       - kind: ServiceAccount
         name: csi-ridge-controller-sa
@@ -265,7 +272,9 @@ items:
     metadata:
       name: csi-ridge-attacher-role
       labels:
-        cloud.ridge.co/managed: 'true'
+        app.kubernetes.io/name: ridge-csi-driver
+        app.kubernetes.io/version: 1.0.0
+        cloud.ridge.co/managed: true
     rules:
       - verbs:
           - get
@@ -308,7 +317,9 @@ items:
     metadata:
       name: csi-ridge-attacher-binding
       labels:
-        cloud.ridge.co/managed: 'true'
+        app.kubernetes.io/name: ridge-csi-driver
+        app.kubernetes.io/version: 1.0.0
+        cloud.ridge.co/managed: true
     subjects:
       - kind: ServiceAccount
         name: csi-ridge-controller-sa
@@ -323,7 +334,9 @@ items:
       name: csi-ridge-node
       namespace: kube-system
       labels:
-        cloud.ridge.co/managed: 'true'
+        app.kubernetes.io/name: ridge-csi-driver
+        app.kubernetes.io/version: 1.0.0
+        cloud.ridge.co/managed: true
     spec:
       selector:
         matchLabels:
@@ -333,7 +346,7 @@ items:
           labels:
             app: csi-ridge-node
             role: csi-ridge
-            cloud.ridge.co/managed: 'true'
+            cloud.ridge.co/managed: true
         spec:
           volumes:
             - name: registration-dir
@@ -376,14 +389,14 @@ items:
                 - --driver-version={{ csi-version }}
                 - --node-registration
 {{#offline-expansion}}
-                - '--offline-expansion'
+                - --offline-expansion
 {{/offline-expansion}}
 {{#online-expansion}}
-                - '--online-expansion'
+                - --online-expansion
 {{/online-expansion}}
               env:
                 - name: CSI_ENDPOINT
-                  value: 'unix:///csi/csi.sock'
+                  value: unix:///csi/csi.sock
                 - name: KUBE_NODE_NAME
                   valueFrom:
                     fieldRef:
@@ -408,7 +421,7 @@ items:
                   mountPath: /etc/systemd/system/app-init.service
                 - name: registration-dir
                   mountPath: /registration/
-              imagePullPolicy: Always
+              imagePullPolicy: IfNotPresent
               securityContext:
                 capabilities:
                   add:
@@ -426,4 +439,6 @@ items:
       name: csi-ridge-node-sa
       namespace: kube-system
       labels:
-        cloud.ridge.co/managed: 'true'
+        app.kubernetes.io/name: ridge-csi-driver
+        app.kubernetes.io/version: 1.0.0
+        cloud.ridge.co/managed: true
