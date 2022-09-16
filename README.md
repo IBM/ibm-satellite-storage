@@ -22,7 +22,7 @@ With IBM Cloud Satellite, you can bring your own compute infrastructure that is 
    1. Include the subject line: `<storage-solution-name> integration`*. For example: `LocalVolume integration`. 
    1. Provide a high level description of the storage solution with a link to the user documentation or public repository.
 
-## Development environment
+## Setting up your development environment
 1. Collaborate with **`IBM Cloud Satellite Storage Team`** to setup your Satellite Location for development and testing. 
 
 ## Test your storage solution with ROKS in IBM Cloud Satellite 
