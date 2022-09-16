@@ -23,7 +23,7 @@ With IBM Cloud Satellite, you can bring your own compute infrastructure that is 
    1. Provide a high level description of the storage solution with a link to the user documentation or public repository.
 
 ## Setting up your development environment
-1. Collaborate with **`IBM Cloud Satellite Storage Team`** to setup your Satellite Location for development and testing. 
+1. Collaborate with the **`IBM Cloud Satellite Storage Team`** to setup your Satellite Location for development and testing. 
 
 ## Test your storage solution with ROKS in IBM Cloud Satellite 
 1. Create a `deployment.yaml` file to deploy Kubernetes resources for the storage operator or driver in the development environment. Review the following example `deployment.yaml` to deploy the `local-volume` operator.
