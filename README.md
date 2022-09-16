@@ -162,7 +162,7 @@ In this example, the `devicepath` parameter is set dynamically. In a local stora
       }
    ```
 
-#### Custom parameter reference
+## Understanding the Satellite storage template parameters
 
 | Parameter name | Description |
 | --- | --- |
