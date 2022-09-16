@@ -94,7 +94,7 @@ With IBM Cloud Satellite, you can bring your own compute infrastructure that is 
    1. The output of the `oc get -n <namespace> pods` command that displays the pods your deployment creates.
 
 
-## Solution validation and certification
+## Validating and certifying your solution
 
 IBM Team will collaborate with you to ensure your product works well with the IBM Cloud Paks. The intent of this certification is for our two companies to produce enterprise grade, best of breed, resilient, scalable solutions driving toward a consistent and maintainable deployed environment.
 1. [Review and complete the certification requirements](https://ibm-10.gitbook.io/certified-for-cloud-pak-onboarding/certification/tech-cert)
