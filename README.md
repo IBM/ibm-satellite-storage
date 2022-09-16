@@ -6,7 +6,7 @@ This repository is to collaborate with IBM Partners and Storage Solution Vendors
 ## Overview
 With IBM Cloud Satellite, you can bring your own compute infrastructure that is in your on-premises data center, at other cloud providers, or in edge networks as a Satellite Location to IBM Cloud. Then, you use the capabilities of Satellite to run IBM Cloud services on this infrastructure, and consistently deploy, manage, and control your app workloads. For more information, see the IBM documentation.
 - [IBM Cloud Satellite](https://www.ibm.com/cloud/satellite)
-- [ROSK in IBM Cloud Satellite](https://cloud.ibm.com/docs/satellite?topic=satellite-managed-services)
+- [Red Hat OpenShift on IBM Cloud Satellite](https://cloud.ibm.com/docs/satellite?topic=satellite-managed-services)
 - [Getting started](https://cloud.ibm.com/docs/satellite?topic=satellite-getting-started)
 - [IBM Cloud Satellite Storage](https://cloud.ibm.com/docs/satellite?topic=satellite-sat-storage-template-ov)
 
