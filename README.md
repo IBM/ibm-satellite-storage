@@ -96,7 +96,7 @@ With IBM Cloud Satellite, you can bring your own compute infrastructure that is 
 
 ## Validating and certifying your solution
 
-IBM Team will collaborate with you to ensure your product works well with the IBM Cloud Paks. The intent of this certification is for our two companies to produce enterprise grade, best of breed, resilient, scalable solutions driving toward a consistent and maintainable deployed environment.
+The IBM storage team will collaborate with you to ensure your product works well with the IBM Cloud Paks. The intent of this certification is for our two companies to produce enterprise grade, best of breed, resilient, scalable solutions driving toward a consistent and maintainable deployed environment.
 1. [Review and complete the certification requirements](https://ibm-10.gitbook.io/certified-for-cloud-pak-onboarding/certification/tech-cert)
 
 
