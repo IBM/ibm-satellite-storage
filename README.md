@@ -14,7 +14,7 @@ With IBM Cloud Satellite, you can bring your own compute infrastructure that is 
 ## Satellite storage partner certification process
 ![Storage Template Registration Flow](./satellite-storage-registration-flow.png) 
 
-## Register with IBM Cloud
+## Registering with IBM Cloud
 
 1. [Create an IBMid](https://cloud.ibm.com/registration).
 
