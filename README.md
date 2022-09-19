@@ -1,10 +1,15 @@
 # IBM Cloud Satellite storage
-This repository is used to develop storage templates to install your vendor storage solution in clusters that run in IBM Cloud Satellite. As a vendor, you can create and test your storage templates by following this README. After your template is approved, it can be deployed to clusters that run in IBM Cloud Satellite.
+IBM Cloud Satellite Storage provides capabilities to manage the lifecycle of a storage solution on a ROKS cluster deployed in a Satellite Location. It simplifies the storage solution deployment and maintenance including security patches & version upgrades. The core objective is to simplify the storage life cycle management for Cluster Admins by hiding the complexity.
+
+This repository is to collaborate with IBM Partners and Storage Solution Vendors to develop storage configuration templates for IBM Cloud Satellite.
 
 ## Overview
 With IBM Cloud Satellite, you can bring your own compute infrastructure that is in your on-premises data center, at other cloud providers, or in edge networks as a Satellite Location to IBM Cloud. Then, you use the capabilities of Satellite to run IBM Cloud services on this infrastructure, and consistently deploy, manage, and control your app workloads. For more information, see the IBM documentation.
 - [IBM Cloud Satellite](https://www.ibm.com/cloud/satellite)
+- [Red Hat OpenShift on IBM Cloud Satellite](https://cloud.ibm.com/docs/satellite?topic=satellite-managed-services)
 - [Getting started](https://cloud.ibm.com/docs/satellite?topic=satellite-getting-started)
+- [IBM Cloud Satellite Storage](https://cloud.ibm.com/docs/satellite?topic=satellite-sat-storage-template-ov)
+
 
 ## Satellite storage partner certification process
 ![Storage Template Registration Flow](./satellite-storage-registration-flow.png) 
@@ -13,18 +18,15 @@ With IBM Cloud Satellite, you can bring your own compute infrastructure that is 
 
 1. [Create an IBMid](https://cloud.ibm.com/registration).
 
-1. Email `contsto2@in.ibm.com`.
-   1. Include the subject line: `IBM Cloud Satellite Storage <storage-solution-name> Integration`*. For example: `IBM Cloud Satellite Storage LocalVolume Integration`. 
+1. Create an issue under [IBM Satellite Storage](https://github.com/IBM/ibm-satellite-storage/issues) repo.
+   1. Include the subject line: `<storage-solution-name> integration`*. For example: `LocalVolume integration`. 
    1. Provide a high level description of the storage solution with a link to the user documentation or public repository.
 
-1. [Complete the onboarding process](https://ibm-10.gitbook.io/certified-for-cloud-pak-onboarding)
+## Setting up your development environment
+1. Collaborate with the **`IBM Cloud Satellite Storage Team`** to setup your Satellite Location for development and testing. 
 
-1. [Complete the Certification Requirements checklist.](https://ibm-10.gitbook.io/certified-for-cloud-pak-onboarding/co-sell-1/tech-cert/architectural-questions)
-
-
-## Creating and testing your deployment
-
-1. Create a `deployment.yaml` file to deploy Kubernetes resources for the storage operator or driver in the development enviornment. Review the following example `deployment.yaml` to deploy the `local-volume` operator.
+## Testing your storage solution in IBM Cloud Satellite 
+1. Create a `deployment.yaml` file to deploy Kubernetes resources for the storage operator or driver in the development environment. Review the following example `deployment.yaml` to deploy the `local-volume` operator.
    ```yaml
    apiVersion: v1
    kind: List
@@ -76,14 +78,14 @@ With IBM Cloud Satellite, you can bring your own compute infrastructure that is 
                  devicePaths:
                     - /dev/xvde
    ```
-1. Once you get your development environment, test your deployment.
+1. Test your deployment.
    1. From `IBM Cloud Console` -> `Satellite` -> `Configurations` -> `Create Configuration`
    1. From `IBM Cloud Console` -> `Satellite` -> `Configurations` -> `Select the Configuration` -> `Add version and upload the deployment yaml`
    1. From the `IBM Cloud Console` -> `Satellite` -> `Configurations` -> `Select the Configuration` -> `Create Subscription`
    1. Verify that the resources are deployment to the cluster. 
    1. Create a PVC and run the sniff test using the IBM Provides test bucket to make sure deployment is working as expected.
  
-1. After you have verified your template in the development environment, [create an issue in this repo.](https://github.com/IBM/ibm-satellite-storage/issues). Review the formatting of the [example issue](https://github.com/IBM/ibm-satellite-storage/issues/17). Include the following information in your issue and ensure that you remove any secrets from your files.
+1. After you have verified your template in the development environment, update the issue. Include the following information in your issue and ensure that you remove any secrets from your files.
    1. Your `deployment.yaml` file.
    1. An example`pvc.yaml` file.
    1. An example `app.yaml`.
@@ -91,9 +93,16 @@ With IBM Cloud Satellite, you can bring your own compute infrastructure that is 
    1. The output of the `oc get -n <namespace> pvc` command that displays the PVCs your deployment creates.
    1. The output of the `oc get -n <namespace> pods` command that displays the pods your deployment creates.
 
+
+## Validating and certifying your solution
+
+The IBM storage team will collaborate with you to ensure your product works well with the IBM Cloud Paks. The intent of this certification is for our two companies to produce enterprise grade, best of breed, resilient, scalable solutions driving toward a consistent and maintainable deployed environment.
+1. [Review and complete the certification requirements](https://ibm-10.gitbook.io/certified-for-cloud-pak-onboarding/certification/tech-cert)
+
+
 ## Developing your Satellite storage configuration template
 
-1. Fork this repository.
+1. Fork this [repository](https://github.com/IBM/ibm-satellite-storage).
 
 1. Convert the `deployment.yaml` to a Satellite storage template. In your fork, make sure that you create your directory structure in the following format. For more information about the template files, review the reference table.
    ```md
@@ -140,38 +149,62 @@ In this example, the `devicepath` parameter is set dynamically. In a local stora
 2. Add the parameter to your `custom-parameters.json` file in the following format. You can also include a default value for the parameter.
    ```json
       {
-      "description": "A description of the parameter.",
-      "displayname": "The display name for the Satellite UI",
-      "name": "devicepath",
-      "default": "/dev/sdc",
-      "required": true,
-      "type": "text"
+         "description": "A description of the parameter.",
+         "displayname": "The display name for the Satellite UI",
+         "name": "devicepath",
+         "default": "/dev/sdc",
+         "regex": "^/dev/[a-zA-Z0-9]+$",
+         "max-length": "64",
+         "required": "true",
+         "category": "config",
+         "obfuscate": "false",
+         "type": "text"
       }
    ```
 
-#### Custom parameter reference
+## Understanding the Satellite storage template parameters
+
 | Parameter name | Description |
 | --- | --- |
 | `description` | A description of the parameter. |
 | `displayname` | The display name of the parameter that is used in the Satellite UI. |
 | `name` | The name of the parameter in string format. |
 | `default` | Optional. The default value for the parameter. If the does not specify the parameter in their configuration, this value entered as `default` is used. |
-| `required` | Specify `true` or `false`. |
-| `type` | Specify the parameter type. Valid parameter types are: `text`, `secret`, `boolean`, `option`, or `dropdown`. |
+| `regex` | Regular expression to validate the parameter value. |
+| `max-length` | Maximum length of the parameter value. |
+| `required` | Specify `false` if the parameter is optional otherwise `false`. |
+| `category` | Specify `secret` if the parameter is a secret otherwise `config`. |
+| `obfuscate` | Set it to `true` if you want to hide the value in GUI or CLI output. |
+| `type` | Specify the parameter type. Valid parameter types are: `text`, `boolean`, or `cvs`. |
 
 
 ## Testing and support
 
-1. Create a configuration from a template in your fork. When you run the `sat storage config create` command, specify the `source-org` and `source-branch` of your fork and any other parameters for your configuration.
+1. Once you are ready with your storage configuration template, raise a PR for https://github.com/IBM/ibm-satellite-storage
+
+1. **`IBM Cloud Satellite Storage`** Team will review the PR and provides you the required access to your storage configuration template.
+
+1. Get the list of supported templates
    ```sh
-   ibmcloud sat storage config create --name <config-name> --template-name <template-name> --template-version <template-version> --source-org <your-github-org> --source-branch <your-github-branch> [-p "<parameter>=<value>" -p "<parameter>=<value>"]
+   ibmcloud sat storage template ls
    ```
 
-1. Assign your configuration to a cluster.
+1. Review your template 
+   ```sh
+   ibmcloud sat storage template get --name <template-name> --version <template-version> 
+   ```
+
+1. Create a configuration using your template. Provide the required parameters as per your template.
+   ```sh
+   ibmcloud sat storage config create --name <config-name> --location <location-id> --template-name <template-name> --template-version <template-version>  [-p "<parameter>=<value>" -p "<parameter>=<value>"]
+   ```
+
+1. Assign your configuration to the cluster.
    ```sh
    ibmcloud sat storage assignment create --name <assignment-name> --group <cluster-group> --configuration <config-name>
    ```
-1. Develop test cases for verification testing. You test case should include the following:
+
+1. Develop test-cases for verification testing. The test-case should include the following:
    * Steps to set up the environment or deploy any prerequisites.
    * Test to verify the functionality of the Storage driver.
 
@@ -180,11 +213,3 @@ In this example, the `devicepath` parameter is set dynamically. In a local stora
    * Link to support site or support ticket process. 
    * Steps to collect data for debugging.
    * Known issues and steps to resolve the issue.
-
-## Requesting review
-
-After you have completed testing, you can open a PR to request a review from the Satellite storage team.
-
-1. Create a PR from your fork to the `develop` branch of this repo.
-
-1. The Satellite storage team will review your PR and request changes or approve.
