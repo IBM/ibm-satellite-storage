@@ -5,8 +5,8 @@ metadata:
   name: ridge-csi-driver
   namespace: kube-system
   annotations:
-    version: 1.0.0
-    revision: 1
+    version: "1.0.0"
+    revision: "1"
 items:
   - apiVersion: apps/v1
     kind: StatefulSet
@@ -16,18 +16,19 @@ items:
       labels:
         app.kubernetes.io/name: ridge-csi-driver
         app.kubernetes.io/version: 1.0.0
-        cloud.ridge.co/managed: true
+        cloud.ridge.co/managed: "true"
     spec:
       replicas: 1
       selector:
         matchLabels:
           app: csi-ridge-controller
+      serviceName: csi-ridge
       template:
         metadata:
           labels:
             app: csi-ridge-controller
             role: csi-ridge
-            cloud.ridge.co/managed: true
+            cloud.ridge.co/managed: "true"
         spec:
           volumes:
             - name: socket-dir
@@ -65,7 +66,7 @@ items:
                   mountPath: /var/lib/csi/sockets/pluginproxy/
               imagePullPolicy: IfNotPresent
             - name: csi-ridge-plugin
-              image: eu.gcr.io/tectonic-devel/moonstone-csi-driver:{{ csi-version }}
+              image: eu.gcr.io/tectonic-public/moonstone-csi-driver:{{ csi-version }}
               args:
                 - /app/csi-driver
                 - --log-format=json
@@ -105,16 +106,6 @@ items:
                 - name: socket-dir
                   mountPath: /var/lib/csi/sockets/pluginproxy/
               imagePullPolicy: IfNotPresent
-              nodeSelector:
-                node-role.kubernetes.io/control-plane: ''
-              serviceAccount: csi-ridge-controller-sa
-              tolerations:
-                - operator: Exists
-              priorityClassName: system-cluster-critical
-              dnsConfig:
-                options:
-                  - name: single-request-reopen
-              serviceName: csi-ridge
 {{/online-expansion}}
 {{^online-expansion}}{{#offline-expansion}}
             - name: csi-resizer
@@ -129,17 +120,14 @@ items:
                 - name: socket-dir
                   mountPath: /var/lib/csi/sockets/pluginproxy/
               imagePullPolicy: IfNotPresent
-              nodeSelector:
-                node-role.kubernetes.io/control-plane: ''
-              serviceAccount: csi-ridge-controller-sa
-              tolerations:
-                - operator: Exists
-              priorityClassName: system-cluster-critical
-              dnsConfig:
-                options:
-                  - name: single-request-reopen
-              serviceName: csi-ridge
 {{/offline-expansion}}{{/online-expansion}}
+          serviceAccount: csi-ridge-controller-sa
+          tolerations:
+            - operator: Exists
+          priorityClassName: system-cluster-critical
+          dnsConfig:
+            options:
+              - name: single-request-reopen
   - apiVersion: v1
     kind: ServiceAccount
     metadata:
@@ -148,7 +136,7 @@ items:
       labels:
         app.kubernetes.io/name: ridge-csi-driver
         app.kubernetes.io/version: 1.0.0
-        cloud.ridge.co/managed: true
+        cloud.ridge.co/managed: "true"
   - apiVersion: rbac.authorization.k8s.io/v1
     kind: ClusterRole
     metadata:
@@ -156,7 +144,7 @@ items:
       labels:
         app.kubernetes.io/name: ridge-csi-driver
         app.kubernetes.io/version: 1.0.0
-        cloud.ridge.co/managed: true
+        cloud.ridge.co/managed: "true"
     rules:
       - verbs:
           - get
@@ -258,7 +246,7 @@ items:
       labels:
         app.kubernetes.io/name: ridge-csi-driver
         app.kubernetes.io/version: 1.0.0
-        cloud.ridge.co/managed: true
+        cloud.ridge.co/managed: "true"
     subjects:
       - kind: ServiceAccount
         name: csi-ridge-controller-sa
@@ -274,7 +262,7 @@ items:
       labels:
         app.kubernetes.io/name: ridge-csi-driver
         app.kubernetes.io/version: 1.0.0
-        cloud.ridge.co/managed: true
+        cloud.ridge.co/managed: "true"
     rules:
       - verbs:
           - get
@@ -319,7 +307,7 @@ items:
       labels:
         app.kubernetes.io/name: ridge-csi-driver
         app.kubernetes.io/version: 1.0.0
-        cloud.ridge.co/managed: true
+        cloud.ridge.co/managed: "true"
     subjects:
       - kind: ServiceAccount
         name: csi-ridge-controller-sa
@@ -336,7 +324,7 @@ items:
       labels:
         app.kubernetes.io/name: ridge-csi-driver
         app.kubernetes.io/version: 1.0.0
-        cloud.ridge.co/managed: true
+        cloud.ridge.co/managed: "true"
     spec:
       selector:
         matchLabels:
@@ -346,7 +334,7 @@ items:
           labels:
             app: csi-ridge-node
             role: csi-ridge
-            cloud.ridge.co/managed: true
+            cloud.ridge.co/managed: "true"
         spec:
           volumes:
             - name: registration-dir
@@ -379,7 +367,7 @@ items:
                 path: /etc/systemd/system/app-init.service
           containers:
             - name: csi-ridge-plugin
-              image: eu.gcr.io/tectonic-devel/moonstone-csi-driver:{{ csi-version }}
+              image: eu.gcr.io/tectonic-public/moonstone-csi-driver:{{ csi-version }}
               args:
                 - /app/csi-driver
                 - --log-format=json
@@ -428,11 +416,11 @@ items:
                     - SYS_ADMIN
                 privileged: true
                 allowPrivilegeEscalation: true
-        serviceAccount: csi-ridge-node-sa
-        hostNetwork: true
-        tolerations:
-          - operator: Exists
-        priorityClassName: system-node-critical
+          serviceAccount: csi-ridge-node-sa
+          hostNetwork: true
+          tolerations:
+            - operator: Exists
+          priorityClassName: system-node-critical
   - apiVersion: v1
     kind: ServiceAccount
     metadata:
@@ -441,4 +429,4 @@ items:
       labels:
         app.kubernetes.io/name: ridge-csi-driver
         app.kubernetes.io/version: 1.0.0
-        cloud.ridge.co/managed: true
+        cloud.ridge.co/managed: "true"

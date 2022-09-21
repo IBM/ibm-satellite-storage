@@ -6,11 +6,11 @@ metadata:
   namespace: kube-system
   labels:
     volume-type: block
-    storage-class-preference: {{ storage-class-preference }}
-    is-user-defined-class: true
-    cloud.ridge.co/managed: true
+    storage-class-preference: "{{ storage-class-preference }}"
+    is-user-defined-class: "true"
+    cloud.ridge.co/managed: "true"
   annotations:
-    storageclass.kubernetes.io/is-default-class: true
+    storageclass.kubernetes.io/is-default-class: "true"
 provisioner: driver.csi.ridge.com
 allowVolumeExpansion: {{ allowVolumeExpansion }}
 volumeBindingMode: WaitForFirstConsumer
