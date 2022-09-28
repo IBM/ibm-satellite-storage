@@ -28,6 +28,8 @@ items:
           labels:
             app: csi-ridge-controller
             role: csi-ridge
+            app.kubernetes.io/name: ridge-csi-driver
+            app.kubernetes.io/version: 1.0.0
             cloud.ridge.co/managed: "true"
         spec:
           volumes:
@@ -334,6 +336,8 @@ items:
           labels:
             app: csi-ridge-node
             role: csi-ridge
+            app.kubernetes.io/name: ridge-csi-driver
+            app.kubernetes.io/version: 1.0.0
             cloud.ridge.co/managed: "true"
         spec:
           volumes:
