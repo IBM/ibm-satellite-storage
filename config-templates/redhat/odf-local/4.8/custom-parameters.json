@@ -100,9 +100,9 @@
     "default": "false",
     "type": "boolean",
     "regex": "^(?:true|false)$",
-    "min-length": "8",
-    "max-length": "10",
-    "supported-values": ["essentials", "advanced"],
+    "min-length": "4",
+    "max-length": "5",
+    "supported-values": ["true", "false"],
     "required": "false"
   },
   {
