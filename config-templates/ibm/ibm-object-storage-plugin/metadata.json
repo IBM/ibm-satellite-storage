@@ -1,0 +1,49 @@
+{
+  "name": "2.2",
+  "revision": "2", 
+  "enabled": "true",
+  "status": "supported",
+  "description": "[Beta] - IBM Object Storage Plugin version 2.2.1",
+  "tags": [
+    {
+      "name": "provider",
+      "value": "ibm"
+    },
+    {
+      "name": "volume-type",
+      "value": "object"
+    },
+    {
+      "name": "provider-logo",
+      "value": "test-logo"
+    },
+    {
+      "name": "offering-name",
+      "value": "ibm-object-storage-plugin"
+    },
+    {
+      "name": "offering-type",
+      "value": "non-sds"
+    },
+    {
+      "name": "provider-url",
+      "value": "IBM knowledge center: "
+    },
+    {
+      "name": "support-url",
+      "value": "https://www.ibm.com/support/home/"
+    },
+    {
+      "name": "support-msg",
+      "value": "For support contact IBM"
+    },
+    {
+      "name": "supported-envs",
+      "value": "IBM"
+    },
+    {
+      "name": "supported-k8s-versions",
+      "value": "1.20,1.21,1.22,1.23"
+    }
+  ]
+}
