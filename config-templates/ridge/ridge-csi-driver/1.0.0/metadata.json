@@ -26,6 +26,10 @@
       "value": "non-sds"
     },
     {
+      "name": "support-url",
+      "value": "https://www.ridge.co/support/"
+    },
+    {
       "name": "support-msg",
       "value": "For support contact Ridge"
     },
@@ -35,7 +39,11 @@
     },
     {
       "name": "supported-k8s-versions",
-      "value": "1.19,1.20,1.21,1.22,1.23,1.24"
+      "value": "1.21,1.22,1.23,1.24"
+    },
+    {
+      "name": "supported-ocp-versions",
+      "value": "4.8,4.9,4.10,4.11"
     },
     {
       "name": "volume-type",

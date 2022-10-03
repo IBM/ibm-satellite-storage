@@ -9,7 +9,7 @@ metadata:
     is-user-defined-class: "true"
     cloud.ridge.co/managed: "true"
   annotations:
-    storageclass.kubernetes.io/is-default-class: "true"
+    storageclass.kubernetes.io/is-default-class: "{{ is-default-class }}"
 provisioner: driver.csi.ridge.com
 allowVolumeExpansion: {{ allowVolumeExpansion }}
 volumeBindingMode: WaitForFirstConsumer
