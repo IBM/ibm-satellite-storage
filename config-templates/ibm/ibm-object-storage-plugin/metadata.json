@@ -1,6 +1,6 @@
 {
   "name": "2.2",
-  "revision": "2", 
+  "revision": "1", 
   "enabled": "true",
   "status": "supported",
   "description": "[Beta] - IBM Object Storage Plugin version 2.2.1",
