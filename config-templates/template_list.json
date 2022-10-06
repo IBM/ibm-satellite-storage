@@ -126,5 +126,13 @@
     "default-version": "2.4.0",
     "enabled": "true",
     "provider": "ibm"
+  },
+  {
+    "name": "ridge-csi-driver",
+    "displayname": "[Beta] Ridge CSI Driver",
+    "Description": "[Beta] Ridge CSI Driver.",
+    "default-version": "1.0.0",
+    "enabled": "true",
+    "provider": "ridge"
   }
 ]
