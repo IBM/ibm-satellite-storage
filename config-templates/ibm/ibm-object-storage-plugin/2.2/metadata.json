@@ -27,7 +27,7 @@
     },
     {
       "name": "provider-url",
-      "value": "IBM knowledge center: "
+      "value": "https://cloud.ibm.com/docs/openshift?topic=openshift-cos_plugin_changelog"
     },
     {
       "name": "support-url",
