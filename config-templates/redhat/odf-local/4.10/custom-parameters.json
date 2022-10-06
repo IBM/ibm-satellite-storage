@@ -188,6 +188,10 @@
     "displayname": "Ignore Noobaa",
     "name": "ignore-noobaa",
     "default": "false",
+    "regex": "^(?:true|false)$",
+    "min-length": "4",
+    "max-length": "5",
+    "supported-values": ["true", "false"],
     "type": "boolean",
     "required": "false"
   }
