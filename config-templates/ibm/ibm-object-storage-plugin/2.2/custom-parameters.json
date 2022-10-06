@@ -1,12 +1,5 @@
 [
     {
-        "description": "The version of the cos plugin helm chart to be deployed",
-        "displayname": "Helm Chart Version",
-        "name": "helm-chart-version",
-        "required": "false",
-        "mutable": "true"
-    },
-    {
         "description": "Release name of the chart",
         "displayname": "Helm Chart Release Name",
         "name": "helm-release-name",
