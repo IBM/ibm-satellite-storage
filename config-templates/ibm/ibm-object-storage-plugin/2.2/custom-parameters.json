@@ -1,0 +1,37 @@
+[
+    {
+        "description": "Release name of the chart",
+        "displayname": "Helm Chart Release Name",
+        "name": "helm-release-name",
+        "required": "true"
+    },
+    {
+        "description": "Helm Chart Additional Parameters",
+        "displayname": "Helm Chart Additional Parameters",
+        "name": "optional-parameters",
+        "required": "false",
+        "type": "csv",
+        "mutable": "true"
+    },
+    {
+        "description": "COS License",
+        "displayname": "COS License",
+        "name": "license",
+        "required": "false",
+        "default": "true"
+    },
+    {
+        "description": "COS Endpoint",
+        "displayname": "COS Endpoint",
+        "name": "cos-endpoint",
+        "required": "false",
+        "default": "https://s3.us.cloud-object-storage.appdomain.cloud"
+    },
+    {
+        "description": "COS storageclass",
+        "displayname": "COS Listorageclasscense",
+        "name": "cos-storageclass",
+        "required": "false",
+        "default": "us-smart"
+    }
+]
