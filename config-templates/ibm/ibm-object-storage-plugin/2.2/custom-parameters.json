@@ -3,12 +3,14 @@
         "description": "Release name of the chart",
         "displayname": "Helm Chart Release Name",
         "name": "helm-release-name",
+        "category": "config",
         "required": "true"
     },
     {
         "description": "Helm Chart Additional Parameters",
         "displayname": "Helm Chart Additional Parameters",
         "name": "optional-parameters",
+        "category": "config",
         "required": "false",
         "type": "csv",
         "mutable": "true"
@@ -17,6 +19,7 @@
         "description": "COS License",
         "displayname": "COS License",
         "name": "license",
+        "category": "config",
         "required": "false",
         "default": "true"
     },
@@ -24,6 +27,7 @@
         "description": "COS Endpoint",
         "displayname": "COS Endpoint",
         "name": "cos-endpoint",
+        "category": "config",
         "required": "false",
         "default": "https://s3.us.cloud-object-storage.appdomain.cloud"
     },
@@ -31,6 +35,7 @@
         "description": "COS storageclass",
         "displayname": "COS storageclass",
         "name": "cos-storageclass",
+        "category": "config",
         "required": "false",
         "default": "us-smart"
     }
