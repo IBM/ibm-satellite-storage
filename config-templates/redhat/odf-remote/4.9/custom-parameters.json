@@ -16,7 +16,7 @@
     "name": "osd-storage-class",
     "regex": "^([a-zA-Z0-9]*[a-zA-Z0-9-_.]*[a-zA-Z0-9])$",
     "min-length": "1",
-    "max-length": "43",
+    "max-length": "40",
     "required": "true"
   },
   {
