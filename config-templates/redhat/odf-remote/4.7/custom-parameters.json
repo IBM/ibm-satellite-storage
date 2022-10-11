@@ -14,7 +14,9 @@
     "description": "The storage class to use when dynamically provisioning volumes for the monitor pods.",
     "displayname": "Monitoring pod storage class",
     "name": "mon-storage-class",
-    "max-length": "43",
+    "regex": "^([a-zA-Z0-9]*[a-zA-Z0-9-_.]*[a-zA-Z0-9])$",
+    "min-length": "1",
+    "max-length": "40",
     "required": "true"
   },
   {
@@ -34,7 +36,7 @@
     "name": "osd-storage-class",
     "regex": "^([a-zA-Z0-9]*[a-zA-Z0-9-_.]*[a-zA-Z0-9])$",
     "min-length": "1",
-    "max-length": "43",
+    "max-length": "40",
     "required": "true"
   },
   {
