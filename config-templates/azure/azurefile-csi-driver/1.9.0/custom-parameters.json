@@ -37,7 +37,7 @@
         "required": "true"
     },
     {
-        "description": "Your Azure Active Directory Client Secret.",
+        "description": "Your Azure Active Directory Client Secret. You can find your client secret in the Azure portal under the `App registrations` menu.",
         "displayname": "Azure Active Directory Client Secret",
         "name": "aadClientSecret",
         "required": "true",
