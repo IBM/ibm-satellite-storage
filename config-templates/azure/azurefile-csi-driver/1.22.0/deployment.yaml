@@ -299,13 +299,12 @@ items:
     spec:
       updateStrategy:
         rollingUpdate:
-          maxUnavailable: 
+          maxUnavailable:
         type: RollingUpdate
       selector:
         matchLabels:
           app: csi-azurefile-node
           app.kubernetes.io/name: azurefile-csi-driver
-          app.kubernetes.io/instance: RELEASE-NAME
       template:
         metadata:
           labels:
