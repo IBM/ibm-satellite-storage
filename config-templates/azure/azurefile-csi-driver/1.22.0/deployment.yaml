@@ -483,6 +483,7 @@ items:
         metadata:
           labels:
             app: csi-azurefile-controller
+            app.kubernetes.io/name: azurefile-csi-driver
             app.kubernetes.io/version: "v1.22.0"
         spec:
           hostNetwork: true
