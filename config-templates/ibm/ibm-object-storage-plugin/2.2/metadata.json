@@ -15,7 +15,7 @@
     },
     {
       "name": "provider-logo",
-      "value": "https://github.com/IBM/ibm-satellite-storage/blob/develop/config-templates/ibm/ibm-object-storage-plugin/2.2/ibm-object-storage-plugin.svg"
+      "value": "ibm-object-storage-plugin.svg"
     },
     {
       "name": "offering-name",
