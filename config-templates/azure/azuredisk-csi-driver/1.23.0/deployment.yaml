@@ -32,6 +32,9 @@ items:
     kind: CSIDriver
     metadata:
       name: disk.csi.azure.com
+      labels:
+        app.kubernetes.io/name: azuredisk-csi-driver
+        app.kubernetes.io/version: 1.23.0
       annotations:
         csiDriver: "v1.23.0"
         snapshot: "v5.0.1"
@@ -305,6 +308,8 @@ items:
             app.kubernetes.io/name: azuredisk-csi-driver
             app.kubernetes.io/version: 1.23.0
             app: csi-azuredisk-node
+          annotations:
+            autoUpdate: "AUTO-UPDATE-ENABLED"
         spec:
           hostNetwork: true
           dnsPolicy: Default
@@ -486,6 +491,8 @@ items:
             app.kubernetes.io/name: azuredisk-csi-driver
             app.kubernetes.io/version: v1.23.0
             app: csi-azuredisk-controller
+          annotations:
+            autoUpdate: "AUTO-UPDATE-ENABLED"
         spec:
           hostNetwork: true
           serviceAccountName: csi-azuredisk-controller-sa

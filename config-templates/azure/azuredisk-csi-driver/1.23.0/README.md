@@ -98,26 +98,27 @@ To verify that your configuration is assigned to your cluster. Verify that the d
 List the `azuredisk` driver pods in the `kube-system` namespace and verify that the status is `Running`.
 
 ```
-% kubectl get pods -n kube-system | grep azure
-csi-azuredisk-controller-849d854b96-6jbjg   5/5     Running   0          167m
-csi-azuredisk-controller-849d854b96-lkplx   5/5     Running   0          167m
-csi-azuredisk-node-7qwlj                    3/3     Running   6          167m
-csi-azuredisk-node-8xm4c                    3/3     Running   6          167m
-csi-azuredisk-node-snsdb                    3/3     Running   6          167m
+% oc get pods -n kube-system --insecure-skip-tls-verify | grep azuredisk
+csi-azuredisk-controller-85c9fdd7cd-5bh55              6/6     Running   0          4m3s
+csi-azuredisk-controller-85c9fdd7cd-6nhn6              6/6     Running   0          4m3s
+csi-azuredisk-node-g2mng                               3/3     Running   0          4m3s
+csi-azuredisk-node-gmpdd                               3/3     Running   0          4m3s
+csi-azuredisk-node-xbtsm                               3/3     Running   0          4m3s
 ```
 
 List the `azuredisk` storage classes.
 
 ```
-% kubectl get sc | grep azure
-sat-azure-block-bronze           disk.csi.azure.com   Delete          Immediate              true                   167m
-sat-azure-block-bronze-metro     disk.csi.azure.com   Delete          WaitForFirstConsumer   true                   167m
-sat-azure-block-gold             disk.csi.azure.com   Delete          Immediate              true                   167m
-sat-azure-block-gold-metro       disk.csi.azure.com   Delete          WaitForFirstConsumer   true                   167m
-sat-azure-block-platinum         disk.csi.azure.com   Delete          Immediate              true                   167m
-sat-azure-block-platinum-metro   disk.csi.azure.com   Delete          WaitForFirstConsumer   true                   167m
-sat-azure-block-silver           disk.csi.azure.com   Delete          Immediate              true                   167m
-sat-azure-block-silver-metro     disk.csi.azure.com   Delete          WaitForFirstConsumer   true                   167m
+% oc get sc --insecure-skip-tls-verify | grep azure
+sat-azure-block-bronze                 disk.csi.azure.com   Delete          Immediate              true                   6m1s
+sat-azure-block-bronze-metro           disk.csi.azure.com   Delete          WaitForFirstConsumer   true                   6m1s
+sat-azure-block-gold                   disk.csi.azure.com   Delete          Immediate              true                   6m2s
+sat-azure-block-gold-metro (default)   disk.csi.azure.com   Delete          WaitForFirstConsumer   true                   6m2s
+sat-azure-block-platinum               disk.csi.azure.com   Delete          Immediate              true                   6m3s
+sat-azure-block-platinum-metro         disk.csi.azure.com   Delete          WaitForFirstConsumer   true                   6m3s
+sat-azure-block-silver                 disk.csi.azure.com   Delete          Immediate              true                   6m2s
+sat-azure-block-silver-metro           disk.csi.azure.com   Delete          WaitForFirstConsumer   true                   6m2s
+
 ```
 
 **Example output**
