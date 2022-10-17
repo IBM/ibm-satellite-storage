@@ -27,7 +27,7 @@
     "name": "azurefile-csi-driver",
     "displayname": "Azure File CSI Driver",
     "Description": "Azure File CSI Driver.",
-    "default-version": "1.9.0",
+    "default-version": "1.18.0",
     "enabled": "true",
     "provider": "azure"
   },
