@@ -485,6 +485,8 @@ items:
             app: csi-azurefile-controller
             app.kubernetes.io/name: azurefile-csi-driver
             app.kubernetes.io/version: "v1.22.0"
+          annotations:
+            autoUpdate: "AUTO-UPDATE-ENABLED"
         spec:
           hostNetwork: true
           serviceAccountName: csi-azurefile-controller-sa
@@ -497,9 +499,6 @@ items:
               operator: Exists
             - effect: NoSchedule
               key: node-role.kubernetes.io/controlplane
-              operator: Exists
-            - effect: NoSchedule
-              key: node-role.kubernetes.io/control-plane
               operator: Exists
           containers:
             - name: csi-provisioner
