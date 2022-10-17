@@ -1,0 +1,135 @@
+# Azure Disk CSI Driver [BETA]
+
+The Azure Disk CSI driver implements the CSI specification for container orchestrators to manage the lifecycle of Azure Disk volumes.
+
+**Features supported:**
+- Topology(Availability Zone)
+- ZRS disk support(Preview)
+- Volume Cloning
+- Volume Expansion
+- Raw Block Volume
+- Shared Disk
+- Volume Limits
+- fsGroupPolicy
+
+## Prerequisites
+1. Retrieve the zone of your Azure worker nodes.
+    ```
+    oc get nodes
+    ```
+2. Label your Azure worker nodes with the zone. Replace `<zone>` with the zone of your Azure worker nodes. For example: `eastus-1`.
+    ```
+    oc label node <node_name> topology.kubernetes.io/zone-
+    oc label node <node_name> topology.kubernetes.io/zone=<zone> --overwrite
+    ```
+3. Copy the [Azure disk configuration template](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/azure.json) and enter the details for your cluster. For more information about the configuration parameters, see [Driver Parameters](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/docs/driver-parameters.md).
+4. Serialize your config file and convert it to base64.
+    ```
+    cat azure.json | base64 | awk '{printf $0}'; echo
+    ```
+
+
+## Azure Disk CSI Driver parameters & how to retrieve them
+
+Get a list of the Azure template configuration parameters.
+```
+ibmcloud sat storage template get --name azuredisk-csi-driver --version 1.23.0
+```
+
+**Azure Disk CSI Driver parameters**
+
+| Parameter | Required? | Description | Default value if not provided |
+| --- | --- | --- | --- |
+| `tenantId` | Required | Provide Tenant ID. | N/A |
+| `subscriptionId` | Required | Provide Subscription ID. | N/A |
+| `aadClientId` | Required | Provide Azure Activery Directory Client ID. | N/A |
+| `aadClientSecret` | Required | Provide Azure Active Directory Client Secret. | N/A |
+| `resourceGroup` | Required | Provide Resource Group. | N/A |
+| `location` | Required | Provide Location. | N/A |
+| `vmType` | Required | Provide Virtual Machine Type (eg. standard, VMSS). | N/A |
+| `securityGroupName` | Required | Provide Network Security Group Name. | N/A |
+| `vnetName` | Required | Provide Virtual Network Name. | N/A |
+
+
+
+## Default storage classes
+
+| Storage class name | IOPS range per disk | Size range | Hard disk | Reclaim policy | Volume Binding Mode |
+| --- | --- | --- | --- | --- | --- |
+| `sat-azure-block-platinum` |  1200 - 160000 | 4 GiB - 64 TiB | SSD | Delete | Immediate |
+| `sat-azure-block-platinum-metro`  | 1200 - 160000 | 4 GiB - 64 TiB | SSD | Delete | WaitForFirstConsumer |
+| `sat-azure-block-gold` | 120 - 20000 | 32 GiB - 32 TiB | SSD | Delete | Immediate |
+| `sat-azure-block-gold-metro` | 120 - 20000 | 32 GiB - 32 TiB | SSD | Delete | WaitForFirstConsumer |
+| `sat-azure-block-silver`  | 120 - 6000 | NA | SSD | Delete | Immediate |
+| `sat-azure-block-silver-metro` | 120 - 6000 | NA | SSD | Delete | WaitForFirstConsumer |
+| `sat-azure-block-bronze`  | 500 - 2000 | 32 GiB - 32 TiB | HDD | Delete | Immediate |
+| `sat-azure-block-bronze-metro` | 500 - 2000 | 32 GiB - 32 TiB | HDD | Delete | WaitForFirstConsumer |
+
+
+
+## Creating the AZURE DISK CSI Driver storage configuration
+
+**Example `sat storage config create` command**
+
+```sh
+ibmcloud sat storage config create --name <config-name> --template-name azuredisk-csi-driver --template-version 1.23.0 --location <location> -p "tenantId=<tenantId>" -p "subscriptionId=<subscriptionId>" -p "aadClientId=<Azure_AD_ClientId>" -p "aadClientSecret=<Azure_AD_Client_Secret>" -p "resourceGroup=<resource_group>" -p "location=<location>" -p "vmType=<vm_type>" -p "securityGroupName=<security_group_name>" -p "vnetName=<vnet_name>"
+```
+
+## Creating the storage assignment
+
+**Example `sat storage assignment create` command**
+
+**Apply config to a group of clusters**
+```sh
+ibmcloud sat storage assignment create --name <assignmemt-name> --group <cluster-group> --config <config-name>
+```
+**Apply config to an individual cluster**
+```sh
+ibmcloud sat storage assignment create --name <assignmemt-name> --cluster <cluster-id> --config <config-name>
+```
+**Apply config to a service cluster**
+```sh
+ibmcloud sat storage assignment create --name <assignmemt-name> --service-cluster-id <service-cluster-id> --config <config-name>
+```
+## Verifying your Azure Disk CSI Driver storage configuration is assigned to your clusters
+
+To verify that your configuration is assigned to your cluster. Verify that the driver pods are running, and list the Satellite storage classes that are installed.
+
+List the `azuredisk` driver pods in the `kube-system` namespace and verify that the status is `Running`.
+
+```
+% oc get pods -n kube-system --insecure-skip-tls-verify | grep azuredisk
+csi-azuredisk-controller-85c9fdd7cd-5bh55              6/6     Running   0          4m3s
+csi-azuredisk-controller-85c9fdd7cd-6nhn6              6/6     Running   0          4m3s
+csi-azuredisk-node-g2mng                               3/3     Running   0          4m3s
+csi-azuredisk-node-gmpdd                               3/3     Running   0          4m3s
+csi-azuredisk-node-xbtsm                               3/3     Running   0          4m3s
+```
+
+List the `azuredisk` storage classes.
+
+```
+% oc get sc --insecure-skip-tls-verify | grep azure
+sat-azure-block-bronze                 disk.csi.azure.com   Delete          Immediate              true                   6m1s
+sat-azure-block-bronze-metro           disk.csi.azure.com   Delete          WaitForFirstConsumer   true                   6m1s
+sat-azure-block-gold                   disk.csi.azure.com   Delete          Immediate              true                   6m2s
+sat-azure-block-gold-metro (default)   disk.csi.azure.com   Delete          WaitForFirstConsumer   true                   6m2s
+sat-azure-block-platinum               disk.csi.azure.com   Delete          Immediate              true                   6m3s
+sat-azure-block-platinum-metro         disk.csi.azure.com   Delete          WaitForFirstConsumer   true                   6m3s
+sat-azure-block-silver                 disk.csi.azure.com   Delete          Immediate              true                   6m2s
+sat-azure-block-silver-metro           disk.csi.azure.com   Delete          WaitForFirstConsumer   true                   6m2s
+
+```
+
+**Example output**
+
+![Example Output](./images/output.png)
+
+## Troubleshooting
+- In case of `node register failure`, please make sure that nodes are labelled with proper zone.
+- In case of `authentication failure`, please make sure that **Service Principal** is created properly.
+
+## References
+- [Azure Disk CSI Driver](https://github.com/kubernetes-sigs/azuredisk-csi-driver)
+- [Limitations](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/docs/limitations.md)
+- [Get Azure Credentials](https://www.inkoop.io/blog/how-to-get-azure-api-credentials/)
