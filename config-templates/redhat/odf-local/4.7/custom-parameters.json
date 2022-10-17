@@ -19,6 +19,9 @@
     "displayname": "Number of storage daemonsets",
     "name": "num-of-osd",
     "default": "1",
+    "regex": "^[1-9]([0-9]?)$",
+    "min-length": "1",
+    "max-length": "2",
     "required": "false",
     "mutable": "true"
   },
@@ -34,6 +37,10 @@
     "displayname": "Upgrade",
     "name": "odf-upgrade",
     "default": "false",
+    "regex": "^(?:true|false)$",
+    "min-length": "4",
+    "max-length": "5",
+    "supported-values": ["true", "false"],
     "required": "false",
     "type": "boolean",
     "mutable": "true"
@@ -43,6 +50,10 @@
     "displayname": "Billing type",
     "name": "billing-type",
     "default": "advanced",
+    "regex": "^(?:essentials|advanced)$",
+    "min-length": "8",
+    "max-length": "10",
+    "supported-values": ["essentials", "advanced"],
     "required": "false"
   },
   {
@@ -83,6 +94,10 @@
     "displayname": "Encryption enabled",
     "name": "cluster-encryption",
     "default": "false",
+    "regex": "^(?:true|false)$",
+    "min-length": "4",
+    "max-length": "5",
+    "supported-values": ["true", "false"],
     "type": "boolean",
     "required": "false"
   },
@@ -100,6 +115,10 @@
     "displayname": "Perform Cleanup",
     "name": "perform-cleanup",
     "default": "false",
+    "regex": "^(?:true|false)$",
+    "min-length": "4",
+    "max-length": "5",
+    "supported-values": ["true", "false"],
     "required": "false",
     "type": "boolean",
     "mutable": "true"

@@ -27,6 +27,10 @@
     "displayname": "File System type",
     "name": "fstype",
     "default": "ext4",
+    "regex": "^(?:ext(?:3|4)|xfs)$",
+    "min-length": "3",
+    "max-length": "4",
+    "supported-values": ["ext3", "ext4", "xfs"],
     "required": "false",
     "category": "config"
   }
