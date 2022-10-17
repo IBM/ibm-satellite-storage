@@ -22,6 +22,6 @@ items:
         - license={{{ license }}}
         - cos.endpoint={{{ cos-endpoint }}}
         - cos.storageClass={{{ cos-storageclass }}}
-        {{#optional-parameters }}
+        {{#parameters }}
         - "{{{ item }}}"
-        {{/optional-parameters }}
+        {{/parameters }}

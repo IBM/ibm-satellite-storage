@@ -7,24 +7,24 @@
         "required": "true"
     },
     {
-        "description": "Helm Chart Additional Parameters",
-        "displayname": "Helm Chart Additional Parameters",
-        "name": "optional-parameters",
+        "description": "Helm Chart Additional Parameters (Optional)",
+        "displayname": "Helm Chart Additional Parameters (Optional)",
+        "name": "parameters",
         "category": "config",
         "required": "false",
         "type": "csv",
         "mutable": "true"
     },
     {
-        "description": "COS License",
-        "displayname": "COS License",
+        "description": "COS License (Apache 2.0)",
+        "displayname": "COS License (Apache 2.0)",
         "name": "license",
         "category": "config",
         "required": "false",
         "default": "true"
     },
     {
-        "description": "COS Endpoint",
+        "description": "COS Endpoint (for more info refer - https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-endpoints)",
         "displayname": "COS Endpoint",
         "name": "cos-endpoint",
         "category": "config",
@@ -32,7 +32,7 @@
         "default": "https://s3.us.cloud-object-storage.appdomain.cloud"
     },
     {
-        "description": "COS storageclass",
+        "description": "COS storageclass (for more info refer - https://cloud.ibm.com/docs/cloud-object-storage/basics?topic=cloud-object-storage-classes)",
         "displayname": "COS storageclass",
         "name": "cos-storageclass",
         "category": "config",
