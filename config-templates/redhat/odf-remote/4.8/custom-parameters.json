@@ -4,14 +4,19 @@
     "displayname": "OSD pod volume size",
     "name": "osd-size",
     "default": "100Gi",
+    "regex": "^[1-9]{1}[0-9]{0,3}(?:Gi|Ti)$",
+    "min-length": "3",
+    "max-length": "6",
     "place-holder": "100Gi",
-    "regex": "^[0-9]+Gi$",
     "required": "true"
   },
   {
     "description": "The storage class to use when dynamically provisioning volumes for the OSD pods.",
     "displayname": "OSD pod storage class",
     "name": "osd-storage-class",
+    "regex": "^([a-zA-Z0-9]*[a-zA-Z0-9-_.]*[a-zA-Z0-9])$",
+    "min-length": "1",
+    "max-length": "40",
     "required": "true"
   },
   {
@@ -19,6 +24,9 @@
     "displayname": "Number of OSD volumes",
     "name": "num-of-osd",
     "default": "1",
+    "regex": "^[1-9]([0-9]?)$",
+    "min-length": "1",
+    "max-length": "2",
     "required": "false",
     "mutable": "true"
   },
@@ -34,6 +42,10 @@
     "displayname": "Upgrade",
     "name": "odf-upgrade",
     "default": "false",
+    "regex": "^(?:true|false)$",
+    "min-length": "4",
+    "max-length": "5",
+    "supported-values": ["true", "false"],
     "required": "false",
     "type": "boolean",
     "mutable": "true"
@@ -43,6 +55,10 @@
     "displayname": "Billing type",
     "name": "billing-type",
     "default": "advanced",
+    "regex": "^(?:essentials|advanced)$",
+    "min-length": "8",
+    "max-length": "10",
+    "supported-values": ["essentials", "advanced"],
     "required": "false"
   },
   {
@@ -82,6 +98,10 @@
     "displayname": "Encryption enabled",
     "name": "cluster-encryption",
     "default": "false",
+    "regex": "^(?:true|false)$",
+    "min-length": "4",
+    "max-length": "5",
+    "supported-values": ["true", "false"],
     "type": "boolean",
     "required": "false"
   },
@@ -99,6 +119,10 @@
     "displayname": "Perform Cleanup",
     "name": "perform-cleanup",
     "default": "false",
+    "regex": "^(?:true|false)$",
+    "min-length": "4",
+    "max-length": "5",
+    "supported-values": ["true", "false"],
     "required": "false",
     "type": "boolean",
     "mutable": "true"

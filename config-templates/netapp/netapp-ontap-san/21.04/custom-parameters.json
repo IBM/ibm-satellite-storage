@@ -38,7 +38,9 @@
     "name": "limitVolumeSize",
     "default": "50Gi",
     "place-holder":"50Gi",
-    "regex": "^[0-9]+Gi$",
+    "regex": "^[1-9]{1}[0-9]{0,2}Gi$",
+    "min-length": "3",
+    "max-length": "5",
     "required": "false",
     "category": "config"
   }, {
@@ -47,7 +49,9 @@
     "name": "limitAggregateUsage",
     "default": "80%",
     "place-holder":"80%",
-    "regex": "^[0-9]+%$",
+    "regex": "(^100?%$)|(^([1-9]([0-9])?|0)%$)",
+    "min-length": "2",
+    "max-length": "4",
     "required": "false",
     "category": "config"
   }
