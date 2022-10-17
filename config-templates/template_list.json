@@ -134,5 +134,13 @@
     "default-version": "1.0.0",
     "enabled": "true",
     "provider": "ridge"
+  },
+  {
+    "name": "ibm-object-storage-plugin",
+    "displayname": "[Beta] IBM Object Storage Plugin.",
+    "Description": "[Beta] IBM Object Storage Plugin.",
+    "default-version": "2.2",
+    "enabled": "true",
+    "provider": "ibm"
   }
 ]
