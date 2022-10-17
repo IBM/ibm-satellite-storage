@@ -140,7 +140,7 @@
     "type": "boolean"
   },
   {
-    "description": "Your KMS instance name. The instance name must contain only lowercase alphanumeric characters or '-' and start and end with an alphanumeric character.",
+    "description": "Your KMS instance name. The instance name must only include alphanumeric characters, '-', '_' or '.' and start and end with an alphanumeric character.",
     "displayname": "KMS instance name",
     "name": "kms-instance-name",
     "regex": "^([a-zA-Z0-9]*[a-zA-Z0-9-_.]*[a-zA-Z0-9])$",
