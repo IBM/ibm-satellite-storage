@@ -1,0 +1,22 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: "{{ name }}"
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "{{ is-default-class }}"
+  labels:
+    app.kubernetes.io/name: aws-efs-csi-driver
+    app.kubernetes.io/version: 1.4.2
+    volume-type: "file" # As per user specification; e.g.: block, file or object.
+    storage-class-preference: "{{ storage-class-preference }}" # As per user specification;e.g.: 1, 2, ...., 99
+    is-user-defined-class: "true" # As this is a user-defined storage class
+mountOptions:
+  - tls
+provisioner: efs.csi.aws.com
+parameters:
+  provisioningMode: efs-ap
+  fileSystemId: "{{ fileSystemId }}"
+  directoryPerms: "{{ directoryPerms }}"
+  gidRangeStart: "{{ gidRangeStart }}"
+  gidRangeEnd: "{{ gidRangeEnd }}"
+  basePath: "{{ basePath }}"
