@@ -37,7 +37,7 @@
         "required": "true"
     },
     {
-        "description": "Your Azure Active Directory Client Secret.",
+        "description": "Your Azure Active Directory Client Secret. You can find your client secret in the Azure portal under the `App registrations` menu.",
         "displayname": "Azure Active Directory Client Secret",
         "name": "aadClientSecret",
         "required": "true",
@@ -56,7 +56,7 @@
     },
     {
         "description": "There are two types of virtual machine i.e. 'standard' and 'VMSS'. The standard VM are listed under virtual machines and the VMSSs' VMs are listed under virtual machine scale set as instances.",
-        "displayname": "Virtual Machnine Type",
+        "displayname": "Virtual Machine Type",
         "name": "vmType",
         "regex": "^(?i)\b(standard|vmss)\b$",
         "min-length": "4",

@@ -27,7 +27,7 @@
     "name": "azurefile-csi-driver",
     "displayname": "Azure File CSI Driver",
     "Description": "Azure File CSI Driver.",
-    "default-version": "1.9.0",
+    "default-version": "1.18.0",
     "enabled": "true",
     "provider": "azure"
   },
@@ -126,5 +126,13 @@
     "default-version": "2.4.0",
     "enabled": "true",
     "provider": "ibm"
+  },
+  {
+    "name": "ridge-csi-driver",
+    "displayname": "[Beta] Ridge CSI Driver",
+    "Description": "[Beta] Ridge CSI Driver.",
+    "default-version": "1.0.0",
+    "enabled": "true",
+    "provider": "ridge"
   }
 ]

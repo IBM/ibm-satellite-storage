@@ -1,0 +1,78 @@
+{
+  "name": "1.0.0",
+  "revision": "1",
+  "enabled": "true",
+  "status": "supported",
+  "description": "Ridge CSI Driver",
+  "tags": [
+    {
+      "name": "provider",
+      "value": "Ridge"
+    },
+    {
+      "name": "provider-logo",
+      "value": "logo/ridge-csi-driver.svg"
+    },
+    {
+      "name": "provider-url",
+      "value": "https://console.ridge.co/"
+    },
+    {
+      "name": "offering-name",
+      "value": "ridge-csi-driver"
+    },
+    {
+      "name": "offering-type",
+      "value": "non-sds"
+    },
+    {
+      "name": "support-url",
+      "value": "https://www.ridge.co/support/"
+    },
+    {
+      "name": "support-msg",
+      "value": "For support contact Ridge"
+    },
+    {
+      "name": "supported-envs",
+      "value": "Ridge"
+    },
+    {
+      "name": "supported-k8s-versions",
+      "value": "1.21,1.22,1.23,1.24"
+    },
+    {
+      "name": "supported-ocp-versions",
+      "value": "4.8,4.9,4.10,4.11"
+    },
+    {
+      "name": "volume-type",
+      "value": "block"
+    },
+    {
+      "name": "volume-encryption-at-rest",
+      "value": "false"
+    },
+    {
+      "name": "volume-encryption-in-transit",
+      "value": "false"
+    },
+    {
+      "name": "volume-snapshot",
+      "value": "false"
+    },
+    {
+      "name": "volume-availability",
+      "value": "zonal"
+    },
+    {
+      "name": "volume-expansion",
+      "value": "true"
+    },
+    {
+      "name": "storageclass",
+      "value": ""
+    }
+    ]
+  }
+  

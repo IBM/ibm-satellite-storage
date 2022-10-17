@@ -33,6 +33,7 @@
         "description": "The location of your Azure hosts. You can find the location of your virtual machines in the Azure portal or by running the 'az vm show' command. For example 'useast'",
         "displayname": "Location",
         "name": "location",
+        "category": "config",
         "required": "true"
     },
     {
@@ -50,28 +51,36 @@
         "displayname": "Resource Group",
         "name": "resourceGroup",
         "required": "true",
+        "category": "config",
         "mutable": "true"
     },
     {
         "description": "There are two types of virtual machine i.e. 'standard' and 'VMSS'. The standard VM are listed under virtual machines and the VMSSs' VMs are listed under virtual machine scale set as instances.",
         "displayname": "Virtual Machine Type",
         "name": "vmType",
-        "regex": "^(?i)\b(standard|vmss)\b$",
-        "min-length": "4",
-        "max-length": "8",
-        "supported-values": ["standard", "VMSS"],
-        "required": "true"
+        "required": "true",
+        "category": "config",
+        "mutable": "true"
     },
     {
         "description": "The security group name. You can find your security group name in the Azure portal by running the 'az network nsg list' command.",
         "displayname": "Network Security Group Name",
         "name": "securityGroupName",
+        "category": "config",
         "required": "true"
     },
     {
         "description": "The name of the virtual network. You can find the name of your virtual network in the Azure portal or by running the 'az network vnet list' command.",
         "displayname": "Virtual Network Name",
         "name": "vnetName",
+        "category": "config",
+        "required": "true"
+    },
+    {
+        "description": "Name of one the of the subnets under the provided VNet",
+        "displayname": "Subnet Name",
+        "name": "subnetName",
+        "category": "config",
         "required": "true"
     }
 ]

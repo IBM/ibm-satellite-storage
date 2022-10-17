@@ -1,0 +1,29 @@
+[
+  {
+    "description": "Set to 'true' if the location supports offline volume expansion.",
+    "displayname": "Offline expansion",
+    "name": "offine-expansion",
+    "default": "false",
+    "type": "boolean",
+    "required": "false",
+    "category": "config"
+  },
+  {
+    "description": "Set to 'true' if the location supports online volume expansion.",
+    "displayname": "Online expansion",
+    "name": "online-expansion",
+    "default": "false",
+    "type": "boolean",
+    "required": "false",
+    "category": "config"
+  },
+  {
+    "description": "Ridge CSI version",
+    "displayname": "CSI version",
+    "name": "csi-version",
+    "type": "string",
+    "required": "true",
+    "category": "config",
+    "mutable": "true"
+  }
+]
