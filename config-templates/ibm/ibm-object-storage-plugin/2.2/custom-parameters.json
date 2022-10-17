@@ -1,0 +1,41 @@
+[
+    {
+        "description": "Release name of the chart",
+        "displayname": "Helm Chart Release Name",
+        "name": "helm-release-name",
+        "category": "config",
+        "required": "false",
+        "default": "ibm-object-storage-plugin"
+    },
+    {
+        "description": "Helm Chart Additional Parameters (Optional)",
+        "displayname": "Helm Chart Additional Parameters (Optional)",
+        "name": "parameters",
+        "category": "config",
+        "required": "false",
+        "type": "csv",
+        "mutable": "true"
+    },
+    {
+        "description": "COS plug-in License: Apache License Version 2.0",
+        "displayname": "COS plug-in License: Apache License Version 2.0",
+        "name": "license",
+        "category": "config",
+        "required": "false",
+        "default": "true"
+    },
+    {
+        "description": "Enter COS Endpoint. For more info, refer https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-endpoints",
+        "displayname": "COS Endpoint",
+        "name": "cos-endpoint",
+        "category": "config",
+        "required": "true"
+    },
+    {
+        "description": "Enter COS storageclass. For more info, refer https://cloud.ibm.com/docs/cloud-object-storage/basics?topic=cloud-object-storage-classes",
+        "displayname": "COS storageclass",
+        "name": "cos-storageclass",
+        "category": "config",
+        "required": "true"
+    }
+]
