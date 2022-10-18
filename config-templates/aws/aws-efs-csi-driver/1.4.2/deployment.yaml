@@ -6,7 +6,7 @@ metadata:
   namespace: kube-system
   annotations:
     version: 1.4.2
-    revision: 4
+    revision: 1
 items:
   - apiVersion: v1
     kind: Secret
@@ -26,10 +26,6 @@ items:
       labels:
         app.kubernetes.io/name: aws-efs-csi-driver
         app.kubernetes.io/version: 1.4.2
-      annotations:
-        "helm.sh/hook": pre-install, pre-upgrade
-        "helm.sh/hook-delete-policy": before-hook-creation
-        "helm.sh/resource-policy": keep  
     spec:
       attachRequired: false
   - apiVersion: v1
@@ -85,9 +81,6 @@ items:
       - apiGroups: ["coordination.k8s.io"]
         resources: ["leases"]
         verbs: ["get", "watch", "list", "delete", "update", "create"]
-      #- apiGroups: [""]
-      #  resources: ["secrets"]
-      #  verbs: ["get", "watch", "list"]
   - kind: ClusterRoleBinding
     apiVersion: rbac.authorization.k8s.io/v1
     metadata:
@@ -122,7 +115,9 @@ items:
           labels:
             app: efs-csi-node
             app.kubernetes.io/name: aws-efs-csi-driver
-            app.kubernetes.io/version: 1.4.2   
+            app.kubernetes.io/version: 1.4.2  
+          annotations:
+            autoUpdate: "AUTO-UPDATE-ENABLED"   
         spec:
           nodeSelector:
             kubernetes.io/os: linux
@@ -156,7 +151,7 @@ items:
                   value: unix:/csi/csi.sock
               volumeMounts:
                 - name: kubelet-dir
-                  mountPath: /var/lib/kubelet
+                  mountPath: /var/data/kubelet
                   mountPropagation: "Bidirectional"
                 - name: plugin-dir
                   mountPath: /csi
