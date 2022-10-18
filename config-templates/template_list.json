@@ -19,7 +19,7 @@
     "name": "azuredisk-csi-driver",
     "displayname": "Azure Disk CSI Driver",
     "Description": "Azure Disk CSI Driver.",
-    "default-version": "1.4.0",
+    "default-version": "1.18.0",
     "enabled": "true",
     "provider": "azure"
   },
@@ -134,5 +134,13 @@
     "default-version": "1.0.0",
     "enabled": "true",
     "provider": "ridge"
+  },
+  {
+    "name": "ibm-object-storage-plugin",
+    "displayname": "[Beta] IBM Object Storage Plugin.",
+    "Description": "[Beta] IBM Object Storage Plugin.",
+    "default-version": "2.2",
+    "enabled": "true",
+    "provider": "ibm"
   }
 ]

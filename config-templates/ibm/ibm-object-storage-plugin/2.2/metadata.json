@@ -1,0 +1,49 @@
+{
+  "name": "2.2",
+  "revision": "1", 
+  "enabled": "true",
+  "status": "supported",
+  "description": "[Beta] - IBM Object Storage Plugin version 2.2.1",
+  "tags": [
+    {
+      "name": "provider",
+      "value": "ibm"
+    },
+    {
+      "name": "volume-type",
+      "value": "object"
+    },
+    {
+      "name": "provider-logo",
+      "value": "logo/ibm-object-storage-plugin.svg"
+    },
+    {
+      "name": "offering-name",
+      "value": "ibm-object-storage-plugin"
+    },
+    {
+      "name": "offering-type",
+      "value": "non-sds"
+    },
+    {
+      "name": "provider-url",
+      "value": "https://cloud.ibm.com/docs/openshift?topic=openshift-cos_plugin_changelog"
+    },
+    {
+      "name": "support-url",
+      "value": "https://www.ibm.com/support/home/"
+    },
+    {
+      "name": "support-msg",
+      "value": "For support contact IBM"
+    },
+    {
+      "name": "supported-envs",
+      "value": "IBM"
+    },
+    {
+      "name": "supported-k8s-versions",
+      "value": "1.22,1.23,1.24,1.25"
+    }
+  ]
+}
