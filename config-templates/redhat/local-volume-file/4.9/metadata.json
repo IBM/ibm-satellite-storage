@@ -7,7 +7,7 @@
   "tags": [
     {
       "name": "provider",
-      "value": "redhat"
+      "value": "Red Hat"
     }, {
       "name": "offering-name",
       "value": "local-volume-file"
