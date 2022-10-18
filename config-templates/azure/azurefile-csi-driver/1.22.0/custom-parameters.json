@@ -20,7 +20,7 @@
         "mutable": "true"
     },
     {
-        "description": "Your Azure Active Directory Client ID. You can find your Client ID in the Azure portal or by running the `az identity list` command.",
+        "description": "Your Azure Active Directory Client ID. You can find your Client ID in the Azure portal or by running the `az ad sp list --display-name appDisplayName` command.",
         "displayname": "Azure Active Directory Client ID",
         "name": "aadClientId",
         "required": "true",
@@ -74,7 +74,7 @@
         "required": "true"
     },
     {
-        "description": "The name of the virtual network. You can find this value in the Azure portal or by running the `az network vnet subnet list` command.",
+        "description": "The name of the virtual network. You can find this value in the Azure portal or by running the `az network vnet list` command.",
         "displayname": "Virtual Network Name",
         "name": "vnetName",
         "category": "config",
