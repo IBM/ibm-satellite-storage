@@ -7,7 +7,7 @@
     "tags": [
         {
             "name": "provider",
-            "value": "vmware"
+            "value": "VMware"
         },
         {
             "name": "offering-name",

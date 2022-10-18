@@ -1,6 +1,6 @@
 [
     {
-        "description": "The Azure tenant ID that you want to use for your configuration. You can find your tenant ID in the Azure portal or by running the 'az account tenant list' command.",
+        "description": "Tenant ID : The Azure tenant ID that you want to use for your configuration. You can find your tenant ID in the Azure portal or by running the `az account tenant list` command.",
         "displayname": "Tenant ID",
         "name": "tenantId",
         "required": "true",
@@ -10,7 +10,7 @@
         "mutable": "true"
     },
     {
-        "description": "Your Azure subscription ID. You can find your subscription ID in the Azure portal or by running the 'az account subscription list' command.",
+        "description": "Your Azure subscription ID. From the Azure portal, search for 'Subscription' to find a list of your subscriptions. You can also find this value by running the `az account subscription list` command.",
         "displayname": "Subscription ID",
         "name": "subscriptionId",
         "required": "true",
@@ -20,7 +20,7 @@
         "mutable": "true"
     },
     {
-        "description": "Your Azure Active Directory Client ID. You can find your Client ID in the Azure portal or by running the 'az ad sp list --all' command.",
+        "description": "Your Azure Active Directory Client ID. You can find your Client ID in the Azure portal or by running the `az ad sp list --display-name appDisplayName` command.",
         "displayname": "Azure Active Directory Client ID",
         "name": "aadClientId",
         "required": "true",
@@ -30,13 +30,13 @@
         "mutable": "true"
     },
     {
-        "description": "The location of your Azure hosts. You can find the location of your virtual machines in the Azure portal or by running the 'az vm show' command. For example 'useast'",
+        "description": "The location of your Azure hosts. You can find the location of your virtual machines in the Azure portal or by running the `az vm list` command. Example location: 'useast'.",
         "displayname": "Location",
         "name": "location",
         "required": "true"
     },
     {
-        "description": "Your Azure Active Directory Client Secret.",
+        "description": "Your Azure Active Directory Client Secret. You can find your client secret in the Azure portal under the `App registrations` menu.",
         "displayname": "Azure Active Directory Client Secret",
         "name": "aadClientSecret",
         "required": "true",
@@ -46,14 +46,14 @@
         "mutable": "true"
     },
     {
-        "description": "The name of your Azure resource group. You can find your resource group in the Azure portal or by running the 'az group list' command.",
+        "description": "The name of your Azure resource group. You can find your resource group detail in the Azure portal or by running the `az group list` command.",
         "displayname": "Resource Group",
         "name": "resourceGroup",
         "required": "true",
         "mutable": "true"
     },
     {
-        "description": "There are two types of virtual machine i.e. 'standard' and 'VMSS'. The standard VM are listed under virtual machines and the VMSSs' VMs are listed under virtual machine scale set as instances.",
+        "description": "You can find your virtual machine type in the Azure portal or by running the `az vm list` command. Example types: 'standard' or 'VMSS'.",
         "displayname": "Virtual Machine Type",
         "name": "vmType",
         "regex": "^(?i)\b(standard|vmss)\b$",
@@ -63,13 +63,13 @@
         "required": "true"
     },
     {
-        "description": "The security group name. You can find your security group name in the Azure portal by running the 'az network nsg list' command.",
+        "description": "The name of your security group. You can find your security group details in the Azure portal or by running the `az network nsg list` command.",
         "displayname": "Network Security Group Name",
         "name": "securityGroupName",
         "required": "true"
     },
     {
-        "description": "The name of the virtual network. You can find the name of your virtual network in the Azure portal or by running the 'az network vnet list' command.",
+        "description": "The name of the virtual network. You can find this value in the Azure portal or by running the `az network vnet list` command.",
         "displayname": "Virtual Network Name",
         "name": "vnetName",
         "required": "true"
