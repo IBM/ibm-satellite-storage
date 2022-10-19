@@ -2,7 +2,7 @@
   {
     "description": "Set to 'true' if the location supports offline volume expansion.",
     "displayname": "Offline expansion",
-    "name": "offine-expansion",
+    "name": "offline-expansion",
     "default": "false",
     "regex": "^(?:true|false)$",
     "min-length": "4",
