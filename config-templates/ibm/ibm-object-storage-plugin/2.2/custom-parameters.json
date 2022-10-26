@@ -25,14 +25,14 @@
         "default": "true"
     },
     {
-        "description": "Enter COS Endpoint. For more info, refer https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-endpoints",
+        "description": "Enter COS Endpoint. For more information, refer to https://ibm.biz/cos-endpoints",
         "displayname": "COS Endpoint",
         "name": "cos-endpoint",
         "category": "config",
         "required": "true"
     },
     {
-        "description": "Enter COS storageclass. For more info, refer https://cloud.ibm.com/docs/cloud-object-storage/basics?topic=cloud-object-storage-classes",
+        "description": "Enter COS storageclass. For more info, refer to https://ibm.biz/cos-storage-classes",
         "displayname": "COS storageclass",
         "name": "cos-storageclass",
         "category": "config",

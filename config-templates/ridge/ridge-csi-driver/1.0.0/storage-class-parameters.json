@@ -44,7 +44,7 @@
 		"default": "false",
 		"required": "false",
 		"category": "config",
-		"type": "text"
+		"type": "boolean"
 	}
 ]
 
