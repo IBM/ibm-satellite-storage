@@ -18,7 +18,7 @@
 		"default": "false",
 		"required": "false",
 		"category": "config",
-		"type": "text"
+		"type": "boolean"
 	}, {
 		"description": "Give your storage policy a name.",
 		"displayname": "Storage policy name",

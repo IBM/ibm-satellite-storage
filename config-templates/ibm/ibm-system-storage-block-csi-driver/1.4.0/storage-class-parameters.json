@@ -96,7 +96,7 @@
     "default": "false",
     "required": "false",
     "category": "config",
-    "type": "text"
+    "type": "boolean"
   }, {
     "description": "Specify a unique volume tier preference; in the range of 1-99 with 1 being the highest",
     "displayname": "Storage Class Preference Preference",
