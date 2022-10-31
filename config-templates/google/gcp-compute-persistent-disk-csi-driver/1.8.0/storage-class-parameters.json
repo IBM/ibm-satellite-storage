@@ -10,6 +10,18 @@
         "category": "config"
     },
     {
+        "description": "Specify 'true' or 'false' to make the created storage class the default class.",
+        "displayname": "Default Storage Class",
+        "name": "is-default-class",
+        "templateKeyName": [
+            "storageclass.kubernetes.io/is-default-class"
+        ],
+        "default": "false",
+        "required": "false",
+        "category": "config",
+        "type": "boolean"
+    },
+    {
         "description": "The disk type to use for the storage class.",
         "displayname": "Disk type",
         "name": "type",

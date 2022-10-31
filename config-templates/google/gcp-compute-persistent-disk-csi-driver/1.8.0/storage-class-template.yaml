@@ -2,6 +2,8 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: "{{ name }}"
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "{{ is-default-class }}"
   labels:
     app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
     app.kubernetes.io/version: 1.8.0
