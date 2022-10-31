@@ -713,7 +713,7 @@ items:
           - args:
             - --v=5
             - --csi-address=/csi/csi.sock
-            - --kubelet-registration-path=/var/lib/kubelet/plugins/pd.csi.storage.gke.io/csi.sock
+            - --kubelet-registration-path=/var/data/kubelet/plugins/pd.csi.storage.gke.io/csi.sock
             env:
             - name: KUBE_NODE_NAME
               valueFrom:
@@ -742,7 +742,7 @@ items:
             securityContext:
               privileged: true
             volumeMounts:
-            - mountPath: /var/lib/kubelet
+            - mountPath: /var/data/kubelet
               mountPropagation: Bidirectional
               name: kubelet-dir
             - mountPath: /csi
@@ -766,15 +766,15 @@ items:
           - operator: Exists
           volumes:
           - hostPath:
-              path: /var/lib/kubelet/plugins_registry/
+              path: /var/data/kubelet/plugins_registry/
               type: Directory
             name: registration-dir
           - hostPath:
-              path: /var/lib/kubelet
+              path: /var/data/kubelet
               type: Directory
             name: kubelet-dir
           - hostPath:
-              path: /var/lib/kubelet/plugins/pd.csi.storage.gke.io/
+              path: /var/data/kubelet/plugins/pd.csi.storage.gke.io/
               type: DirectoryOrCreate
             name: plugin-dir
           - hostPath:
