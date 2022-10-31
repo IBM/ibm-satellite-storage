@@ -543,6 +543,7 @@ items:
             app: ibm-vpc-block-csi-driver
           annotations:
             autoUpdate: "AUTO-UPDATE-ENABLED"
+            version: 5.0.1
         spec:
           serviceAccountName: ibm-vpc-block-controller-sa
           securityContext:
