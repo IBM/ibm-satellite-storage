@@ -550,7 +550,7 @@ items:
             runAsUser: 2121
           containers:
             - name: csi-snapshotter
-              image: icr.io/ext/sig-storage/snapshot-controller:v6.0.1
+              image: icr.io/ext/sig-storage/csi-snapshotter:v6.0.1
               imagePullPolicy: Always
               securityContext:
                 privileged: false
@@ -721,3 +721,12 @@ items:
               secret:
                 secretName: storage-secret-store
       volumeClaimTemplates: []
+  - apiVersion: snapshot.storage.k8s.io/v1
+    kind: VolumeSnapshotClass
+    metadata:
+      name: ibmc-vpcblock-snapshot
+      labels:
+        addonmanager.kubernetes.io/mode: Reconcile
+        app: ibm-vpc-block-csi-driver
+    deletionPolicy: Delete
+    driver: vpc.block.csi.ibm.io
