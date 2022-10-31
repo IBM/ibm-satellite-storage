@@ -22,7 +22,7 @@ items:
         verbs: ["get", "list", "watch"]
       - apiGroups: [""]
         resources: ["configmaps"]
-         verbs: ["get", "list"]
+        verbs: ["get", "list"]
   - kind: ClusterRoleBinding
     apiVersion: rbac.authorization.k8s.io/v1
     metadata:
@@ -567,9 +567,9 @@ items:
                 requests:
                   cpu: 20m
                   memory: 40Mi
-               volumeMounts:
-                 - name: socket-dir
-                   mountPath: /csi
+              volumeMounts:
+                - name: socket-dir
+                  mountPath: /csi
             - name: csi-provisioner
               image: icr.io/ext/sig-storage/csi-provisioner:v3.2.1
               imagePullPolicy: Always
