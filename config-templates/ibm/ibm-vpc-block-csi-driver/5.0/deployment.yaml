@@ -531,6 +531,8 @@ items:
       namespace: kube-system
       labels:
         app: ibm-vpc-block-csi-driver
+      annotations:
+        version: 5.0.1
     spec:
       serviceName: "ibm-vpc-block-service"
       replicas: 1
@@ -543,7 +545,6 @@ items:
             app: ibm-vpc-block-csi-driver
           annotations:
             autoUpdate: "AUTO-UPDATE-ENABLED"
-            version: 5.0.1
         spec:
           serviceAccountName: ibm-vpc-block-controller-sa
           securityContext:
