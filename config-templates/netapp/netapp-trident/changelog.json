@@ -1,0 +1,35 @@
+[
+    {
+        "22.04": {
+            "status": "supported",
+            "revisions": [
+                {
+                    "latest-revision": "2",
+                    "release-date": "18 July, 2022",
+                    "fixes": [
+                        "Fixed the issue for configs having no content after revision upgrade"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "21.04": {
+            "status": "supported",
+            "revisions": [
+                {
+                    "latest-revision": "3",
+                    "release-date": "18 July, 2022",
+                    "fixes": [
+                        "Fixed the issue for configs having no content after revision upgrade"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "20.07": {
+            "status": "unsupported"
+        }
+    }
+]

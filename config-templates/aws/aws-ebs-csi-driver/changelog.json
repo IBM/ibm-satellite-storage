@@ -1,0 +1,44 @@
+[
+    {
+        "1.5.1": {
+            "status": "supported",
+            "revisions": [
+                {
+                    "latest-revision": "4",
+                    "release-date": "29 July, 2022",
+                    "new-features": [
+                        "Added support for auto-restarting plugin pods when updating/upgrading Satellite storage configuration"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "1.1.0": {
+            "status": "supported",
+            "revisions": [
+                {
+                    "latest-revision": "4",
+                    "release-date": "29 July, 2022",
+                    "new-features": [
+                        "Added support for auto-restarting plugin pods when updating/upgrading Satellite storage configuration"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "0.9.14": {
+            "status": "deprecated",
+            "revisions": [
+                {
+                    "latest-revision": "3",
+                    "release-date": "29 July, 2022",
+                    "new-features": [
+                        "Added support for auto-restarting plugin pods when updating/upgrading Satellite storage configuration"
+                    ]
+                }
+            ]
+        }
+    }
+]

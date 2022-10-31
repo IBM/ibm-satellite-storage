@@ -1,0 +1,58 @@
+[
+    {
+        "4.10": {
+            "status": "supported",
+            "revisions": [
+                {
+                    "latest-revision": "4",
+                    "release-date": "29 July, 2022",
+                    "new-features": [
+                        "Added support for auto cleanup of resources while uninstalling the plugin"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "4.9": {
+            "status": "supported",
+            "revisions": [
+                {
+                    "latest-revision": "4",
+                    "release-date": "29 July, 2022",
+                    "new-features": [
+                        "Added support for auto cleanup of resources while uninstalling the plugin"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "4.8": {
+            "status": "deprecated",
+            "revisions": [
+                {
+                    "latest-revision": "4",
+                    "release-date": "29 July, 2022",
+                    "new-features": [
+                        "Added support for auto cleanup of resources while uninstalling the plugin"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "4.7": {
+            "status": "supported",
+            "revisions": [
+                {
+                    "latest-revision": "3",
+                    "release-date": "29 July, 2022",
+                    "new-features": [
+                        "Added support for auto cleanup of resources while uninstalling the plugin"
+                    ]
+                }
+            ]
+        }
+    }
+]

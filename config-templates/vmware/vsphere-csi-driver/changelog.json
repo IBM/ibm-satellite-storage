@@ -1,0 +1,16 @@
+[
+    {
+        "2.5.1": {
+            "status": "supported",
+            "revisions": [
+                {
+                    "latest-revision": "5",
+                    "release-date": "26 Aug, 2022",
+                    "new-features": [
+                        "Added support for adding custom file storage classes"
+                    ]
+                }
+            ]
+        }
+    }
+]

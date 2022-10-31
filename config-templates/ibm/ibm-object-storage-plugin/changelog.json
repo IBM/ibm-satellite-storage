@@ -1,0 +1,16 @@
+[
+    {
+        "2.2": {
+            "status": "supported",
+            "revisions": [
+                {
+                    "latest-revision": "1",
+                    "release-date": "26 Oct, 2022",
+                    "new-features": [
+                        "Initial release"
+                    ]
+                }
+            ]
+        } 
+    }
+]

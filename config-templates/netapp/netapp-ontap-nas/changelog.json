@@ -1,0 +1,37 @@
+[
+    {
+        "22.04": {
+            "status": "supported",
+            "revisions": [
+                {
+                    "latest-revision": "7",
+                    "release-date": "20 Sep, 2022",
+                    "fixes": [
+                        "Updated UBI Image to 8.6-941",
+                        "Updated GoLang version to 1.18.6 for fixing CVE-2022-27664"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "21.04": {
+            "status": "supported",
+            "revisions": [
+                {
+                    "latest-revision": "9",
+                    "release-date": "20 Sep, 2022",
+                    "fixes": [
+                        "Updated UBI Image to 8.6-941",
+                        "Updated GoLang version to 1.18.6 for fixing CVE-2022-27664"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "20.07": {
+            "status": "unsupported"
+        }
+    }
+]
