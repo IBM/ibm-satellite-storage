@@ -1,8 +1,8 @@
 {
-  "name": "4.7",
-  "revision": "3",
+  "name": "4.11",
+  "revision": "1",
   "enabled": "true",
-  "status": "deprecated",
+  "status": "supported",
   "description": "Persistent storage using local volumes",
   "tags": [
     {
@@ -10,31 +10,31 @@
       "value": "Red Hat"
     }, {
       "name": "offering-name",
-      "value": "local-volume-file"
+      "value": "local-volume-block"
     }, {
       "name": "offering-type",
       "value": "non-sds"
     }, {
       "name": "provider-url",
-      "value": "https://docs.openshift.com/container-platform/4.7/storage/persistent_storage/persistent-storage-local.html"
+      "value": "https://docs.openshift.com/container-platform/4.11/storage/persistent_storage/persistent-storage-local.html"
     }, {
       "name": "support-msg",
       "value": "For support contact Red Hat"
     }, {
       "name": "provider-logo",
-      "value": "logo/local-volume-file.svg"
+      "value": "logo/local-volume-block.svg"
     }, {
       "name": "supported-envs",
       "value": "AWS,IBM"
     }, {
       "name": "supported-k8s-versions",
-      "value": "1.18,1.19"
+      "value": "1.24"
     }, {
       "name": "supported-ocp-versions",
-      "value": "4.7"
+      "value": "4.11"
     }, {
       "name": "volume-type",
-      "value": "file"
+      "value": "block"
     }, {
       "name": "volume-encryption-at-rest",
       "value": "false"

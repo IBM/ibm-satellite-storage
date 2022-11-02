@@ -10,6 +10,8 @@ metadata:
     volume-type: "block"
     storage-class-preference: "{{ storage-class-preference }}"
     is-user-defined-class: "true"
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "{{ is-default-class }}"
 provisioner: spectrumscale.csi.ibm.com
 parameters:
   volBackendFs: "{{ primary-vol-backend-fs }}"

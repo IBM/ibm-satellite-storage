@@ -17,12 +17,16 @@
         "mutable": "true"
     },
     {
-        "description": "COS plug-in License: Apache License Version 2.0",
+        "description": "COS plug-in License: Apache License Version 2.0. Set to 'true' to accept the license and install the plugin",
         "displayname": "COS plug-in License: Apache License Version 2.0",
         "name": "license",
+        "regex": "^(?:true|false)$",
+        "min-length": "4",
+        "max-length": "5",
+        "supported-values": ["true", "false"],
+        "type": "boolean",
         "category": "config",
-        "required": "false",
-        "default": "true"
+        "required": "true"
     },
     {
         "description": "Enter COS Endpoint. For more information, refer to https://ibm.biz/cos-endpoints",
