@@ -18,7 +18,7 @@
       "default": "false",
       "required": "false",
       "category": "config",
-      "type": "text"
+      "type": "boolean"
     },{
       "description": "Specify the EFS filesystem ID",
       "displayname": "EFS Filesystem ID",
