@@ -36,7 +36,7 @@ items:
   - apiVersion: storage.k8s.io/v1
     kind: StorageClass
     metadata:
-      name: sat-vpc-block-5iops-tier-metro
+      name: ibmc-vpc-block-metro-5iops-tier
       labels:
         app: ibm-vpc-block-csi-driver
         volume-type: "block"
@@ -60,7 +60,7 @@ items:
   - apiVersion: storage.k8s.io/v1
     kind: StorageClass
     metadata:
-      name: sat-vpc-block-custom-metro
+      name: ibmc-vpc-block-metro-custom
       labels:
         app: ibm-vpc-block-csi-driver
     provisioner: vpc.block.csi.ibm.io
@@ -82,7 +82,7 @@ items:
   - apiVersion: storage.k8s.io/v1
     kind: StorageClass
     metadata:
-      name: sat-vpc-block-general-purpose-metro
+      name: ibmc-vpc-block-metro-general-purpose
       labels:
         app: ibm-vpc-block-csi-driver
         volume-type: "block"
@@ -106,7 +106,7 @@ items:
   - apiVersion: storage.k8s.io/v1
     kind: StorageClass
     metadata:
-      name: sat-vpc-block-retain-10iops-tier-metro
+      name: ibmc-vpc-block-metro-retain-10iops-tier
       labels:
         app: ibm-vpc-block-csi-driver
         volume-type: "block"
@@ -130,7 +130,7 @@ items:
   - apiVersion: storage.k8s.io/v1
     kind: StorageClass
     metadata:
-      name: sat-vpc-block-retain-5iops-tier-metro
+      name: ibmc-vpc-block-metro-retain-5iops-tier
       labels:
         app: ibm-vpc-block-csi-driver
         volume-type: "block"
@@ -154,7 +154,7 @@ items:
   - apiVersion: storage.k8s.io/v1
     kind: StorageClass
     metadata:
-      name: sat-vpc-block-retain-custom-metro
+      name: ibmc-vpc-block-metro-retain-custom
       labels:
         app: ibm-vpc-block-csi-driver
     provisioner: vpc.block.csi.ibm.io
@@ -176,7 +176,7 @@ items:
   - apiVersion: storage.k8s.io/v1
     kind: StorageClass
     metadata:
-      name: sat-vpc-block-retain-general-purpose-metro
+      name: ibmc-vpc-block-metro-retain-general-purpose
       labels:
         app: ibm-vpc-block-csi-driver
         volume-type: "block"
