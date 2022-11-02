@@ -102,7 +102,7 @@ ibmcloud sat storage assignment create --name localvol-block-assign --group satC
 
    ```
 
-**Follow** the [link](https://docs.openshift.com/container-platform/4.7/storage/persistent_storage/persistent-storage-local.html) to create the persistent volume claim and attach the claim to a pod.
+**Follow** the [link](https://docs.openshift.com/container-platform/4.10/storage/persistent_storage/persistent-storage-local.html) to create the persistent volume claim and attach the claim to a pod.
 
 ## Troubleshooting
 
@@ -186,4 +186,4 @@ ibmcloud sat storage assignment create --name localvol-block-assign --group satC
     ```
 
 ## References
-   - https://docs.openshift.com/container-platform/4.7/storage/persistent_storage/persistent-storage-local.html
+   - https://docs.openshift.com/container-platform/4.10/storage/persistent_storage/persistent-storage-local.html
