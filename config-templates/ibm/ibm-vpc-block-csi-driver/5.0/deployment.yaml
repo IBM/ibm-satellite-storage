@@ -294,6 +294,8 @@ items:
     apiVersion: storage.k8s.io/v1
     metadata:
       name: vpc.block.csi.ibm.io
+      labels:
+        app: ibm-vpc-block-csi-driver
     spec:
       attachRequired: true
       podInfoOnMount: true
