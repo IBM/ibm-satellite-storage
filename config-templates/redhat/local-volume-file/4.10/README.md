@@ -44,7 +44,7 @@ Local persistent volumes allow you to access local storage devices, such as a di
      - London:  https://eu-gb.containers.cloud.ibm.com
      - US-South: https://us-south.containers.cloud.ibm.com
 
-5. Create Cluster Group
+5. Create Cluster Group (optional)
    - From IBM Cloud Web Console
      > https://cloud.ibm.com/satellite/clusters -> Cluster groups -> Create cluster group
    - Add cluster to the group
@@ -211,4 +211,4 @@ E0213 06:19:40.697657       1 diskmaker.go:180] error symlinking /dev/xvde to /m
     ```
 
 ## References
-   - https://docs.openshift.com/container-platform/4.7/storage/persistent_storage/persistent-storage-local.html
+   - https://docs.openshift.com/container-platform/4.10/storage/persistent_storage/persistent-storage-local.html

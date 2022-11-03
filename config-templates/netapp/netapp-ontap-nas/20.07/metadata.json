@@ -16,7 +16,7 @@
       "value": "Install netapp-trident before installing ontap-nas driver."
     }, {
       "name": "provider",
-      "value": "netapp"
+      "value": "NetApp"
     }, {
       "name": "offering-name",
       "value": "ontap-nas"

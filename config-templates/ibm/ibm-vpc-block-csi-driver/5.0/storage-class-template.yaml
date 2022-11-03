@@ -1,0 +1,22 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: "{{ name }}"
+  labels:
+    app.kubernetes.io/name: ibm-vpc-block-csi-driver
+    volume-type: "block"
+    storage-class-preference: "{{ storage-class-preference }}"
+    is-user-defined-class: "true"
+provisioner: vpc.block.csi.ibm.io
+parameters:
+  profile: "{{ profile }}"
+  iops: "{{ iops }}" 
+  csi.storage.k8s.io/fstype: "{{ fstype }}"
+  encrypted: "{{ encrypted }}"
+  encryptionKey: "{{ encryptionKey }}"
+  zone: "{{ zone }}"
+  tags: "{{ tags }}"
+  classVersion: "1"
+volumeBindingMode: "{{ volumeBindingMode }}"
+reclaimPolicy: "{{ reclaimPolicy }}"
+allowVolumeExpansion: {{ allowVolumeExpansion }}

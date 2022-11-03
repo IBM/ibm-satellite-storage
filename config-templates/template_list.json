@@ -3,7 +3,7 @@
     "name": "aws-efs-csi-driver",
     "displayname": "AWS EFS CSI Driver",
     "Description": "AWS EFS CSI Driver.",
-    "default-version": "1.3.7",
+    "default-version": "1.4.2",
     "enabled": "true",
     "provider": "aws"
   },
@@ -11,7 +11,7 @@
     "name": "aws-ebs-csi-driver",
     "displayname": "AWS EBS CSI Driver",
     "Description": "AWS EBS CSI Driver.",
-    "default-version": "1.5.1",
+    "default-version": "1.12.0",
     "enabled": "true",
     "provider": "aws"
   },
@@ -83,7 +83,7 @@
     "name": "local-volume-block",
     "displayname": "Local Storage Operator - Block",
     "Description": "Local Storage Operator - Block.",
-    "default-version": "4.9",
+    "default-version": "4.10",
     "enabled": "true",
     "provider": "redhat"
   },
@@ -91,7 +91,7 @@
     "name": "local-volume-file",
     "displayname": "Local Storage Operator - File",
     "Description": "Local Storage Operator - File.",
-    "default-version": "4.9",
+    "default-version": "4.10",
     "enabled": "true",
     "provider": "redhat"
   },
@@ -107,7 +107,7 @@
     "name": "ibm-vpc-block-csi-driver",
     "displayname": "[Beta] IBM VPC Block CSI driver",
     "Description": "[Beta] IBM VPC Block CSI driver, Provides block storage on VPC.",
-    "default-version": "4.3.0",
+    "default-version": "5.0",
     "enabled": "true",
     "provider": "ibm"
   },

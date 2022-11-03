@@ -8,6 +8,8 @@ metadata:
     volume-type: "block" # As per user specification; e.g.: block, file or object.
     storage-class-preference: "{{ storage-class-preference }}" # As per user specification; e.g.: 1, 2, ...., 99
     is-user-defined-class: "true" # As this is a user-defined storage class
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "{{ is-default-class }}"
 provisioner: pd.csi.storage.gke.io
 parameters:
   type: "{{ type }}"
