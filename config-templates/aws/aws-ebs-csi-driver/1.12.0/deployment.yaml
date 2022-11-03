@@ -273,7 +273,7 @@ items:
           nodeSelector:
             kubernetes.io/os: linux
           serviceAccountName: ebs-csi-node-sa
-          priorityClassName: system-node-critical
+          priorityClassName: system-cluster-critical
           tolerations:
             - key: CriticalAddonsOnly
               operator: Exists
