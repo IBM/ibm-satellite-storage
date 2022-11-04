@@ -2,15 +2,17 @@
     {
         "2.2": {
             "status": "supported",
-            "revisions": [
-                {
-                    "latest-revision": "1",
-                    "release-date": "26 Oct, 2022",
-                    "new-features": [
-                        "Initial release"
-                    ]
-                }
-            ]
+            "latest-revision": {
+                "revision": "1",
+                "release-date": "26 October 2022",
+                "cves": "",
+                "golang": "",
+                "ubi": "",
+                "new-features": [
+                    "Initial release"
+                ],
+                "fixes": []
+            }
         } 
     }
 ]
