@@ -40,10 +40,6 @@
     {
       "name": "supported-envs",
       "value": "IBM"
-    },
-    {
-      "name": "supported-ocp-versions",
-      "value": "4.9,4.10,4.11"
     }
     ]
   }
