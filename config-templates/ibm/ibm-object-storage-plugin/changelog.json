@@ -6,8 +6,8 @@
                 "revision": "1",
                 "release-date": "26 October 2022",
                 "cves": "",
-                "golang": "",
-                "ubi": "",
+                "golang": "1.18.6",
+                "ubi": "8.6-941",
                 "new-features": [
                     "Initial release"
                 ],
