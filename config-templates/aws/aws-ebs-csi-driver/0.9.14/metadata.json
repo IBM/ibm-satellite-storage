@@ -2,7 +2,7 @@
   "name": "0.9.14",
   "revision": "3",
   "enabled": "true",
-  "status": "deprecated",
+  "status": "unsupported",
   "description": "AWS EBS CSI Driver version 0.9.14",
   "tags": [
     {
