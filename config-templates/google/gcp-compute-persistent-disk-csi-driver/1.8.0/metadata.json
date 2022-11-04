@@ -1,0 +1,69 @@
+{
+    "name": "1.8.0",
+    "revision": "1",
+    "enabled": "true",
+    "status": "supported",
+    "description": "GCP Compute Persistent Disk CSI Driver",
+    "tags": [
+        {
+            "name": "provider",
+            "value": "Google"
+        },
+        {
+            "name": "offering-name",
+            "value": "gcp-compute-persistent-disk-csi-driver"
+        },
+        {
+            "name": "offering-type",
+            "value": "non-sds"
+        },
+        {
+            "name": "provider-url",
+            "value": "https://cloud.google.com/gcp"
+        },
+        {
+            "name": "support-msg",
+            "value": "For support contact Google support"
+        },
+        {
+            "name": "provider-logo",
+            "value": "logo/gcp-compute-persistent-disk-csi-driver.svg"
+        },
+        {
+            "name": "supported-envs",
+            "value": "Google"
+        },
+        {
+            "name": "supported-k8s-versions",
+            "value": "1.22, 1.23, 1.24, 1.25"
+        },
+        {
+            "name": "volume-type",
+            "value": "block"
+        },
+        {
+            "name": "volume-encryption-at-rest",
+            "value": "true"
+        },
+        {
+            "name": "volume-encryption-in-transit",
+            "value": "true"
+        },
+        {
+            "name": "volume-snapshot",
+            "value": "true"
+        },
+        {
+            "name": "volume-availability",
+            "value": "zonal"
+        },
+        {
+            "name": "volume-expansion",
+            "value": "false"
+        },
+        {
+            "name": "storageclass",
+            "value": "platinum,gold,silver,bronze,platinum-metro,gold-metro,silver-metro,bronze-metro"
+        }
+    ]
+}
