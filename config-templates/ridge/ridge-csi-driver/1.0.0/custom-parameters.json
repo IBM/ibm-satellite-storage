@@ -33,5 +33,14 @@
     "required": "true",
     "category": "config",
     "mutable": "true"
+  },
+  {
+    "description": "Ridge CSI backend",
+    "displayname": "CSI backend",
+    "name": "csi-backend",
+    "default": "https://tech.ridge.co",
+    "type": "string",
+    "required": "true",
+    "category": "config"
   }
 ]
