@@ -27,11 +27,20 @@
   },
   {
     "description": "Ridge CSI version",
-    "displayname": "CSI version",
-    "name": "csi-version",
+    "displayname": "Ridge CSI version",
+    "name": "ridge-csi-version",
     "type": "string",
     "required": "true",
     "category": "config",
     "mutable": "true"
+  },
+  {
+    "description": "Ridge base URL",
+    "displayname": "Ridge base URL",
+    "name": "ridge-base-url",
+    "default": "https://tech.ridge.co",
+    "type": "string",
+    "required": "true",
+    "category": "config"
   }
 ]
