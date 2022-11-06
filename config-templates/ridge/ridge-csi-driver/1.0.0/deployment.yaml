@@ -68,13 +68,13 @@ items:
                   mountPath: /var/lib/csi/sockets/pluginproxy/
               imagePullPolicy: IfNotPresent
             - name: csi-ridge-plugin
-              image: eu.gcr.io/tectonic-public/moonstone-csi-driver:{{ ridge-version }}
+              image: eu.gcr.io/tectonic-public/moonstone-csi-driver:{{ ridge-csi-version }}
               args:
                 - /app/csi-driver
                 - --log-format=json
                 - --endpoint=$(CSI_ENDPOINT)
                 - --backend={{ ridge-base-url }}/csi-backend/v1
-                - --driver-version={{ ridge-version }}
+                - --driver-version={{ ridge-csi-version }}
                 - -v
 {{#offline-expansion}}
                 - --offline-expansion
@@ -371,14 +371,14 @@ items:
                 path: /etc/systemd/system/app-init.service
           containers:
             - name: csi-ridge-plugin
-              image: eu.gcr.io/tectonic-public/moonstone-csi-driver:{{ ridge-version }}
+              image: eu.gcr.io/tectonic-public/moonstone-csi-driver:{{ ridge-csi-version }}
               args:
                 - /app/csi-driver
                 - --log-format=json
                 - --endpoint=$(CSI_ENDPOINT)
                 - --backend={{ ridge-base-url }}/csi-backend/v1
                 - --nodeid=$(KUBE_NODE_NAME)
-                - --driver-version={{ ridge-version }}
+                - --driver-version={{ ridge-csi-version }}
                 - --node-registration
 {{#offline-expansion}}
                 - --offline-expansion
