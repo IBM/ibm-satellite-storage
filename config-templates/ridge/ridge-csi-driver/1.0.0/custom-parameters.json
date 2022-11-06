@@ -26,9 +26,9 @@
     "category": "config"
   },
   {
-    "description": "Ridge version",
-    "displayname": "Ridge version",
-    "name": "ridge-version",
+    "description": "Ridge CSI version",
+    "displayname": "Ridge CSI version",
+    "name": "ridge-csi-version",
     "type": "string",
     "required": "true",
     "category": "config",
