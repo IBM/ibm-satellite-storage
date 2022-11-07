@@ -37,7 +37,7 @@
   {
     "description": "Ridge base URL",
     "displayname": "Ridge base URL",
-    "name": "ridge-base-url",
+    "name": "ridge-csi-url",
     "default": "https://tech.ridge.co",
     "type": "string",
     "required": "true",

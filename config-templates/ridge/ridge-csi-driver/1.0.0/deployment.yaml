@@ -73,7 +73,7 @@ items:
                 - /app/csi-driver
                 - --log-format=json
                 - --endpoint=$(CSI_ENDPOINT)
-                - --backend={{ ridge-base-url }}/csi-backend/v1
+                - --backend={{ ridge-csi-url }}
                 - --driver-version={{ ridge-csi-version }}
                 - -v
 {{#offline-expansion}}
@@ -376,7 +376,7 @@ items:
                 - /app/csi-driver
                 - --log-format=json
                 - --endpoint=$(CSI_ENDPOINT)
-                - --backend={{ ridge-base-url }}/csi-backend/v1
+                - --backend={{ ridge-csi-url }}
                 - --nodeid=$(KUBE_NODE_NAME)
                 - --driver-version={{ ridge-csi-version }}
                 - --node-registration
