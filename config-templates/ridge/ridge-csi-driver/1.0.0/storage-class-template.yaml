@@ -2,7 +2,7 @@
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: {{ name }}
+  name: "{{ name }}"
   labels:
     volume-type: block
     storage-class-preference: "{{ storage-class-preference }}"
