@@ -10,7 +10,7 @@
 	  "category": "config"
 	}, {
 	  "description": "Specify 'true' or 'false' to make the created storage class the default class.",
-	  "displayname": "Default",
+	  "displayname": "Default Storage Class",
 	  "name": "is-default-class",
 	  "templateKeyName": [
 		  "storageclass.kubernetes.io/is-default-class"
