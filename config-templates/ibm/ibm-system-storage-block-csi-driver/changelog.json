@@ -9,7 +9,7 @@
                 "golang": "",
                 "ubi": "",
                 "new-features": [
-                    "Added new storageclass param 'storage-class-preference' for Satellite storage template"
+                    "Added new storageclass parameter 'storage-class-preference' for Satellite storage template"
                 ],
                 "fixes": []
             }
@@ -25,7 +25,7 @@
                 "golang": "",
                 "ubi": "",
                 "new-features": [
-                    "Added new storageclass param 'storage-class-preference' for Satellite storage template"
+                    "Added new storageclass parameter 'storage-class-preference' for Satellite storage template"
                 ],
                 "fixes": []
             }

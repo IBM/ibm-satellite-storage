@@ -9,7 +9,7 @@
                 "golang": "",
                 "ubi": "",
                 "new-features": [
-                    "Added support for adding custom file storage classes"
+                    "Added support for adding user-defined file storage classes"
                 ],
                 "fixes": []
             }
