@@ -68,10 +68,6 @@
     {
       "name": "volume-expansion",
       "value": "true"
-    },
-    {
-      "name": "storageclass",
-      "value": "gold-metro"
     }
     ]
   }
