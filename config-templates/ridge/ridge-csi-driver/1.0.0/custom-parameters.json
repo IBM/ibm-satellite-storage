@@ -38,7 +38,6 @@
     "description": "Ridge CSI URL",
     "displayname": "Ridge CSI URL",
     "name": "ridge-csi-url",
-    "type": "string",
     "required": "true",
     "category": "config"
   }
