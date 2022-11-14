@@ -29,7 +29,6 @@
     "description": "Ridge CSI version",
     "displayname": "Ridge CSI version",
     "name": "ridge-csi-version",
-    "type": "string",
     "required": "true",
     "category": "config",
     "mutable": "true"
@@ -38,7 +37,6 @@
     "description": "Ridge CSI URL",
     "displayname": "Ridge CSI URL",
     "name": "ridge-csi-url",
-    "type": "string",
     "required": "true",
     "category": "config"
   }
