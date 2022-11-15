@@ -33,7 +33,7 @@ items:
         app.kubernetes.io/name: azurefile-csi-driver
         app.kubernetes.io/version: 1.9.0
         volume-type: "file"
-        volume-tie-preferencer: "5"
+        storage-class-preference: "5"
         is-user-defined-class: "false"
     provisioner: file.csi.azure.com
     parameters:
@@ -124,9 +124,8 @@ items:
         app.kubernetes.io/name: azurefile-csi-driver
         app.kubernetes.io/version: 1.9.0
         volume-type: "block"
-        volume-tie-preferencer: "4"
+        storage-class-preference: "4"
         is-user-defined-class: "false"
-    provisioner: disk.csi.azure.com
     provisioner: file.csi.azure.com
     parameters:
       skuname: Standard_LRS
