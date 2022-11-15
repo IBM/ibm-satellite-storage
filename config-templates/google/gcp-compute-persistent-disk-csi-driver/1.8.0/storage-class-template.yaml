@@ -1,0 +1,17 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: "{{ name }}"
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "{{ is-default-class }}"
+  labels:
+    app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
+    app.kubernetes.io/version: 1.8.0
+    volume-type: "block"
+    storage-class-preference: "{{ storage-class-preference }}"
+    is-user-defined-class: "true"
+provisioner: pd.csi.storage.gke.io
+parameters:
+  type: "{{ type }}"
+  replication-type: regional-pd
+volumeBindingMode: "{{ volumeBindingMode }}"

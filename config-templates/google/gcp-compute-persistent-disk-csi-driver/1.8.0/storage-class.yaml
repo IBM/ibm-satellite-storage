@@ -1,0 +1,123 @@
+---
+apiVersion: v1
+kind: List
+metadata:
+  name: gcp-compute-persistent-disk-csi-driver-sc
+  namespace: kube-system
+  annotations:
+    version: 1.8.0
+items:
+  - kind: StorageClass
+    apiVersion: storage.k8s.io/v1
+    metadata:
+      name: sat-gce-block-bronze-metro
+      labels:
+        app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
+        app.kubernetes.io/version: 1.8.0
+        volume-type: "block"
+        storage-class-preference: "4"
+        is-user-defined-class: "false"
+    provisioner: pd.csi.storage.gke.io
+    parameters:
+      type: pd-standard
+    volumeBindingMode: WaitForFirstConsumer
+  - kind: StorageClass
+    apiVersion: storage.k8s.io/v1
+    metadata:
+      name: sat-gce-block-silver-metro
+      labels:
+        app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
+        app.kubernetes.io/version: 1.8.0
+        volume-type: "block"
+        storage-class-preference: "3"
+        is-user-defined-class: "false"
+    provisioner: pd.csi.storage.gke.io
+    parameters:
+      type: pd-balanced
+    volumeBindingMode: WaitForFirstConsumer
+  - kind: StorageClass
+    apiVersion: storage.k8s.io/v1
+    metadata:
+      name: sat-gce-block-gold-metro
+      annotations:
+        storageclass.kubernetes.io/is-default-class: "true"
+      labels:
+        app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
+        app.kubernetes.io/version: 1.8.0
+        volume-type: "block"
+        storage-class-preference: "2"
+        is-user-defined-class: "false"
+    provisioner: pd.csi.storage.gke.io
+    parameters:
+      type: pd-ssd
+    volumeBindingMode: WaitForFirstConsumer
+  - kind: StorageClass
+    apiVersion: storage.k8s.io/v1
+    metadata:
+      name: sat-gce-block-platinum-metro
+      labels:
+        app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
+        app.kubernetes.io/version: 1.8.0
+        volume-type: "block"
+        storage-class-preference: "1"
+        is-user-defined-class: "false"
+    provisioner: pd.csi.storage.gke.io
+    parameters:
+      type: pd-extreme
+    volumeBindingMode: WaitForFirstConsumer
+  - kind: StorageClass
+    apiVersion: storage.k8s.io/v1
+    metadata:
+      name: sat-gce-block-bronze
+      labels:
+        app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
+        app.kubernetes.io/version: 1.8.0
+        volume-type: "block"
+        storage-class-preference: "8"
+        is-user-defined-class: "false"
+    provisioner: pd.csi.storage.gke.io
+    parameters:
+      type: pd-standard
+    volumeBindingMode: Immediate
+  - kind: StorageClass
+    apiVersion: storage.k8s.io/v1
+    metadata:
+      name: sat-gce-block-silver
+      labels:
+        app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
+        app.kubernetes.io/version: 1.8.0
+        volume-type: "block"
+        storage-class-preference: "7"
+        is-user-defined-class: "false"
+    provisioner: pd.csi.storage.gke.io
+    parameters:
+      type: pd-balanced
+    volumeBindingMode: Immediate
+  - kind: StorageClass
+    apiVersion: storage.k8s.io/v1
+    metadata:
+      name: sat-gce-block-gold
+      labels:
+        app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
+        app.kubernetes.io/version: 1.8.0
+        volume-type: "block"
+        storage-class-preference: "6"
+        is-user-defined-class: "false"
+    provisioner: pd.csi.storage.gke.io
+    parameters:
+      type: pd-ssd
+    volumeBindingMode: Immediate
+  - kind: StorageClass
+    apiVersion: storage.k8s.io/v1
+    metadata:
+      name: sat-gce-block-platinum
+      labels:
+        app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
+        app.kubernetes.io/version: 1.8.0
+        volume-type: "block"
+        storage-class-preference: "5"
+        is-user-defined-class: "false"
+    provisioner: pd.csi.storage.gke.io
+    parameters:
+      type: pd-extreme
+    volumeBindingMode: Immediate

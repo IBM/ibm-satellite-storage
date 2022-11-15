@@ -1,0 +1,39 @@
+[
+    {
+        "22.04": {
+            "status": "supported",
+            "latest-revision": {
+                "revision": "2",
+                "release-date": "18 July 2022",
+                "cves": "",
+                "golang": "",
+                "ubi": "",
+                "new-features": [
+                    "Fixed the issue for configs having no content after revision upgrade"
+                ],
+                "fixes": []
+            }
+        }
+    },
+    {
+        "21.04": {
+            "status": "supported",
+            "latest-revision": {
+                "revision": "3",
+                "release-date": "18 July 2022",
+                "cves": "",
+                "golang": "",
+                "ubi": "",
+                "new-features": [
+                    "Fixed the issue for configs having no content after revision upgrade"
+                ],
+                "fixes": []
+            }
+        }
+    },
+    {
+        "20.07": {
+            "status": "unsupported"
+        }
+    }
+]

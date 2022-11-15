@@ -5,7 +5,7 @@ metadata:
   namespace: kube-system
   annotations:
     version: 4.3.0
-    revision: 9
+    revision: 11
 items:
   - kind: ClusterRole
     apiVersion: rbac.authorization.k8s.io/v1
@@ -287,7 +287,7 @@ items:
             - operator: Exists
           initContainers:
             - name: vpc-node-label-updater
-              image: icr.io/obs/storage/vpc-node-label-updater:v4.1.11
+              image: icr.io/obs/storage/vpc-node-label-updater:v4.1.13
               imagePullPolicy: Always
               securityContext:
                 privileged: false
@@ -314,7 +314,7 @@ items:
                     name: ibm-vpc-block-csi-configmap
           containers:
             - name: csi-driver-registrar
-              image: icr.io/ext/sig-storage/csi-node-driver-registrar:v2.2.0
+              image: icr.io/ext/sig-storage/csi-node-driver-registrar:v2.5.0
               imagePullPolicy: Always
               securityContext:
                 runAsNonRoot: false
@@ -354,7 +354,7 @@ items:
                 runAsNonRoot: false
                 runAsUser: 0
                 privileged: true
-              image: icr.io/ibm/ibm-vpc-block-csi-driver:v4.3.7
+              image: icr.io/ibm/ibm-vpc-block-csi-driver:v4.3.9
               imagePullPolicy: Always
               args:
                 - "--v=5"
@@ -410,7 +410,7 @@ items:
                   readOnly: true
                   mountPath: /etc/storage_ibmc
             - name: liveness-probe
-              image: icr.io/ext/sig-storage/livenessprobe:v2.3.0
+              image: icr.io/ext/sig-storage/livenessprobe:v2.6.0
               securityContext:
                 runAsNonRoot: false
                 runAsUser: 0
@@ -493,7 +493,7 @@ items:
             runAsUser: 2121
           containers:
             - name: csi-provisioner
-              image: icr.io/ext/sig-storage/csi-provisioner:v2.2.2
+              image: icr.io/ext/sig-storage/csi-provisioner:v3.2.1
               imagePullPolicy: Always
               securityContext:
                 privileged: false
@@ -517,7 +517,7 @@ items:
                 - name: socket-dir
                   mountPath: /csi
             - name: csi-attacher
-              image: icr.io/ext/sig-storage/csi-attacher:v3.2.1
+              image: icr.io/ext/sig-storage/csi-attacher:v3.5.0
               imagePullPolicy: Always
               securityContext:
                 privileged: false
@@ -538,7 +538,7 @@ items:
                 - name: socket-dir
                   mountPath: /csi
             - name: csi-resizer
-              image: icr.io/ext/sig-storage/csi-resizer:v1.2.0
+              image: icr.io/ext/sig-storage/csi-resizer:v1.5.0
               imagePullPolicy: Always
               securityContext:
                 privileged: false
@@ -558,7 +558,7 @@ items:
                 - name: socket-dir
                   mountPath: /csi
             - name: liveness-probe
-              image: icr.io/ext/sig-storage/livenessprobe:v2.3.0
+              image: icr.io/ext/sig-storage/livenessprobe:v2.6.0
               securityContext:
                 privileged: false
                 allowPrivilegeEscalation: false
@@ -576,7 +576,7 @@ items:
                   mountPath: /csi
             - name: iks-vpc-block-driver
               imagePullPolicy: Always
-              image: icr.io/ibm/ibm-vpc-block-csi-driver:v4.3.7
+              image: icr.io/ibm/ibm-vpc-block-csi-driver:v4.3.9
               securityContext:
                 privileged: false
                 allowPrivilegeEscalation: false

@@ -1,0 +1,92 @@
+[
+    {
+        "description": "Google Cloud project ID. You can find your Project ID from the Google Cloud dashboard.",
+        "displayname": "Google Cloud project ID",
+        "name": "project_id",
+        "required": "true",
+        "category": "secret",
+        "type": "string",
+        "obfuscate": "true",
+        "mutable": "true"
+    },
+    {
+        "description": "Google Cloud private key ID. You can find this in the JSON service account key file.",
+        "displayname": "Google Cloud private key ID",
+        "name": "private_key_id",
+        "required": "true",
+        "category": "secret",
+        "type": "string",
+        "obfuscate": "true",
+        "mutable": "true"
+    },
+    {
+        "description": "PrPrivate key of the service account. You can find the service account key on the Service Account section of the project dashboard.",
+        "displayname": "Private key of the service account",
+        "name": "private_key",
+        "required": "true",
+        "category": "secret",
+        "type": "string",
+        "obfuscate": "true",
+        "mutable": "true"
+    },
+    {
+        "description": "Client email. The email of ther service account can be found in the IAM & Admin section of the project dashboard.",
+        "displayname": "Client email",
+        "name": "client_email",
+        "required": "true",
+        "category": "secret",
+        "type": "string",
+        "obfuscate": "true",
+        "mutable": "true"
+    },
+    {
+        "description": "Client ID. You can find the Client ID in the APIs & Services section of the project dashboard.",
+        "displayname": "Client ID",
+        "name": "client_id",
+        "required": "true",
+        "category": "secret",
+        "type": "string",
+        "obfuscate": "true",
+        "mutable": "true"
+    },
+    {
+        "description": "Authorization URI for the service account. You can find this in the JSON service account key file.",
+        "displayname": "Authorization URI",
+        "name": "auth_uri",
+        "required": "true",
+        "category": "secret",
+        "type": "string",
+        "obfuscate": "true",
+        "mutable": "true"
+    },
+    {
+        "description": "Token URI for the service account. You can find this in the JSON service account key file.",
+        "displayname": "Token URI",
+        "name": "token_uri",
+        "required": "true",
+        "category": "secret",
+        "type": "string",
+        "obfuscate": "true",
+        "mutable": "true"
+    },
+    {
+        "description": "URL for the authorization provider certificate. You can find this in the JSON service account key file.",
+        "displayname": "URL for the authorization provider certificate",
+        "name": "auth_provider_x509_cert_url",
+        "required": "true",
+        "category": "secret",
+        "type": "string",
+        "obfuscate": "true",
+        "mutable": "true"
+    },
+    {
+        "description": "URL for the client certificate. You can find this in the JSON service account key file.",
+        "displayname": "URL for the client certificate",
+        "name": "client_x509_cert_url",
+        "required": "true",
+        "category": "secret",
+        "type": "string",
+        "obfuscate": "true",
+        "mutable": "true"
+    }
+]
