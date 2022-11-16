@@ -29,7 +29,8 @@
     "description": "Ridge CSI image",
     "displayname": "Ridge CSI image",
     "name": "ridge-csi-image",
-    "required": "true",
+    "default": "eu.gcr.io/tectonic-public/moonstone-csi-driver",
+    "required": "false",
     "category": "config"
   },
   {
