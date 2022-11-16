@@ -27,7 +27,7 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "12",
-                "release-date": "16 November 2022",
+                "release-date": "17 November 2022",
                 "cves": "CVE-2022-1304,CVE-2016-3709",
                 "golang": "1.18.6",
                 "ubi": "8.7-923",
