@@ -68,7 +68,7 @@ items:
                   mountPath: /var/lib/csi/sockets/pluginproxy/
               imagePullPolicy: IfNotPresent
             - name: csi-ridge-plugin
-              image: {{{ ridge-csi-image }}}
+              image: {{{ ridge-csi-image }}}:{{ ridge-csi-version }}
               args:
                 - /app/csi-driver
                 - --log-format=json
@@ -371,7 +371,7 @@ items:
                 path: /etc/systemd/system/app-init.service
           containers:
             - name: csi-ridge-plugin
-              image: {{{ ridge-csi-image }}}
+              image: {{{ ridge-csi-image }}}:{{ ridge-csi-version }}
               args:
                 - /app/csi-driver
                 - --log-format=json
