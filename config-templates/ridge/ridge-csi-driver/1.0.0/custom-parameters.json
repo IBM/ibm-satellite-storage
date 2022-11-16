@@ -26,6 +26,13 @@
     "category": "config"
   },
   {
+    "description": "Ridge CSI image",
+    "displayname": "Ridge CSI image",
+    "name": "ridge-csi-image",
+    "required": "true",
+    "category": "config"
+  },
+  {
     "description": "Ridge CSI version",
     "displayname": "Ridge CSI version",
     "name": "ridge-csi-version",
