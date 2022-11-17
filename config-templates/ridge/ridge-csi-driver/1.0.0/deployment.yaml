@@ -35,10 +35,10 @@ items:
           volumes:
             - name: socket-dir
               emptyDir: {}
-            - name: vm-token
+            - name: tectonic-etc
               hostPath:
-                path: /opt/tectonic/etc/vm-token
-                type: File
+                path: /opt/tectonic/etc
+                type: Directory
             - name: init-unit
               hostPath:
                 path: /etc/systemd/system/app-init.service
@@ -88,9 +88,9 @@ items:
               volumeMounts:
                 - name: socket-dir
                   mountPath: /var/lib/csi/sockets/pluginproxy/
-                - name: vm-token
+                - name: tectonic-etc
                   readOnly: true
-                  mountPath: /opt/tectonic/etc/vm-token
+                  mountPath: /opt/tectonic/etc
                 - name: init-unit
                   readOnly: true
                   mountPath: /etc/systemd/system/app-init.service
@@ -362,10 +362,10 @@ items:
             - name: lib64
               hostPath:
                 path: /lib64
-            - name: vm-token
+            - name: tectonic-etc
               hostPath:
-                path: /opt/tectonic/etc/vm-token
-                type: File
+                path: /opt/tectonic/etc
+                type: Directory
             - name: init-unit
               hostPath:
                 path: /etc/systemd/system/app-init.service
@@ -405,9 +405,9 @@ items:
                   mountPath: /usr/sbin
                 - name: lib64
                   mountPath: /lib64
-                - name: vm-token
+                - name: tectonic-etc
                   readOnly: true
-                  mountPath: /opt/tectonic/etc/vm-token
+                  mountPath: /opt/tectonic/etc
                 - name: init-unit
                   readOnly: true
                   mountPath: /etc/systemd/system/app-init.service
