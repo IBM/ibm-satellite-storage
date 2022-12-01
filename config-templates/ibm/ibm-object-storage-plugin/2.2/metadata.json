@@ -3,7 +3,7 @@
   "revision": "3", 
   "enabled": "true",
   "status": "supported",
-  "description": "[Beta] - IBM Object Storage Plugin version 2.2.x",
+  "description": "IBM Object Storage Plugin version 2.2.x",
   "tags": [
     {
       "name": "provider",
