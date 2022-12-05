@@ -129,7 +129,7 @@
         "type": "text"
     },
     {
-        "description": "Enter the volume expansion policy for your storage class. If you want to allow volume expansion, enter 'true'. If you don't want to allow volume expansion, enter 'false'.",
+        "description": "Enter the volume expansion policy for your storage class. If you want to allow volume expansion, enter 'true'.",
         "displayname": "Allow volume expansion",
         "name": "allowVolumeExpansion",
         "templateKeyName": [
