@@ -3,11 +3,11 @@
         "5.0": {
             "status": "supported",
             "latest-revision": {
-                "revision": "2",
-                "release-date": "17 November 2022",
+                "revision": "3",
+                "release-date": "08 January 2023",
                 "cves": "",
                 "golang": "1.18.8",
-                "ubi": "8.7-923",
+                "ubi": "8.7-923.1669829893",
                 "new-features": [],
                 "fixes": [
                     "Fixes CVE-2022-42898 and PSIRT PVR0406812"
