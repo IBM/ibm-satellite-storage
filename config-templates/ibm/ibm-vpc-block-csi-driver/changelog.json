@@ -41,7 +41,7 @@
             "previous-revision": {
                 "revision": "11",
                 "release-date": "17 November 2022",
-                "cves": "CVE-2022-42898",
+                "cves": "CVE-2022-1304,CVE-2016-3709",
                 "golang": "1.18.6",
                 "ubi": "8.7-923",
                 "new-features": [],
