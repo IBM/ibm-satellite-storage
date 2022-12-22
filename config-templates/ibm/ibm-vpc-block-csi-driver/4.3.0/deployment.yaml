@@ -287,7 +287,7 @@ items:
             - operator: Exists
           initContainers:
             - name: vpc-node-label-updater
-              image: icr.io/obs/storage/vpc-node-label-updater:v4.1.14
+              image: icr.io/obs/storage/vpc-node-label-updater:v4.1.15
               imagePullPolicy: Always
               securityContext:
                 privileged: false
@@ -354,7 +354,7 @@ items:
                 runAsNonRoot: false
                 runAsUser: 0
                 privileged: true
-              image: icr.io/ibm/ibm-vpc-block-csi-driver:v4.3.10
+              image: icr.io/ibm/ibm-vpc-block-csi-driver:v4.3.11
               imagePullPolicy: Always
               args:
                 - "--v=5"
@@ -576,7 +576,7 @@ items:
                   mountPath: /csi
             - name: iks-vpc-block-driver
               imagePullPolicy: Always
-              image: icr.io/ibm/ibm-vpc-block-csi-driver:v4.3.10
+              image: icr.io/ibm/ibm-vpc-block-csi-driver:v4.3.11
               securityContext:
                 privileged: false
                 allowPrivilegeEscalation: false
