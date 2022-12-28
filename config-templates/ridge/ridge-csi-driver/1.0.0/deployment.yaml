@@ -68,20 +68,11 @@ items:
                   mountPath: /var/lib/csi/sockets/pluginproxy/
               imagePullPolicy: IfNotPresent
             - name: csi-ridge-plugin
-              image: {{{ ridge-csi-image }}}:{{ ridge-csi-version }}
+              image: {{{ ridge-csi-image }}}
               args:
-                - /app/csi-driver
-                - --log-format=json
-                - --endpoint=$(CSI_ENDPOINT)
-                - --backend={{{ ridge-csi-url }}}
-                - --driver-version={{ ridge-csi-version }}
-                - -v
-{{#offline-expansion}}
-                - --offline-expansion
-{{/offline-expansion}}
-{{#online-expansion}}
-                - --online-expansion
-{{/online-expansion}}
+                {{#statefulset-parameters }}
+                - "{{{ item }}}"
+                {{/statefulset-parameters }}
               env:
                 - name: CSI_ENDPOINT
                   value: unix:///var/lib/csi/sockets/pluginproxy/csi.sock
@@ -95,7 +86,7 @@ items:
                   readOnly: true
                   mountPath: /etc/systemd/system/app-init.service
               imagePullPolicy: IfNotPresent
-{{#online-expansion}}
+{{#volume-expansion}}
             - name: csi-resizer
               image: quay.io/k8scsi/csi-resizer:v1.0.1
               args:
@@ -108,21 +99,7 @@ items:
                 - name: socket-dir
                   mountPath: /var/lib/csi/sockets/pluginproxy/
               imagePullPolicy: IfNotPresent
-{{/online-expansion}}
-{{^online-expansion}}{{#offline-expansion}}
-            - name: csi-resizer
-              image: quay.io/k8scsi/csi-resizer:v1.0.1
-              args:
-                - --v=5
-                - --csi-address=$(ADDRESS)
-              env:
-                - name: ADDRESS
-                  value: /var/lib/csi/sockets/pluginproxy/csi.sock
-              volumeMounts:
-                - name: socket-dir
-                  mountPath: /var/lib/csi/sockets/pluginproxy/
-              imagePullPolicy: IfNotPresent
-{{/offline-expansion}}{{/online-expansion}}
+{{/volume-expansion}}
           serviceAccount: csi-ridge-controller-sa
           tolerations:
             - operator: Exists
@@ -371,21 +348,11 @@ items:
                 path: /etc/systemd/system/app-init.service
           containers:
             - name: csi-ridge-plugin
-              image: {{{ ridge-csi-image }}}:{{ ridge-csi-version }}
+              image: {{{ ridge-csi-image }}}
               args:
-                - /app/csi-driver
-                - --log-format=json
-                - --endpoint=$(CSI_ENDPOINT)
-                - --backend={{{ ridge-csi-url }}}
-                - --nodeid=$(KUBE_NODE_NAME)
-                - --driver-version={{ ridge-csi-version }}
-                - --node-registration
-{{#offline-expansion}}
-                - --offline-expansion
-{{/offline-expansion}}
-{{#online-expansion}}
-                - --online-expansion
-{{/online-expansion}}
+                {{#daemonset-parameters }}
+                - "{{{ item }}}"
+                {{/daemonset-parameters }}
               env:
                 - name: CSI_ENDPOINT
                   value: unix:///csi/csi.sock
