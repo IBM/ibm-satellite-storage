@@ -4,14 +4,12 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "3",
-                "release-date": "08 January 2023",
-                "cves": "CVE-2022-42898",
+                "release-date": "09 January 2023",
+                "cves": "CVE-2022-42898,CVE-2022-41717,CVE-2022-41720",
                 "golang": "1.18.9",
                 "ubi": "8.7-923.1669829893",
                 "new-features": [],
-                "fixes": [
-                    "Fixes CVE-2022-42898,CVE-2022-41717,CVE-2022-41720  and PSIRT PVR0406812,PVR0410879,PVR0410611"
-                ]
+                "fixes": []
             },
             "previous-revision": {
                 "revision": "2",
