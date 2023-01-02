@@ -11,7 +11,8 @@
                 "new-features": [],
                 "fixes": [
                     "Default value of 'ephemeralStorageLimit' parameter updated to 100Mi",
-                    "Set tls-cipher-suite value to 'default' in storage classes"
+                    "Set tls-cipher-suite value to 'default' in storage classes",
+                    "Rename flex StorageClasses to Smart"
                 ]
             },
             "previous-revision": {
