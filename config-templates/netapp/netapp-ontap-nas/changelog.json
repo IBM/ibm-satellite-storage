@@ -3,20 +3,20 @@
         "22.04": {
             "status": "supported",
             "latest-revision": {
-                "revision": "11",
-                "release-date": "08 December 2022",
-                "cves": "CVE-2022-42898",
-                "golang": "1.18.8",
+                "revision": "12",
+                "release-date": "09 January 2023",
+                "cves": "CVE-2022-41717,CVE-2022-41720",
+                "golang": "1.18.9",
                 "ubi": "8.7-923.1669829893",
                 "new-features": [],
                 "fixes": []
             },
             "previous-revision": {
-                "revision": "10",
-                "release-date": "05 December 2022",
-                "cves": "CVE-2022-41715,CVE-2022-2879,CVE-2022-2880",
+                "revision": "11",
+                "release-date": "08 December 2022",
+                "cves": "CVE-2022-42898",
                 "golang": "1.18.8",
-                "ubi": "8.7-923",
+                "ubi": "8.7-923.1669829893",
                 "new-features": [],
                 "fixes": []
             }
@@ -26,20 +26,20 @@
         "21.04": {
             "status": "supported",
             "latest-revision": {
-                "revision": "13",
-                "release-date": "08 December 2022",
-                "cves": "CVE-2022-42898",
-                "golang": "1.18.8",
+                "revision": "14",
+                "release-date": "09 January 2023",
+                "cves": "CVE-2022-41717,CVE-2022-41720",
+                "golang": "1.18.9",
                 "ubi": "8.7-923.1669829893",
                 "new-features": [],
                 "fixes": []
             },
             "previous-revision": {
-                "revision": "12",
-                "release-date": "05 December 2022",
-                "cves": "CVE-2022-41715,CVE-2022-2879,CVE-2022-2880",
+                "revision": "13",
+                "release-date": "08 December 2022",
+                "cves": "CVE-2022-42898",
                 "golang": "1.18.8",
-                "ubi": "8.7-923",
+                "ubi": "8.7-923.1669829893",
                 "new-features": [],
                 "fixes": []
             }
