@@ -1,6 +1,6 @@
-# Red Hat Openshift Data Foundation - Local Storage
+# Red Hat OpenShift Data Foundation - Local Storage
 
-Red Hat Openshift Data Foundation is a software-defined storage that is optimised for container environments. It runs as an operator on OpenShift Container Platform to provide highly integrated and simplified persistent storage management for containers.
+Red Hat OpenShift Data Foundation is a software-defined storage that is optimised for container environments. It runs as an operator on OpenShift Container Platform to provide highly integrated and simplified persistent storage management for containers.
 
 The user has to provide the input values to the custom resource OcsCluster while creating the satellite configuration to deploy ODF
 
@@ -91,7 +91,7 @@ When you create your ODF configuration, you must specify device paths for the ob
 
 7. Repeat the previous steps for each worker node that you want to use for your ODF configuration.   
 
-## Red hat Openshift Data Foundation - Local Storage: Parameter reference
+## Red hat OpenShift Data Foundation - Local Storage: Parameter reference
 
 **Description of the template parameters :**
 
@@ -123,7 +123,7 @@ When you create your ODF configuration, you must specify device paths for the ob
 
 
 
-## Creating the Red Hat Openshift Data Foundation - Local storage configuration
+## Creating the Red Hat OpenShift Data Foundation - Local storage configuration
 
 1. Log in into your cluster using `oc` CLI or IBM Cloud CLI.
 2. Verify that all the worker nodes have the `Ready` status.

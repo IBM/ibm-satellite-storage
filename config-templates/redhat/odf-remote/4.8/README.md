@@ -1,6 +1,6 @@
-# Red Hat Openshift Data Foundation - Remote Storage
+# Red Hat OpenShift Data Foundation - Remote Storage
 
-Red Hat Openshift Data Foundation is a software-defined storage that is optimised for container environments. It runs as an operator on OpenShift Container Platform to provide highly integrated and simplified persistent storage management for containers.
+Red Hat OpenShift Data Foundation is a software-defined storage that is optimised for container environments. It runs as an operator on OpenShift Container Platform to provide highly integrated and simplified persistent storage management for containers.
 
 The user has to provide the input values to the custom resource OcsCluster while creating the satellite configuration to deploy ODF
 
@@ -33,7 +33,7 @@ Run the following commands to create a COS instance and create a set of HMAC cre
 3. Get the regional public endpoint and the location of your IBM COS instance.
     You can get the endpoint details from the list of [IBM COS endpoints](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-endpoints) and the location from [IBM COS location constraint details](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-classes).
 
-## Red hat Openshift Data Foundation - Remote Storage: Parameter reference
+## Red hat OpenShift Data Foundation - Remote Storage: Parameter reference
 
 **Description of the template parameters :**
 
@@ -67,7 +67,7 @@ Run the following commands to create a COS instance and create a set of HMAC cre
 
 
 
-## Creating the Red Hat Openshift Data Foundation - Remote storage configuration
+## Creating the Red Hat OpenShift Data Foundation - Remote storage configuration
 
 1. Log in into your cluster using `oc` CLI or IBM Cloud CLI.
 2. Verify that all the worker nodes have the `Ready` status.
