@@ -47,7 +47,7 @@
     "regex": "^[1-9]([0-9]?)$",
     "min-length": 1,
     "max-length": 2,
-    "required": "false",
+    "required": "true",
     "mutable": "true"
   },
   {
