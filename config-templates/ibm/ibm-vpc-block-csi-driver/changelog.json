@@ -24,7 +24,7 @@
     },
     {
         "4.3.0": {
-            "status": "deprecated",
+            "status": "unsupported",
             "latest-revision": {
                 "revision": "12",
                 "release-date": "09 January 2023",
