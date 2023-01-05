@@ -50,7 +50,7 @@
         "templateKeyName": [
             "iops"
         ],
-        "required": "true",
+        "required": "false",
         "default": "",
         "category": "config",
         "type": "text"
@@ -86,7 +86,7 @@
         "templateKeyName": [
             "encryptionKey"
         ],
-        "required": "true",
+        "required": "false",
         "default": "",
         "category": "config",
         "type": "text"
@@ -98,7 +98,7 @@
         "templateKeyName": [
             "zone"
         ],
-        "required": "true",
+        "required": "false",
         "default": "",
         "category": "config",
         "type": "text"
@@ -110,7 +110,7 @@
         "templateKeyName": [
             "tags"
         ],
-        "required": "true",
+        "required": "false",
         "default": "",
         "category": "config",
         "type": "text"
