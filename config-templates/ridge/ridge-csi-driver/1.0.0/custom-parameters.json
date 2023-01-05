@@ -9,7 +9,7 @@
     "max-length": 5,
     "supported-values": ["true", "false"],
     "type": "boolean",
-    "required": "false",
+    "required": "true",
     "category": "config"
   },
   {
@@ -22,7 +22,7 @@
     "max-length": 5,
     "supported-values": ["true", "false"],
     "type": "boolean",
-    "required": "false",
+    "required": "true",
     "category": "config"
   },
   {
@@ -30,7 +30,7 @@
     "displayname": "Ridge CSI image",
     "name": "ridge-csi-image",
     "default": "eu.gcr.io/tectonic-public/moonstone-csi-driver",
-    "required": "false",
+    "required": "true",
     "category": "config"
   },
   {

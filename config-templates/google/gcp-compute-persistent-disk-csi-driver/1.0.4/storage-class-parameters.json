@@ -27,7 +27,7 @@
             "volumeBindingMode"
         ],
         "default": "WaitForFirstConsumer",
-        "required": "false",
+        "required": "true",
         "category": "config"
     },{
         "description": "Specify a unique volume tier preference; in the range of 1-99 with 1 being the highest",
@@ -36,7 +36,7 @@
         "templateKeyName": [
             "storage-class-preference"
         ],
-        "required": "false",
+        "required": "true",
         "default": "99",
         "category": "config",
         "regex": "^[1-9]([0-9]?)$",
@@ -49,7 +49,7 @@
             "storageclass.kubernetes.io/is-default-class"
         ],
         "default": "false",
-        "required": "false",
+        "required": "true",
         "category": "config",
         "type": "boolean"
     }

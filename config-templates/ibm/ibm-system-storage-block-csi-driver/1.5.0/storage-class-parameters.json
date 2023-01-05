@@ -61,7 +61,7 @@
 	    "csi.storage.k8s.io/fstype"
     ],
     "default": "ext4",
-    "required": "false",
+    "required": "true",
     "category": "config"
   },
   {
@@ -82,7 +82,7 @@
 	    "allowVolumeExpansion"
     ],
     "default": "false",
-    "required": "false",
+    "required": "true",
     "category": "config",
     "type": "boolean"
   },
@@ -94,7 +94,7 @@
       "storageclass.kubernetes.io/is-default-class"
     ],
     "default": "false",
-    "required": "false",
+    "required": "true",
     "category": "config",
     "type": "boolean"
   }, {
@@ -104,7 +104,7 @@
     "templateKeyName": [
       "storage-class-preference"
     ],
-    "required": "false",
+    "required": "true",
     "default": "99",
     "category": "config",
     "regex": "^[1-9]([0-9]?)$",

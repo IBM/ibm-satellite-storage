@@ -16,7 +16,7 @@
           "storageclass.kubernetes.io/is-default-class"
       ],
       "default": "false",
-      "required": "false",
+      "required": "true",
       "category": "config",
       "type": "boolean"
     },{
@@ -37,7 +37,7 @@
           "directoryPerms"
       ],
       "default": "700",
-      "required": "false",
+      "required": "true",
       "category": "config"
   
     },{
@@ -48,7 +48,7 @@
           "gidRangeStart"
       ],
       "default": "50000",
-      "required": "false",
+      "required": "true",
       "category": "config"
     },{
       "description": "Specify the GID range end. gidRangeEnd is ending range of Posix Group ID",
@@ -58,7 +58,7 @@
                   "gidRangeEnd"
           ],
       "default": "7000000",
-      "required": "false",
+      "required": "true",
       "category": "config"
     },{
       "description": "Specify the BasePath. Base path is a path on the file system under which access point root directory is created",
@@ -68,7 +68,7 @@
                   "basePath"
           ],
       "default": "/",
-      "required": "false",
+      "required": "true",
       "category": "config"
     },{
       "description": "Specify a unique volume tier preference; in the range of 1-99 with 1 being the highest",
@@ -77,7 +77,7 @@
       "templateKeyName": [
           "storage-class-preference"
       ],
-      "required": "false",
+      "required": "true",
       "default": "99",
       "category": "config",
       "regex": "^[1-9]([0-9]?)$",

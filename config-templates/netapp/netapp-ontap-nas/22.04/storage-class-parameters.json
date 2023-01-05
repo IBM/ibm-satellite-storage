@@ -16,7 +16,7 @@
 		"storageclass.kubernetes.io/is-default-class"
 	],
 	"default": "false",
-	"required": "false",
+	"required": "true",
 	"category": "config",
 	"type": "boolean"
   }, {
@@ -37,7 +37,7 @@
 		"allowVolumeExpansion"
 	],
 	"default": "true",
-	"required": "false",
+	"required": "true",
 	"category": "config",
 	"type": "boolean"
   }, {
@@ -48,7 +48,7 @@
 		"storage-class-preference"
 	],
 	"default": "99",
-	"required": "false",
+	"required": "true",
 	"category": "config",
 	"regex": "^[1-9]([0-9]?)$",
 	"type": "text"
