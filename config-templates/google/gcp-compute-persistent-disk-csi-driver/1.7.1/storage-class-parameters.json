@@ -27,7 +27,7 @@
             "volumeBindingMode"
         ],
         "default": "WaitForFirstConsumer",
-        "required": "false",
+        "required": "true",
         "category": "config"
     },
     {
@@ -37,7 +37,7 @@
         "templateKeyName": [
             "storage-class-preference"
         ],
-        "required": "false",
+        "required": "true",
         "default": "99",
         "category": "config",
         "regex": "^[1-9]([0-9]?)$",
@@ -50,7 +50,7 @@
             "storageclass.kubernetes.io/is-default-class"
         ],
         "default": "false",
-        "required": "false",
+        "required": "true",
         "category": "config",
         "type": "boolean"
     }

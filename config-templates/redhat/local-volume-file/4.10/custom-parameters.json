@@ -9,7 +9,7 @@
     "min-length": 4,
     "max-length": 5,
     "supported-values": ["true", "false"],
-    "required": "false",
+    "required": "true",
     "category": "config"
   },
   {
@@ -44,7 +44,7 @@
     "min-length": 3,
     "max-length": 4,
     "supported-values": ["ext3", "ext4", "xfs"],
-    "required": "false",
+    "required": "true",
     "category": "config"
   }
 ]

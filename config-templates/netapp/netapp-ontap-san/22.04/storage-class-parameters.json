@@ -16,7 +16,7 @@
 		  "storageclass.kubernetes.io/is-default-class"
 	  ],
 	  "default": "false",
-	  "required": "false",
+	  "required": "true",
 	  "category": "config",
 	  "type": "boolean"
 	}, {
@@ -37,7 +37,7 @@
 		  "fsType"
 	  ],
 	  "default": "ext4",
-	  "required": "false",
+	  "required": "true",
 	  "category": "config",
 	  "type": "text"
 	}, {
@@ -48,7 +48,7 @@
 		  "allowVolumeExpansion"
 	  ],
 	  "default": "true",
-	  "required": "false",
+	  "required": "true",
 	  "category": "config",
 	  "type": "boolean"
 	}, {
@@ -59,7 +59,7 @@
 		  "volumeBindingMode"
 	  ],
 	  "default": "Immediate",
-	  "required": "false",
+	  "required": "true",
 	  "category": "config",
 	  "type": "text"
 	}, {
@@ -70,7 +70,7 @@
 			"storage-class-preference"
 		],
 		"default": "99",
-		"required": "false",
+		"required": "true",
 		"category": "config",
 		"regex": "^[1-9]([0-9]?)$",
 		"type": "text"
