@@ -1,5 +1,20 @@
 [
     {
+        "4.11": {
+            "status": "supported",
+            "latest-revision": {
+                "revision": "1",
+                "release-date": "11 January 2023",
+                "cves": "",
+                "golang": "1.18.9",
+                "ubi": "8.7-923.1669829893",
+                "new-features": ["ODF 4.11 release on satellite"],
+                "fixes": []
+            },
+            "previous-revision": {}
+        }
+    },
+    {
         "4.10": {
             "status": "supported",
             "latest-revision": {
