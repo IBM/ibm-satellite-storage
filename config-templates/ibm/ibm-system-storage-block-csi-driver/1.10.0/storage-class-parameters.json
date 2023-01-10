@@ -57,6 +57,7 @@
 	    "csi.storage.k8s.io/fstype"
     ],
     "default": "ext4",
+    "supported-values": ["ext4", "xfs"],
     "required": "false",
     "category": "config"
   },
