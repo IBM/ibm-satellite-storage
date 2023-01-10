@@ -34,9 +34,7 @@
     "displayname": "Secret name",
     "name": "secret-name",
     "templateKeyName": [
-	    "csi.storage.k8s.io/provisioner-secret-name",
-	    "csi.storage.k8s.io/controller-publish-secret-name",
-	    "csi.storage.k8s.io/controller-expand-secret-name"
+	    "csi.storage.k8s.io/secret-name"
     ],
     "required": "true",
     "category": "config"
@@ -46,9 +44,7 @@
     "displayname": "Secret namespace",
     "name": "secret-namespace",
     "templateKeyName": [
-	    "csi.storage.k8s.io/provisioner-secret-namespace",
-	    "csi.storage.k8s.io/controller-publish-secret-namespace",
-	    "csi.storage.k8s.io/controller-expand-secret-namespace"
+	    "csi.storage.k8s.io/secret-namespace"
     ],
     "required": "true",
     "category": "config"
