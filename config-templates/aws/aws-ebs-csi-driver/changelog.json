@@ -10,7 +10,7 @@
                 "ubi": "",
                 "new-features": [],
                 "fixes": [
-                    "Update API version from v1beta1 to v1"
+                    "Use the policy/v1 API version for PodDisruptionBudget"
                 ]
             },
             "previous-revision": {
@@ -37,7 +37,7 @@
                 "ubi": "",
                 "new-features": [],
                 "fixes": [
-                    "Update API version from v1beta1 to v1"
+                    "Use the policy/v1 API version for PodDisruptionBudget"
                 ]
             },
             "previous-revision": {
@@ -64,7 +64,7 @@
                 "ubi": "",
                 "new-features": [],
                 "fixes": [
-                    "Update API version from v1beta1 to v1"
+                    "Use the policy/v1 API version for PodDisruptionBudget"
                 ]
             },
             "previous-revision": {
