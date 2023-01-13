@@ -1,6 +1,6 @@
 {
   "name": "22.04",
-  "revision": "2",
+  "revision": "3",
   "enabled": "true",
   "status": "supported",
   "description": "Netapp Trident version 22.04.",

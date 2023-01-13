@@ -3,11 +3,22 @@
         "22.04": {
             "status": "supported",
             "latest-revision": {
+                "revision": "3",
+                "release-date": "13 January 2023",
+                "cves": "",
+                "golang": "1.18.8",
+                "ubi": "8.7-923.1669829893",
+                "new-features": [],
+                "fixes": [
+                    "Use the policy/v1 API version for PodSecurityPolicy"
+                ]
+            },
+            "previous-revision": {
                 "revision": "2",
                 "release-date": "18 July 2022",
                 "cves": "",
-                "golang": "",
-                "ubi": "",
+                "golang": "1.18.8",
+                "ubi": "8.7-923.1669829893",
                 "new-features": [
                     "Fixed the issue for configs having no content after revision upgrade"
                 ],
@@ -20,7 +31,7 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "4",
-                "release-date": "13 Jan 2023",
+                "release-date": "13 January 2023",
                 "cves": "",
                 "golang": "1.18.8",
                 "ubi": "8.7-923.1669829893",
