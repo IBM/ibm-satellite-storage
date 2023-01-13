@@ -5,7 +5,7 @@ metadata:
   namespace: kube-system
   annotations:
     version: "21.04"
-    revision: "3"
+    revision: "4"
 items:
   - apiVersion: v1
     kind: Namespace
@@ -443,7 +443,7 @@ items:
               imagePullPolicy: IfNotPresent
               name: trident-operator
           serviceAccountName: trident-operator
-  - apiVersion: policy/v1beta1
+  - apiVersion: policy/v1
     kind: PodSecurityPolicy
     metadata:
       labels:
