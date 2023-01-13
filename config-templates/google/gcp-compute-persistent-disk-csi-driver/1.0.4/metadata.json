@@ -1,6 +1,6 @@
 {
     "name": "1.0.4",
-    "revision": "3",
+    "revision": "4",
     "enabled": "true",
     "status": "supported",
     "description": "GCP Compute Persistent Disk CSI Driver",

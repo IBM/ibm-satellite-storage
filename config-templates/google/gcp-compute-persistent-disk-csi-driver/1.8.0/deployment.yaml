@@ -6,7 +6,7 @@ metadata:
   namespace: kube-system
   annotations:
     version: 1.8.0
-    revision: 1
+    revision: 2
 items:
   - apiVersion: v1
     kind: Namespace
@@ -54,7 +54,7 @@ items:
       labels:
         app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
         app.kubernetes.io/version: 1.8.0
-  - apiVersion: policy/v1beta1
+  - apiVersion: policy/v1
     kind: PodSecurityPolicy
     metadata:
       name: csi-gce-pd-controller-psp
@@ -74,7 +74,7 @@ items:
       volumes:
       - emptyDir
       - secret
-  - apiVersion: policy/v1beta1
+  - apiVersion: policy/v1
     kind: PodSecurityPolicy
     metadata:
       name: csi-gce-pd-node-psp
@@ -838,9 +838,6 @@ items:
       namespace:
     - kind: ServiceAccount
       name: csi-gce-pd-node-sa
-      namespace:
-    - kind: ServiceAccount
-      name: csi-gce-pd-node-sa-win
       namespace:
     roleRef:
       kind: Role
