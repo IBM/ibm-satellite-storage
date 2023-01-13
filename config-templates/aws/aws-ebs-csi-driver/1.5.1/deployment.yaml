@@ -6,7 +6,7 @@ metadata:
   namespace: kube-system
   annotations:
     version: 1.5.1
-    revision: 4
+    revision: 5
 items:
   - apiVersion: v1
     kind: Secret
@@ -554,7 +554,7 @@ items:
             - name: socket-dir
               emptyDir: {}
   - kind: PodDisruptionBudget
-    apiVersion: policy/v1beta1
+    apiVersion: policy/v1
     metadata:
       name: ebs-csi-controller
       labels:
