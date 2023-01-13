@@ -22,7 +22,7 @@
     "regex": "^[1-9]([0-9]?)$",
     "min-length": 1,
     "max-length": 2,
-    "required": "false",
+    "required": "true",
     "mutable": "true"
   },
   {
@@ -41,7 +41,7 @@
     "min-length": 4,
     "max-length": 5,
     "supported-values": ["true", "false"],
-    "required": "false",
+    "required": "true",
     "type": "boolean",
     "mutable": "true"
   },
@@ -54,7 +54,7 @@
     "min-length": 8,
     "max-length": 10,
     "supported-values": ["essentials", "advanced"],
-    "required": "false"
+    "required": "true"
   },
   {
     "description": "The IBM COS regional public endpoint.",
@@ -99,7 +99,7 @@
     "max-length": 5,
     "supported-values": ["true", "false"],
     "type": "boolean",
-    "required": "false"
+    "required": "true"
   },
   {
     "description": "Your IAM API key.",
@@ -119,7 +119,7 @@
     "min-length": 4,
     "max-length": 5,
     "supported-values": ["true", "false"],
-    "required": "false",
+    "required": "true",
     "type": "boolean",
     "mutable": "true"
   }

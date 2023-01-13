@@ -37,7 +37,7 @@
     "displayname": "Export Policy",
     "name": "exportPolicy",
     "default": "default",
-    "required": "false",
+    "required": "true",
     "category": "config"
   }, {
     "description": "Maximum requestable volume size (in Gibibytes) and qtree parent volume size",
@@ -48,7 +48,7 @@
     "regex": "^[1-9]{1}[0-9]{0,2}Gi$",
     "min-length": 3,
     "max-length": 5,
-    "required": "false",
+    "required": "true",
     "category": "config"
   }, {
     "description": "Fail provisioning if usage is above this percentage.",
@@ -59,7 +59,7 @@
     "regex": "(^100?%$)|(^([1-9]([0-9])?|0)%$)",
     "min-length": 2,
     "max-length": 4,
-    "required": "false",
+    "required": "true",
     "category": "config"
   }, {
     "description": "The NFS mount options.",
@@ -68,7 +68,7 @@
     "default": "nfsvers=4",
     "place-holder":"nfsvers=4",
     "regex": "^(nfsvers=){1}[0-9.]+$",
-    "required": "false",
+    "required": "true",
     "category": "config"
   }
 ]

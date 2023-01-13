@@ -21,7 +21,7 @@
         "description": "Include the 'insecure-flag'. 'true' indicates that you want to include the flag, which uses self-signed certificate for login. 'false' indicates that you use a secure connection. If you select 'false', you must provide an SSL thumbprint.",
         "displayname": "Insecure connection",
         "name": "insecure-flag",
-        "required": "false",
+        "required": "true",
         "default": "false",
         "type": "boolean"
     },

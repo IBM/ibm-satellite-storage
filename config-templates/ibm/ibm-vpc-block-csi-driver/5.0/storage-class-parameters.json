@@ -17,7 +17,7 @@
             "reclaimPolicy"
         ],
         "default": "Retain",
-        "required": "false",
+        "required": "true",
         "category": "config"
     },
     {
@@ -28,7 +28,7 @@
             "volumeBindingMode"
         ],
         "default": "WaitForFirstConsumer",
-        "required": "false",
+        "required": "true",
         "category": "config"
     },
     {
@@ -38,7 +38,7 @@
         "templateKeyName": [
             "profile"
         ],
-        "required": "false",
+        "required": "true",
         "default": "custom",
         "category": "config",
         "type": "text"
@@ -62,7 +62,7 @@
         "templateKeyName": [
             "csi.storage.k8s.io/fstype"
         ],
-        "required": "false",
+        "required": "true",
         "default": "ext4",
         "category": "config",
         "type": "text"
@@ -74,7 +74,7 @@
         "templateKeyName": [
             "encrypted"
         ],
-        "required": "false",
+        "required": "true",
         "default": "false",
         "category": "config",
         "type": "text"
@@ -122,20 +122,20 @@
         "templateKeyName": [
             "storage-class-preference"
         ],
-        "required": "false",
+        "required": "true",
         "default": "99",
         "category": "config",
         "regex": "^[1-9]([0-9]?)$",
         "type": "text"
     },
     {
-        "description": "Enter the volume expansion policy for your storage class. If you want to allow volume expansion, enter 'true'. If you don't want to allow volume expansion, enter 'false'.",
+        "description": "Enter the volume expansion policy for your storage class. If you want to allow volume expansion, enter 'true'.",
         "displayname": "Allow volume expansion",
         "name": "allowVolumeExpansion",
         "templateKeyName": [
             "allowVolumeExpansion"
         ],
-        "required": "false",
+        "required": "true",
         "default": "true",
         "category": "config",
         "type": "boolean"
@@ -148,7 +148,7 @@
             "storageclass.kubernetes.io/is-default-class"
         ],
         "default": "false",
-        "required": "false",
+        "required": "true",
         "category": "config",
         "type": "boolean"
     }

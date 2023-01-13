@@ -9,7 +9,7 @@
     "min-length": 4,
     "max-length": 5,
     "supported-values": ["true", "false"],
-    "required": "false",
+    "required": "true",
     "category": "config"
   },
   {
@@ -27,7 +27,7 @@
     "category": "config"
   },
   {
-    "description": "The local storage device path. Example: '/dev/sdc'. Required when auto-discover-devices is set to false.",
+    "description": "The local storage device path. Example: '/dev/sdc'. Required when 'auto-discover-devices' is set to 'false'.",
     "displayname": "Device Path",
     "name": "devicepath",
     "place-holder": "/dev/sdc,/dev/sde",

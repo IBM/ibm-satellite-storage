@@ -41,7 +41,7 @@
     "regex": "^[1-9]{1}[0-9]{0,2}Gi$",
     "min-length": 3,
     "max-length": 5,
-    "required": "false",
+    "required": "true",
     "category": "config"
   }, {
     "description": "Provisioning fails if usage is above this percentage.",
@@ -52,7 +52,7 @@
     "regex": "(^100?%$)|(^([1-9]([0-9])?|0)%$)",
     "min-length": 2,
     "max-length": 4,
-    "required": "false",
+    "required": "true",
     "category": "config"
   }
 ]

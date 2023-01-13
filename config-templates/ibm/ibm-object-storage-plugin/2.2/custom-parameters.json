@@ -4,7 +4,7 @@
         "displayname": "Helm Chart Release Name",
         "name": "helm-release-name",
         "category": "config",
-        "required": "false",
+        "required": "true",
         "default": "ibm-object-storage-plugin"
     },
     {

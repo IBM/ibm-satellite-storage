@@ -1,6 +1,6 @@
 {
   "name": "4.8",
-  "revision": "14",
+  "revision": "17",
   "enabled": "true",
   "status": "supported",
   "description": "ODF template for openshift 4.8 (Remote storage)",
@@ -35,7 +35,7 @@
     },
     {
       "name": "supported-envs",
-      "value": "Openshift Container Platform"
+      "value": "OpenShift Container Platform"
     },
     {
       "name": "supported-k8s-versions",
