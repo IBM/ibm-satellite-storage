@@ -44,7 +44,7 @@ items:
                 path: /etc/systemd/system/app-init.service
           containers:
             - name: csi-provisioner
-              image: quay.io/k8scsi/csi-provisioner:v1.4.0
+              image: {{{ csi-provisioner-image }}}
               args:
                 {{#provisioner-parameters }}
                    - "{{{ item }}}"
@@ -57,7 +57,7 @@ items:
                   mountPath: /var/lib/csi/sockets/pluginproxy/
               imagePullPolicy: IfNotPresent
             - name: csi-attacher
-              image: quay.io/k8scsi/csi-attacher:v3.1.0
+              image: {{{ csi-attacher-image }}}
               args:
                 {{#attacher-parameters }}
                    - "{{{ item }}}"
@@ -88,9 +88,8 @@ items:
                   readOnly: true
                   mountPath: /etc/systemd/system/app-init.service
               imagePullPolicy: IfNotPresent
-{{#volume-expansion}}
             - name: csi-resizer
-              image: quay.io/k8scsi/csi-resizer:v1.0.1
+              image: {{{ csi-resizer-image }}}
               args:
                 {{#resizer-parameters }}
                    - "{{{ item }}}"
@@ -102,7 +101,6 @@ items:
                 - name: socket-dir
                   mountPath: /var/lib/csi/sockets/pluginproxy/
               imagePullPolicy: IfNotPresent
-{{/volume-expansion}}
           serviceAccount: csi-ridge-controller-sa
           tolerations:
             - operator: Exists
