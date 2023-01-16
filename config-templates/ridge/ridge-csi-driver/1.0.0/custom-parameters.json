@@ -1,21 +1,8 @@
 [
   {
-    "description": "Set to 'true' if the location supports offline volume expansion.",
-    "displayname": "Offline expansion",
-    "name": "offline-expansion",
-    "default": "false",
-    "regex": "^(?:true|false)$",
-    "min-length": 4,
-    "max-length": 5,
-    "supported-values": ["true", "false"],
-    "type": "boolean",
-    "required": "true",
-    "category": "config"
-  },
-  {
-    "description": "Set to 'true' if the location supports online volume expansion.",
-    "displayname": "Online expansion",
-    "name": "online-expansion",
+    "description": "Set to 'true' if the location supports volume expansion",
+    "displayname": "Volume expansion",
+    "name": "volume-expansion",
     "default": "false",
     "regex": "^(?:true|false)$",
     "min-length": 4,
@@ -29,23 +16,52 @@
     "description": "Ridge CSI image",
     "displayname": "Ridge CSI image",
     "name": "ridge-csi-image",
-    "default": "eu.gcr.io/tectonic-public/moonstone-csi-driver",
-    "required": "true",
-    "category": "config"
-  },
-  {
-    "description": "Ridge CSI version",
-    "displayname": "Ridge CSI version",
-    "name": "ridge-csi-version",
     "required": "true",
     "category": "config",
     "mutable": "true"
   },
   {
-    "description": "Ridge CSI URL",
-    "displayname": "Ridge CSI URL",
-    "name": "ridge-csi-url",
+    "description": "Ridge CSI Parameters (DaemonSet).",
+    "displayname": "Ridge CSI Parameters (DaemonSet).",
+    "name": "daemonset-parameters",
+    "category": "config",
     "required": "true",
-    "category": "config"
+    "type": "csv",
+    "mutable": "true"
+  },
+  {
+    "description": "Ridge CSI Parameters (StatefulSet)",
+    "displayname": "Ridge CSI Parameters (StatefulSet)",
+    "name": "statefulset-parameters",
+    "category": "config",
+    "required": "true",
+    "type": "csv",
+    "mutable": "true"
+  },
+  {
+    "description": "CSI Provisioner Parameters",
+    "displayname": "CSI Provisioner Parameters",
+    "name": "provisioner-parameters",
+    "category": "config",
+    "required": "true",
+    "type": "csv",
+    "mutable": "true"
+  },
+  {
+    "description": "CSI Attacher Parameters",
+    "displayname": "CSI Attacher Parameters",
+    "name": "attacher-parameters",
+    "category": "config",
+    "required": "true",
+    "type": "csv",
+    "mutable": "true"
+  },
+  {
+    "description": "CSI Resizer Parameters",
+    "displayname": "CSI Resizer Parameters",
+    "name": "resizer-parameters",
+    "category": "config",
+    "type": "csv",
+    "mutable": "true"
   }
 ]
