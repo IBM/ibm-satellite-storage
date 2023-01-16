@@ -1,19 +1,27 @@
 [
   {
-    "description": "Ridge CSI image",
-    "displayname": "Ridge CSI image",
-    "name": "ridge-csi-image",
+    "description": "Ridge CSI image (DaemonSet)",
+    "displayname": "Ridge CSI image (DaemonSet)",
+    "name": "ridge-csi-daemonset-image",
     "required": "true",
     "category": "config",
     "mutable": "true"
   },
   {
-    "description": "Ridge CSI Parameters (DaemonSet).",
-    "displayname": "Ridge CSI Parameters (DaemonSet).",
+    "description": "Ridge CSI Parameters (DaemonSet)",
+    "displayname": "Ridge CSI Parameters (DaemonSet)",
     "name": "daemonset-parameters",
     "category": "config",
     "required": "true",
     "type": "csv",
+    "mutable": "true"
+  },
+  {
+    "description": "Ridge CSI image (StatefulSet)",
+    "displayname": "Ridge CSI image (StatefulSet)",
+    "name": "ridge-csi-statefulset-image",
+    "required": "true",
+    "category": "config",
     "mutable": "true"
   },
   {
