@@ -18,6 +18,10 @@
 	"default": "false",
 	"required": "true",
 	"category": "config",
+	"regex": "^(?:true|false)$",
+	"min-length": 4,
+	"max-length": 5,
+	"supported-values": ["true", "false"],
 	"type": "boolean"
   },{
 	"description": "Specify the EFS filesystem ID",
@@ -27,8 +31,10 @@
 	"templateKeyName": [
 		"fileSystemId"
 	],
+	"regex": "^(?:fs-[a-f0-9]{8,17})$",
+	"min-length": 11,
+	"max-length": 20,
 	"category": "config"
-
   },{
 	"description": "Specify directory permissions",
 	"displayname": "Directory permission",
@@ -39,7 +45,6 @@
 	"default": "700",
 	"required": "true",
 	"category": "config"
-
   },{
 	"description": "Specify the GID range start. gidRangeStart is starting range of Posix Group ID to be applied onto the root directory of the access point",
 	"displayname": "GID range start",
@@ -49,6 +54,7 @@
 	],
 	"default": "50000",
 	"required": "true",
+	"regex": "^[0-9]+$",
 	"category": "config"
   },{
 	"description": "Specify the GID range end. gidRangeEnd is ending range of Posix Group ID",
@@ -59,6 +65,7 @@
         ],
 	"default": "7000000",
 	"required": "true",
+	"regex": "^[0-9]+$",
 	"category": "config"
   },{
 	"description": "Specify the BasePath. Base path is a path on the file system under which access point root directory is created",
@@ -81,6 +88,8 @@
 	"default": "99",
 	"category": "config",
 	"regex": "^[1-9]([0-9]?)$",
+	"min-length": 1,
+	"max-length": 2,
 	"type": "text"
   }
 ]
