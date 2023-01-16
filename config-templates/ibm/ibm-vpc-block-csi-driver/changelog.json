@@ -3,6 +3,15 @@
         "5.0": {
             "status": "supported",
             "latest-revision": {
+                "revision": "3",
+                "release-date": "09 January 2023",
+                "cves": "CVE-2022-42898,CVE-2022-41717,CVE-2022-41720",
+                "golang": "1.18.9",
+                "ubi": "8.7-923.1669829893",
+                "new-features": [],
+                "fixes": []
+            },
+            "previous-revision": {
                 "revision": "2",
                 "release-date": "17 November 2022",
                 "cves": "CVE-2022-1304,CVE-2016-3709",
@@ -10,41 +19,12 @@
                 "ubi": "8.7-923",
                 "new-features": [],
                 "fixes": []
-            },
-            "previous-revision": {
-                "revision": "1",
-                "release-date": "07 November 2022",
-                "cves": "",
-                "golang": "1.18.6",
-                "ubi": "8.6-994",
-                "new-features": [
-                    "Initial release"
-                ],
-                "fixes": []
             }
         }
     },
     {
         "4.3.0": {
-            "status": "deprecated",
-            "latest-revision": {
-                "revision": "11",
-                "release-date": "17 November 2022",
-                "cves": "CVE-2022-1304,CVE-2016-3709",
-                "golang": "1.18.6",
-                "ubi": "8.7-923",
-                "new-features": [],
-                "fixes": []
-            },
-            "previous-revision": {
-                "revision": "10",
-                "release-date": "07 November 2022",
-                "cves": "CVE-2022-37434,CVE-2020-35525,CVE-2020-35527,CVE-2022-3515,CVE-2022-2509,CVE-2022-40674",
-                "golang": "1.18.6",
-                "ubi": "8.6-994",
-                "new-features": [],
-                "fixes": []
-            }
+            "status": "unsupported"
         }
     },
     {
