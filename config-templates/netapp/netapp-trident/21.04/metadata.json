@@ -1,6 +1,6 @@
 {
   "name": "21.04",
-  "revision": "4",
+  "revision": "3",
   "enabled": "true",
   "status": "supported",
   "description": "Netapp Trident version 21.04.",
@@ -29,6 +29,9 @@
     }, {
       "name": "supported-k8s-versions",
       "value": "1.20,1.21,1.22"
+    }, {
+      "name": "supported-ocp-versions",
+      "value": "4.8, 4.9, 4.10, 4.11"
     }, {
       "name": "volume-type",
       "value": ""
