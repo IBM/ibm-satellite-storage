@@ -37,5 +37,31 @@
     "required": "true",
     "type": "csv",
     "mutable": "true"
+  },
+  {
+    "description": "CSI Provisioner Parameters",
+    "displayname": "CSI Provisioner Parameters",
+    "name": "provisioner-parameters",
+    "category": "config",
+    "required": "true",
+    "type": "csv",
+    "mutable": "true"
+  },
+  {
+    "description": "CSI Attacher Parameters",
+    "displayname": "CSI Attacher Parameters",
+    "name": "attacher-parameters",
+    "category": "config",
+    "required": "true",
+    "type": "csv",
+    "mutable": "true"
+  },
+  {
+    "description": "CSI Resizer Parameters",
+    "displayname": "CSI Resizer Parameters",
+    "name": "resizer-parameters",
+    "category": "config",
+    "type": "csv",
+    "mutable": "true"
   }
 ]
