@@ -3,6 +3,17 @@
         "22.04": {
             "status": "supported",
             "latest-revision": {
+                "revision": "3",
+                "release-date": "17 January 2023",
+                "cves": "",
+                "golang": "",
+                "ubi": "",
+                "new-features": [],
+                "fixes": [
+                    "Removed PodSecurityPolicy"
+                ]
+            },
+            "previous-revision": {
                 "revision": "2",
                 "release-date": "18 July 2022",
                 "cves": "",
@@ -19,6 +30,17 @@
         "21.04": {
             "status": "supported",
             "latest-revision": {
+                "revision": "4",
+                "release-date": "17 January 2023",
+                "cves": "",
+                "golang": "",
+                "ubi": "",
+                "new-features": [],
+                "fixes": [
+                    "Removed PodSecurityPolicy"
+                ]
+            },
+            "previous-revision": {
                 "revision": "3",
                 "release-date": "18 July 2022",
                 "cves": "",

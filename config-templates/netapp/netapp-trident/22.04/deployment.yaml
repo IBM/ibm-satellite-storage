@@ -5,7 +5,7 @@ metadata:
   namespace: kube-system
   annotations:
     version: "22.04"
-    revision: "2"
+    revision: "3"
 items:
   - apiVersion: v1
     kind: Namespace
@@ -449,27 +449,6 @@ items:
               imagePullPolicy: IfNotPresent
               name: trident-operator
           serviceAccountName: trident-operator
-  - apiVersion: policy/v1beta1
-    kind: PodSecurityPolicy
-    metadata:
-      name: tridentoperatorpods
-      labels:
-        app: operator.trident.netapp.io
-        app.kubernetes.io/name: "netapp-trident"
-        app.kubernetes.io/version: "v22.04"
-        app.kubernetes.io/revision: "1"
-    spec:
-      fsGroup:
-        rule: RunAsAny
-      privileged: false
-      runAsUser:
-        rule: RunAsAny
-      seLinux:
-        rule: RunAsAny
-      supplementalGroups:
-        rule: RunAsAny
-      volumes:
-        - '*'
   - apiVersion: trident.netapp.io/v1
     kind: TridentOrchestrator
     metadata:
