@@ -10,7 +10,7 @@
                 "ubi": "",
                 "new-features": [],
                 "fixes": [
-                    "Removed PodSecurityPolicy"
+                    "Removed PodSecurityPolicy as Kubernetes v1.25+ does not support PodSecurityPolicy"
                 ]
             },
             "previous-revision": {
@@ -37,7 +37,7 @@
                 "ubi": "",
                 "new-features": [],
                 "fixes": [
-                    "Removed PodSecurityPolicy"
+                    "Removed PodSecurityPolicy as Kubernetes v1.25+ does not support PodSecurityPolicy"
                 ]
             },
             "previous-revision": {
@@ -64,7 +64,7 @@
                 "ubi": "",
                 "new-features": [],
                 "fixes": [
-                    "Removed PodSecurityPolicy"
+                    "Removed PodSecurityPolicy as Kubernetes v1.25+ does not support PodSecurityPolicy"
                 ]
             },
             "previous-revision": {
