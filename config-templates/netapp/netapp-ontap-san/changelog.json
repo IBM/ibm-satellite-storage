@@ -3,19 +3,19 @@
         "22.04": {
             "status": "supported",
             "latest-revision": {
-                "revision": "12",
-                "release-date": "09 January 2023",
-                "cves": "CVE-2022-41717,CVE-2022-41720",
+                "revision": "13",
+                "release-date": "23 January 2023",
+                "cves": "CVE-2022-43680, CVE-2022-42010, CVE-2022-42011, CVE-2022-42012, CVE-2022-3821, CVE-2022-35737, CVE-2021-46848",
                 "golang": "1.18.9",
-                "ubi": "8.7-923.1669829893",
+                "ubi": "8.7-1049",
                 "new-features": [],
                 "fixes": []
             },
             "previous-revision": {
-                "revision": "11",
-                "release-date": "08 December 2022",
-                "cves": "CVE-2022-42898",
-                "golang": "1.18.8",
+                "revision": "12",
+                "release-date": "09 January 2023",
+                "cves": "CVE-2022-41717,CVE-2022-41720",
+                "golang": "1.18.9",
                 "ubi": "8.7-923.1669829893",
                 "new-features": [],
                 "fixes": []
@@ -26,19 +26,19 @@
         "21.04": {
             "status": "supported",
             "latest-revision": {
-                "revision": "15",
-                "release-date": "09 January 2023",
-                "cves": "CVE-2022-41717,CVE-2022-41720",
+                "revision": "16",
+                "release-date": "23 January 2023",
+                "cves": "CVE-2022-43680, CVE-2022-42010, CVE-2022-42011, CVE-2022-42012, CVE-2022-3821, CVE-2022-35737, CVE-2021-46848",
                 "golang": "1.18.9",
-                "ubi": "8.7-923.1669829893",
+                "ubi": "8.7-1049",
                 "new-features": [],
                 "fixes": []
             },
             "previous-revision": {
-                "revision": "14",
-                "release-date": "08 December 2022",
-                "cves": "CVE-2022-42898",
-                "golang": "1.18.8",
+                "revision": "15",
+                "release-date": "09 January 2023",
+                "cves": "CVE-2022-41717,CVE-2022-41720",
+                "golang": "1.18.9",
                 "ubi": "8.7-923.1669829893",
                 "new-features": [],
                 "fixes": []
