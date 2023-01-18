@@ -58,7 +58,7 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "4",
-                "release-date": "16 January 2023",
+                "release-date": "23 January 2023",
                 "cves": "",
                 "golang": "",
                 "ubi": "",
