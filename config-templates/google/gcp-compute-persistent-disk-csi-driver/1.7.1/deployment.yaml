@@ -756,9 +756,6 @@ items:
     - kind: ServiceAccount
       name: csi-gce-pd-node-sa
       namespace:
-    - kind: ServiceAccount
-      name: csi-gce-pd-node-sa-win
-      namespace:
     roleRef:
       kind: Role
       name: privileged-role
