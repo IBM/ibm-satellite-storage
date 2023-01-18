@@ -128,38 +128,6 @@ items:
   - apiVersion: rbac.authorization.k8s.io/v1
     kind: ClusterRole
     metadata:
-      name: csi-gce-pd-controller-deploy
-      labels:
-        app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
-        app.kubernetes.io/version: 1.7.1
-    rules:
-    - apiGroups:
-      - policy
-      resourceNames:
-      - csi-gce-pd-controller-psp
-      resources:
-      - podsecuritypolicies
-      verbs:
-      - use
-  - apiVersion: rbac.authorization.k8s.io/v1
-    kind: ClusterRole
-    metadata:
-      name: csi-gce-pd-node-deploy
-      labels:
-        app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
-        app.kubernetes.io/version: 1.7.1
-    rules:
-    - apiGroups:
-      - policy
-      resourceNames:
-      - csi-gce-pd-node-psp
-      resources:
-      - podsecuritypolicies
-      verbs:
-      - use
-  - apiVersion: rbac.authorization.k8s.io/v1
-    kind: ClusterRole
-    metadata:
       name: csi-gce-pd-provisioner-role
       labels:
         app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
