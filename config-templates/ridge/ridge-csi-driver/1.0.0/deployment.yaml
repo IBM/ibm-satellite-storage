@@ -44,7 +44,7 @@ items:
                 path: /etc/systemd/system/app-init.service
           containers:
             - name: csi-provisioner
-              image: {{{ csi-provisioner-image }}}
+              image: {{{ provisioner-image }}}
               args:
                 {{#provisioner-parameters }}
                    - "{{{ item }}}"
@@ -57,7 +57,7 @@ items:
                   mountPath: /var/lib/csi/sockets/pluginproxy/
               imagePullPolicy: IfNotPresent
             - name: csi-attacher
-              image: {{{ csi-attacher-image }}}
+              image: {{{ attacher-image }}}
               args:
                 {{#attacher-parameters }}
                    - "{{{ item }}}"
@@ -70,7 +70,7 @@ items:
                   mountPath: /var/lib/csi/sockets/pluginproxy/
               imagePullPolicy: IfNotPresent
             - name: csi-ridge-plugin
-              image: {{{ ridge-csi-statefulset-image }}}
+              image: {{{ statefulset-image }}}
               args:
                 {{#statefulset-parameters }}
                 - "{{{ item }}}"
@@ -90,7 +90,7 @@ items:
               imagePullPolicy: IfNotPresent
 {{#install-resizer}}
             - name: csi-resizer
-              image: {{{ csi-resizer-image }}}
+              image: {{{ resizer-image }}}
               args:
                 {{#resizer-parameters }}
                    - "{{{ item }}}"
@@ -351,7 +351,7 @@ items:
                 path: /etc/systemd/system/app-init.service
           containers:
             - name: csi-ridge-plugin
-              image: {{{ ridge-csi-daemonset-image }}}
+              image: {{{ daemonset-image }}}
               args:
                 {{#daemonset-parameters }}
                 - "{{{ item }}}"
