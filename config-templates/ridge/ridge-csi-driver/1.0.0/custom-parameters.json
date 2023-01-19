@@ -1,51 +1,98 @@
 [
   {
-    "description": "Set to 'true' if the location supports offline volume expansion.",
-    "displayname": "Offline expansion",
-    "name": "offline-expansion",
-    "default": "false",
-    "regex": "^(?:true|false)$",
-    "min-length": 4,
-    "max-length": 5,
-    "supported-values": ["true", "false"],
-    "type": "boolean",
-    "required": "true",
-    "category": "config"
-  },
-  {
-    "description": "Set to 'true' if the location supports online volume expansion.",
-    "displayname": "Online expansion",
-    "name": "online-expansion",
-    "default": "false",
-    "regex": "^(?:true|false)$",
-    "min-length": 4,
-    "max-length": 5,
-    "supported-values": ["true", "false"],
-    "type": "boolean",
-    "required": "true",
-    "category": "config"
-  },
-  {
-    "description": "Ridge CSI image",
-    "displayname": "Ridge CSI image",
-    "name": "ridge-csi-image",
-    "default": "eu.gcr.io/tectonic-public/moonstone-csi-driver",
-    "required": "true",
-    "category": "config"
-  },
-  {
-    "description": "Ridge CSI version",
-    "displayname": "Ridge CSI version",
-    "name": "ridge-csi-version",
+    "description": "DaemonSet image",
+    "displayname": "DaemonSet image",
+    "name": "daemonset-image",
     "required": "true",
     "category": "config",
     "mutable": "true"
   },
   {
-    "description": "Ridge CSI URL",
-    "displayname": "Ridge CSI URL",
-    "name": "ridge-csi-url",
+    "description": "DaemonSet Parameters",
+    "displayname": "DaemonSet Parameters",
+    "name": "daemonset-parameters",
+    "category": "config",
+    "required": "true",
+    "type": "csv",
+    "mutable": "true"
+  },
+  {
+    "description": "StatefulSet image",
+    "displayname": "StatefulSet image",
+    "name": "statefulset-image",
+    "required": "true",
+    "category": "config",
+    "mutable": "true"
+  },
+  {
+    "description": "StatefulSet Parameters",
+    "displayname": "StatefulSet Parameters",
+    "name": "statefulset-parameters",
+    "category": "config",
+    "required": "true",
+    "type": "csv",
+    "mutable": "true"
+  },
+  {
+    "description": "CSI Provisioner image",
+    "displayname": "CSI Provisioner image",
+    "name": "provisioner-image",
+    "required": "true",
+    "category": "config",
+    "mutable": "true"
+  },
+  {
+    "description": "CSI Provisioner Parameters",
+    "displayname": "CSI Provisioner Parameters",
+    "name": "provisioner-parameters",
+    "category": "config",
+    "required": "true",
+    "type": "csv",
+    "mutable": "true"
+  },
+  {
+    "description": "CSI Attacher image",
+    "displayname": "CSI Attacher image",
+    "name": "attacher-image",
+    "required": "true",
+    "category": "config",
+    "mutable": "true"
+  },
+  {
+    "description": "CSI Attacher Parameters",
+    "displayname": "CSI Attacher Parameters",
+    "name": "attacher-parameters",
+    "category": "config",
+    "required": "true",
+    "type": "csv",
+    "mutable": "true"
+  },
+  {
+    "description": "Set to 'true' if the installation needs the CSI resizer",
+    "displayname": "Install CSI resizer",
+    "name": "install-resizer",
+    "default": "false",
+    "regex": "^(?:true|false)$",
+    "min-length": 4,
+    "max-length": 5,
+    "supported-values": ["true", "false"],
+    "type": "boolean",
     "required": "true",
     "category": "config"
+  },
+  {
+    "description": "CSI Resizer image",
+    "displayname": "CSI Resizer image",
+    "name": "resizer-image",
+    "category": "config",
+    "mutable": "true"
+  },
+  {
+    "description": "CSI Resizer Parameters",
+    "displayname": "CSI Resizer Parameters",
+    "name": "resizer-parameters",
+    "category": "config",
+    "type": "csv",
+    "mutable": "true"
   }
 ]
