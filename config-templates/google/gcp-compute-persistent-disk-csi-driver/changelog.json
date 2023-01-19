@@ -3,6 +3,17 @@
         "1.8.0": {
             "status": "supported",
             "latest-revision": {
+                "revision": "2",
+                "release-date": "23 January 2023",
+                "cves": "",
+                "golang": "",
+                "ubi": "",
+                "new-features": [],
+                "fixes": [
+                    "Removed PodSecurityPolicy as Kubernetes v1.25+ does not support PodSecurityPolicy"
+                ]
+            },
+            "previous-revision": {
                 "revision": "1",
                 "release-date": "07 November 2022",
                 "cves": "",
@@ -19,6 +30,17 @@
         "1.7.1": {
             "status": "supported",
             "latest-revision": {
+                "revision": "5",
+                "release-date": "23 January 2023",
+                "cves": "",
+                "golang": "",
+                "ubi": "",
+                "new-features": [],
+                "fixes": [
+                    "Removed PodSecurityPolicy as Kubernetes v1.25+ does not support PodSecurityPolicy"
+                ]
+            },
+            "previous-revision": {
                 "revision": "4",
                 "release-date": "29 July 2022",
                 "cves": "",
@@ -35,6 +57,17 @@
         "1.0.4": {
             "status": "supported",
             "latest-revision": {
+                "revision": "4",
+                "release-date": "23 January 2023",
+                "cves": "",
+                "golang": "",
+                "ubi": "",
+                "new-features": [],
+                "fixes": [
+                    "Removed PodSecurityPolicy as Kubernetes v1.25+ does not support PodSecurityPolicy"
+                ]
+            },
+            "previous-revision": {
                 "revision": "3",
                 "release-date": "29 July, 2022",
                 "cves": "",
