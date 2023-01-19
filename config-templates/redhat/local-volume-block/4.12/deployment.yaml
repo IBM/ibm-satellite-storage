@@ -1,0 +1,100 @@
+---
+apiVersion: v1
+kind: List
+metadata:
+  name: local-volume
+  namespace: kube-system
+  annotations:
+    version: 4.12
+    revision: 1
+items:
+  - apiVersion: v1
+    kind: Namespace
+    metadata:
+      name: local-storage
+      labels:
+        deploy.razee.io/Reconcile: "false"
+  - apiVersion: operators.coreos.com/v1
+    kind: OperatorGroup
+    metadata:
+      name: local-operator-group
+      namespace: local-storage
+    spec:
+      targetNamespaces:
+        - local-storage
+  - apiVersion: operators.coreos.com/v1alpha1
+    kind: Subscription
+    metadata:
+      name: local-storage-operator
+      namespace: local-storage
+    spec:
+      channel: "stable"
+      installPlanApproval: Automatic
+      name: local-storage-operator
+      source: redhat-operators
+      sourceNamespace: openshift-marketplace
+  {{#auto-discover-devices}}
+  - apiVersion: local.storage.openshift.io/v1alpha1
+    kind: LocalVolumeDiscovery
+    metadata:
+      name: auto-discover-devices
+      namespace: local-storage
+    spec:
+      nodeSelector:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: "{{ label-key }}"
+                operator: In
+                values:
+                  - "{{ label-value }}"
+  - apiVersion: local.storage.openshift.io/v1alpha1
+    kind: LocalVolumeSet
+    metadata:
+      name: localblock-volumeset
+      namespace: local-storage
+    spec:
+      deviceInclusionSpec:
+        deviceTypes:
+          - disk
+          - part
+      nodeSelector:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: "{{ label-key }}"
+                operator: In
+                values:
+                  - "{{ label-value }}"
+      storageClassName: "sat-local-block-gold"
+      volumeMode: Block
+  {{/auto-discover-devices}}
+  {{^auto-discover-devices}}
+  - apiVersion: local.storage.openshift.io/v1
+    kind: LocalVolume
+    metadata:
+      name: local-disk
+      namespace: local-storage
+    spec:
+      nodeSelector:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: "{{ label-key }}"
+                operator: In
+                values:
+                  - "{{ label-value }}"
+      storageClassDevices:
+        - storageClassName: "sat-local-block-gold"
+          volumeMode: Block
+          devicePaths:
+            {{#devicepath}}
+            - "{{{ item }}}"
+            {{/devicepath}}
+  {{/auto-discover-devices}}
+  - apiVersion: satstorage.ibm.com/v1
+    kind: SatStorageCleanup
+    metadata:
+      name: satstoragecleanup-local-volume-block
+      namespace: "ibm-satellite-storage"
+    spec:
+      template-name: "local-volume-block"
+      template-version: "4.12"
+      template-namespace: "local-storage"
