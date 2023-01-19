@@ -137,7 +137,7 @@
   },
   {
     "name": "ibm-object-storage-plugin",
-    "displayname": "IBM Object Storage Plugin.",
+    "displayname": "IBM Object Storage Plugin",
     "Description": "IBM Object Storage Plugin.",
     "default-version": "2.2",
     "enabled": "true",

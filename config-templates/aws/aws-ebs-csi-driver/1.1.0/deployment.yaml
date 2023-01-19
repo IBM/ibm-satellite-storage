@@ -6,7 +6,7 @@ metadata:
   namespace: kube-system
   annotations:
     version: 1.1.0
-    revision: 4
+    revision: 5
 items:
   - apiVersion: v1
     kind: Secret
@@ -676,7 +676,7 @@ items:
           app: ebs-csi-controller
       minAvailable: 2
   - kind: PodDisruptionBudget
-    apiVersion: policy/v1beta1
+    apiVersion: policy/v1
     metadata:
       name: ebs-snapshot-controller
       labels:
