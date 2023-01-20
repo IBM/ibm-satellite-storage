@@ -4,7 +4,7 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "1",
-                "release-date": "20 January 2023",
+                "release-date": "23 January 2023",
                 "cves": "",
                 "golang": "",
                 "ubi": "",
@@ -81,18 +81,7 @@
     },
     {
         "4.7": {
-            "status": "unsupported",
-            "latest-revision": {
-                "revision": "3",
-                "release-date": "29 July 2022",
-                "cves": "",
-                "golang": "",
-                "ubi": "",
-                "new-features": [
-                    "Added support for auto cleanup of resources while uninstalling the plugin"
-                ],
-                "fixes": []
-            }
+            "status": "unsupported"
         }
     }
 ]
