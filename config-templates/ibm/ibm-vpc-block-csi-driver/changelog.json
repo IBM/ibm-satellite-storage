@@ -1,5 +1,19 @@
 [
     {
+        "5.1":{
+            "status": "supported",
+            "latest-revision": {
+                "revision": "0",
+                "release-date": "13 February 2023",
+                "cves": "",
+                "golang": "1.18.9",
+                "ubi": "8.7-1049",
+                "new-features": ["Upgrade to kubernetes 1.25"],
+                "fixes": []
+            },
+        },
+    },
+    {
         "5.0": {
             "status": "supported",
             "latest-revision": {
