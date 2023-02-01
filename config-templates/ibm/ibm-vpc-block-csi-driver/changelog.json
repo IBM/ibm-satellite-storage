@@ -3,7 +3,7 @@
         "5.1":{
             "status": "supported",
             "latest-revision": {
-                "revision": "0",
+                "revision": "1",
                 "release-date": "13 February 2023",
                 "cves": "",
                 "golang": "1.18.9",

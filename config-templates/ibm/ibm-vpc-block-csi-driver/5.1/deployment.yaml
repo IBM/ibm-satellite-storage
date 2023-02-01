@@ -5,7 +5,7 @@ metadata:
   namespace: kube-system
   annotations:
     version: 5.1
-    revision: 0
+    revision: 1
 items:
   - kind: ClusterRole
     apiVersion: rbac.authorization.k8s.io/v1
@@ -336,6 +336,7 @@ items:
           annotations:
             autoUpdate: "AUTO-UPDATE-ENABLED"
         spec:
+          priorityClassName: system-node-critical
           serviceAccountName: ibm-vpc-block-node-sa
           tolerations:
             - operator: Exists
@@ -541,6 +542,7 @@ items:
           annotations:
             autoUpdate: "AUTO-UPDATE-ENABLED"
         spec:
+          priorityClassName: system-cluster-critical
           serviceAccountName: ibm-vpc-block-controller-sa
           securityContext:
             runAsNonRoot: true
@@ -719,5 +721,7 @@ items:
       labels:
         addonmanager.kubernetes.io/mode: Reconcile
         app: ibm-vpc-block-csi-driver
+      annotations:
+        snapshot.storage.kubernetes.io/is-default-class: true
     deletionPolicy: Delete
     driver: vpc.block.csi.ibm.io
