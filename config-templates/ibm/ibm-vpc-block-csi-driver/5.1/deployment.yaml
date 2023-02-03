@@ -342,7 +342,7 @@ items:
             - operator: Exists
           initContainers:
             - name: vpc-node-label-updater
-              image: icr.io/obs/storage/vpc-node-label-updater:v4.2.4
+              image: icr.io/obs/storage/vpc-node-label-updater:v4.3.0
               imagePullPolicy: Always
               securityContext:
                 privileged: false
@@ -722,6 +722,6 @@ items:
         addonmanager.kubernetes.io/mode: Reconcile
         app: ibm-vpc-block-csi-driver
       annotations:
-        snapshot.storage.kubernetes.io/is-default-class: true
+        snapshot.storage.kubernetes.io/is-default-class: "true"
     deletionPolicy: Delete
     driver: vpc.block.csi.ibm.io

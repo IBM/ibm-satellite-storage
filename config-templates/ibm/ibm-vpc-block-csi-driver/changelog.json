@@ -8,8 +8,8 @@
                 "cves": "",
                 "golang": "1.18.9",
                 "ubi": "8.7-1049",
-                "new-features": ["Upgrade to kubernetes 1.25"],
-                "fixes": []
+                "new-features": ["Update Kubernetes dependency to 1.25, "Fix for snapshot size to reflect actual source volume size", "Priorityclass added in deployment for controller and node pods"],
+                "fixes": ["Fix to resize filesystem  when restoring from snapshot/cloning to larger size than origin"]
             },
         },
     },
