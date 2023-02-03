@@ -17,8 +17,6 @@ items:
         app.kubernetes.io/name: "netapp-ontap-nas"
         app.kubernetes.io/version: "v21.04"
         app.kubernetes.io/revision: "5"
-      annotations:
-        storageclass.kubernetes.io/is-default-class: "true"
     provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-nas"
