@@ -41,7 +41,8 @@
 		  "clusterId"
 	  ],
 	  "required": "true"
-	}, {
+	}, 
+	{
 		"description": "Specify 'true' or 'false' to make the created storage class the default class.",
 		"displayname": "Default Storage Class",
 		"name": "is-default-class",

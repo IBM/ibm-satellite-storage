@@ -31,7 +31,7 @@
       "templateKeyName": [
           "fileSystemId"
       ],
-      "regex": "^(?:fs-[a-f0-9]{8,17})$",
+      "regex": "^(?:fs-[a-f0-9]+)$",
       "min-length": 11,
       "max-length": 20,
       "category": "config"
