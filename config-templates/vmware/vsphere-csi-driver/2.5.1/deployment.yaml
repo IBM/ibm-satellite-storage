@@ -741,6 +741,8 @@ items:
           labels:
             control-plane: controller-manager
             vdo.vmware.com/managed-by: vdo
+          annotations:
+            autoUpdate: "AUTO-UPDATE-ENABLED"
         spec:
           containers:
           - args:
