@@ -3,6 +3,17 @@
         "2.5.1": {
             "status": "supported",
             "latest-revision": {
+                "revision": "6",
+                "release-date": "20 February 2023",
+                "cves": "",
+                "golang": "",
+                "ubi": "",
+                "new-features": [
+                    "Added vmware-system-csi and annotation autoUpdate: AUTO-UPDATE-ENABLED"
+                ],
+                "fixes": []
+            },
+            "previous-revision": {
                 "revision": "5",
                 "release-date": "26 August 2022",
                 "cves": "",
