@@ -12,6 +12,13 @@ items:
     kind: Namespace
     metadata:
       labels:
+        app.kubernetes.io/name: vsphere-csi-driver
+        app.kubernetes.io/version: 2.5.1
+      name: vmware-system-csi
+  - apiVersion: v1
+    kind: Namespace
+    metadata:
+      labels:
         control-plane: controller-manager
         vdo.vmware.com/managed-by: vdo
       name: vmware-system-vdo
