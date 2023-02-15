@@ -10,7 +10,7 @@
                 "ubi": "8.7-1049.1675784874",
                 "new-features": [],
                 "fixes": [
-                   "Priorityclass added in deployment for controller and node server pods",
+                   "Priorityclass added for controller and node server pods",
                    "Removed preStop from csi driver registrar container in deployment, cleanup is taken care by the csi driver registrar itself"
                 ]
              },
