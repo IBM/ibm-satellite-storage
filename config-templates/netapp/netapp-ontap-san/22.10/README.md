@@ -114,9 +114,36 @@ Gete the logs of the `trident-kubectl-san` POD's log.
   
 To recreate your configuration, complete the following steps.
 1. Delete the assignment by running command `ibmcloud sat storage assignment rm --assignment <assignmnet name>`
-1. Delete the configuration by running command `ibmcloud sat storage config rm --config <config name>`.
-1. Recreate the configuration with the correct parameters and recreate the assignment.
+2. Delete the configuration by running command `ibmcloud sat storage config rm --config <config name>`.
+3. Recreate the configuration with the correct parameters and recreate the assignment.
 
+If app-pod is struct in `ContainerCreating` state and error in the events of the app-pod are related to `multipathd` do following:
+
+**ERROR:** 
+```
+  Warning  FailedMount             108s (x14 over 14m)  kubelet                  MountVolume.MountDevice failed for volume "pvc-7f06dbb7-41ed-4db5-95d8-51a48102293c" : rpc error: code = Internal desc = failed to stage volume: multipathd is not running
+```
+
+**Solution:**
+
+Run the following commands to enable and start `multipathd` service in worker nodes: 
+```
+# mpathconf --enable
+# systemctl start multipathd.service
+```
+
+**ERROR:** 
+```
+  Warning  FailedMount             11s (x6 over 27s)  kubelet                  MountVolume.MountDevice failed for volume "pvc-7f06dbb7-41ed-4db5-95d8-51a48102293c" : rpc error: code = Internal desc = failed to stage volume: multipathd: unsupported find_multipaths: yes value; please set the value to no in /etc/multipath.conf file
+```
+
+**Solution:**
+
+Run the following commands in worker nodes: 
+1. `mpathconf --enable --find_multipath n`
+2. Check the status of `multipathd` service:
+     - If it is `Active`, then restart the service: `systemctl restart multipathd.service`
+     - Otherwise, start the service: `systemctl start multipathd.service`
 
 ## Reference
 
