@@ -140,7 +140,7 @@ Run the following commands to enable and start `multipathd` service in worker no
 **Solution:**
 
 Run the following commands in worker nodes: 
-1. `mpathconf --enable --find_multipath n`
+1. `mpathconf --enable --find_multipaths n`
 2. Check the status of `multipathd` service:
      - If it is `Active`, then restart the service: `systemctl restart multipathd.service`
      - Otherwise, start the service: `systemctl start multipathd.service`
