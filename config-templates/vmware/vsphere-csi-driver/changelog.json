@@ -9,7 +9,7 @@
                 "golang": "",
                 "ubi": "",
                 "new-features": [
-                    "Added vmware-system-csi and annotation autoUpdate: AUTO-UPDATE-ENABLED"
+                    "Added vmware-system-csi namespace resource explicitly"
                 ],
                 "fixes": []
             },
