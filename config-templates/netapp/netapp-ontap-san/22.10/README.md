@@ -5,7 +5,7 @@ You can use the `netapp-ontap-san` Satellite storage template to deploy NetApp s
 ## Prerequisites
 
 **Planning considerations for the Infrastructure Admin**
-* Create a cluster that meets the requirements for ONTAP SAN. For more information, see the [NetApp documentation](https://netapp-trident.readthedocs.io/en/stable-v21.04/support/requirements.html). 
+* Create a cluster that meets the requirements for ONTAP SAN. For more information, see the [NetApp documentation](https://netapp-trident.readthedocs.io/en/latest/support/requirements.html). 
 * Verify that your backend ONTAP cluster is configured as a Trident backend.
 * You must have a dedicated Storage Virtual Machine (SVM) for Trident. Volumes and LUNs that are created by Trident are created in this SVM.
 * You must have one or more aggregates assigned to the SVM. You can add aggregates by running the `netapp1::> vserver modify -vs <svm_name> -aggr-list <aggregate(s)_to_be_added>` command.
@@ -65,7 +65,7 @@ Create a Satellite storage configuration that uses the `netapp-ontap-san` templa
 **Example `sat storage config create` command**
 Create a Satellite storage configuration by using the `netapp-ontap-san` template.
 ```
-ibmcloud sat storage config create --name 'ontapsan-config' --location <location id> --template-name 'netapp-ontap-san' --template-version '22.10' -p 'managementLIF=10.0.0.1' -p 'dataLIF=10.0.0.2' -p 'svm=svm-san' -p 'username=admin' -p 'password=<admin password>'
+ibmcloud sat storage config create --name 'ontapsan-config' --location <location id> --template-name 'netapp-ontap-san' --template-version '22.10' -p 'managementLIF=10.0.0.1' -p 'dataLIF=10.0.0.2' -p 'svm=svm-san' -p 'username=admin' -p 'password=<admin password>' // pragma: allowlist secret
 ```
 
 ## Creating the storage assignment
@@ -147,5 +147,5 @@ Run the following commands in worker nodes:
 
 ## Reference
 
-- NetApp docs: https://netapp-trident.readthedocs.io/en/stable-v21.04/kubernetes/operations/tasks/backends/ontap/ontap-san/index.html
-- Support: https://netapp-trident.readthedocs.io/en/stable-v21.04/support/support.html
+- NetApp docs: https://docs.netapp.com/us-en/trident-2210/trident-use/ontap-san.html
+- Support: https://docs.netapp.com/us-en/trident-2210/get-help.html

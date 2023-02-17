@@ -5,7 +5,7 @@ You can use the `netapp-ontap-nas` Satellite storage template to deploy NetApp s
 ## Prerequisites
 
 **Planning consideration for Infra Admin**
-* Create a cluster that meets the requirements for ONTAP NAS. For more information, see the [NetApp documentation](https://netapp-trident.readthedocs.io/en/stable-v21.04/support/requirements.html). 
+* Create a cluster that meets the requirements for ONTAP NAS. For more information, see the [NetApp documentation](https://netapp-trident.readthedocs.io/en/latest/support/requirements.html). 
 * Verify that your backend ONTAP cluster is configured as a Trident backend.
 * You must have a dedicated Storage Virtual Machine (SVM) for Trident. Volumes that are created by Trident are created in this SVM.
 * You must have one or more aggregates assigned to the SVM. You can add aggregates with the `netapp1::> vserver modify -vs <svm_name> -aggr-list <aggregate(s)_to_be_added>` command.
@@ -69,7 +69,7 @@ Create a Satellite storage configuration that uses the `netapp-ontap-nas` templa
 Create a Satellite storage configuration by using the `netapp-ontap-nas` template.
 
 ```
-ibmcloud sat storage config create --name 'ontapnas-config' --location <location id> --template-name 'netapp-ontap-nas' --template-version '22.10' -p 'managementLIF=10.0.0.1' -p 'dataLIF=10.0.0.2' -p 'svm=svm-nas' -p 'username=admin' -p 'password=<admin password>' -p 'exportPolicy=nfsexport'
+ibmcloud sat storage config create --name 'ontapnas-config' --location <location id> --template-name 'netapp-ontap-nas' --template-version '22.10' -p 'managementLIF=10.0.0.1' -p 'dataLIF=10.0.0.2' -p 'svm=svm-nas' -p 'username=admin' -p 'password=<admin password>' -p 'exportPolicy=nfsexport' // pragma: allowlist secret
 ```
 
 ## Creating the storage assignment
@@ -122,5 +122,5 @@ To recreate your configuration, complete the following steps.
 
 ## Reference
 
-- NetApp docs: https://netapp-trident.readthedocs.io/en/stable-v21.04/kubernetes/operations/tasks/backends/ontap/ontap-nas/index.html
-- Support: https://netapp-trident.readthedocs.io/en/stable-v21.04/support/support.html
+- NetApp docs: https://docs.netapp.com/us-en/trident-2210/trident-use/ontap-nas.html
+- Support: https://docs.netapp.com/us-en/trident-2210/get-help.html
