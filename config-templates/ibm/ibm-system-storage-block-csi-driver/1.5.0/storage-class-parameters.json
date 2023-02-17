@@ -84,6 +84,10 @@
     "default": "false",
     "required": "true",
     "category": "config",
+    "regex": "^(?:true|false)$",
+    "min-length": 4,
+    "max-length": 5,
+    "supported-values": ["true", "false"],
     "type": "boolean"
   },
   {
@@ -96,6 +100,10 @@
     "default": "false",
     "required": "true",
     "category": "config",
+    "regex": "^(?:true|false)$",
+    "min-length": 4,
+    "max-length": 5,
+    "supported-values": ["true", "false"],
     "type": "boolean"
   }, {
     "description": "Specify a unique volume tier preference; in the range of 1-99 with 1 being the highest",
@@ -108,6 +116,8 @@
     "default": "99",
     "category": "config",
     "regex": "^[1-9]([0-9]?)$",
+    "min-length": 1,
+    "max-length": 2,
     "type": "text"
   }
 ]
