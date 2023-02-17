@@ -5,7 +5,7 @@ You can use the `netapp-ontap-san` Satellite storage template to deploy NetApp s
 ## Prerequisites
 
 **Planning considerations for the Infrastructure Admin**
-* Create a cluster that meets the requirements for ONTAP SAN. For more information, see the [NetApp documentation](https://netapp-trident.readthedocs.io/en/stable-v21.04/support/requirements.html). 
+* Create a cluster that meets the requirements for ONTAP SAN. For more information, see the [NetApp documentation](https://netapp-trident.readthedocs.io/en/latest/support/requirements.html). 
 * Verify that your backend ONTAP cluster is configured as a Trident backend.
 * You must have a dedicated Storage Virtual Machine (SVM) for Trident. Volumes and LUNs that are created by Trident are created in this SVM.
 * You must have one or more aggregates assigned to the SVM. You can add aggregates by running the `netapp1::> vserver modify -vs <svm_name> -aggr-list <aggregate(s)_to_be_added>` command.
@@ -21,7 +21,7 @@ You can use the `netapp-ontap-san` Satellite storage template to deploy NetApp s
 
 List the template parameters.
 ```
-ibmcloud sat storage template get --name netapp-ontap-san --version 21.04
+ibmcloud sat storage template get --name netapp-ontap-san --version 22.10
 ```
 
 **NetApp Ontap-SAN Driver parameters**
@@ -65,7 +65,7 @@ Create a Satellite storage configuration that uses the `netapp-ontap-san` templa
 **Example `sat storage config create` command**
 Create a Satellite storage configuration by using the `netapp-ontap-san` template.
 ```
-ibmcloud sat storage config create --name 'ontapsan-config' --location <location id> --template-name 'netapp-ontap-san' --template-version '21.04' -p 'managementLIF=10.0.0.1' -p 'dataLIF=10.0.0.2' -p 'svm=svm-san' -p 'username=admin' -p 'password=<admin password>'
+ibmcloud sat storage config create --name 'ontapsan-config' --location <location id> --template-name 'netapp-ontap-san' --template-version '22.10' -p 'managementLIF=10.0.0.1' -p 'dataLIF=10.0.0.2' -p 'svm=svm-san' -p 'username=admin' -p 'password=<admin password>' // pragma: allowlist secret
 ```
 
 ## Creating the storage assignment
@@ -117,8 +117,35 @@ To recreate your configuration, complete the following steps.
 2. Delete the configuration by running command `ibmcloud sat storage config rm --config <config name>`.
 3. Recreate the configuration with the correct parameters and recreate the assignment.
 
+If app-pod is struct in `ContainerCreating` state and error in the events of the app-pod are related to `multipathd` do following:
+
+**ERROR:** 
+```
+  Warning  FailedMount             108s (x14 over 14m)  kubelet                  MountVolume.MountDevice failed for volume "pvc-7f06dbb7-41ed-4db5-95d8-51a48102293c" : rpc error: code = Internal desc = failed to stage volume: multipathd is not running
+```
+
+**Solution:**
+
+Run the following commands to enable and start `multipathd` service in worker nodes: 
+```
+# mpathconf --enable
+# systemctl start multipathd.service
+```
+
+**ERROR:** 
+```
+  Warning  FailedMount             11s (x6 over 27s)  kubelet                  MountVolume.MountDevice failed for volume "pvc-7f06dbb7-41ed-4db5-95d8-51a48102293c" : rpc error: code = Internal desc = failed to stage volume: multipathd: unsupported find_multipaths: yes value; please set the value to no in /etc/multipath.conf file
+```
+
+**Solution:**
+
+Run the following commands in worker nodes: 
+1. `mpathconf --enable --find_multipaths n`
+2. Check the status of `multipathd` service:
+     - If it is `Active`, then restart the service: `systemctl restart multipathd.service`
+     - Otherwise, start the service: `systemctl start multipathd.service`
 
 ## Reference
 
-- NetApp docs: https://netapp-trident.readthedocs.io/en/stable-v21.04/kubernetes/operations/tasks/backends/ontap/ontap-san/index.html
-- Support: https://netapp-trident.readthedocs.io/en/stable-v21.04/support/support.html
+- NetApp docs: https://netapp-trident.readthedocs.io/en/latest/kubernetes/operations/tasks/backends/ontap/ontap-san/index.html
+- Support: https://netapp-trident.readthedocs.io/en/latest/support/support.html

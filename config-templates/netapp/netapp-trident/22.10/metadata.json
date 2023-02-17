@@ -1,0 +1,55 @@
+{
+  "name": "22.10",
+  "revision": "1",
+  "enabled": "true",
+  "status": "supported",
+  "description": "Netapp Trident version 22.10.",
+  "tags": [
+    {
+      "name": "provider",
+      "value": "NetApp"
+    }, {
+      "name": "offering-name",
+      "value": "netapp-trident"
+    }, {
+      "name": "offering-type",
+      "value": "non-sds"
+    }, {
+      "name": "provider-url",
+      "value": "https://netapp-trident.readthedocs.io/en/stable-v21.04/support/support.html"
+    }, {
+      "name": "support-msg",
+      "value": "For support contact NetApp"
+    }, {
+      "name": "provider-logo",
+      "value": "logo/netapp-trident.svg"
+    }, {
+      "name": "supported-envs",
+      "value": "AWS,Azure,IBM"
+    }, {
+      "name": "supported-ocp-versions",
+      "value": "4.8,4.9,4.10,4.11,4.12"
+    }, {
+      "name": "volume-type",
+      "value": ""
+    }, {
+      "name": "volume-encryption-at-rest",
+      "value": ""
+    }, {
+      "name": "volume-encryption-in-transit",
+      "value": ""
+    }, {
+      "name": "volume-snapshot",
+      "value": ""
+    }, {
+      "name": "volume-availability",
+      "value": ""
+    }, {
+      "name": "volume-expansion",
+      "value": ""
+    }, {
+      "name": "storageclass",
+      "value": ""
+    }
+  ]
+}
