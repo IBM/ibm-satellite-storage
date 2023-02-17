@@ -96,6 +96,8 @@
 		"default": "ext4",
 		"category": "config",
 		"regex": "^(ext4|nfs4)$",
+		"min-length": 4,
+		"max-length": 4,
 		"type": "text"
 	}
 ]
