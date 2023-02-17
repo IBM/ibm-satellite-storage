@@ -122,5 +122,5 @@ To recreate your configuration, complete the following steps.
 
 ## Reference
 
-- NetApp docs: https://docs.netapp.com/us-en/trident-2210/trident-use/ontap-nas.html
-- Support: https://docs.netapp.com/us-en/trident-2210/get-help.html
+- NetApp docs: https://netapp-trident.readthedocs.io/en/latest/kubernetes/operations/tasks/backends/ontap/ontap-nas/index.html
+- Support: https://netapp-trident.readthedocs.io/en/latest/support/support.html

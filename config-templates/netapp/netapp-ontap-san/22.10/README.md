@@ -147,5 +147,5 @@ Run the following commands in worker nodes:
 
 ## Reference
 
-- NetApp docs: https://docs.netapp.com/us-en/trident-2210/trident-use/ontap-san.html
-- Support: https://docs.netapp.com/us-en/trident-2210/get-help.html
+- NetApp docs: https://netapp-trident.readthedocs.io/en/latest/kubernetes/operations/tasks/backends/ontap/ontap-san/index.html
+- Support: https://netapp-trident.readthedocs.io/en/latest/support/support.html

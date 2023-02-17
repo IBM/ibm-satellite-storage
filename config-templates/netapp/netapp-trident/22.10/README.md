@@ -19,7 +19,7 @@ netapp1::> vserver modify -vs <svm_name> -aggr-list <aggregate(s)_to_be_added>
 The `netapp-trident` template is used to install Trident in OpenShift clusters. As such, this template does not expose any Trident storage driver parameters. In a nutshell, the workflow used to deploy Trident and have it communicate with ONTAP clusters will look like this:
 
 1. Install the `netapp-trident`. When you create a Satellite storage configuration that uses the `netapp-trident` template and assign it to your Satellite groups, the Trident storage drivers are deployed on your clusters. After you verify that Trident is up and running, you can deploy the `netapp-ontap-san` or `netapp-ontap-nas` templates which allow your clusters to interact with your NetApp backends.
-2. Deploy the `netapp-ontap-san` and/or `netapp-ontap-nas` storage templates. As part of this step, a [Trident backend](https://docs.netapp.com/us-en/trident/trident-use/backends.html) is created for the respective protocol and configured based on the template parameters provided. This step also defines multiple storageClasses to be consumed by the OpenShift user.
+2. Deploy the `netapp-ontap-san` and/or `netapp-ontap-nas` storage templates. As part of this step, a [Trident backend](https://netapp-trident.readthedocs.io/en/latest/kubernetes/operations/tasks/backends/index.html) is created for the respective protocol and configured based on the template parameters provided. This step also defines multiple storageClasses to be consumed by the OpenShift user.
 3. Trident is now installed, configured, and ready to use!
 
 ## Default storage classes
@@ -108,6 +108,6 @@ If the trident pod fails deploy and is stuck in `ContainerCreating` status, you 
 ## Reference
 
 - [Trident documentation](https://docs.netapp.com/us-en/trident-2210/index.html)
-- [ONTAP NAS backend configuration](https://docs.netapp.com/us-en/trident-2210/trident-use/ontap-nas.htmll)
-- [ONTAP SAN backend configuration](https://docs.netapp.com/us-en/trident-2210/trident-use/ontap-san.html)
+- [ONTAP NAS backend configuration](https://netapp-trident.readthedocs.io/en/latest/kubernetes/operations/tasks/backends/ontap/ontap-nas/index.html)
+- [ONTAP SAN backend configuration](https://netapp-trident.readthedocs.io/en/latest/kubernetes/operations/tasks/backends/ontap/ontap-san/index.html)
 - [Support documentation](https://netapp-trident.readthedocs.io/en/latest/support/support.html)
