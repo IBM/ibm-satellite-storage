@@ -69,7 +69,7 @@
 		"category": "config",
 		"regex": "^(block|file|object)$",
 		"min-length": 4,
-		"max-length": 5,
+		"max-length": 6,
 		"type": "text"
 	}, {
 		"description": "Specify a unique volume tier preference; in the range of 1-99 with 1 being the highest",
@@ -98,6 +98,7 @@
 		"regex": "^(ext4|nfs4)$",
 		"min-length": 4,
 		"max-length": 4,
+		"supported-values": ["ext4", "nfs4"],
 		"type": "text"
 	}
 ]
