@@ -21,7 +21,7 @@
 	  "regex": "^(?:true|false)$",
 	  "min-length": 4,
 	  "max-length": 5,
-	  "supported-values": ["true", "false"],
+	  "supported-values": ["false", "true"],
 	  "type": "boolean"
 	}, {
 	  "description": "The selector label.",
@@ -46,7 +46,7 @@
 	  "regex": "^(ext[3-4]|xfs)$",
 	  "min-length": "3",
 	  "max-length": "4",
-	  "supported-values": ["ext3", "ext4", "xfs"],
+	  "supported-values": ["ext4", "ext3", "xfs"],
 	  "type": "text"
 	}, {
 	  "description": "Specify 'true' or 'false' to enable or disable volume expansion.",

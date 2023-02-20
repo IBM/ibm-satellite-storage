@@ -35,7 +35,7 @@
         "regex": "^(?:Immediate|WaitForFirstConsumer)$",
         "min-length": 9,
         "max-length": 20,
-        "supported-values": ["Immediate", "WaitForFirstConsumer"],
+        "supported-values": ["WaitForFirstConsumer", "Immediate"],
         "category": "config"
     },
     {
@@ -66,7 +66,7 @@
         "regex": "^(?:true|false)$",
         "min-length": 4,
         "max-length": 5,
-        "supported-values": ["true", "false"],
+        "supported-values": ["false", "true"],
         "type": "boolean"
     }
 ]

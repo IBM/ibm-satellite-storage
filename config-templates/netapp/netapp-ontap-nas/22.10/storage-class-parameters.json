@@ -21,7 +21,7 @@
 	  "regex": "^(?:true|false)$",
 	  "min-length": 4,
 	  "max-length": 5,
-	  "supported-values": ["true", "false"],
+	  "supported-values": ["false", "true"],
 	  "type": "boolean"
 	}, {
 	  "description": "The Selector label.",
