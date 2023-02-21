@@ -18,6 +18,10 @@
 		"default": "false",
 		"required": "true",
 		"category": "config",
+		"regex": "^(?:true|false)$",
+		"min-length": 4,
+		"max-length": 5,
+		"supported-values": ["false", "true"],
 		"type": "boolean"
 	}, {
 		"description": "Give your storage policy a name.",
@@ -39,6 +43,10 @@
 		"default": "Immediate",
 		"required": "true",
 		"category": "config",
+		"regex": "^(?:Immediate|WaitForFirstConsumer)$",
+		"min-length": 9,
+		"max-length": 20,
+		"supported-values": ["Immediate", "WaitForFirstConsumer"],
 		"type": "text"
 	}, {
 		"description": "The datastore URL. For example: <example>",
@@ -60,6 +68,9 @@
 		"required": "true",
 		"category": "config",
 		"regex": "^(block|file|object)$",
+		"min-length": 4,
+		"max-length": 6,
+		"supported-values": ["block", "file", "object"],
 		"type": "text"
 	}, {
 		"description": "Specify a unique volume tier preference; in the range of 1-99 with 1 being the highest",
@@ -72,6 +83,8 @@
 		"default": "99",
 		"category": "config",
 		"regex": "^[1-9]([0-9]?)$",
+		"min-length": 1,
+		"max-length": 2,
 		"type": "text"
 	}, {
 		"description": "Specify the Filesystem type",
@@ -84,6 +97,9 @@
 		"default": "ext4",
 		"category": "config",
 		"regex": "^(ext4|nfs4)$",
+		"min-length": 4,
+		"max-length": 4,
+		"supported-values": ["ext4", "nfs4"],
 		"type": "text"
 	}
 ]
