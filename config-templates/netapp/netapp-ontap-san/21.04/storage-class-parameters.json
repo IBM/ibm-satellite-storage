@@ -44,8 +44,8 @@
 	  "required": "true",
 	  "category": "config",
 	  "regex": "^(ext[3-4]|xfs)$",
-	  "min-length": "3",
-	  "max-length": "4",
+	  "min-length": 3,
+	  "max-length": 4,
 	  "supported-values": ["ext4", "ext3", "xfs"],
 	  "type": "text"
 	}, {
