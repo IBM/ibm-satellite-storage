@@ -1,16 +1,16 @@
 [
   {
-    "description": "The name of the storage class that is created.",
-    "displayname": "Storage Class name",
+    "description": "The name of the storage class.",
+    "displayname": "Storage Class Name",
     "name": "name",
     "templateKeyName": [
-	    "name"
+        "name"
     ],
     "required": "true",
     "category": "config"
   },
   {
-    "description": "The space efficiency of the volume that is created.",
+    "description": "The space efficiency of the volume.",
     "displayname": "Space efficiency type",
     "name": "space-efficiency",
     "templateKeyName": [
@@ -51,19 +51,23 @@
   },
   {
     "description": "The file system type.",
-    "displayname": "Fstype",
+    "displayname": "File system type",
     "name": "fstype",
     "templateKeyName": [
-	    "csi.storage.k8s.io/fstype"
+        "csi.storage.k8s.io/fstype"
     ],
+    "required": "true",
     "default": "ext4",
+    "category": "config",
+    "regex": "^(ext4|xfs)$",
+    "min-length": 3,
+    "max-length": 4,
     "supported-values": ["ext4", "xfs"],
-    "required": "false",
-    "category": "config"
-  },
+    "type": "text"
+},
   {
-    "description": "The prefix name of the volume that is created.",
-    "displayname": "Prefix name",
+    "description": "The prefix name of the volume.",
+    "displayname": "Prefix name of the volume",
     "name": "prefix",
     "templateKeyName" : [
 	    "volume_name_prefix"
@@ -72,39 +76,50 @@
     "category": "config"
   },
   {
-    "description": "Specify 'true' to allow volume expansion or 'false' to disallow volume expansion.",
-    "displayname": "allowVolumeExpansion?",
+    "description": "Enter the volume expansion policy for your storage class. If you want to allow volume expansion, enter 'true'.",
+    "displayname": "Allow volume expansion",
     "name": "VolumeExpansion",
     "templateKeyName": [
-	    "allowVolumeExpansion"
+        "allowVolumeExpansion"
     ],
+    "required": "true",
     "default": "false",
-    "required": "false",
     "category": "config",
+    "regex": "^(?:true|false)$",
+    "min-length": 4,
+    "max-length": 5,
+    "supported-values": ["false", "true"],
     "type": "boolean"
   },
   {
     "description": "Specify 'true' or 'false' to make the created storage class the default class.",
-    "displayname": "Default",
+    "displayname": "Default Storage Class",
     "name": "is-default-class",
     "templateKeyName": [
-      "storageclass.kubernetes.io/is-default-class"
+        "storageclass.kubernetes.io/is-default-class"
     ],
     "default": "false",
-    "required": "false",
+    "required": "true",
     "category": "config",
+    "regex": "^(?:true|false)$",
+    "min-length": 4,
+    "max-length": 5,
+    "supported-values": ["false", "true"],
     "type": "boolean"
-  }, {
-    "description": "Specify a unique volume tier preference; in the range of 1-99 with 1 being the highest",
-    "displayname": "Storage Class Preference Preference",
+  },
+  {
+    "description": "Specify a unique volume tier preference; in the range of 1-99 with 1 being the highest.",
+    "displayname": "Storage Class Preference",
     "name": "storage-class-preference",
     "templateKeyName": [
-      "storage-class-preference"
+        "storage-class-preference"
     ],
-    "required": "false",
+    "required": "true",
     "default": "99",
     "category": "config",
     "regex": "^[1-9]([0-9]?)$",
+    "min-length": 1,
+    "max-length": 2,
     "type": "text"
   }
 ]
