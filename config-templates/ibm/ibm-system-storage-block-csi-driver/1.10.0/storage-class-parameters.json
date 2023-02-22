@@ -52,7 +52,7 @@
   {
     "description": "The file system type.",
     "displayname": "File system type",
-    "name": "Fstype",
+    "name": "fstype",
     "templateKeyName": [
         "csi.storage.k8s.io/fstype"
     ],
@@ -67,7 +67,7 @@
 },
   {
     "description": "The prefix name of the volume.",
-    "displayname": "Prefix name",
+    "displayname": "Prefix name of the volume",
     "name": "prefix",
     "templateKeyName" : [
 	    "volume_name_prefix"
