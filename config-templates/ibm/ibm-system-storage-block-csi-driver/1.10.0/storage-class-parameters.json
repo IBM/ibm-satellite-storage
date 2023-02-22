@@ -1,0 +1,110 @@
+[
+  {
+    "description": "The name of the storage class that is created.",
+    "displayname": "Storage Class name",
+    "name": "name",
+    "templateKeyName": [
+	    "name"
+    ],
+    "required": "true",
+    "category": "config"
+  },
+  {
+    "description": "The space efficiency of the volume that is created.",
+    "displayname": "Space efficiency type",
+    "name": "space-efficiency",
+    "templateKeyName": [
+	    "SpaceEfficiency"
+    ],
+    "required": "false",
+    "category": "config"
+  },
+  {
+    "description": "Name of an existing pool on the storage system where you want to create the volume.",
+    "displayname": "Pool Name",
+    "name": "pool",
+    "templateKeyName": [
+	    "pool"
+    ],
+    "required": "true",
+    "category": "config"
+  },
+  {
+    "description": "The name of your existing Kubernetes secret.",
+    "displayname": "Secret name",
+    "name": "secret-name",
+    "templateKeyName": [
+	    "csi.storage.k8s.io/secret-name"
+    ],
+    "required": "true",
+    "category": "config"
+  },
+  {
+    "description": "The namespace that your Kubernetes secret is in.",
+    "displayname": "Secret namespace",
+    "name": "secret-namespace",
+    "templateKeyName": [
+	    "csi.storage.k8s.io/secret-namespace"
+    ],
+    "required": "true",
+    "category": "config"
+  },
+  {
+    "description": "The file system type.",
+    "displayname": "Fstype",
+    "name": "fstype",
+    "templateKeyName": [
+	    "csi.storage.k8s.io/fstype"
+    ],
+    "default": "ext4",
+    "supported-values": ["ext4", "xfs"],
+    "required": "false",
+    "category": "config"
+  },
+  {
+    "description": "The prefix name of the volume that is created.",
+    "displayname": "Prefix name",
+    "name": "prefix",
+    "templateKeyName" : [
+	    "volume_name_prefix"
+    ],
+    "required": "false",
+    "category": "config"
+  },
+  {
+    "description": "Specify 'true' to allow volume expansion or 'false' to disallow volume expansion.",
+    "displayname": "allowVolumeExpansion?",
+    "name": "VolumeExpansion",
+    "templateKeyName": [
+	    "allowVolumeExpansion"
+    ],
+    "default": "false",
+    "required": "false",
+    "category": "config",
+    "type": "boolean"
+  },
+  {
+    "description": "Specify 'true' or 'false' to make the created storage class the default class.",
+    "displayname": "Default",
+    "name": "is-default-class",
+    "templateKeyName": [
+      "storageclass.kubernetes.io/is-default-class"
+    ],
+    "default": "false",
+    "required": "false",
+    "category": "config",
+    "type": "boolean"
+  }, {
+    "description": "Specify a unique volume tier preference; in the range of 1-99 with 1 being the highest",
+    "displayname": "Storage Class Preference Preference",
+    "name": "storage-class-preference",
+    "templateKeyName": [
+      "storage-class-preference"
+    ],
+    "required": "false",
+    "default": "99",
+    "category": "config",
+    "regex": "^[1-9]([0-9]?)$",
+    "type": "text"
+  }
+]

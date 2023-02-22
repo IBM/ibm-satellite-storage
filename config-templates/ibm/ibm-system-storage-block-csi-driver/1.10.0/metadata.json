@@ -1,0 +1,81 @@
+{
+  "name": "1.10.0",
+  "revision": "2",
+  "enabled": "true",
+  "status": "supported",
+  "description": "IBM System Storage Block CSI driver version 1.10.0",
+  "tags": [
+    {
+      "name": "provider",
+      "value": "IBM"
+    },
+    {
+      "name": "storage_type",
+      "value": "block"
+    },
+    {
+      "name": "offering-name",
+      "value": "ibm-system-storage-block-csi-driver"
+    },
+    {
+      "name": "offering-type",
+      "value": "non-sds"
+    },
+    {
+      "name": "provider-url",
+      "value": "IBM knowledge center: https://www.ibm.com/docs/en/stg-block-csi-driver/1.10.0"
+    },
+    {
+      "name": "support-url",
+      "value": "https://www.ibm.com/support/home/"
+    },
+    {
+      "name": "support-msg",
+      "value": "For support contact IBM"
+    },
+    {
+      "name": "provider-logo",
+      "value": "logo/ibm-system-storage-block-csi-driver.png"
+    },
+    {
+      "name": "supported-envs",
+      "value": "IBM"
+    },
+    {
+      "name": "supported-k8s-versions",
+      "value": "1.23,1.24"
+    },
+    {
+      "name": "volume-type",
+      "value": "block"
+    },
+    {
+      "name": "volume-encryption-at-rest",
+      "value": "false"
+    },
+    {
+      "name": "volume-encryption-in-transit",
+      "value": "false"
+    },
+    {
+      "name": "volume-snapshot",
+      "value": "true"
+    },
+    {
+      "name": "volume-availability",
+      "value": "regional"
+    },
+    {
+      "name": "volume-expansion",
+      "value": "true"
+    },
+        {
+      "name": "volume-clone",
+      "value": "true"
+    },
+    {
+      "name": "storageclass",
+      "value": ""
+    }
+  ]
+}
