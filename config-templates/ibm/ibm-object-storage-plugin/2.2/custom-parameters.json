@@ -36,8 +36,8 @@
         "required": "true"
     },
     {
-        "description": "Enter COS storageclass. For more info, refer to https://ibm.biz/cos-storage-classes",
-        "displayname": "COS storageclass",
+        "description": "Enter COS storage class. For more info, refer to https://ibm.biz/cos-storage-classes",
+        "displayname": "COS storage class",
         "name": "cos-storageclass",
         "category": "config",
         "required": "true"
