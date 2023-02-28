@@ -128,7 +128,7 @@
     "mutable": "true"
   },
   {
-    "description": "Set to 'true' if you want to enable storageclasss encryption.",
+    "description": "Set to 'true' if you want to enable storage class encryption.",
     "displayname": "KMS encryption",
     "name": "kms-encryption",
     "default": "false",
