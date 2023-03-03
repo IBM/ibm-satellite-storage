@@ -5,7 +5,7 @@
             "latest-revision": {
                 "revision": "7",
                 "release-date": "06 March 2023",
-                "cves": "CVE-2022-4415,CVE-2020-10735,CVE-2021-28861,CVE-2022-45061,CVE-2022-40897",
+                "cves": "CVE-2022-4415,CVE-2020-10735,CVE-2021-28861,CVE-2022-45061,CVE-2022-40897,CVE-2022-41723,CVE-2022-41724",
                 "golang": "1.19.6",
                 "ubi": "8.7-1085",
                 "new-features": [],
@@ -22,7 +22,7 @@
                    "Priorityclass added for controller and node server pods",
                    "Removed preStop from csi driver registrar container in deployment, cleanup is taken care by the csi driver registrar itself"
                 ]
-             },
+             }
         }
     },
     {
