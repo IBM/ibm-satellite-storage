@@ -2,7 +2,7 @@
   "name": "4.7",
   "revision": "20",
   "enabled": "true",
-  "status": "supported",
+  "status": "deprecated",
   "description": "ODF template for openshift 4.7 (Local storage)",
   "tags": [
     {
