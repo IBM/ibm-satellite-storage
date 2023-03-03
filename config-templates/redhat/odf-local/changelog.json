@@ -9,7 +9,7 @@
                 "golang": "1.19.6",
                 "ubi": "8.7-1085",
                 "new-features": [],
-                "fixes": []
+                "fixes": ["Default values for CPU limit & Memory limit are updated to 500m & 500Mi respectively."]
             },
             "previous-revision": {
                 "revision": "2",
@@ -32,7 +32,7 @@
                 "golang": "1.19.6",
                 "ubi": "8.7-1085",
                 "new-features": [],
-                "fixes": []
+                "fixes": ["Default values for CPU limit & Memory limit are updated to 500m & 500Mi respectively."]
             },
             "previous-revision": {
                 "revision": "13",
@@ -55,7 +55,7 @@
                 "golang": "1.19.6",
                 "ubi": "8.7-1085",
                 "new-features": [],
-                "fixes": []
+                "fixes": ["Default values for CPU limit & Memory limit are updated to 500m & 500Mi respectively."]
             },
             "previous-revision": {
                 "revision": "19",
@@ -78,7 +78,7 @@
                 "golang": "1.19.6",
                 "ubi": "8.7-1085",
                 "new-features": [],
-                "fixes": []
+                "fixes": ["Default values for CPU limit & Memory limit are updated to 500m & 500Mi respectively."]
             },
             "previous-revision": {
                 "revision": "19",
