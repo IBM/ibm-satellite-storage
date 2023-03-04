@@ -5,7 +5,7 @@
             "latest-revision": {
                 "revision": "2",
                 "release-date": "6 March 2023",
-                "cves": "CVE-2022-4415, CVE-2020-10735, CVE-2021-28861, CVE-2022-45061, CVE-2022-40897",
+                "cves": "CVE-2022-4415, CVE-2020-10735, CVE-2021-28861, CVE-2022-45061, CVE-2022-40897, CVE-2022-41723, CVE-2022-41724",
                 "golang": "1.19.6",
                 "ubi": "8.7-1085",
                 "new-features": [],
@@ -30,7 +30,7 @@
             "latest-revision": {
                 "revision": "15",
                 "release-date": "6 March 2023",
-                "cves": "CVE-2022-4415, CVE-2020-10735, CVE-2021-28861, CVE-2022-45061, CVE-2022-40897",
+                "cves": "CVE-2022-4415, CVE-2020-10735, CVE-2021-28861, CVE-2022-45061, CVE-2022-40897, CVE-2022-41723, CVE-2022-41724",
                 "golang": "1.19.6",
                 "ubi": "8.7-1085",
                 "new-features": [],
@@ -55,7 +55,7 @@
             "latest-revision": {
                 "revision": "17",
                 "release-date": "6 March 2023",
-                "cves": "CVE-2022-4415, CVE-2020-10735, CVE-2021-28861, CVE-2022-45061, CVE-2022-40897",
+                "cves": "CVE-2022-4415, CVE-2020-10735, CVE-2021-28861, CVE-2022-45061, CVE-2022-40897, CVE-2022-41723, CVE-2022-41724",
                 "golang": "1.19.6",
                 "ubi": "8.7-1085",
                 "new-features": [],
