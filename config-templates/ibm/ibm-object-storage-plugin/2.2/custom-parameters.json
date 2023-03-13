@@ -33,7 +33,7 @@
         "displayname": "COS Endpoint",
         "name": "cos-endpoint",
         "category": "config",
-        "required": "true"
+        "required": "false"
     },
     {
         "description": "Enter COS storage class. For more info, refer to https://ibm.biz/cos-storage-classes",
@@ -41,5 +41,12 @@
         "name": "cos-storageclass",
         "category": "config",
         "required": "true"
+    },
+    {
+        "description": "Enter COS s3Provider.",
+        "displayname": "COS s3Provider",
+        "name": "cos-s3provider",
+        "category": "config",
+        "required": "false"
     }
 ]
