@@ -3,23 +3,21 @@
         "22.10": {
             "status": "supported",
             "latest-revision": {
-                "revision": "2",
-                "release-date": "6 March 2023",
-                "cves": "CVE-2022-4415, CVE-2020-10735, CVE-2021-28861, CVE-2022-45061, CVE-2022-40897",
+                "revision": "3",
+                "release-date": "21 March 2023",
+                "cves": "CVE-2023-23916",
                 "golang": "1.19.6",
                 "ubi": "8.7-1085",
                 "new-features": [],
                 "fixes": []
             },
             "previous-revision": {
-                "revision": "1",
-                "release-date": "20 February 2023",
-                "cves": "CVE-2022-47629",
-                "golang": "1.18.9",
-                "ubi": "8.7-1049.1675784874",
-                "new-features": [
-                    "Initial Release"
-                ],
+                "revision": "2",
+                "release-date": "6 March 2023",
+                "cves": "CVE-2022-4415, CVE-2020-10735, CVE-2021-28861, CVE-2022-45061, CVE-2022-40897",
+                "golang": "1.19.6",
+                "ubi": "8.7-1085",
+                "new-features": [],
                 "fixes": []
             }
         }
@@ -28,6 +26,15 @@
         "22.04": {
             "status": "supported",
             "latest-revision": {
+                "revision": "16",
+                "release-date": "21 March 2023",
+                "cves": "CVE-2023-23916",
+                "golang": "1.19.6",
+                "ubi": "8.7-1085",
+                "new-features": [],
+                "fixes": []
+            },
+            "previous-revision": {
                 "revision": "15",
                 "release-date": "6 March 2023",
                 "cves": "CVE-2022-4415, CVE-2020-10735, CVE-2021-28861, CVE-2022-45061, CVE-2022-40897",
@@ -35,17 +42,6 @@
                 "ubi": "8.7-1085",
                 "new-features": [],
                 "fixes": []
-            },
-            "previous-revision": {
-                "revision": "14",
-                "release-date": "20 February 2023",
-                "cves": "CVE-2022-47629",
-                "golang": "1.18.9",
-                "ubi": "8.7-1049.1675784874",
-                "new-features": [],
-                "fixes": [
-                    "Run tridentctl pod as non-root user"
-                ]
             }
         }
     },
@@ -53,6 +49,15 @@
         "21.04": {
             "status": "supported",
             "latest-revision": {
+                "revision": "18",
+                "release-date": "21 March 2023",
+                "cves": "CVE-2023-23916",
+                "golang": "1.19.6",
+                "ubi": "8.7-1085",
+                "new-features": [],
+                "fixes": []
+            },
+            "previous-revision": {
                 "revision": "17",
                 "release-date": "6 March 2023",
                 "cves": "CVE-2022-4415, CVE-2020-10735, CVE-2021-28861, CVE-2022-45061, CVE-2022-40897",
@@ -60,17 +65,6 @@
                 "ubi": "8.7-1085",
                 "new-features": [],
                 "fixes": []
-            },
-            "previous-revision": {
-                "revision": "16",
-                "release-date": "20 February 2023",
-                "cves": "CVE-2022-47629",
-                "golang": "1.18.9",
-                "ubi": "8.7-1049.1675784874",
-                "new-features": [],
-                "fixes": [
-                    "Run tridentctl pod as non-root user"
-                ]
             }
         }
     },
