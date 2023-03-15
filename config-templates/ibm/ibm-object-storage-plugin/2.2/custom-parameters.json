@@ -36,7 +36,7 @@
         "required": "false"
     },
     {
-        "description": "Enter COS storage class. With cos-storageclass, provide value for either cos-endpoint or s3Provider, precedence is given to storageClass and s3Provider. To To input endpoint explicitly, input only endpoint and storageClass and skip s3Provider. For more info, refer to https://ibm.biz/cos-storage-classes",
+        "description": "Enter COS storage class. With cos-storageclass, provide value for either cos-endpoint or s3Provider, precedence is given to storageClass and s3Provider. To input endpoint explicitly, input only endpoint and storageClass and skip s3Provider. For more info, refer to https://ibm.biz/cos-storage-classes",
         "displayname": "COS storage class",
         "name": "cos-storageclass",
         "category": "config",
