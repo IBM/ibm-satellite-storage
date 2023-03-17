@@ -90,5 +90,10 @@
                 "fixes": ["Default values for CPU limit & Memory limit are updated to 500m & 500Mi respectively."]
             }
         }
+    },
+    {
+        "4.7": {
+            "status": "unsupported"
+        }
     }
 ]
