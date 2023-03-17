@@ -22,7 +22,7 @@ items:
         - license={{{ license }}}
         - cos.endpoint={{{ cos-endpoint }}}
         - cos.storageClass={{{ cos-storageclass }}}
-        - cos.s3Provider={{{ cos-s3provider }}}
+        - cos.s3Provider={{{ s3provider }}}
         {{#parameters }}
         - "{{{ item }}}"
         {{/parameters }}

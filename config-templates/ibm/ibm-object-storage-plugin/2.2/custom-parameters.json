@@ -29,28 +29,28 @@
         "required": "true"
     },
     {
-        "description": "Enter COS Endpoint. For more information, refer to https://ibm.biz/cos-endpoints",
-        "displayname": "COS Endpoint",
-        "name": "cos-endpoint",
-        "category": "config",
-        "required": "false"
-    },
-    {
-        "description": "Enter COS storage class. With cos-storageclass, provide value for either cos-endpoint or s3Provider, precedence is given to storageClass and s3Provider. To input endpoint explicitly, input only endpoint and storageClass and skip s3Provider. For more info, refer to https://ibm.biz/cos-storage-classes",
-        "displayname": "COS storage class",
-        "name": "cos-storageclass",
-        "category": "config",
-        "required": "true"
-    },
-    {
-        "description": "Enter COS s3Provider. Choose s3Provider as 'aws', 'wasabi' or 'ibm'",
-        "displayname": "COS s3Provider",
-        "name": "cos-s3provider",
+        "description": "Enter the object storage service provider. Supported providers are 'IBM', 'AWS' and 'Wasabi'. For other providers, you must explicitly provide the COS endpoint",
+        "displayname": "Object storage service provider",
+        "name": "s3provider",
         "category": "config",
         "required": "false",
         "regex": "^(?i)(aws|ibm|wasabi)$",
         "min-length": 3,
         "max-length": 6,
         "supported-values": ["IBM", "AWS", "Wasabi"]
+    },
+    {
+        "description": "Enter COS storage class. For more info, refer to https://ibm.biz/cos-storage-classes",
+        "displayname": "COS storage class",
+        "name": "cos-storageclass",
+        "category": "config",
+        "required": "true"
+    },
+    {
+        "description": "COS Endpoint. Required when 's3provider' is not set. Precedence is given to 's3provider' when both are set. For more information, refer to https://ibm.biz/cos-endpoints",
+        "displayname": "COS Endpoint",
+        "name": "cos-endpoint",
+        "category": "config",
+        "required": "false"
     }
 ]
