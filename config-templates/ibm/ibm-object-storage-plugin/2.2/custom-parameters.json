@@ -51,6 +51,6 @@
         "regex": "^(aws|ibm|wasabi)$",
         "min-length": 3,
         "max-length": 6,
-        "supported-values": ["ibm", "aws", "wasabi"]
+        "supported-values": ["IBM", "AWS", "Wasabi"]
     }
 ]
