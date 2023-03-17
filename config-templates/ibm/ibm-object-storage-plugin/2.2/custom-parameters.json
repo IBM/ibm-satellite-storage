@@ -43,12 +43,12 @@
         "required": "true"
     },
     {
-        "description": "Enter COS s3Provider. Choose s3Provider as `aws`, `wasabi` or `ibm` object storage",
+        "description": "Enter COS s3Provider. Choose s3Provider as 'aws', 'wasabi' or 'ibm'",
         "displayname": "COS s3Provider",
         "name": "cos-s3provider",
         "category": "config",
         "required": "false",
-        "regex": "^(aws|ibm|wasabi)$",
+        "regex": "^(?i)(aws|ibm|wasabi)$",
         "min-length": 3,
         "max-length": 6,
         "supported-values": ["IBM", "AWS", "Wasabi"]
