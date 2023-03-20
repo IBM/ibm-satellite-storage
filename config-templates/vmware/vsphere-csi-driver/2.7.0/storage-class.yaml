@@ -1,0 +1,69 @@
+---
+apiVersion: v1
+kind: List
+metadata:
+  name: vsphere-csi-driver-sc
+  namespace: kube-system
+  annotations:
+    version: 2.7.0
+items:
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-vsphere-vsan-block
+      labels:
+        app.kubernetes.io/name: vsphere-csi-driver
+        app.kubernetes.io/version: 2.7.0
+        volume-type: "block"
+        storage-class-preference: "2"
+        is-user-defined-class: "false"
+    provisioner: csi.vsphere.vmware.com
+    parameters:
+      storagepolicyname: "vSAN Default Storage Policy"
+    volumeBindingMode: Immediate
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-vsphere-vsan-block-metro
+      labels:
+        app.kubernetes.io/name: vsphere-csi-driver
+        app.kubernetes.io/version: 2.7.0
+        volume-type: "block"
+        storage-class-preference: "1"
+        is-user-defined-class: "false"
+      annotations:
+        storageclass.kubernetes.io/is-default-class: "true"
+    provisioner: csi.vsphere.vmware.com
+    parameters:
+      storagepolicyname: "vSAN Default Storage Policy"
+    volumeBindingMode: WaitForFirstConsumer
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-vsphere-vsan-file
+      labels:
+        app.kubernetes.io/name: vsphere-csi-driver
+        app.kubernetes.io/version: 2.7.0
+        volume-type: "file"
+        storage-class-preference: "2"
+        is-user-defined-class: "false"
+    provisioner: csi.vsphere.vmware.com
+    parameters:
+      storagepolicyname: "vSAN Default Storage Policy"
+      csi.storage.k8s.io/fstype: "nfs4"
+    volumeBindingMode: Immediate
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-vsphere-vsan-file-metro
+      labels:
+        app.kubernetes.io/name: vsphere-csi-driver
+        app.kubernetes.io/version: 2.7.0
+        volume-type: "file"
+        storage-class-preference: "1"
+        is-user-defined-class: "false"
+    provisioner: csi.vsphere.vmware.com
+    parameters:
+      storagepolicyname: "vSAN Default Storage Policy"
+      csi.storage.k8s.io/fstype: "nfs4"
+    volumeBindingMode: WaitForFirstConsumer
