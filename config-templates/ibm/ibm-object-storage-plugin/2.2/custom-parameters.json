@@ -36,8 +36,7 @@
         "required": "false",
         "regex": "^(?i)(aws|ibm|wasabi)$",
         "min-length": 3,
-        "max-length": 6,
-        "supported-values": ["IBM", "AWS", "Wasabi"]
+        "max-length": 6
     },
     {
         "description": "Enter COS storage class. For more info, refer to https://ibm.biz/cos-storage-classes",
