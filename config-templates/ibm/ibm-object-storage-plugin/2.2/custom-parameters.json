@@ -34,9 +34,10 @@
         "name": "s3provider",
         "category": "config",
         "required": "false",
-        "regex": "^(?i)(aws|ibm|wasabi)$",
+        "regex": "^(aws|AWS|IBM|ibm|wasabi|Wasabi|WASABI)$",
         "min-length": 3,
-        "max-length": 6
+        "max-length": 6,
+        "supported-values": ["IBM", "AWS", "Wasabi"]
     },
     {
         "description": "Enter COS storage class. For more info, refer to https://ibm.biz/cos-storage-classes",
