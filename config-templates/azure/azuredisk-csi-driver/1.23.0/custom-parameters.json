@@ -70,7 +70,7 @@
         "required": "true"
     },
     {
-        "description": "The name of the virtual network. You can find the name fo your virtual network in the Azure portal or by running the `az network vnet list` command.",
+        "description": "The name of the virtual network. You can find the name for your virtual network in the Azure portal or by running the `az network vnet list` command.",
         "displayname": "Virtual Network Name",
         "name": "vnetName",
         "required": "true"
