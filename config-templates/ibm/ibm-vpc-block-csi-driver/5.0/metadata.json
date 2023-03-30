@@ -1,6 +1,6 @@
 {
   "name": "5.0",
-  "revision": "3",
+  "revision": "9",
   "enabled": "true",
   "status": "supported",
   "description": "[Beta] - IBM VPC Block Storage CSI driver version 5.0",
@@ -43,7 +43,7 @@
     },
     {
       "name": "supported-ocp-versions",
-      "value": "4.9,4.10,4.11"
+      "value": "4.9,4.10,4.11,4.12"
     }
     ]
   }

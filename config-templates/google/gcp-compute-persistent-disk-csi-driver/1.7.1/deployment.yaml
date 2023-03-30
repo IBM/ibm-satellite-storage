@@ -6,7 +6,7 @@ metadata:
   namespace: kube-system
   annotations:
     version: 1.7.1
-    revision: 4
+    revision: 5
 items:
   - apiVersion: v1
     kind: Namespace
@@ -54,56 +54,6 @@ items:
       labels:
         app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
         app.kubernetes.io/version: 1.7.1
-
-  - apiVersion: policy/v1beta1
-    kind: PodSecurityPolicy
-    metadata:
-      name: csi-gce-pd-controller-psp
-      labels:
-        app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
-        app.kubernetes.io/version: 1.7.1
-    spec:
-      fsGroup:
-        rule: RunAsAny
-      hostNetwork: true
-      runAsUser:
-        rule: RunAsAny
-      seLinux:
-        rule: RunAsAny
-      supplementalGroups:
-        rule: RunAsAny
-      volumes:
-      - emptyDir
-      - secret
-  - apiVersion: policy/v1beta1
-    kind: PodSecurityPolicy
-    metadata:
-      name: csi-gce-pd-node-psp
-      labels:
-        app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
-        app.kubernetes.io/version: 1.7.1
-    spec:
-      allowedHostPaths:
-      - pathPrefix: /var/data/kubelet/plugins_registry/
-      - pathPrefix: /var/data/kubelet
-      - pathPrefix: /var/data/kubelet/plugins/pd.csi.storage.gke.io/
-      - pathPrefix: /dev
-      - pathPrefix: /etc/udev
-      - pathPrefix: /lib/udev
-      - pathPrefix: /run/udev
-      - pathPrefix: /sys
-      fsGroup:
-        rule: RunAsAny
-      hostNetwork: true
-      privileged: true
-      runAsUser:
-        rule: RunAsAny
-      seLinux:
-        rule: RunAsAny
-      supplementalGroups:
-        rule: RunAsAny
-      volumes:
-      - '*'
   - apiVersion: rbac.authorization.k8s.io/v1
     kind: Role
     metadata:
@@ -175,38 +125,6 @@ items:
       - volumeattachments/status
       verbs:
       - patch
-  - apiVersion: rbac.authorization.k8s.io/v1
-    kind: ClusterRole
-    metadata:
-      name: csi-gce-pd-controller-deploy
-      labels:
-        app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
-        app.kubernetes.io/version: 1.7.1
-    rules:
-    - apiGroups:
-      - policy
-      resourceNames:
-      - csi-gce-pd-controller-psp
-      resources:
-      - podsecuritypolicies
-      verbs:
-      - use
-  - apiVersion: rbac.authorization.k8s.io/v1
-    kind: ClusterRole
-    metadata:
-      name: csi-gce-pd-node-deploy
-      labels:
-        app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
-        app.kubernetes.io/version: 1.7.1
-    rules:
-    - apiGroups:
-      - policy
-      resourceNames:
-      - csi-gce-pd-node-psp
-      resources:
-      - podsecuritypolicies
-      verbs:
-      - use
   - apiVersion: rbac.authorization.k8s.io/v1
     kind: ClusterRole
     metadata:
@@ -433,21 +351,6 @@ items:
   - apiVersion: rbac.authorization.k8s.io/v1
     kind: ClusterRoleBinding
     metadata:
-      name: csi-gce-pd-controller-deploy
-      labels:
-        app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
-        app.kubernetes.io/version: 1.7.1
-    roleRef:
-      apiGroup: rbac.authorization.k8s.io
-      kind: ClusterRole
-      name: csi-gce-pd-controller-deploy
-    subjects:
-    - kind: ServiceAccount
-      name: csi-gce-pd-controller-sa
-      namespace: gce-pd-csi-driver
-  - apiVersion: rbac.authorization.k8s.io/v1
-    kind: ClusterRoleBinding
-    metadata:
       name: csi-gce-pd-controller-provisioner-binding
       labels:
         app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
@@ -474,21 +377,6 @@ items:
     subjects:
     - kind: ServiceAccount
       name: csi-gce-pd-controller-sa
-      namespace: gce-pd-csi-driver
-  - apiVersion: rbac.authorization.k8s.io/v1
-    kind: ClusterRoleBinding
-    metadata:
-      name: csi-gce-pd-node
-      labels:
-        app.kubernetes.io/name: gcp-compute-persistent-disk-csi-driver
-        app.kubernetes.io/version: 1.7.1
-    roleRef:
-      apiGroup: rbac.authorization.k8s.io
-      kind: ClusterRole
-      name: csi-gce-pd-node-deploy
-    subjects:
-    - kind: ServiceAccount
-      name: csi-gce-pd-node-sa
       namespace: gce-pd-csi-driver
   - apiVersion: rbac.authorization.k8s.io/v1
     kind: ClusterRoleBinding
@@ -837,9 +725,6 @@ items:
       namespace:
     - kind: ServiceAccount
       name: csi-gce-pd-node-sa
-      namespace:
-    - kind: ServiceAccount
-      name: csi-gce-pd-node-sa-win
       namespace:
     roleRef:
       kind: Role

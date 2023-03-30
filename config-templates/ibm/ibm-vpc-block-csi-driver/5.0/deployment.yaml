@@ -5,7 +5,7 @@ metadata:
   namespace: kube-system
   annotations:
     version: 5.0
-    revision: 3
+    revision: 9
 items:
   - kind: ClusterRole
     apiVersion: rbac.authorization.k8s.io/v1
@@ -337,12 +337,13 @@ items:
           annotations:
             autoUpdate: "AUTO-UPDATE-ENABLED"
         spec:
+          priorityClassName: system-node-critical
           serviceAccountName: ibm-vpc-block-node-sa
           tolerations:
             - operator: Exists
           initContainers:
             - name: vpc-node-label-updater
-              image: icr.io/obs/storage/vpc-node-label-updater:v4.2.3
+              image: icr.io/obs/storage/vpc-node-label-updater:v4.2.9
               imagePullPolicy: Always
               securityContext:
                 privileged: false
@@ -377,10 +378,6 @@ items:
                 - "--v=5"
                 - "--csi-address=$(ADDRESS)"
                 - "--kubelet-registration-path=$(DRIVER_REGISTRATION_SOCK)"
-              lifecycle:
-                preStop:
-                  exec:
-                    command: ["/bin/sh", "-c", "rm -rf /registration/vpc.block.csi.ibm.io /registration/vpc.block.csi.ibm.io-reg.sock"]
               env:
                 - name: ADDRESS
                   value: /csi/csi.sock
@@ -407,7 +404,7 @@ items:
                 runAsNonRoot: false
                 runAsUser: 0
                 privileged: true
-              image: icr.io/ibm/ibm-vpc-block-csi-driver:v5.0.4
+              image: icr.io/ibm/ibm-vpc-block-csi-driver:v5.0.10
               imagePullPolicy: Always
               args:
                 - "--v=5"
@@ -548,6 +545,7 @@ items:
           annotations:
             autoUpdate: "AUTO-UPDATE-ENABLED"
         spec:
+          priorityClassName: system-cluster-critical
           serviceAccountName: ibm-vpc-block-controller-sa
           securityContext:
             runAsNonRoot: true
@@ -658,7 +656,7 @@ items:
                   mountPath: /csi
             - name: iks-vpc-block-driver
               imagePullPolicy: Always
-              image: icr.io/ibm/ibm-vpc-block-csi-driver:v5.0.4
+              image: icr.io/ibm/ibm-vpc-block-csi-driver:v5.0.10
               securityContext:
                 privileged: false
                 allowPrivilegeEscalation: false

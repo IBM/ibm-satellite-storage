@@ -30,7 +30,7 @@
         "mutable": "true"
     },
     {
-        "description": "Client email. The email of ther service account can be found in the IAM & Admin section of the project dashboard.",
+        "description": "The email of the service account can be found in the IAM & Admin section of the project dashboard.",
         "displayname": "Client email",
         "name": "client_email",
         "required": "true",

@@ -16,7 +16,7 @@ items:
         is-user-defined-class: "false"
         app.kubernetes.io/name: "netapp-ontap-san"
         app.kubernetes.io/version: "v21.04"
-        app.kubernetes.io/revision: "7"
+        app.kubernetes.io/revision: "20"
     provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-san"
@@ -34,7 +34,7 @@ items:
         is-user-defined-class: "false"
         app.kubernetes.io/name: "netapp-ontap-san"
         app.kubernetes.io/version: "v21.04"
-        app.kubernetes.io/revision: "7"
+        app.kubernetes.io/revision: "20"
     provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-san"
@@ -52,7 +52,7 @@ items:
         is-user-defined-class: "false"
         app.kubernetes.io/name: "netapp-ontap-san"
         app.kubernetes.io/version: "v21.04"
-        app.kubernetes.io/revision: "7"
+        app.kubernetes.io/revision: "20"
     provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-san"
@@ -70,7 +70,7 @@ items:
         is-user-defined-class: "false"
         app.kubernetes.io/name: "netapp-ontap-san"
         app.kubernetes.io/version: "v21.04"
-        app.kubernetes.io/revision: "7"
+        app.kubernetes.io/revision: "20"
     provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-san"
@@ -88,7 +88,7 @@ items:
         is-user-defined-class: "false"
         app.kubernetes.io/name: "netapp-ontap-san"
         app.kubernetes.io/version: "v21.04"
-        app.kubernetes.io/revision: "7"
+        app.kubernetes.io/revision: "20"
     provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-san"
@@ -106,7 +106,7 @@ items:
         is-user-defined-class: "false"
         app.kubernetes.io/name: "netapp-ontap-san"
         app.kubernetes.io/version: "v21.04"
-        app.kubernetes.io/revision: "7"
+        app.kubernetes.io/revision: "20"
     provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-san"
@@ -124,7 +124,7 @@ items:
         is-user-defined-class: "false"
         app.kubernetes.io/name: "netapp-ontap-san"
         app.kubernetes.io/version: "v21.04"
-        app.kubernetes.io/revision: "7"
+        app.kubernetes.io/revision: "20"
       annotations:
         storageclass.kubernetes.io/is-default-class: "true"
     provisioner: csi.trident.netapp.io
@@ -144,7 +144,7 @@ items:
         is-user-defined-class: "false"
         app.kubernetes.io/name: "netapp-ontap-san"
         app.kubernetes.io/version: "v21.04"
-        app.kubernetes.io/revision: "7"
+        app.kubernetes.io/revision: "20"
     provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-san"
@@ -162,7 +162,7 @@ items:
         is-user-defined-class: "false"
         app.kubernetes.io/name: "netapp-ontap-san"
         app.kubernetes.io/version: "v21.04"
-        app.kubernetes.io/revision: "7"
+        app.kubernetes.io/revision: "20"
     provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-san"
@@ -180,7 +180,7 @@ items:
         is-user-defined-class: "false"
         app.kubernetes.io/name: "netapp-ontap-san"
         app.kubernetes.io/version: "v21.04"
-        app.kubernetes.io/revision: "7"
+        app.kubernetes.io/revision: "20"
     provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-san"
@@ -198,7 +198,7 @@ items:
         is-user-defined-class: "false"
         app.kubernetes.io/name: "netapp-ontap-san"
         app.kubernetes.io/version: "v21.04"
-        app.kubernetes.io/revision: "7"
+        app.kubernetes.io/revision: "20"
     provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-san"
@@ -216,7 +216,7 @@ items:
         is-user-defined-class: "false"
         app.kubernetes.io/name: "netapp-ontap-san"
         app.kubernetes.io/version: "v21.04"
-        app.kubernetes.io/revision: "7"
+        app.kubernetes.io/revision: "20"
     provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-san"

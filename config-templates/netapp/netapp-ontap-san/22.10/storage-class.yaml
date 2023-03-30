@@ -1,0 +1,226 @@
+apiVersion: v1
+kind: List
+metadata:
+  name: netapp-trident-san
+  namespace: kube-system
+  annotations:
+    version: 22.10
+items:
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-netapp-block-gold
+      labels:
+        app.kubernetes.io/name: "netapp-ontap-san"
+        app.kubernetes.io/version: "v22.10"
+        app.kubernetes.io/revision: "4"
+        volume-type: "block"
+        storage-class-preference: "4"
+        is-user-defined-class: "false"
+    provisioner: csi.trident.netapp.io
+    parameters:
+      backendType: "ontap-san"
+      selector: "quality=block-gold"
+      fsType: "ext4"
+    allowVolumeExpansion: true
+    volumeBindingMode: Immediate
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-netapp-block-silver
+      labels:
+        app.kubernetes.io/name: "netapp-ontap-san"
+        app.kubernetes.io/version: "v22.10"
+        app.kubernetes.io/revision: "4"
+        volume-type: "block"
+        storage-class-preference: "8"
+        is-user-defined-class: "false"
+    provisioner: csi.trident.netapp.io
+    parameters:
+      backendType: "ontap-san"
+      selector: "quality=block-silver"
+      fsType: "ext4"
+    allowVolumeExpansion: true
+    volumeBindingMode: Immediate
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-netapp-block-bronze
+      labels:
+        app.kubernetes.io/name: "netapp-ontap-san"
+        app.kubernetes.io/version: "v22.10"
+        app.kubernetes.io/revision: "4"
+        volume-type: "block"
+        storage-class-preference: "12"
+        is-user-defined-class: "false"
+    provisioner: csi.trident.netapp.io
+    parameters:
+      backendType: "ontap-san"
+      selector: "quality=block-bronze"
+      fsType: "ext4"
+    allowVolumeExpansion: true
+    volumeBindingMode: Immediate
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-netapp-block-gold-encrypted
+      labels:
+        app.kubernetes.io/name: "netapp-ontap-san"
+        app.kubernetes.io/version: "v22.10"
+        app.kubernetes.io/revision: "4"
+        volume-type: "block"
+        storage-class-preference: "2"
+        is-user-defined-class: "false"
+    provisioner: csi.trident.netapp.io
+    parameters:
+      backendType: "ontap-san"
+      selector: "quality=block-gold-encrypted"
+      fsType: "ext4"
+    allowVolumeExpansion: true
+    volumeBindingMode: Immediate
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-netapp-block-silver-encrypted
+      labels:
+        app.kubernetes.io/name: "netapp-ontap-san"
+        app.kubernetes.io/version: "v22.10"
+        app.kubernetes.io/revision: "4"
+        volume-type: "block"
+        storage-class-preference: "6"
+        is-user-defined-class: "false"
+    provisioner: csi.trident.netapp.io
+    parameters:
+      backendType: "ontap-san"
+      selector: "quality=block-silver-encrypted"
+      fsType: "ext4"
+    allowVolumeExpansion: true
+    volumeBindingMode: Immediate
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-netapp-block-bronze-encrypted
+      labels:
+        app.kubernetes.io/name: "netapp-ontap-san"
+        app.kubernetes.io/version: "v22.10"
+        app.kubernetes.io/revision: "4"
+        volume-type: "block"
+        storage-class-preference: "10"
+        is-user-defined-class: "false"
+    provisioner: csi.trident.netapp.io
+    parameters:
+      backendType: "ontap-san"
+      selector: "quality=block-bronze-encrypted"
+      fsType: "ext4"
+    allowVolumeExpansion: true
+    volumeBindingMode: Immediate
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-netapp-block-gold-metro
+      labels:
+        app.kubernetes.io/name: "netapp-ontap-san"
+        app.kubernetes.io/version: "v22.10"
+        app.kubernetes.io/revision: "4"
+        volume-type: "block"
+        storage-class-preference: "3"
+        is-user-defined-class: "false"
+      annotations:
+        storageclass.kubernetes.io/is-default-class: "true"
+    provisioner: csi.trident.netapp.io
+    parameters:
+      backendType: "ontap-san"
+      selector: "quality=block-gold"
+      fsType: "ext4"
+    allowVolumeExpansion: true
+    volumeBindingMode: WaitForFirstConsumer
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-netapp-block-silver-metro
+      labels:
+        app.kubernetes.io/name: "netapp-ontap-san"
+        app.kubernetes.io/version: "v22.10"
+        app.kubernetes.io/revision: "4"
+        volume-type: "block"
+        storage-class-preference: "7"
+        is-user-defined-class: "false"
+    provisioner: csi.trident.netapp.io
+    parameters:
+      backendType: "ontap-san"
+      selector: "quality=block-silver"
+      fsType: "ext4"
+    allowVolumeExpansion: true
+    volumeBindingMode: WaitForFirstConsumer
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-netapp-block-bronze-metro
+      labels:
+        app.kubernetes.io/name: "netapp-ontap-san"
+        app.kubernetes.io/version: "v22.10"
+        app.kubernetes.io/revision: "4"
+        volume-type: "block"
+        storage-class-preference: "11"
+        is-user-defined-class: "false"
+    provisioner: csi.trident.netapp.io
+    parameters:
+      backendType: "ontap-san"
+      selector: "quality=block-bronze"
+      fsType: "ext4"
+    allowVolumeExpansion: true
+    volumeBindingMode: WaitForFirstConsumer
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-netapp-block-gold-encrypted-metro
+      labels:
+        app.kubernetes.io/name: "netapp-ontap-san"
+        app.kubernetes.io/version: "v22.10"
+        app.kubernetes.io/revision: "4"
+        volume-type: "block"
+        storage-class-preference: "1"
+        is-user-defined-class: "false"
+    provisioner: csi.trident.netapp.io
+    parameters:
+      backendType: "ontap-san"
+      selector: "quality=block-gold-encrypted"
+      fsType: "ext4"
+    allowVolumeExpansion: true
+    volumeBindingMode: WaitForFirstConsumer
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-netapp-block-silver-encrypted-metro
+      labels:
+        app.kubernetes.io/name: "netapp-ontap-san"
+        app.kubernetes.io/version: "v22.10"
+        app.kubernetes.io/revision: "4"
+        volume-type: "block"
+        storage-class-preference: "5"
+        is-user-defined-class: "false"
+    provisioner: csi.trident.netapp.io
+    parameters:
+      backendType: "ontap-san"
+      selector: "quality=block-silver-encrypted"
+      fsType: "ext4"
+    allowVolumeExpansion: true
+    volumeBindingMode: WaitForFirstConsumer
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-netapp-block-bronze-encrypted-metro
+      labels:
+        app.kubernetes.io/name: "netapp-ontap-san"
+        app.kubernetes.io/version: "v22.10"
+        app.kubernetes.io/revision: "4"
+        volume-type: "block"
+        storage-class-preference: "9"
+        is-user-defined-class: "false"
+    provisioner: csi.trident.netapp.io
+    parameters:
+      backendType: "ontap-san"
+      selector: "quality=block-bronze-encrypted"
+      fsType: "ext4"
+    allowVolumeExpansion: true
+    volumeBindingMode: WaitForFirstConsumer

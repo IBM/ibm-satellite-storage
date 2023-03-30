@@ -1,6 +1,6 @@
 {
   "name": "22.04",
-  "revision": "12",
+  "revision": "17",
   "enabled": "true",
   "status": "supported",
   "description": "Netapp Ontap-NAS Driver.",
@@ -36,8 +36,8 @@
       "name": "supported-envs",
       "value": "AWS,Azure,IBM"
     }, {
-      "name": "supported-k8s-versions",
-      "value": "1.20,1.21,1.22,1.23"
+      "name": "supported-ocp-versions",
+      "value": "4.8,4.9,4.10"
     }, {
       "name": "volume-type",
       "value": "file"

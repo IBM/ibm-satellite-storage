@@ -43,7 +43,7 @@
     "name": "netapp-trident",
     "displayname": "NetApp Trident Operator",
     "Description": "NetApp Trident Operator.",
-    "default-version": "22.04",
+    "default-version": "22.10",
     "enabled": "true",
     "provider": "netapp"
   },
@@ -51,7 +51,7 @@
     "name": "netapp-ontap-nas",
     "displayname": "NetApp Ontap-NAS Driver",
     "Description": "NetApp Ontap-NAS Driver.",
-    "default-version": "22.04",
+    "default-version": "22.10",
     "enabled": "true",
     "provider": "netapp"
   },
@@ -59,7 +59,7 @@
     "name": "netapp-ontap-san",
     "displayname": "NetApp Ontap-SAN Driver",
     "Description": "NetApp Ontap-SAN Driver.",
-    "default-version": "22.04",
+    "default-version": "22.10",
     "enabled": "true",
     "provider": "netapp"
   },
@@ -99,7 +99,7 @@
     "name": "ibm-system-storage-block-csi-driver",
     "displayname": "IBM System Storage Block CSI driver",
     "Description": "IBM System Storage Block CSI driver for IBM Spectrum Virtualize, IBM FlashSystem and IBM DS8000 Family.",
-    "default-version": "1.5.0",
+    "default-version": "1.10.0",
     "enabled": "true",
     "provider": "ibm"
   },
@@ -137,7 +137,7 @@
   },
   {
     "name": "ibm-object-storage-plugin",
-    "displayname": "IBM Object Storage Plugin.",
+    "displayname": "IBM Object Storage Plugin",
     "Description": "IBM Object Storage Plugin.",
     "default-version": "2.2",
     "enabled": "true",

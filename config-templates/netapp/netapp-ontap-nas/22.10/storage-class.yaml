@@ -1,0 +1,106 @@
+apiVersion: v1
+kind: List
+metadata:
+  name: netapp-trident-nas
+  namespace: kube-system
+  annotations:
+    version: 22.10
+items:
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-netapp-file-gold
+      labels:
+        app.kubernetes.io/name: "netapp-ontap-nas"
+        app.kubernetes.io/version: "v22.10"
+        app.kubernetes.io/revision: "4"
+        volume-type: "file"
+        storage-class-preference: "2"
+        is-user-defined-class: "false"
+      annotations:
+        storageclass.kubernetes.io/is-default-class: "true"
+    provisioner: csi.trident.netapp.io
+    parameters:
+      backendType: "ontap-nas"
+      selector: "quality=file-gold"
+    allowVolumeExpansion: True
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-netapp-file-silver
+      labels:
+        app.kubernetes.io/name: "netapp-ontap-nas"
+        app.kubernetes.io/version: "v22.10"
+        app.kubernetes.io/revision: "4"
+        volume-type: "file"
+        storage-class-preference: "4"
+        is-user-defined-class: "false"        
+    provisioner: csi.trident.netapp.io
+    parameters:
+      backendType: "ontap-nas"
+      selector: "quality=file-silver"
+    allowVolumeExpansion: True
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-netapp-file-bronze
+      labels:
+        app.kubernetes.io/name: "netapp-ontap-nas"
+        app.kubernetes.io/version: "v22.10"
+        app.kubernetes.io/revision: "4"
+        volume-type: "file"
+        storage-class-preference: "6"
+        is-user-defined-class: "false"        
+    provisioner: csi.trident.netapp.io
+    parameters:
+      backendType: "ontap-nas"
+      selector: "quality=file-bronze"
+    allowVolumeExpansion: True
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-netapp-file-gold-encrypted
+      labels:
+        app.kubernetes.io/name: "netapp-ontap-nas"
+        app.kubernetes.io/version: "v22.10"
+        app.kubernetes.io/revision: "4"
+        volume-type: "file"
+        storage-class-preference: "1"
+        is-user-defined-class: "false"   
+    provisioner: csi.trident.netapp.io
+    parameters:
+      backendType: "ontap-nas"
+      selector: "quality=file-gold-encrypted"
+    allowVolumeExpansion: true
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-netapp-file-silver-encrypted
+      labels:
+        app.kubernetes.io/name: "netapp-ontap-nas"
+        app.kubernetes.io/version: "v22.10"
+        app.kubernetes.io/revision: "4"
+        volume-type: "file"
+        storage-class-preference: "3"
+        is-user-defined-class: "false"
+    provisioner: csi.trident.netapp.io
+    parameters:
+      backendType: "ontap-nas"
+      selector: "quality=file-silver-encrypted"
+    allowVolumeExpansion: true
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-netapp-file-bronze-encrypted
+      labels:
+        app.kubernetes.io/name: "netapp-ontap-nas"
+        app.kubernetes.io/version: "v22.10"
+        app.kubernetes.io/revision: "4"
+        volume-type: "file"
+        storage-class-preference: "5"
+        is-user-defined-class: "false"        
+    provisioner: csi.trident.netapp.io
+    parameters:
+      backendType: "ontap-nas"
+      selector: "quality=file-bronze"
+    allowVolumeExpansion: true

@@ -1,6 +1,6 @@
 {
     "name": "1.8.0",
-    "revision": "1",
+    "revision": "2",
     "enabled": "true",
     "status": "supported",
     "description": "GCP Compute Persistent Disk CSI Driver",
@@ -34,12 +34,8 @@
             "value": "Google"
         },
         {
-            "name": "supported-k8s-versions",
-            "value": "1.22, 1.23, 1.24, 1.25"
-        },
-        {
             "name": "supported-ocp-versions",
-            "value": "4.8, 4.9, 4.10, 4.11"
+            "value": "4.8,4.9,4.10,4.11,4.12"
         },
         {
             "name": "volume-type",

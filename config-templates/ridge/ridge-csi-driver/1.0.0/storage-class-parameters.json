@@ -7,6 +7,9 @@
 			"name"
 		],
 		"required": "true",
+		"regex": "^([a-z0-9]|[a-z0-9][a-z0-9.-]*[a-z0-9]+)$",
+		"min-length": 1,
+		"max-length": 64,
 		"category": "config"
 	},
 	{
@@ -19,6 +22,10 @@
 		"default": "false",
 		"required": "true",
 		"category": "config",
+		"regex": "^(?:true|false)$",
+		"min-length": 4,
+		"max-length": 5,
+		"supported-values": ["false", "true"],
 		"type": "boolean"
 	},
 	{
@@ -32,6 +39,8 @@
 		"default":"99",
 		"category":"config",
 		"regex":"^[1-9]([0-9]?)$",
+		"min-length": 1,
+		"max-length": 2,
 		"type":"text"
 	},
 	{
@@ -44,6 +53,10 @@
 		"default": "false",
 		"required": "true",
 		"category": "config",
+		"regex": "^(?:true|false)$",
+		"min-length": 4,
+		"max-length": 5,
+		"supported-values": ["false", "true"],
 		"type": "boolean"
 	}
 ]
