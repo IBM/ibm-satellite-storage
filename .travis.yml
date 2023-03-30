@@ -1,0 +1,9 @@
+language: go
+
+go:
+  - 1.19.6
+
+sudo: true
+
+script:
+  - make fmt
