@@ -5,7 +5,7 @@ metadata:
   labels:
     app.kubernetes.io/name: "netapp-ontap-san"
     app.kubernetes.io/version: "v22.10"
-    app.kubernetes.io/revision: "3"
+    app.kubernetes.io/revision: "4"
     volume-type: "block"
     storage-class-preference: "{{ storage-class-preference }}"
     is-user-defined-class: "true"
