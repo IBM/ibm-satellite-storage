@@ -4,7 +4,7 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "10",
-                "release-date": "3rd April 2023",
+                "release-date": "4th April 2023",
                 "cves": "CVE-2022-4304,CVE-2022-4450,CVE-2023-0215,CVE-2023-0286",
                 "golang": "1.19.7",
                 "ubi": "8.7-1085.1679482090",
