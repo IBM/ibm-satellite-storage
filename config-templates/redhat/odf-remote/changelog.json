@@ -3,21 +3,14 @@
         "4.12": {
             "status": "supported",
             "latest-revision": {
-                "revision": "2",
+                "revision": "1",
                 "release-date": "04 April 2023",
-                "cves": "CVE-2022-4304,CVE-2022-4450,CVE-2023-0215,CVE-2023-0286",
+                "cves": "",
                 "golang": "1.19.7",
                 "ubi": "8.7-1085.1679482090",
-                "new-features": [],
-                "fixes": []
-            },
-            "previous-revision": {
-                "revision": "1",
-                "release-date": "31 March 2023",
-                "cves": "",
-                "golang": "1.19.6",
-                "ubi": "8.7-1085",
-                "new-features": ["New release"],
+                "new-features": [
+                      "Initial release"
+                ],
                 "fixes": []
             }
         }
