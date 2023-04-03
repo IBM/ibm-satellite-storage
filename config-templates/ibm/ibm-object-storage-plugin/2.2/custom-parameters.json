@@ -29,7 +29,7 @@
         "required": "true"
     },
     {
-        "description": "Enter Object storage service provider. Supported providers are 'IBM', 'AWS' and 'Wasabi'. For other providers, you must explicitly provide the Object storage service endpoint",
+        "description": "Enter Object storage service provider. Supported providers are 'IBM', 'AWS' and 'Wasabi'. For other providers, you must explicitly provide 'Object Storage Service Endpoint'",
         "displayname": "Object Storage Service Provider",
         "name": "s3provider",
         "category": "config",
