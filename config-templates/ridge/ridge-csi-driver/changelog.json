@@ -1,18 +1,1 @@
-[
-    {
-        "1.0.0": {
-            "status": "supported",
-            "latest-revision": {
-                "revision": "1",
-                "release-date": "11 October 2022",
-                "cves": "",
-                "golang": "",
-                "ubi": "",
-                "new-features": [
-                    "Initial release"
-                ],
-                "fixes": []
-            }
-        }
-    }
-]
+[]
