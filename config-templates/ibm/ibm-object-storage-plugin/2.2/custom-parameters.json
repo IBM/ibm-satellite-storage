@@ -18,7 +18,7 @@
     },
     {
         "description": "Object storage plug-in license: Apache license Version 2.0. Set to 'true' to accept the license and install the plugin",
-        "displayname": "Object Storage Plug-in License: Apache license Version 2.0",
+        "displayname": "Object Storage Plug-in License: Apache License Version 2.0",
         "name": "license",
         "regex": "^(?:true|false)$",
         "min-length": 4,
