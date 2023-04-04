@@ -5,5 +5,11 @@ go:
 
 sudo: true
 
+before_install: 
+  - echo "Cloning repo..."
+  - git clone https://github.com/IBM/ibm-satellite-storage.git
+  - git checkout $TRAVIS_BRANCH
+  - cat test.txt
+
 script:
   - make fmt
