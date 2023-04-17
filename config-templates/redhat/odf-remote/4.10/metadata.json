@@ -31,7 +31,7 @@
     },
     {
       "name": "os-version",
-      "value": "RHEL7"
+      "value": "RHEL8"
     },
     {
       "name": "supported-envs",
