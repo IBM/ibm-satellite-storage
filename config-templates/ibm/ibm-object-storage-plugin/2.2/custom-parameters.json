@@ -17,8 +17,8 @@
         "mutable": "true"
     },
     {
-        "description": "COS plug-in License: Apache License Version 2.0. Set to 'true' to accept the license and install the plugin",
-        "displayname": "COS plug-in License: Apache License Version 2.0",
+        "description": "Object storage plug-in license: Apache license Version 2.0. Set to 'true' to accept the license and install the plugin",
+        "displayname": "Object Storage Plug-in License: Apache License Version 2.0",
         "name": "license",
         "regex": "^(?:true|false)$",
         "min-length": 4,
@@ -29,8 +29,8 @@
         "required": "true"
     },
     {
-        "description": "Enter the object storage service provider. Supported providers are 'IBM', 'AWS' and 'Wasabi'. For other providers, you must explicitly provide the COS endpoint",
-        "displayname": "Object storage service provider",
+        "description": "Enter Object storage service provider. Supported providers are 'IBM', 'AWS' and 'Wasabi'. For other providers, you must explicitly provide 'Object Storage Service Endpoint'",
+        "displayname": "Object Storage Service Provider",
         "name": "s3provider",
         "category": "config",
         "required": "false",
@@ -40,15 +40,15 @@
         "supported-values": ["IBM", "AWS", "Wasabi"]
     },
     {
-        "description": "Enter COS storage class. For more info, refer to https://ibm.biz/cos-storage-classes",
-        "displayname": "COS storage class",
+        "description": "Enter Object storage region. For more info, refer to https://ibm.biz/cos-storage-classes",
+        "displayname": "Object Storage Region",
         "name": "cos-storageclass",
         "category": "config",
         "required": "true"
     },
     {
-        "description": "COS Endpoint. Required when 's3provider' is not set. Precedence is given to 's3provider' when both are set. For more information, refer to https://ibm.biz/cos-endpoints",
-        "displayname": "COS Endpoint",
+        "description": "Object storage service endpoint. Required when 'Object Storage Service Provider' is not set. Preference is given to 'Object Storage Service Provider' when both are set. For more information, refer to https://ibm.biz/cos-endpoints",
+        "displayname": "Object Storage Service Endpoint",
         "name": "cos-endpoint",
         "category": "config",
         "required": "false"
