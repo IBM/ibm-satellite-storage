@@ -32,7 +32,7 @@ items:
               serviceAccountName: trident-kubectl-sa
               containers:
                 - name: trident-kubectl-nas
-                  image: icr.io/ibm/ibm-tridentctl:v2.0.27
+                  image: icr.io/ibm/ibm-tridentctl:v2.0.28
                   imagePullPolicy: Always
                   env:
                   - name: NAMESPACE

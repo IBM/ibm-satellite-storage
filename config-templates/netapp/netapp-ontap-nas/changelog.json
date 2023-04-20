@@ -9,7 +9,9 @@
                 "golang": "",
                 "ubi": "8.7-1107",
                 "new-features": [],
-                "fixes": []
+                "fixes": [
+                    "make aggregate usage limit optional if set to 0%"
+                ]
             },
             "previous-revision": {
                 "revision": "4",
@@ -32,7 +34,9 @@
                 "golang": "",
                 "ubi": "8.7-1107",
                 "new-features": [],
-                "fixes": []
+                "fixes": [
+                    "make aggregate usage limit optional if set to 0%"
+                ]
             },
             "previous-revision": {
                 "revision": "17",
@@ -55,7 +59,9 @@
                 "golang": "",
                 "ubi": "8.7-1107",
                 "new-features": [],
-                "fixes": []
+                "fixes": [
+                    "make aggregate usage limit optional if set to 0%"
+                ]
             },
             "previous-revision": {
                 "revision": "19",
