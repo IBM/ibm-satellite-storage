@@ -10,7 +10,7 @@
                 "ubi": "8.7-1107",
                 "new-features": [],
                 "fixes": [
-                    "make aggregate usage limit optional if set to 0%"
+                    "Ignore aggregate usage limit if set to 0%"
                 ]
             },
             "previous-revision": {
@@ -35,7 +35,7 @@
                 "ubi": "8.7-1107",
                 "new-features": [],
                 "fixes": [
-                    "make aggregate usage limit optional if set to 0%"
+                    "Ignore aggregate usage limit if set to 0%"
                 ]
             },
             "previous-revision": {
@@ -60,7 +60,7 @@
                 "ubi": "8.7-1107",
                 "new-features": [],
                 "fixes": [
-                    "make aggregate usage limit optional if set to 0%"
+                    "Ignore aggregate usage limit if set to 0%"
                 ]
             },
             "previous-revision": {
