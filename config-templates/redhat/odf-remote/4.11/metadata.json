@@ -30,10 +30,6 @@
       "value": "logo/odf-remote.svg"
     },
     {
-      "name": "os-version",
-      "value": "RHEL8"
-    },
-    {
       "name": "supported-envs",
       "value": "OpenShift Container Platform"
     },
