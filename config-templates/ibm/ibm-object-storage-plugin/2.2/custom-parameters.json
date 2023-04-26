@@ -29,7 +29,7 @@
         "required": "true"
     },
     {
-        "description": "Enter Object storage service provider. Supported providers are 'IBM', 'AWS' and 'Wasabi'. For other providers, you must explicitly provide 'Object Storage Service Endpoint'",
+        "description": "Supported providers are 'IBM', 'AWS' and 'Wasabi'. For providers other than IBM, you must explicitly provide 'Object Storage Service Endpoint'",
         "displayname": "Object Storage Service Provider",
         "name": "s3provider",
         "category": "config",
@@ -40,14 +40,14 @@
         "supported-values": ["IBM", "AWS", "Wasabi"]
     },
     {
-        "description": "Enter Object storage region. For more info, refer to https://ibm.biz/cos-storage-classes",
-        "displayname": "Object Storage Region",
+        "description": "Enter the region where your object storage is located. For IBM COS regions, see https://ibm.biz/cos-storage-classes. For Wasabi, see https://ibm.biz/wasabi-endpoints. For AWS, see https://ibm.biz/aws-endpoints.",
+        "displayname": "Object storage Region",
         "name": "cos-storageclass",
         "category": "config",
         "required": "true"
     },
     {
-        "description": "Object storage service endpoint. Required when 'Object Storage Service Provider' is not set. Preference is given to 'Object Storage Service Provider' when both are set. For more information, refer to https://ibm.biz/cos-endpoints",
+        "description": "Object storage service endpoint. Required when 'Object Storage Service Provider' is not set. Preference is given to 'Object Storage Service Provider' when both are set. For IBM COS, see to https://ibm.biz/cos-endpoints. For Wasabi, see https://ibm.biz/wasabi-endpoints. For AWS, see https://ibm.biz/aws-endpoints.",
         "displayname": "Object Storage Service Endpoint",
         "name": "cos-endpoint",
         "category": "config",
