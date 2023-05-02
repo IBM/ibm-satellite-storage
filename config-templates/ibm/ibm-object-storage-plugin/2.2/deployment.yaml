@@ -18,6 +18,7 @@ items:
       helm-chart-version: "2.2.14"  ## On every new release of the ibm-object-storage-plugin helm-chart-version should be updated with new version
       release-name: "{{{ helm-release-name }}}"
       storage-template-revision: "11" ## On every new release of the ibm-object-storage-plugin helm-chart revision should be updated to show users new version for cos-s3fs is available.
+      force-upgrade: true
       params:
         - license={{{ license }}}
         {{#cos-endpoint}}
