@@ -47,7 +47,7 @@
         "required": "true"
     },
     {
-        "description": "Object Storage service endpoint. Required when using object storage providers ther than IBM, AWS, or Wasabi. Preference is given to 'Object Storage Service Provider' when both are set.",
+        "description": "Object Storage service endpoint. Required when using object storage providers other than IBM, AWS, or Wasabi. Preference is given to 'Object Storage Service Provider' when both are set.",
         "displayname": "Object Storage service endpoint",
         "name": "cos-endpoint",
         "category": "config",
