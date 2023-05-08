@@ -29,7 +29,7 @@
         "required": "true"
     },
     {
-        "description": "Available providers are 'IBM', 'AWS' and 'Wasabi'. For providers other than these, you must provide the 'Object Storage Service Endpoint' parameter.",
+        "description": "Available providers are 'IBM', 'AWS' and 'Wasabi'. For providers other than these, you must provide the 'Object Storage service endpoint' parameter.",
         "displayname": "Object Storage provider",
         "name": "s3provider",
         "category": "config",
@@ -47,7 +47,7 @@
         "required": "true"
     },
     {
-        "description": "Object Storage service endpoint. Required when using object storage providers other than IBM, AWS, or Wasabi. Preference is given to 'Object Storage Service Provider' when both are set.",
+        "description": "Object Storage service endpoint. Required when using Object Storage providers other than IBM, AWS or Wasabi. Preference is given to 'Object Storage provider' when both are set.",
         "displayname": "Object Storage service endpoint",
         "name": "cos-endpoint",
         "category": "config",
