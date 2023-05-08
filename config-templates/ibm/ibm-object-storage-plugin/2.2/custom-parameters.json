@@ -1,15 +1,15 @@
 [
     {
-        "description": "Release name of the chart",
-        "displayname": "Helm Chart Release Name",
+        "description": "Helm chart release name.",
+        "displayname": "Release name",
         "name": "helm-release-name",
         "category": "config",
         "required": "true",
         "default": "ibm-object-storage-plugin"
     },
     {
-        "description": "Helm Chart Additional Parameters (Optional)",
-        "displayname": "Helm Chart Additional Parameters (Optional)",
+        "description": "Helm Chart additional parameters.",
+        "displayname": "Helm Chart additional parameters",
         "name": "parameters",
         "category": "config",
         "required": "false",
@@ -17,8 +17,8 @@
         "mutable": "true"
     },
     {
-        "description": "Object storage plug-in license: Apache license Version 2.0. Set to 'true' to accept the license and install the plugin",
-        "displayname": "Object Storage Plug-in License: Apache License Version 2.0",
+        "description": "Object storage plug-in license: Apache license Version 2.0. Set to 'true' to accept the license and install the plug-in.",
+        "displayname": "Object Storage plug-in license",
         "name": "license",
         "regex": "^(?:true|false)$",
         "min-length": 4,
@@ -29,8 +29,8 @@
         "required": "true"
     },
     {
-        "description": "Enter Object storage service provider. Supported providers are 'IBM', 'AWS' and 'Wasabi'. For other providers, you must explicitly provide 'Object Storage Service Endpoint'",
-        "displayname": "Object Storage Service Provider",
+        "description": "Available providers are 'IBM', 'AWS' and 'Wasabi'. For providers other than these, you must provide the 'Object Storage service endpoint' parameter.",
+        "displayname": "Object Storage provider",
         "name": "s3provider",
         "category": "config",
         "required": "false",
@@ -40,15 +40,15 @@
         "supported-values": ["IBM", "AWS", "Wasabi"]
     },
     {
-        "description": "Enter Object storage region. For more info, refer to https://ibm.biz/cos-storage-classes",
-        "displayname": "Object Storage Region",
+        "description": "Enter the region where your object storage is located. For IBM COS regions, see https://ibm.biz/cos-endpoints-list. For Wasabi, see https://ibm.biz/wasabi-endpoints. For AWS, see https://ibm.biz/aws-endpoints.",
+        "displayname": "Object Storage region",
         "name": "cos-storageclass",
         "category": "config",
         "required": "true"
     },
     {
-        "description": "Object storage service endpoint. Required when 'Object Storage Service Provider' is not set. Preference is given to 'Object Storage Service Provider' when both are set. For more information, refer to https://ibm.biz/cos-endpoints",
-        "displayname": "Object Storage Service Endpoint",
+        "description": "Object Storage service endpoint. Required when using Object Storage providers other than IBM, AWS or Wasabi. Preference is given to 'Object Storage provider' when both are set.",
+        "displayname": "Object Storage service endpoint",
         "name": "cos-endpoint",
         "category": "config",
         "required": "false"
