@@ -79,7 +79,7 @@ When you remove the storage assignment from your clusters, the following resourc
  - All objects that are created manually will remain on the cluster. For example: app pods, PVC, PVs that you created manually, must be manually removed.
   
 ```sh
-ibmcloud sat storage assignment rm --assignment <assignment-name>
+ibmcloud sat storage assignment rm --assignment <assignment-id>
 ```
 
 ## Removing your configuration
