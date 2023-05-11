@@ -3,12 +3,14 @@
         "1.11.1": {
             "status": "supported",
             "latest-revision": {
-                "revision": "2",
-                "release-date": "7 May 2023",
+                "revision": "1",
+                "release-date": "17 May 2023",
                 "cves": "",
                 "golang": "",
                 "ubi": "",
-                "new-features": [],
+                "new-features": [
+                    "Initial release"
+                ],
                 "fixes": []
             }
         }
@@ -17,12 +19,14 @@
         "1.10.0": {
             "status": "supported",
             "latest-revision": {
-                "revision": "2",
+                "revision": "1",
                 "release-date": "29 July 2022",
                 "cves": "",
                 "golang": "",
                 "ubi": "",
-                "new-features": [],
+                "new-features": [
+                    "Initial release"
+                ],
                 "fixes": []
             }
         }
