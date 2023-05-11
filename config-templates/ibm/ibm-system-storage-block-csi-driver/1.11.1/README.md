@@ -43,7 +43,7 @@ ibmcloud sat storage template get --name ibm-system-storage-block-csi-driver --v
 **Example `sat storage config create` command**
 
 ```sh
-ibmcloud sat storage config create --name <config-name> --template-name ibm-system-storage-block-csi-driver --template-version 1.11.1 -p "namespace=<namespace>" -p "name=<sc-name>" -p "space-efficiency=<space-efficiency>" -p "pool=<pool>" -p "secret-name=<secret-name>" -p "secret-namespace=<secret-namespace>" -p "fstype=<fstype>" -p "prefix=<prefix>" -p "VolumeExpansion=<VolumeExpansion>"
+ibmcloud sat storage config create --name <config-name> --template-name ibm-system-storage-block-csi-driver --template-version 1.11.1 --location <location-name/location-id> -p "namespace=<namespace>" -p "name=<sc-name>" -p "space-efficiency=<space-efficiency>" -p "pool=<pool>" -p "secret-name=<secret-name>" -p "secret-namespace=<secret-namespace>" -p "fstype=<fstype>" -p "prefix=<prefix>" -p "VolumeExpansion=<VolumeExpansion>"
 
 ```
 
