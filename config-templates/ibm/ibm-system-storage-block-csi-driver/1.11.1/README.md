@@ -51,8 +51,13 @@ ibmcloud sat storage config create --name <config-name> --template-name ibm-syst
 
 **Example `sat storage assignment create` command**
 
+***From cluster groups***
 ```sh
 ibmcloud sat storage assignment create --name <assignment-name> --group <cluster-group-name> --config <config-name>
+```
+***From individual clusters***
+```sh
+ibmcloud sat storage assignment create --name <assignment-name> --cluster <cluster-id> --config <config-name>
 ```
 
 ## Verifying your IBM block storage CSI driver storage configuration is assigned to your clusters
