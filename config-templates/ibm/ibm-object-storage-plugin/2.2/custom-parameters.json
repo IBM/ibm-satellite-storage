@@ -34,7 +34,7 @@
         "name": "s3provider",
         "category": "config",
         "required": "false",
-        "regex": "^(aws|ibm|wasabi)$",
+        "regex": "^(AWS|IBM|Wasabi)$",
         "regexFlags": "i",
         "min-length": 3,
         "max-length": 6,
