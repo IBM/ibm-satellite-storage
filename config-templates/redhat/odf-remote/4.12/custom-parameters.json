@@ -31,7 +31,7 @@
     "mutable": "true"
   },
   {
-    "description": "The node names where you want to deploy ODF. Leave this field blank to deploy ODF across all worker nodes in your cluster. The minimum number of worker nodes is 3. You can find your worker node names by running 'oc get nodes'.",
+    "description": "A comma separated list of the worker node names where you want to deploy ODF. Leave this field blank to deploy ODF across all worker nodes in your cluster. The minimum number of worker nodes is 3. You can find your worker node names by running 'oc get nodes'.",
     "displayname": "Worker node names",
     "name": "worker-nodes",
     "required": "false",
