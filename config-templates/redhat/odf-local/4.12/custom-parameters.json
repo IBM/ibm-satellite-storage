@@ -38,7 +38,7 @@
     "mutable": "true"
   },
   {
-    "description": "Set to 'true' if you want to upgrade the ODF version.",
+    "description": "If you are upgrading an existing ODF installation, set to 'true'.",
     "displayname": "Upgrade",
     "name": "odf-upgrade",
     "default": "false",
