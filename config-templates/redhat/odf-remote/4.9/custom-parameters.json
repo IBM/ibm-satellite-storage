@@ -20,7 +20,7 @@
     "required": "true"
   },
   {
-    "description": "Number of storage devices to create per node. The default value is '1', which creates 1 device per node across 3 nodes. Increase by 1 for each additional set of 3 devices. For must use cases, leave the default value of '1'.",
+    "description": "The number of storage device replicas to create. The default value is '1', which creates 1 device across 3 nodes. Increase by 1 for each additional set of 3 devices. For must use cases, leave the default value of '1'.",
     "displayname": "Number of OSD volumes",
     "name": "num-of-osd",
     "default": "1",
