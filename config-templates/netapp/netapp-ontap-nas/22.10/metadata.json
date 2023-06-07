@@ -1,6 +1,6 @@
 {
   "name": "22.10",
-  "revision": "5",
+  "revision": "6",
   "enabled": "true",
   "status": "supported",
   "description": "Netapp Ontap-NAS Driver.",

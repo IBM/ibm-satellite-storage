@@ -3,6 +3,15 @@
         "22.10": {
             "status": "supported",
             "latest-revision": {
+                "revision": "6",
+                "release-date": "14 June 2023",
+                "cves": "CVE-2022-43552, CVE-2022-3204, CVE-2023-27535, CVE-2022-36227, CVE-2022-35252",
+                "golang": "",
+                "ubi": "8.8-860",
+                "new-features": [],
+                "fixes": []
+            },
+            "previous-revision": {
                 "revision": "5",
                 "release-date": "21 April 2023",
                 "cves": "CVE-2023-0361",
@@ -12,15 +21,6 @@
                 "fixes": [
                     "Ignore aggregate usage limit if set to 0%"
                 ]
-            },
-            "previous-revision": {
-                "revision": "4",
-                "release-date": "4 April 2023",
-                "cves": "CVE-2022-4304,CVE-2022-4450,CVE-2023-0215,CVE-2023-0286",
-                "golang": "",
-                "ubi": "8.7-1085.1679482090",
-                "new-features": [],
-                "fixes": []
             }
         }
     },
@@ -28,6 +28,15 @@
         "22.04": {
             "status": "supported",
             "latest-revision": {
+                "revision": "19",
+                "release-date": "14 June 2023",
+                "cves": "CVE-2022-43552, CVE-2022-3204, CVE-2023-27535, CVE-2022-36227, CVE-2022-35252",
+                "golang": "",
+                "ubi": "8.8-860",
+                "new-features": [],
+                "fixes": []
+            },
+            "previous-revision": {
                 "revision": "18",
                 "release-date": "21 April 2023",
                 "cves": "CVE-2023-0361",
@@ -37,15 +46,6 @@
                 "fixes": [
                     "Ignore aggregate usage limit if set to 0%"
                 ]
-            },
-            "previous-revision": {
-                "revision": "17",
-                "release-date": "4 April 2023",
-                "cves": "CVE-2022-4304,CVE-2022-4450,CVE-2023-0215,CVE-2023-0286",
-                "golang": "",
-                "ubi": "8.7-1085.1679482090",
-                "new-features": [],
-                "fixes": []
             }
         }
     },
@@ -53,6 +53,15 @@
         "21.04": {
             "status": "supported",
             "latest-revision": {
+                "revision": "22",
+                "release-date": "14 June 2023",
+                "cves": "CVE-2022-43552, CVE-2022-3204, CVE-2023-27535, CVE-2022-36227, CVE-2022-35252",
+                "golang": "",
+                "ubi": "8.8-860",
+                "new-features": [],
+                "fixes": []
+            },
+            "previous-revision": {
                 "revision": "21",
                 "release-date": "21 April 2023",
                 "cves": "CVE-2023-0361",
@@ -62,15 +71,6 @@
                 "fixes": [
                     "Ignore aggregate usage limit if set to 0%"
                 ]
-            },
-            "previous-revision": {
-                "revision": "20",
-                "release-date": "4 April 2023",
-                "cves": "CVE-2022-4304,CVE-2022-4450,CVE-2023-0215,CVE-2023-0286",
-                "golang": "",
-                "ubi": "8.7-1085.1679482090",
-                "new-features": [],
-                "fixes": []
             }
         }
     },
