@@ -1,17 +1,13 @@
 {
-  "name": "1.5.0",
-  "revision": "2",
+  "name": "1.11.1",
+  "revision": "1",
   "enabled": "true",
-  "status": "deprecated",
-  "description": "IBM System Storage Block CSI driver version 1.5.0",
+  "status": "supported",
+  "description": "IBM System Storage Block CSI driver version 1.11.1",
   "tags": [
     {
       "name": "provider",
       "value": "IBM"
-    },
-    {
-      "name": "storage_type",
-      "value": "block"
     },
     {
       "name": "offering-name",
@@ -23,7 +19,7 @@
     },
     {
       "name": "provider-url",
-      "value": "IBM knowledge center: https://www.ibm.com/docs/en/blockstg-csi-driver/1.5.0"
+      "value": "IBM knowledge center: https://www.ibm.com/docs/en/stg-block-csi-driver"
     },
     {
       "name": "support-url",
@@ -35,15 +31,15 @@
     },
     {
       "name": "provider-logo",
-      "value": "logo/ibm-system-storage-block-csi-driver.png"
+      "value": "logo/ibm-system-storage-block-csi-driver.svg"
     },
     {
       "name": "supported-envs",
       "value": "IBM"
     },
     {
-      "name": "supported-k8s-versions",
-      "value": "1.19,1.20"
+      "name": "supported-ocp-versions",
+      "value": "4.10,4.11,4.12,4.13"
     },
     {
       "name": "volume-type",
@@ -69,7 +65,7 @@
       "name": "volume-expansion",
       "value": "true"
     },
-        {
+    {
       "name": "volume-clone",
       "value": "true"
     },

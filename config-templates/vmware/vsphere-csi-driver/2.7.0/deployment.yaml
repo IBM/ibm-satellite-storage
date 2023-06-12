@@ -535,6 +535,18 @@ items:
       - update
       - watch
     - apiGroups:
+      - admissionregistration.k8s.io
+      resources:
+      - validatingwebhookconfigurations
+      verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+    - apiGroups:
       - vdo.vmware.com
       resources:
       - compatibilityconfig/finalizers
@@ -783,7 +795,7 @@ items:
                 configMapKeyRef:
                   key: auto-upgrade
                   name: compat-matrix-config
-            image: projects.registry.vmware.com/vsphere_kubernetes_driver_operator/vdo:0.5.0
+            image: projects.registry.vmware.com/vsphere_kubernetes_driver_operator/vdo:0.6.0
             imagePullPolicy: IfNotPresent
             livenessProbe:
               httpGet:
