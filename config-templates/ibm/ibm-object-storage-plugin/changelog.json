@@ -3,6 +3,16 @@
         "2.2": {
             "status": "supported",
             "latest-revision": {
+                "revision": "12",
+                "release-date": "19 June 2023",
+                "cves": "CVE-2022-43552,CVE-2022-3204,CVE-2023-27535,CVE-2022-36227,CVE-2022-35252,CVE-2023-29403,CVE-2023-29404,CVE-2023-29405,CVE-2023-29402,CVE-2023-29400,CVE-2023-24540,CVE-2023-24539,CVE-2023-29401,CVE-2023-26125,CVE-2022-3172",
+                "golang": "1.19.10",
+                "ubi": "8.8-860",
+                "new-features": [],
+                "fixes": []
+            },
+            "status": "supported",
+            "latest-revision": {
                 "revision": "11",
                 "release-date": "04 May 2023",
                 "cves": "CVE-2023-24536,CVE-2023-24537,CVE-2023-24538,CVE-2023-0361",
@@ -12,17 +22,6 @@
                   "Enable PVC metrics export to node stats"
                 ],
                 "fixes": []
-            },
-            "previous-revision": {
-              "revision": "10",
-              "release-date": "04 April 2023",
-              "cves": "CVE-2022-4304,CVE-2022-4450,CVE-2023-0215,CVE-2023-0286",
-              "golang": "1.19.7",
-              "ubi": "8.7-1085.1679482090",
-              "new-features": [],
-              "fixes": [
-                "Fix for helm chart installation failing on regions with no Regional COS endpoint"
-              ]
             }
         }
     }
