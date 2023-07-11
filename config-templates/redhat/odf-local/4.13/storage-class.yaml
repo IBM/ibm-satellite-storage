@@ -1,0 +1,139 @@
+apiVersion: v1
+kind: List
+items:
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-ocs-cephrbd-gold
+      labels:
+        app.kubernetes.io/name: "redhat-odf-local"
+        app.kubernetes.io/version: "v4.13.0"
+        app.kubernetes.io/revision: "1"
+        volume-type: "block"
+        storage-class-preference: "1"
+        is-user-defined-class: "false"
+    parameters:
+      clusterID: openshift-storage
+      csi.storage.k8s.io/controller-expand-secret-name: rook-csi-rbd-provisioner
+      csi.storage.k8s.io/controller-expand-secret-namespace: openshift-storage
+      csi.storage.k8s.io/fstype: ext4
+      csi.storage.k8s.io/node-stage-secret-name: rook-csi-rbd-node
+      csi.storage.k8s.io/node-stage-secret-namespace: openshift-storage
+      csi.storage.k8s.io/provisioner-secret-name: rook-csi-rbd-provisioner
+      csi.storage.k8s.io/provisioner-secret-namespace: openshift-storage
+      imageFeatures: layering
+      imageFormat: "2"
+      pool: ocs-storagecluster-cephblockpool
+    provisioner: openshift-storage.rbd.csi.ceph.com
+    reclaimPolicy: Delete
+    volumeBindingMode: Immediate
+    allowVolumeExpansion: true
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-ocs-cephfs-gold
+      labels:
+        app.kubernetes.io/name: "redhat-odf-local"
+        app.kubernetes.io/version: "v4.13.0"
+        app.kubernetes.io/revision: "1"
+        volume-type: "file"
+        storage-class-preference: "1"
+        is-user-defined-class: "false"
+    parameters:
+      clusterID: openshift-storage
+      csi.storage.k8s.io/controller-expand-secret-name: rook-csi-cephfs-provisioner
+      csi.storage.k8s.io/controller-expand-secret-namespace: openshift-storage
+      csi.storage.k8s.io/node-stage-secret-name: rook-csi-cephfs-node
+      csi.storage.k8s.io/node-stage-secret-namespace: openshift-storage
+      csi.storage.k8s.io/provisioner-secret-name: rook-csi-cephfs-provisioner
+      csi.storage.k8s.io/provisioner-secret-namespace: openshift-storage
+      fsName: ocs-storagecluster-cephfilesystem
+    provisioner: openshift-storage.cephfs.csi.ceph.com
+    reclaimPolicy: Delete
+    volumeBindingMode: Immediate
+    allowVolumeExpansion: true
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-ocs-cephrgw-gold
+      labels:
+        app.kubernetes.io/name: "redhat-odf-local"
+        app.kubernetes.io/version: "v4.13.0"
+        app.kubernetes.io/revision: "1"
+        volume-type: "object"
+        storage-class-preference: "2"
+        is-user-defined-class: "false"
+    parameters:
+      objectStoreName: ocs-storagecluster-cephobjectstore
+      objectStoreNamespace: openshift-storage
+      region: us-east-1
+    provisioner: openshift-storage.ceph.rook.io/bucket
+    reclaimPolicy: Delete
+    volumeBindingMode: Immediate
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-ocs-noobaa-gold
+      labels:
+        app.kubernetes.io/name: "redhat-odf-local"
+        app.kubernetes.io/version: "v4.13.0"
+        app.kubernetes.io/revision: "1"
+        volume-type: "object"
+        storage-class-preference: "1"
+        is-user-defined-class: "false"
+    parameters:
+      bucketclass: noobaa-default-bucket-class
+    provisioner: openshift-storage.noobaa.io/obc
+    reclaimPolicy: Delete
+    volumeBindingMode: Immediate
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-ocs-cephrbd-gold-metro
+      labels:
+        app.kubernetes.io/name: "redhat-odf-local"
+        app.kubernetes.io/version: "v4.13.0"
+        app.kubernetes.io/revision: "1"
+        volume-type: "block"
+        storage-class-preference: "2"
+        is-user-defined-class: "false"
+    parameters:
+      clusterID: openshift-storage
+      csi.storage.k8s.io/controller-expand-secret-name: rook-csi-rbd-provisioner
+      csi.storage.k8s.io/controller-expand-secret-namespace: openshift-storage
+      csi.storage.k8s.io/fstype: ext4
+      csi.storage.k8s.io/node-stage-secret-name: rook-csi-rbd-node
+      csi.storage.k8s.io/node-stage-secret-namespace: openshift-storage
+      csi.storage.k8s.io/provisioner-secret-name: rook-csi-rbd-provisioner
+      csi.storage.k8s.io/provisioner-secret-namespace: openshift-storage
+      imageFeatures: layering
+      imageFormat: "2"
+      pool: ocs-storagecluster-cephblockpool
+    provisioner: openshift-storage.rbd.csi.ceph.com
+    reclaimPolicy: Delete
+    volumeBindingMode: WaitForFirstConsumer
+    allowVolumeExpansion: true
+  - apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: sat-ocs-cephfs-gold-metro
+      labels:
+        app.kubernetes.io/name: "redhat-odf-local"
+        app.kubernetes.io/version: "v4.13.0"
+        app.kubernetes.io/revision: "1"
+        volume-type: "file"
+        storage-class-preference: "2"
+        is-user-defined-class: "false"
+    parameters:
+      clusterID: openshift-storage
+      csi.storage.k8s.io/controller-expand-secret-name: rook-csi-cephfs-provisioner
+      csi.storage.k8s.io/controller-expand-secret-namespace: openshift-storage
+      csi.storage.k8s.io/node-stage-secret-name: rook-csi-cephfs-node
+      csi.storage.k8s.io/node-stage-secret-namespace: openshift-storage
+      csi.storage.k8s.io/provisioner-secret-name: rook-csi-cephfs-provisioner
+      csi.storage.k8s.io/provisioner-secret-namespace: openshift-storage
+      fsName: ocs-storagecluster-cephfilesystem
+    provisioner: openshift-storage.cephfs.csi.ceph.com
+    reclaimPolicy: Delete
+    volumeBindingMode: WaitForFirstConsumer
+    allowVolumeExpansion: true
