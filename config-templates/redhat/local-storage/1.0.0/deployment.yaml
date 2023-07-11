@@ -40,7 +40,7 @@ items:
                   operator: In
                   values:
                     - "{{ file-nodes-label-value }}"
-        storageClassName: "sat-local-file-{{ local-volume-name }}"
+        storageClassName: "sat-local-file-{{ local-volume-name }}-gold"
         volumeMode: Filesystem
         fsType: "{{ fstype }}"
     {{/auto-discover-devices-file}}
@@ -59,7 +59,7 @@ items:
                           values:
                           - "{{ file-nodes-label-value }}"
           storageClassDevices:
-              - storageClassName: "sat-local-file-{{ local-volume-name }}"
+              - storageClassName: "sat-local-file-{{ local-volume-name }}-gold"
                 volumeMode: Filesystem
                 fsType: "{{ fstype }}"
                 devicePaths:
@@ -100,7 +100,7 @@ items:
                   operator: In
                   values:
                     - "{{ block-nodes-label-value }}"
-        storageClassName: "sat-local-block-{{ local-volume-name }}"
+        storageClassName: "sat-local-block-{{ local-volume-name }}-gold"
         volumeMode: Block
     {{/auto-discover-devices-block}}
     {{^auto-discover-devices-block}}
@@ -118,7 +118,7 @@ items:
                   values:
                     - "{{ block-nodes-label-value }}"
         storageClassDevices:
-          - storageClassName: "sat-local-block-{{ local-volume-name }}"
+          - storageClassName: "sat-local-block-{{ local-volume-name }}-gold"
             volumeMode: Block
             devicePaths:
               {{#block-devicepath}}

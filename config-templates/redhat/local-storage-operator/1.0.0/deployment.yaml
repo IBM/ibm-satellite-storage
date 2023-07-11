@@ -42,11 +42,6 @@ items:
           template-name: "local-storage-operator"
           template-version: "1.0.0"
           template-namespace: "local-storage"
-          dependent-resources:
-          - kind: LocalVolume
-            namespace: local-storage
-          - kind: LocalVolumeSet
-            namespace: local-storage
-  
+
 
 
