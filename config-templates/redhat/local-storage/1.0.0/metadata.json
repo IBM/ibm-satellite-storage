@@ -1,37 +1,46 @@
 {
-  "name": "4.8",
-  "revision": "4",
+  "name": "1.0.0",
+  "revision": "1",
   "enabled": "true",
-  "status": "deprecated",
+  "status": "supported",
   "description": "Persistent storage using local volumes",
   "tags": [
     {
+      "name": "template-dependency",
+      "value": "local-storage-operator"
+    }, {
+      "name": "template-dependency-version",
+      "value": "1.0.0"
+    }, {
+      "name": "template-dependency-description",
+      "value": "Install the local storage operator before installing the local storage file and/or block driver."
+    }, {
       "name": "provider",
       "value": "Red Hat"
     }, {
       "name": "offering-name",
-      "value": "local-volume-block"
+      "value": "local-storage"
     }, {
       "name": "offering-type",
       "value": "non-sds"
     }, {
       "name": "provider-url",
-      "value": "https://docs.openshift.com/container-platform/4.8/storage/persistent_storage/persistent-storage-local.html"
+      "value": "https://docs.openshift.com/container-platform/4.11/storage/persistent_storage/persistent-storage-local.html"
     }, {
       "name": "support-msg",
       "value": "For support contact Red Hat"
     }, {
       "name": "provider-logo",
-      "value": "logo/local-volume-block.svg"
+      "value": "logo/local-storage.svg"
     }, {
       "name": "supported-envs",
       "value": "AWS,IBM"
     }, {
       "name": "supported-ocp-versions",
-      "value": "4.8"
+      "value": "4.9,4.10,4.11,4.12,4.13"
     }, {
       "name": "volume-type",
-      "value": "block"
+      "value": "file,block"
     }, {
       "name": "volume-encryption-at-rest",
       "value": "false"
@@ -49,7 +58,7 @@
       "value": "false"
     }, {
       "name": "storageclass",
-      "value": "gold"
+      "value": ""
     }
   ]
 }

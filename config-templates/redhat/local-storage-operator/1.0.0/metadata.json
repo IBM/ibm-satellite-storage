@@ -1,55 +1,55 @@
 {
-  "name": "4.8",
-  "revision": "4",
+  "name": "1.0.0",
+  "revision": "1",
   "enabled": "true",
-  "status": "deprecated",
-  "description": "Persistent storage using local volumes",
+  "status": "supported",
+  "description": "Local Storage Operator",
   "tags": [
     {
       "name": "provider",
       "value": "Red Hat"
     }, {
       "name": "offering-name",
-      "value": "local-volume-block"
+      "value": "local-storage-operator"
     }, {
       "name": "offering-type",
       "value": "non-sds"
     }, {
       "name": "provider-url",
-      "value": "https://docs.openshift.com/container-platform/4.8/storage/persistent_storage/persistent-storage-local.html"
+      "value": "https://docs.openshift.com/container-platform/4.11/storage/persistent_storage/persistent-storage-local.html"
     }, {
       "name": "support-msg",
       "value": "For support contact Red Hat"
     }, {
       "name": "provider-logo",
-      "value": "logo/local-volume-block.svg"
+      "value": "logo/local-storage-operator.svg"
     }, {
       "name": "supported-envs",
       "value": "AWS,IBM"
     }, {
       "name": "supported-ocp-versions",
-      "value": "4.8"
+      "value": "4.9,4.10,4.11,4.12,4.13"
     }, {
       "name": "volume-type",
-      "value": "block"
+      "value": ""
     }, {
       "name": "volume-encryption-at-rest",
-      "value": "false"
+      "value": ""
     }, {
       "name": "volume-encryption-in-transit",
-      "value": "false"
+      "value": ""
     }, {
       "name": "volume-snapshot",
-      "value": "false"
+      "value": ""
     }, {
       "name": "volume-availability",
-      "value": "zonal"
+      "value": ""
     }, {
       "name": "volume-expansion",
-      "value": "false"
+      "value": ""
     }, {
       "name": "storageclass",
-      "value": "gold"
+      "value": ""
     }
   ]
 }
