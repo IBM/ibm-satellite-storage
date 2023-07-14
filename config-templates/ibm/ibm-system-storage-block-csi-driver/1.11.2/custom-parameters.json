@@ -22,7 +22,8 @@
     "displayname": "Secret Management Address",
     "name": "secret-management-address",
     "required": "true",
-    "category": "secret"
+    "category": "secret",
+    "type": "string"
   },
   {
     "description": "The username to use to authenticate to the management server.",
