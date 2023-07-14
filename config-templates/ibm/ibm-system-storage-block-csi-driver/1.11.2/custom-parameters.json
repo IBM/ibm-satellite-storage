@@ -30,7 +30,8 @@
     "displayname": "Secret Username",
     "name": "secret-username",
     "required": "true",
-    "category": "secret"
+    "category": "secret",
+    "type": "string"
   },
   {
     "description": "The password to use to authenticate to the management server.",
