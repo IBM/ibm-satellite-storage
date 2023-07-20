@@ -205,6 +205,7 @@
     "max-length": 5,
     "supported-values": ["true", "false"],
     "type": "boolean",
-    "required": "true"
+    "required": "true",
+    "mutable": "true"
   }
 ]
