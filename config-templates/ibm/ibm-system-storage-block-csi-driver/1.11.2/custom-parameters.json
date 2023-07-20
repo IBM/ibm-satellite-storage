@@ -1,0 +1,45 @@
+[
+  {
+    "description": "The namespace where you want to create the deployment.",
+    "displayname": "Namespace",
+    "name": "namespace",
+    "default": "default",
+    "required": "true",
+    "category": "config"
+  },
+  {
+    "description": "The name of the secret to create.",
+    "displayname": "Secret Name",
+    "name": "secret-name",
+    "required": "true",
+    "regex": "^([a-z0-9]|[a-z0-9][a-z0-9.-]*[a-z0-9]+)$",
+    "min-length": 1,
+    "max-length": 64,
+    "category": "config"
+  },
+  {
+    "description": "The address of the management server. This could be an IP address or a URL. For example: 'example-cluster.xiv.ibm.com'.",
+    "displayname": "Secret Management Address",
+    "name": "secret-management-address",
+    "required": "true",
+    "category": "secret",
+    "type": "string"
+  },
+  {
+    "description": "The username to use to authenticate to the management server.",
+    "displayname": "Secret Username",
+    "name": "secret-username",
+    "required": "true",
+    "category": "secret",
+    "type": "string"
+  },
+  {
+    "description": "The password to use to authenticate to the management server.",
+    "displayname": "Secret Password",
+    "name": "secret-password",
+    "required": "true",
+    "mutable": "true",
+    "obfuscate": "true",
+    "category": "secret"
+  }
+]
