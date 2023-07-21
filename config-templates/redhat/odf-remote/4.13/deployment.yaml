@@ -470,6 +470,7 @@ items:
       hpcsTokenUrl: "{{{ kms-token-url }}}"
       {{/kms-encryption}}
       ignoreNoobaa: "{{ ignore-noobaa }}"
+      encryptionInTransit: "{{ encryption-intransit }}"
   - apiVersion: satstorage.ibm.com/v1
     kind: SatStorageCleanup
     metadata:
