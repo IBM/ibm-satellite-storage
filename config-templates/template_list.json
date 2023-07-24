@@ -67,7 +67,7 @@
     "name": "odf-local",
     "displayname": "OpenShift Data Foundation for local devices",
     "Description": "OpenShift Data Foundation for local devices.",
-    "default-version": "4.10",
+    "default-version": "4.11",
     "enabled": "true",
     "provider": "redhat"
   },
@@ -75,7 +75,7 @@
     "name": "odf-remote",
     "displayname": "OpenShift Data Foundation for remote storage",
     "Description": "OpenShift Data Foundation for remote storage.",
-    "default-version": "4.10",
+    "default-version": "4.11",
     "enabled": "true",
     "provider": "redhat"
   },
@@ -83,7 +83,7 @@
     "name": "local-volume-block",
     "displayname": "Local Storage Operator - Block",
     "Description": "Local Storage Operator - Block.",
-    "default-version": "4.10",
+    "default-version": "4.11",
     "enabled": "true",
     "provider": "redhat"
   },
@@ -91,7 +91,7 @@
     "name": "local-volume-file",
     "displayname": "Local Storage Operator - File",
     "Description": "Local Storage Operator - File.",
-    "default-version": "4.10",
+    "default-version": "4.11",
     "enabled": "true",
     "provider": "redhat"
   },

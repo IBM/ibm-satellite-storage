@@ -1,0 +1,483 @@
+apiVersion: v1
+kind: List
+metadata:
+  name: ibm-openshift-container-storage
+  namespace: kube-system
+  annotations:
+    revision: 1
+items:
+  - apiVersion: apiextensions.k8s.io/v1
+    kind: CustomResourceDefinition
+    metadata:
+      annotations:
+        controller-gen.kubebuilder.io/version: v0.12.0
+      name: ocsclusters.ocs.ibm.io
+      labels:
+        deploy.razee.io/Reconcile: "false"
+    spec:
+      group: ocs.ibm.io
+      names:
+        kind: OcsCluster
+        listKind: OcsClusterList
+        plural: ocsclusters
+        singular: ocscluster
+      scope: Cluster
+      versions:
+      - name: v1
+        schema:
+          openAPIV3Schema:
+            description: OcsCluster is the Schema for the ocsclusters API
+            properties:
+              apiVersion:
+                description: 'APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+                type: string
+              kind:
+                description: 'Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+                type: string
+              metadata:
+                type: object
+              spec:
+                description: OcsClusterSpec defines the desired state of OcsCluster
+                properties:
+                  autoDiscoverDevices:
+                    default: false
+                    type: boolean
+                  billingType:
+                    default: advanced
+                    enum:
+                    - essentials
+                    - advanced
+                    type: string
+                  clusterEncryption:
+                    default: false
+                    type: boolean
+                  encryptionInTransit:
+                    default: false
+                    type: boolean
+                  hpcsBaseUrl:
+                    type: string
+                  hpcsEncryption:
+                    default: false
+                    type: boolean
+                  hpcsInstanceId:
+                    type: string
+                  hpcsSecretName:
+                    type: string
+                  hpcsServiceName:
+                    type: string
+                  hpcsTokenUrl:
+                    type: string
+                  ignoreNoobaa:
+                    default: false
+                    type: boolean
+                  numOfOsd:
+                    default: 1
+                    type: integer
+                  ocsUpgrade:
+                    default: false
+                    type: boolean
+                  osdStorageClassName:
+                    type: string
+                  osdDevicePaths:
+                    items:
+                      type: string
+                    type: array
+                  osdSize:
+                    type: string
+                  workerNodes:
+                    items:
+                      type: string
+                    type: array
+                required:
+                - osdSize
+                - osdStorageClassName
+                type: object
+              status:
+                description: OcsClusterStatus defines the observed state of OcsCluster
+                properties:
+                  storageClusterStatus:
+                    description: 'INSERT ADDITIONAL STATUS FIELD - define observed state of cluster Important: Run "make" to regenerate code after modifying this file'
+                    type: string
+                type: object
+            type: object
+        served: true
+        storage: true
+        subresources:
+          status: {}
+    status:
+      acceptedNames:
+        kind: ""
+        plural: ""
+      conditions: []
+      storedVersions: []
+  - apiVersion: rbac.authorization.k8s.io/v1
+    kind: Role
+    metadata:
+      labels:
+        addonmanager.kubernetes.io/mode: Reconcile
+      name: ibm-ocs-operator-leader-election-role
+      namespace: kube-system
+    rules:
+    - apiGroups:
+      - ""
+      resources:
+      - configmaps
+      verbs:
+      - get
+      - list
+      - watch
+      - create
+      - update
+      - patch
+      - delete
+    - apiGroups:
+      - ""
+      resources:
+      - configmaps/status
+      verbs:
+      - get
+      - update
+      - patch
+    - apiGroups:
+      - ""
+      resources:
+      - events
+      verbs:
+      - create
+      - patch
+    - apiGroups:
+      - coordination.k8s.io
+      resources:
+      - leases
+      verbs:
+      - get
+      - create
+      - update
+  - apiVersion: rbac.authorization.k8s.io/v1
+    kind: ClusterRole
+    metadata:
+      creationTimestamp: null
+      labels:
+        addonmanager.kubernetes.io/mode: Reconcile
+      name: ibm-ocs-operator-manager-role
+    rules:
+    - apiGroups:
+      - ""
+      resources:
+      - namespaces
+      verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+    - apiGroups:
+      - ""
+      resources:
+      - persistentvolumes
+      verbs:
+      - deletecollection
+    - apiGroups:
+      - ""
+      resources:
+      - secrets
+      verbs:
+      - delete
+      - get
+      - list
+      - watch
+    - apiGroups:
+      - apps
+      resources:
+      - deployments
+      verbs:
+      - get
+      - list
+      - watch
+    - apiGroups:
+      - ""
+      resources:
+      - configmaps
+      verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+    - apiGroups:
+      - ""
+      resources:
+      - nodes
+      verbs:
+      - get
+      - list
+      - patch
+      - watch
+    - apiGroups:
+      - local.storage.openshift.io
+      resources:
+      - localvolumediscoveries
+      verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+    - apiGroups:
+      - local.storage.openshift.io
+      resources:
+      - localvolumes
+      verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+    - apiGroups:
+      - local.storage.openshift.io
+      resources:
+      - localvolumesets
+      verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+    - apiGroups:
+      - ocs.ibm.io
+      resources:
+      - ocsclusters
+      verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+    - apiGroups:
+      - ocs.ibm.io
+      resources:
+      - ocsclusters/status
+      verbs:
+      - get
+      - patch
+      - update
+    - apiGroups:
+      - ocs.openshift.io
+      resources:
+      - storageclusters
+      verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+    - apiGroups:
+      - odf.openshift.io
+      resources:
+      - storagesystems
+      verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+    - apiGroups:
+      - operator.openshift.io
+      resources:
+      - consoles
+      verbs:
+      - get
+      - list
+      - patch
+      - watch
+    - apiGroups:
+      - operators.coreos.com
+      resources:
+      - operatorgroups
+      - subscriptions
+      verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+  - apiVersion: rbac.authorization.k8s.io/v1
+    kind: RoleBinding
+    metadata:
+      labels:
+        addonmanager.kubernetes.io/mode: Reconcile
+      name: ibm-ocs-operator-leader-election-rolebinding
+      namespace: kube-system
+    roleRef:
+      apiGroup: rbac.authorization.k8s.io
+      kind: Role
+      name: ibm-ocs-operator-leader-election-role
+    subjects:
+    - kind: ServiceAccount
+      name: default
+      namespace: kube-system
+  - apiVersion: rbac.authorization.k8s.io/v1
+    kind: ClusterRoleBinding
+    metadata:
+      labels:
+        addonmanager.kubernetes.io/mode: Reconcile
+      name: ibm-ocs-operator-manager-rolebinding
+    roleRef:
+      apiGroup: rbac.authorization.k8s.io
+      kind: ClusterRole
+      name: ibm-ocs-operator-manager-role
+    subjects:
+    - kind: ServiceAccount
+      name: default
+      namespace: kube-system
+  - apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      labels:
+        addonmanager.kubernetes.io/mode: Reconcile
+        name: ocs-controller
+      name: ibm-ocs-operator-controller-manager
+      namespace: kube-system
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          name: ocs-controller
+      template:
+        metadata:
+          labels:
+            name: ocs-controller
+        spec:
+          priorityClassName: system-cluster-critical
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
+          containers:
+          - args:
+            - --enable-leader-election
+            command:
+            - /manager
+            env:
+            - name: CHANNEL
+              value: stable-4.13
+            - name: WATCH_NAMESPACE
+              value: openshift-storage
+            - name: ADDON_CONFIGMAP_NAMESPACE
+              value: kube-system
+            image: "icr.io/obs/ibm-ocs-operator:v4.13.1"
+            imagePullPolicy: Always
+            name: manager
+            securityContext:
+              privileged: false
+              allowPrivilegeEscalation: false
+            resources:
+              limits:
+                cpu: 500m
+                memory: 500Mi
+              requests:
+                cpu: 100m
+                memory: 100Mi
+          terminationGracePeriodSeconds: 10
+  {{#ibm-cos-access-key}}
+  - apiVersion: v1
+    kind: Namespace
+    metadata:
+      labels:
+        openshift.io/cluster-monitoring: "true"
+        deploy.razee.io/Reconcile: "false"
+      name: openshift-storage
+  - apiVersion: v1
+    kind: Secret
+    metadata:
+      name: ibm-cloud-cos-creds
+      namespace: openshift-storage
+    type: Opaque
+    stringData:
+      IBM_COS_Endpoint: {{{ ibm-cos-endpoint }}}
+      IBM_COS_Location: {{ ibm-cos-location }}
+    data:
+      IBM_COS_ACCESS_KEY_ID: {{{ ibm-cos-access-key }}}
+      IBM_COS_SECRET_ACCESS_KEY: {{{ ibm-cos-secret-key }}}
+  {{/ibm-cos-access-key}}
+  {{#kms-root-key}}
+    {{^ibm-cos-access-key}}
+  - apiVersion: v1
+    kind: Namespace
+    metadata:
+      labels:
+        openshift.io/cluster-monitoring: "true"
+        deploy.razee.io/Reconcile: "false"
+      name: openshift-storage
+      {{/ibm-cos-access-key}}
+  - apiVersion: v1
+    kind: Secret
+    metadata:
+      name: ibm-kms-creds
+      namespace: openshift-storage
+    type: Opaque
+    data:
+      IBM_KP_CUSTOMER_ROOT_KEY: {{{ kms-root-key }}}
+      IBM_KP_SERVICE_API_KEY: {{{ kms-api-key }}}
+  {{/kms-root-key}}
+  - apiVersion: v1
+    kind: Secret
+    metadata:
+      name: storage-secret-store
+      namespace: kube-system
+    type: Opaque
+    data:
+      iam_api_key: {{{ iam-api-key }}}
+  - apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: managed-addon-options-osc
+      namespace: kube-system
+    data:
+      odfDeploy: "true"
+      osdStorageClassName: {{ osd-storage-class }}
+      osdSize: {{ osd-size }}
+      numOfOsd: "{{ num-of-osd }}"
+      ocsUpgrade: "{{ odf-upgrade }}"
+      clusterEncryption: "{{ cluster-encryption }}"
+      {{#worker-nodes}}
+      workerNodes: {{{ worker-nodes }}}
+      {{/worker-nodes}}
+      billingType: "{{ billing-type }}"
+      hpcsEncryption: "{{ kms-encryption }}"
+      {{#kms-encryption}}
+      hpcsServiceName: "{{ kms-instance-name }}"
+      hpcsInstanceId: "{{ kms-instance-id }}"
+      hpcsSecretName: "ibm-kms-creds"
+      hpcsBaseUrl: "{{{ kms-base-url }}}"
+      hpcsTokenUrl: "{{{ kms-token-url }}}"
+      {{/kms-encryption}}
+      ignoreNoobaa: "{{ ignore-noobaa }}"
+      encryptionInTransit: "{{ encryption-intransit }}"
+  - apiVersion: satstorage.ibm.com/v1
+    kind: SatStorageCleanup
+    metadata:
+      name: satstoragecleanup-odf-remote
+      namespace: "ibm-satellite-storage"
+    spec:
+      template-name: "odf-remote"
+      template-version: "4.13"
+      template-namespace: "kube-system"
+      perform-cleanup: {{ perform-cleanup }}

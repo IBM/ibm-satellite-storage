@@ -1,0 +1,211 @@
+[
+  {
+    "description": "Automatically discover and use the storage volumes on your worker nodes. If set to `false` then you must explicitly provide the volumes IDs.",
+    "displayname": "Automatic storage volume discovery",
+    "name": "auto-discover-devices",
+    "default": "true",
+    "regex": "^(?:true|false)$",
+    "min-length": 4,
+    "max-length": 5,
+    "supported-values": ["true", "false"],
+    "type": "boolean",
+    "required": "true"
+  },
+  {
+    "description": "The local storage device path. Example: '/dev/sdc'. Required when 'auto-discover-devices' is set to 'false'.",
+    "displayname": "OSD volume IDs",
+    "name": "osd-device-path",
+    "place-holder": "/dev/sdc,/dev/sde",
+    "required": "false",
+    "mutable": "true"
+  },
+  {
+    "description": "The number of storage device replicas to create. The default value is '1', which creates 1 device across 3 nodes. Increase by 1 for each additional set of 3 devices. For must use cases, leave the default value of '1'.",
+    "displayname": "Number of OSD volumes",
+    "name": "num-of-osd",
+    "default": "1",
+    "regex": "^[1-9]([0-9]?)$",
+    "min-length": 1,
+    "max-length": 2,
+    "required": "true",
+    "mutable": "true"
+  },
+  {
+    "description": "A comma separated list of the worker node names where you want to deploy ODF. Leave this field blank to deploy ODF across all worker nodes in your cluster. The minimum number of worker nodes is 3. You can find your worker node names by running 'oc get nodes'.",
+    "displayname": "Worker node names",
+    "name": "worker-nodes",
+    "required": "false",
+    "mutable": "true"
+  },
+  {
+    "description": "If you are upgrading an existing ODF installation, set to 'true'.",
+    "displayname": "Upgrade",
+    "name": "odf-upgrade",
+    "default": "false",
+    "regex": "^(?:true|false)$",
+    "min-length": 4,
+    "max-length": 5,
+    "supported-values": ["true", "false"],
+    "required": "true",
+    "type": "boolean",
+    "mutable": "true"
+  },
+  {
+    "description": "The billing type you want to use. Choose from 'essentials' or 'advanced'.",
+    "displayname": "Billing type",
+    "name": "billing-type",
+    "default": "advanced",
+    "regex": "^(?:essentials|advanced)$",
+    "min-length": 8,
+    "max-length": 10,
+    "supported-values": ["essentials", "advanced"],
+    "required": "true"
+  },
+  {
+    "description": "The IBM COS regional public endpoint.",
+    "displayname": "IBM COS endpoint",
+    "name": "ibm-cos-endpoint",
+    "place-holder": "https://s3.us-east.cloud-object-storage.appdomain.cloud",
+    "required": "false"
+  },
+  {
+    "description": "The location constraint that you want to use when creating your COS bucket. For example: 'us-east-standard'.",
+    "displayname": "IBM COS location constraint",
+    "name": "ibm-cos-location",
+    "place-holder": "us-east-standard",
+    "required": "false"
+  },
+  {
+    "description": "Your IBM COS HMAC access key ID .",
+    "displayname": "Access key ID",
+    "name": "ibm-cos-access-key",
+    "category": "secret",
+    "required": "false",
+    "obfuscate": "true",
+    "mutable": "true"
+  },
+  {
+    "description": "Your IBM COS HMAC secret access key.",
+    "displayname": "Secret access key",
+    "name": "ibm-cos-secret-key",
+    "category": "secret",
+    "required": "false",
+    "obfuscate": "true",
+    "mutable": "true"
+  },
+  {
+    "description": "Set to 'true' if you want to enable cluster-wide encryption.",
+    "displayname": "Encryption enabled",
+    "name": "cluster-encryption",
+    "default": "false",
+    "regex": "^(?:true|false)$",
+    "min-length": 4,
+    "max-length": 5,
+    "supported-values": ["true", "false"],
+    "type": "boolean",
+    "required": "true"
+  },
+  {
+    "description": "Your IAM API key.",
+    "displayname": "IAM API key",
+    "name": "iam-api-key",
+    "category": "secret",
+    "obfuscate": "true",
+    "required": "true",
+    "mutable": "true"
+  },
+  {
+    "description": "Set to 'true' if you want to perform complete cleanup of ODF on assignment deletion.",
+    "displayname": "Perform Cleanup",
+    "name": "perform-cleanup",
+    "default": "false",
+    "regex": "^(?:true|false)$",
+    "min-length": 4,
+    "max-length": 5,
+    "supported-values": ["true", "false"],
+    "required": "true",
+    "type": "boolean",
+    "mutable": "true"
+  },
+  {
+    "description": "Set to 'true' if you want to enable storage class encryption.",
+    "displayname": "KMS encryption",
+    "name": "kms-encryption",
+    "default": "false",
+    "regex": "^(?:true|false)$",
+    "min-length": 4,
+    "max-length": 5,
+    "supported-values": ["true", "false"],
+    "required": "true",
+    "type": "boolean"
+  },
+  {
+    "description": "Your KMS instance name. The instance name must only include alphanumeric characters, '-', '_' or '.' and start and end with an alphanumeric character.",
+    "displayname": "KMS instance name",
+    "name": "kms-instance-name",
+    "regex": "^([a-zA-Z0-9]*[a-zA-Z0-9-_.]*[a-zA-Z0-9])$",
+    "min-length": 1,
+    "max-length": 63,
+    "required": "false"
+  },
+  {
+    "description": " Your KMS instance id.",
+    "displayname": "KMS instance id",
+    "name": "kms-instance-id",
+    "required": "false"
+  },
+  {
+    "description": " Your KMS instance public URL to connect to the instance.",
+    "displayname": "KMS instance Base URL",
+    "name": "kms-base-url",
+    "required": "false"
+  },
+  {
+    "description": "API key token URL to generate token for KMS instance.",
+    "displayname": "KMS instance API key token URL",
+    "name": "kms-token-url",
+    "place-holder": "https://iam.cloud.ibm.com/oidc/token",
+    "required": "false"
+  },
+  {
+    "description": "KMS root key of your instance.",
+    "displayname": "KMS root key",
+    "name": "kms-root-key",
+    "required": "false",
+    "category": "secret",
+    "obfuscate": "true"
+  },
+  {
+    "description": "IAM API key to access the KMS instance. The API key that you provide must have at least Viewer access to the KMS instance.",
+    "displayname": "KMS IAM API key",
+    "name": "kms-api-key",
+    "required": "false",
+    "category": "secret",
+    "obfuscate": "true"
+  },
+  {
+    "description": "Set to 'true' if you do not want to deploy MultiCloud Object Gateway (Noobaa)",
+    "displayname": "Ignore Noobaa",
+    "name": "ignore-noobaa",
+    "default": "false",
+    "regex": "^(?:true|false)$",
+    "min-length": 4,
+    "max-length": 5,
+    "supported-values": ["true", "false"],
+    "type": "boolean",
+    "required": "true"
+  },
+  {
+    "description": "Set to 'true' if you want to enable in-transit encryption",
+    "displayname": "In-transit Encryption",
+    "name": "encryption-intransit",
+    "default": "false",
+    "regex": "^(?:true|false)$",
+    "min-length": 4,
+    "max-length": 5,
+    "supported-values": ["true", "false"],
+    "type": "boolean",
+    "required": "true",
+    "mutable": "true"
+  }
+]
