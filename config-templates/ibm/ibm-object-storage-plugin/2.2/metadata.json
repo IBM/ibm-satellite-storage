@@ -27,7 +27,7 @@
     },
     {
       "name": "provider-url",
-      "value": "https://cloud.ibm.com/docs/openshift?topic=openshift-cos_plugin_changelog"
+      "value": "https://cloud.ibm.com/docs/openshift?topic=openshift-storage_cos_apps"
     },
     {
       "name": "support-url",
