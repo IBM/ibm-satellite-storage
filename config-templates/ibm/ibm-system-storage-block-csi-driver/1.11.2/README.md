@@ -19,7 +19,7 @@ Review the [compatibility and requirements documentation](https://www.ibm.com/do
 Retrieve all parameters required by this template.
 
 ```sh
-ibmcloud sat storage template get --name ibm-system-storage-block-csi-driver --version 1.11.1
+ibmcloud sat storage template get --name ibm-system-storage-block-csi-driver --version 1.11.2
 ```
 
  **IBM block storage CSI driver parameters**
@@ -44,7 +44,7 @@ ibmcloud sat storage template get --name ibm-system-storage-block-csi-driver --v
 
 ***Command for creating configuration***
 ```sh
-ibmcloud sat storage config create --name <config-name> --template-name ibm-system-storage-block-csi-driver --template-version 1.11.1 --location <location-name|location-id> -p "namespace=<namespace>"
+ibmcloud sat storage config create --name <config-name> --template-name ibm-system-storage-block-csi-driver --template-version 1.11.2 --location <location-name|location-id> -p "namespace=<namespace>" -p "secret-name=<secret-name>" -p "secret-management-address=<secret-management-address>" -p "secret-username=<secret-username>" -p "secret-password=<secret-password>"
 ```
 ***Command for adding Storageclass to storage Configuration***
 ```sh

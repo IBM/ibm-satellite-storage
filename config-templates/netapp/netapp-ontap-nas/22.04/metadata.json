@@ -25,7 +25,7 @@
       "value": "non-sds"
     }, {
       "name": "provider-url",
-      "value": "https://netapp-trident.readthedocs.io/en/stable-v21.04/support/support.html"
+      "value": "https://netapp-trident.readthedocs.io/en/latest/support/support.html"
     }, {
       "name": "support-msg",
       "value": "For support contact NetApp"
