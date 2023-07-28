@@ -3,6 +3,15 @@
         "5.0": {
             "status": "supported",
             "latest-revision": {
+                "revision": "12",
+                "release-date": "02 August 2023",
+                "cves": "CVE-2023-24329,CVE-2023-26604,CVE-2020-24736,CVE-2023-1667,CVE-2023-2283,CVE-2020-24736,CVE-2023-1667,CVE-2023-2283",
+                "golang": "1.19.10",
+                "ubi": "8.8-1014",
+                "new-features": [],
+                "fixes": []
+             },
+            "previous-revision": {
                 "revision": "11",
                 "release-date": "19 June 2023",
                 "cves": "CVE-2022-43552,CVE-2022-3204,CVE-2023-27535,CVE-2022-36227,CVE-2022-35252,CVE-2023-29403,CVE-2023-29404,CVE-2023-29405,CVE-2023-29402,CVE-2023-29400,CVE-2023-24540,CVE-2023-24539",
@@ -12,15 +21,6 @@
                 "fixes": [
                    "Token exchange URL is determined based on cluster provider. In case of satellite cluster provider, always use provided token exchange URL, if not provided use public IAM endpoint."
                 ]
-             },
-            "previous-revision": {
-                "revision": "10",
-                "release-date": "04 May 2023",
-                "cves": "CVE-2023-0361,CVE-2023-24536,CVE-2023-24537,CVE-2023-24538",
-                "golang": "1.19.8",
-                "ubi": "8.7-1107",
-                "new-features": [],
-                "fixes": []
              }
         }
     },
