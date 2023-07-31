@@ -1,6 +1,6 @@
 {
   "name": "2.2",
-  "revision": "12",
+  "revision": "13",
   "enabled": "true",
   "status": "supported",
   "description": "IBM Object Storage Plugin version 2.2.x",
@@ -42,12 +42,8 @@
       "value": "IBM"
     },
     {
-      "name": "supported-k8s-versions",
-      "value": "1.21,1.22,1.23,1.24,1.25"
-    },
-    {
       "name": "supported-ocp-versions",
-      "value": "4.8,4.9,4.10,4.11,4.12"
+      "value": "4.8,4.9,4.10,4.11,4.12,4.13"
     }
   ]
 }
