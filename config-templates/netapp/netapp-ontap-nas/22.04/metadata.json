@@ -37,7 +37,7 @@
       "value": "AWS,Azure,IBM"
     }, {
       "name": "supported-ocp-versions",
-      "value": "4.8,4.9,4.10"
+      "value": "4.8, 4.9, 4.10"
     }, {
       "name": "volume-type",
       "value": "file"

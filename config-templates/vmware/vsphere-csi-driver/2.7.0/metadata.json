@@ -30,10 +30,6 @@
             "value": "VMware,IBM"
         },
         {
-            "name": "supported-k8s-versions",
-            "value": "1.24, 1.25, 1.26"
-        },
-        {
           "name": "supported-ocp-versions",
           "value": "4.10, 4.11, 4.12"
         },
