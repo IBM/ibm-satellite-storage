@@ -80,8 +80,24 @@
     "provider": "redhat"
   },
   {
+    "name": "local-storage-operator",
+    "displayname": "Local Storage Operator",
+    "Description": "Local Storage Operator.",
+    "default-version": "1.0.0",
+    "enabled": "true",
+    "provider": "redhat"
+  },
+  {
+    "name": "local-storage",
+    "displayname": "Local Storage File and/or Block",
+    "Description": "Local Storage File and/or Block.",
+    "default-version": "1.0.0",
+    "enabled": "true",
+    "provider": "redhat"
+  },
+  {
     "name": "local-volume-block",
-    "displayname": "Local Storage Operator - Block",
+    "displayname": "Local Storage Operator - Block (Deprecated)",
     "Description": "Local Storage Operator - Block.",
     "default-version": "4.12",
     "enabled": "true",
@@ -89,7 +105,7 @@
   },
   {
     "name": "local-volume-file",
-    "displayname": "Local Storage Operator - File",
+    "displayname": "Local Storage Operator - File (Deprecated)",
     "Description": "Local Storage Operator - File.",
     "default-version": "4.12",
     "enabled": "true",
