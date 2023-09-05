@@ -8,7 +8,7 @@ metadata:
     is-user-defined-class: "true" # As this is a user-defined storage class
     app.kubernetes.io/name: "netapp-ontap-nas"
     app.kubernetes.io/version: "v21.04"
-    app.kubernetes.io/revision: "22"
+    app.kubernetes.io/revision: "23"
   annotations:
     storageclass.kubernetes.io/is-default-class: "{{ is-default-class }}"
 provisioner: csi.trident.netapp.io

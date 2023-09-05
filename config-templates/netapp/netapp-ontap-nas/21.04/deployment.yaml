@@ -5,7 +5,7 @@ metadata:
   namespace: kube-system
   annotations:
     version: 21.04
-    revision: 22
+    revision: 23
 items:
   - apiVersion: apps/v1
     kind: Deployment
@@ -15,7 +15,7 @@ items:
       labels:
         app.kubernetes.io/name: "netapp-ontap-nas"
         app.kubernetes.io/version: "v21.04"
-        app.kubernetes.io/revision: "22"
+        app.kubernetes.io/revision: "23"
     spec:
       replicas: 1
       selector:
@@ -27,12 +27,12 @@ items:
               labels:
                   app: netapp-ontap-nas
                   app.kubernetes.io/name: "netapp-ontap-nas"
-                  app.kubernetes.io/revision: "22"
+                  app.kubernetes.io/revision: "23"
           spec:
               serviceAccountName: trident-kubectl-sa
               containers:
                 - name: trident-kubectl-nas
-                  image: icr.io/ibm/ibm-tridentctl:v2.0.30
+                  image: icr.io/ibm/ibm-tridentctl:v2.0.31
                   imagePullPolicy: Always
                   env:
                   - name: NAMESPACE
