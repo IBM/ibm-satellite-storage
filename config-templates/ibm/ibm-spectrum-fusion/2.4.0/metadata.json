@@ -29,8 +29,8 @@
       "name":  "supported-envs",
       "value": "IBM Cloud"
     },{
-      "name":  "supported-k8s-versions",
-      "value": "1.18,1.19"
+      "name":  "supported-ocp-versions",
+      "value": ""
     },{
       "name": "volume-type",
       "value": "file"
