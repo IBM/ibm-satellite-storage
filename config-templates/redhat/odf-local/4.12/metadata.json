@@ -34,12 +34,8 @@
       "value": "OpenShift Container Platform"
     },
     {
-      "name": "supported-k8s-versions",
-      "value": "1.25,1.26"
-    },
-    {
       "name": "supported-ocp-versions",
-      "value": "4.12,4.13"
+      "value": "4.12, 4.13"
     },
     {
       "name": "volume-type",
