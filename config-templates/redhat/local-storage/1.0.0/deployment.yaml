@@ -148,8 +148,8 @@ items:
           template-version: "1.0.0"
           template-namespace: "local-storage"
           config-params-for-cleanup:
-          - local-volume-name="{{ local-volume-name }}"
-          - install-local-storage-file="{{ install-local-storage-file }}"
-          - auto-discover-devices-file="{{ auto-discover-devices-file }}"
-          - install-local-storage-block="{{ install-local-storage-block }}"
-          - auto-discover-devices-block="{{ auto-discover-devices-block }}"
+          - local-volume-name={{ local-volume-name }}
+          - install-local-storage-file={{ install-local-storage-file }}
+          - auto-discover-devices-file={{ auto-discover-devices-file }}
+          - install-local-storage-block={{ install-local-storage-block }}
+          - auto-discover-devices-block={{ auto-discover-devices-block }}
