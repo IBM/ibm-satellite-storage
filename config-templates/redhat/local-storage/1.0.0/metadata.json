@@ -3,7 +3,7 @@
     "revision": "1",
     "enabled": "true",
     "status": "supported",
-    "description": "Persistent storage using local volumes",
+    "description": "[Beta] Persistent storage using local volumes",
     "tags": [
         {
             "name": "template-dependency",
