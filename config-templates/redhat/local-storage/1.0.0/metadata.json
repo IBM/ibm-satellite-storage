@@ -1,0 +1,64 @@
+{
+    "name": "1.0.0",
+    "revision": "1",
+    "enabled": "true",
+    "status": "supported",
+    "description": "[Beta] Persistent storage using local volumes",
+    "tags": [
+        {
+            "name": "template-dependency",
+            "value": "local-storage-operator"
+        }, {
+            "name": "template-dependency-version",
+            "value": "1.0.0"
+        }, {
+            "name": "template-dependency-description",
+            "value": "Install the local storage operator before installing the local storage file and/or block driver."
+        }, {
+            "name": "provider",
+            "value": "Red Hat"
+        }, {
+            "name": "offering-name",
+            "value": "local-storage"
+        }, {
+            "name": "offering-type",
+            "value": "non-sds"
+        }, {
+            "name": "provider-url",
+            "value": "https://docs.openshift.com/container-platform/4.13/storage/persistent_storage/persistent_storage_local/persistent-storage-local.html"
+        }, {
+            "name": "support-msg",
+            "value": "For support contact Red Hat"
+        }, {
+            "name": "provider-logo",
+            "value": "logo/local-storage.svg"
+        }, {
+            "name": "supported-envs",
+            "value": "AWS, IBM"
+        }, {
+            "name": "supported-ocp-versions",
+            "value": "4.9, 4.10, 4.11, 4.12, 4.13"
+        }, {
+            "name": "volume-type",
+            "value": "file,block"
+        }, {
+            "name": "volume-encryption-at-rest",
+            "value": "false"
+        }, {
+            "name": "volume-encryption-in-transit",
+            "value": "false"
+        }, {
+            "name": "volume-snapshot",
+            "value": "false"
+        }, {
+            "name": "volume-availability",
+            "value": "zonal"
+        }, {
+            "name": "volume-expansion",
+            "value": "false"
+        }, {
+            "name": "storageclass",
+            "value": "gold"
+        }
+    ]
+}

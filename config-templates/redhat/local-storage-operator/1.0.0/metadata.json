@@ -1,0 +1,55 @@
+{
+    "name": "1.0.0",
+    "revision": "1",
+    "enabled": "true",
+    "status": "supported",
+    "description": "Local Storage Operator",
+    "tags": [
+        {
+            "name": "provider",
+            "value": "Red Hat"
+        }, {
+            "name": "offering-name",
+            "value": "local-storage-operator"
+        }, {
+            "name": "offering-type",
+            "value": "non-sds"
+        }, {
+            "name": "provider-url",
+            "value": "https://docs.openshift.com/container-platform/4.13/storage/persistent_storage/persistent_storage_local/persistent-storage-local.html"
+        }, {
+            "name": "support-msg",
+            "value": "For support contact Red Hat"
+        }, {
+            "name": "provider-logo",
+            "value": "logo/local-storage-operator.svg"
+        }, {
+            "name": "supported-envs",
+            "value": "AWS, IBM"
+        }, {
+            "name": "supported-ocp-versions",
+            "value": "4.9, 4.10, 4.11, 4.12, 4.13"
+        }, {
+            "name": "volume-type",
+            "value": ""
+        }, {
+            "name": "volume-encryption-at-rest",
+            "value": ""
+        }, {
+            "name": "volume-encryption-in-transit",
+            "value": ""
+        }, {
+            "name": "volume-snapshot",
+            "value": ""
+        }, {
+            "name": "volume-availability",
+            "value": ""
+        }, {
+            "name": "volume-expansion",
+            "value": ""
+        }, {
+            "name": "storageclass",
+            "value": ""
+        }
+    ]
+}

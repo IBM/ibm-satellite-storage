@@ -80,6 +80,22 @@
     "provider": "redhat"
   },
   {
+    "name": "local-storage-operator",
+    "displayname": "Local Storage Operator",
+    "Description": "Local Storage Operator.",
+    "default-version": "1.0.0",
+    "enabled": "true",
+    "provider": "redhat"
+  },
+  {
+    "name": "local-storage",
+    "displayname": "[Beta] Local Storage File and/or Block",
+    "Description": "[Beta] Local Storage File and/or Block.",
+    "default-version": "1.0.0",
+    "enabled": "true",
+    "provider": "redhat"
+  },
+  {
     "name": "local-volume-block",
     "displayname": "Local Storage Operator - Block",
     "Description": "Local Storage Operator - Block.",
