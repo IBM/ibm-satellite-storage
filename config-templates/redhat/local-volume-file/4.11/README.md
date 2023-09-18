@@ -13,7 +13,7 @@ Local persistent volumes allow you to access local storage devices, such as a di
    - In next page click on `Display Token`
    - Under `Log in with this token` the `oc login --token=XXXX ...` will be displayed, copy the command and execute on your local system
 
-    **Note** The target cluster version should be 4.11.X to use the local-volume-block version 4.10 template.
+    **Note** The target cluster version should be 4.11.X to use the local-volume-block version 4.11 template.
 
 3. Add label to the worker nodes, one with additional disk
    - Get the nodes

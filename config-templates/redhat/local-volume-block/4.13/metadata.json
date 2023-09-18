@@ -1,8 +1,8 @@
 {
-  "name": "4.9",
-  "revision": "4",
+  "name": "4.13",
+  "revision": "1",
   "enabled": "true",
-  "status": "deprecated",
+  "status": "supported",
   "description": "Persistent storage using local volumes",
   "tags": [
     {
@@ -16,7 +16,7 @@
       "value": "non-sds"
     }, {
       "name": "provider-url",
-      "value": "https://docs.openshift.com/container-platform/4.9/storage/persistent_storage/persistent-storage-local.html"
+      "value": "https://docs.openshift.com/container-platform/4.13/storage/persistent_storage/persistent_storage_local/persistent-storage-local.html"
     }, {
       "name": "support-msg",
       "value": "For support contact Red Hat"
@@ -28,7 +28,7 @@
       "value": "AWS,IBM"
     }, {
       "name": "supported-ocp-versions",
-      "value": "4.9"
+      "value": "4.13"
     }, {
       "name": "volume-type",
       "value": "block"

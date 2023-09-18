@@ -1,5 +1,21 @@
 [
     {
+        "4.13": {
+            "status": "supported",
+            "latest-revision": {
+                "revision": "1",
+                "release-date": "28 September 2023",
+                "cves": "",
+                "golang": "",
+                "ubi": "",
+                "new-features": [
+                    "Initial release"
+                ],
+                "fixes": []
+            }
+        }
+    },
+    {
         "4.12": {
             "status": "supported",
             "latest-revision": {
@@ -49,7 +65,7 @@
     },
     {
         "4.9": {
-            "status": "supported",
+            "status": "deprecated",
             "latest-revision": {
                 "revision": "4",
                 "release-date": "29 July 2022",
@@ -65,18 +81,7 @@
     },
     {
         "4.8": {
-            "status": "deprecated",
-            "latest-revision": {
-                "revision": "4",
-                "release-date": "29 July 2022",
-                "cves": "",
-                "golang": "",
-                "ubi": "",
-                "new-features": [
-                    "Added support for auto cleanup of resources while uninstalling the plugin"
-                ],
-                "fixes": []
-            }
+            "status": "unsupported"
         }
     },
     {
