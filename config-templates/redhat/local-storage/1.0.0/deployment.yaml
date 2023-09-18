@@ -28,7 +28,7 @@ items:
     - apiVersion: local.storage.openshift.io/v1alpha1
       kind: LocalVolumeSet
       metadata:
-        name: local-volumeset-file-{{ local-volume-name }}
+        name: local-volumeset-file-CONFIG-NAME
         namespace: local-storage
       spec:
         deviceInclusionSpec:
@@ -44,7 +44,7 @@ items:
                     {{#file-nodes-label-value}}
                     - "{{{ item }}}"
                     {{/file-nodes-label-value}}
-        storageClassName: "sat-local-file-{{ local-volume-name }}-gold"
+        storageClassName: "sat-local-file-CONFIG-NAME-gold"
         volumeMode: Filesystem
         fsType: "{{ fstype }}"
     {{/auto-discover-devices-file}}
@@ -52,7 +52,7 @@ items:
     - apiVersion: local.storage.openshift.io/v1
       kind: LocalVolume
       metadata:
-          name: local-disk-file-{{ local-volume-name }}
+          name: local-disk-file-CONFIG-NAME
           namespace: local-storage
       spec:
           nodeSelector:
@@ -65,7 +65,7 @@ items:
                             - "{{{ item }}}"
                             {{/file-nodes-label-value}}
           storageClassDevices:
-              - storageClassName: "sat-local-file-{{ local-volume-name }}-gold"
+              - storageClassName: "sat-local-file-CONFIG-NAME-gold"
                 volumeMode: Filesystem
                 fsType: "{{ fstype }}"
                 devicePaths:
@@ -94,7 +94,7 @@ items:
     - apiVersion: local.storage.openshift.io/v1alpha1
       kind: LocalVolumeSet
       metadata:
-        name: local-volumeset-block-{{ local-volume-name }}
+        name: local-volumeset-block-CONFIG-NAME
         namespace: local-storage
       spec:
         deviceInclusionSpec:
@@ -110,14 +110,14 @@ items:
                     {{#block-nodes-label-value}}
                     - "{{{ item }}}"
                     {{/block-nodes-label-value}}
-        storageClassName: "sat-local-block-{{ local-volume-name }}-gold"
+        storageClassName: "sat-local-block-CONFIG-NAME-gold"
         volumeMode: Block
     {{/auto-discover-devices-block}}
     {{^auto-discover-devices-block}}
     - apiVersion: local.storage.openshift.io/v1
       kind: LocalVolume
       metadata:
-        name: local-disk-block-{{ local-volume-name }}
+        name: local-disk-block-CONFIG-NAME
         namespace: local-storage
       spec:
         nodeSelector:
@@ -130,7 +130,7 @@ items:
                     - "{{{ item }}}"
                     {{/block-nodes-label-value}}
         storageClassDevices:
-          - storageClassName: "sat-local-block-{{ local-volume-name }}-gold"
+          - storageClassName: "sat-local-block-CONFIG-NAME-gold"
             volumeMode: Block
             devicePaths:
               {{#block-devicepath}}
@@ -141,14 +141,14 @@ items:
     - apiVersion: satstorage.ibm.com/v1
       kind: SatStorageCleanup
       metadata:
-          name: satstoragecleanup-local-storage-{{ local-volume-name }}
+          name: satstoragecleanup-local-storage-CONFIG-NAME
           namespace: "ibm-satellite-storage"
       spec:
           template-name: "local-storage"
           template-version: "1.0.0"
           template-namespace: "local-storage"
           config-params-for-cleanup:
-          - local-volume-name={{ local-volume-name }}
+          - config-name=CONFIG-NAME
           - install-local-storage-file={{ install-local-storage-file }}
           - auto-discover-devices-file={{ auto-discover-devices-file }}
           - install-local-storage-block={{ install-local-storage-block }}
