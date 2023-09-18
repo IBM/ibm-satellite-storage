@@ -1,5 +1,21 @@
 [
     {
+        "2.7.0": {
+            "status": "supported",
+            "latest-revision": {
+                "revision": "1",
+                "release-date": "31 July 2023",
+                "cves": "",
+                "golang": "",
+                "ubi": "",
+                "new-features": [
+                    "Initial release"
+                ],
+                "fixes": []
+            }
+        }
+    },
+    {
         "2.5.1": {
             "status": "supported",
             "latest-revision": {
