@@ -13,7 +13,7 @@ Local persistent volumes allow you to access local storage devices, such as a di
    - In next page click on `Display Token`
    - Under `Log in with this token` the `oc login --token=XXXX ...` will be displayed, copy the command and execute on your local system
 
-    **Note** The target cluster version should be 4.12.X to use the local-volume-block version 4.12 template.
+    **Note** The target cluster version should be 4.13.X to use the local-volume-block version 4.13 template.
 
 3. Add label to the worker nodes, one with additional disk
    - Get the nodes
@@ -73,7 +73,7 @@ Parameter | Required? | Description | Default value if not provided |
 **Example `sat storage config create` command**
 
 ```sh
-ibmcloud sat storage config create --name localvol-file-config --template-name local-volume-file --template-version 4.12 -p "label-key=storage" -p "label-value=localfile" -p "devicepath=/dev/xvde"
+ibmcloud sat storage config create --name localvol-file-config --template-name local-volume-file --template-version 4.13 -p "label-key=storage" -p "label-value=localfile" -p "devicepath=/dev/xvde"
 ```
 
 ## Creating the storage assignment
@@ -124,7 +124,7 @@ NAME               CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM 
 local-pv-1d14680   50Gi       RWO            Delete           Available           sat-local-file-gold            50s
 ```
 
-**Follow** the [link](https://docs.openshift.com/container-platform/4.12/storage/persistent_storage/persistent-storage-local.html) to create the persistent volume claim and attach the claim to a pod.
+**Follow** the [link](https://docs.openshift.com/container-platform/4.13/storage/persistent_storage/persistent_storage_local/persistent-storage-local.html#create-local-pvc_persistent-storage-local) to create the persistent volume claim and attach the claim to a pod.
 
 
 ## Troubleshooting
@@ -162,7 +162,7 @@ local-pv-1d14680   50Gi       RWO            Delete           Available         
 kubectl logs -f pod/diskmaker-manager-nxpfr -c diskmaker-manager -n local-storage
 I1028 07:43:47.868023   91852 diskmaker.go:21] Go Version: go1.18.4
 I1028 07:43:47.868137   91852 diskmaker.go:22] Go OS/Arch: linux/amd64
-I1028 07:43:47.868142   91852 diskmaker.go:23] local-storage-diskmaker Version: v4.12.0-202210061001.p0.g7670056.assembly.stream-0-g1a3cbf8-dirty
+I1028 07:43:47.868142   91852 diskmaker.go:23] local-storage-diskmaker Version: v4.13.0-202210061001.p0.g7670056.assembly.stream-0-g1a3cbf8-dirty
 I1028 07:43:48.918719   91852 request.go:601] Waited for 1.033213982s due to client-side throttling, not priority and fairness, request: GET:https://172.21.0.1:443/apis/local.storage.openshift.io/v1?timeout=32s
 I1028 07:43:50.473849   91852 common.go:408] Creating client using in-cluster config
 E0213 06:19:40.697628       1 diskmaker.go:203] failed to acquire lock on device /dev/xvde
@@ -198,7 +198,7 @@ E0213 06:19:40.697657       1 diskmaker.go:180] error symlinking /dev/xvde to /m
     $ kubectl logs -f diskmaker-discovery-lh5vt -c diskmaker-discovery -n local-storage
     I1028 09:34:14.613039   50525 diskmaker.go:21] Go Version: go1.18.4
     I1028 09:34:14.613156   50525 diskmaker.go:22] Go OS/Arch: linux/amd64
-    I1028 09:34:14.613161   50525 diskmaker.go:23] local-storage-diskmaker Version: v4.12.0-202210061001.p0.g7670056.assembly.stream-0-g1a3cbf8-dirty
+    I1028 09:34:14.613161   50525 diskmaker.go:23] local-storage-diskmaker Version: v4.13.0-202210061001.p0.g7670056.assembly.stream-0-g1a3cbf8-dirty
     I1028 09:34:14.613314   50525 config.go:74] Port: 8383
     I1028 09:34:15.666103   50525 request.go:601] Waited for 1.034907935s due to client-side throttling, not priority and fairness, request: GET:https://172.21.0.1:443/apis/project.openshift.io/v1?timeout=32s
     I1028 09:34:17.233573   50525 discovery.go:67] starting device discovery
@@ -223,4 +223,4 @@ E0213 06:19:40.697657       1 diskmaker.go:180] error symlinking /dev/xvde to /m
     
     
 ## References
-   - https://docs.openshift.com/container-platform/4.12/storage/persistent_storage/persistent-storage-local.html
+   - https://docs.openshift.com/container-platform/4.13/storage/persistent_storage/persistent_storage_local/persistent-storage-local.html

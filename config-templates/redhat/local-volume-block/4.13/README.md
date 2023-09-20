@@ -1,9 +1,7 @@
-# Deploy local volume file storage on a Satellite Cluster
+# Deploy Local Volume Block on a Satellite Cluster
 Local persistent volumes allow you to access local storage devices, such as a disk or partition, by using the standard persistent volume claim interface.
-
 ## Prerequisites
 1. Attach additional free disk to the cluster worker nodes(hosts)
-
 2. Login into the Cluster using `OC CLI`
    - Login to [IBM Cloud Web Console](https://cloud.ibm.com/)
 	 - Go to [Clusters page](https://cloud.ibm.com/satellite/clusters)
@@ -13,7 +11,7 @@ Local persistent volumes allow you to access local storage devices, such as a di
    - In next page click on `Display Token`
    - Under `Log in with this token` the `oc login --token=XXXX ...` will be displayed, copy the command and execute on your local system
 
-    **Note** The target cluster version should be 4.12.X to use the local-volume-block version 4.12 template.
+    **Note** The target cluster version should be 4.13.X to use the local-volume-block version 4.13 template.
 
 3. Add label to the worker nodes, one with additional disk
    - Get the nodes
@@ -26,7 +24,7 @@ Local persistent volumes allow you to access local storage devices, such as a di
      ```
    - Add label to nodes
      ```
-     $ oc label nodes 52.117.85.9 52.117.85.12 "storage=localfile"
+     $ oc label nodes 52.117.85.9 52.117.85.12 "storage=localvol"
      node/52.117.85.9 labeled
      node/52.117.85.12 labeled
      ```
@@ -36,13 +34,6 @@ Local persistent volumes allow you to access local storage devices, such as a di
      ```
      $ ibmcloud login --sso -a https://cloud.ibm.com -r us-east -g default -u <IBMid>
      ```
-   - Target to regional API
-     ```
-     $ ibmcloud cs init --host https://us-east.containers.cloud.ibm.com
-     ```
-     - US-East: https://us-east.containers.cloud.ibm.com
-     - London:  https://eu-gb.containers.cloud.ibm.com
-     - US-South: https://us-south.containers.cloud.ibm.com
 
 5. Create Cluster Group (optional)
    - From IBM Cloud Web Console
@@ -53,29 +44,26 @@ Local persistent volumes allow you to access local storage devices, such as a di
 
 ## Local Volume parameters & how to retrieve them
 
-Parameter | Required? | Description | Default value if not provided | 
-----------| ----------| ------------| ----------------------------- |
-`label-key` | Required  | You can retrieve this parameter by using ```$ oc get nodes --show-labels``` command | N/A | 
-`label-value`| Required | You can retrieve this parameter by using ```$ oc get nodes --show-labels``` command | N/A | 
-`devicepath` | Required | You can retrieve this parameter by using following commands ```$ oc get nodes``` ```$ oc debug node/<node name> ``` ```# chroot /host``` ```# lsblk``` | N/A | 
-`fstype`     | Required | File System type of your choice     |          ext4|
-
+Parameter | Required? | Description | Default value if not provided |
+--- | --- | --- | --- |
+`label-key` | Required | You can retrieve this parameter by using ```$ oc get nodes --show-labels``` command | N/A |
+`label-value` | Required | You can retrieve this parameter by using ```$ oc get nodes --show-labels``` command | N/A |
+`devicepath` | Required |You can retrieve this parameter by using following commands ```$ oc get nodes``` ```$ oc debug node/<node name> ``` ```# chroot /host``` ```# lsblk``` | N/A |
 
 ## Default storage classes
 
 | Storage class name | Type | File system | IOPs | Size range | Hard disk | Reclaim policy |
-| ------------------ | ---- | ----------- | ---- | ---------- | ----------| -------------- |
-| sat-local-file-gold| File | ext4/xfs    | N/A  | N/A        | N/A       | Retain         | 
+| --- | --- | --- | --- | --- | --- | --- |
+| `sat-local-block-gold ` | Block | N/A | N/A | N/A | N/A | Retain |
 
 
-## Creating the Local Volume File storage configuration
+## Creating the Local Volume Block storage configuration
 
 **Example `sat storage config create` command**
 
 ```sh
-ibmcloud sat storage config create --name localvol-file-config --template-name local-volume-file --template-version 4.12 -p "label-key=storage" -p "label-value=localfile" -p "devicepath=/dev/xvde"
+ibmcloud sat storage config create --name localvol-block-config --template-name local-volume-block --template-version 4.13 -p "label-key=storage" -p "label-value=localvol" -p "devicepath=/dev/xvdc"
 ```
-
 ## Creating the storage assignment
 
 **Example `sat storage assignment create` command**
@@ -85,47 +73,46 @@ ibmcloud sat storage assignment create --name localvol-file-assign --cluster <cl
 ```
 
 ```sh
-ibmcloud sat storage assignment create --name localvol-file-assign --group satClusterGrp --config localvol-file-config
+ibmcloud sat storage assignment create --name localvol-block-assign --group satClusterGrp --config localvol-block-config
 ```
 
-## Verifying your Local Volume File storage configuration is assigned to your clusters
+## Verifying your Local Volume Block storage configuration is assigned to your clusters
+   ```
+   $ oc get all -n local-storage
+   NAME                                         READY   STATUS    RESTARTS   AGE
+   pod/diskmaker-discovery-lh5vt                2/2     Running   0          86s
+   pod/diskmaker-manager-c8gh4                  2/2     Running   0          86s
+   pod/local-storage-operator-f4967bf5d-gbg8q   1/1     Running   0          4m11s
+   
+   NAME                                      TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+   service/local-storage-discovery-metrics   ClusterIP   172.21.85.51    <none>        8383/TCP   87s
+   service/local-storage-diskmaker-metrics   ClusterIP   172.21.75.241   <none>        8383/TCP   87s
+   
+   NAME                                 DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE
+   daemonset.apps/diskmaker-discovery   1         1         1       1            1           <none>          87s
+   daemonset.apps/diskmaker-manager     1         1         1       1            1           <none>          87s
+   
+   NAME                                     READY   UP-TO-DATE   AVAILABLE   AGE
+   deployment.apps/local-storage-operator   1/1     1            1           4m12s
+   
+   NAME                                               DESIRED   CURRENT   READY   AGE
+   replicaset.apps/local-storage-operator-f4967bf5d   1         1         1       4m13s
 
-```
-$ oc get all -n local-storage
-NAME                                         READY   STATUS    RESTARTS   AGE
-pod/diskmaker-discovery-lh5vt                2/2     Running   0          86s
-pod/diskmaker-manager-c8gh4                  2/2     Running   0          86s
-pod/local-storage-operator-f4967bf5d-gbg8q   1/1     Running   0          4m11s
+   ```
+   
+   ```
+   $ oc get sc -n local-storage | grep local
+   sat-local-block-gold       kubernetes.io/no-provisioner   Delete          WaitForFirstConsumer   false                  21m
+   ```
+   
+   ```
+   $ oc get pv
+   NAME                CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM   STORAGECLASS           REASON   AGE
+   local-pv-88842685   50Gi       RWO            Delete           Available           sat-local-block-gold            90s
 
-NAME                                      TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
-service/local-storage-discovery-metrics   ClusterIP   172.21.85.51    <none>        8383/TCP   87s
-service/local-storage-diskmaker-metrics   ClusterIP   172.21.75.241   <none>        8383/TCP   87s
+   ```
 
-NAME                                 DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE
-daemonset.apps/diskmaker-discovery   1         1         1       1            1           <none>          87s
-daemonset.apps/diskmaker-manager     1         1         1       1            1           <none>          87s
-
-NAME                                     READY   UP-TO-DATE   AVAILABLE   AGE
-deployment.apps/local-storage-operator   1/1     1            1           4m12s
-
-NAME                                               DESIRED   CURRENT   READY   AGE
-replicaset.apps/local-storage-operator-f4967bf5d   1         1         1       4m13s
-
-```
-
-```
-$ oc get sc -n local-storage | grep local
-sat-local-file-gold       kubernetes.io/no-provisioner   Delete          WaitForFirstConsumer   false                  21m
-```
-
-```
-$ oc get pv
-NAME               CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM   STORAGECLASS          REASON   AGE
-local-pv-1d14680   50Gi       RWO            Delete           Available           sat-local-file-gold            50s
-```
-
-**Follow** the [link](https://docs.openshift.com/container-platform/4.12/storage/persistent_storage/persistent-storage-local.html) to create the persistent volume claim and attach the claim to a pod.
-
+**Follow** the [link](https://docs.openshift.com/container-platform/4.13/storage/persistent_storage/persistent_storage_local/persistent-storage-local.html#create-local-pvc_persistent-storage-local) to create the persistent volume claim and attach the claim to a pod.
 
 ## Troubleshooting
 
@@ -162,11 +149,11 @@ local-pv-1d14680   50Gi       RWO            Delete           Available         
 kubectl logs -f pod/diskmaker-manager-nxpfr -c diskmaker-manager -n local-storage
 I1028 07:43:47.868023   91852 diskmaker.go:21] Go Version: go1.18.4
 I1028 07:43:47.868137   91852 diskmaker.go:22] Go OS/Arch: linux/amd64
-I1028 07:43:47.868142   91852 diskmaker.go:23] local-storage-diskmaker Version: v4.12.0-202210061001.p0.g7670056.assembly.stream-0-g1a3cbf8-dirty
+I1028 07:43:47.868142   91852 diskmaker.go:23] local-storage-diskmaker Version: v4.13.0-202210061001.p0.g7670056.assembly.stream-0-g1a3cbf8-dirty
 I1028 07:43:48.918719   91852 request.go:601] Waited for 1.033213982s due to client-side throttling, not priority and fairness, request: GET:https://172.21.0.1:443/apis/local.storage.openshift.io/v1?timeout=32s
 I1028 07:43:50.473849   91852 common.go:408] Creating client using in-cluster config
 E0213 06:19:40.697628       1 diskmaker.go:203] failed to acquire lock on device /dev/xvde
-E0213 06:19:40.697657       1 diskmaker.go:180] error symlinking /dev/xvde to /mnt/local-storage/sat-local-file-gold/xvde: error acquiring exclusive lock on /dev/xvde
+E0213 06:19:40.697657       1 diskmaker.go:180] error symlinking /dev/xvde to /mnt/local-storage/sat-local-block-gold/xvde: error acquiring exclusive lock on /dev/xvde
 ```
 
 7. Log-in to the node where the diskmaker pod is deployed.
@@ -185,8 +172,8 @@ E0213 06:19:40.697657       1 diskmaker.go:180] error symlinking /dev/xvde to /m
 
  **Example command:**
  ```sh
-  rm -rf  /mnt/local-storage/sat-local-file-gold/xvde
-  ```
+ rm -rf  /mnt/local-storage/sat-local-block-gold/xvdc
+ ```
 
 10. Get the `diskmaker-discovery` pod logs to verify auto-discovery of devices if enabled.
     ```
@@ -198,7 +185,7 @@ E0213 06:19:40.697657       1 diskmaker.go:180] error symlinking /dev/xvde to /m
     $ kubectl logs -f diskmaker-discovery-lh5vt -c diskmaker-discovery -n local-storage
     I1028 09:34:14.613039   50525 diskmaker.go:21] Go Version: go1.18.4
     I1028 09:34:14.613156   50525 diskmaker.go:22] Go OS/Arch: linux/amd64
-    I1028 09:34:14.613161   50525 diskmaker.go:23] local-storage-diskmaker Version: v4.12.0-202210061001.p0.g7670056.assembly.stream-0-g1a3cbf8-dirty
+    I1028 09:34:14.613161   50525 diskmaker.go:23] local-storage-diskmaker Version: v4.13.0-202210061001.p0.g7670056.assembly.stream-0-g1a3cbf8-dirty
     I1028 09:34:14.613314   50525 config.go:74] Port: 8383
     I1028 09:34:15.666103   50525 request.go:601] Waited for 1.034907935s due to client-side throttling, not priority and fairness, request: GET:https://172.21.0.1:443/apis/project.openshift.io/v1?timeout=32s
     I1028 09:34:17.233573   50525 discovery.go:67] starting device discovery
@@ -221,6 +208,6 @@ E0213 06:19:40.697657       1 diskmaker.go:180] error symlinking /dev/xvde to /m
     oc get pv
     ```
     
-    
+
 ## References
-   - https://docs.openshift.com/container-platform/4.12/storage/persistent_storage/persistent-storage-local.html
+   - https://docs.openshift.com/container-platform/4.13/storage/persistent_storage/persistent_storage_local/persistent-storage-local.html
