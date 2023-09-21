@@ -17,7 +17,8 @@
     "name": "osd-device-path",
     "place-holder": "/dev/sdc,/dev/sde",
     "required": "false",
-    "mutable": "true"
+    "mutable": "true",
+    "regex": "^([a-zA-Z0-9]*[a-zA-Z0-9-_.,]*[a-zA-Z0-9])$"
   },
   {
     "description": "The number of storage device replicas to create. The default value is '1', which creates 1 device across 3 nodes. Increase by 1 for each additional set of 3 devices. For must use cases, leave the default value of '1'.",
@@ -35,7 +36,8 @@
     "displayname": "Worker node names",
     "name": "worker-nodes",
     "required": "false",
-    "mutable": "true"
+    "mutable": "true",
+    "regex": "^([a-zA-Z0-9]*[a-zA-Z0-9-_.,]*[a-zA-Z0-9])$"
   },
   {
     "description": "If you are upgrading an existing ODF installation, set to 'true'.",
