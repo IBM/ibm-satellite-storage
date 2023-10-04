@@ -13,7 +13,7 @@ items:
       labels:
         app.kubernetes.io/name: "netapp-ontap-nas"
         app.kubernetes.io/version: "v22.10"
-        app.kubernetes.io/revision: "8"
+        app.kubernetes.io/revision: "9"
         volume-type: "file"
         storage-class-preference: "2"
         is-user-defined-class: "false"
@@ -31,7 +31,7 @@ items:
       labels:
         app.kubernetes.io/name: "netapp-ontap-nas"
         app.kubernetes.io/version: "v22.10"
-        app.kubernetes.io/revision: "8"
+        app.kubernetes.io/revision: "9"
         volume-type: "file"
         storage-class-preference: "4"
         is-user-defined-class: "false"        
@@ -47,7 +47,7 @@ items:
       labels:
         app.kubernetes.io/name: "netapp-ontap-nas"
         app.kubernetes.io/version: "v22.10"
-        app.kubernetes.io/revision: "8"
+        app.kubernetes.io/revision: "9"
         volume-type: "file"
         storage-class-preference: "6"
         is-user-defined-class: "false"        
@@ -63,7 +63,7 @@ items:
       labels:
         app.kubernetes.io/name: "netapp-ontap-nas"
         app.kubernetes.io/version: "v22.10"
-        app.kubernetes.io/revision: "8"
+        app.kubernetes.io/revision: "9"
         volume-type: "file"
         storage-class-preference: "1"
         is-user-defined-class: "false"   
@@ -79,7 +79,7 @@ items:
       labels:
         app.kubernetes.io/name: "netapp-ontap-nas"
         app.kubernetes.io/version: "v22.10"
-        app.kubernetes.io/revision: "8"
+        app.kubernetes.io/revision: "9"
         volume-type: "file"
         storage-class-preference: "3"
         is-user-defined-class: "false"
@@ -95,7 +95,7 @@ items:
       labels:
         app.kubernetes.io/name: "netapp-ontap-nas"
         app.kubernetes.io/version: "v22.10"
-        app.kubernetes.io/revision: "8"
+        app.kubernetes.io/revision: "9"
         volume-type: "file"
         storage-class-preference: "5"
         is-user-defined-class: "false"        
