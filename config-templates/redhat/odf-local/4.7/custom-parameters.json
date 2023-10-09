@@ -13,7 +13,7 @@
     "place-holder": "/dev/sdc,/dev/sde",
     "required": "true",
     "mutable": "true",
-    "regex": "^([a-zA-Z0-9]*[a-zA-Z0-9-_.,]*[a-zA-Z0-9])$"
+    "regex": "^([/][a-zA-Z0-9-_./,]*[a-zA-Z0-9])$"
   },
   {
     "description": "The number storage daemonsets that you want to create. The total storage available to your apps is equal to the volume size (osd-size) multiplied by the number of daemonsets (num-of-osd). The default value is '1'.",
@@ -32,7 +32,7 @@
     "name": "worker-nodes",
     "required": "false",
     "mutable": "true",
-    "regex": "^([a-zA-Z0-9]*[a-zA-Z0-9-_.,]*[a-zA-Z0-9])$"
+    "regex": "^([a-zA-Z0-9][a-zA-Z0-9-_.,]*[a-zA-Z0-9])$"
   },
   {
     "description": "If you are upgrading an existing ODF installation, set to 'true'.",

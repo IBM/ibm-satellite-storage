@@ -56,7 +56,7 @@
     "name": "worker-nodes",
     "required": "false",
     "mutable": "true",
-    "regex": "^([a-zA-Z0-9]*[a-zA-Z0-9-_.,]*[a-zA-Z0-9])$"
+    "regex": "^([a-zA-Z0-9][a-zA-Z0-9-_.,]*[a-zA-Z0-9])$"
   },
   {
     "description": "If you are upgrading an existing ODF installation, set to 'true'.",
