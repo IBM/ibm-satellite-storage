@@ -5,7 +5,7 @@
             "latest-revision": {
                 "revision": "15",
                 "release-date": "18 October 2023",
-                "cves": "CVEs- CVE-2023-29491, CVE-2023-4911, CVE-2023-4527, CVE-2023-4806, CVE-2023-4813",
+                "cves": "CVE-2023-29491, CVE-2023-4911, CVE-2023-4527, CVE-2023-4806, CVE-2023-4813",
                 "golang": "1.19.12",
                 "ubi": "8.8-1072.1696517598",
                 "new-features": [],
