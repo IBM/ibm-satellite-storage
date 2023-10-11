@@ -47,7 +47,7 @@
     },
     {
         "21.04": {
-            "status": "supported",
+            "status": "deprecated",
             "latest-revision": {
                 "revision": "24",
                 "release-date": "18 October 2023",
