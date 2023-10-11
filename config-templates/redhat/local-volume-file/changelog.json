@@ -65,18 +65,7 @@
     },
     {
         "4.9": {
-            "status": "deprecated",
-            "latest-revision": {
-                "revision": "4",
-                "release-date": "29 July 2022",
-                "cves": "",
-                "golang": "",
-                "ubi": "",
-                "new-features": [
-                    "Added support for auto cleanup of resources while uninstalling the plugin"
-                ],
-                "fixes": []
-            }
+            "status": "unsupported"
         }
     },
     {
