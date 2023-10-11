@@ -3,20 +3,20 @@
         "22.10": {
             "status": "supported",
             "latest-revision": {
+                "revision": "9",
+                "release-date": "18 October 2023",
+                "cves": "CVE-2023-29491, CVE-2023-30630 , CVE-2023-4911, CVE-2023-4527, CVE-2023-4806, CVE-2023-4813",
+                "golang": "",
+                "ubi": "8.8-1072.1696517598",
+                "new-features": [],
+                "fixes": []
+            },
+            "previous-revision": {
                 "revision": "8",
                 "release-date": "19 September 2023",
                 "cves": "CVE-2023-27536, CVE-2023-2603, CVE-2023-34969, CVE-2023-3899, CVE-2023-28321, CVE-2023-2602, CVE-2023-28484, CVE-2023-29469, CVE-2023-32681",
                 "golang": "",
                 "ubi": "8.8-1037",
-                "new-features": [],
-                "fixes": []
-            },
-            "previous-revision": {
-                "revision": "7",
-                "release-date": "24 July 2023",
-                "cves": "CVE-2020-24736, CVE-2023-26604, CVE-2023-1667, CVE-2023-2283",
-                "golang": "",
-                "ubi": "8.8-1014",
                 "new-features": [],
                 "fixes": []
             }
@@ -26,20 +26,20 @@
         "22.04": {
             "status": "supported",
             "latest-revision": {
+                "revision": "22",
+                "release-date": "18 October 2023",
+                "cves": "CVE-2023-29491, CVE-2023-30630 , CVE-2023-4911, CVE-2023-4527, CVE-2023-4806, CVE-2023-4813",
+                "golang": "",
+                "ubi": "8.8-1072.1696517598",
+                "new-features": [],
+                "fixes": []
+            },
+            "previous-revision": {
                 "revision": "21",
                 "release-date": "19 September 2023",
                 "cves": "CVE-2023-27536, CVE-2023-2603, CVE-2023-34969, CVE-2023-3899, CVE-2023-28321, CVE-2023-2602, CVE-2023-28484, CVE-2023-29469, CVE-2023-32681",
                 "golang": "",
                 "ubi": "8.8-1037",
-                "new-features": [],
-                "fixes": []
-            },
-            "previous-revision": {
-                "revision": "20",
-                "release-date": "24 July 2023",
-                "cves": "CVE-2020-24736, CVE-2023-26604, CVE-2023-1667, CVE-2023-2283",
-                "golang": "",
-                "ubi": "8.8-1014",
                 "new-features": [],
                 "fixes": []
             }
@@ -49,20 +49,20 @@
         "21.04": {
             "status": "supported",
             "latest-revision": {
+                "revision": "24",
+                "release-date": "18 October 2023",
+                "cves": "CVE-2023-29491, CVE-2023-30630 , CVE-2023-4911, CVE-2023-4527, CVE-2023-4806, CVE-2023-4813",
+                "golang": "",
+                "ubi": "8.8-1072.1696517598",
+                "new-features": [],
+                "fixes": []
+            },
+            "previous-revision": {
                 "revision": "23",
                 "release-date": "19 September 2023",
                 "cves": "CVE-2023-27536, CVE-2023-2603, CVE-2023-34969, CVE-2023-3899, CVE-2023-28321, CVE-2023-2602, CVE-2023-28484, CVE-2023-29469, CVE-2023-32681",
                 "golang": "",
                 "ubi": "8.8-1037",
-                "new-features": [],
-                "fixes": []
-            },
-            "previous-revision": {
-                "revision": "22",
-                "release-date": "24 July 2023",
-                "cves": "CVE-2020-24736, CVE-2023-26604, CVE-2023-1667, CVE-2023-2283",
-                "golang": "",
-                "ubi": "8.8-1014",
                 "new-features": [],
                 "fixes": []
             }
