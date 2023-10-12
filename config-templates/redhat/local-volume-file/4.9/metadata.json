@@ -2,7 +2,7 @@
   "name": "4.9",
   "revision": "4",
   "enabled": "true",
-  "status": "unsupported",
+  "status": "deprecated",
   "description": "Persistent storage using local volumes",
   "tags": [
     {
