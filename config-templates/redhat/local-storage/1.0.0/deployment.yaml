@@ -151,18 +151,18 @@ items:
             - key: config-name
               value: CONFIG-NAME
             - key: install-local-storage-file
-              value: {{ install-local-storage-file }}
+              value: "{{ install-local-storage-file }}"
             - key: auto-discover-devices-file
-              value: {{ auto-discover-devices-file }}
+              value: "{{ auto-discover-devices-file }}"
             - key: file-nodes-label-key
-              value: {{ file-nodes-label-key }}
+              value: "{{ file-nodes-label-key }}"
             - key: file-nodes-label-value
-              value: {{ file-nodes-label-value }}
+              value: "{{#file-nodes-label-value}}{{{item}}}, {{/file-nodes-label-value}}"
             - key: install-local-storage-block
-              value: {{ install-local-storage-block }}
+              value: "{{ install-local-storage-block }}"
             - key: auto-discover-devices-block
-              value: {{ auto-discover-devices-block }}
+              value: "{{ auto-discover-devices-block }}"
             - key: block-nodes-label-key
-              value: {{ block-nodes-label-key }}
+              value: "{{ block-nodes-label-key }}"
             - key: block-nodes-label-value
-              value: {{ block-nodes-label-value }}
+              value: "{{#block-nodes-label-value}}{{{item}}}, {{/block-nodes-label-value}}"
