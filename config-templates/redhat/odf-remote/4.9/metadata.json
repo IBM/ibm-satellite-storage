@@ -2,7 +2,7 @@
   "name": "4.9",
   "revision": "26",
   "enabled": "true",
-  "status": "deprecated",
+  "status": "unsupported",
   "description": "ODF template for openshift 4.9 (Remote storage)",
   "tags": [
     {
