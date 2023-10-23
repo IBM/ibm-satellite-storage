@@ -1,6 +1,6 @@
 {
   "name": "21.04",
-  "revision": "24",
+  "revision": "25",
   "enabled": "true",
   "status": "deprecated",
   "description": "Netapp Ontap-NAS Driver.",
