@@ -114,8 +114,8 @@ Gete the logs of the `trident-kubectl-san` POD's log.
   
 To recreate your configuration, complete the following steps.
 1. Delete the assignment by running command `ibmcloud sat storage assignment rm --assignment <assignmnet name>`
-1. Delete the configuration by running command `ibmcloud sat storage config rm --config <config name>`.
-1. Recreate the configuration with the correct parameters and recreate the assignment.
+2. Delete the configuration by running command `ibmcloud sat storage config rm --config <config name>`.
+3. Recreate the configuration with the correct parameters and recreate the assignment.
 
 
 ## Reference

@@ -1,0 +1,980 @@
+---
+apiVersion: v1
+kind: List
+metadata:
+  name: vsphere-csi-driver
+  namespace: kube-system
+  annotations:
+    version: 2.7.0
+    revision: 2
+items:
+  - apiVersion: v1
+    kind: Namespace
+    metadata:
+      labels:
+        app.kubernetes.io/name: vsphere-csi-driver
+        app.kubernetes.io/version: 2.7.0
+        pod-security.kubernetes.io/enforce: baseline
+        pod-security.kubernetes.io/enforce-version: latest
+      name: vmware-system-csi
+  - apiVersion: v1
+    kind: Namespace
+    metadata:
+      labels:
+        control-plane: controller-manager
+        vdo.vmware.com/managed-by: vdo
+        pod-security.kubernetes.io/enforce: baseline
+        pod-security.kubernetes.io/enforce-version: latest
+      name: vmware-system-vdo
+  - apiVersion: v1
+    kind: ServiceAccount
+    metadata:
+      labels:
+        vdo.vmware.com/managed-by: vdo
+      name: vdo-controller-manager
+      namespace: vmware-system-vdo
+  - apiVersion: apiextensions.k8s.io/v1
+    kind: CustomResourceDefinition
+    metadata:
+      annotations:
+        controller-gen.kubebuilder.io/version: v0.4.1
+      creationTimestamp: null
+      labels:
+        vdo.vmware.com/managed-by: vdo
+      name: compatibilityconfig.vdo.vmware.com
+    spec:
+      group: vdo.vmware.com
+      names:
+        kind: CompatibilityConfig
+        listKind: CompatibilityConfigList
+        plural: compatibilityconfig
+        singular: compatibilityconfig
+      scope: Namespaced
+      versions:
+      - name: v1alpha1
+        schema:
+          openAPIV3Schema:
+            description: CompatibilityConfig is the Schema for the configuring the compatibility matrix
+            properties:
+              apiVersion:
+                description: CompatibilityConfig is the Schema for configuring the compatibility matrix which defines the version matrix for drivers with vSphere and K8s Version
+                type: string
+              kind:
+                description: 'Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+                type: string
+              metadata:
+                type: object
+              spec:
+                description: CompatibilityConfig configures the desired state of Compatibility Matrix
+                properties:
+                  matrixURL:
+                    description: MatrixURL defines the url to fetch the Compatibility Matrix
+                    type: string
+                required:
+                - matrixURL
+                type: object
+              status:
+                description: CompatibilityConfig defines the observed state of Compatibility Matrix
+                properties:
+                  configured:
+                    description: Configured refers to the status of the Compatibility Matrix
+                    properties:
+                      cpi:
+                        description: CPI indicates the version of CPI driver configured
+                        type: string
+                      csi:
+                        description: CSI indicates the version of CSI driver configured
+                        type: string
+                    type: object
+                type: object
+            type: object
+        served: true
+        storage: true
+        subresources:
+          status: {}
+    status:
+      acceptedNames:
+        kind: ""
+        plural: ""
+      conditions: []
+      storedVersions: []
+  - apiVersion: apiextensions.k8s.io/v1
+    kind: CustomResourceDefinition
+    metadata:
+      annotations:
+        controller-gen.kubebuilder.io/version: v0.4.1
+      creationTimestamp: null
+      labels:
+        vdo.vmware.com/managed-by: vdo
+      name: vdoconfigs.vdo.vmware.com
+    spec:
+      group: vdo.vmware.com
+      names:
+        kind: VDOConfig
+        listKind: VDOConfigList
+        plural: vdoconfigs
+        singular: vdoconfig
+      scope: Namespaced
+      versions:
+      - name: v1alpha1
+        schema:
+          openAPIV3Schema:
+            description: VDOConfig is the Schema for the vdoconfigs API
+            properties:
+              apiVersion:
+                description: 'APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+                type: string
+              kind:
+                description: 'Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+                type: string
+              metadata:
+                type: object
+              spec:
+                description: VDOConfigSpec defines the desired state of VDOConfig
+                properties:
+                  cloudProvider:
+                    description: CloudProvider refers to the section of config that is required to configure CPI driver
+                    properties:
+                      topology:
+                        description: Topology represents the information required for configuring CPI with zone and region
+                        properties:
+                          region:
+                            type: string
+                          zone:
+                            type: string
+                        required:
+                        - region
+                        - zone
+                        type: object
+                      vsphereCloudConfigs:
+                        description: VsphereCloudConfigs refers to the collection of the vSphereCloudConfig resource that holds the vSphere configuration
+                        items:
+                          type: string
+                        type: array
+                    type: object
+                  storageProvider:
+                    description: StorageProvider refers to the section of config that is required to configure CSI driver
+                    properties:
+                      clusterDistribution:
+                        description: ClusterDistribution refers to the type of k8s distribution such as TKGI, OpenShift
+                        type: string
+                      customKubeletPath:
+                        description: CustomKubeletPath refers to the Kubelet Path in case of custom K8s deployments
+                        type: string
+                      fileVolumes:
+                        description: FileVolumes refers to the configuration required for file volumes
+                        properties:
+                          netPermissions:
+                            description: NetPermissions refers to the list of Net permissions required for CSI driver to access file based volumes
+                            items:
+                              properties:
+                                ips:
+                                  description: Ip refers to IP Subnet or Range to which these restrictions apply
+                                  type: string
+                                permissions:
+                                  description: Permission refers to access to the volume such as READ_WRITE, READ_ONLY
+                                  type: string
+                                rootSquash:
+                                  description: RootSquash refers to the access for root user to the volumes. If false, root access is confirmed for all volumes in this IP range
+                                  type: boolean
+                              required:
+                              - ips
+                              type: object
+                            type: array
+                          vsanDataStoreUrl:
+                            description: VSanDataStoreUrl refers to the list of datastores that the CSI drivers can access
+                            items:
+                              type: string
+                            type: array
+                        type: object
+                      vsphereCloudConfig:
+                        description: VsphereCloudConfig refers to the name of the vSphereCloudConfig resource that holds the vSphere configuration
+                        type: string
+                    required:
+                    - vsphereCloudConfig
+                    type: object
+                required:
+                - storageProvider
+                type: object
+              status:
+                description: VDOConfigStatus defines the observed state of VDOConfig
+                properties:
+                  cpi:
+                    description: CPIStatus refers to the configuration status of the CPI driver
+                    properties:
+                      'nodeStatus ':
+                        additionalProperties:
+                          description: NodeStatus is used to type the constants describing possible node states w.r.t CPI configuration.
+                          type: string
+                        description: NodeStatus indicates the status of CPI driver with respect to each node in the cluster.
+                        type: object
+                      phase:
+                        description: Phase is used to indicate the Phase of the CPI driver
+                        enum:
+                        - Deploying
+                        - Deployed
+                        - Configuring
+                        - Configured
+                        - Failed
+                        type: string
+                      statusMsg:
+                        description: StatusMsg is used to display messages in reference to the Phase of the CPI driver
+                        type: string
+                    type: object
+                  csi:
+                    description: CSIStatus refers to the configuration status of the CSI driver
+                    properties:
+                      phase:
+                        description: Phase is used to indicate the Phase of the CSI driver
+                        enum:
+                        - Deploying
+                        - Deployed
+                        - Configuring
+                        - Configured
+                        - Failed
+                        type: string
+                      statusMsg:
+                        description: StatusMsg is used to display messages in reference to the Phase of the CSI driver
+                        type: string
+                    type: object
+                type: object
+            type: object
+        served: true
+        storage: true
+        subresources:
+          status: {}
+    status:
+      acceptedNames:
+        kind: ""
+        plural: ""
+      conditions: []
+      storedVersions: []
+  - apiVersion: apiextensions.k8s.io/v1
+    kind: CustomResourceDefinition
+    metadata:
+      annotations:
+        controller-gen.kubebuilder.io/version: v0.4.1
+      creationTimestamp: null
+      labels:
+        vdo.vmware.com/managed-by: vdo
+      name: vspherecloudconfigs.vdo.vmware.com
+    spec:
+      group: vdo.vmware.com
+      names:
+        kind: VsphereCloudConfig
+        listKind: VsphereCloudConfigList
+        plural: vspherecloudconfigs
+        singular: vspherecloudconfig
+      scope: Namespaced
+      versions:
+      - name: v1alpha1
+        schema:
+          openAPIV3Schema:
+            description: VsphereCloudConfig is the Schema for the vspherecloudconfigs API
+            properties:
+              apiVersion:
+                description: 'APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+                type: string
+              kind:
+                description: 'Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+                type: string
+              metadata:
+                type: object
+              spec:
+                description: VsphereCloudConfigSpec defines the desired state of VsphereCloudConfig
+                properties:
+                  credentials:
+                    description: Credentials refers to the name of k8s secret storing the VC creds
+                    type: string
+                  datacenters:
+                    description: datacenters refers to list of datacenters on the VC which the configured user account can access
+                    items:
+                      type: string
+                    type: array
+                  insecure:
+                    description: Insecure flag determines if connection to VC can be insecured
+                    type: boolean
+                  thumbprint:
+                    description: thumbprint refers to the SSL Thumbprint to be used to establish a secure connection to VC
+                    type: string
+                  vcIp:
+                    description: VCIP refers to IP of the vcenter which is used to configure for VDO
+                    type: string
+                required:
+                - credentials
+                - datacenters
+                - insecure
+                - vcIp
+                type: object
+              status:
+                description: VsphereCloudConfigStatus defines the observed state of VsphereCloudConfig
+                properties:
+                  config:
+                    description: Config represents the verification status of VDO configuration
+                    enum:
+                    - verified
+                    - failed
+                    type: string
+                  message:
+                    description: Message displays text indicating the reason for failure in validating VDO config
+                    type: string
+                required:
+                - config
+                type: object
+            type: object
+        served: true
+        storage: true
+        subresources:
+          status: {}
+    status:
+      acceptedNames:
+        kind: ""
+        plural: ""
+      conditions: []
+      storedVersions: []
+  - apiVersion: rbac.authorization.k8s.io/v1
+    kind: Role
+    metadata:
+      labels:
+        vdo.vmware.com/managed-by: vdo
+      name: vdo-leader-election-role
+      namespace: vmware-system-vdo
+    rules:
+    - apiGroups:
+      - ""
+      resources:
+      - configmaps
+      verbs:
+      - get
+      - list
+      - watch
+      - create
+      - update
+      - patch
+      - delete
+    - apiGroups:
+      - coordination.k8s.io
+      resources:
+      - leases
+      verbs:
+      - get
+      - list
+      - watch
+      - create
+      - update
+      - patch
+      - delete
+    - apiGroups:
+      - ""
+      resources:
+      - events
+      verbs:
+      - create
+      - patch
+  - apiVersion: rbac.authorization.k8s.io/v1
+    kind: ClusterRole
+    metadata:
+      creationTimestamp: null
+      labels:
+        vdo.vmware.com/managed-by: vdo
+      name: vdo-manager-role
+    rules:
+    - apiGroups:
+      - ""
+      resources:
+      - configmaps
+      verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+    - apiGroups:
+      - ""
+      resources:
+      - nodes
+      verbs:
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+    - apiGroups:
+      - ""
+      resources:
+      - pods
+      verbs:
+      - delete
+      - get
+      - list
+      - watch
+    - apiGroups:
+      - ""
+      resources:
+      - secrets
+      verbs:
+      - create
+      - delete
+      - get
+      - list
+      - update
+      - watch
+    - apiGroups:
+      - ""
+      resources:
+      - serviceaccounts
+      verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+    - apiGroups:
+      - ""
+      resources:
+      - services
+      verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+    - apiGroups:
+      - '*'
+      resources:
+      - namespaces
+      verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+    - apiGroups:
+      - apps
+      resources:
+      - daemonsets
+      verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+    - apiGroups:
+      - apps
+      resources:
+      - deployments
+      verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+    - apiGroups:
+      - rbac.authorization.k8s.io
+      resources:
+      - clusterrolebindings
+      verbs:
+      - '*'
+    - apiGroups:
+      - rbac.authorization.k8s.io
+      resources:
+      - clusterroles
+      verbs:
+      - '*'
+    - apiGroups:
+      - rbac.authorization.k8s.io
+      resources:
+      - rolebindings
+      verbs:
+      - '*'
+    - apiGroups:
+      - rbac.authorization.k8s.io
+      resources:
+      - roles
+      verbs:
+      - '*'
+    - apiGroups:
+      - storage.k8s.io
+      resources:
+      - csidrivers
+      verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+    - apiGroups:
+      - storage.k8s.io
+      resources:
+      - csinodes
+      verbs:
+      - create
+      - delete
+      - get
+      - list
+      - watch
+    - apiGroups:
+      - vdo.vmware.com
+      resources:
+      - compatibilityconfig
+      verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+    - apiGroups:
+      - admissionregistration.k8s.io
+      resources:
+      - validatingwebhookconfigurations
+      verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+    - apiGroups:
+      - vdo.vmware.com
+      resources:
+      - compatibilityconfig/finalizers
+      verbs:
+      - update
+    - apiGroups:
+      - vdo.vmware.com
+      resources:
+      - compatibilityconfig/status
+      verbs:
+      - get
+      - patch
+      - update
+    - apiGroups:
+      - vdo.vmware.com
+      resources:
+      - vdoconfigs
+      verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+    - apiGroups:
+      - vdo.vmware.com
+      resources:
+      - vdoconfigs/finalizers
+      verbs:
+      - update
+    - apiGroups:
+      - vdo.vmware.com
+      resources:
+      - vdoconfigs/status
+      verbs:
+      - get
+      - patch
+      - update
+    - apiGroups:
+      - vdo.vmware.com
+      resources:
+      - vspherecloudconfigs
+      verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+    - apiGroups:
+      - vdo.vmware.com
+      resources:
+      - vspherecloudconfigs/finalizers
+      verbs:
+      - update
+    - apiGroups:
+      - vdo.vmware.com
+      resources:
+      - vspherecloudconfigs/status
+      verbs:
+      - get
+      - patch
+      - update
+  - apiVersion: rbac.authorization.k8s.io/v1
+    kind: ClusterRole
+    metadata:
+      labels:
+        vdo.vmware.com/managed-by: vdo
+      name: vdo-metrics-reader
+    rules:
+    - nonResourceURLs:
+      - /metrics
+      verbs:
+      - get
+  - apiVersion: rbac.authorization.k8s.io/v1
+    kind: ClusterRole
+    metadata:
+      labels:
+        vdo.vmware.com/managed-by: vdo
+      name: vdo-proxy-role
+    rules:
+    - apiGroups:
+      - authentication.k8s.io
+      resources:
+      - tokenreviews
+      verbs:
+      - create
+    - apiGroups:
+      - authorization.k8s.io
+      resources:
+      - subjectaccessreviews
+      verbs:
+      - create
+  - apiVersion: rbac.authorization.k8s.io/v1
+    kind: RoleBinding
+    metadata:
+      labels:
+        vdo.vmware.com/managed-by: vdo
+      name: vdo-leader-election-rolebinding
+      namespace: vmware-system-vdo
+    roleRef:
+      apiGroup: rbac.authorization.k8s.io
+      kind: Role
+      name: vdo-leader-election-role
+    subjects:
+    - kind: ServiceAccount
+      name: vdo-controller-manager
+      namespace: vmware-system-vdo
+  - apiVersion: rbac.authorization.k8s.io/v1
+    kind: ClusterRoleBinding
+    metadata:
+      labels:
+        vdo.vmware.com/managed-by: vdo
+      name: vdo-manager-rolebinding
+    roleRef:
+      apiGroup: rbac.authorization.k8s.io
+      kind: ClusterRole
+      name: vdo-manager-role
+    subjects:
+    - kind: ServiceAccount
+      name: vdo-controller-manager
+      namespace: vmware-system-vdo
+  - apiVersion: rbac.authorization.k8s.io/v1
+    kind: ClusterRoleBinding
+    metadata:
+      labels:
+        vdo.vmware.com/managed-by: vdo
+      name: vdo-proxy-rolebinding
+    roleRef:
+      apiGroup: rbac.authorization.k8s.io
+      kind: ClusterRole
+      name: vdo-proxy-role
+    subjects:
+    - kind: ServiceAccount
+      name: vdo-controller-manager
+      namespace: vmware-system-vdo
+  - apiVersion: v1
+    data:
+      auto-upgrade: disabled
+      versionConfigURL: https://raw.githubusercontent.com/vmware-tanzu/vsphere-kubernetes-drivers-operator/release/artifacts/compatibility-yaml/compatibility-v0.7.0.yaml
+    kind: ConfigMap
+    metadata:
+      name: compat-matrix-config
+      namespace: vmware-system-vdo
+  - apiVersion: v1
+    data:
+      controller_manager_config.yaml: |
+        apiVersion: controller-runtime.sigs.k8s.io/v1alpha1
+        kind: ControllerManagerConfig
+        health:
+          healthProbeBindAddress: :8081
+        metrics:
+          bindAddress: 127.0.0.1:8089
+        webhook:
+          port: 9443
+        leaderElection:
+          leaderElect: true
+          resourceName: 540e4412.vmware.com
+    kind: ConfigMap
+    metadata:
+      labels:
+        vdo.vmware.com/managed-by: vdo
+      name: vdo-manager-config
+      namespace: vmware-system-vdo
+  - apiVersion: v1
+    kind: Service
+    metadata:
+      labels:
+        control-plane: controller-manager
+        vdo.vmware.com/managed-by: vdo
+      name: vdo-controller-manager-metrics-service
+      namespace: vmware-system-vdo
+    spec:
+      ports:
+      - name: https
+        port: 8443
+        targetPort: https
+      selector:
+        control-plane: controller-manager
+        vdo.vmware.com/managed-by: vdo
+  - apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      labels:
+        control-plane: controller-manager
+        vdo.vmware.com/managed-by: vdo
+      name: vdo-controller-manager
+      namespace: vmware-system-vdo
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          control-plane: controller-manager
+          vdo.vmware.com/managed-by: vdo
+      strategy:
+        rollingUpdate:
+          maxSurge: 0
+          maxUnavailable: 1
+        type: RollingUpdate
+      template:
+        metadata:
+          labels:
+            control-plane: controller-manager
+            vdo.vmware.com/managed-by: vdo
+          annotations:
+            autoUpdate: "AUTO-UPDATE-ENABLED"
+        spec:
+          containers:
+          - args:
+            - --secure-listen-address=0.0.0.0:8443
+            - --upstream=http://127.0.0.1:8080/
+            - --logtostderr=true
+            - --v=10
+            image: gcr.io/kubebuilder/kube-rbac-proxy:v0.5.0
+            name: kube-rbac-proxy
+            ports:
+            - containerPort: 8443
+              name: https
+          - args:
+            - --health-probe-bind-address=:8081
+            - --metrics-bind-address=127.0.0.1:8089
+            - --leader-elect
+            command:
+            - /manager
+            env:
+            - name: MATRIX_CONFIG_CONTENT
+              valueFrom:
+                configMapKeyRef:
+                  key: versionConfigContent
+                  name: compat-matrix-config
+                  optional: true
+            - name: MATRIX_CONFIG_URL
+              valueFrom:
+                configMapKeyRef:
+                  key: versionConfigURL
+                  name: compat-matrix-config
+                  optional: true
+            - name: VDO_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: AUTO_UPGRADE
+              valueFrom:
+                configMapKeyRef:
+                  key: auto-upgrade
+                  name: compat-matrix-config
+            image: projects.registry.vmware.com/vsphere_kubernetes_driver_operator/vdo:0.6.0
+            imagePullPolicy: IfNotPresent
+            livenessProbe:
+              httpGet:
+                path: /healthz
+                port: 8081
+              initialDelaySeconds: 15
+              periodSeconds: 20
+            name: manager
+            readinessProbe:
+              httpGet:
+                path: /readyz
+                port: 8081
+              initialDelaySeconds: 5
+              periodSeconds: 10
+            resources:
+              limits:
+                cpu: 200m
+                memory: 200Mi
+              requests:
+                cpu: 100m
+                memory: 20Mi
+            securityContext:
+              allowPrivilegeEscalation: false
+            volumeMounts:
+            - mountPath: /etc/kubernetes
+              name: vsphere-config-volume
+          hostNetwork: true
+          nodeSelector:
+            node-role.kubernetes.io/master: ""
+          serviceAccountName: vdo-controller-manager
+          terminationGracePeriodSeconds: 10
+          tolerations:
+          - effect: NoSchedule
+            key: node-role.kubernetes.io/master
+            operator: Exists
+          - effect: NoSchedule
+            key: kubeadmNode
+            operator: Equal
+            value: master
+          - effect: NoSchedule
+            key: node.cloudprovider.kubernetes.io/uninitialized
+            operator: Equal
+            value: "true"
+          volumes:
+          - hostPath:
+              path: /etc/kubernetes
+              type: DirectoryOrCreate
+            name: vsphere-config-volume
+  - apiVersion: rbac.authorization.k8s.io/v1
+    kind: Role
+    metadata:
+      name: privileged-role-vdo
+      namespace: vmware-system-vdo
+    rules:
+    - apiGroups:
+      - security.openshift.io
+      resourceNames:
+      - privileged
+      resources:
+      - securitycontextconstraints
+      verbs:
+      - use
+  - apiVersion: rbac.authorization.k8s.io/v1
+    kind: RoleBinding
+    metadata:
+      name: privileged-rolebinding-vdo
+      namespace: vmware-system-vdo
+    subjects:
+    - kind: ServiceAccount
+      name: vdo-controller-manager
+      namespace:
+    roleRef:
+      kind: Role
+      name: privileged-role-vdo
+  - apiVersion: v1
+    data:
+      password: "{{{vcenter-password}}}"
+      username: "{{{vcenter-username}}}"
+    kind: Secret
+    metadata:
+      name: vsphere-creds-csi
+      namespace: kube-system
+    type: kubernetes.io/basic-auth
+  - apiVersion: vdo.vmware.com/v1alpha1
+    kind: VsphereCloudConfig
+    metadata:
+      managedFields:
+      - apiVersion: vdo.vmware.com/v1alpha1
+        manager: vdoctl
+        operation: Update
+      - apiVersion: vdo.vmware.com/v1alpha1
+        manager: manager
+        operation: Update
+      name: vsphere-csi
+      namespace: vmware-system-vdo
+    spec:
+      credentials: vsphere-creds-csi
+      datacenters:
+        {{#datacenters }}
+        - "{{{ item }}}"
+        {{/datacenters }}
+      insecure: {{ insecure-flag }}
+      thumbprint: "{{{thumbprint}}}"
+      vcIp: "{{{host}}}"
+  - apiVersion: vdo.vmware.com/v1alpha1
+    kind: VDOConfig
+    metadata:
+      managedFields:
+      - apiVersion: vdo.vmware.com/v1alpha1
+        manager: vdoctl
+        operation: Update
+      - apiVersion: vdo.vmware.com/v1alpha1
+        manager: manager
+        operation: Update
+      - apiVersion: vdo.vmware.com/v1alpha1
+        manager: kubectl
+        operation: Update
+      name: vdo-configbfd24d6a
+      namespace: vmware-system-vdo
+    spec:
+      cloudProvider:
+        topology:
+          region: ""
+          zone: ""
+      storageProvider:
+        clusterDistribution: OpenShift
+        customKubeletPath: /var/data/kubelet
+        vsphereCloudConfig: vsphere-csi
+  - apiVersion: rbac.authorization.k8s.io/v1
+    kind: ClusterRole
+    metadata:
+      name: node-role
+    rules:
+    - apiGroups: ["cns.vmware.com"]
+      resources: ["csinodetopologies"]
+      verbs: ["get", "list", "watch", "patch"]
+  - apiVersion: rbac.authorization.k8s.io/v1
+    kind: ClusterRoleBinding
+    metadata:
+      name: node-rolebinding
+      namespace: vmware-system-csi
+    subjects:
+      - kind: ServiceAccount
+        name: vsphere-csi-node
+        namespace: vmware-system-csi
+    roleRef:
+      kind: ClusterRole
+      name: node-role
+      apiGroup: rbac.authorization.k8s.io
+  - apiVersion: rbac.authorization.k8s.io/v1
+    kind: Role
+    metadata:
+      name: privileged-role
+      namespace: vmware-system-csi
+    rules:
+    - apiGroups:
+      - security.openshift.io
+      resourceNames:
+      - privileged
+      resources:
+      - securitycontextconstraints
+      verbs:
+      - use
+  - apiVersion: rbac.authorization.k8s.io/v1
+    kind: RoleBinding
+    metadata:
+      name: privileged-rolebinding
+      namespace: vmware-system-csi
+    subjects:
+    - kind: ServiceAccount
+      name: vsphere-csi-controller
+      namespace:
+    - kind: ServiceAccount
+      name: vsphere-csi-node
+      namespace:
+    roleRef:
+      kind: Role
+      name: privileged-role

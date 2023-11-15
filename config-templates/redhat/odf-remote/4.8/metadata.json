@@ -1,8 +1,8 @@
 {
   "name": "4.8",
-  "revision": "18",
+  "revision": "22",
   "enabled": "true",
-  "status": "supported",
+  "status": "unsupported",
   "description": "ODF template for openshift 4.8 (Remote storage)",
   "tags": [
     {
@@ -28,10 +28,6 @@
     {
       "name": "provider-logo",
       "value": "logo/odf-remote.svg"
-    },
-    {
-      "name": "os-version",
-      "value": "RHEL7"
     },
     {
       "name": "supported-envs",

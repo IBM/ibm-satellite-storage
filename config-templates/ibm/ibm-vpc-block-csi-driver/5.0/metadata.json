@@ -1,6 +1,6 @@
 {
   "name": "5.0",
-  "revision": "4",
+  "revision": "14",
   "enabled": "true",
   "status": "deprecated",
   "description": "[Beta] - IBM VPC Block Storage CSI driver version 5.0",
@@ -27,7 +27,7 @@
     },
     {
       "name": "provider-url",
-      "value": "IBM knowledge center: https://www.ibm.com/support/knowledgecenter/SSRQ8T_1.4.0/csi_block_storage_kc_welcome.html"
+      "value": "https://cloud.ibm.com/docs/containers?topic=containers-vpc-block"
     },
     {
       "name": "support-url",
@@ -43,7 +43,7 @@
     },
     {
       "name": "supported-ocp-versions",
-      "value": "4.9,4.10,4.11,4.12"
+      "value": "4.9, 4.10, 4.11, 4.12, 4.13"
     }
     ]
   }

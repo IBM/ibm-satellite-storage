@@ -10,6 +10,8 @@ metadata:
     cloud.ridge.co/managed: "true"
   annotations:
     storageclass.kubernetes.io/is-default-class: "{{ is-default-class }}"
+parameters:
+  cloud.ridge.co/volume-catalog-item-id: {{ volume-catalog-item-id }}
 provisioner: driver.csi.ridge.com
 allowVolumeExpansion: {{ allowVolumeExpansion }}
 volumeBindingMode: WaitForFirstConsumer

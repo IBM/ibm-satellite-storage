@@ -10,7 +10,7 @@
         "mutable": "true"
     },
     {
-        "description": "Your Azure subscription ID. From the Azure portal, search for 'Subscription' to find a list of your subscriptions. You can also find this value by running the `az account subscription list` command.",
+        "description": "Your Azure subscription ID. From the Azure portal, search for 'Subscription' to find a list of your subscriptions. You can also find your subscription ID by running the `az account subscription list` command.",
         "displayname": "Subscription ID",
         "name": "subscriptionId",
         "required": "true",
@@ -58,7 +58,8 @@
         "description": "You can find your virtual machine type in the Azure portal or by running the `az vm list` command. Example types: 'standard' or 'VMSS'.",
         "displayname": "Virtual Machine Type",
         "name": "vmType",
-        "regex": "^(standard|VMSS|vmss)$",
+        "regex": "^(standard|VMSS)$",
+        "regexFlags":"i",
         "min-length": 4,
         "max-length": 8,
         "supported-values": ["standard", "VMSS"],
@@ -74,7 +75,7 @@
         "required": "true"
     },
     {
-        "description": "The name of the virtual network. You can find this value in the Azure portal or by running the `az network vnet list` command.",
+        "description": "The name of the virtual network. You can find the name of your virtual network in the Azure portal or by running the `az network vnet list` command.",
         "displayname": "Virtual Network Name",
         "name": "vnetName",
         "category": "config",

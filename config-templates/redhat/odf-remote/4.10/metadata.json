@@ -1,8 +1,8 @@
 {
   "name": "4.10",
-  "revision": "12",
+  "revision": "22",
   "enabled": "true",
-  "status": "supported",
+  "status": "deprecated",
   "description": "ODF template for openshift 4.10 (Remote storage)",
   "tags": [
     {
@@ -30,20 +30,12 @@
       "value": "logo/odf-remote.svg"
     },
     {
-      "name": "os-version",
-      "value": "RHEL7"
-    },
-    {
       "name": "supported-envs",
       "value": "OpenShift Container Platform"
     },
     {
-      "name": "supported-k8s-versions",
-      "value": "1.23,1.24"
-    },
-    {
       "name": "supported-ocp-versions",
-      "value": "4.10,4.11"
+      "value": "4.10, 4.11"
     },
     {
       "name": "volume-type",

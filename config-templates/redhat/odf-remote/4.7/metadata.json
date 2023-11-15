@@ -1,8 +1,8 @@
 {
   "name": "4.7",
-  "revision": "18",
+  "revision": "20",
   "enabled": "true",
-  "status": "supported",
+  "status": "unsupported",
   "description": "ODF template for openshift 4.7 (Remote storage)",
   "tags": [
     {

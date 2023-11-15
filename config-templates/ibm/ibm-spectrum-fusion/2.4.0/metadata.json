@@ -18,7 +18,7 @@
     },
     {
       "name":  "provider-url",
-      "value": "https://www.ibm.com/support/knowledgecenter/STXKQY_CSI_SHR/com.ibm.spectrum.scale.csi.v2r10.doc/bl1csi_kc_landing.html"
+      "value": "https://www.ibm.com/support/knowledgecenter/STXKQY_CSI_SHR/com.ibm.spectrum.scale.csi.v2r40.doc/bl1csi_kc_landing.html"
     },{
       "name":  "support-msg",
       "value": "For support contact IBM"
@@ -29,8 +29,8 @@
       "name":  "supported-envs",
       "value": "IBM Cloud"
     },{
-      "name":  "supported-k8s-versions",
-      "value": "1.18,1.19"
+      "name":  "supported-ocp-versions",
+      "value": ""
     },{
       "name": "volume-type",
       "value": "file"

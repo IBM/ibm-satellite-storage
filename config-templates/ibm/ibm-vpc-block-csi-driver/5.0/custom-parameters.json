@@ -15,7 +15,7 @@
     "category": "config",
     "mutable": "false"
   }, {
-      "description": "The ID of the resource group where your VPC is located. To retrieve this value, run the 'ibmcloud is vpc VPC-ID' command and note the Resource group field.",
+      "description": "The ID of the resource group where your VPC is located. You can find your resource group by running the 'ibmcloud is vpc VPC-ID' command and note the Resource group field.",
       "displayname": "Resource group ID",
       "name": "g2_resource_group_id",
       "required": "true",

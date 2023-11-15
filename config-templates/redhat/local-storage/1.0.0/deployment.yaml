@@ -1,0 +1,168 @@
+---
+apiVersion: v1
+kind: List
+metadata:
+    name: local-storage
+    namespace: kube-system
+    annotations:
+        version: 1.0.0
+        revision: 1
+items:
+    {{#install-local-storage-file}}
+    {{#auto-discover-devices-file}}
+    - apiVersion: local.storage.openshift.io/v1alpha1
+      kind: LocalVolumeDiscovery
+      metadata:
+        name: auto-discover-devices
+        namespace: local-storage
+      spec:
+        nodeSelector:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: "{{ file-nodes-label-key }}"
+                  operator: In
+                  values:
+                    {{#file-nodes-label-value}}
+                    - "{{{ item }}}"
+                    {{/file-nodes-label-value}}
+    - apiVersion: local.storage.openshift.io/v1alpha1
+      kind: LocalVolumeSet
+      metadata:
+        name: local-volumeset-file-CONFIG-NAME
+        namespace: local-storage
+      spec:
+        deviceInclusionSpec:
+          deviceTypes:
+            - disk
+            - part
+        nodeSelector:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: "{{ file-nodes-label-key }}"
+                  operator: In
+                  values:
+                    {{#file-nodes-label-value}}
+                    - "{{{ item }}}"
+                    {{/file-nodes-label-value}}
+        storageClassName: "sat-local-file-CONFIG-NAME-gold"
+        volumeMode: Filesystem
+        fsType: "{{ fstype }}"
+    {{/auto-discover-devices-file}}
+    {{^auto-discover-devices-file}}
+    - apiVersion: local.storage.openshift.io/v1
+      kind: LocalVolume
+      metadata:
+          name: local-disk-file-CONFIG-NAME
+          namespace: local-storage
+      spec:
+          nodeSelector:
+              nodeSelectorTerms:
+                  - matchExpressions:
+                        - key: "{{ file-nodes-label-key }}"
+                          operator: In
+                          values:
+                            {{#file-nodes-label-value}}
+                            - "{{{ item }}}"
+                            {{/file-nodes-label-value}}
+          storageClassDevices:
+              - storageClassName: "sat-local-file-CONFIG-NAME-gold"
+                volumeMode: Filesystem
+                fsType: "{{ fstype }}"
+                devicePaths:
+                  {{#file-devicepath}}
+                  - "{{{ item }}}"
+                  {{/file-devicepath}}
+    {{/auto-discover-devices-file}}
+    {{/install-local-storage-file}}
+    {{#install-local-storage-block}}
+    {{#auto-discover-devices-block}}
+    - apiVersion: local.storage.openshift.io/v1alpha1
+      kind: LocalVolumeDiscovery
+      metadata:
+        name: auto-discover-devices
+        namespace: local-storage
+      spec:
+        nodeSelector:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: "{{ block-nodes-label-key }}"
+                  operator: In
+                  values:
+                    {{#block-nodes-label-value}}
+                    - "{{{ item }}}"
+                    {{/block-nodes-label-value}}
+    - apiVersion: local.storage.openshift.io/v1alpha1
+      kind: LocalVolumeSet
+      metadata:
+        name: local-volumeset-block-CONFIG-NAME
+        namespace: local-storage
+      spec:
+        deviceInclusionSpec:
+          deviceTypes:
+            - disk
+            - part
+        nodeSelector:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: "{{ block-nodes-label-key }}"
+                  operator: In
+                  values:
+                    {{#block-nodes-label-value}}
+                    - "{{{ item }}}"
+                    {{/block-nodes-label-value}}
+        storageClassName: "sat-local-block-CONFIG-NAME-gold"
+        volumeMode: Block
+    {{/auto-discover-devices-block}}
+    {{^auto-discover-devices-block}}
+    - apiVersion: local.storage.openshift.io/v1
+      kind: LocalVolume
+      metadata:
+        name: local-disk-block-CONFIG-NAME
+        namespace: local-storage
+      spec:
+        nodeSelector:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: "{{ block-nodes-label-key }}"
+                  operator: In
+                  values:
+                    {{#block-nodes-label-value}}
+                    - "{{{ item }}}"
+                    {{/block-nodes-label-value}}
+        storageClassDevices:
+          - storageClassName: "sat-local-block-CONFIG-NAME-gold"
+            volumeMode: Block
+            devicePaths:
+              {{#block-devicepath}}
+              - "{{{ item }}}"
+              {{/block-devicepath}}
+    {{/auto-discover-devices-block}}
+    {{/install-local-storage-block}}
+    - apiVersion: satstorage.ibm.com/v1
+      kind: SatStorageCleanup
+      metadata:
+          name: satstoragecleanup-local-storage-CONFIG-NAME
+          namespace: "ibm-satellite-storage"
+      spec:
+          template-name: "local-storage"
+          template-version: "1.0.0"
+          template-namespace: "local-storage"
+          config-params-for-cleanup:
+            - key: config-name
+              value: CONFIG-NAME
+            - key: install-local-storage-file
+              value: "{{ install-local-storage-file }}"
+            - key: auto-discover-devices-file
+              value: "{{ auto-discover-devices-file }}"
+            - key: file-nodes-label-key
+              value: "{{ file-nodes-label-key }}"
+            - key: file-nodes-label-value
+              value: "{{#file-nodes-label-value}}{{{item}}},{{/file-nodes-label-value}}"
+            - key: install-local-storage-block
+              value: "{{ install-local-storage-block }}"
+            - key: auto-discover-devices-block
+              value: "{{ auto-discover-devices-block }}"
+            - key: block-nodes-label-key
+              value: "{{ block-nodes-label-key }}"
+            - key: block-nodes-label-value
+              value: "{{#block-nodes-label-value}}{{{item}}},{{/block-nodes-label-value}}"

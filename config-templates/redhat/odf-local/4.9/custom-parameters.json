@@ -20,7 +20,7 @@
     "mutable": "true"
   },
   {
-    "description": "The number of OSD volumes that you want to provision. The total storage available to your apps is equal to the volume size (osd-size) multiplied by the number of volumes (num-of-osd). The default value is '1'.",
+    "description": "The number of storage device replicas to create. The default value is '1', which creates 1 device across 3 nodes. Increase by 1 for each additional set of 3 devices. For must use cases, leave the default value of '1'.",
     "displayname": "Number of OSD volumes",
     "name": "num-of-osd",
     "default": "1",
@@ -31,14 +31,15 @@
     "mutable": "true"
   },
   {
-    "description": "The node names where you want to deploy ODF. Leave this field blank to deploy ODF across all worker nodes in your cluster. The minimum number of worker nodes is 3. You can find your worker node names by running 'oc get nodes'.",
+    "description": "A comma separated list of the worker node names where you want to deploy ODF. Leave this field blank to deploy ODF across all worker nodes in your cluster. The minimum number of worker nodes is 3. You can find your worker node names by running 'oc get nodes'.",
     "displayname": "Worker node names",
     "name": "worker-nodes",
     "required": "false",
-    "mutable": "true"
+    "mutable": "true",
+    "regex": "^([a-zA-Z0-9][a-zA-Z0-9-_.,]*[a-zA-Z0-9])$"
   },
   {
-    "description": "Set to 'true' if you want to upgrade the ODF version.",
+    "description": "If you are upgrading an existing ODF installation, set to 'true'.",
     "displayname": "Upgrade",
     "name": "odf-upgrade",
     "default": "false",

@@ -33,7 +33,7 @@
                 "ubi": "8.8-1072.1697626218",
                 "new-features": [],
                 "fixes": []
-             },
+            },
             "previous-revision": {
                 "revision": "13",
                 "release-date": "19 September 2023",
@@ -42,7 +42,7 @@
                 "ubi": "8.8-1037",
                 "new-features": [],
                 "fixes": []
-            },
+             }
         }
     },
     {

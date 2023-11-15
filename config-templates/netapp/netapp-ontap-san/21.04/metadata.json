@@ -1,8 +1,8 @@
 {
   "name": "21.04",
-  "revision": "16",
+  "revision": "26",
   "enabled": "true",
-  "status": "supported",
+  "status": "deprecated",
   "description": "Netapp Ontap-SAN Driver.",
   "tags": [
     {

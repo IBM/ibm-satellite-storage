@@ -7,6 +7,9 @@
 		"name"
 	],
 	"required": "true",
+	"regex": "^([a-z0-9]|[a-z0-9][a-z0-9.-]*[a-z0-9]+)$",
+	"min-length": 1,
+	"max-length": 64,
 	"category": "config"
   }, {
 	"description": "Specify 'true' or 'false' to make the created storage class the default class.",
@@ -18,6 +21,10 @@
 	"default": "false",
 	"required": "true",
 	"category": "config",
+	"regex": "^(?:true|false)$",
+	"min-length": 4,
+	"max-length": 5,
+	"supported-values": ["false", "true"],
 	"type": "boolean"
   }, {
 	"description": "The Selector label.",
@@ -39,6 +46,10 @@
 	"default": "true",
 	"required": "true",
 	"category": "config",
+	"regex": "^(?:true|false)$",
+	"min-length": 4,
+	"max-length": 5,
+	"supported-values": ["true", "false"],
 	"type": "boolean"
   }, {
 	"description": "Specify a unique volume tier preference; in the range of 1-99 with 1 being the highest",
@@ -51,6 +62,8 @@
 	"default": "99",
 	"category": "config",
 	"regex": "^[1-9]([0-9]?)$",
+	"min-length": 1,
+	"max-length": 2,
 	"type": "text"
 }
 ]
