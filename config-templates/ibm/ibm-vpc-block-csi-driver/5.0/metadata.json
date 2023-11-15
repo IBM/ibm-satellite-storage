@@ -2,7 +2,7 @@
   "name": "5.0",
   "revision": "4",
   "enabled": "true",
-  "status": "supported",
+  "status": "deprecated",
   "description": "[Beta] - IBM VPC Block Storage CSI driver version 5.0",
   "tags": [
     {
