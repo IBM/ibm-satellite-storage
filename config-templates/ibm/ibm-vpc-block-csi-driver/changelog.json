@@ -4,16 +4,16 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "1",
-                "release-date": "20 November 2023",
+                "release-date": "4 December 2023",
                 "cves": "",
                 "golang": "1.20.10",
                 "ubi": "8.8-1072.1697626218",
                 "new-features": [
                    "Initial release",
-                   "Update Kubernetes dependency to 1.26",
-                   "Volumesnapshotclass supported by vpc block csi driver is be made as default",
+                   "Updated Kubernetes dependency to 1.26",
+                   "Volumesnapshotclass supported by vpc block csi driver is made as default snapshotclass",
                    "Priorityclass added in deployment for controller and node pods",
-                   "Remove preStop hook for csi-driver-registrar"
+                   "Removed preStop hook for csi-driver-registrar"
                 ],
                 "fixes": [
                    "Fix for snapshot size to reflect actual source volume size",
