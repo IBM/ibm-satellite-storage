@@ -1,0 +1,59 @@
+apiVersion: v1
+kind: List
+metadata:
+  name: netapp-trident-nas
+  namespace: kube-system
+  annotations:
+    version: 22.10
+    revision: 10
+items:
+  - apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: trident-kubectl-nas
+      namespace: "trident"
+      labels:
+        app.kubernetes.io/name: "netapp-ontap-nas"
+        app.kubernetes.io/version: "v22.10"
+        app.kubernetes.io/revision: "10"
+    spec:
+      replicas: 1
+      selector:
+          matchLabels:
+              app: netapp-ontap-nas
+              app.kubernetes.io/name: "netapp-ontap-nas"
+      template:
+          metadata:
+              labels:
+                  app: netapp-ontap-nas
+                  app.kubernetes.io/name: "netapp-ontap-nas"
+                  app.kubernetes.io/revision: "10"
+          spec:
+              serviceAccountName: trident-kubectl-sa
+              containers:
+                - name: trident-kubectl-nas
+                  image: icr.io/ibm/ibm-tridentctl:v2.0.34
+                  imagePullPolicy: Always
+                  env:
+                  - name: NAMESPACE
+                    value: "trident"
+                  - name: DRIVER_Name
+                    value: "ontap-nas"
+                  - name: MGMT_LIF
+                    value: "{{{ managementLIF }}}"
+                  - name: DATA_LIF
+                    value: "{{{ dataLIF }}}"
+                  - name: SVM_Name
+                    value: "{{{ svm }}}"
+                  - name: USER_Name
+                    value: "{{{ username }}}"
+                  - name: USER_Password
+                    value: "{{{ password }}}"
+                  - name: EXPORT_Policy
+                    value: "{{{ exportPolicy }}}"
+                  - name: LIMIT_VolumeSize
+                    value: "{{{ limitVolumeSize }}}"
+                  - name: LIMIT_AggregateUsage
+                    value: "{{{ limitAggregateUsage }}}"
+                  - name: NFS_MountOptions
+                    value: "{{{ nfsMountOptions }}}"

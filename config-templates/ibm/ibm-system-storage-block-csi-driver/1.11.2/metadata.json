@@ -1,0 +1,77 @@
+{
+  "name": "1.11.2",
+  "revision": "1",
+  "enabled": "true",
+  "status": "supported",
+  "description": "IBM System Storage Block CSI driver version 1.11.1",
+  "tags": [
+    {
+      "name": "provider",
+      "value": "IBM"
+    },
+    {
+      "name": "offering-name",
+      "value": "ibm-system-storage-block-csi-driver"
+    },
+    {
+      "name": "offering-type",
+      "value": "non-sds"
+    },
+    {
+      "name": "provider-url",
+      "value": "IBM knowledge center: https://www.ibm.com/docs/en/stg-block-csi-driver"
+    },
+    {
+      "name": "support-url",
+      "value": "https://www.ibm.com/support/home/"
+    },
+    {
+      "name": "support-msg",
+      "value": "For support contact IBM"
+    },
+    {
+      "name": "provider-logo",
+      "value": "logo/ibm-system-storage-block-csi-driver.svg"
+    },
+    {
+      "name": "supported-envs",
+      "value": "IBM"
+    },
+    {
+      "name": "supported-ocp-versions",
+      "value": "4.10, 4.11, 4.12, 4.13"
+    },
+    {
+      "name": "volume-type",
+      "value": "block"
+    },
+    {
+      "name": "volume-encryption-at-rest",
+      "value": "false"
+    },
+    {
+      "name": "volume-encryption-in-transit",
+      "value": "false"
+    },
+    {
+      "name": "volume-snapshot",
+      "value": "true"
+    },
+    {
+      "name": "volume-availability",
+      "value": "regional"
+    },
+    {
+      "name": "volume-expansion",
+      "value": "true"
+    },
+    {
+      "name": "volume-clone",
+      "value": "true"
+    },
+    {
+      "name": "storageclass",
+      "value": ""
+    }
+  ]
+}

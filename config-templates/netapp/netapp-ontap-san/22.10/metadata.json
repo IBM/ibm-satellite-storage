@@ -1,0 +1,64 @@
+{
+  "name": "22.10",
+  "revision": "10",
+  "enabled": "true",
+  "status": "supported",
+  "description": "Netapp Ontap-SAN Driver.",
+  "tags": [
+    {
+      "name": "template-dependency",
+      "value": "netapp-trident"
+    }, {
+      "name": "template-dependency-version",
+      "value": "22.10"
+    }, {
+      "name": "template-dependency-description",
+      "value": "Install netapp-trident before installing ontap-san driver."
+    }, {
+      "name": "provider",
+      "value": "NetApp"
+    }, {
+      "name": "offering-name",
+      "value": "ontap-san"
+    }, {
+      "name": "offering-type",
+      "value": "non-sds"
+    }, {
+      "name": "provider-url",
+      "value": "https://netapp-trident.readthedocs.io/en/latest/support/support.html"
+    }, {
+      "name": "support-msg",
+      "value": "For support contact NetApp"
+    }, {
+      "name": "provider-logo",
+      "value": "logo/netapp-ontap-san.svg"
+    }, {
+      "name": "supported-envs",
+      "value": "AWS,Azure,IBM"
+    }, {
+      "name": "supported-ocp-versions",
+      "value": "4.8, 4.9, 4.10, 4.11, 4.12"
+    }, {
+      "name": "volume-type",
+      "value": "block"
+    }, {
+      "name": "volume-encryption-at-rest",
+      "value": "true"
+    }, {
+      "name": "volume-encryption-in-transit",
+      "value": "true"
+    }, {
+      "name": "volume-snapshot",
+      "value": "true"
+    }, {
+      "name": "volume-availability",
+      "value": "zonal"
+    }, {
+      "name": "volume-expansion",
+      "value": "true"
+    }, {
+      "name": "storageclass",
+      "value": "gold,silver,bronze,gold-encrypted,silver-encrypted,bronze-encrypted,gold-metro,silver-metro,bronze-metro,gold-encrypted-metro,silver-encrypted-metro,bronze-encrypted-metro"
+    }
+  ]
+}

@@ -2,7 +2,7 @@
   "name": "1.4.0",
   "revision": "2",
   "enabled": "true",
-  "status": "supported",
+  "status": "unsupported",
   "description": "IBM System Storage Block CSI driver version 1.4.0",
   "tags": [
     {
@@ -42,8 +42,8 @@
       "value": "IBM"
     },
     {
-      "name": "supported-k8s-versions",
-      "value": "1.18,1.19"
+      "name": "supported-ocp-versions",
+      "value": "4.5, 4.6"
     },
     {
       "name": "volume-type",

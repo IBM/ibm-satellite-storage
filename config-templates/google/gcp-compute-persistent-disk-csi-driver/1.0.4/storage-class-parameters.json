@@ -7,6 +7,9 @@
             "name"
         ],
         "required": "true",
+        "regex": "^([a-z0-9]|[a-z0-9][a-z0-9.-]*[a-z0-9]+)$",
+        "min-length": 1,
+        "max-length": 64,
         "category": "config"
     },
     {
@@ -17,6 +20,10 @@
             "type"
         ],
         "required": "true",
+        "regex": "^(?:pd-(standard|extreme|ssd|balanced))$",
+        "min-length": 6,
+        "max-length": 11,
+        "supported-values": ["pd-standard", "pd-extreme", "pd-ssd", "pd-balanced"],
         "category": "config"
     },
     {
@@ -28,8 +35,13 @@
         ],
         "default": "WaitForFirstConsumer",
         "required": "true",
+        "regex": "^(?:Immediate|WaitForFirstConsumer)$",
+        "min-length": 9,
+        "max-length": 20,
+        "supported-values": ["WaitForFirstConsumer", "Immediate"],
         "category": "config"
-    },{
+    },
+    {
         "description": "Specify a unique volume tier preference; in the range of 1-99 with 1 being the highest",
         "displayname": "Storage Class Preference",
         "name": "storage-class-preference",
@@ -40,8 +52,11 @@
         "default": "99",
         "category": "config",
         "regex": "^[1-9]([0-9]?)$",
+        "min-length": 1,
+        "max-length": 2,
         "type": "text"
-    }, {
+    }, 
+    {
         "description": "Specify 'true' or 'false' to make the created storage class the default class.",
         "displayname": "Default Storage Class",
         "name": "is-default-class",
@@ -51,6 +66,10 @@
         "default": "false",
         "required": "true",
         "category": "config",
+        "regex": "^(?:true|false)$",
+        "min-length": 4,
+        "max-length": 5,
+        "supported-values": ["false", "true"],
         "type": "boolean"
     }
 ]

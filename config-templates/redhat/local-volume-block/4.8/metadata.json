@@ -2,7 +2,7 @@
   "name": "4.8",
   "revision": "4",
   "enabled": "true",
-  "status": "supported",
+  "status": "unsupported",
   "description": "Persistent storage using local volumes",
   "tags": [
     {
