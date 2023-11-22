@@ -31,7 +31,7 @@
                 "cves": "CVE-2007-4559,CVE-2023-4641,CVE-2023-22745",
                 "ubi": "8.9-1029",
                 "golang": "1.20.11",
-                "new-features": [],
+                "new-features": ["security fix to use correct socket path as SElinux policy modules has been changed and CSI also recommending to use /var/lib/kubelet/plugins/."],
                 "fixes": []
             },
             "previous-revision": {
