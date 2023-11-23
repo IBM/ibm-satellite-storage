@@ -332,7 +332,7 @@ items:
             - operator: Exists
           initContainers:
             - name: vpc-node-label-updater
-              image: icr.io/obs/storage/vpc-node-label-updater:v4.2.14
+              image: icr.io/obs/storage/vpc-node-label-updater:v4.2.15
               imagePullPolicy: Always
               securityContext:
                 privileged: false
@@ -371,7 +371,7 @@ items:
                 - name: ADDRESS
                   value: /csi/csi.sock
                 - name: DRIVER_REGISTRATION_SOCK
-                  value: /var/data/kubelet/csi-plugins/vpc.block.csi.ibm.io/csi.sock
+                  value: /var/data/kubelet/plugins/vpc.block.csi.ibm.io/csi.sock
                 - name: KUBE_NODE_NAME
                   valueFrom:
                     fieldRef:
@@ -393,7 +393,7 @@ items:
                 runAsNonRoot: false
                 runAsUser: 0
                 privileged: true
-              image: icr.io/ibm/ibm-vpc-block-csi-driver:v5.1.15
+              image: icr.io/ibm/ibm-vpc-block-csi-driver:v5.1.18
               imagePullPolicy: Always
               args:
                 - "--v=5"
@@ -484,7 +484,7 @@ items:
                 type: Directory
             - name: plugin-dir
               hostPath:
-                path: /var/data/kubelet/csi-plugins/vpc.block.csi.ibm.io/
+                path: /var/data/kubelet/plugins/vpc.block.csi.ibm.io/
                 type: DirectoryOrCreate
             - name: device-dir
               hostPath:
@@ -639,7 +639,7 @@ items:
                   mountPath: /csi
             - name: iks-vpc-block-driver
               imagePullPolicy: Always
-              image: icr.io/ibm/ibm-vpc-block-csi-driver:v5.1.15
+              image: icr.io/ibm/ibm-vpc-block-csi-driver:v5.1.18
               securityContext:
                 privileged: false
                 allowPrivilegeEscalation: false
