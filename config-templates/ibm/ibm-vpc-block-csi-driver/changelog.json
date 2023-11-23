@@ -19,7 +19,7 @@
                    "Fix for snapshot size to reflect actual source volume size",
                    "Retry fetching IAM token, if token exchange url is unreachable"
                 ]
-            },
+            }
         }
     },
     {
