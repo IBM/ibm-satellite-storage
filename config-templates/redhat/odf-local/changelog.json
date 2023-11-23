@@ -28,7 +28,7 @@
             "latest-revision": {
                 "revision": "8",
                 "release-date": "27 November 2023",
-                "cves": "CVE-2007-4559,CVE-2023-4641,CVE-2023-22745",
+                "cves": "CVE-2007-4559, CVE-2023-4641, CVE-2023-22745",
                 "golang": "1.20.11",
                 "ubi": "8.9-1029",
                 "new-features": [],
@@ -51,7 +51,7 @@
             "latest-revision": {
                 "revision": "12",
                 "release-date": "27 November 2023",
-                "cves": "CVE-2007-4559,CVE-2023-4641,CVE-2023-22745",
+                "cves": "CVE-2007-4559, CVE-2023-4641, CVE-2023-22745",
                 "golang": "1.20.11",
                 "ubi": "8.9-1029",
                 "new-features": [],
@@ -74,7 +74,7 @@
             "latest-revision": {
                 "revision": "23",
                 "release-date": "27 November 2023",
-                "cves": "CVE-2007-4559,CVE-2023-4641,CVE-2023-22745",
+                "cves": "CVE-2007-4559, CVE-2023-4641, CVE-2023-22745",
                 "golang": "1.20.11",
                 "ubi": "8.9-1029",
                 "new-features": [],
