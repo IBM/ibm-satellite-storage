@@ -3,20 +3,20 @@
         "22.10": {
             "status": "supported",
             "latest-revision": {
+                "revision": "12",
+                "release-date": "",
+                "cves": "",
+                "golang": "",
+                "ubi": "",
+                "new-features": [],
+                "fixes": []
+            },
+            "previous-revision": {
                 "revision": "11",
                 "release-date": "27 November 2023",
                 "cves": "CVE-2023-22745, CVE-2007-4559, CVE-2023-40217, CVE-2023-4641",
                 "golang": "",
                 "ubi": "8.9-1029",
-                "new-features": [],
-                "fixes": []
-            },
-            "previous-revision": {
-                "revision": "10",
-                "release-date": "30 October 2023",
-                "cves": "CVE-2023-44487",
-                "golang": "",
-                "ubi": "8.8-1072.1697626218",
                 "new-features": [],
                 "fixes": []
             }
@@ -26,20 +26,20 @@
         "22.04": {
             "status": "supported",
             "latest-revision": {
+                "revision": "25",
+                "release-date": "",
+                "cves": "",
+                "golang": "",
+                "ubi": "",
+                "new-features": [],
+                "fixes": []
+            },
+            "previous-revision": {
                 "revision": "24",
                 "release-date": "27 November 2023",
                 "cves": "CVE-2023-22745, CVE-2007-4559, CVE-2023-40217, CVE-2023-4641",
                 "golang": "",
                 "ubi": "8.9-1029",
-                "new-features": [],
-                "fixes": []
-            },
-            "previous-revision": {
-                "revision": "23",
-                "release-date": "30 October 2023",
-                "cves": "CVE-2023-44487",
-                "golang": "",
-                "ubi": "8.8-1072.1697626218",
                 "new-features": [],
                 "fixes": []
             }
