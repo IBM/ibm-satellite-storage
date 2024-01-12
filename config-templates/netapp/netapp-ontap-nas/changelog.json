@@ -5,7 +5,7 @@
             "latest-revision": {
                 "revision": "12",
                 "release-date": "",
-                "cves": "",
+                "cves": "RHSA-2023:7877, CVE-2023-3446, CVE-2023-3817, CVE-2023-5678",
                 "golang": "",
                 "ubi": "",
                 "new-features": [],
@@ -28,7 +28,7 @@
             "latest-revision": {
                 "revision": "25",
                 "release-date": "",
-                "cves": "",
+                "cves": "RHSA-2023:7877, CVE-2023-3446, CVE-2023-3817, CVE-2023-5678",
                 "golang": "",
                 "ubi": "",
                 "new-features": [],
