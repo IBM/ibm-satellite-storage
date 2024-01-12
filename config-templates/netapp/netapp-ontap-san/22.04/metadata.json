@@ -1,6 +1,6 @@
 {
   "name": "22.04",
-  "revision": "24",
+  "revision": "25",
   "enabled": "true",
   "status": "supported",
   "description": "Netapp Ontap-SAN Driver.",
