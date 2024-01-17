@@ -70,25 +70,7 @@
     },
     {
         "4.10": {
-            "status": "supported",
-            "latest-revision": {
-                "revision": "23",
-                "release-date": "27 November 2023",
-                "cves": "CVE-2007-4559, CVE-2023-4641, CVE-2023-22745",
-                "golang": "1.20.11",
-                "ubi": "8.9-1029",
-                "new-features": [],
-                "fixes": []
-            },
-            "previous-revision": {
-                "revision": "22",
-                "release-date": "30 October 2023",
-                "cves": "CVE-2023-44487",
-                "golang": "1.20.7",
-                "ubi": "8.8-1072.1697626218",
-                "new-features": [],
-                "fixes": []
-            }
+            "status": "unsupported"
         }
     },
     {

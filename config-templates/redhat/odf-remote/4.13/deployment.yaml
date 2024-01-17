@@ -4,7 +4,7 @@ metadata:
   name: ibm-openshift-container-storage
   namespace: kube-system
   annotations:
-    revision: 5
+    revision: 6
 items:
   - apiVersion: apiextensions.k8s.io/v1
     kind: CustomResourceDefinition
@@ -319,6 +319,14 @@ items:
       - patch
       - update
       - watch
+    - apiGroups:
+      - apiextensions.k8s.io
+      resources:
+      - customresourcedefinitions
+      verbs:
+      - get
+      - list
+      - watch
   - apiVersion: rbac.authorization.k8s.io/v1
     kind: RoleBinding
     metadata:
@@ -382,7 +390,7 @@ items:
               value: openshift-storage
             - name: ADDON_CONFIGMAP_NAMESPACE
               value: kube-system
-            image: "icr.io/obs/ibm-ocs-operator:v4.13.7"
+            image: "icr.io/obs/ibm-ocs-operator:v4.13.10"
             imagePullPolicy: Always
             name: manager
             securityContext:
