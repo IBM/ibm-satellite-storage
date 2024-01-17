@@ -8,7 +8,7 @@ items:
       labels:
         app.kubernetes.io/name: "redhat-odf-remote"
         app.kubernetes.io/version: "v4.11.0"
-        app.kubernetes.io/isOdfSupportedFlavor: "12"
+        app.kubernetes.io/revision: "12"
         volume-type: "block"
         storage-class-preference: "1"
         is-user-defined-class: "false"
