@@ -51,6 +51,9 @@ items:
                   clusterEncryption:
                     default: false
                     type: boolean
+                  disableNoobaaLB:
+                    default: false
+                    type: boolean
                   encryptionInTransit:
                     default: false
                     type: boolean
@@ -479,6 +482,7 @@ items:
       {{/kms-encryption}}
       ignoreNoobaa: "{{ ignore-noobaa }}"
       encryptionInTransit: "{{ encryption-intransit }}"
+      disableNoobaaLB: "{{ disable-noobaa-LB }}"
   - apiVersion: satstorage.ibm.com/v1
     kind: SatStorageCleanup
     metadata:

@@ -4,12 +4,16 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "6",
-                "release-date": "19 January 2023",
+                "release-date": "25 January 2023",
                 "cves": "",
                 "golang": "1.20.11",
                 "ubi": "8.9-1029",
-                "new-features": ["Enable/Disable Noobaa public LB"],
-                "fixes": ["fixed uninstallation issues"]
+                "new-features": [
+                    "Enable/Disable Noobaa public LB"
+                ],
+                "fixes": [
+                    "fixed uninstallation issues"
+                ]
             },
             "previous-revision": {
                 "revision": "5",
@@ -27,12 +31,14 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "9",
-                "release-date": "19 January 2023",
+                "release-date": "25 January 2023",
                 "cves": "",
                 "golang": "1.20.11",
                 "ubi": "8.9-1029",
                 "new-features": [],
-                "fixes": ["fixed uninstallation issues"]
+                "fixes": [
+                    "fixed uninstallation issues"
+                ]
             },
             "previous-revision": {
                 "revision": "8",
@@ -50,12 +56,14 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "13",
-                "release-date": "19 January 2023",
+                "release-date": "25 January 2023",
                 "cves": "",
                 "golang": "1.20.11",
                 "ubi": "8.9-1029",
                 "new-features": [],
-                "fixes": ["fixed uninstallation issues"]
+                "fixes": [
+                    "fixed uninstallation issues"
+                ]
             },
             "previous-revision": {
                 "revision": "12",
