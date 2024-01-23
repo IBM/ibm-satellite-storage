@@ -1,13 +1,13 @@
 [
   {
-    "description": "The OSD storage size in Gi. The default value is '100Gi'.",
+    "description": "The OSD storage size in Gi(Use 512Gi or above). The default value is '512Gi'.",
     "displayname": "OSD pod volume size",
     "name": "osd-size",
-    "default": "100Gi",
+    "default": "512Gi",
     "regex": "^[1-9]{1}[0-9]{0,3}(?:Gi|Ti)$",
     "min-length": 3,
     "max-length": 6,
-    "place-holder": "100Gi",
+    "place-holder": "512Gi",
     "required": "true"
   },
   {
@@ -185,9 +185,21 @@
     "obfuscate": "true"
   },
   {
-    "description": "Set to 'true' if you do not want to deploy MultiCloud Object Gateway (Noobaa)",
+    "description": "Set to 'false' if you want to deploy MultiCloud Object Gateway (Noobaa)",
     "displayname": "Ignore Noobaa",
     "name": "ignore-noobaa",
+    "default": "true",
+    "regex": "^(?:true|false)$",
+    "min-length": 4,
+    "max-length": 5,
+    "supported-values": ["true", "false"],
+    "type": "boolean",
+    "required": "true"
+  },
+  {
+    "description": "Set to 'true' if you want to disable Noobaa public load balancer",
+    "displayname": "Disable Noobaa LB",
+    "name": "disable-noobaa-LB",
     "default": "false",
     "regex": "^(?:true|false)$",
     "min-length": 4,

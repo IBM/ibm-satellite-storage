@@ -1,6 +1,6 @@
 {
   "name": "4.13",
-  "revision": "5",
+  "revision": "6",
   "enabled": "true",
   "status": "supported",
   "description": "ODF template for openshift 4.13 (Local storage)",
