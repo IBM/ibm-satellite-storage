@@ -1,5 +1,22 @@
 [
     {
+        "4.14": {
+            "status": "supported",
+            "latest-revision": {
+                "revision": "1",
+                "release-date": "30 January 2024",
+                "cves": "",
+                "golang": "1.20.11",
+                "ubi": "8.9-1029",
+                "new-features": [
+                    "Release of ODF 4.14"
+                ],
+                "fixes": [
+                ]
+            }
+        }
+    },
+    {
         "4.13": {
             "status": "supported",
             "latest-revision": {
