@@ -3,26 +3,25 @@
         "2.2": {
             "status": "supported",
             "latest-revision": {
-                "revision": "17",
-                "release-date": "27 November 2023",
-                "cves": "CVE-2007-4559, CVE-2023-4016, CVE-2023-4641, CVE-2023-22745, CVE-2023-40217",
-                "golang": "1.21.4",
-                "ubi": "8.9-1029",
-                "new-features": [
-                    "s3fs fuse version updated to v1.93"
-                ],
+                "revision": "18",
+                "release-date": "31 January 2024",
+                "cves": "CVE-2023-3446, CVE-2023-3817, CVE-2023-5678",
+                "golang": "1.20.13",
+                "new-features": [ ],
                 "fixes": [
-
+                  "Replaced UBI image with scratch image"
                 ]
             },
             "previous-revision": {
-                "revision": "16",
-                "release-date": "30 October 2023",
-                "cves": "CVE-2023-44487, CVE-2023-39325",
-                "golang": "1.19.12",
-                "ubi": "8.8-1072.1697626218",
-                "new-features": [],
-                "fixes": []
+              "revision": "17",
+              "release-date": "27 November 2023",
+              "cves": "CVE-2007-4559, CVE-2023-4016, CVE-2023-4641, CVE-2023-22745, CVE-2023-40217",
+              "golang": "1.21.4",
+              "ubi": "8.9-1029",
+              "new-features": [
+                  "s3fs fuse version updated to v1.93"
+              ],
+              "fixes": [ ]
             }
         }
     }
