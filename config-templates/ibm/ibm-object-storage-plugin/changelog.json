@@ -4,7 +4,7 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "18",
-                "release-date": "31 January 2024",
+                "release-date": "02 February 2024",
                 "cves": "CVE-2023-3446, CVE-2023-3817, CVE-2023-5678",
                 "golang": "1.20.13",
                 "new-features": [ ],
