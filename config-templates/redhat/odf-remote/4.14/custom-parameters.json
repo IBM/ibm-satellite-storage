@@ -222,8 +222,8 @@
     "mutable": "true"
   },
   {
-    "description": "Enabling this feature creates a single replica pool without data replication, increasing the risk of data loss, data corruption, and potential system instability",
-    "displayname": "Add Single Replica Pool",
+    "description": "Enabling this feature creates a single replica pool without data replication, increasing the risk of data loss, data corruption, and potential system instability. Once it is enabled, it cannot be disabled",
+    "displayname": "Add Single Replica Pool(once enabled, cannot be disabled)",
     "name": "add-single-replica-pool",
     "default": "false",
     "regex": "^(?:true|false)$",
@@ -258,6 +258,6 @@
     "supported-values": ["true", "false"],
     "type": "boolean",
     "required": "true",
-    "mutable": "true"
+    "mutable": "false"
   }
 ]

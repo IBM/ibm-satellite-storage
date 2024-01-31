@@ -257,6 +257,17 @@ items:
       - update
       - watch
     - apiGroups:
+      - noobaa.io
+      resources:
+      - noobaas
+      verbs:
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+    - apiGroups:
       - ocs.ibm.io
       resources:
       - ocsclusters
