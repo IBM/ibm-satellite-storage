@@ -258,6 +258,6 @@
     "supported-values": ["true", "false"],
     "type": "boolean",
     "required": "true",
-    "mutable": "true"
+    "mutable": "false"
   }
 ]
