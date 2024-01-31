@@ -1,6 +1,6 @@
 [
   {
-    "description": "The OSD storage size in Gi(Use 512Gi or above). The default value is '512Gi'.",
+    "description": "The OSD storage size in Gi(Use 512Gi or more). The default value is '512Gi'.",
     "displayname": "OSD pod volume size",
     "name": "osd-size",
     "default": "512Gi",
