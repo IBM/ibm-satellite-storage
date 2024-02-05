@@ -3,6 +3,22 @@
         "5.1":{
             "status": "supported",
             "latest-revision": {
+                "revision": "3",
+                "release-date": "",
+                "cves": "CVE-2022-48560, CVE-2022-48564, CVE-2023-39615, CVE-2023-43804, CVE-2023-45803, CVE-2023-5981",
+                "golang": "1.20.11",
+                "ubi": "8.9-1108",
+                "new-features": [
+                    "Updated Kubernetes dependency to 1.28",
+                    "Updated csi node driver registrar image to v2.9.3",
+                    "Updated livenessprobe image to v2.11.0",
+                    "Updated csi-snapshotter image to v6.3.3",
+                    "Updated csi-provisioner image to v3.6.3",
+                    "Updated csi-attacher image to v4.4.3",
+                    "Updated csi-resizer image to v1.9.3"
+                 ]
+	    },
+            "previous-revision": {
                 "revision": "2",
                 "release-date": "25 January 2024",
                 "cves": "CVE-2023-3446, CVE-2023-3817, CVE-2023-5678",
@@ -10,48 +26,12 @@
                 "ubi": "8.9-1029",
                 "new-features": [],
                 "fixes": []
-            },
-            "previous-revision": {
-                "revision": "1",
-                "release-date": "27 November 2023",
-                "cves": "",
-                "golang": "1.20.10",
-                "ubi": "8.9-1029",
-                "new-features": [
-                    "Initial release",
-                    "Updated Kubernetes dependency to 1.26",
-                    "Volumesnapshotclass supported by vpc block csi driver is made as default snapshotclass",
-                    "Priorityclass added in deployment for controller and node pods",
-                    "Removed preStop hook for csi-driver-registrar"
-                 ],
-                 "fixes": [
-                    "Fix for snapshot size to reflect actual source volume size",
-                    "Retry fetching IAM token, if token exchange url is unreachable"
-                 ]
-             }
+            }
         }
     },
     {
         "5.0": {
-            "status": "deprecated",
-            "latest-revision": {
-                "revision": "15",
-                "release-date": "27 November 2023",
-                "cves": "CVE-2007-4559,CVE-2023-4641,CVE-2023-22745",
-                "ubi": "8.9-1029",
-                "golang": "1.20.11",
-                "new-features": ["security fix to use correct socket path as SElinux policy modules has been changed and CSI also recommending to use /var/lib/kubelet/plugins/."],
-                "fixes": []
-            },
-            "previous-revision": {
-                "revision": "14",
-                "release-date": "30 October 2023",
-                "cves": "CVE-2023-4911,CVE-2023-4527,CVE-2023-4806,CVE-2023-4813,CVE-2023-39325,CVE-2023-44487",
-                "golang": "1.20.10",
-                "ubi": "8.8-1072.1697626218",
-                "new-features": [],
-                "fixes": []
-             }
+            "status": "unsupported"
         }
     },
     {
