@@ -4,11 +4,12 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "3",
-                "release-date": "",
+                "release-date": "12 February 2014",
                 "cves": "CVE-2022-48560, CVE-2022-48564, CVE-2023-39615, CVE-2023-43804, CVE-2023-45803, CVE-2023-5981",
                 "golang": "1.20.11",
                 "ubi": "8.9-1108",
-                "new-features": [
+                "new-features": [],
+                 "fixes": [
                     "Updated Kubernetes dependency to 1.28",
                     "Updated csi node driver registrar image to v2.9.3",
                     "Updated livenessprobe image to v2.11.0",
