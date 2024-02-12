@@ -4,13 +4,15 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "2",
-                "release-date": "14 February 2024",
+                "release-date": "16 February 2024",
                 "cves": "",
-                "golang": "1.20.11",
-                "ubi": "8.9-1029",
+                "golang": "1.21.7",
+                "ubi": "",
                 "new-features": [
                 ],
-                "fixes": ["Base image changed to FIPS compliant image"]
+                "fixes": [
+                    "Replaced UBI image with scratch image"
+                ]
             },
             "previous-revision": {
                 "revision": "1",
@@ -30,13 +32,15 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "7",
-                "release-date": "14 February 2024",
+                "release-date": "16 February 2024",
                 "cves": "",
-                "golang": "1.20.11",
-                "ubi": "8.9-1029",
+                "golang": "1.21.7",
+                "ubi": "",
                 "new-features": [
                 ],
-                "fixes": ["Base image changed to FIPS compliant image"]
+                "fixes": [
+                    "Replaced UBI image with scratch image"
+                ]
             },
             "previous-revision": {
                 "revision": "6",
@@ -58,13 +62,15 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "10",
-                "release-date": "14 February 2024",
+                "release-date": "16 February 2024",
                 "cves": "",
-                "golang": "1.20.11",
-                "ubi": "8.9-1029",
+                "golang": "1.21.7",
+                "ubi": "",
                 "new-features": [
                 ],
-                "fixes": ["Base image changed to FIPS compliant image"]
+                "fixes": [
+                    "Replaced UBI image with scratch image"
+                ]
             },
             "previous-revision": {
                 "revision": "9",
@@ -84,13 +90,15 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "14",
-                "release-date": "14 February 2024",
+                "release-date": "16 February 2024",
                 "cves": "",
-                "golang": "1.20.11",
-                "ubi": "8.9-1029",
+                "golang": "1.21.7",
+                "ubi": "",
                 "new-features": [
                 ],
-                "fixes": ["Base image changed to FIPS compliant image"]
+                "fixes": [
+                    "Replaced UBI image with scratch image"
+                ]
             },
             "previous-revision": {
                 "revision": "13",
