@@ -3,6 +3,18 @@
         "4.14": {
             "status": "supported",
             "latest-revision": {
+                "revision": "2",
+                "release-date": "16 February 2024",
+                "cves": "CVE-2023-48795, CVE-2023-7104, CVE-2024-0553, CVE-2021-35937, CVE-2021-35938, CVE-2021-35939",
+                "golang": "1.21.7",
+                "ubi": "",
+                "new-features": [
+                ],
+                "fixes": [
+                    "Replaced UBI image with scratch image"
+                ]
+            },
+            "previous-revision": {
                 "revision": "1",
                 "release-date": "02 February 2024",
                 "cves": "",
@@ -19,6 +31,18 @@
         "4.13": {
             "status": "supported",
             "latest-revision": {
+                "revision": "7",
+                "release-date": "16 February 2024",
+                "cves": "CVE-2021-35937, CVE-2021-35938, CVE-2021-35939, CVE-2023-48795, CVE-2024-0553",
+                "golang": "1.21.7",
+                "ubi": "",
+                "new-features": [
+                ],
+                "fixes": [
+                    "Replaced UBI image with scratch image"
+                ]
+            },
+            "previous-revision": {
                 "revision": "6",
                 "release-date": "25 January 2024",
                 "cves": "CVE-2023-3446,CVE-2023-3817,CVE-2023-5678,CVE-2023-5981,CVE-2023-7104,CVE-2023-39615",
@@ -30,15 +54,6 @@
                 "fixes": [
                     "fixed uninstallation issues"
                 ]
-            },
-            "previous-revision": {
-                "revision": "5",
-                "release-date": "30 October 2023",
-                "cves": "CVE-2023-44487",
-                "golang": "1.20.7",
-                "ubi": "8.8-1072.1697626218",
-                "new-features": [],
-                "fixes": []
             }
         }
     },
@@ -46,6 +61,18 @@
         "4.12": {
             "status": "supported",
             "latest-revision": {
+                "revision": "10",
+                "release-date": "16 February 2024",
+                "cves": "CVE-2021-35937, CVE-2021-35938, CVE-2021-35939, CVE-2023-48795, CVE-2024-0553",
+                "golang": "1.21.7",
+                "ubi": "",
+                "new-features": [
+                ],
+                "fixes": [
+                    "Replaced UBI image with scratch image"
+                ]
+            },
+            "previous-revision": {
                 "revision": "9",
                 "release-date": "25 January 2024",
                 "cves": "CVE-2023-3446,CVE-2023-3817,CVE-2023-5678,CVE-2023-5981,CVE-2023-7104,CVE-2023-39615",
@@ -55,22 +82,25 @@
                 "fixes": [
                     "fixed uninstallation issues"
                 ]
-            },
-            "previous-revision": {
-                "revision": "8",
-                "release-date": "27 November 2023",
-                "cves": "CVE-2007-4559, CVE-2023-4641, CVE-2023-22745",
-                "golang": "1.20.11",
-                "ubi": "8.9-1029",
-                "new-features": [],
-                "fixes": []
             }
         }
     },
     {
         "4.11": {
-            "status": "supported",
+            "status": "deprecated",
             "latest-revision": {
+                "revision": "14",
+                "release-date": "16 February 2024",
+                "cves": "CVE-2021-35937, CVE-2021-35938, CVE-2021-35939, CVE-2023-48795, CVE-2024-0553",
+                "golang": "1.21.7",
+                "ubi": "",
+                "new-features": [
+                ],
+                "fixes": [
+                    "Replaced UBI image with scratch image"
+                ]
+            },
+            "previous-revision": {
                 "revision": "13",
                 "release-date": "25 January 2024",
                 "cves": "CVE-2023-3446,CVE-2023-3817,CVE-2023-5678,CVE-2023-5981,CVE-2023-7104,CVE-2023-39615",
@@ -80,15 +110,6 @@
                 "fixes": [
                     "fixed uninstallation issues"
                 ]
-            },
-            "previous-revision": {
-                "revision": "12",
-                "release-date": "27 November 2023",
-                "cves": "CVE-2007-4559, CVE-2023-4641, CVE-2023-22745",
-                "golang": "1.20.11",
-                "ubi": "8.9-1029",
-                "new-features": [],
-                "fixes": []
             }
         }
     },
