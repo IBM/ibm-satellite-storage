@@ -99,7 +99,7 @@
     "name": "local-volume-block",
     "displayname": "Local Storage Operator - Block",
     "Description": "Local Storage Operator - Block.",
-    "default-version": "4.12",
+    "default-version": "4.13",
     "enabled": "true",
     "provider": "redhat"
   },
@@ -107,7 +107,7 @@
     "name": "local-volume-file",
     "displayname": "Local Storage Operator - File",
     "Description": "Local Storage Operator - File.",
-    "default-version": "4.12",
+    "default-version": "4.13",
     "enabled": "true",
     "provider": "redhat"
   },
