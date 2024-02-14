@@ -371,7 +371,7 @@ items:
           - args:
             - --enable-leader-election
             command:
-            - /manager
+            - /app/manager
             env:
             - name: CHANNEL
               value: stable-4.12
