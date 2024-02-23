@@ -1,6 +1,6 @@
 {
   "name": "2.2",
-  "revision": "18",
+  "revision": "19",
   "enabled": "true",
   "status": "supported",
   "description": "IBM Object Storage Plugin version 2.2.x",
