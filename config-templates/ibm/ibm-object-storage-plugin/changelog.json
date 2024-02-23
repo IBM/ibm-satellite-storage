@@ -6,7 +6,7 @@
                 "revision": "19",
                 "release-date": "29 February 2024",
                 "cves": "",
-                "golang": "1.20.13",
+                "golang": "1.21.7",
                 "new-features": [ ],
                 "fixes": [
                   "Fix plugin installation issue on CoreOS cluster"

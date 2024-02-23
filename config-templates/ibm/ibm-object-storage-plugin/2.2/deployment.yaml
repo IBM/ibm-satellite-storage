@@ -4,7 +4,7 @@ metadata:
   name: ibm-object-storage-plugin
   namespace: kube-system
   annotations:
-    revision: 189 ## On every new release of the ibm-object-storage-plugin helm-chart revision should be updated to show users new version for cos-s3fs is available.
+    revision: 19 ## On every new release of the ibm-object-storage-plugin helm-chart revision should be updated to show users new version for cos-s3fs is available.
 items:
   - apiVersion: satstorage.ibm.com/v1
     kind: SatStorageHelmChart
