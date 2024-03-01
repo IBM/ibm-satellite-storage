@@ -357,7 +357,7 @@ items:
                     name: ibm-vpc-block-csi-configmap
           containers:
             - name: csi-driver-registrar
-              image: registry.k8s.io/sig-storage/csi-node-driver-registrar:v2.9.3
+              image: icr.io/ext/sig-storage/csi-node-driver-registrar:v2.9.3
               imagePullPolicy: Always
               securityContext:
                 runAsNonRoot: false
@@ -446,7 +446,7 @@ items:
                 - name: syspath
                   mountPath: /sys
             - name: liveness-probe
-              image: registry.k8s.io/sig-storage/livenessprobe:v2.11.0
+              image: icr.io/ext/sig-storage/livenessprobe:v2.11.0
               securityContext:
                 runAsNonRoot: false
                 runAsUser: 0
@@ -535,7 +535,7 @@ items:
             runAsUser: 2121
           containers:
             - name: csi-snapshotter
-              image: registry.k8s.io/sig-storage/csi-snapshotter:v6.3.3
+              image: icr.io/ext/sig-storage/csi-snapshotter:v6.3.3
               imagePullPolicy: Always
               securityContext:
                 privileged: false
@@ -556,7 +556,7 @@ items:
                 - name: socket-dir
                   mountPath: /csi
             - name: csi-provisioner
-              image: registry.k8s.io/sig-storage/csi-provisioner:v3.6.3
+              image: icr.io/ext/sig-storage/csi-provisioner:v3.6.3
               imagePullPolicy: Always
               securityContext:
                 privileged: false
@@ -580,7 +580,7 @@ items:
                 - name: socket-dir
                   mountPath: /csi
             - name: csi-attacher
-              image: registry.k8s.io/sig-storage/csi-attacher:v4.4.3
+              image: icr.io/ext/sig-storage/csi-attacher:v4.4.3
               imagePullPolicy: Always
               securityContext:
                 privileged: false
@@ -601,7 +601,7 @@ items:
                 - name: socket-dir
                   mountPath: /csi
             - name: csi-resizer
-              image: registry.k8s.io/sig-storage/csi-resizer:v1.9.3
+              image: icr.io/ext/sig-storage/csi-resizer:v1.9.3
               imagePullPolicy: Always
               securityContext:
                 privileged: false
@@ -621,7 +621,7 @@ items:
                 - name: socket-dir
                   mountPath: /csi
             - name: liveness-probe
-              image: registry.k8s.io/sig-storage/livenessprobe:v2.11.0
+              image: icr.io/ext/sig-storage/livenessprobe:v2.11.0
               securityContext:
                 privileged: false
                 allowPrivilegeEscalation: false
