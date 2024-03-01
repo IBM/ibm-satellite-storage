@@ -7,7 +7,7 @@
                 "release-date": "7 March 2024",
                 "cves": "",
                 "golang": "",
-                "ubi": "8.9-1108",
+                "ubi": "",
                 "new-features": [],
                 "fixes": []
             },
