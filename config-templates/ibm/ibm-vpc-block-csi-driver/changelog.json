@@ -5,7 +5,7 @@
             "latest-revision": {
                 "revision": "4",
                 "release-date": "7 March 2024",
-                "cves": "",
+                "cves": "CVE-2023-3446, CVE-2023-3817, CVE-2023-5678, CVE-2023-5981, CVE-2023-39615, CVE-2023-7104, CVE-2023-50387, CVE-2023-50868",
                 "golang": "",
                 "ubi": "",
                 "new-features": [],
