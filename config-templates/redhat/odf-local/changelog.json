@@ -3,6 +3,19 @@
         "4.14": {
             "status": "supported",
             "latest-revision": {
+                "revision": "3",
+                "release-date": "07 March 2024",
+                "cves": "CVE-2019-13224, CVE-2019-16163, CVE-2019-19012, CVE-2019-19203, CVE-2019-19204",
+                "golang": "1.21.7",
+                "ubi": "",
+                "new-features": [
+                ],
+                "fixes": [
+                    "Added LSO Tolerations and taint node fix",
+                    "OsdSize minimum size restriction changed to 512Gb"
+                ]
+            },
+            "previous-revision": {
                 "revision": "2",
                 "release-date": "16 February 2024",
                 "cves": "CVE-2023-48795, CVE-2023-7104, CVE-2024-0553, CVE-2021-35937, CVE-2021-35938, CVE-2021-35939",
@@ -13,17 +26,6 @@
                 "fixes": [
                     "Replaced UBI image with scratch image"
                 ]
-            },
-            "previous-revision": {
-                "revision": "1",
-                "release-date": "02 February 2024",
-                "cves": "",
-                "golang": "1.20.11",
-                "ubi": "8.9-1029",
-                "new-features": [
-                    "Initial Release"
-                ],
-                "fixes": []
             }
         }
     },
@@ -31,6 +33,19 @@
         "4.13": {
             "status": "supported",
             "latest-revision": {
+                "revision": "8",
+                "release-date": "07 March 2024",
+                "cves": "CVE-2019-13224, CVE-2019-16163, CVE-2019-19012, CVE-2019-19203, CVE-2019-19204",
+                "golang": "1.21.7",
+                "ubi": "",
+                "new-features": [
+                ],
+                "fixes": [
+                    "OsdSize minimum size restriction changed to 512Gb",
+                    "Taint node fix"
+                ]
+            },
+            "previous-revision": {
                 "revision": "7",
                 "release-date": "16 February 2024",
                 "cves": "CVE-2021-35937, CVE-2021-35938, CVE-2021-35939, CVE-2023-48795, CVE-2024-0553",
@@ -41,19 +56,6 @@
                 "fixes": [
                     "Replaced UBI image with scratch image"
                 ]
-            },
-            "previous-revision": {
-                "revision": "6",
-                "release-date": "25 January 2024",
-                "cves": "CVE-2023-3446,CVE-2023-3817,CVE-2023-5678,CVE-2023-5981,CVE-2023-7104,CVE-2023-39615",
-                "golang": "1.20.11",
-                "ubi": "8.9-1029",
-                "new-features": [
-                    "Enable/Disable Noobaa public LB"
-                ],
-                "fixes": [
-                    "fixed uninstallation issues"
-                ]
             }
         }
     },
@@ -61,6 +63,17 @@
         "4.12": {
             "status": "supported",
             "latest-revision": {
+                "revision": "11",
+                "release-date": "07 March 2024",
+                "cves": "CVE-2019-13224, CVE-2019-16163, CVE-2019-19012, CVE-2019-19203, CVE-2019-19204",
+                "golang": "1.21.7",
+                "ubi": "",
+                "new-features": [
+                ],
+                "fixes": [
+                ]
+            },
+            "previous-revision": {
                 "revision": "10",
                 "release-date": "16 February 2024",
                 "cves": "CVE-2021-35937, CVE-2021-35938, CVE-2021-35939, CVE-2023-48795, CVE-2024-0553",
@@ -71,17 +84,6 @@
                 "fixes": [
                     "Replaced UBI image with scratch image"
                 ]
-            },
-            "previous-revision": {
-                "revision": "9",
-                "release-date": "25 January 2024",
-                "cves": "CVE-2023-3446,CVE-2023-3817,CVE-2023-5678,CVE-2023-5981,CVE-2023-7104,CVE-2023-39615",
-                "golang": "1.20.11",
-                "ubi": "8.9-1029",
-                "new-features": [],
-                "fixes": [
-                    "fixed uninstallation issues"
-                ]
             }
         }
     },
@@ -89,6 +91,17 @@
         "4.11": {
             "status": "deprecated",
             "latest-revision": {
+                "revision": "15",
+                "release-date": "07 March 2024",
+                "cves": "CVE-2019-13224, CVE-2019-16163, CVE-2019-19012, CVE-2019-19203, CVE-2019-19204",
+                "golang": "1.21.7",
+                "ubi": "",
+                "new-features": [
+                ],
+                "fixes": [
+                ]
+            },
+            "previous-revision": {
                 "revision": "14",
                 "release-date": "16 February 2024",
                 "cves": "CVE-2021-35937, CVE-2021-35938, CVE-2021-35939, CVE-2023-48795, CVE-2024-0553",
@@ -98,17 +111,6 @@
                 ],
                 "fixes": [
                     "Replaced UBI image with scratch image"
-                ]
-            },
-            "previous-revision": {
-                "revision": "13",
-                "release-date": "25 January 2024",
-                "cves": "CVE-2023-3446,CVE-2023-3817,CVE-2023-5678,CVE-2023-5981,CVE-2023-7104,CVE-2023-39615",
-                "golang": "1.20.11",
-                "ubi": "8.9-1029",
-                "new-features": [],
-                "fixes": [
-                    "fixed uninstallation issues"
                 ]
             }
         }

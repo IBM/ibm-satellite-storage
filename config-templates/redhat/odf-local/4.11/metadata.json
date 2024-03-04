@@ -1,6 +1,6 @@
 {
   "name": "4.11",
-  "revision": "14",
+  "revision": "15",
   "enabled": "true",
   "status": "deprecated",
   "description": "ODF template for openshift 4.11 (Local storage)",
