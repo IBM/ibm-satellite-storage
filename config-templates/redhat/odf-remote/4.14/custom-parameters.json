@@ -4,7 +4,7 @@
     "displayname": "OSD pod volume size",
     "name": "osd-size",
     "default": "512Gi",
-    "regex": "^[1-9]{1}[0-9]{0,3}(?:Gi|Ti)$",
+    "regex": "^512Gi|[5][1-9][0-9]Gi|[6-9]{1}[0-9]{2}Gi|[1-9]{1}[0-9]{3,3}Gi|[1-9]{1}[0-9]{0,3}Ti$",
     "min-length": 3,
     "max-length": 6,
     "place-holder": "512Gi",

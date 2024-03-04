@@ -11,8 +11,7 @@
                 "new-features": [
                 ],
                 "fixes": [
-                    "Added LSO Tolerations and taint node fix",
-                    "OsdSize minimum size restriction changed to 512Gb"
+                    "Added LSO Tolerations and taint node fix"
                 ]
             },
             "previous-revision": {
@@ -41,7 +40,6 @@
                 "new-features": [
                 ],
                 "fixes": [
-                    "OsdSize minimum size restriction changed to 512Gb",
                     "Taint node fix"
                 ]
             },
