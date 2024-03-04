@@ -12,7 +12,7 @@
                 ],
                 "fixes": [
                     "Taint node fix",
-                    "OsdSize minimum size restriction changed to 512Gi"
+                    "Minimum required value of OsdSize updated to 512Gi"
                 ]
             },
             "previous-revision": {
@@ -41,7 +41,7 @@
                 "new-features": [
                 ],
                 "fixes": [
-                    "OsdSize minimum size restriction changed to 512Gi",
+                    "Minimum required value of OsdSize updated to 512Gi",
                     "Taint node fix"
                 ]
             },
@@ -71,7 +71,7 @@
                 "new-features": [
                 ],
                 "fixes": [
-                    "OsdSize minimum size restriction changed to 512Gi"
+                    "Minimum required value of OsdSize updated to 512Gi"
                 ]
             },
             "previous-revision": {
@@ -100,7 +100,7 @@
                 "new-features": [
                 ],
                 "fixes": [
-                    "OsdSize minimum size restriction changed to 512Gi"
+                    "Minimum required value of OsdSize updated to 512Gi"
                 ]
             },
             "previous-revision": {
