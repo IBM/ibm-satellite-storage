@@ -404,7 +404,7 @@ items:
               value: openshift-storage
             - name: ADDON_CONFIGMAP_NAMESPACE
               value: kube-system
-            image: "icr.io/obs/ibm-ocs-operator:v4.13.12"
+            image: "icr.io/obs/ibm-ocs-operator:v4.13.13"
             imagePullPolicy: Always
             name: manager
             securityContext:
