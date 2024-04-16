@@ -31,8 +31,8 @@
     "mutable": "true"
   },
   {
-    "description": "A comma separated list of the worker pool names where you want to deploy ODF. Either specify workerpool or workernodes to deploy ODF, if not specified ODF will deploy on all nodes",
-    "displayname": "Worker pool names",
+    "description": "A comma separated list of the workerpools names where you want to deploy ODF. Either specify workerpools or workernodes to deploy ODF. if not specified any of them, ODF will deploy on all nodes",
+    "displayname": "Worker pools names",
     "name": "worker-pools",
     "required": "false",
     "mutable": "true",
