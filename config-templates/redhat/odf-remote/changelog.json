@@ -3,6 +3,20 @@
         "4.14": {
             "status": "supported",
             "latest-revision": {
+                "revision": "4",
+                "release-date": "19 April 2024",
+                "cves": "CVE-2023-28322,CVE-2023-38546,CVE-2023-46218",
+                "golang": "1.21.9",
+                "ubi": "",
+                "new-features": [
+                    "Support for workerpool to deploy ODF"
+                ],
+                "fixes": [
+                    "OOM issue fixed",
+                    "Node watcher added"
+                ]
+            },
+            "previous-revision": {
                 "revision": "3",
                 "release-date": "07 March 2024",
                 "cves": "CVE-2019-13224, CVE-2019-16163, CVE-2019-19012, CVE-2019-19203, CVE-2019-19204",
@@ -14,18 +28,6 @@
                     "Taint node fix",
                     "Minimum required value of OsdSize updated to 512Gi"
                 ]
-            },
-            "previous-revision": {
-                "revision": "2",
-                "release-date": "16 February 2024",
-                "cves": "CVE-2023-48795, CVE-2023-7104, CVE-2024-0553, CVE-2021-35937, CVE-2021-35938, CVE-2021-35939",
-                "golang": "1.21.7",
-                "ubi": "",
-                "new-features": [
-                ],
-                "fixes": [
-                    "Replaced UBI image with scratch image"
-                ]
             }
         }
     },
@@ -33,6 +35,19 @@
         "4.13": {
             "status": "supported",
             "latest-revision": {
+                "revision": "9",
+                "release-date": "19 April 2024",
+                "cves": "CVE-2023-28322,CVE-2023-38546,CVE-2023-46218",
+                "golang": "1.21.9",
+                "ubi": "",
+                "new-features": [
+                ],
+                "fixes": [
+                    "OOM issue fixed",
+                    "Node watcher added"
+                ]
+            },
+            "previous-revision": {
                 "revision": "8",
                 "release-date": "07 March 2024",
                 "cves": "CVE-2019-13224, CVE-2019-16163, CVE-2019-19012, CVE-2019-19203, CVE-2019-19204",
@@ -44,18 +59,6 @@
                     "Minimum required value of OsdSize updated to 512Gi",
                     "Taint node fix"
                 ]
-            },
-            "previous-revision": {
-                "revision": "7",
-                "release-date": "16 February 2024",
-                "cves": "CVE-2021-35937, CVE-2021-35938, CVE-2021-35939, CVE-2023-48795, CVE-2024-0553",
-                "golang": "1.21.7",
-                "ubi": "",
-                "new-features": [
-                ],
-                "fixes": [
-                    "Replaced UBI image with scratch image"
-                ]
             }
         }
     },
@@ -63,6 +66,18 @@
         "4.12": {
             "status": "supported",
             "latest-revision": {
+                "revision": "12",
+                "release-date": "19 April 2024",
+                "cves": "CVE-2023-28322,CVE-2023-38546,CVE-2023-46218",
+                "golang": "1.21.9",
+                "ubi": "",
+                "new-features": [
+                ],
+                "fixes": [
+                    "Node watcher added"
+                ]
+            },
+            "previous-revision": {
                 "revision": "11",
                 "release-date": "07 March 2024",
                 "cves": "CVE-2019-13224, CVE-2019-16163, CVE-2019-19012, CVE-2019-19203, CVE-2019-19204",
@@ -73,48 +88,12 @@
                 "fixes": [
                     "Minimum required value of OsdSize updated to 512Gi"
                 ]
-            },
-            "previous-revision": {
-                "revision": "10",
-                "release-date": "16 February 2024",
-                "cves": "CVE-2021-35937, CVE-2021-35938, CVE-2021-35939, CVE-2023-48795, CVE-2024-0553",
-                "golang": "1.21.7",
-                "ubi": "",
-                "new-features": [
-                ],
-                "fixes": [
-                    "Replaced UBI image with scratch image"
-                ]
             }
         }
     },
     {
         "4.11": {
-            "status": "deprecated",
-            "latest-revision": {
-                "revision": "15",
-                "release-date": "07 March 2024",
-                "cves": "CVE-2019-13224, CVE-2019-16163, CVE-2019-19012, CVE-2019-19203, CVE-2019-19204",
-                "golang": "1.21.7",
-                "ubi": "",
-                "new-features": [
-                ],
-                "fixes": [
-                    "Minimum required value of OsdSize updated to 512Gi"
-                ]
-            },
-            "previous-revision": {
-                "revision": "14",
-                "release-date": "16 February 2024",
-                "cves": "CVE-2021-35937, CVE-2021-35938, CVE-2021-35939, CVE-2023-48795, CVE-2024-0553",
-                "golang": "1.21.7",
-                "ubi": "",
-                "new-features": [
-                ],
-                "fixes": [
-                    "Replaced UBI image with scratch image"
-                ]
-            }
+            "status": "unsupported"
         }
     },
     {
