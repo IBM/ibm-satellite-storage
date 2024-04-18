@@ -32,14 +32,14 @@
   },
   {
     "description": "Specify a comma separated list of either the names or the IDs of the worker pools you want to use for ODF. Leave this field blank if you want to use 'worker-nodes'. If you want to use all the worker nodes in your cluster for ODF, then leave 'worker-pools' and 'worker-nodes' blank.",
-    "displayname": "Worker pools names",
+    "displayname": "Worker pools names/IDs",
     "name": "worker-pools",
     "required": "false",
     "mutable": "true",
     "regex": "^([a-zA-Z0-9][a-zA-Z0-9-_.,]*[a-zA-Z0-9])$"
   },
   {
-    "description": "A comma separated list of the worker node names where you want to deploy ODF. Leave this field blank if you want to use 'worker-pools'. If you want to use all the worker nodes in your cluster for ODF, then then leave 'worker-nodes' and 'worker-pools' blank. The minimum number of worker nodes is 3. You can find your worker node names by running 'oc get nodes'. ",
+    "description": "A comma separated list of the worker node names where you want to deploy ODF. Leave this field blank if you want to use 'worker-pools'. If you want to use all the worker nodes in your cluster for ODF, then then leave 'worker-nodes' and 'worker-pools' blank. The minimum number of worker nodes is 3. You can find your worker node names by running 'oc get nodes'.",
     "displayname": "Worker node names",
     "name": "worker-nodes",
     "required": "false",

@@ -32,7 +32,7 @@
   },
   {
     "description": "Specify a comma separated list of either the names or the IDs of the worker pools you want to use for ODF. Leave this field blank if you want to use 'worker-nodes'. If you want to use all the worker nodes in your cluster for ODF, then leave 'worker-pools' and 'worker-nodes' blank.",
-    "displayname": "Worker pools names",
+    "displayname": "Worker pools names/IDs",
     "name": "worker-pools",
     "required": "false",
     "mutable": "true",
