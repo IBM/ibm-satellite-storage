@@ -1,6 +1,6 @@
 {
   "name": "4.12",
-  "revision": "11",
+  "revision": "12",
   "enabled": "true",
   "status": "supported",
   "description": "ODF template for openshift 4.12 (Remote storage)",
