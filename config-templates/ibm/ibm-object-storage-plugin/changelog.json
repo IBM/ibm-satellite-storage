@@ -3,25 +3,25 @@
         "2.2": {
             "status": "supported",
             "latest-revision": {
-                "revision": "19",
-                "release-date": "29 February 2024",
-                "cves": "",
-                "golang": "1.21.7",
+                "revision": "20",
+                "release-date": "29 April 2024",
+                "cves": "CVE-2023-45288, CVE-2024-24785, CVE-2023-44487, CVE-2023-45288",
+                "golang": "1.21.9",
                 "ubi": "",
                 "new-features": [ ],
                 "fixes": [
-                  "Fix plugin installation issue on CoreOS cluster"
+                  "Fix plugin installation issue on CoreOS8 cluster"
                 ]
             },
             "previous-revision": {
-              "revision": "18",
-              "release-date": "02 February 2024",
-              "cves": "CVE-2023-3446, CVE-2023-3817, CVE-2023-5678",
-              "golang": "1.20.13",
+              "revision": "19",
+              "release-date": "29 February 2024",
+              "cves": "",
+              "golang": "1.21.7",
               "ubi": "",
               "new-features": [ ],
               "fixes": [
-                "Replaced UBI image with scratch image"
+                "Fix plugin installation issue on CoreOS cluster"
               ]
             }
         }

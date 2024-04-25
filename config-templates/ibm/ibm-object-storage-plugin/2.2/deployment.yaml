@@ -4,7 +4,7 @@ metadata:
   name: ibm-object-storage-plugin
   namespace: kube-system
   annotations:
-    revision: 19 ## On every new release of the ibm-object-storage-plugin helm-chart revision should be updated to show users new version for cos-s3fs is available.
+    revision: 20 ## On every new release of the ibm-object-storage-plugin helm-chart revision should be updated to show users new version for cos-s3fs is available.
 items:
   - apiVersion: satstorage.ibm.com/v1
     kind: SatStorageHelmChart
@@ -15,9 +15,9 @@ items:
       helm-repo-url: "raw.githubusercontent.com/IBM/charts/master/repo/ibm-helm"
       helm-chart-name: "ibm-object-storage-plugin"
       helm-chart-namespace: "ibm-object-s3fs"
-      helm-chart-version: "2.2.24"  ## On every new release of the ibm-object-storage-plugin helm-chart-version should be updated with new version
+      helm-chart-version: "2.2.25"  ## On every new release of the ibm-object-storage-plugin helm-chart-version should be updated with new version
       release-name: "{{{ helm-release-name }}}"
-      storage-template-revision: "19" ## On every new release of the ibm-object-storage-plugin helm-chart revision should be updated to show users new version for cos-s3fs is available.
+      storage-template-revision: "20" ## On every new release of the ibm-object-storage-plugin helm-chart revision should be updated to show users new version for cos-s3fs is available.
       force-upgrade: true
       params:
         - license={{{ license }}}
