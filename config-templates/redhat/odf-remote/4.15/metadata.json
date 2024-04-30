@@ -1,9 +1,9 @@
 {
-  "name": "4.14",
-  "revision": "4",
+  "name": "4.15",
+  "revision": "1",
   "enabled": "true",
   "status": "supported",
-  "description": "ODF template for openshift 4.14 (Remote storage)",
+  "description": "ODF template for openshift 4.15 (Remote storage)",
   "tags": [
     {
       "name": "provider",
@@ -35,7 +35,7 @@
     },
     {
       "name": "supported-ocp-versions",
-      "value": "4.14, 4.15"
+      "value": "4.15, 4.16"
     },
     {
       "name": "volume-type",
