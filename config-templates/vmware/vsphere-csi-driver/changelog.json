@@ -3,6 +3,17 @@
         "2.7.0": {
             "status": "supported",
             "latest-revision": {
+                "revision": "3",
+                "release-date": "9 May 2024",
+                "cves": "",
+                "golang": "",
+                "ubi": "",
+                "new-features": [],
+                "fixes": [
+                    "Added required labels for namespaces in deployment"
+                ]
+            },
+            "previous-revision": {
                 "revision": "2",
                 "release-date": "18 October 2023",
                 "cves": "",
@@ -12,17 +23,6 @@
                 "fixes": [
                     "Added Pod Security Admission(PSA) labels to 'vmware-system-csi' & 'vmware-system-vdo' namespaces"
                 ]
-            },
-            "previous-revision": {
-                "revision": "1",
-                "release-date": "31 July 2023",
-                "cves": "",
-                "golang": "",
-                "ubi": "",
-                "new-features": [
-                    "Initial release"
-                ],
-                "fixes": []
             }
         }
     },

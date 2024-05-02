@@ -6,7 +6,7 @@ metadata:
   namespace: kube-system
   annotations:
     version: 2.7.0
-    revision: 2
+    revision: 3
 items:
   - apiVersion: v1
     kind: Namespace
@@ -14,7 +14,7 @@ items:
       labels:
         app.kubernetes.io/name: vsphere-csi-driver
         app.kubernetes.io/version: 2.7.0
-        pod-security.kubernetes.io/enforce: baseline
+        pod-security.kubernetes.io/enforce: privileged
         pod-security.kubernetes.io/enforce-version: latest
       name: vmware-system-csi
   - apiVersion: v1
@@ -23,7 +23,7 @@ items:
       labels:
         control-plane: controller-manager
         vdo.vmware.com/managed-by: vdo
-        pod-security.kubernetes.io/enforce: baseline
+        pod-security.kubernetes.io/enforce: privileged
         pod-security.kubernetes.io/enforce-version: latest
       name: vmware-system-vdo
   - apiVersion: v1
