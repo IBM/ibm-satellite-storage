@@ -269,7 +269,7 @@
     "mutable": "false"
   },
   {
-    "description": "Enabling this allows you to create exports using Network File System (NFS) that can then be accessed internally or externally from the OpenShift cluster",
+    "description": "Allow exports from the Network File System (NFS) that can then be accessed internally or externally from the OpenShift cluster",
     "displayname": "Enable NFS",
     "name": "enable-nfs",
     "default": "false",
@@ -282,7 +282,7 @@
     "mutable": "false"
   },
   {
-    "description": "Enable to set the Ceph RADOS block device (RBD) storage class as the default storage class during the deployment of OpenShift Data Foundation",
+    "description": "Set the Ceph RADOS block device (RBD) storage class as the default storage class during the deployment of OpenShift Data Foundation",
     "displayname": "Use Ceph RBD As Default Storage Class",
     "name": "use-ceph-rbd-as-default-storage-class",
     "default": "false",
@@ -295,7 +295,7 @@
     "mutable": "false"
   },
   {
-    "description": "Provides an option to choose a resource profile based on the availability of resources during deployment. Choose between 'lean', 'balanced' and 'performance'.",
+    "description": "Choose a resource profile based on the availability of resources during deployment. Choose between 'lean', 'balanced' and 'performance'.",
     "displayname": "Resource Profile",
     "name": "resource-profile",
     "default": "balanced",
