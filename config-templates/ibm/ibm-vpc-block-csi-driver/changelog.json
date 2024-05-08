@@ -3,6 +3,15 @@
         "5.1":{
             "status": "supported",
             "latest-revision": {
+                "revision": "5",
+                "release-date": "14 May 2024",
+                "cves": "CVE-2023-28322, CVE-2023-38546, CVE-2023-46218, CVE-2024-24786",
+                "golang": "1.21.9",
+                "ubi": "",
+                "new-features": [],
+                "fixes": []
+            },
+            "previous-revision": {
                 "revision": "4",
                 "release-date": "7 March 2024",
                 "cves": "CVE-2023-3446, CVE-2023-3817, CVE-2023-5678, CVE-2023-5981, CVE-2023-39615, CVE-2023-7104, CVE-2023-50387, CVE-2023-50868",
@@ -10,23 +19,6 @@
                 "ubi": "",
                 "new-features": [],
                 "fixes": []
-            },
-            "previous-revision": {
-                "revision": "3",
-                "release-date": "16 February 2024",
-                "cves": "CVE-2022-48560, CVE-2022-48564, CVE-2023-39615, CVE-2023-43804, CVE-2023-45803, CVE-2023-5981",
-                "golang": "1.20.11",
-                "ubi": "8.9-1108",
-                "new-features": [],
-                 "fixes": [
-                    "Updated Kubernetes dependency to 1.28",
-                    "Updated csi node driver registrar image to v2.9.3",
-                    "Updated livenessprobe image to v2.11.0",
-                    "Updated csi-snapshotter image to v6.3.3",
-                    "Updated csi-provisioner image to v3.6.3",
-                    "Updated csi-attacher image to v4.4.3",
-                    "Updated csi-resizer image to v1.9.3"
-                 ]
 	    }
         }
     },
