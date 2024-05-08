@@ -279,7 +279,7 @@
     "supported-values": ["true", "false"],
     "type": "boolean",
     "required": "true",
-    "mutable": "false"
+    "mutable": "true"
   },
   {
     "description": "Set the Ceph RADOS block device (RBD) storage class as the default storage class during the deployment of OpenShift Data Foundation",
@@ -303,6 +303,7 @@
     "min-length": 4,
     "max-length": 11,
     "supported-values": ["lean", "balanced", "performance"],
-    "required": "true"
+    "required": "true",
+    "mutable": "true"
   }
 ]
