@@ -16,7 +16,7 @@
       "value": "non-sds"
     }, {
       "name": "provider-url",
-      "value": "https://netapp-trident.readthedocs.io/en/stable-v21.04/support/support.html"
+      "value": "https://docs.netapp.com/us-en/trident/get-help.html#astra-trident-support-lifecycle"
     }, {
       "name": "support-msg",
       "value": "For support contact NetApp"
