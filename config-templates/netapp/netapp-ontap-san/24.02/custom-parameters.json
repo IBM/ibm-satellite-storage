@@ -1,0 +1,58 @@
+[
+  {
+    "description": "The IP address of the Management LIF.",
+    "displayname": "Management LIF",
+    "name": "managementLIF",
+    "required": "true",
+    "category": "config"
+  }, {
+    "description": "The IP address of the Data LIF.",
+    "displayname": "Data LIF",
+    "name": "dataLIF",
+    "required": "true",
+    "category": "config"
+  }, {
+    "description": "The name of the SVM.",
+    "displayname": "SVM",
+    "name": "svm",
+    "required": "true",
+    "category": "config"
+  }, {
+    "description": "The username to connect to the storage device.",
+    "displayname": "User Name",
+    "name": "username",
+    "required": "true",
+    "category": "secret",
+    "mutable": "true"
+  }, {
+    "description": "The password to connect to the storage device.",
+    "displayname": "User Password",
+    "name": "password",
+    "required": "true",
+    "category": "secret",
+    "obfuscate": "true",
+    "mutable": "true"
+  }, {
+    "description": "The maximum volume size (in Gibibytes) that can be requested and the qtree parent volume size.",
+    "displayname": "Limit Volume Size",
+    "name": "limitVolumeSize",
+    "default": "50Gi",
+    "place-holder":"50Gi",
+    "regex": "^[1-9]{1}[0-9]{0,2}Gi$",
+    "min-length": 3,
+    "max-length": 5,
+    "required": "true",
+    "category": "config"
+  }, {
+    "description": "Provisioning fails if usage is greater than this percentage.",
+    "displayname": "Limit AggregateUsage",
+    "name": "limitAggregateUsage",
+    "default": "80%",
+    "place-holder":"80%",
+    "regex": "(^100?%$)|(^([1-9]([0-9])?|0)%$)",
+    "min-length": 2,
+    "max-length": 4,
+    "required": "true",
+    "category": "config"
+  }
+]
