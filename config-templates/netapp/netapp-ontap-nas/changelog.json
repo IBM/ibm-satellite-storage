@@ -4,8 +4,8 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "2",
-                "release-date": "",
-                "cves": "",
+                "release-date": "TBD",
+                "cves": "CVE-2024-2961",
                 "golang": "",
                 "ubi": "",
                 "new-features": [],
@@ -29,8 +29,8 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "13",
-                "release-date": "",
-                "cves": "",
+                "release-date": "TBD",
+                "cves": "CVE-2024-2961",
                 "golang": "",
                 "ubi": "",
                 "new-features": [],
@@ -52,8 +52,8 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "26",
-                "release-date": "",
-                "cves": "",
+                "release-date": "TBD",
+                "cves": "CVE-2024-2961",
                 "golang": "",
                 "ubi": "",
                 "new-features": [],
