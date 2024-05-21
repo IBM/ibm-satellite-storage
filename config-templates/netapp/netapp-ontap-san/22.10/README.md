@@ -21,7 +21,7 @@ You can use the `netapp-ontap-san` Satellite storage template to deploy NetApp s
 
 List the template parameters.
 ```
-ibmcloud sat storage template get --name netapp-ontap-san --version 22.10
+ibmcloud sat storage template get --name netapp-ontap-san --version 24.02
 ```
 
 **NetApp Ontap-SAN Driver parameters**
@@ -65,7 +65,7 @@ Create a Satellite storage configuration that uses the `netapp-ontap-san` templa
 **Example `sat storage config create` command**
 Create a Satellite storage configuration by using the `netapp-ontap-san` template.
 ```
-ibmcloud sat storage config create --name 'ontapsan-config' --location <location id> --template-name 'netapp-ontap-san' --template-version '22.10' -p 'managementLIF=10.0.0.1' -p 'dataLIF=10.0.0.2' -p 'svm=svm-san' -p 'username=admin' -p 'password=<admin password>' // pragma: allowlist secret
+ibmcloud sat storage config create --name 'ontapsan-config' --location <location id> --template-name 'netapp-ontap-san' --template-version '24.02' -p 'managementLIF=10.0.0.1' -p 'dataLIF=10.0.0.2' -p 'svm=svm-san' -p 'username=admin' -p 'password=<admin password>' // pragma: allowlist secret
 ```
 
 ## Creating the storage assignment
