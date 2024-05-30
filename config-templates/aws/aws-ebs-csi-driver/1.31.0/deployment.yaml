@@ -120,6 +120,9 @@ items:
       - apiGroups: [""]
         resources: ["nodes"]
         verbs: ["get", "list", "watch"]
+      - apiGroups: ["coordination.k8s.io"]
+        resources: ["leases"]
+        verbs: ["get", "watch", "list", "delete", "update", "create"]
       - apiGroups: ["storage.k8s.io"]
         resources: ["volumeattachments"]
         verbs: ["get", "list", "watch"]
@@ -440,6 +443,8 @@ items:
               hostPath:
                 path: /dev
                 type: Directory
+            - name: probe-dir
+              emptyDir: {}
 
   - kind: Deployment
     apiVersion: apps/v1
