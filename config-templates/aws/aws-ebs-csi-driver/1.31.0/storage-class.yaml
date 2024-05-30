@@ -5,7 +5,7 @@ metadata:
   name: aws-ebs-csi-driver-sc
   namespace: kube-system
   annotations:
-    version: 1.12.0
+    version: 1.31.0
 items:
   - kind: StorageClass
     apiVersion: storage.k8s.io/v1
@@ -13,7 +13,7 @@ items:
       name: sat-aws-block-gold
       labels:
         app.kubernetes.io/name: aws-ebs-csi-driver
-        app.kubernetes.io/version: 1.12.0
+        app.kubernetes.io/version: 1.31.0
         volume-type: "block"
         storage-class-preference: "4"
         is-user-defined-class: "false"
@@ -31,7 +31,7 @@ items:
       name: sat-aws-block-silver
       labels:
         app.kubernetes.io/name: aws-ebs-csi-driver
-        app.kubernetes.io/version: 1.12.0
+        app.kubernetes.io/version: 1.31.0
         volume-type: "block"
         storage-class-preference: "5"
         is-user-defined-class: "false"
@@ -48,7 +48,7 @@ items:
       name: sat-aws-block-bronze
       labels:
         app.kubernetes.io/name: aws-ebs-csi-driver
-        app.kubernetes.io/version: 1.12.0
+        app.kubernetes.io/version: 1.31.0
         volume-type: "block"
         storage-class-preference: "6"
         is-user-defined-class: "false"
@@ -67,7 +67,7 @@ items:
         storageclass.kubernetes.io/is-default-class: "true"
       labels:
         app.kubernetes.io/name: aws-ebs-csi-driver
-        app.kubernetes.io/version: 1.12.0
+        app.kubernetes.io/version: 1.31.0
         volume-type: "block"
         storage-class-preference: "1"
         is-user-defined-class: "false"
@@ -85,7 +85,7 @@ items:
       name: sat-aws-block-silver-metro
       labels:
         app.kubernetes.io/name: aws-ebs-csi-driver
-        app.kubernetes.io/version: 1.12.0
+        app.kubernetes.io/version: 1.31.0
         volume-type: "block"
         storage-class-preference: "2"
         is-user-defined-class: "false"
@@ -102,7 +102,7 @@ items:
       name: sat-aws-block-bronze-metro
       labels:
         app.kubernetes.io/name: aws-ebs-csi-driver
-        app.kubernetes.io/version: 1.12.0
+        app.kubernetes.io/version: 1.31.0
         volume-type: "block"
         storage-class-preference: "3"
         is-user-defined-class: "false"

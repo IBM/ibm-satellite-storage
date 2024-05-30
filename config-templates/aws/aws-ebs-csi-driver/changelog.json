@@ -3,6 +3,22 @@
         "1.12.0": {
             "status": "supported",
             "latest-revision": {
+                "revision": "1",
+                "release-date": "3 June 2024",
+                "cves": "",
+                "golang": "",
+                "ubi": "",
+                "new-features": [
+                    "Initial release"
+                ],
+                "fixes": []
+            }
+        }
+    },
+    {
+        "1.12.0": {
+            "status": "supported",
+            "latest-revision": {
                 "revision": "2",
                 "release-date": "16 January 2023",
                 "cves": "",

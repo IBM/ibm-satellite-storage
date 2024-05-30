@@ -15,7 +15,7 @@ items:
       namespace: kube-system
       labels:
         app.kubernetes.io/name: aws-ebs-csi-driver
-        app.kubernetes.io/version: 1.12.0
+        app.kubernetes.io/version: 1.31.0
     data:
       key_id: "{{{ aws-access-key }}}"
       access_key: "{{{ aws-secret-access-key }}}"
@@ -184,9 +184,6 @@ items:
       - apiGroups: [ "snapshot.storage.k8s.io" ]
         resources: [ "volumesnapshotcontents/status" ]
         verbs: [ "update", "patch" ]
-
-
-
   - kind: ClusterRoleBinding
     apiVersion: rbac.authorization.k8s.io/v1
     metadata:
@@ -445,7 +442,6 @@ items:
                 type: Directory
             - name: probe-dir
               emptyDir: {}
-
   - kind: Deployment
     apiVersion: apps/v1
     metadata:
@@ -700,7 +696,6 @@ items:
           volumes:
             - name: socket-dir
               emptyDir: {}
-
   - kind: PodDisruptionBudget
     apiVersion: policy/v1
     metadata:

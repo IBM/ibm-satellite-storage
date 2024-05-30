@@ -21,7 +21,7 @@ https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html
 
 Retrieve all parameters required by this template
 ```
-ibmcloud sat storage template get --name aws-ebs-csi-driver --version 1.12.0
+ibmcloud sat storage template get --name aws-ebs-csi-driver --version 1.31.0
 ```
 
 **AWS EBS CSI Driver parameters**
@@ -51,7 +51,7 @@ ibmcloud sat storage template get --name aws-ebs-csi-driver --version 1.12.0
 **Example `sat storage config create` command**
 
 ```sh
-ibmcloud sat storage config create --name aws-ebs-conf --template-name aws-ebs-csi-driver --template-version 1.12.0 --location <location-id> -p "aws-access-key=<access-key-without-base64-encoding>" -p "aws-secret-access-key=<secret-access-key-without-base64-encoding>"
+ibmcloud sat storage config create --name aws-ebs-conf --template-name aws-ebs-csi-driver --template-version 1.31.0 --location <location-id> -p "aws-access-key=<access-key-without-base64-encoding>" -p "aws-secret-access-key=<secret-access-key-without-base64-encoding>"
 ```
 
 ## Creating the storage assignment
