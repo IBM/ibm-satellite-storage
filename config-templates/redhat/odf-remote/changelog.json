@@ -3,6 +3,17 @@
         "4.15": {
             "status": "supported",
             "latest-revision": {
+                "revision": "2",
+                "release-date": "05 June 2024",
+                "cves": "CVE-2024-33600, CVE-2024-33601, CVE-2023-7008, CVE-2023-6004, CVE-2024-26458, CVE-2024-26461, CVE-2024-2961, CVE-2023-6918, CVE-2024-33599, CVE-2024-33602",
+                "golang": "1.21.10",
+                "ubi": "",
+                "new-features": [
+                ],
+                "fixes": [
+                ]
+            },
+            "previous-revision": {
                 "revision": "1",
                 "release-date": "09 May 2024",
                 "cves": "",
@@ -20,6 +31,17 @@
         "4.14": {
             "status": "supported",
             "latest-revision": {
+                "revision": "5",
+                "release-date": "05 June 2024",
+                "cves": "CVE-2024-33600, CVE-2024-33601, CVE-2023-7008, CVE-2023-6004, CVE-2024-26458, CVE-2024-26461, CVE-2024-2961, CVE-2023-6918, CVE-2024-33599, CVE-2024-33602",
+                "golang": "1.21.10",
+                "ubi": "",
+                "new-features": [
+                ],
+                "fixes": [
+                ]
+            },
+            "previous-revision": {
                 "revision": "4",
                 "release-date": "19 April 2024",
                 "cves": "CVE-2023-28322, CVE-2023-38546, CVE-2023-46218",
@@ -32,19 +54,6 @@
                     "OOM issue fixed",
                     "Node watcher added"
                 ]
-            },
-            "previous-revision": {
-                "revision": "3",
-                "release-date": "07 March 2024",
-                "cves": "CVE-2019-13224, CVE-2019-16163, CVE-2019-19012, CVE-2019-19203, CVE-2019-19204",
-                "golang": "1.21.7",
-                "ubi": "",
-                "new-features": [
-                ],
-                "fixes": [
-                    "Taint node fix",
-                    "Minimum required value of OsdSize updated to 512Gi"
-                ]
             }
         }
     },
@@ -52,6 +61,17 @@
         "4.13": {
             "status": "supported",
             "latest-revision": {
+                "revision": "10",
+                "release-date": "05 June 2024",
+                "cves": "CVE-2024-33600, CVE-2024-33601, CVE-2023-7008, CVE-2023-6004, CVE-2024-26458, CVE-2024-26461, CVE-2024-2961, CVE-2023-6918, CVE-2024-33599, CVE-2024-33602",
+                "golang": "1.21.10",
+                "ubi": "",
+                "new-features": [
+                ],
+                "fixes": [
+                ]
+            },
+            "previous-revision": {
                 "revision": "9",
                 "release-date": "19 April 2024",
                 "cves": "CVE-2023-28322, CVE-2023-38546, CVE-2023-46218",
@@ -63,19 +83,6 @@
                     "OOM issue fixed",
                     "Node watcher added"
                 ]
-            },
-            "previous-revision": {
-                "revision": "8",
-                "release-date": "07 March 2024",
-                "cves": "CVE-2019-13224, CVE-2019-16163, CVE-2019-19012, CVE-2019-19203, CVE-2019-19204",
-                "golang": "1.21.7",
-                "ubi": "",
-                "new-features": [
-                ],
-                "fixes": [
-                    "Minimum required value of OsdSize updated to 512Gi",
-                    "Taint node fix"
-                ]
             }
         }
     },
@@ -83,6 +90,17 @@
         "4.12": {
             "status": "supported",
             "latest-revision": {
+                "revision": "13",
+                "release-date": "05 June 2024",
+                "cves": "CVE-2024-33600, CVE-2024-33601, CVE-2023-7008, CVE-2023-6004, CVE-2024-26458, CVE-2024-26461, CVE-2024-2961, CVE-2023-6918, CVE-2024-33599, CVE-2024-33602",
+                "golang": "1.21.10",
+                "ubi": "",
+                "new-features": [
+                ],
+                "fixes": [
+                ]
+            },
+            "previous-revision": {
                 "revision": "12",
                 "release-date": "19 April 2024",
                 "cves": "CVE-2023-28322, CVE-2023-38546, CVE-2023-46218",
@@ -92,18 +110,6 @@
                 ],
                 "fixes": [
                     "Node watcher added"
-                ]
-            },
-            "previous-revision": {
-                "revision": "11",
-                "release-date": "07 March 2024",
-                "cves": "CVE-2019-13224, CVE-2019-16163, CVE-2019-19012, CVE-2019-19203, CVE-2019-19204",
-                "golang": "1.21.7",
-                "ubi": "",
-                "new-features": [
-                ],
-                "fixes": [
-                    "Minimum required value of OsdSize updated to 512Gi"
                 ]
             }
         }
