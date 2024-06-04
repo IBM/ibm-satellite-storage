@@ -308,7 +308,6 @@ items:
             kubernetes.io/os: linux
           serviceAccountName: ebs-csi-node-sa
           priorityClassName: system-node-critical
-          # Need to check
           tolerations:
             - key: CriticalAddonsOnly
               operator: Exists
@@ -709,4 +708,4 @@ items:
           app: ebs-csi-controller
           app.kubernetes.io/name: aws-ebs-csi-driver
           app.kubernetes.io/version: 1.31.0
-      minAvailable: 1
+      minAvailable: 2
