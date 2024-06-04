@@ -1,12 +1,12 @@
 ---
-apiVersion: v1   
+apiVersion: v1
 kind: List
 metadata:
   name: aws-ebs-csi-driver
   namespace: kube-system
   annotations:
     version: 1.12.0
-    revision: 2
+    revision: 3
 items:
   - apiVersion: v1
     kind: Secret
@@ -107,6 +107,17 @@ items:
       - apiGroups: ["storage.k8s.io"]
         resources: ["volumeattachments"]
         verbs: ["get", "list", "watch"]
+  - kind: ClusterRole
+    apiVersion: rbac.authorization.k8s.io/v1
+    metadata:
+      name: ebs-csi-node-role
+      labels:
+        app.kubernetes.io/name: aws-ebs-csi-driver
+        app.kubernetes.io/version: 1.12.0
+    rules:
+      - apiGroups: [""]
+        resources: ["nodes"]
+        verbs: ["get"]
   - kind: ClusterRoleBinding
     apiVersion: rbac.authorization.k8s.io/v1
     metadata:
@@ -136,7 +147,7 @@ items:
     roleRef:
       kind: ClusterRole
       name: ebs-csi-node-role
-      apiGroup: rbac.authorization.k8s.io    
+      apiGroup: rbac.authorization.k8s.io
   - kind: ClusterRoleBinding
     apiVersion: rbac.authorization.k8s.io/v1
     metadata:
@@ -259,7 +270,7 @@ items:
             app.kubernetes.io/name: aws-ebs-csi-driver
             app.kubernetes.io/version: 1.12.0
           annotations:
-            autoUpdate: "AUTO-UPDATE-ENABLED"  
+            autoUpdate: "AUTO-UPDATE-ENABLED"
         spec:
           affinity:
             nodeAffinity:
@@ -273,7 +284,7 @@ items:
           nodeSelector:
             kubernetes.io/os: linux
           serviceAccountName: ebs-csi-node-sa
-          priorityClassName: system-cluster-critical
+          priorityClassName: system-node-critical
           tolerations:
             - key: CriticalAddonsOnly
               operator: Exists
@@ -284,7 +295,7 @@ items:
             fsGroup: 0
             runAsGroup: 0
             runAsNonRoot: false
-            runAsUser: 0    
+            runAsUser: 0
           containers:
             - name: ebs-plugin
               securityContext:
@@ -296,7 +307,7 @@ items:
                 - node
                 - --endpoint=$(CSI_ENDPOINT)
                 - --logtostderr
-                - --v=2   
+                - --v=2
               env:
                 - name: CSI_ENDPOINT
                   value: unix:/csi/csi.sock
@@ -438,7 +449,7 @@ items:
             fsGroup: 1000
             runAsGroup: 1000
             runAsNonRoot: true
-            runAsUser: 1000    
+            runAsUser: 1000
           containers:
             - name: ebs-plugin
               image: k8s.gcr.io/provider-aws/aws-ebs-csi-driver:v1.12.0
@@ -472,7 +483,7 @@ items:
                     configMapKeyRef:
                       name: aws-meta
                       key: endpoint
-                      optional: true      
+                      optional: true
               volumeMounts:
                 - name: socket-dir
                   mountPath: /var/lib/csi/sockets/pluginproxy/
@@ -505,7 +516,7 @@ items:
                   memory: 128Mi
               securityContext:
                 allowPrivilegeEscalation: false
-                readOnlyRootFilesystem: true    
+                readOnlyRootFilesystem: true
             - name: csi-provisioner
               image: k8s.gcr.io/sig-storage/csi-provisioner:v3.1.0
               imagePullPolicy: IfNotPresent
@@ -524,7 +535,7 @@ items:
                   mountPath: /var/lib/csi/sockets/pluginproxy/
               securityContext:
                 allowPrivilegeEscalation: false
-                readOnlyRootFilesystem: true    
+                readOnlyRootFilesystem: true
               resources:
                 limits:
                   cpu: 100m
@@ -547,7 +558,7 @@ items:
                   mountPath: /var/lib/csi/sockets/pluginproxy/
               securityContext:
                 allowPrivilegeEscalation: false
-                readOnlyRootFilesystem: true    
+                readOnlyRootFilesystem: true
               resources:
                 limits:
                   cpu: 100m
@@ -569,7 +580,7 @@ items:
                   mountPath: /var/lib/csi/sockets/pluginproxy/
               securityContext:
                 allowPrivilegeEscalation: false
-                readOnlyRootFilesystem: true      
+                readOnlyRootFilesystem: true
               resources:
                 limits:
                   cpu: 100m
@@ -592,7 +603,7 @@ items:
                   mountPath: /var/lib/csi/sockets/pluginproxy/
               securityContext:
                 allowPrivilegeEscalation: false
-                readOnlyRootFilesystem: true    
+                readOnlyRootFilesystem: true
               resources:
                 limits:
                   cpu: 100m
@@ -617,7 +628,7 @@ items:
                   memory: 128Mi
               securityContext:
                 allowPrivilegeEscalation: false
-                readOnlyRootFilesystem: true    
+                readOnlyRootFilesystem: true
           volumes:
             - name: socket-dir
               emptyDir: {}
