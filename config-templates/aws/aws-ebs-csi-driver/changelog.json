@@ -44,7 +44,7 @@
     },
     {
         "1.5.1": {
-            "status": "supported",
+            "status": "deprecated",
             "latest-revision": {
                 "revision": "5",
                 "release-date": "16 January 2023",
@@ -71,7 +71,7 @@
     },
     {
         "1.1.0": {
-            "status": "supported",
+            "status": "deprecated",
             "latest-revision": {
                 "revision": "5",
                 "release-date": "16 January 2023",
