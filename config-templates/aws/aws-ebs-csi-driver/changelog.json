@@ -19,6 +19,17 @@
         "1.12.0": {
             "status": "supported",
             "latest-revision": {
+                "revision": "3",
+                "release-date": "05 June 2024",
+                "cves": "",
+                "golang": "",
+                "ubi": "",
+                "new-features": [],
+                "fixes": [
+                    "Add the ebs-csi-node-role cluster role"
+                ]
+            },
+            "previous-revision": {
                 "revision": "2",
                 "release-date": "16 January 2023",
                 "cves": "",
@@ -28,17 +39,6 @@
                 "fixes": [
                     "Use the policy/v1 API version for PodDisruptionBudget"
                 ]
-            },
-            "previous-revision": {
-                "revision": "1",
-                "release-date": "07 November 2022",
-                "cves": "",
-                "golang": "",
-                "ubi": "",
-                "new-features": [
-                    "Initial release"
-                ],
-                "fixes": []
             }
         }
     },
