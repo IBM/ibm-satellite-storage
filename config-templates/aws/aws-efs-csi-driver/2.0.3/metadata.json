@@ -1,0 +1,65 @@
+{
+    "name": "2.0.3",
+    "revision": "1",
+    "enabled": "true",
+    "status": "supported",
+    "description": "AWS EFS CSI Driver version 2.0.3",
+    "tags": [
+      {
+        "name": "provider",
+        "value": "AWS"
+      },
+      {
+        "name": "offering-name",
+        "value": "aws-efs-csi-driver"
+      },
+      {
+        "name": "offering-type",
+        "value": "non-sds"
+      },
+      {
+        "name": "provider-url",
+        "value": "https://console.aws.amazon.com/support/home#/"
+      },
+      {
+        "name": "support-msg",
+        "value": "For support contact AWS"
+      },
+      {
+        "name": "provider-logo",
+        "value": "logo/aws-efs-csi-driver.svg"
+      },
+      {
+        "name": "supported-envs",
+        "value": "AWS"
+      },
+      {
+        "name": "supported-ocp-versions",
+        "value": "4.14, 4.15"
+      },
+      {
+        "name": "volume-type",
+        "value": "file"
+      },
+      {
+        "name": "volume-encryption-at-rest",
+        "value": "true"
+      },
+      {
+        "name": "volume-encryption-in-transit",
+        "value": "true"
+      },
+      {
+        "name": "volume-snapshot",
+        "value": "false"
+      },
+      {
+        "name": "volume-availability",
+        "value": "regional"
+      },
+      {
+        "name": "volume-expansion",
+        "value": "false"
+      }
+    ]
+  }
