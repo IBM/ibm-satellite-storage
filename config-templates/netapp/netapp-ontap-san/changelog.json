@@ -4,7 +4,7 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "2",
-                "release-date": "TBD",
+                "release-date": "05 June 2024",
                 "cves": "CVE-2024-2961",
                 "golang": "",
                 "ubi": "",
@@ -29,7 +29,7 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "13",
-                "release-date": "TBD",
+                "release-date": "05 June 2024",
                 "cves": "CVE-2024-2961",
                 "golang": "",
                 "ubi": "",
@@ -52,7 +52,7 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "26",
-                "release-date": "TBD",
+                "release-date": "05 June 2024",
                 "cves": "CVE-2024-2961",
                 "golang": "",
                 "ubi": "",
