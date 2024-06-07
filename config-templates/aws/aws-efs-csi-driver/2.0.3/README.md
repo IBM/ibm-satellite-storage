@@ -3,7 +3,7 @@
 AWS EFS CSI driver implements the CSI specification for container orchestrators to manage the lifecycle of Amazon EFS file systems.
 
 # Features Supported:
-- Dynamic Provisioning : aws-efs-csi-driver 1.4.2 supports dynamic provisioning. To make use of dynamic provisioning a user defined storage class must be created. While creating the storage class it has the provision to specify GID range which can be useful when providing access to the mounted volume for non-root users.
+- Dynamic Provisioning : aws-efs-csi-driver 2.0.3 supports dynamic provisioning. To make use of dynamic provisioning a user defined storage class must be created. While creating the storage class it has the provision to specify GID range which can be useful when providing access to the mounted volume for non-root users.
 
 ## Prerequisites
 
@@ -14,7 +14,7 @@ AWS EFS CSI driver implements the CSI specification for container orchestrators 
 ## AWS EFS CSI Driver parameters & how to retrieve them
 
 ```
-ibmcloud sat storage template get --name aws-efs-csi-driver --version 1.4.2
+ibmcloud sat storage template get --name aws-efs-csi-driver --version 2.0.3
 
 ```
 **AWS EFS CSI Driver parameters**
@@ -30,7 +30,7 @@ ibmcloud sat storage template get --name aws-efs-csi-driver --version 1.4.2
 **Example `sat storage config create` command**
 
 ```
-ibmcloud sat storage config create --name aws-efs-conf --template-name aws-efs-csi-driver --template-version 1.4.2 --location <location-id> -p "aws-access-key=<access-key-without-base64-encoding>" -p "aws-secret-access-key=<secret-access-key-without-base64-encoding>"
+ibmcloud sat storage config create --name aws-efs-conf --template-name aws-efs-csi-driver --template-version 2.0.3 --location <location-id> -p "aws-access-key=<access-key-without-base64-encoding>" -p "aws-secret-access-key=<secret-access-key-without-base64-encoding>"
 ```
 
 ## Creating the storage assignment
