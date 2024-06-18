@@ -1,5 +1,19 @@
 [
     {
+        "2.0.3": {
+            "status": "supported",
+            "latest-revision": {
+                "revision": "1",
+                "release-date": "20 June 2024",
+                "cves": "",
+                "golang": "",
+                "ubi": "",
+                "new-features": [
+                    "Initial release"
+                ],
+                "fixes": []
+            }
+        },
         "1.4.2": {
             "status": "supported",
             "latest-revision": {
@@ -17,7 +31,7 @@
     },
     {
         "1.3.7": {
-            "status": "supported",
+            "status": "deprecated",
             "latest-revision": {
                 "revision": "4",
                 "release-date": "29 July 2022",
@@ -33,7 +47,7 @@
     },
     {
         "1.3.1": {
-            "status": "supported",
+            "status": "deprecated",
             "latest-revision": {
                 "revision": "4",
                 "release-date": "29 July 2022",
