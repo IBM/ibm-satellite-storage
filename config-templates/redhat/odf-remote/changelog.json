@@ -6,7 +6,7 @@
                 "revision": "3",
                 "release-date": "21 June 2024",
                 "cves": "CVE-2023-45288",
-                "golang": "1.21.10",
+                "golang": "1.21.11",
                 "ubi": "",
                 "new-features": [
                 ],
@@ -30,10 +30,10 @@
         "4.14": {
             "status": "supported",
             "latest-revision": {
-                "revision": "3",
+                "revision": "6",
                 "release-date": "21 June 2024",
                 "cves": "CVE-2023-45288",
-                "golang": "1.21.10",
+                "golang": "1.21.11",
                 "ubi": "",
                 "new-features": [
                 ],
