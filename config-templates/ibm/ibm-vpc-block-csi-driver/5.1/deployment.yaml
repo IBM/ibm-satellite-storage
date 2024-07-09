@@ -5,7 +5,7 @@ metadata:
   namespace: kube-system
   annotations:
     version: 5.1
-    revision: 6
+    revision: 7
 items:
   - kind: ClusterRole
     apiVersion: rbac.authorization.k8s.io/v1
@@ -332,7 +332,7 @@ items:
             - operator: Exists
           initContainers:
             - name: vpc-node-label-updater
-              image: icr.io/obs/storage/vpc-node-label-updater:v4.2.20
+              image: icr.io/obs/storage/vpc-node-label-updater:v4.2.21
               imagePullPolicy: Always
               securityContext:
                 privileged: false
@@ -393,7 +393,7 @@ items:
                 runAsNonRoot: false
                 runAsUser: 0
                 privileged: true
-              image: icr.io/ibm/ibm-vpc-block-csi-driver:v5.1.24
+              image: icr.io/ibm/ibm-vpc-block-csi-driver:v5.1.25
               imagePullPolicy: Always
               args:
                 - "--v=5"
@@ -639,7 +639,7 @@ items:
                   mountPath: /csi
             - name: iks-vpc-block-driver
               imagePullPolicy: Always
-              image: icr.io/ibm/ibm-vpc-block-csi-driver:v5.1.24
+              image: icr.io/ibm/ibm-vpc-block-csi-driver:v5.1.25
               securityContext:
                 privileged: false
                 allowPrivilegeEscalation: false
