@@ -222,5 +222,18 @@
     "type": "boolean",
     "required": "true",
     "mutable": "true"
+  },
+  {
+    "description": "When set the selected worker nodes will be dedicated to Data Foundation use only",
+    "displayname": "Taint Nodes",
+    "name": "taint-nodes",
+    "default": "false",
+    "regex": "^(?:true|false)$",
+    "min-length": 4,
+    "max-length": 5,
+    "supported-values": ["true", "false"],
+    "type": "boolean",
+    "required": "true",
+    "mutable": "true"
   }
 ]
