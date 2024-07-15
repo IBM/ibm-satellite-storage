@@ -3,23 +3,23 @@
         "2.2": {
             "status": "supported",
             "latest-revision": {
-                "revision": "21",
-                "release-date": "05 June 2024",
-                "cves": "CVE-2023-7008, CVE-2024-2961, CVE-2024-33599, CVE-2024-33600, CVE-2024-33601, CVE-2024-33602",
-                "golang": "1.21.10",
+                "revision": "22",
+                "release-date": "17 July 2024",
+                "cves": "CVE-2023-2953, CVE-2024-28182",
+                "golang": "1.21.12",
                 "ubi": "",
                 "new-features": [ ],
-                "fixes": [ "HPCS support for cos s3fs plugin" ]
+                "fixes": [ ]
             },
             "previous-revision": {
-              "revision": "20",
-              "release-date": "29 April 2024",
-              "cves": "CVE-2023-45288, CVE-2024-24785, CVE-2023-44487, CVE-2023-45288",
-              "golang": "1.21.9",
+              "revision": "21",
+              "release-date": "05 June 2024",
+              "cves": "CVE-2023-7008, CVE-2024-2961, CVE-2024-33599, CVE-2024-33600, CVE-2024-33601, CVE-2024-33602",
+              "golang": "1.21.10",
               "ubi": "",
               "new-features": [ ],
               "fixes": [
-                "Fix plugin installation issue on CoreOS8 cluster"
+                "HPCS support for cos s3fs plugin"
               ]
             }
         }
