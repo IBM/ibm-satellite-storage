@@ -74,7 +74,7 @@
                 "golang": "1.21.12",
                 "ubi": "",
                 "new-features": [
-                    "Addded taint ODF nodes"
+                    "Added taint ODF nodes"
                 ],
                 "fixes": [
                 ]
