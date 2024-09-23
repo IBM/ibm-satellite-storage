@@ -5,7 +5,7 @@ metadata:
   namespace: kube-system
   annotations:
     version: 24.02
-    revision: 2
+    revision: 3
 items:
   - apiVersion: apps/v1
     kind: Deployment
@@ -15,9 +15,9 @@ items:
       labels:
         app.kubernetes.io/name: "netapp-ontap-san"
         app.kubernetes.io/version: "v24.02"
-        app.kubernetes.io/revision: "1"
+        app.kubernetes.io/revision: "3"
     spec:
-      replicas: 2
+      replicas: 1
       selector:
           matchLabels:
               app: netapp-ontap-san
@@ -27,12 +27,12 @@ items:
               labels:
                   app: netapp-ontap-san
                   app.kubernetes.io/name: "netapp-ontap-san"
-                  app.kubernetes.io/revision: "2"
+                  app.kubernetes.io/revision: "3"
           spec:
               serviceAccountName: trident-kubectl-sa
               containers:
                 - name: trident-kubectl-san
-                  image: icr.io/ibm/ibm-tridentctl:v2.0.39
+                  image: icr.io/ibm/ibm-tridentctl:v2.0.40
                   imagePullPolicy: Always
                   env:
                   - name: NAMESPACE

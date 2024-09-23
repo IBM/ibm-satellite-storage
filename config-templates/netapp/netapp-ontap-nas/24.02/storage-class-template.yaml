@@ -5,7 +5,7 @@ metadata:
   labels:
     app.kubernetes.io/name: "netapp-ontap-nas"
     app.kubernetes.io/version: "v24.02"
-    app.kubernetes.io/revision: "2"
+    app.kubernetes.io/revision: "3"
     volume-type: "file"
     storage-class-preference: "{{ storage-class-preference }}"
     is-user-defined-class: "true"
