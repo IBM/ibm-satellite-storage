@@ -1,6 +1,6 @@
 {
   "name": "24.02",
-  "revision": "2",
+  "revision": "3x",
   "enabled": "true",
   "status": "supported",
   "description": "Netapp Ontap-SAN Driver.",

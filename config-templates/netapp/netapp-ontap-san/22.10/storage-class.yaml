@@ -13,7 +13,7 @@ items:
       labels:
         app.kubernetes.io/name: "netapp-ontap-san"
         app.kubernetes.io/version: "v22.10"
-        app.kubernetes.io/revision: "13"
+        app.kubernetes.io/revision: "14"
         volume-type: "block"
         storage-class-preference: "4"
         is-user-defined-class: "false"
@@ -31,7 +31,7 @@ items:
       labels:
         app.kubernetes.io/name: "netapp-ontap-san"
         app.kubernetes.io/version: "v22.10"
-        app.kubernetes.io/revision: "13"
+        app.kubernetes.io/revision: "14"
         volume-type: "block"
         storage-class-preference: "8"
         is-user-defined-class: "false"
@@ -49,7 +49,7 @@ items:
       labels:
         app.kubernetes.io/name: "netapp-ontap-san"
         app.kubernetes.io/version: "v22.10"
-        app.kubernetes.io/revision: "13"
+        app.kubernetes.io/revision: "14"
         volume-type: "block"
         storage-class-preference: "12"
         is-user-defined-class: "false"
@@ -67,7 +67,7 @@ items:
       labels:
         app.kubernetes.io/name: "netapp-ontap-san"
         app.kubernetes.io/version: "v22.10"
-        app.kubernetes.io/revision: "13"
+        app.kubernetes.io/revision: "14"
         volume-type: "block"
         storage-class-preference: "2"
         is-user-defined-class: "false"
@@ -85,7 +85,7 @@ items:
       labels:
         app.kubernetes.io/name: "netapp-ontap-san"
         app.kubernetes.io/version: "v22.10"
-        app.kubernetes.io/revision: "13"
+        app.kubernetes.io/revision: "14"
         volume-type: "block"
         storage-class-preference: "6"
         is-user-defined-class: "false"
@@ -103,7 +103,7 @@ items:
       labels:
         app.kubernetes.io/name: "netapp-ontap-san"
         app.kubernetes.io/version: "v22.10"
-        app.kubernetes.io/revision: "13"
+        app.kubernetes.io/revision: "14"
         volume-type: "block"
         storage-class-preference: "10"
         is-user-defined-class: "false"
@@ -121,7 +121,7 @@ items:
       labels:
         app.kubernetes.io/name: "netapp-ontap-san"
         app.kubernetes.io/version: "v22.10"
-        app.kubernetes.io/revision: "13"
+        app.kubernetes.io/revision: "14"
         volume-type: "block"
         storage-class-preference: "3"
         is-user-defined-class: "false"
@@ -141,7 +141,7 @@ items:
       labels:
         app.kubernetes.io/name: "netapp-ontap-san"
         app.kubernetes.io/version: "v22.10"
-        app.kubernetes.io/revision: "13"
+        app.kubernetes.io/revision: "14"
         volume-type: "block"
         storage-class-preference: "7"
         is-user-defined-class: "false"
@@ -159,7 +159,7 @@ items:
       labels:
         app.kubernetes.io/name: "netapp-ontap-san"
         app.kubernetes.io/version: "v22.10"
-        app.kubernetes.io/revision: "13"
+        app.kubernetes.io/revision: "14"
         volume-type: "block"
         storage-class-preference: "11"
         is-user-defined-class: "false"
@@ -177,7 +177,7 @@ items:
       labels:
         app.kubernetes.io/name: "netapp-ontap-san"
         app.kubernetes.io/version: "v22.10"
-        app.kubernetes.io/revision: "13"
+        app.kubernetes.io/revision: "14"
         volume-type: "block"
         storage-class-preference: "1"
         is-user-defined-class: "false"
@@ -195,7 +195,7 @@ items:
       labels:
         app.kubernetes.io/name: "netapp-ontap-san"
         app.kubernetes.io/version: "v22.10"
-        app.kubernetes.io/revision: "13"
+        app.kubernetes.io/revision: "14"
         volume-type: "block"
         storage-class-preference: "5"
         is-user-defined-class: "false"
@@ -213,7 +213,7 @@ items:
       labels:
         app.kubernetes.io/name: "netapp-ontap-san"
         app.kubernetes.io/version: "v22.10"
-        app.kubernetes.io/revision: "13"
+        app.kubernetes.io/revision: "14"
         volume-type: "block"
         storage-class-preference: "9"
         is-user-defined-class: "false"
