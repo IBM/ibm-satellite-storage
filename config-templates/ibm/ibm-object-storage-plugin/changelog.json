@@ -10,7 +10,7 @@
                 "ubi": "",
                 "new-features": [
                   "s3fs-fuse version updated to v1.94",
-                  "Support for ubuntu24 SBD clusters"
+                  "Support for ubuntu24 SecureByDefault clusters"
                   ],
                 "fixes": [
                   "Fixed mount issue with coreos9 roks 4.16 cluster"
@@ -24,7 +24,6 @@
               "ubi": "",
               "new-features": [ ],
               "fixes": [ ]
-              ]
             }
         }
     }
