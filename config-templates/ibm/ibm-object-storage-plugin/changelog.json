@@ -3,23 +3,27 @@
         "2.2": {
             "status": "supported",
             "latest-revision": {
-                "revision": "23",
-                "release-date": "04 September 2024",
-                "cves": "CVE-2024-6104, CVE-2024-24791, CVE-2023-45288, CVE-2024-2398, CVE-2024-37370, CVE-2024-37371",
-                "golang": "1.21.13",
+                "revision": "24",
+                "release-date": "01 Octobet 2024",
+                "cves": "CVE-2024-34158, CVE-2024-34155, CVE-2024-34156",
+                "golang": "1.22.7",
                 "ubi": "",
-                "new-features": [ ],
-                "fixes": [ ]
+                "new-features": [
+                  "s3fs-fuse version updated to v1.94",
+                  "Support for ubuntu24 SBD clusters"
+                  ],
+                "fixes": [
+                  "Fixed mount issue with coreos9 roks 4.16 cluster"
+                ]
             },
             "previous-revision": {
-              "revision": "22",
-              "release-date": "17 July 2024",
-              "cves": "CVE-2023-2953, CVE-2024-28182",
-              "golang": "1.21.12",
+              "revision": "23",
+              "release-date": "04 September 2024",
+              "cves": "CVE-2024-6104, CVE-2024-24791, CVE-2023-45288, CVE-2024-2398, CVE-2024-37370, CVE-2024-37371",
+              "golang": "1.21.13",
               "ubi": "",
               "new-features": [ ],
-              "fixes": [
-                "HPCS support for cos s3fs plugin"
+              "fixes": [ ]
               ]
             }
         }

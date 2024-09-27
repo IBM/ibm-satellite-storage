@@ -4,7 +4,7 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "3",
-                "release-date": "27 September 2024",
+                "release-date": "01 October 2024",
                 "cves": "CVE-2024-34158, CVE-2024-34155, CVE-2024-34156",
                 "golang": "",
                 "ubi": "",
@@ -27,7 +27,7 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "14",
-                "release-date": "27 September 2024",
+                "release-date": "01 October 2024",
                 "cves": "CVE-2024-34158, CVE-2024-34155, CVE-2024-34156",
                 "golang": "",
                 "ubi": "",
@@ -50,7 +50,7 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "27",
-                "release-date": "27 September 2024",
+                "release-date": "01 October 2024",
                 "cves": "CVE-2024-34158, CVE-2024-34155, CVE-2024-34156",
                 "golang": "",
                 "ubi": "",
