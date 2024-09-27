@@ -443,7 +443,7 @@ items:
                 cpu: 100m
                 memory: 100Mi
           - name: storage-secret-sidecar
-            image: "icr.io/obs/armada-storage-secret:v1.2.45"
+            image: "icr.io/obs/armada-storage-secret:v1.2.48"
             imagePullPolicy: Always
             args:
               - "--endpoint=$(ENDPOINT)"
