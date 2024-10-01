@@ -6,10 +6,10 @@
                 "revision": "1",
                 "release-date": "12 October 2024",
                 "cves": "",
-                "golang": "1.22.1",
+                "golang": "1.22.7",
                 "ubi": "",
                 "new-features": [
-                    "ODF 4.16 new release"
+                    "ODF 4.16 initial release"
                 ],
                 "fixes": [
                 ]
@@ -20,21 +20,22 @@
         "4.15": {
             "status": "supported",
             "latest-revision": {
-                "revision": "5",
-                "release-date": "04 September 2024",
-                "cves": "CVE-2024-2398, CVE-2024-37370, CVE-2024-37371",
+                "revision": "6",
+                "release-date": "12 October 2024",
+                "cves": "",
                 "golang": "1.21.13",
                 "ubi": "",
                 "new-features": [
                 ],
                 "fixes": [
+                    "Sidecar golang updated to gv1.22.7-community-20240916"
                 ]
             },
             "previous-revision": {
-                "revision": "4",
-                "release-date": "12 July 2024",
-                "cves": "CVE-2023-2953, CVE-2024-28182",
-                "golang": "1.21.12",
+                "revision": "5",
+                "release-date": "04 September 2024",
+                "cves": "CVE-2024-2398, CVE-2024-37370, CVE-2024-37371",
+                "golang": "1.21.13",
                 "ubi": "",
                 "new-features": [
                 ],
@@ -47,21 +48,22 @@
         "4.14": {
             "status": "supported",
             "latest-revision": {
-                "revision": "8",
-                "release-date": "04 September 2024",
-                "cves": "CVE-2024-2398, CVE-2024-37370, CVE-2024-37371",
+                "revision": "9",
+                "release-date": "12 October 2024",
+                "cves": "",
                 "golang": "1.21.13",
                 "ubi": "",
                 "new-features": [
                 ],
                 "fixes": [
+                    "Sidecar golang updated to gv1.22.7-community-20240916"
                 ]
             },
             "previous-revision": {
-                "revision": "7",
-                "release-date": "12 July 2024",
-                "cves": "CVE-2023-2953, CVE-2024-28182",
-                "golang": "1.21.12",
+                "revision": "8",
+                "release-date": "04 September 2024",
+                "cves": "CVE-2024-2398, CVE-2024-37370, CVE-2024-37371",
+                "golang": "1.21.13",
                 "ubi": "",
                 "new-features": [
                 ],
