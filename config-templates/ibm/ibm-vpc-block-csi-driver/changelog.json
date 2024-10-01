@@ -4,14 +4,14 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "8",
-                "release-date": "3 October 2024",
+                "release-date": "12 October 2024",
                 "cves": "CVE-2024-2398, CVE-2024-37370, CVE-2024-37371",
                 "golang": "1.22.7",
                 "ubi": "",
                 "new-features": ["Updated to k8s 1.30 client libraries",
                 "Update CSI Spec to 1.9.0",
                 "Fix security issues for CSI sidecar livenessprobe which now will run as non-root user/group in Node Server pod.",
-                "Updates the following sidecar images, - csi-provisioner:v5.0.2, - csi-resizer:v1.11.2, - csi-snapshotter:v8.0.1, - csi-attacher:v4.6.1, - livenessprobe:v2.13.1, - csi-node-driver-registrar:v2.11.1"
+                "Updated the following sidecar images: csi-provisioner:v5.0.2, csi-resizer:v1.11.2, csi-snapshotter:v8.0.1, csi-attacher:v4.6.1, livenessprobe:v2.13.1, csi-node-driver-registrar:v2.11.1"
                 ],
                 "fixes": []
             },
