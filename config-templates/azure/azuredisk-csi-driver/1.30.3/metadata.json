@@ -1,0 +1,73 @@
+{
+    "name": "1.30.3",
+    "revision": "1",
+    "enabled": "true",
+    "status": "supported",
+    "description": "Azure Disk CSI Driver",
+    "tags": [
+        {
+            "name": "provider",
+            "value": "Azure"
+        },
+        {
+            "name": "offering-name",
+            "value": "azuredisk-csi-driver"
+        },
+        {
+            "name": "offering-type",
+            "value": "non-sds"
+        },
+        {
+            "name": "provider-url",
+            "value": "https://portal.azure.com"
+        },
+        {
+            "name": "support-msg",
+            "value": "For support contact Microsoft Azure"
+        },
+        {
+            "name": "provider-logo",
+            "value": "logo/azuredisk-csi-driver.svg"
+        },
+        {
+            "name": "supported-envs",
+            "value": "Azure"
+        },
+        {
+          "name": "supported-ocp-versions",
+          "value": "4.8, 4.9, 4.10, 4.11, 4.12, 4.13, 4.14, 4.15"
+        },
+        {
+            "name": "volume-type",
+            "value": "block"
+        },
+        {
+            "name": "volume-encryption-at-rest",
+            "value": "true"
+        },
+        {
+            "name": "volume-encryption-in-transit",
+            "value": "true"
+        },
+        {
+            "name": "volume-snapshot",
+            "value": "false"
+        },
+        {
+            "name": "volume-availability",
+            "value": "zonal"
+        },
+        {
+            "name": "volume-expansion",
+            "value": "false"
+        },
+        {
+            "name": "disk-encryption",
+            "value": "true"
+        },
+        {
+            "name": "storageclass",
+            "value": "platinum,gold,silver,bronze,platinum-metro,gold-metro,silver-metro,bronze-metro"
+        }
+    ]
+}
