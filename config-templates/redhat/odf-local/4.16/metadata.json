@@ -1,9 +1,9 @@
 {
-  "name": "4.15",
-  "revision": "6",
+  "name": "4.16",
+  "revision": "1",
   "enabled": "true",
   "status": "supported",
-  "description": "ODF template for openshift 4.15 (Local storage)",
+  "description": "ODF template for openshift 4.16 (Local storage)",
   "tags": [
     {
       "name": "provider",
@@ -35,7 +35,7 @@
     },
     {
       "name": "supported-ocp-versions",
-      "value": "4.15, 4.16"
+      "value": "4.16, 4.17"
     },
     {
       "name": "volume-type",

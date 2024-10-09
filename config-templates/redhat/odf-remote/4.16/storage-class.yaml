@@ -6,9 +6,9 @@ items:
     metadata:
       name: sat-ocs-cephrbd-gold
       labels:
-        app.kubernetes.io/name: "redhat-odf-local"
-        app.kubernetes.io/version: "v4.15.0"
-        app.kubernetes.io/revision: "6"
+        app.kubernetes.io/name: "redhat-odf-remote"
+        app.kubernetes.io/version: "v4.16.0"
+        app.kubernetes.io/revision: "1"
         volume-type: "block"
         storage-class-preference: "1"
         is-user-defined-class: "false"
@@ -33,9 +33,9 @@ items:
     metadata:
       name: sat-ocs-cephfs-gold
       labels:
-        app.kubernetes.io/name: "redhat-odf-local"
-        app.kubernetes.io/version: "v4.15.0"
-        app.kubernetes.io/revision: "6"
+        app.kubernetes.io/name: "redhat-odf-remote"
+        app.kubernetes.io/version: "v4.16.0"
+        app.kubernetes.io/revision: "1"
         volume-type: "file"
         storage-class-preference: "1"
         is-user-defined-class: "false"
@@ -57,9 +57,9 @@ items:
     metadata:
       name: sat-ocs-cephrgw-gold
       labels:
-        app.kubernetes.io/name: "redhat-odf-local"
-        app.kubernetes.io/version: "v4.15.0"
-        app.kubernetes.io/revision: "6"
+        app.kubernetes.io/name: "redhat-odf-remote"
+        app.kubernetes.io/version: "v4.16.0"
+        app.kubernetes.io/revision: "1"
         volume-type: "object"
         storage-class-preference: "2"
         is-user-defined-class: "false"
@@ -75,9 +75,9 @@ items:
     metadata:
       name: sat-ocs-noobaa-gold
       labels:
-        app.kubernetes.io/name: "redhat-odf-local"
-        app.kubernetes.io/version: "v4.15.0"
-        app.kubernetes.io/revision: "6"
+        app.kubernetes.io/name: "redhat-odf-remote"
+        app.kubernetes.io/version: "v4.16.0"
+        app.kubernetes.io/revision: "1"
         volume-type: "object"
         storage-class-preference: "1"
         is-user-defined-class: "false"
@@ -91,9 +91,9 @@ items:
     metadata:
       name: sat-ocs-cephrbd-gold-metro
       labels:
-        app.kubernetes.io/name: "redhat-odf-local"
-        app.kubernetes.io/version: "v4.15.0"
-        app.kubernetes.io/revision: "6"
+        app.kubernetes.io/name: "redhat-odf-remote"
+        app.kubernetes.io/version: "v4.16.0"
+        app.kubernetes.io/revision: "1"
         volume-type: "block"
         storage-class-preference: "2"
         is-user-defined-class: "false"
@@ -118,9 +118,9 @@ items:
     metadata:
       name: sat-ocs-cephfs-gold-metro
       labels:
-        app.kubernetes.io/name: "redhat-odf-local"
-        app.kubernetes.io/version: "v4.15.0"
-        app.kubernetes.io/revision: "6"
+        app.kubernetes.io/name: "redhat-odf-remote"
+        app.kubernetes.io/version: "v4.16.0"
+        app.kubernetes.io/revision: "1"
         volume-type: "file"
         storage-class-preference: "2"
         is-user-defined-class: "false"
