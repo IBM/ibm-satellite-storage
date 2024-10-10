@@ -2,7 +2,7 @@
   "name": "4.10",
   "revision": "4",
   "enabled": "true",
-  "status": "supported",
+  "status": "deprecated",
   "description": "Persistent storage using local volumes",
   "tags": [
     {
