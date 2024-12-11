@@ -23,6 +23,20 @@
         }
     },
     {
+        "23.10": {
+            "status": "supported",
+            "latest-revision": {
+                "revision": "1",
+                "release-date": "13 December 2024",
+                "cves": "",
+                "golang": "",
+                "ubi": "",
+                "new-features": [],
+                "fixes": []
+            }
+        }
+    },
+    {
         "22.10": {
             "status": "supported",
             "latest-revision": {

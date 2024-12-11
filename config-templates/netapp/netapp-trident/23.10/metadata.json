@@ -1,9 +1,9 @@
 {
-  "name": "22.10",
-  "revision": "2",
+  "name": "23.10",
+  "revision": "1",
   "enabled": "true",
   "status": "supported",
-  "description": "Netapp Trident version 22.10.",
+  "description": "Netapp Trident version 23.10.",
   "tags": [
     {
       "name": "provider",
@@ -28,7 +28,7 @@
       "value": "AWS,Azure,IBM"
     }, {
       "name": "supported-ocp-versions",
-      "value": "4.8, 4.9, 4.10, 4.11, 4.12"
+      "value": "4.10, 4.11, 4.12, 4.13"
     }, {
       "name": "volume-type",
       "value": ""

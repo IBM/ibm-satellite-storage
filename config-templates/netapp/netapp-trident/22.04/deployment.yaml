@@ -5,7 +5,7 @@ metadata:
   namespace: kube-system
   annotations:
     version: "22.04"
-    revision: "3"
+    revision: "4"
 items:
   - apiVersion: v1
     kind: Namespace
@@ -14,7 +14,7 @@ items:
       labels:
         app.kubernetes.io/name: "netapp-trident"
         app.kubernetes.io/version: "v22.04"
-        app.kubernetes.io/revision: "3"
+        app.kubernetes.io/revision: "4"
         deploy.razee.io/Reconcile: "false"
   - apiVersion: apiextensions.k8s.io/v1
     kind: CustomResourceDefinition
@@ -403,7 +403,7 @@ items:
         app: operator.trident.netapp.io
         app.kubernetes.io/name: "netapp-trident"
         app.kubernetes.io/version: "v22.04"
-        app.kubernetes.io/revision: "3"
+        app.kubernetes.io/revision: "4"
     roleRef:
       apiGroup: rbac.authorization.k8s.io
       kind: ClusterRole
@@ -421,7 +421,7 @@ items:
         app: operator.trident.netapp.io
         app.kubernetes.io/name: "netapp-trident"
         app.kubernetes.io/version: "v22.04"
-        app.kubernetes.io/revision: "3"
+        app.kubernetes.io/revision: "4"
     spec:
       replicas: 1
       selector:
@@ -456,7 +456,7 @@ items:
       labels:
         app.kubernetes.io/name: "netapp-trident"
         app.kubernetes.io/version: "v22.04"
-        app.kubernetes.io/revision: "3"
+        app.kubernetes.io/revision: "4"
     spec:
       debug: true
       namespace: "trident"
@@ -469,7 +469,7 @@ items:
       labels:
         app.kubernetes.io/name: "netapp-trident"
         app.kubernetes.io/version: "v22.04"
-        app.kubernetes.io/revision: "3"
+        app.kubernetes.io/revision: "4"
   - apiVersion: rbac.authorization.k8s.io/v1
     kind: Role
     metadata:
@@ -478,7 +478,7 @@ items:
       labels:
         app.kubernetes.io/name: "netapp-trident"
         app.kubernetes.io/version: "v22.04"
-        app.kubernetes.io/revision: "3"
+        app.kubernetes.io/revision: "4"
     rules:
       - apiGroups: [""]
         resources: ["pods"]
@@ -498,7 +498,7 @@ items:
       labels:
         app.kubernetes.io/name: "netapp-trident"
         app.kubernetes.io/version: "v22.04"
-        app.kubernetes.io/revision: "3"
+        app.kubernetes.io/revision: "4"
     subjects:
       - kind: ServiceAccount
         name: trident-kubectl-sa
@@ -514,16 +514,16 @@ items:
       labels:
         app.kubernetes.io/name: "netapp-trident"
         app.kubernetes.io/version: "v22.04"
-        app.kubernetes.io/revision: "3"
+        app.kubernetes.io/revision: "4"
     spec:
       template-name: "netapp-trident"
       template-version: "22.04"
       template-namespace: "trident"
       dependent-resources:                   # For partial cleanup
-        - kind: "pod"
+        - kind: "deployment"
           name: "trident-kubectl-nas"
           namespace: "trident"
-        - kind: "pod"
+        - kind: "deployment"
           name: "trident-kubectl-san"
           namespace: "trident"
 

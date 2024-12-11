@@ -4,8 +4,8 @@ metadata:
   name: netapp-trident
   namespace: kube-system
   annotations:
-    version: "24.02"
-    revision: "2"
+    version: "23.10"
+    revision: "1"
 items:
   - apiVersion: v1
     kind: Namespace
@@ -13,8 +13,8 @@ items:
       name: "trident"
       labels:
         app.kubernetes.io/name: "netapp-trident"
-        app.kubernetes.io/version: "v24.02"
-        app.kubernetes.io/revision: "2"
+        app.kubernetes.io/version: "v23.10"
+        app.kubernetes.io/revision: "1"
         deploy.razee.io/Reconcile: "false"
   - apiVersion: apiextensions.k8s.io/v1
     kind: CustomResourceDefinition
@@ -22,7 +22,7 @@ items:
       name: tridentorchestrators.trident.netapp.io
       labels:
         app.kubernetes.io/name: "netapp-trident"
-        app.kubernetes.io/version: "v24.02"
+        app.kubernetes.io/version: "v23.10"
     spec:
       group: trident.netapp.io
       versions:
@@ -47,20 +47,20 @@ items:
   - apiVersion: v1
     kind: ServiceAccount
     metadata:
-      name: trident-operator
-      namespace: "trident"
       labels:
         app: operator.trident.netapp.io
         app.kubernetes.io/name: "netapp-trident"
-        app.kubernetes.io/version: "v24.02"
+        app.kubernetes.io/version: "v23.10"
+      name: trident-operator
+      namespace: "trident"
   - apiVersion: rbac.authorization.k8s.io/v1
     kind: ClusterRole
     metadata:
-      name: trident-operator
       labels:
         app: operator.trident.netapp.io
         app.kubernetes.io/name: "netapp-trident"
-        app.kubernetes.io/version: "v24.02"
+        app.kubernetes.io/version: "v23.10"
+      name: trident-operator
     rules:
       # Permissions same as Trident
       - apiGroups:
@@ -457,12 +457,12 @@ items:
   - apiVersion: rbac.authorization.k8s.io/v1
     kind: ClusterRoleBinding
     metadata:
-      name: trident-operator
       labels:
         app: operator.trident.netapp.io
         app.kubernetes.io/name: "netapp-trident"
-        app.kubernetes.io/version: "v24.02"
-        app.kubernetes.io/revision: "2"
+        app.kubernetes.io/version: "v23.10"
+        app.kubernetes.io/revision: "1"
+      name: trident-operator
     roleRef:
       apiGroup: rbac.authorization.k8s.io
       kind: ClusterRole
@@ -474,15 +474,17 @@ items:
   - apiVersion: apps/v1
     kind: Deployment
     metadata:
-      name: trident-operator
-      namespace: "trident"
       labels:
         app: operator.trident.netapp.io
         app.kubernetes.io/name: "netapp-trident"
-        app.kubernetes.io/version: "v24.02"
-        app.kubernetes.io/revision: "2"
+        app.kubernetes.io/version: "v23.10"
+        app.kubernetes.io/revision: "1"
+      name: trident-operator
+      namespace: "trident"
     spec:
       replicas: 1
+      strategy:
+        type: Recreate
       selector:
         matchLabels:
           app: operator.trident.netapp.io
@@ -496,17 +498,35 @@ items:
           containers:
             - command:
                 - "/trident-operator"
-                - "--debug"
+                - "--log-level=debug"
               env:
                 - name: POD_NAME
                   valueFrom:
                     fieldRef:
                       fieldPath: metadata.name
                 - name: OPERATOR_NAME
-                  value: "trident-operator"
-              image: netapp/trident-operator:24.02.0
+                  value: trident-operator
+              image: netapp/trident-operator:23.10.0
               imagePullPolicy: IfNotPresent
               name: trident-operator
+              securityContext:
+                capabilities:
+                  drop:
+                    - all
+          affinity:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: kubernetes.io/arch
+                        operator: In
+                        values:
+                          - arm64
+                          - amd64
+                      - key: kubernetes.io/os
+                        operator: In
+                        values:
+                          - linux
           serviceAccountName: trident-operator
   - apiVersion: trident.netapp.io/v1
     kind: TridentOrchestrator
@@ -514,8 +534,8 @@ items:
       name: trident
       labels:
         app.kubernetes.io/name: "netapp-trident"
-        app.kubernetes.io/version: "v24.02"
-        app.kubernetes.io/revision: "2"
+        app.kubernetes.io/version: "v23.10"
+        app.kubernetes.io/revision: "1"
     spec:
       debug: true
       namespace: "trident"
@@ -527,8 +547,8 @@ items:
       namespace: "trident"
       labels:
         app.kubernetes.io/name: "netapp-trident"
-        app.kubernetes.io/version: "v24.02"
-        app.kubernetes.io/revision: "2"
+        app.kubernetes.io/version: "v23.10"
+        app.kubernetes.io/revision: "1"
   - apiVersion: rbac.authorization.k8s.io/v1
     kind: Role
     metadata:
@@ -536,8 +556,8 @@ items:
       namespace: "trident"
       labels:
         app.kubernetes.io/name: "netapp-trident"
-        app.kubernetes.io/version: "v24.02"
-        app.kubernetes.io/revision: "2"
+        app.kubernetes.io/version: "v23.10"
+        app.kubernetes.io/revision: "1"
     rules:
       - apiGroups: [""]
         resources: ["pods"]
@@ -556,8 +576,8 @@ items:
       namespace: "trident"
       labels:
         app.kubernetes.io/name: "netapp-trident"
-        app.kubernetes.io/version: "v24.02"
-        app.kubernetes.io/revision: "2"
+        app.kubernetes.io/version: "v23.10"
+        app.kubernetes.io/revision: "1"
     subjects:
       - kind: ServiceAccount
         name: trident-kubectl-sa
@@ -572,11 +592,11 @@ items:
       namespace: "ibm-satellite-storage"
       labels:
         app.kubernetes.io/name: "netapp-trident"
-        app.kubernetes.io/version: "v24.02"
-        app.kubernetes.io/revision: "2"
+        app.kubernetes.io/version: "v23.10"
+        app.kubernetes.io/revision: "1"
     spec:
       template-name: "netapp-trident"
-      template-version: "24.02"
+      template-version: "23.10"
       template-namespace: "trident"
       dependent-resources:                   # For partial cleanup
         - kind: "deployment"
@@ -585,4 +605,3 @@ items:
         - kind: "deployment"
           name: "trident-kubectl-san"
           namespace: "trident"
-
