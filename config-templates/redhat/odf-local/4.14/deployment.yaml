@@ -4,7 +4,7 @@ metadata:
   name: ibm-openshift-container-storage
   namespace: kube-system
   annotations:
-    revision: 9
+    revision: 10
 items:
   - apiVersion: apiextensions.k8s.io/v1
     kind: CustomResourceDefinition
@@ -546,6 +546,9 @@ items:
       {{#worker-nodes}}
       workerNodes: {{{ worker-nodes }}}
       {{/worker-nodes}}
+      {{#worker-pools}}
+      workerPools: {{{ worker-pools }}}
+      {{/worker-pools}}
       billingType: "{{ billing-type }}"
       autoDiscoverDevices: "{{ auto-discover-devices }}"
       hpcsEncryption: "{{ kms-encryption }}"

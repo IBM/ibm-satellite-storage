@@ -3,6 +3,18 @@
         "4.16": {
             "status": "supported",
             "latest-revision": {
+                "revision": "2",
+                "release-date": "13 December 2024",
+                "cves": "",
+                "golang": "1.22.7",
+                "ubi": "",
+                "new-features": [
+                ],
+                "fixes": [
+                    "Worker Pool Parameter Bug fix"
+                ]
+            },
+            "previous-revision": {
                 "revision": "1",
                 "release-date": "12 October 2024",
                 "cves": "",
@@ -20,6 +32,18 @@
         "4.15": {
             "status": "supported",
             "latest-revision": {
+                "revision": "7",
+                "release-date": "13 December 2024",
+                "cves": "",
+                "golang": "1.21.13",
+                "ubi": "",
+                "new-features": [
+                ],
+                "fixes": [
+                    "Worker Pool Parameter Bug fix"
+                ]
+            },
+            "previous-revision": {
                 "revision": "6",
                 "release-date": "12 October 2024",
                 "cves": "",
@@ -30,17 +54,6 @@
                 "fixes": [
                     "Sidecar golang updated to gv1.22.7-community-20240916"
                 ]
-            },
-            "previous-revision": {
-                "revision": "5",
-                "release-date": "04 September 2024",
-                "cves": "CVE-2024-2398, CVE-2024-37370, CVE-2024-37371",
-                "golang": "1.21.13",
-                "ubi": "",
-                "new-features": [
-                ],
-                "fixes": [
-                ]
             }
         }
     },
@@ -48,6 +61,18 @@
         "4.14": {
             "status": "supported",
             "latest-revision": {
+                "revision": "10",
+                "release-date": "13 December 2024",
+                "cves": "",
+                "golang": "1.21.13",
+                "ubi": "",
+                "new-features": [
+                ],
+                "fixes": [
+                    "Worker Pool Parameter Bug fix"
+                ]
+            },
+            "previous-revision": {
                 "revision": "9",
                 "release-date": "12 October 2024",
                 "cves": "",
@@ -57,17 +82,6 @@
                 ],
                 "fixes": [
                     "Sidecar golang updated to gv1.22.7-community-20240916"
-                ]
-            },
-            "previous-revision": {
-                "revision": "8",
-                "release-date": "04 September 2024",
-                "cves": "CVE-2024-2398, CVE-2024-37370, CVE-2024-37371",
-                "golang": "1.21.13",
-                "ubi": "",
-                "new-features": [
-                ],
-                "fixes": [
                 ]
             }
         }
