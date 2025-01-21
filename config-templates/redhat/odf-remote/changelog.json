@@ -3,6 +3,18 @@
         "4.16": {
             "status": "supported",
             "latest-revision": {
+                "revision": "3",
+                "release-date": "02 January 2024",
+                "cves": "",
+                "golang": "1.22.7",
+                "ubi": "",
+                "new-features": [
+                ],
+                "fixes": [
+                    "Private Cluster Support"
+                ]
+            },
+            "previous-revision": {
                 "revision": "2",
                 "release-date": "13 December 2024",
                 "cves": "",
@@ -12,18 +24,6 @@
                 ],
                 "fixes": [
                     "Worker Pool Parameter Bug fix"
-                ]
-            },
-            "previous-revision": {
-                "revision": "1",
-                "release-date": "12 October 2024",
-                "cves": "",
-                "golang": "1.22.7",
-                "ubi": "",
-                "new-features": [
-                    "ODF 4.16 initial release"
-                ],
-                "fixes": [
                 ]
             }
         }

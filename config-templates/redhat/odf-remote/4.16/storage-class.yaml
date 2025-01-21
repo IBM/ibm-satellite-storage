@@ -8,7 +8,7 @@ items:
       labels:
         app.kubernetes.io/name: "redhat-odf-remote"
         app.kubernetes.io/version: "v4.16.0"
-        app.kubernetes.io/revision: "2"
+        app.kubernetes.io/revision: "3"
         volume-type: "block"
         storage-class-preference: "1"
         is-user-defined-class: "false"
@@ -35,7 +35,7 @@ items:
       labels:
         app.kubernetes.io/name: "redhat-odf-remote"
         app.kubernetes.io/version: "v4.16.0"
-        app.kubernetes.io/revision: "2"
+        app.kubernetes.io/revision: "3"
         volume-type: "file"
         storage-class-preference: "1"
         is-user-defined-class: "false"
@@ -59,7 +59,7 @@ items:
       labels:
         app.kubernetes.io/name: "redhat-odf-remote"
         app.kubernetes.io/version: "v4.16.0"
-        app.kubernetes.io/revision: "2"
+        app.kubernetes.io/revision: "3"
         volume-type: "object"
         storage-class-preference: "2"
         is-user-defined-class: "false"
@@ -77,7 +77,7 @@ items:
       labels:
         app.kubernetes.io/name: "redhat-odf-remote"
         app.kubernetes.io/version: "v4.16.0"
-        app.kubernetes.io/revision: "2"
+        app.kubernetes.io/revision: "3"
         volume-type: "object"
         storage-class-preference: "1"
         is-user-defined-class: "false"
@@ -93,7 +93,7 @@ items:
       labels:
         app.kubernetes.io/name: "redhat-odf-remote"
         app.kubernetes.io/version: "v4.16.0"
-        app.kubernetes.io/revision: "2"
+        app.kubernetes.io/revision: "3"
         volume-type: "block"
         storage-class-preference: "2"
         is-user-defined-class: "false"
@@ -120,7 +120,7 @@ items:
       labels:
         app.kubernetes.io/name: "redhat-odf-remote"
         app.kubernetes.io/version: "v4.16.0"
-        app.kubernetes.io/revision: "2"
+        app.kubernetes.io/revision: "3"
         volume-type: "file"
         storage-class-preference: "2"
         is-user-defined-class: "false"
