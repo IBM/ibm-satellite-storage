@@ -207,6 +207,14 @@ items:
     - apiGroups:
       - ""
       resources:
+      - pods
+      verbs:
+      - get
+      - list
+      - watch
+    - apiGroups:
+      - ""
+      resources:
       - secrets
       verbs:
       - delete
@@ -217,6 +225,14 @@ items:
       - apps
       resources:
       - deployments
+      verbs:
+      - get
+      - list
+      - watch
+    - apiGroups:
+      - ceph.rook.io
+      resources:
+      - cephclusters
       verbs:
       - get
       - list
@@ -346,6 +362,26 @@ items:
     - apiGroups:
       - operators.coreos.com
       resources:
+      - catalogsources
+      verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+    - apiGroups:
+      - operators.coreos.com
+      resources:
+      - clusterserviceversions
+      verbs:
+      - get
+      - list
+      - watch
+    - apiGroups:
+      - operators.coreos.com
+      resources:
       - operatorgroups
       - subscriptions
       verbs:
@@ -432,6 +468,8 @@ items:
               value: "true"
             - name: SIDECAREP
               value: "/csi/provider.sock"
+            - name: CUSTOM_CATALOG_SOURCE_IMAGE
+              value: "icr.io/armada-extensions/custom-redhat-operator-index:v4.16.7-odf"
             volumeMounts:
             - name: cluster-info
               readOnly: true
