@@ -4,7 +4,7 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "1",
-                "release-date": "22 January 2024",
+                "release-date": "29 January 2025",
                 "cves": "",
                 "golang": "1.22.9",
                 "ubi": "",
@@ -20,27 +20,26 @@
         "4.16": {
             "status": "supported",
             "latest-revision": {
-                "revision": "4",
-                "release-date": "22 January 2025",
-                "cves": "CVE-2023-37920,CVE-2024-3596,CVE-2024-5535",
+                "revision": "3",
+                "release-date": "29 January 2025",
+                "cves": "CVE-2023-37920, CVE-2024-3596, CVE-2024-5535",
                 "golang": "1.22.9",
                 "ubi": "",
                 "new-features": [
                 ],
-                "fixes": [
-                    "VA fix"
+                "fixes": [ 
                 ]
             },
             "previous-revision": {
-                "revision": "3",
-                "release-date": "02 January 2025",
+                "revision": "2",
+                "release-date": "13 December 2024",
                 "cves": "",
                 "golang": "1.22.7",
                 "ubi": "",
                 "new-features": [
                 ],
                 "fixes": [
-                    "Private Cluster Support"
+                    "Worker Pool Parameter Bug fix"
                 ]
             }
         }
@@ -50,14 +49,13 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "8",
-                "release-date": "22 January 2025",
-                "cves": "CVE-2023-37920,CVE-2024-3596,CVE-2024-5535",
+                "release-date": "29 January 2025",
+                "cves": "CVE-2023-37920, CVE-2024-3596, CVE-2024-5535",
                 "golang": "1.22.9",
                 "ubi": "",
                 "new-features": [
                 ],
                 "fixes": [
-                    "VA fix"
                 ]
             },
             "previous-revision": {
@@ -79,14 +77,13 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "11",
-                "release-date": "22 January 2025",
-                "cves": "CVE-2023-37920,CVE-2024-3596,CVE-2024-5535",
+                "release-date": "29 January 2025",
+                "cves": "CVE-2023-37920, CVE-2024-3596, CVE-2024-5535",
                 "golang": "1.22.9",
                 "ubi": "",
                 "new-features": [
                 ],
-                "fixes": [
-                    "VA fix"
+                "fixes": [ 
                 ]
             },
             "previous-revision": {
@@ -108,8 +105,8 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "13",
-                "release-date": "22 January 2025",
-                "cves": "CVE-2023-37920,CVE-2024-3596,CVE-2024-5535",
+                "release-date": "29 January 2025",
+                "cves": "CVE-2023-37920, CVE-2024-3596, CVE-2024-5535",
                 "golang": "1.22.9",
                 "ubi": "",
                 "new-features": [
@@ -125,7 +122,7 @@
                 "ubi": "",
                 "new-features": [
                 ],
-                "fixes": [
+                "fixes": [ 
                 ]
             }
         }
