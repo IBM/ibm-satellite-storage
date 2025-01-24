@@ -1,8 +1,36 @@
 [
     {
+        "4.17": {
+            "status": "supported",
+            "latest-revision": {
+                "revision": "1",
+                "release-date": "29 January 2025",
+                "cves": "",
+                "golang": "1.22.9",
+                "ubi": "",
+                "new-features": [
+                ],
+                "fixes": [
+                    "Initial release 4.17"
+                ]
+            }
+        }
+    },
+    {
         "4.16": {
             "status": "supported",
             "latest-revision": {
+                "revision": "3",
+                "release-date": "29 January 2025",
+                "cves": "CVE-2023-37920, CVE-2024-3596, CVE-2024-5535",
+                "golang": "1.22.9",
+                "ubi": "",
+                "new-features": [
+                ],
+                "fixes": [ 
+                ]
+            },
+            "previous-revision": {
                 "revision": "2",
                 "release-date": "13 December 2024",
                 "cves": "",
@@ -13,18 +41,6 @@
                 "fixes": [
                     "Worker Pool Parameter Bug fix"
                 ]
-            },
-            "previous-revision": {
-                "revision": "1",
-                "release-date": "12 October 2024",
-                "cves": "",
-                "golang": "1.22.7",
-                "ubi": "",
-                "new-features": [
-                    "ODF 4.16 initial release"
-                ],
-                "fixes": [
-                ]
             }
         }
     },
@@ -32,6 +48,17 @@
         "4.15": {
             "status": "supported",
             "latest-revision": {
+                "revision": "8",
+                "release-date": "29 January 2025",
+                "cves": "CVE-2023-37920, CVE-2024-3596, CVE-2024-5535",
+                "golang": "1.22.9",
+                "ubi": "",
+                "new-features": [
+                ],
+                "fixes": [
+                ]
+            },
+            "previous-revision": {
                 "revision": "7",
                 "release-date": "13 December 2024",
                 "cves": "",
@@ -42,18 +69,6 @@
                 "fixes": [
                     "Worker Pool Parameter Bug fix"
                 ]
-            },
-            "previous-revision": {
-                "revision": "6",
-                "release-date": "12 October 2024",
-                "cves": "",
-                "golang": "1.21.13",
-                "ubi": "",
-                "new-features": [
-                ],
-                "fixes": [
-                    "Sidecar golang updated to gv1.22.7-community-20240916"
-                ]
             }
         }
     },
@@ -61,6 +76,17 @@
         "4.14": {
             "status": "supported",
             "latest-revision": {
+                "revision": "11",
+                "release-date": "29 January 2025",
+                "cves": "CVE-2023-37920, CVE-2024-3596, CVE-2024-5535",
+                "golang": "1.22.9",
+                "ubi": "",
+                "new-features": [
+                ],
+                "fixes": [ 
+                ]
+            },
+            "previous-revision": {
                 "revision": "10",
                 "release-date": "13 December 2024",
                 "cves": "",
@@ -71,18 +97,6 @@
                 "fixes": [
                     "Worker Pool Parameter Bug fix"
                 ]
-            },
-            "previous-revision": {
-                "revision": "9",
-                "release-date": "12 October 2024",
-                "cves": "",
-                "golang": "1.21.13",
-                "ubi": "",
-                "new-features": [
-                ],
-                "fixes": [
-                    "Sidecar golang updated to gv1.22.7-community-20240916"
-                ]
             }
         }
     },
@@ -90,10 +104,10 @@
         "4.13": {
             "status": "supported",
             "latest-revision": {
-                "revision": "12",
-                "release-date": "04 September 2024",
-                "cves": "CVE-2024-2398, CVE-2024-37370, CVE-2024-37371",
-                "golang": "1.21.13",
+                "revision": "13",
+                "release-date": "29 January 2025",
+                "cves": "CVE-2023-37920, CVE-2024-3596, CVE-2024-5535",
+                "golang": "1.22.9",
                 "ubi": "",
                 "new-features": [
                 ],
@@ -101,15 +115,14 @@
                 ]
             },
             "previous-revision": {
-                "revision": "11",
-                "release-date": "12 July 2024",
-                "cves": "CVE-2023-2953, CVE-2024-28182",
-                "golang": "1.21.12",
+                "revision": "12",
+                "release-date": "04 September 2024",
+                "cves": "CVE-2024-2398, CVE-2024-37370, CVE-2024-37371",
+                "golang": "1.21.13",
                 "ubi": "",
                 "new-features": [
-                    "Addded taint ODF nodes"
                 ],
-                "fixes": [
+                "fixes": [ 
                 ]
             }
         }
