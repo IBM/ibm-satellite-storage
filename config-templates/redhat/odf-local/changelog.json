@@ -129,10 +129,10 @@
                 ]
             },
             "previous-revision": {
-                "revision": "14",
-                "release-date": "12 July 2024",
-                "cves": "CVE-2023-2953, CVE-2024-28182",
-                "golang": "1.21.12",
+                "revision": "15",
+                "release-date": "04 September 2024",
+                "cves": "CVE-2024-2398, CVE-2024-37370, CVE-2024-37371",
+                "golang": "1.21.13",
                 "ubi": "",
                 "new-features": [
                 ],
