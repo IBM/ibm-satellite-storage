@@ -118,10 +118,10 @@
         "4.12": {
             "status": "deprecated",
             "latest-revision": {
-                "revision": "15",
-                "release-date": "04 September 2024",
-                "cves": "CVE-2024-2398, CVE-2024-37370, CVE-2024-37371",
-                "golang": "1.21.13",
+                "revision": "16",
+                "release-date": "29 January 2025",
+                "cves": "CVE-2023-37920, CVE-2024-3596, CVE-2024-5535",
+                "golang": "1.22.9",
                 "ubi": "",
                 "new-features": [
                 ],
