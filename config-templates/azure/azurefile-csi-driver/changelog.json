@@ -1,5 +1,21 @@
 [
     {
+        "1.31.2": {
+            "status": "supported",
+            "latest-revision": {
+                "revision": "1",
+                "release-date": "21 February 2025",
+                "cves": "",
+                "golang": "",
+                "ubi": "",
+                "new-features": [
+                    "Initial release"
+                ],
+                "fixes": []
+            }
+        }
+    },
+    {
         "1.22.0": {
             "status": "supported",
             "latest-revision": {

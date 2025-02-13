@@ -4,13 +4,13 @@ metadata:
   name: ibm-openshift-container-storage
   namespace: kube-system
   annotations:
-    revision: 16
+    revision: 1
 items:
   - apiVersion: apiextensions.k8s.io/v1
     kind: CustomResourceDefinition
     metadata:
       annotations:
-        controller-gen.kubebuilder.io/version: v0.8.0
+        controller-gen.kubebuilder.io/version: v0.14.0
       name: ocsclusters.ocs.ibm.io
       labels:
         deploy.razee.io/Reconcile: "false"
@@ -39,6 +39,9 @@ items:
               spec:
                 description: OcsClusterSpec defines the desired state of OcsCluster
                 properties:
+                  addSingleReplicaPool:
+                    default: false
+                    type: boolean
                   autoDiscoverDevices:
                     default: false
                     type: boolean
@@ -49,6 +52,15 @@ items:
                     - advanced
                     type: string
                   clusterEncryption:
+                    default: false
+                    type: boolean
+                  disableNoobaaLB:
+                    default: false
+                    type: boolean
+                  enableNFS:
+                    default: false
+                    type: boolean
+                  encryptionInTransit:
                     default: false
                     type: boolean
                   hpcsBaseUrl:
@@ -81,7 +93,23 @@ items:
                     type: array
                   osdSize:
                     type: string
+                  prepareForDisasterRecovery:
+                    default: false
+                    type: boolean
+                  resourceProfile:
+                    default: balanced
+                    type: string
+                  taintNodes:
+                    default: false
+                    type: boolean
+                  useCephRBDAsDefaultStorageClass:
+                    default: false
+                    type: boolean
                   workerNodes:
+                    items:
+                      type: string
+                    type: array
+                  workerPools:
                     items:
                       type: string
                     type: array
@@ -179,6 +207,14 @@ items:
     - apiGroups:
       - ""
       resources:
+      - pods
+      verbs:
+      - get
+      - list
+      - watch
+    - apiGroups:
+      - ""
+      resources:
       - secrets
       verbs:
       - delete
@@ -189,6 +225,14 @@ items:
       - apps
       resources:
       - deployments
+      verbs:
+      - get
+      - list
+      - watch
+    - apiGroups:
+      - ceph.rook.io
+      resources:
+      - cephclusters
       verbs:
       - get
       - list
@@ -214,6 +258,7 @@ items:
       - list
       - patch
       - watch
+      - update
     - apiGroups:
       - local.storage.openshift.io
       resources:
@@ -244,6 +289,17 @@ items:
       - localvolumesets
       verbs:
       - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+    - apiGroups:
+      - noobaa.io
+      resources:
+      - noobaas
+      verbs:
       - delete
       - get
       - list
@@ -306,6 +362,26 @@ items:
     - apiGroups:
       - operators.coreos.com
       resources:
+      - catalogsources
+      verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+    - apiGroups:
+      - operators.coreos.com
+      resources:
+      - clusterserviceversions
+      verbs:
+      - get
+      - list
+      - watch
+    - apiGroups:
+      - operators.coreos.com
+      resources:
       - operatorgroups
       - subscriptions
       verbs:
@@ -315,6 +391,14 @@ items:
       - list
       - patch
       - update
+      - watch
+    - apiGroups:
+      - apiextensions.k8s.io
+      resources:
+      - customresourcedefinitions
+      verbs:
+      - get
+      - list
       - watch
   - apiVersion: rbac.authorization.k8s.io/v1
     kind: RoleBinding
@@ -370,16 +454,29 @@ items:
           containers:
           - args:
             - --enable-leader-election
+            - "--sidecarEndpoint=$(SIDECAREP)"
             command:
             - /app/manager
             env:
             - name: CHANNEL
-              value: stable-4.12
+              value: stable-4.17
             - name: WATCH_NAMESPACE
               value: openshift-storage
             - name: ADDON_CONFIGMAP_NAMESPACE
               value: kube-system
-            image: "icr.io/obs/ibm-ocs-operator:v4.12.22"
+            - name: IKS_ENABLED
+              value: "true"
+            - name: SIDECAREP
+              value: "/csi/provider.sock"
+            - name: CUSTOM_CATALOG_SOURCE_IMAGE
+              value: "icr.io/armada-extensions/custom-redhat-operator-index:v4.17.2-odf"
+            volumeMounts:
+            - name: cluster-info
+              readOnly: true
+              mountPath: /etc/storage_ibmc/cluster_info
+            - mountPath: /csi
+              name: socket-dir
+            image: "icr.io/obs/ibm-ocs-operator:v4.17.1"
             imagePullPolicy: Always
             name: manager
             securityContext:
@@ -392,6 +489,42 @@ items:
               requests:
                 cpu: 100m
                 memory: 100Mi
+          - name: storage-secret-sidecar
+            image: "icr.io/obs/armada-storage-secret:v1.2.53"
+            imagePullPolicy: Always
+            args:
+              - "--endpoint=$(ENDPOINT)"
+            env:
+            - name: ENDPOINT
+              value: "unix:/sidecardir/provider.sock"
+            - name: TOKEN_EXPIRY_DIFF
+              value: "40m"
+            - name: PROFILE_CAPACITY
+              value: "1"
+            resources:
+              limits:
+                cpu: 40m
+                memory: 80Mi
+              requests:
+                cpu: 10m
+                memory: 20Mi
+            volumeMounts:
+            - mountPath: /sidecardir
+              name: socket-dir
+            - mountPath: /var/run/secrets/tokens
+              name: vault-token
+          volumes:
+            - name: cluster-info
+              configMap:
+                name: cluster-info
+            - name: vault-token
+              projected:
+                sources:
+                - serviceAccountToken:
+                    path: vault-token
+                    expirationSeconds: 600
+            - emptyDir: {}
+              name: socket-dir
           terminationGracePeriodSeconds: 10
   {{#ibm-cos-access-key}}
   - apiVersion: v1
@@ -449,15 +582,22 @@ items:
       namespace: kube-system
     data:
       odfDeploy: "true"
-      osdStorageClassName: {{ osd-storage-class }}
-      osdSize: {{ osd-size }}
+      osdStorageClassName: localblock
+      osdSize: "1"
+      {{#osd-device-path}}
+      osdDevicePaths: {{{ osd-device-path }}}
+      {{/osd-device-path}}
       numOfOsd: "{{ num-of-osd }}"
       ocsUpgrade: "{{ odf-upgrade }}"
       clusterEncryption: "{{ cluster-encryption }}"
       {{#worker-nodes}}
       workerNodes: {{{ worker-nodes }}}
       {{/worker-nodes}}
+      {{#worker-pools}}
+      workerPools: {{{ worker-pools }}}
+      {{/worker-pools}}
       billingType: "{{ billing-type }}"
+      autoDiscoverDevices: "{{ auto-discover-devices }}"
       hpcsEncryption: "{{ kms-encryption }}"
       {{#kms-encryption}}
       hpcsServiceName: "{{ kms-instance-name }}"
@@ -467,13 +607,21 @@ items:
       hpcsTokenUrl: "{{{ kms-token-url }}}"
       {{/kms-encryption}}
       ignoreNoobaa: "{{ ignore-noobaa }}"
+      encryptionInTransit: "{{ encryption-intransit }}"
+      disableNoobaaLB: "{{ disable-noobaa-LB }}"
+      addSingleReplicaPool: "{{ add-single-replica-pool }}"
+      taintNodes: "{{ taint-nodes }}"
+      prepareForDisasterRecovery: "{{ prepare-for-disaster-recovery }}"
+      enableNFS: "{{ enable-nfs }}"
+      resourceProfile: "{{ resource-profile }}"
+      useCephRBDAsDefaultStorageClass: "{{ use-ceph-rbd-as-default-storage-class }}"
   - apiVersion: satstorage.ibm.com/v1
     kind: SatStorageCleanup
     metadata:
-      name: satstoragecleanup-odf-remote
+      name: satstoragecleanup-odf-local
       namespace: "ibm-satellite-storage"
     spec:
-      template-name: "odf-remote"
-      template-version: "4.12"
+      template-name: "odf-local"
+      template-version: "4.17"
       template-namespace: "kube-system"
       perform-cleanup: {{ perform-cleanup }}

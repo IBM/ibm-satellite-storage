@@ -3,29 +3,26 @@
         "2.2": {
             "status": "supported",
             "latest-revision": {
-                "revision": "25",
-                "release-date": "13 December 2024",
-                "cves": "CVE-2024-3596",
-                "golang": "1.22.9",
+                "revision": "26",
+                "release-date": "29 January 2024",
+                "cves": "CVE-2024-51744, CVE-2024-45337",
+                "golang": "1.22.11",
                 "ubi": "",
                 "new-features": [
-                  "ROKS v4.17 cluster support"
+                  "IKS 1.32 cluster support"
                   ],
                 "fixes": []
             },
             "previous-revision": {
-              "revision": "24",
-              "release-date": "01 October 2024",
-              "cves": "CVE-2024-34158, CVE-2024-34155, CVE-2024-34156",
-              "golang": "1.22.7",
+              "revision": "25",
+              "release-date": "13 December 2024",
+              "cves": "CVE-2024-3596",
+              "golang": "1.22.9",
               "ubi": "",
               "new-features": [
-                "s3fs-fuse version updated to v1.94",
-                "Support for ubuntu24 SecureByDefault clusters"
+                "ROKS v4.17 cluster support"
                 ],
-              "fixes": [
-                "Fixed mount issue with coreos9 roks 4.16 cluster"
-              ]
+              "fixes": []
             }
         }
     }
