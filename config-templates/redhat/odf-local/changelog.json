@@ -4,7 +4,7 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "2",
-                "release-date": "26 February 2025",
+                "release-date": "27 February 2025",
                 "cves": "CVE-2024-45338, CVE-2024-45337, CVE-2024-51744",
                 "golang": "1.22.11",
                 "ubi": "",
@@ -32,7 +32,7 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "4",
-                "release-date": "26 February 2025",
+                "release-date": "27 February 2025",
                 "cves": "CVE-2024-45338, CVE-2024-45337, CVE-2024-51744",
                 "golang": "1.22.11",
                 "ubi": "",
@@ -59,7 +59,7 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "9",
-                "release-date": "26 February 2025",
+                "release-date": "27 February 2025",
                 "cves": "CVE-2024-45338, CVE-2024-45337, CVE-2024-51744",
                 "golang": "1.22.11",
                 "ubi": "",
@@ -86,7 +86,7 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "12",
-                "release-date": "26 February 2025",
+                "release-date": "27 February 2025",
                 "cves": "CVE-2024-45338, CVE-2024-45337, CVE-2024-51744",
                 "golang": "1.22.11",
                 "ubi": "",
@@ -113,7 +113,7 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "14",
-                "release-date": "26 February 2025",
+                "release-date": "27 February 2025",
                 "cves": "CVE-2024-45338, CVE-2024-45337",
                 "golang": "1.22.11",
                 "ubi": "",
@@ -140,7 +140,7 @@
             "status": "deprecated",
             "latest-revision": {
                 "revision": "17",
-                "release-date": "26 February 2025",
+                "release-date": "27 February 2025",
                 "cves": "CVE-2024-45338, CVE-2024-45337",
                 "golang": "1.22.11",
                 "ubi": "",
