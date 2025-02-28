@@ -4,12 +4,12 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "10",
-                "release-date": "23 January 2025",
-                "cves": "",
-                "golang": "1.22.10",
+                "release-date": "05 March 2025",
+                "cves": "CVE-2024-45339, CVE-2024-45338",
+                "golang": "1.22.12",
                 "ubi": "",
                 "new-features": [],
-                "fixes": []
+                "fixes": ["Resiliency improvement to use VPC Storage service API for tagging volumes. This doesn't impact existing or new PVCs. This reduces the number of Kubernetes service API calls."]
             },
             "previous-revision": {
                 "revision": "9",
