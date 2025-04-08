@@ -3,24 +3,22 @@
         "2.2": {
             "status": "supported",
             "latest-revision": {
-                "revision": "26",
-                "release-date": "29 January 2024",
-                "cves": "CVE-2024-51744, CVE-2024-45337",
-                "golang": "1.22.11",
+                "revision": "27",
+                "release-date": "10 April 2025",
+                "cves": "CVE-2025-30204, CVE-2025-24528",
+                "golang": "1.23.8",
                 "ubi": "",
-                "new-features": [
-                  "IKS 1.32 cluster support"
-                  ],
+                "new-features": [],
                 "fixes": []
             },
             "previous-revision": {
-              "revision": "25",
-              "release-date": "13 December 2024",
-              "cves": "CVE-2024-3596",
-              "golang": "1.22.9",
+              "revision": "26",
+              "release-date": "29 January 2025",
+              "cves": "CVE-2024-51744, CVE-2024-45337",
+              "golang": "1.22.11",
               "ubi": "",
               "new-features": [
-                "ROKS v4.17 cluster support"
+                "IKS 1.32 cluster support"
                 ],
               "fixes": []
             }
