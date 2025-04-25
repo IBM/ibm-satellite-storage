@@ -6,7 +6,7 @@
                 "revision": "4",
                 "release-date": "28 April 2025",
                 "cves": "CVE-2025-0395",
-                "golang": "",
+                "golang": "1.23.8",
                 "ubi": "",
                 "new-features": [],
                 "fixes": []
@@ -29,7 +29,7 @@
                 "revision": "2",
                 "release-date": "28 April 2025",
                 "cves": "CVE-2025-0395",
-                "golang": "",
+                "golang": "1.23.8",
                 "ubi": "",
                 "new-features": [],
                 "fixes": []
@@ -52,7 +52,7 @@
                 "revision": "15",
                 "release-date": "28 April 2025",
                 "cves": "CVE-2025-0395",
-                "golang": "",
+                "golang": "1.23.8",
                 "ubi": "",
                 "new-features": [],
                 "fixes": []
@@ -75,7 +75,7 @@
                 "revision": "28",
                 "release-date": "28 April 2025",
                 "cves": "CVE-2025-0395",
-                "golang": "",
+                "golang": "1.23.8",
                 "ubi": "",
                 "new-features": [],
                 "fixes": []
