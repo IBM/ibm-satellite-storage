@@ -3,19 +3,21 @@
         "24.02": {
             "status": "supported",
             "latest-revision": {
+                "revision": "5",
+                "release-date": "05 June 2025",
+                "cves": "",
+                "golang": "1.23.8",
+                "ubi": "",
+                "new-features": [],
+                "fixes": [
+                    "Support ROKS 4.16"
+                ]
+            },
+            "previous-revision": {
                 "revision": "4",
                 "release-date": "28 April 2025",
                 "cves": "CVE-2025-0395",
                 "golang": "1.23.8",
-                "ubi": "",
-                "new-features": [],
-                "fixes": []
-            },
-            "previous-revision": {
-                "revision": "3",
-                "release-date": "01 October 2024",
-                "cves": "CVE-2024-34158, CVE-2024-34155, CVE-2024-34156",
-                "golang": "",
                 "ubi": "",
                 "new-features": [],
                 "fixes": []
