@@ -3,7 +3,18 @@
         "24.02": {
             "status": "supported",
             "latest-revision": {
-                "revision": "2",
+                "revision": "3",
+                "release-date": "05 June 2025",
+                "cves": "",
+                "golang": "",
+                "ubi": "",
+                "new-features": [],
+                "fixes": [
+                    "Support ROKS 4.16"
+                ]
+            },
+            "previous-revision": {
+               "revision": "2",
                 "release-date": "13 December 2024",
                 "cves": "",
                 "golang": "",
@@ -12,17 +23,6 @@
                 "fixes": [
                     "Fix issue with NetApp Trident operator cleanup"
                 ]
-            },
-            "previous-revision": {
-                "revision": "1",
-                "release-date": "29 April 2024",
-                "cves": "",
-                "golang": "",
-                "ubi": "",
-                "new-features": [
-                    "Initial Release"
-                ],
-                "fixes": []
             }
         }
     },
