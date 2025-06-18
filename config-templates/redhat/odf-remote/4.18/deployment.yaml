@@ -466,14 +466,14 @@ items:
             - name: SIDECAREP
               value: "/csi/provider.sock"
             - name: CUSTOM_CATALOG_SOURCE_IMAGE
-              value: "icr.io/armada-extensions/custom-redhat-operator-index:v4.18.1-odf"
+              value: "icr.io/armada-extensions/custom-redhat-operator-index:v4.18.2-odf"
             volumeMounts:
             - name: cluster-info
               readOnly: true
               mountPath: /etc/storage_ibmc/cluster_info
             - mountPath: /csi
               name: socket-dir
-            image: "icr.io/obs/ibm-ocs-operator:v4.18.2"
+            image: "icr.io/obs/ibm-ocs-operator:v4.18.3"
             imagePullPolicy: Always
             name: manager
             securityContext:
