@@ -9,10 +9,9 @@
                 "golang": "1.23.10",
                 "ubi": "",
                 "new-features": [
-                    "ODF 4.18 release"
+                    "ODF 4.18 initial release"
                 ],
                 "fixes": [
-                    "Latest bug fixes and minor improvements"
                 ]
             }
         }
@@ -23,7 +22,7 @@
             "latest-revision": {
                 "revision": "5",
                 "release-date": "24 June 2025",
-                "cves": "",
+                "cves": "CVE-2025-22874, CVE-2025-3576, CVE-2025-4802",
                 "golang": "1.23.10",
                 "ubi": "",
                 "new-features": [
@@ -51,7 +50,7 @@
             "latest-revision": {
                 "revision": "7",
                 "release-date": "24 June 2025",
-                "cves": "",
+                "cves": "CVE-2025-22874, CVE-2025-3576, CVE-2025-4802",
                 "golang": "1.23.10",
                 "ubi": "",
                 "new-features": [
@@ -79,7 +78,7 @@
             "latest-revision": {
                 "revision": "12",
                 "release-date": "24 June 2025",
-                "cves": "",
+                "cves": "CVE-2025-22874, CVE-2025-3576, CVE-2025-4802",
                 "golang": "1.23.10",
                 "ubi": "",
                 "new-features": [
@@ -106,7 +105,7 @@
             "latest-revision": {
                 "revision": "15",
                 "release-date": "24 June 2025",
-                "cves": "",
+                "cves": "CVE-2025-22874, CVE-2025-3576, CVE-2025-4802",
                 "golang": "1.23.10",
                 "ubi": "",
                 "new-features": [
