@@ -438,7 +438,7 @@ items:
               mountPath: /etc/storage_ibmc/cluster_info
             - mountPath: /csi
               name: socket-dir
-            image: "icr.io/obs/ibm-ocs-operator:v4.15.14"
+            image: "icr.io/obs/ibm-ocs-operator:v4.15.15"
             imagePullPolicy: Always
             name: manager
             securityContext:

@@ -4,9 +4,9 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "1",
-                "release-date": "05 June 2025",
+                "release-date": "24 June 2025",
                 "cves": "",
-                "golang": "1.23.9",
+                "golang": "1.23.10",
                 "ubi": "",
                 "new-features": [
                     "ODF 4.18 initial release"
@@ -21,9 +21,9 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "5",
-                "release-date": "05 June 2025",
-                "cves": "",
-                "golang": "1.23.9",
+                "release-date": "24 June 2025",
+                "cves": "CVE-2025-22874, CVE-2025-3576, CVE-2025-4802",
+                "golang": "1.23.10",
                 "ubi": "",
                 "new-features": [
                 ],
@@ -49,9 +49,9 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "7",
-                "release-date": "05 June 2025",
-                "cves": "",
-                "golang": "1.23.9",
+                "release-date": "24 June 2025",
+                "cves": "CVE-2025-22874, CVE-2025-3576, CVE-2025-4802",
+                "golang": "1.23.10",
                 "ubi": "",
                 "new-features": [
                 ],
@@ -77,9 +77,9 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "12",
-                "release-date": "05 June 2025",
-                "cves": "",
-                "golang": "1.23.9",
+                "release-date": "24 June 2025",
+                "cves": "CVE-2025-22874, CVE-2025-3576, CVE-2025-4802",
+                "golang": "1.23.10",
                 "ubi": "",
                 "new-features": [
                 ],
@@ -104,9 +104,9 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "15",
-                "release-date": "05 June 2025",
-                "cves": "",
-                "golang": "1.23.9",
+                "release-date": "24 June 2025",
+                "cves": "CVE-2025-22874, CVE-2025-3576, CVE-2025-4802",
+                "golang": "1.23.10",
                 "ubi": "",
                 "new-features": [
                 ],
