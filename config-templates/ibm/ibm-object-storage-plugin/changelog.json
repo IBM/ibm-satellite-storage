@@ -3,7 +3,19 @@
         "2.2": {
             "status": "supported",
             "latest-revision": {
-                "revision": "28",
+                "revision": "29",
+                "release-date": "24 June 2025",
+                "cves": "CVE-2025-22872, CVE-2025-30204, CVE-2025-4802",
+                "golang": "1.23.10",
+                "ubi": "",
+                "new-features": [],
+                "fixes": [
+                    "CVE-2025-22872, CVE-2025-30204, CVE-2025-4802",
+                    "Update golang to 1.23.10"
+                ]
+            },
+            "previous-revision": {
+              "revision": "28",
                 "release-date": "25 April 2025",
                 "cves": "CVE-2025-0395",
                 "golang": "1.23.8",
@@ -11,15 +23,6 @@
                 "new-features": [
                   "Enable bucket versioning support"
                 ],
-                "fixes": []
-            },
-            "previous-revision": {
-              "revision": "27",
-                "release-date": "10 April 2025",
-                "cves": "CVE-2025-30204, CVE-2025-24528",
-                "golang": "1.23.8",
-                "ubi": "",
-                "new-features": [],
                 "fixes": []
             }
         }
