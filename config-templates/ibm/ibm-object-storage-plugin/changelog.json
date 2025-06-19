@@ -9,10 +9,7 @@
                 "golang": "1.23.10",
                 "ubi": "",
                 "new-features": [],
-                "fixes": [
-                    "CVE-2025-22872, CVE-2025-30204, CVE-2025-4802",
-                    "Update golang to 1.23.10"
-                ]
+                "fixes": []
             },
             "previous-revision": {
               "revision": "28",
