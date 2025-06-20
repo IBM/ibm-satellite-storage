@@ -3,6 +3,17 @@
         "1.31.2": {
             "status": "supported",
             "latest-revision": {
+                "revision": "2",
+                "release-date": "10 July 2025",
+                "cves": "",
+                "golang": "",
+                "ubi": "",
+                "new-features": [],
+                "fixes": [
+                    "Fix 'subnetName' parameter to support comma separated list of subnets"
+                ]
+            },
+            "previous-revision": {
                 "revision": "1",
                 "release-date": "27 February 2025",
                 "cves": "",

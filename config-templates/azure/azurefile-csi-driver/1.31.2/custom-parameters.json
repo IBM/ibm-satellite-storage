@@ -82,10 +82,11 @@
         "required": "true"
     },
     {
-        "description": "Name of one the of the subnets under the provided VNet",
-        "displayname": "Subnet Name",
+        "description": "Name(s) of the existing subnet(s) under the provided virtual network. If empty, driver will update all the subnets under the cluster virtual network.",
+        "displayname": "Subnet Names",
         "name": "subnetName",
         "category": "config",
-        "required": "true"
+        "required": "false",
+        "type": "csv"
     }
 ]

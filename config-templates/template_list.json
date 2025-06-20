@@ -19,7 +19,7 @@
     "name": "azuredisk-csi-driver",
     "displayname": "Azure Disk CSI Driver",
     "Description": "Azure Disk CSI Driver.",
-    "default-version": "1.23.0",
+    "default-version": "1.30.3",
     "enabled": "true",
     "provider": "azure"
   },
@@ -27,7 +27,7 @@
     "name": "azurefile-csi-driver",
     "displayname": "Azure File CSI Driver",
     "Description": "Azure File CSI Driver.",
-    "default-version": "1.22.0",
+    "default-version": "1.31.2",
     "enabled": "true",
     "provider": "azure"
   },
