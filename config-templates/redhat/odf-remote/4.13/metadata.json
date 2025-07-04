@@ -1,6 +1,6 @@
 {
   "name": "4.13",
-  "revision": "17",
+  "revision": "18",
   "enabled": "true",
   "status": "deprecated",
   "description": "ODF template for openshift 4.13 (Remote storage)",
