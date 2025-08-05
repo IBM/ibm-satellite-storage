@@ -1,6 +1,6 @@
 {
     "name": "1.31.2",
-    "revision": "2",
+    "revision": "1",
     "enabled": "true",
     "status": "supported",
     "description": "Azure File CSI Driver",
