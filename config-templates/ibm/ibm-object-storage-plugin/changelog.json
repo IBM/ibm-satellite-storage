@@ -4,9 +4,9 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "30",
-                "release-date": "15 August 2025",
-                "cves": "CVE-2019-17543",
-                "golang": "1.23.11",
+                "release-date": "18 August 2025",
+                "cves": "CVE-2019-17543, CVE-2025-22871, CVE-2025-22874, CVE-2025-4673, CVE-2025-8058",
+                "golang": "1.23.12",
                 "ubi": "",
                 "new-features": [
                     "Plugin support on heterogeneous cluster (cluster with both rhel and rhcos worker pools)"
