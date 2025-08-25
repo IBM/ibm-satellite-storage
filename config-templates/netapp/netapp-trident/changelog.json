@@ -1,5 +1,21 @@
 [
     {
+        "25.06": {
+            "status": "supported",
+            "latest-revision": {
+                "revision": "1",
+                "release-date": "01 September 2025",
+                "cves": "",
+                "golang": "1.23.10",
+                "ubi": "",
+                "new-features": [
+                    "Initial release"
+                ],
+                "fixes": []
+            }
+        }
+    },
+    {
         "24.02": {
             "status": "supported",
             "latest-revision": {

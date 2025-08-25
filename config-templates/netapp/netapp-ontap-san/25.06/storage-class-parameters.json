@@ -1,0 +1,99 @@
+[
+	{
+	  "description": "The storage class name.",
+	  "displayname": "Storage Class Name",
+	  "name": "name",
+	  "templateKeyName": [
+		  "name"
+	  ],
+	  "required": "true",
+	  "regex": "^([a-z0-9]|[a-z0-9][a-z0-9.-]*[a-z0-9]+)$",
+	  "min-length": 1,
+	  "max-length": 64,
+	  "category": "config"
+	}, {
+	  "description": "Specify 'true' or 'false' to make the created storage class the default class.",
+	  "displayname": "Default Storage Class",
+	  "name": "is-default-class",
+	  "templateKeyName": [
+		  "storageclass.kubernetes.io/is-default-class"
+	  ],
+	  "default": "false",
+	  "required": "true",
+	  "category": "config",
+	  "regex": "^(?:true|false)$",
+	  "min-length": 4,
+	  "max-length": 5,
+	  "supported-values": ["false", "true"],
+	  "type": "boolean"
+	}, {
+	  "description": "The selector label.",
+	  "displayname": "Selector",
+	  "name": "selector",
+	  "templateKeyName": [
+		  "selector"
+	  ],
+	  "required": "true",
+	  "category": "config",
+	  "type": "text"
+	}, {
+	  "description": "The file system type.",
+	  "displayname": "File System",
+	  "name": "fsType",
+	  "templateKeyName": [
+		  "fsType"
+	  ],
+	  "default": "ext4",
+	  "required": "true",
+	  "category": "config",
+	  "regex": "^(ext[3-4]|xfs)$",
+	  "min-length": 3,
+	  "max-length": 4,
+	  "supported-values": ["ext3", "ext4", "xfs"],
+	  "type": "text"
+	}, {
+	  "description": "Specify 'true' or 'false' to enable or disable volume expansion.",
+	  "displayname": "Allow volume expansion",
+	  "name": "allowVolumeExpansion",
+	  "templateKeyName": [
+		  "allowVolumeExpansion"
+	  ],
+	  "default": "true",
+	  "required": "true",
+	  "category": "config",
+	  "regex": "^(?:true|false)$",
+	  "min-length": 4,
+	  "max-length": 5,
+	  "supported-values": ["true", "false"],
+	  "type": "boolean"
+	}, {
+	  "description": "Specify 'Immediate' or 'WaitForFirstConsumer' for volume binding.",
+	  "displayname": "Volume binding mode",
+	  "name": "volumeBindingMode",
+	  "templateKeyName": [
+		  "volumeBindingMode"
+	  ],
+	  "default": "Immediate",
+	  "required": "true",
+	  "category": "config",
+	  "regex": "^(?:Immediate|WaitForFirstConsumer)$",
+	  "min-length": 9,
+	  "max-length": 20,
+	  "supported-values": ["Immediate", "WaitForFirstConsumer"],
+	  "type": "text"
+	}, {
+		"description": "Specify a unique volume tier preference; in the range of 1-99 with 1 being the highest",
+		"displayname": "Storage Class Preference",
+		"name": "storage-class-preference",
+		"templateKeyName": [
+			"storage-class-preference"
+		],
+		"default": "99",
+		"required": "true",
+		"category": "config",
+		"regex": "^[1-9]([0-9]?)$",
+		"min-length": 1,
+		"max-length": 2,
+		"type": "text"
+	  }
+]
