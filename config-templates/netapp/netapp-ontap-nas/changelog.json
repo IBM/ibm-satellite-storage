@@ -3,6 +3,15 @@
         "24.02": {
             "status": "supported",
             "latest-revision": {
+                "revision": "6",
+                "release-date": "04 September 2025",
+                "cves": "CVE-2025-8058",
+                "golang": "1.25.0",
+                "ubi": "",
+                "new-features": [],
+                "fixes": []
+            },
+            "previous-revision": {
                 "revision": "5",
                 "release-date": "24 June 2025",
                 "cves": "CVE-2025-4802",
@@ -12,85 +21,22 @@
                 "fixes": [
                     "Support ROKS 4.16"
                 ]
-            },
-            "previous-revision": {
-                "revision": "4",
-                "release-date": "28 April 2025",
-                "cves": "CVE-2025-0395",
-                "golang": "1.23.8",
-                "ubi": "",
-                "new-features": [],
-                "fixes": []
             }
         }
     },
     {
         "23.10": {
-            "status": "deprecated",
-            "latest-revision": {
-                "revision": "3",
-                "release-date": "24 June 2025",
-                "cves": "CVE-2025-4802",
-                "golang": "1.23.10",
-                "ubi": "",
-                "new-features": [],
-                "fixes": []
-            },
-            "previous-revision": {
-                "revision": "2",
-                "release-date": "28 April 2025",
-                "cves": "CVE-2025-0395",
-                "golang": "1.23.8",
-                "ubi": "",
-                "new-features": [],
-                "fixes": []
-            }
+            "status": "unsupported"
         }
     },
     {
         "22.10": {
-            "status": "deprecated",
-            "latest-revision": {
-                "revision": "16",
-                "release-date": "24 June 2025",
-                "cves": "CVE-2025-4802",
-                "golang": "1.23.10",
-                "ubi": "",
-                "new-features": [],
-                "fixes": []
-            },
-            "previous-revision": {
-                "revision": "15",
-                "release-date": "28 April 2025",
-                "cves": "CVE-2025-0395",
-                "golang": "1.23.8",
-                "ubi": "",
-                "new-features": [],
-                "fixes": []
-            }
+            "status": "unsupported"
         }
     },
     {
         "22.04": {
-            "status": "deprecated",
-            "latest-revision": {
-                "revision": "29",
-                "release-date": "24 June 2025",
-                "cves": "CVE-2025-4802",
-                "golang": "1.23.10",
-                "ubi": "",
-                "new-features": [],
-                "fixes": []
-            },
-            "previous-revision": {
-                "revision": "28",
-                "release-date": "28 April 2025",
-                "cves": "CVE-2025-0395",
-                "golang": "1.23.8",
-                "ubi": "",
-                "new-features": [],
-                "fixes": []
-            }
+            "status": "unsupported"
         }
     },
     {
