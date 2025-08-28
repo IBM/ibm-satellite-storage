@@ -4,9 +4,9 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "1",
-                "release-date": "01 September 2025",
+                "release-date": "04 September 2025",
                 "cves": "",
-                "golang": "1.23.10",
+                "golang": "",
                 "ubi": "",
                 "new-features": [
                     "Initial release"

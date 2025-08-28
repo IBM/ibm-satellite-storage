@@ -544,7 +544,7 @@ items:
                       fieldPath: metadata.name
                 - name: OPERATOR_NAME
                   value: trident-operator
-              image: netapp/trident-operator:25.06.0
+              image: netapp/trident-operator:25.06.2
               imagePullPolicy: IfNotPresent
               name: trident-operator
               resources:
