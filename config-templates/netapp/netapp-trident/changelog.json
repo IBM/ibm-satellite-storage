@@ -44,7 +44,7 @@
     },
     {
         "23.10": {
-            "status": "supported",
+            "status": "deprecated",
             "latest-revision": {
                 "revision": "1",
                 "release-date": "13 December 2024",
@@ -58,7 +58,7 @@
     },
     {
         "22.10": {
-            "status": "supported",
+            "status": "deprecated",
             "latest-revision": {
                 "revision": "2",
                 "release-date": "13 December 2024",
@@ -85,7 +85,7 @@
     },
     {
         "22.04": {
-            "status": "supported",
+            "status": "deprecated",
             "latest-revision": {
                "revision": "4",
                 "release-date": "13 December 2024",
@@ -108,16 +108,6 @@
                     "Removed PodSecurityPolicy as Kubernetes v1.25+ does not support PodSecurityPolicy"
                 ]
             }
-        }
-    },
-    {
-        "21.04": {
-            "status": "unsupported"
-        }
-    },
-    {
-        "20.07": {
-            "status": "unsupported"
         }
     }
 ]

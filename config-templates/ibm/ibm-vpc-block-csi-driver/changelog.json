@@ -31,10 +31,5 @@
         "4.3.0": {
             "status": "unsupported"
         }
-    },
-    {
-        "4.2.2": {
-            "status": "unsupported"
-        }
     }
 ]
