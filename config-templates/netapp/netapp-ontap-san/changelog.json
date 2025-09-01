@@ -49,10 +49,5 @@
         "22.10": {
             "status": "unsupported"
         }
-    },
-    {
-        "22.04": {
-            "status": "unsupported"
-        }
     }
 ]
