@@ -200,20 +200,5 @@
         "4.10": {
             "status": "unsupported"
         }
-    },
-    {
-        "4.9": {
-            "status": "unsupported"
-        }
-    },
-    {
-        "4.8": {
-            "status": "unsupported"
-        }
-    },
-    {
-        "4.7": {
-            "status": "unsupported"
-        }
     }
 ]
