@@ -333,7 +333,7 @@ items:
           initContainers:
             - name: vpc-node-label-updater
               image: icr.io/obs/storage/vpc-node-label-updater:v4.2.29
-              imagePullPolicy: Always
+              imagePullPolicy: IfNotPresent
               securityContext:
                 privileged: false
                 allowPrivilegeEscalation: false
@@ -358,7 +358,7 @@ items:
           containers:
             - name: csi-driver-registrar
               image: icr.io/ext/sig-storage/csi-node-driver-registrar:v2.13.0
-              imagePullPolicy: Always
+              imagePullPolicy: IfNotPresent
               securityContext:
                 runAsNonRoot: false
                 runAsUser: 0
@@ -396,7 +396,7 @@ items:
                 runAsGroup: 0
                 privileged: true
               image: icr.io/ibm/ibm-vpc-block-csi-driver:v5.1.37
-              imagePullPolicy: Always
+              imagePullPolicy: IfNotPresent
               args:
                 - "--v=5"
                 - "--endpoint=unix:/csi/csi.sock"
@@ -547,7 +547,7 @@ items:
           containers:
             - name: csi-snapshotter
               image: icr.io/ext/sig-storage/csi-snapshotter:v8.2.1
-              imagePullPolicy: Always
+              imagePullPolicy: IfNotPresent
               securityContext:
                 privileged: false
                 allowPrivilegeEscalation: false
@@ -568,7 +568,7 @@ items:
                   mountPath: /csi
             - name: csi-provisioner
               image: icr.io/ext/sig-storage/csi-provisioner:v5.2.0
-              imagePullPolicy: Always
+              imagePullPolicy: IfNotPresent
               securityContext:
                 privileged: false
                 allowPrivilegeEscalation: false
@@ -592,7 +592,7 @@ items:
                   mountPath: /csi
             - name: csi-attacher
               image: icr.io/ext/sig-storage/csi-attacher:v4.8.1
-              imagePullPolicy: Always
+              imagePullPolicy: IfNotPresent
               securityContext:
                 privileged: false
                 allowPrivilegeEscalation: false
@@ -613,7 +613,7 @@ items:
                   mountPath: /csi
             - name: csi-resizer
               image: icr.io/ext/sig-storage/csi-resizer:v1.13.2
-              imagePullPolicy: Always
+              imagePullPolicy: IfNotPresent
               securityContext:
                 privileged: false
                 allowPrivilegeEscalation: false
@@ -649,7 +649,7 @@ items:
                 - name: socket-dir
                   mountPath: /csi
             - name: iks-vpc-block-driver
-              imagePullPolicy: Always
+              imagePullPolicy: IfNotPresent
               image: icr.io/ibm/ibm-vpc-block-csi-driver:v5.1.37
               securityContext:
                 privileged: false
