@@ -33,7 +33,7 @@ items:
               containers:
                 - name: trident-kubectl-san
                   image: icr.io/ibm/ibm-tridentctl:v2.0.42
-                  imagePullPolicy: Always
+                  imagePullPolicy: IfNotPresent
                   env:
                   - name: NAMESPACE
                     value: "trident"

@@ -629,7 +629,7 @@ items:
                   memory: 128Mi
             - name: csi-resizer
               image: k8s.gcr.io/sig-storage/csi-resizer:v1.0.0
-              imagePullPolicy: Always
+              imagePullPolicy: IfNotPresent
               args:
                 - --csi-address=$(ADDRESS)
                 - --v=5
