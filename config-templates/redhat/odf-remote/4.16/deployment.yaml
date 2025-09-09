@@ -477,7 +477,7 @@ items:
             - mountPath: /csi
               name: socket-dir
             image: "icr.io/obs/ibm-ocs-operator:v4.16.16"
-            imagePullPolicy: Always
+            imagePullPolicy: IfNotPresent
             name: manager
             securityContext:
               privileged: false
@@ -491,7 +491,7 @@ items:
                 memory: 100Mi
           - name: storage-secret-sidecar
             image: "icr.io/obs/armada-storage-secret:v1.2.53"
-            imagePullPolicy: Always
+            imagePullPolicy: IfNotPresent
             args:
               - "--endpoint=$(ENDPOINT)"
             env:
