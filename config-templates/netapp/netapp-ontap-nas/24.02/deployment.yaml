@@ -5,7 +5,7 @@ metadata:
   namespace: kube-system
   annotations:
     version: 24.02
-    revision: 6
+    revision: 7
 items:
   - apiVersion: apps/v1
     kind: Deployment
@@ -15,7 +15,7 @@ items:
       labels:
         app.kubernetes.io/name: "netapp-ontap-nas"
         app.kubernetes.io/version: "v24.02"
-        app.kubernetes.io/revision: "6"
+        app.kubernetes.io/revision: "7"
     spec:
       replicas: 1
       selector:
@@ -27,7 +27,7 @@ items:
               labels:
                   app: netapp-ontap-nas
                   app.kubernetes.io/name: "netapp-ontap-nas"
-                  app.kubernetes.io/revision: "6"
+                  app.kubernetes.io/revision: "7"
           spec:
               serviceAccountName: trident-kubectl-sa
               containers:
