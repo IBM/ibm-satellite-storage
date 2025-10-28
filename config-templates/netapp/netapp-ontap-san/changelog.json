@@ -3,17 +3,6 @@
         "25.06": {
             "status": "supported",
             "latest-revision": {
-                "revision": "2",
-                "release-date": "24 October 2025",
-                "cves": "",
-                "golang": "1.25.0",
-                "ubi": "",
-                "new-features": [],
-                "fixes": [
-                    "Mark the Data LIF custom parameter as optional"
-                ]
-            },
-            "previous-revision": {
                 "revision": "1",
                 "release-date": "04 September 2025",
                 "cves": "",
@@ -30,17 +19,6 @@
         "24.02": {
             "status": "supported",
             "latest-revision": {
-                "revision": "7",
-                "release-date": "24 October 2025",
-                "cves": "",
-                "golang": "1.25.0",
-                "ubi": "",
-                "new-features": [],
-                "fixes": [
-                    "Mark the Data LIF custom parameter as optional"
-                ]
-            },
-            "previous-revision": {
                 "revision": "6",
                 "release-date": "04 September 2025",
                 "cves": "CVE-2025-8058",
@@ -48,6 +26,17 @@
                 "ubi": "",
                 "new-features": [],
                 "fixes": []
+            },
+            "previous-revision": {
+                "revision": "5",
+                "release-date": "24 June 2025",
+                "cves": "CVE-2025-4802",
+                "golang": "1.23.10",
+                "ubi": "",
+                "new-features": [],
+                "fixes": [
+                    "Support ROKS 4.16"
+                ]
             }
         }
     },
