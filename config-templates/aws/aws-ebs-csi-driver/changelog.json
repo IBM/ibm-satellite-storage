@@ -95,10 +95,5 @@
                 "fixes": []
             }
         }
-    },
-    {
-        "0.9.14": {
-            "status": "unsupported"
-        }
     }
 ]
