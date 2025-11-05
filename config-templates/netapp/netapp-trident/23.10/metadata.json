@@ -2,7 +2,7 @@
   "name": "23.10",
   "revision": "1",
   "enabled": "true",
-  "status": "deprecated",
+  "status": "unsupported",
   "description": "Netapp Trident version 23.10.",
   "tags": [
     {
