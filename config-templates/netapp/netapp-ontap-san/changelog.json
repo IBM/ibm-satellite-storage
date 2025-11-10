@@ -5,7 +5,7 @@
             "latest-revision": {
                 "revision": "2",
                 "release-date": "14 November 2025",
-                "cves": "",
+                "cves": "CVE-2025-58185, CVE-2025-58189, CVE-2025-61723",
                 "golang": "1.25.2",
                 "ubi": "",
                 "new-features": [],
@@ -30,7 +30,7 @@
             "latest-revision": {
                 "revision": "7",
                 "release-date": "14 November 2025",
-                "cves": "",
+                "cves": "CVE-2025-58185, CVE-2025-58189, CVE-2025-61723",
                 "golang": "1.25.2",
                 "ubi": "",
                 "new-features": [],
