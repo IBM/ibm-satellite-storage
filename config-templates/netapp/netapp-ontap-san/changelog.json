@@ -20,7 +20,9 @@
                 "new-features": [
                     "Initial release"
                 ],
-                "fixes": []
+                "fixes": [
+                    "Mark the Data LIF custom parameter as optional"
+                ]
             }
         }
     },
@@ -43,7 +45,9 @@
                 "golang": "1.25.0",
                 "ubi": "",
                 "new-features": [],
-                "fixes": []
+                "fixes": [
+                    "Mark the Data LIF custom parameter as optional"
+                ]
             }
         }
     },
