@@ -187,15 +187,5 @@
                 ]
             }
         }
-    },
-    {
-        "4.11": {
-            "status": "unsupported"
-        }
-    },
-    {
-        "4.10": {
-            "status": "unsupported"
-        }
     }
 ]
