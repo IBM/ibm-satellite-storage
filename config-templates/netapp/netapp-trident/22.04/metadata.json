@@ -2,7 +2,7 @@
   "name": "22.04",
   "revision": "4",
   "enabled": "true",
-  "status": "deprecated",
+  "status": "unsupported",
   "description": "Netapp Trident version 22.04.",
   "tags": [
     {

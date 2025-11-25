@@ -60,10 +60,5 @@
                 "fixes": []
             }
         }
-    },
-    {
-        "1.2.2": {
-            "status": "unsupported"
-        }
     }
 ]

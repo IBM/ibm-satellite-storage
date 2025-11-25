@@ -3,23 +3,23 @@
         "2.2": {
             "status": "supported",
             "latest-revision": {
+                "revision": "31",
+                "release-date": "13 November 2025",
+                "cves": "CVE-2025-58185, CVE-2025-58189, CVE-2025-61723, CVE-2025-61725, CVE-2025-22874, CVE-2025-4673, CVE-2025-22871, CVE-2025-47906",
+                "golang": "1.25.4",
+                "ubi": "",
+                "new-features": [],
+                "fixes": []
+            },
+            "previous-revision": {
                 "revision": "30",
                 "release-date": "18 August 2025",
                 "cves": "CVE-2019-17543, CVE-2025-22871, CVE-2025-22874, CVE-2025-4673, CVE-2025-8058",
                 "golang": "1.23.12",
                 "ubi": "",
                 "new-features": [
-                    "Plugin support on heterogeneous cluster (cluster with both rhel and rhcos worker pools)"
+                  "Plugin support on heterogeneous cluster (cluster with both rhel and rhcos worker pools)"
                 ],
-                "fixes": []
-            },
-            "previous-revision": {
-              "revision": "29",
-                "release-date": "24 June 2025",
-                "cves": "CVE-2025-22872, CVE-2025-30204, CVE-2025-4802",
-                "golang": "1.23.10",
-                "ubi": "",
-                "new-features": [],
                 "fixes": []
             }
         }
