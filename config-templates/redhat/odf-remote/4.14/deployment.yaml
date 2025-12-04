@@ -429,7 +429,7 @@ items:
               mountPath: /etc/storage_ibmc/cluster_info
             - mountPath: /csi
               name: socket-dir
-            image: "icr.io/obs/ibm-ocs-operator:v4.14.29"
+            image: "icr.io/armada-extensions/ibm-ocs-operator:v4.14.29"
             imagePullPolicy: IfNotPresent
             name: manager
             securityContext:
@@ -443,7 +443,7 @@ items:
                 cpu: 100m
                 memory: 100Mi
           - name: storage-secret-sidecar
-            image: "icr.io/obs/armada-storage-secret:v1.2.53"
+            image: "icr.io/obs/armada-storage-secret:v1.2.70"
             imagePullPolicy: IfNotPresent
             args:
               - "--endpoint=$(ENDPOINT)"
