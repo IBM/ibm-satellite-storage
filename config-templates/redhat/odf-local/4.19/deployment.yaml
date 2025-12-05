@@ -397,6 +397,17 @@ items:
       - get
       - list
       - watch
+    - apiGroups:
+      - csi.ceph.io
+      resources:
+      - drivers
+      verbs:
+      - get
+      - list
+      - patch
+      - create
+      - update
+      - watch
   - apiVersion: rbac.authorization.k8s.io/v1
     kind: RoleBinding
     metadata:
