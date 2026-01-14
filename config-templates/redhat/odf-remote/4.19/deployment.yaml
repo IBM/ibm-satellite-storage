@@ -498,7 +498,7 @@ items:
                 cpu: 100m
                 memory: 100Mi
           - name: storage-secret-sidecar
-            image: "icr.io/obs/armada-storage-secret:v1.2.70"
+            image: "icr.io/obs/armada-storage-secret:v1.2.74"
             imagePullPolicy: IfNotPresent
             args:
               - "--endpoint=$(ENDPOINT)"
