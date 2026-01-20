@@ -17,7 +17,7 @@
     },
     {
         "1.22.0": {
-            "status": "supported",
+            "status": "deprecated",
             "latest-revision": {
                 "revision": "1",
                 "release-date": "26 October 2022",
@@ -33,34 +33,12 @@
     },
     {
         "1.18.0": {
-            "status": "supported",
-            "latest-revision": {
-                "revision": "4",
-                "release-date": "29 July 2022",
-                "cves": "",
-                "golang": "",
-                "ubi": "",
-                "new-features": [
-                    "Added support for auto-restarting plugin pods when updating/upgrading Satellite storage configuration"
-                ],
-                "fixes": []
-            }
+            "status": "unsupported"
         }
     },
     {
         "1.9.0": {
-            "status": "supported",
-            "latest-revision": {
-                "revision": "4",
-                "release-date": "29 July 2022",
-                "cves": "",
-                "golang": "",
-                "ubi": "",
-                "new-features": [
-                    "Added support for auto-restarting plugin pods when updating/upgrading Satellite storage configuration"
-                ],
-                "fixes": []
-            }
+            "status": "unsupported"
         }
     }
 ]
