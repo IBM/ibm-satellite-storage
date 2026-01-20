@@ -55,10 +55,5 @@
         "23.10": {
             "status": "unsupported"
         }
-    },
-    {
-        "22.10": {
-            "status": "unsupported"
-        }
     }
 ]
