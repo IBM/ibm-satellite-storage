@@ -11,7 +11,7 @@
     "name": "aws-ebs-csi-driver",
     "displayname": "AWS EBS CSI Driver",
     "Description": "AWS EBS CSI Driver.",
-    "default-version": "1.31.0",
+    "default-version": "1.55.0",
     "enabled": "true",
     "provider": "aws"
   },
