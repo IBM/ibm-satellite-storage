@@ -95,10 +95,6 @@ sat-aws-block-silver                 ebs.csi.aws.com   Delete          Immediate
 sat-aws-block-silver-metro           ebs.csi.aws.com   Delete          WaitForFirstConsumer   true                   7m6s
 ```
 
-**Example output**
-
-![Example Output](./images/output.png)
-
 ## Troubleshooting
 
 
