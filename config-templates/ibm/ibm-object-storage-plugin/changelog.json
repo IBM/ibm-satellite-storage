@@ -3,6 +3,15 @@
         "2.2": {
             "status": "supported",
             "latest-revision": {
+                "revision": "35",
+                "release-date": "03 March 2026",
+                "cves": "CVE-2026-0861, CVE-2025-15281, CVE-2026-0915, CVE-2025-68121",
+                "golang": "1.25.5",
+                "ubi": "",
+                "new-features": [],
+                "fixes": []
+            },
+            "previous-revision": {
                 "revision": "34",
                 "release-date": "18 February 2026",
                 "cves": "CVE-2025-15467, CVE-2025-11187, CVE-2025-15468, CVE-2025-15469, CVE-2025-66199, CVE-2025-68160, CVE-2025-69418, CVE-2025-69419, CVE-2025-69420, CVE-2025-69421, CVE-2026-22795, CVE-2026-22796",
@@ -10,17 +19,6 @@
                 "ubi": "",
                 "new-features": [
                   "cos plugin support on iks 1.35"
-                ],
-                "fixes": []
-            },
-            "previous-revision": {
-                "revision": "33",
-                "release-date": "23 January 2026",
-                "cves": "CVE-2025-61727, CVE-2025-61729, CVE-2025-45582, CVE-2025-4598",
-                "golang": "1.25.5",
-                "ubi": "",
-                "new-features": [
-                  "cos plugin support on in-che region"
                 ],
                 "fixes": []
             }
