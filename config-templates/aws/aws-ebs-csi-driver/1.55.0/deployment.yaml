@@ -217,7 +217,7 @@ items:
     subjects:
       - kind: ServiceAccount
         name: ebs-csi-node-sa
-        namespace: default
+        namespace: kube-system
     roleRef:
       kind: ClusterRole
       name: ebs-csi-node-role
@@ -304,6 +304,7 @@ items:
         app.kubernetes.io/name: aws-ebs-csi-driver
         app.kubernetes.io/version: 1.55.0
     spec:
+      revisionHistoryLimit:
       selector:
         matchLabels:
           app: ebs-csi-node
@@ -330,27 +331,17 @@ items:
                   - key: eks.amazonaws.com/compute-type
                     operator: NotIn
                     values:
-                    - fargate
-                  - key: node.kubernetes.io/instance-type
-                    operator: NotIn
-                    values:
-                    - a1.medium
-                    - a1.large
-                    - a1.xlarge
-                    - a1.2xlarge
-                    - a1.4xlarge
+                      - fargate
+                      - auto
+                      - hybrid
           nodeSelector:
             kubernetes.io/os: linux
           serviceAccountName: ebs-csi-node-sa
+          terminationGracePeriodSeconds: 30
           priorityClassName: system-node-critical
-          hostNetwork: true
-          dnsPolicy: ClusterFirstWithHostNet
           tolerations:
-            - key: CriticalAddonsOnly
-              operator: Exists
             - operator: Exists
-              effect: NoExecute
-              tolerationSeconds: 300
+          hostNetwork: false        
           securityContext:
             fsGroup: 0
             runAsGroup: 0
@@ -358,14 +349,12 @@ items:
             runAsUser: 0
           containers:
             - name: ebs-plugin
-              securityContext:
-                privileged: true
-                readOnlyRootFilesystem: true
               image: public.ecr.aws/ebs-csi-driver/aws-ebs-csi-driver:v1.55.0
               imagePullPolicy: IfNotPresent
               args:
                 - node
                 - --endpoint=$(CSI_ENDPOINT)
+                - --csi-mount-point-prefix=/var/data/kubelet/plugins/kubernetes.io/csi/ebs.csi.aws.com/
                 - --logging-format=text
                 - --v=2
               env:
@@ -383,9 +372,6 @@ items:
                   mountPath: /csi
                 - name: device-dir
                   mountPath: /dev
-                - name: pods-dir
-                  mountPath: /var/data/kubelet/pods
-                  mountPropagation: Bidirectional
               ports:
                 - name: healthz
                   containerPort: 9808
@@ -398,37 +384,50 @@ items:
                 timeoutSeconds: 3
                 periodSeconds: 10
                 failureThreshold: 5
+              readinessProbe:
+                httpGet:
+                  path: /healthz
+                  port: healthz
+                timeoutSeconds: 3
+                periodSeconds: 5
+                failureThreshold: 3
               resources:
                 limits:
                   memory: 256Mi
                 requests:
                   cpu: 10m
                   memory: 40Mi
+              securityContext:
+                readOnlyRootFilesystem: true
+                privileged: true
               lifecycle:
                 preStop:
                   exec:
                     command: ["/bin/aws-ebs-csi-driver", "pre-stop-hook"]
+              terminationMessagePolicy: FallbackToLogsOnError
             - name: node-driver-registrar
               securityContext:
                 allowPrivilegeEscalation: false
                 readOnlyRootFilesystem: true
-              image: public.ecr.aws/eks-distro/kubernetes-csi/node-driver-registrar:v2.10.1-eks-1-30-4
+              image: public.ecr.aws/csi-components/csi-node-driver-registrar:v2.15.0-eksbuild.4
               imagePullPolicy: IfNotPresent
               args:
                 - --csi-address=$(ADDRESS)
                 - --kubelet-registration-path=$(DRIVER_REG_SOCK_PATH)
+                - --http-endpoint=0.0.0.0:9809
                 - --v=2
               env:
                 - name: ADDRESS
                   value: /csi/csi.sock
                 - name: DRIVER_REG_SOCK_PATH
                   value: /var/data/kubelet/plugins/ebs.csi.aws.com/csi.sock
+              ports:
+                - name: healthz
+                  containerPort: 9809
               livenessProbe:
-                exec:
-                  command:
-                  - /csi-node-driver-registrar
-                  - --kubelet-registration-path=$(DRIVER_REG_SOCK_PATH)
-                  - --mode=kubelet-registration-probe
+                httpGet:
+                  path: /healthz
+                  port: healthz
                 initialDelaySeconds: 30
                 periodSeconds: 90
                 timeoutSeconds: 15
@@ -445,8 +444,9 @@ items:
                 requests:
                   cpu: 10m
                   memory: 40Mi
+              terminationMessagePolicy: FallbackToLogsOnError
             - name: liveness-probe
-              image: public.ecr.aws/eks-distro/kubernetes-csi/livenessprobe:v2.12.0-eks-1-30-4
+              image: public.ecr.aws/csi-components/livenessprobe:v2.17.0-eksbuild.4
               imagePullPolicy: IfNotPresent
               securityContext:
                 allowPrivilegeEscalation: false
@@ -462,6 +462,7 @@ items:
                 requests:
                   cpu: 10m
                   memory: 40Mi
+              terminationMessagePolicy: FallbackToLogsOnError
           volumes:
             - name: kubelet-dir
               hostPath:
@@ -481,10 +482,6 @@ items:
                 type: Directory
             - name: probe-dir
               emptyDir: {}
-            - name: pods-dir
-              hostPath:
-                path: /var/data/kubelet/pods
-                type: Directory
   - kind: Deployment
     apiVersion: apps/v1
     metadata:
