@@ -9,7 +9,7 @@
                 "golang": "1.25.7",
                 "ubi": "",
                 "new-features": [],
-                "fixes": ["Add support of creation of snapshot in the user defined resource group"]
+                "fixes": ["Add support for snapshot creation in the user defined resource group"]
             },
             "previous-revision": {
                 "revision": "13",
