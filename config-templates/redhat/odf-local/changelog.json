@@ -124,7 +124,7 @@
     },
     {
         "4.15": {
-            "status": "supported",
+            "status": "deprecated",
             "latest-revision": {
                 "revision": "17",
                 "release-date": "3 March 2026",

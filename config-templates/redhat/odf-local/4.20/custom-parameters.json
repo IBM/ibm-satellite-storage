@@ -305,7 +305,7 @@
     "max-length": 5,
     "supported-values": ["true", "false"],
     "type": "boolean",
-    "required": "false",
+    "required": "true",
     "mutable": "true"
   },
   {
@@ -318,7 +318,7 @@
     "max-length": 5,
     "supported-values": ["true", "false"],
     "type": "boolean",
-    "required": "false",
+    "required": "true",
     "mutable": "true"
   },
   {
@@ -329,7 +329,7 @@
     "regex": "^(12|24|48|72|96|120|144|168|192|216|240|264|288|312|336|360|384|408|432|456|480|504|528|552|576|600|624|648|672|696|720|744|768)Ti$",
     "min-length": 4,
     "max-length": 5,
-    "required": "false",
+    "required": "true",
     "mutable": "true"
   }
 ]
