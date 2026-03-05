@@ -1,0 +1,99 @@
+[
+    {
+      "description": "The name of the storage class.",
+      "displayname": "Storage Class Name",
+      "name": "name",
+      "templateKeyName": [
+          "name"
+      ],
+      "required": "true",
+      "regex": "^([a-z0-9]|[a-z0-9][a-z0-9.-]*[a-z0-9]+)$",
+      "min-length": 1,
+      "max-length": 64,
+      "category": "config"
+    },{
+      "description": "Specify 'true' or 'false' to make the created storage class the default class.",
+      "displayname": "Default Storage Class",
+      "name": "is-default-class",
+      "templateKeyName": [
+          "storageclass.kubernetes.io/is-default-class"
+      ],
+      "default": "false",
+      "required": "true",
+      "category": "config",
+      "regex": "^(?:true|false)$",
+      "min-length": 4,
+      "max-length": 5,
+      "supported-values": ["false", "true"],
+      "type": "boolean"
+    },{
+      "description": "Specify the EFS filesystem ID",
+      "displayname": "EFS Filesystem ID",
+      "name": "fileSystemId",
+      "required": "true",
+      "templateKeyName": [
+          "fileSystemId"
+      ],
+      "regex": "^(?:fs-[a-f0-9]+)$",
+      "min-length": 11,
+      "max-length": 20,
+      "category": "config"
+    },{
+      "description": "Specify directory permissions",
+      "displayname": "Directory permission",
+      "name": "directoryPerms",
+      "templateKeyName":[
+          "directoryPerms"
+      ],
+      "default": "700",
+      "required": "true",
+      "category": "config"
+    },{
+      "description": "Specify the GID range start. gidRangeStart is starting range of Posix Group ID to be applied onto the root directory of the access point",
+      "displayname": "GID range start",
+      "name": "gidRangeStart",
+      "templateKeyName": [
+          "gidRangeStart"
+      ],
+      "default": "50000",
+      "required": "true",
+      "regex": "^[0-9]+$",
+      "category": "config"
+    },{
+      "description": "Specify the GID range end. gidRangeEnd is ending range of Posix Group ID",
+      "displayname": "GID range end",
+      "name": "gidRangeEnd",
+      "templateKeyName":[
+                  "gidRangeEnd"
+          ],
+      "default": "7000000",
+      "required": "true",
+      "regex": "^[0-9]+$",
+      "category": "config"
+    },{
+      "description": "Specify the BasePath. Base path is a path on the file system under which access point root directory is created",
+      "displayname": "Basepath",
+      "name": "basePath",
+      "templateKeyName":[
+                  "basePath"
+          ],
+      "default": "/",
+      "required": "true",
+      "category": "config"
+    },{
+      "description": "Specify a unique volume tier preference; in the range of 1-99 with 1 being the highest",
+      "displayname": "Storage Class Preference",
+      "name": "storage-class-preference",
+      "templateKeyName": [
+          "storage-class-preference"
+      ],
+      "required": "true",
+      "default": "99",
+      "category": "config",
+      "regex": "^[1-9]([0-9]?)$",
+      "min-length": 1,
+      "max-length": 2,
+      "type": "text"
+    }
+  ]
+  
