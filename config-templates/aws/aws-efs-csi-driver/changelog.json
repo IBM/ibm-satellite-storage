@@ -1,7 +1,21 @@
 [
     {
-        "2.0.3": {
+        "2.3.0": {
             "status": "supported",
+            "latest-revision": {
+                "revision": "1",
+                "release-date": "XX March 2026",
+                "cves": "",
+                "golang": "",
+                "ubi": "",
+                "new-features": [
+                    "Initial release"
+                ],
+                "fixes": []
+            }
+        },
+        "2.0.3": {
+            "status": "deprecated",
             "latest-revision": {
                 "revision": "1",
                 "release-date": "20 June 2024",
