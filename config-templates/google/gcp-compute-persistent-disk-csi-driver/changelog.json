@@ -28,7 +28,7 @@
     },
     {
         "1.7.1": {
-            "status": "supported",
+            "status": "deprecated",
             "latest-revision": {
                 "revision": "5",
                 "release-date": "23 January 2023",
@@ -55,7 +55,7 @@
     },
     {
         "1.0.4": {
-            "status": "supported",
+            "status": "deprecated",
             "latest-revision": {
                 "revision": "4",
                 "release-date": "23 January 2023",
