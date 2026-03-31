@@ -1,7 +1,7 @@
 [
     {
         "2.0.3": {
-            "status": "deprecated",
+            "status": "supported",
             "latest-revision": {
                 "revision": "1",
                 "release-date": "20 June 2024",
