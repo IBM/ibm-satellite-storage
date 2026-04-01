@@ -3,6 +3,15 @@
         "5.1":{
             "status": "supported",
             "latest-revision": {
+                "revision": "15",
+                "release-date": "02 April 2026",
+                "cves": "CVE-2026-25679, CVE-2026-27139, CVE-2026-27142",
+                "golang": "1.25.8",
+                "ubi": "",
+                "new-features": [],
+                "fixes": []
+            },
+            "previous-revision": {
                 "revision": "14",
                 "release-date": "3 March 2026",
                 "cves": "CVE-2025-15467, CVE-2025-11187, CVE-2025-15468, CVE-2025-15469, CVE-2025-66199, CVE-2025-68160, CVE-2025-69418, CVE-2025-69419, CVE-2025-69420, CVE-2025-69421, CVE-2026-22795, CVE-2026-22796, CVE-2025-9086, CVE-2025-61726, CVE-2025-61730, CVE-2025-14104, CVE-2025-68121",
@@ -10,15 +19,6 @@
                 "ubi": "",
                 "new-features": [],
                 "fixes": ["Add support for snapshot creation in the user defined resource group"]
-            },
-            "previous-revision": {
-                "revision": "13",
-                "release-date": "20 January 2026",
-                "cves": "CVE-2025-61727, CVE-2025-61729, CVE-2025-4598, CVE-2025-13281",
-                "golang": "1.25.3",
-                "ubi": "",
-                "new-features": [],
-                "fixes": ["Updates K8s client libraries from 1.32.8 to 1.32.10 in iks-vpc-block-driver container"]
             }
         }
     },
