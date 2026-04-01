@@ -6,7 +6,7 @@
                 "revision": "15",
                 "release-date": "02 April 2026",
                 "cves": "CVE-2026-25679, CVE-2026-27139, CVE-2026-27142",
-                "golang": "1.25.7",
+                "golang": "1.25.8",
                 "ubi": "",
                 "new-features": [],
                 "fixes": []
