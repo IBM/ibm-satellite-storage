@@ -1,7 +1,7 @@
 [
     {
         "4.13": {
-            "status": "supported",
+            "status": "deprecated",
             "latest-revision": {
                 "revision": "1",
                 "release-date": "18 October 2023",
@@ -17,7 +17,7 @@
     },
     {
         "4.12": {
-            "status": "supported",
+            "status": "deprecated",
             "latest-revision": {
                 "revision": "1",
                 "release-date": "23 January 2023",
@@ -33,7 +33,7 @@
     },
     {
         "4.11": {
-            "status": "supported",
+            "status": "deprecated",
             "latest-revision": {
                 "revision": "1",
                 "release-date": "07 November 2022",
@@ -49,7 +49,7 @@
     },
     {
         "4.10": {
-            "status": "supported",
+            "status": "deprecated",
             "latest-revision": {
                 "revision": "4",
                 "release-date": "29 July 2022",
