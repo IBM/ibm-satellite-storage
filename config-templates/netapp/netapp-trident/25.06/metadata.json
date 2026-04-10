@@ -1,6 +1,6 @@
 {
   "name": "25.06",
-  "revision": "1",
+  "revision": "2",
   "enabled": "true",
   "status": "supported",
   "description": "Netapp Trident version 25.06.",

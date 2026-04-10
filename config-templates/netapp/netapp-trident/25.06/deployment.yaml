@@ -5,7 +5,7 @@ metadata:
   namespace: kube-system
   annotations:
     version: "25.06"
-    revision: "1"
+    revision: "2"
 items:
   - apiVersion: v1
     kind: Namespace
@@ -544,7 +544,7 @@ items:
                       fieldPath: metadata.name
                 - name: OPERATOR_NAME
                   value: trident-operator
-              image: netapp/trident-operator:25.06.2
+              image: docker.io/netapp/trident-operator:25.06.2
               imagePullPolicy: IfNotPresent
               name: trident-operator
               resources:
