@@ -3,6 +3,17 @@
         "25.06": {
             "status": "supported",
             "latest-revision": {
+                "revision": "2",
+                "release-date": "16 May 2026",
+                "cves": "",
+                "golang": "",
+                "ubi": "",
+                "new-features": [],
+                "fixes": [
+                    "Use docker.io registry for trident-operator image"
+                ]
+            },
+            "previous-revision": {
                 "revision": "1",
                 "release-date": "04 September 2025",
                 "cves": "",
