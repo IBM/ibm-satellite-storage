@@ -4,7 +4,7 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "2",
-                "release-date": "15 May 2026",
+                "release-date": "16 May 2026",
                 "cves": "",
                 "golang": "",
                 "ubi": "",
