@@ -30,7 +30,18 @@
         "24.02": {
             "status": "supported",
             "latest-revision": {
-                "revision": "3",
+                "revision": "4",
+                "release-date": "16 May 2026",
+                "cves": "",
+                "golang": "",
+                "ubi": "",
+                "new-features": [],
+                "fixes": [
+                    "Use docker.io registry for trident-operator image"
+                ]
+            },
+            "previous-revision": {
+               "revision": "3",
                 "release-date": "24 June 2025",
                 "cves": "",
                 "golang": "",
@@ -38,17 +49,6 @@
                 "new-features": [],
                 "fixes": [
                     "Support ROKS 4.16"
-                ]
-            },
-            "previous-revision": {
-               "revision": "2",
-                "release-date": "13 December 2024",
-                "cves": "",
-                "golang": "",
-                "ubi": "",
-                "new-features": [],
-                "fixes": [
-                    "Fix issue with NetApp Trident operator cleanup"
                 ]
             }
         }
