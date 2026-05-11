@@ -21,15 +21,5 @@
                 "fixes": ["Add support for snapshot creation in the user defined resource group"]
             }
         }
-    },
-    {
-        "5.0": {
-            "status": "unsupported"
-        }
-    },
-    {
-        "4.3.0": {
-            "status": "unsupported"
-        }
     }
 ]
