@@ -46,37 +46,5 @@
                 "fixes": []
             }
         }
-    },
-    {
-        "1.5.0": {
-            "status": "unsupported",
-            "latest-revision": {
-                "revision": "2",
-                "release-date": "29 July 2022",
-                "cves": "",
-                "golang": "",
-                "ubi": "",
-                "new-features": [
-                    "Added new storageclass parameter 'storage-class-preference' for Satellite storage template"
-                ],
-                "fixes": []
-            }
-        }
-    },
-    {
-        "1.4.0": {
-            "status": "unsupported",
-            "latest-revision": {
-                "revision": "2",
-                "release-date": "29 July 2022",
-                "cves": "",
-                "golang": "",
-                "ubi": "",
-                "new-features": [
-                    "Added new storageclass parameter 'storage-class-preference' for Satellite storage template"
-                ],
-                "fixes": []
-            }
-        }
     }
 ]

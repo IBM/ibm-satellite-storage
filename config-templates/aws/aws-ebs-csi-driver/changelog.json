@@ -57,15 +57,5 @@
                 ]
             }
         }
-    },
-    {
-        "1.5.1": {
-            "status": "unsupported"
-        }
-    },
-    {
-        "1.1.0": {
-            "status": "unsupported"
-        }
     }
 ]
