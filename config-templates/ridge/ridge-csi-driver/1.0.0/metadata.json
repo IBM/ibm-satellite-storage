@@ -2,7 +2,7 @@
   "name": "1.0.0",
   "revision": "1",
   "enabled": "true",
-  "status": "supported",
+  "status": "deprecated",
   "description": "Ridge CSI Driver",
   "tags": [
     {

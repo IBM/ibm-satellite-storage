@@ -2,7 +2,7 @@
     "name": "1.8.0",
     "revision": "2",
     "enabled": "true",
-    "status": "supported",
+    "status": "deprecated",
     "description": "GCP Compute Persistent Disk CSI Driver",
     "tags": [
         {
