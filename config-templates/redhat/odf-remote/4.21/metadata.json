@@ -1,9 +1,9 @@
 {
-  "name": "4.15",
-  "revision": "20",
+  "name": "4.21",
+  "revision": "2",
   "enabled": "true",
-  "status": "deprecated",
-  "description": "ODF template for openshift 4.15 (Local storage)",
+  "status": "supported",
+  "description": "ODF template for openshift 4.21 (Remote storage)",
   "tags": [
     {
       "name": "provider",
@@ -27,7 +27,7 @@
     },
     {
       "name": "provider-logo",
-      "value": "logo/odf-local.svg"
+      "value": "logo/odf-remote.svg"
     },
     {
       "name": "supported-envs",
@@ -35,7 +35,7 @@
     },
     {
       "name": "supported-ocp-versions",
-      "value": "4.15, 4.16"
+      "value": "4.21, 4.22"
     },
     {
       "name": "volume-type",
