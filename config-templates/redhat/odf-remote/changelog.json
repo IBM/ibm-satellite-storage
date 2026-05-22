@@ -3,21 +3,10 @@
         "4.21": {
             "status": "supported",
             "latest-revision": {
-                "revision": "2",
-                "release-date": "27 May 2026",
-                "cves": "CVE-2026-4878, CVE-2026-40356, CVE-2026-40355, CVE-2026-29111, CVE-2026-39826, CVE-2026-39823, CVE-2026-40164, CVE-2026-31790, CVE-2026-42499, CVE-2026-39836, CVE-2026-39820, CVE-2026-33814, CVE-2026-33811, CVE-2026-39979, CVE-2026-44477",
-                "golang": "1.26.3",
-                "ubi": "",
-                "new-features": [
-                ],
-                "fixes": [
-                ]
-            },
-            "previous-revision": {
                 "revision": "1",
                 "release-date": "21 May 2026",
                 "cves": "",
-                "golang": "1.25.9",
+                "golang": "1.26.3",
                 "ubi": "",
                 "new-features": [
                     "ODF 4.21 initial release"
@@ -41,9 +30,9 @@
             },
             "previous-revision": {
                 "revision": "3",
-                "release-date": "22 April 2026",
-                "cves": "CVE-2026-34986, CVE-2026-32281, CVE-2026-32288, CVE-2026-32289",
-                "golang": "1.25.9",
+                "release-date": "02 April 2026",
+                "cves": "CVE-2026-33186, CVE-2026-25679, CVE-2026-27139, CVE-2026-27142",
+                "golang": "1.25.8",
                 "ubi": "",
                 "new-features": [
                 ],
@@ -66,9 +55,9 @@
             },
             "previous-revision": {
                 "revision": "5",
-                "release-date": "22 April 2026",
-                "cves": "CVE-2026-34986, CVE-2026-32281, CVE-2026-32288, CVE-2026-32289",
-                "golang": "1.25.9",
+                "release-date": "02 April 2026",
+                "cves": "CVE-2026-33186, CVE-2026-25679, CVE-2026-27139, CVE-2026-27142",
+                "golang": "1.25.8",
                 "ubi": "",
                 "new-features": [
                 ],
@@ -93,9 +82,9 @@
             },
             "previous-revision": {
                 "revision": "8",
-                "release-date": "22 April 2026",
-                "cves": "CVE-2026-34986, CVE-2026-32281, CVE-2026-32288, CVE-2026-32289",
-                "golang": "1.25.9",
+                "release-date": "02 April 2026",
+                "cves": "CVE-2026-33186, CVE-2026-25679, CVE-2026-27139, CVE-2026-27142",
+                "golang": "1.25.8",
                 "ubi": "",
                 "new-features": [
                 ],
@@ -120,9 +109,9 @@
             },
             "previous-revision": {
                 "revision": "12",
-                "release-date": "22 April 2026",
-                "cves": "CVE-2026-34986, CVE-2026-32281, CVE-2026-32288, CVE-2026-32289",
-                "golang": "1.25.9",
+                "release-date": "02 April 2026",
+                "cves": "CVE-2026-33186, CVE-2026-25679, CVE-2026-27139, CVE-2026-27142",
+                "golang": "1.25.8",
                 "ubi": "",
                 "new-features": [
                 ],
@@ -147,9 +136,9 @@
             },
             "previous-revision": {
                 "revision": "14",
-               "release-date": "22 April 2026",
-                "cves": "CVE-2026-34986, CVE-2026-32281, CVE-2026-32288, CVE-2026-32289",
-                "golang": "1.25.9",
+                "release-date": "02 April 2026",
+                "cves": "CVE-2026-33186, CVE-2026-25679, CVE-2026-27139, CVE-2026-27142",
+                "golang": "1.25.8",
                 "ubi": "",
                 "new-features": [
                 ],
@@ -174,9 +163,9 @@
             },
             "previous-revision": {
                 "revision": "19",
-                "release-date": "22 April 2026",
-                "cves": "CVE-2026-34986, CVE-2026-32281, CVE-2026-32288, CVE-2026-32289",
-                "golang": "1.25.9",
+                "release-date": "02 April 2026",
+                "cves": "CVE-2026-33186, CVE-2026-25679, CVE-2026-27139, CVE-2026-27142",
+                "golang": "1.25.8",
                 "ubi": "",
                 "new-features": [
                 ],
