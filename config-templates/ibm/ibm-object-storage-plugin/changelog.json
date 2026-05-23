@@ -3,23 +3,21 @@
         "2.2": {
             "status": "supported",
             "latest-revision": {
-                "revision": "38",
-                "release-date": "28 April 2026",
-                "cves": "CVE-2026-32281, CVE-2026-32289",
-                "golang": "1.25.9",
+                "revision": "39",
+                "release-date": "27 May 2026",
+                "cves": "CCVE-2026-33811, CVE-2026-33814, CVE-2026-39820, CVE-2026-39836, CVE-2026-42499, CVE-2026-4878, CVE-2026-29111, CVE-2026-39823, CVE-2026-39826, CVE-2026-2100, CVE-2026-31790",
+                "golang": "1.25.10",
                 "ubi": "",
                 "new-features": [],
                 "fixes": []
             },
             "previous-revision": {
-              "revision": "37",
-                "release-date": "02 April 2026",
-                "cves": "CVE-2026-33186",
-                "golang": "1.25.8",
+              "revision": "38",
+                "release-date": "28 April 2026",
+                "cves": "CVE-2026-32281, CVE-2026-32289",
+                "golang": "1.25.9",
                 "ubi": "",
-                "new-features": [
-                    "cos plugin support on in-mum region"
-                ],
+                "new-features": [],
                 "fixes": []
             }
         }
