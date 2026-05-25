@@ -30,15 +30,5 @@
                 "fixes": []
             }
         }
-    },
-    {
-        "1.18.0": {
-            "status": "unsupported"
-        }
-    },
-    {
-        "1.9.0": {
-            "status": "unsupported"
-        }
     }
 ]
