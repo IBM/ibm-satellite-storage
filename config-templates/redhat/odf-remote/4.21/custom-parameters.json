@@ -382,7 +382,6 @@
       "11",
       "12"
     ],
-    "type": "integer",
     "required": "true",
     "mutable": "true"
   }
