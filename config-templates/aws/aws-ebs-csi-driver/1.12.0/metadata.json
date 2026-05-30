@@ -2,7 +2,7 @@
   "name": "1.12.0",
   "revision": "3",
   "enabled": "true",
-  "status": "deprecated",
+  "status": "unsupported",
   "description": "AWS EBS CSI Driver version 1.12.0",
   "tags": [
     {

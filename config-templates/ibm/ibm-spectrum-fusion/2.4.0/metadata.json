@@ -3,7 +3,7 @@
   "name": "2.4.0",
   "revision": "1",
   "enabled": "true",
-  "status": "supported",
+  "status": "deprecated",
   "description": "[Beta] IBM Spectrum Fusion CSI Driver.",
   "tags": [
     {

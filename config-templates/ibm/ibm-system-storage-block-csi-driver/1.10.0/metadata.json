@@ -2,7 +2,7 @@
   "name": "1.10.0",
   "revision": "1",
   "enabled": "true",
-  "status": "deprecated",
+  "status": "unsupported",
   "description": "IBM System Storage Block CSI driver version 1.10.0",
   "tags": [
     {
