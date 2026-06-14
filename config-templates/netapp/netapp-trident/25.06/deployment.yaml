@@ -585,6 +585,7 @@ items:
       debug: true
       namespace: "trident"
       kubeletDir: "/var/data/kubelet"
+      tridentImage: "docker.io/netapp/trident:25.06.2"
   - apiVersion: v1
     kind: ServiceAccount
     metadata:
