@@ -4,7 +4,7 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "3",
-                "release-date": "",
+                "release-date": "16 June 2026",
                 "cves": "",
                 "golang": "",
                 "ubi": "",
@@ -31,7 +31,7 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "5",
-                "release-date": "",
+                "release-date": "16 June 2026",
                 "cves": "",
                 "golang": "",
                 "ubi": "",
