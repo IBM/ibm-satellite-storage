@@ -10,7 +10,7 @@
                 "ubi": "",
                 "new-features": [],
                 "fixes": [
-                    "Use docker.io registry for trident-operator image"
+                    "Use docker.io registry for trident image"
                 ]
             },
             "previous-revision": {
@@ -37,7 +37,7 @@
                 "ubi": "",
                 "new-features": [],
                 "fixes": [
-                    "Use docker.io registry for trident-operator image"
+                    "Use docker.io registry for trident image"
                 ]
             },
             "previous-revision": {
