@@ -1,9 +1,9 @@
 {
-    "name": "2.0.3",
+    "name": "2.3.0",
     "revision": "1",
     "enabled": "true",
-    "status": "deprecated",
-    "description": "AWS EFS CSI Driver version 2.0.3",
+    "status": "supported",
+    "description": "AWS EFS CSI Driver version 2.3.0",
     "tags": [
       {
         "name": "provider",
@@ -35,7 +35,7 @@
       },
       {
         "name": "supported-ocp-versions",
-        "value": "4.12, 4.13, 4.14, 4.15"
+        "value": "4.16, 4.17, 4.18, 4.19, 4.20"
       },
       {
         "name": "volume-type",
