@@ -4,7 +4,7 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "40",
-                "release-date": "03 July 2026",
+                "release-date": "10 July 2026",
                 "cves": "CVE-2025-5278, CVE-2026-5450",
                 "golang": "1.25.11",
                 "ubi": "",
