@@ -6,7 +6,7 @@
                 "revision": "5",
                 "release-date": "10 July 2026",
                 "cves": "CVE-2026-4438, CVE-2026-4437, CVE-2026-4046, CVE-2026-28390, CVE-2026-34182, CVE-2026-45446, CVE-2026-7383, CVE-2026-45447, CVE-2026-42764, CVE-2026-39821, CVE-2026-2303, CVE-2025-5278, CVE-2026-5450",
-                "golang": "1.26.3",
+                "golang": "1.26.4",
                 "ubi": "",
                 "new-features": [
                 ],
@@ -31,7 +31,7 @@
                 "revision": "7",
                 "release-date": "10 July 2026",
                 "cves": "CVE-2026-4438, CVE-2026-4437, CVE-2026-4046, CVE-2026-28390, CVE-2026-34182, CVE-2026-45446, CVE-2026-7383, CVE-2026-45447, CVE-2026-42764, CVE-2026-39821, CVE-2026-2303, CVE-2025-5278, CVE-2026-5450",
-                "golang": "1.26.3",
+                "golang": "1.26.4",
                 "ubi": "",
                 "new-features": [
                 ],
@@ -58,7 +58,7 @@
                 "revision": "10",
                 "release-date": "10 July 2026",
                 "cves": "CVE-2026-4438, CVE-2026-4437, CVE-2026-4046, CVE-2026-28390, CVE-2026-34182, CVE-2026-45446, CVE-2026-7383, CVE-2026-45447, CVE-2026-42764, CVE-2026-39821, CVE-2026-2303, CVE-2025-5278, CVE-2026-5450",
-                "golang": "1.26.3",
+                "golang": "1.26.4",
                 "ubi": "",
                 "new-features": [
                 ],
@@ -85,7 +85,7 @@
                 "revision": "14",
                 "release-date": "10 July 2026",
                 "cves": "CVE-2026-4438, CVE-2026-4437, CVE-2026-4046, CVE-2026-28390, CVE-2026-34182, CVE-2026-45446, CVE-2026-7383, CVE-2026-45447, CVE-2026-42764, CVE-2026-39821, CVE-2026-2303, CVE-2025-5278, CVE-2026-5450",
-                "golang": "1.26.3",
+                "golang": "1.26.4",
                 "ubi": "",
                 "new-features": [
                 ],
@@ -112,7 +112,7 @@
                 "revision": "16",
                 "release-date": "10 July 2026",
                 "cves": "CVE-2026-4438, CVE-2026-4437, CVE-2026-4046, CVE-2026-28390, CVE-2026-34182, CVE-2026-45446, CVE-2026-7383, CVE-2026-45447, CVE-2026-42764, CVE-2026-39821, CVE-2026-2303, CVE-2025-5278, CVE-2026-5450",
-                "golang": "1.26.3",
+                "golang": "1.26.4",
                 "ubi": "",
                 "new-features": [
                 ],
@@ -139,7 +139,7 @@
                 "revision": "21",
                 "release-date": "10 July 2026",
                 "cves": "CVE-2026-4438, CVE-2026-4437, CVE-2026-4046, CVE-2026-28390, CVE-2026-34182, CVE-2026-45446, CVE-2026-7383, CVE-2026-45447, CVE-2026-42764, CVE-2026-39821, CVE-2026-2303, CVE-2025-5278, CVE-2026-5450",
-                "golang": "1.26.3",
+                "golang": "1.26.4",
                 "ubi": "",
                 "new-features": [
                 ],
@@ -161,7 +161,7 @@
     },
     {
         "4.14": {
-            "status": "deprecated",
+            "status": "unsupported",
             "latest-revision": {
                 "revision": "18",
                 "release-date": "08 December 2025",
@@ -188,7 +188,7 @@
     },
     {
         "4.13": {
-            "status": "deprecated",
+            "status": "unsupported",
             "latest-revision": {
                 "revision": "20",
                 "release-date": "08 December 2025",
@@ -215,7 +215,7 @@
     },
     {
         "4.12": {
-            "status": "deprecated",
+            "status": "unsupported",
             "latest-revision": {
                 "revision": "20",
                 "release-date": "05 June 2025",
