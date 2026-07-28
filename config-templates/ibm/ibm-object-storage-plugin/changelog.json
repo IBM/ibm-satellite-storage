@@ -4,7 +4,7 @@
             "status": "supported",
             "latest-revision": {
                 "revision": "41",
-                "release-date": "28 July 2026",
+                "release-date": "31 July 2026",
                 "cves": "CVE-2026-42505, CVE-2026-54369, CVE-2026-54370, CVE-2026-5928, CVE-2026-6238, CVE-2026-5435, GHSA-hrxh-6v49-42gf",
                 "golang": "1.26.5",
                 "ubi": "",
