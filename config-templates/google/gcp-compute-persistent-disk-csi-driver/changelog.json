@@ -25,15 +25,5 @@
                 "fixes": []
             }
         }
-    },
-    {
-        "1.7.1": {
-            "status": "unsupported"
-        }
-    },
-    {
-        "1.0.4": {
-            "status": "unsupported"
-        }
     }
 ]

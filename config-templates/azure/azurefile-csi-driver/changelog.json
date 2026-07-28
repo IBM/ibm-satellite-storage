@@ -17,18 +17,7 @@
     },
     {
         "1.22.0": {
-            "status": "deprecated",
-            "latest-revision": {
-                "revision": "1",
-                "release-date": "26 October 2022",
-                "cves": "",
-                "golang": "",
-                "ubi": "",
-                "new-features": [
-                    "Initial release"
-                ],
-                "fixes": []
-            }
+            "status": "unsupported"
         }
     }
 ]
