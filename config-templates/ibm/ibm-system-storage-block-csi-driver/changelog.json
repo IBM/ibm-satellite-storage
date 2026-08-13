@@ -3,15 +3,5 @@
         "1.11.2": {
             "status": "unsupported"
         }
-    },
-    {
-        "1.11.1": {
-            "status": "unsupported"
-        }
-    },
-    {
-        "1.10.0": {
-            "status": "unsupported"
-        }
     }
 ]

@@ -178,15 +178,5 @@
         "4.14": {
             "status": "unsupported"
         }
-    },
-    {
-        "4.13": {
-            "status": "unsupported"
-        } 
-    },
-    {
-        "4.12": {
-            "status": "unsupported"
-        }
     }
 ]

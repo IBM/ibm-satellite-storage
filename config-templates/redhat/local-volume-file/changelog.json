@@ -3,25 +3,5 @@
         "4.13": {
             "status": "unsupported"
         }
-    },
-    {
-        "4.12": {
-            "status": "unsupported"
-        }
-    },
-    {
-        "4.11": {
-            "status": "unsupported"
-        }
-    },
-    {
-        "4.10": {
-            "status": "unsupported"
-        }
-    },
-    {
-        "4.9": {
-            "status": "unsupported"
-        }
     }
 ]
