@@ -6,7 +6,7 @@
                 "revision": "3",
                 "release-date": "20 August 2026",
                 "cves": "CVE-2026-5928, CVE-2026-5435, CVE-2025-5278, CVE-2026-5450, CVE-2026-4438, CVE-2026-4046, CVE-2026-0861, CVE-2025-15281, CVE-2026-54369, CVE-2026-4878, CVE-2026-4437, CVE-2026-0915, CVE-2026-6238",
-                "golang": "1.26",
+                "golang": "1.26.5",
                 "ubi": "",
                 "new-features": [],
                 "fixes": []
@@ -31,7 +31,7 @@
                 "revision": "8",
                 "release-date": "20 August 2026",
                 "cves": "CVE-2026-5928, CVE-2026-5435, CVE-2025-5278, CVE-2026-5450, CVE-2026-4438, CVE-2026-4046, CVE-2026-0861, CVE-2025-15281, CVE-2026-54369, CVE-2026-4878, CVE-2026-4437, CVE-2026-0915, CVE-2026-6238",
-                "golang": "1.26",
+                "golang": "1.26.5",
                 "ubi": "",
                 "new-features": [],
                 "fixes": []
