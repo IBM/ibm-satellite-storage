@@ -3,6 +3,15 @@
         "25.06": {
             "status": "supported",
             "latest-revision": {
+                "revision": "3",
+                "release-date": "20 August 2026",
+                "cves": "CVE-2026-5928, CVE-2026-5435, CVE-2025-5278, CVE-2026-5450, CVE-2026-4438, CVE-2026-4046, CVE-2026-0861, CVE-2025-15281, CVE-2026-54369, CVE-2026-4878, CVE-2026-4437, CVE-2026-0915, CVE-2026-6238",
+                "golang": "1.26",
+                "ubi": "",
+                "new-features": [],
+                "fixes": []
+            },
+            "previous-revision": {
                 "revision": "2",
                 "release-date": "14 November 2025",
                 "cves": "CVE-2025-58185, CVE-2025-58189, CVE-2025-61723",
@@ -12,17 +21,6 @@
                 "fixes": [
                     "Mark the Data LIF custom parameter as optional"
                 ]
-            },
-            "previous-revision": {
-                "revision": "1",
-                "release-date": "04 September 2025",
-                "cves": "",
-                "golang": "1.25.0",
-                "ubi": "",
-                "new-features": [
-                    "Initial release"
-                ],
-                "fixes": []
             }
         }
     },
@@ -30,6 +28,15 @@
         "24.02": {
             "status": "supported",
             "latest-revision": {
+                "revision": "8",
+                "release-date": "20 August 2026",
+                "cves": "CVE-2026-5928, CVE-2026-5435, CVE-2025-5278, CVE-2026-5450, CVE-2026-4438, CVE-2026-4046, CVE-2026-0861, CVE-2025-15281, CVE-2026-54369, CVE-2026-4878, CVE-2026-4437, CVE-2026-0915, CVE-2026-6238",
+                "golang": "1.26",
+                "ubi": "",
+                "new-features": [],
+                "fixes": []
+            },
+            "previous-revision": {
                 "revision": "7",
                 "release-date": "14 November 2025",
                 "cves": "CVE-2025-58185, CVE-2025-58189, CVE-2025-61723",
@@ -39,15 +46,6 @@
                  "fixes": [
                     "Mark the Data LIF custom parameter as optional"
                 ]
-            },
-            "previous-revision": {
-                "revision": "6",
-                "release-date": "04 September 2025",
-                "cves": "CVE-2025-8058",
-                "golang": "1.25.0",
-                "ubi": "",
-                "new-features": [],
-                "fixes": []
             }
         }
     }
