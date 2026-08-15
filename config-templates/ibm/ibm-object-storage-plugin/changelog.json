@@ -3,19 +3,19 @@
         "2.2": {
             "status": "supported",
             "latest-revision": {
-                "revision": "41",
-                "release-date": "31 July 2026",
-                "cves": "CVE-2026-42505, CVE-2026-54369, CVE-2026-54370, CVE-2026-5928, CVE-2026-6238, CVE-2026-5435, GHSA-hrxh-6v49-42gf",
+                "revision": "42",
+                "release-date": "15 August 2026",
+                "cves": "CVE-2026-41989, CVE-2026-13757",
                 "golang": "1.26.5",
                 "ubi": "",
                 "new-features": [],
                 "fixes": []
             },
             "previous-revision": {
-              "revision": "40",
-                "release-date": "10 July 2026",
-                "cves": "CVE-2025-5278, CVE-2026-5450",
-                "golang": "1.25.11",
+              "revision": "41",
+                "release-date": "31 July 2026",
+                "cves": "CVE-2026-42505, CVE-2026-54369, CVE-2026-54370, CVE-2026-5928, CVE-2026-6238, CVE-2026-5435, GHSA-hrxh-6v49-42gf",
+                "golang": "1.26.5",
                 "ubi": "",
                 "new-features": [],
                 "fixes": []
