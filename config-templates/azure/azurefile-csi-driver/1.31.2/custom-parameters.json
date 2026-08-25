@@ -55,7 +55,7 @@
         "mutable": "true"
     },
     {
-        "description": "You can find your virtual machine type in the Azure portal or by running the `az vm list` command. Example types: 'standard' or 'VMSS'.",
+        "description": "You can find your virtual machine type in the Azure portal or by running the `az vm list` command. Example types: 'standard' or 'VMSS' (Virtual Machine Scale Set).",
         "displayname": "Virtual Machine Type",
         "name": "vmType",
         "regex": "^(standard|VMSS)$",
@@ -82,7 +82,7 @@
         "required": "true"
     },
     {
-        "description": "Name of one the of the subnets under the provided VNet",
+        "description": "Name of one of the subnets under the provided VNet (Virtual Network).",
         "displayname": "Subnet Name",
         "name": "subnetName",
         "category": "config",

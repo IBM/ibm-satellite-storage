@@ -53,7 +53,7 @@
         "mutable": "true"
     },
     {
-        "description": "You can find your virtual machine type in the Azure portal or by running the `az vm list` command. Example types: 'standard' or 'VMSS'.",
+        "description": "You can find your virtual machine type in the Azure portal or by running the `az vm list` command. Example types: 'standard' or 'VMSS' (Virtual Machine Scale Set).",
         "displayname": "Virtual Machine Type",
         "name": "vmType",
         "regex": "^(standard|VMSS)$",
