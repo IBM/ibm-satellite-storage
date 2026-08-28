@@ -1,0 +1,11 @@
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: "{{ storage-class-name }}"
+provisioner: spectrumscale.csi.ibm.com
+parameters:
+  volBackendFs: "{{ primary-vol-backend-fs }}"
+  clusterId: "{{ primary-cluster-id }}"
+reclaimPolicy: Delete
+
