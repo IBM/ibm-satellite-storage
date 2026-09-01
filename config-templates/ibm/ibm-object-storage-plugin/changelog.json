@@ -3,18 +3,20 @@
         "2.2": {
             "status": "supported",
             "latest-revision": {
-                "revision": "42",
-                "release-date": "20 August 2026",
-                "cves": "CVE-2026-41989, CVE-2026-13757",
-                "golang": "1.26.5",
+                "revision": "43",
+                "release-date": "08 September 2026",
+                "cves": "CVE-2026-33818, CVE-2026-39821, CVE-2026-46600, CVE-2026-56853, CVE-2026-56858, CVE-2026-56859, CVE-2026-56860, CVE-2026-56862",
+                "golang": "1.26.6",
                 "ubi": "",
-                "new-features": [],
+                "new-features": [
+                     "ROKS 4.22 support"
+                ],
                 "fixes": []
             },
             "previous-revision": {
-              "revision": "41",
-                "release-date": "31 July 2026",
-                "cves": "CVE-2026-42505, CVE-2026-54369, CVE-2026-54370, CVE-2026-5928, CVE-2026-6238, CVE-2026-5435, GHSA-hrxh-6v49-42gf",
+              "revision": "42",
+                "release-date": "20 August 2026",
+                "cves": "CVE-2026-41989, CVE-2026-13757",
                 "golang": "1.26.5",
                 "ubi": "",
                 "new-features": [],
