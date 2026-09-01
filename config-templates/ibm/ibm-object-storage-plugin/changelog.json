@@ -10,7 +10,8 @@
                 "ubi": "",
                 "new-features": [],
                 "fixes": [
-                    "WORKER_OS detection issue on RHEL 9 due to unquoted tr syntax in ibmc.sh"
+                    "WORKER_OS detection issue on RHEL 9 due to unquoted tr syntax in ibmc.sh",
+                    "ROKS 4.22 support"
                 ]
             },
             "previous-revision": {
