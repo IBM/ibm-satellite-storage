@@ -1,21 +1,10 @@
 [
     {
-        "1.12.0": {
+        "1.55.0": {
             "status": "supported",
             "latest-revision": {
-                "revision": "2",
-                "release-date": "16 January 2023",
-                "cves": "",
-                "golang": "",
-                "ubi": "",
-                "new-features": [],
-                "fixes": [
-                    "Use the policy/v1 API version for PodDisruptionBudget"
-                ]
-            },
-            "previous-revision": {
                 "revision": "1",
-                "release-date": "07 November 2022",
+                "release-date": "03 March 2026",
                 "cves": "",
                 "golang": "",
                 "ubi": "",
@@ -27,61 +16,7 @@
         }
     },
     {
-        "1.5.1": {
-            "status": "supported",
-            "latest-revision": {
-                "revision": "5",
-                "release-date": "16 January 2023",
-                "cves": "",
-                "golang": "",
-                "ubi": "",
-                "new-features": [],
-                "fixes": [
-                    "Use the policy/v1 API version for PodDisruptionBudget"
-                ]
-            },
-            "previous-revision": {
-                "revision": "4",
-                "release-date": "29 July 2022",
-                "cves": "",
-                "golang": "",
-                "ubi": "",
-                "new-features": [
-                    "Added support for auto-restarting plugin pods when updating/upgrading Satellite storage configuration"
-                ],
-                "fixes": []
-            }
-        }
-    },
-    {
-        "1.1.0": {
-            "status": "supported",
-            "latest-revision": {
-                "revision": "5",
-                "release-date": "16 January 2023",
-                "cves": "",
-                "golang": "",
-                "ubi": "",
-                "new-features": [],
-                "fixes": [
-                    "Use the policy/v1 API version for PodDisruptionBudget"
-                ]
-            },
-            "previous-revision": {
-                "revision": "4",
-                "release-date": "29 July 2022",
-                "cves": "",
-                "golang": "",
-                "ubi": "",
-                "new-features": [
-                    "Added support for auto-restarting plugin pods when updating/upgrading Satellite storage configuration"
-                ],
-                "fixes": []
-            }
-        }
-    },
-    {
-        "0.9.14": {
+        "1.31.0": {
             "status": "unsupported"
         }
     }

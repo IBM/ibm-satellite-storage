@@ -2,7 +2,7 @@
     "name": "1.23.0",
     "revision": "1",
     "enabled": "true",
-    "status": "supported",
+    "status": "unsupported",
     "description": "Azure Disk CSI Driver",
     "tags": [
         {
@@ -34,12 +34,8 @@
             "value": "Azure"
         },
         {
-            "name": "supported-k8s-versions",
-            "value": "1.21,1.22,1.23,1.24,1.25"
-        },
-        {
           "name": "supported-ocp-versions",
-          "value": "4.8,4.9,4.10,4.11,4.12"
+          "value": "4.8, 4.9, 4.10, 4.11, 4.12, 4.13, 4.14"
         },
         {
             "name": "volume-type",

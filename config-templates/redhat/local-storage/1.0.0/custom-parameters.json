@@ -1,0 +1,114 @@
+[
+    {
+      "description": "Set to 'true' to install the file storage driver.",
+      "displayname": "Install file storage driver",
+      "name": "install-local-storage-file",
+      "default": "true",
+      "type": "boolean",
+      "regex": "^(?:true|false)$",
+      "min-length": 4,
+      "max-length": 5,
+      "supported-values": ["true", "false"],
+      "required": "true",
+      "category": "config"
+    },
+    {
+      "description": "Set to 'true' if you want to automatically discover and use the volumes on your worker nodes for file storage.",
+      "displayname": "Automatic volume discovery for file storage",
+      "name": "auto-discover-devices-file",
+      "default": "false",
+      "type": "boolean",
+      "regex": "^(?:true|false)$",
+      "min-length": 4,
+      "max-length": 5,
+      "supported-values": ["true", "false"],
+      "required": "true",
+      "category": "config"
+    },
+    {
+      "description": "The 'key' of the worker node 'key=value' label that you want to use for file storage.",
+      "displayname": "File storage worker node label key",
+      "name": "file-nodes-label-key",
+      "required": "false",
+      "category": "config"
+    },
+    {
+      "description": "The 'value' of the worker node 'key=value' label that you want to use for file storage.",
+      "displayname": "File storage worker node label value",
+      "name": "file-nodes-label-value",
+      "required": "false",
+      "category": "config",
+      "type": "csv"
+    },
+    {
+      "description": "The path to the storage devices on your worker node that you want to use for file storage. Example: '/dev/sdc'. This option is required when 'auto-discover-devices-file' is set to 'false'.",
+      "displayname": "Device path for file storage",
+      "name": "file-devicepath",
+      "place-holder": "/dev/sdc,/dev/sde",
+      "required": "false",
+      "category": "config",
+      "type": "csv"
+    },
+    {
+      "description": "The file system type. Specify 'ext3', 'ext4', or 'xfs'.",
+      "displayname": "File system type",
+      "name": "fstype",
+      "default": "ext4",
+      "regex": "^(?:ext(?:3|4)|xfs)$",
+      "min-length": 3,
+      "max-length": 4,
+      "supported-values": ["ext3", "ext4", "xfs"],
+      "required": "true",
+      "category": "config"
+    },
+    {
+      "description": "Set to 'true' to install the block storage driver.",
+      "displayname": "Install block storage driver",
+      "name": "install-local-storage-block",
+      "default": "true",
+      "type": "boolean",
+      "regex": "^(?:true|false)$",
+      "min-length": 4,
+      "max-length": 5,
+      "supported-values": ["true", "false"],
+      "required": "true",
+      "category": "config"
+    },
+    {
+      "description": "Set to 'true' if you want to automatically discover and use the volumes on your worker nodes for block storage.",
+      "displayname": "Automatic volume discovery for block storage",
+      "name": "auto-discover-devices-block",
+      "default": "false",
+      "type": "boolean",
+      "regex": "^(?:true|false)$",
+      "min-length": 4,
+      "max-length": 5,
+      "supported-values": ["true", "false"],
+      "required": "true",
+      "category": "config"
+    },
+    {
+      "description": "The 'key' of the worker node 'key=value' label that you want to use for block storage.",
+      "displayname": "Block storage worker node label key",
+      "name": "block-nodes-label-key",
+      "required": "false",
+      "category": "config"
+    },
+    {
+      "description": "The 'value' of the worker node 'key=value' label that you want to use for block storage.",
+      "displayname": "Block storage worker node label value",
+      "name": "block-nodes-label-value",
+      "required": "false",
+      "category": "config",
+      "type": "csv"
+    },
+    {
+      "description": "The path to the storage devices on your worker node that you want to use for block storage. Example: '/dev/sdc'. This option is required when 'auto-discover-devices-block' is set to false.",
+      "displayname": "Device Path for Local Storage Block",
+      "name": "block-devicepath",
+      "place-holder": "/dev/sdc,/dev/sde",
+      "required": "false",
+      "category": "config",
+      "type": "csv"
+    }
+]

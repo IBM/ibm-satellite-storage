@@ -1,0 +1,29 @@
+[
+    {
+        "1.0.0": {
+            "status": "supported",
+            "latest-revision": {
+                "revision": "2",
+                "release-date": "27 February 2025",
+                "cves": "",
+                "golang": "",
+                "ubi": "",
+                "new-features": [
+                    "Add support for ROKS 4.15 & 4.16"
+                ],
+                "fixes": []
+            },
+            "previous-revision": {
+                "revision": "1",
+                "release-date": "18 October 2023",
+                "cves": "",
+                "golang": "",
+                "ubi": "",
+                "new-features": [
+                    "Initial release"
+                ],
+                "fixes": []
+            }
+        }
+    }
+]

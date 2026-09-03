@@ -1,29 +1,34 @@
 [
     {
-        "2.5.1": {
-            "status": "supported",
+        "2.7.0": {
+            "status": "deprecated",
             "latest-revision": {
-                "revision": "6",
-                "release-date": "20 February 2023",
+                "revision": "3",
+                "release-date": "9 May 2024",
                 "cves": "",
                 "golang": "",
                 "ubi": "",
-                "new-features": [
-                    "Added vmware-system-csi namespace resource explicitly"
-                ],
-                "fixes": []
+                "new-features": [],
+                "fixes": [
+                    "Added required labels for namespaces in deployment"
+                ]
             },
             "previous-revision": {
-                "revision": "5",
-                "release-date": "26 August 2022",
+                "revision": "2",
+                "release-date": "18 October 2023",
                 "cves": "",
                 "golang": "",
                 "ubi": "",
-                "new-features": [
-                    "Added support for adding user-defined file storage classes"
-                ],
-                "fixes": []
+                "new-features": [],
+                "fixes": [
+                    "Added Pod Security Admission(PSA) labels to 'vmware-system-csi' & 'vmware-system-vdo' namespaces"
+                ]
             }
+        }
+    },
+    {
+        "2.5.1": {
+            "status": "unsupported"
         }
     }
 ]

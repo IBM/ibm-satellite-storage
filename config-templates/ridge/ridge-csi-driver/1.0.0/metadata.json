@@ -2,7 +2,7 @@
   "name": "1.0.0",
   "revision": "1",
   "enabled": "true",
-  "status": "supported",
+  "status": "deprecated",
   "description": "Ridge CSI Driver",
   "tags": [
     {
@@ -38,12 +38,8 @@
       "value": "Ridge"
     },
     {
-      "name": "supported-k8s-versions",
-      "value": "1.21,1.22,1.23,1.24"
-    },
-    {
       "name": "supported-ocp-versions",
-      "value": "4.8,4.9,4.10,4.11"
+      "value": "4.8, 4.9, 4.10, 4.11"
     },
     {
       "name": "volume-type",
