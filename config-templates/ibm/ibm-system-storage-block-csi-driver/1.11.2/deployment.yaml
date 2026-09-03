@@ -110,7 +110,7 @@ items:
           tag: "v2.6.0"
           imagePullPolicy: IfNotPresent
   - apiVersion: v1
-    kind: secret
+    kind: Secret
     metadata:
       name: "{{ secret-name }}"
       namespace: "{{ namespace }}"

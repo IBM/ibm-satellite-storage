@@ -1,6 +1,6 @@
 {
   "name": "2.2",
-  "revision": "17",
+  "revision": "43",
   "enabled": "true",
   "status": "supported",
   "description": "IBM Object Storage Plugin version 2.2.x",
@@ -43,7 +43,7 @@
     },
     {
       "name": "supported-ocp-versions",
-      "value": "4.8, 4.9, 4.10, 4.11, 4.12, 4.13"
+      "value": "4.16, 4.17, 4.18, 4.19, 4.20, 4.21, 4.22"
     }
   ]
 }
