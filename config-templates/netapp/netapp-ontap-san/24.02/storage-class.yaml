@@ -125,8 +125,6 @@ items:
         volume-type: "block"
         storage-class-preference: "3"
         is-user-defined-class: "false"
-      annotations:
-        storageclass.kubernetes.io/is-default-class: "true"
     provisioner: csi.trident.netapp.io
     parameters:
       backendType: "ontap-san"
