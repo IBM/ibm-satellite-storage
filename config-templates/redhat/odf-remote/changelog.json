@@ -1,5 +1,20 @@
 [
     {
+        "4.22": {
+            "status": "supported",
+            "latest-revision": {
+                "revision": "1",
+                "release-date": "13 October 2026",
+                "cves": "",
+                "golang": "1.26.7",
+                "ubi": "",
+                "new-features": [
+                    "ODF 4.21 initial release"
+                ],
+                "fixes": [
+                ]
+            }
+        },
         "4.21": {
             "status": "supported",
             "latest-revision": {
