@@ -3,7 +3,19 @@
         "2.2": {
             "status": "supported",
             "latest-revision": {
-                "revision": "43",
+                "revision": "44",
+                "release-date": "03 November 2026",
+                "cves": "CVE-2026-14456, CVE-2026-14457, CVE-2026-18798, CVE-2026-54874, CVE-2026-63072, CVE-2026-63073, CVE-2026-63074, CVE-2026-63075, CVE-2026-63076, CVE-2026-75803, CVE-2026-84782, CVE-2026-18477, CVE-2026-18508, CVE-2026-5704, CVE-2026-41991, CVE-2026-41992, CVE-2026-56391, CVE-2026-56392, CVE-2026-103111, CVE-2026-86145, CVE-2026-89161, CVE-2026-89157, CVE-2026-89158, CVE-2026-89156, CVE-2026-89160, CVE-2026-18374, CVE-2026-19542, CVE-2026-6368, CVE-2026-6791, CVE-2026-77117, CVE-2026-80489, CVE-2026-114406, CVE-2026-78669, CVE-2026-97031, CVE-2026-78659, CVE-2026-78660, CVE-2026-94440, CVE-2026-56866, CVE-2026-78663, CVE-2026-94439, CVE-2026-94448, CVE-2026-97032, CVE-2026-111943, CVE-2026-97030",
+                "golang": "1.26.10",
+                "ubi": "",
+                "new-features": [],
+                "fixes": [
+                     "Updated driver daemonset pods to use initContainer to copy required files on the host",
+                     "Shell removed from provider and provisioner"
+                ]
+            },
+            "previous-revision": {
+              "revision": "43",
                 "release-date": "08 September 2026",
                 "cves": "CVE-2026-33818, CVE-2026-39821, CVE-2026-46600, CVE-2026-56853, CVE-2026-56858, CVE-2026-56859, CVE-2026-56860, CVE-2026-56862",
                 "golang": "1.26.6",
@@ -11,15 +23,6 @@
                 "new-features": [
                      "ROKS 4.22 support"
                 ],
-                "fixes": []
-            },
-            "previous-revision": {
-              "revision": "42",
-                "release-date": "20 August 2026",
-                "cves": "CVE-2026-41989, CVE-2026-13757",
-                "golang": "1.26.5",
-                "ubi": "",
-                "new-features": [],
                 "fixes": []
             }
         }
