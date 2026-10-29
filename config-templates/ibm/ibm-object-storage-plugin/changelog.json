@@ -8,13 +8,11 @@
                 "cves": "CVE-2026-14456, CVE-2026-14457, CVE-2026-18798, CVE-2026-54874, CVE-2026-63072, CVE-2026-63073, CVE-2026-63074, CVE-2026-63075, CVE-2026-63076, CVE-2026-75803, CVE-2026-84782, CVE-2026-18477, CVE-2026-18508, CVE-2026-5704, CVE-2026-41991, CVE-2026-41992, CVE-2026-56391, CVE-2026-56392, CVE-2026-103111, CVE-2026-86145, CVE-2026-89161, CVE-2026-89157, CVE-2026-89158, CVE-2026-89156, CVE-2026-89160, CVE-2026-18374, CVE-2026-19542, CVE-2026-6368, CVE-2026-6791, CVE-2026-77117, CVE-2026-80489, CVE-2026-114406, CVE-2026-78669, CVE-2026-97031, CVE-2026-78659, CVE-2026-78660, CVE-2026-94440, CVE-2026-56866, CVE-2026-78663, CVE-2026-94439, CVE-2026-94448, CVE-2026-97032, CVE-2026-111943, CVE-2026-97030",
                 "golang": "1.26.10",
                 "ubi": "",
-                "new-features": [
-                     "Helm v4 compatibility for the ibmc plugin"
-                ],
+                "new-features": [],
                 "fixes": [
                      "Updated driver daemonset pods to use initContainer to copy required files on the host",
                      "Shell removed from provider and provisioner"
-]
+                ]
             },
             "previous-revision": {
               "revision": "43",
